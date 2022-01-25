@@ -1,0 +1,192 @@
+\newpage
+\section{Sviluppi di Taylor}
+
+\subsection{Fattoriale}
+\begin{definition}[Fattoriale]
+Dato un $n \in \mathbb{N}$ con $n \geq 1$ definiamo un fattoriale come il prodotto dei primi n numeri naturali:
+\begin{center}
+    $n! = 1 \cdot 2 \cdot 3 \cdot 4 \cdot ... \cdot n$
+\end{center}
+\end{definition}
+\begin{note}
+Nota che $0! = 1$ per definizione.
+\end{note}
+\begin{example}
+$1! = 1$ \hspace{.5cm} $2! = 1 \cdot 2 = 2$ \hspace{.5cm} $3! = 1 \cdot 2 \cdot 3 = 6$ \hspace{.5cm} $4! = (1 \cdot 2 \cdot 3) \cdot 4 = 24$
+\end{example}
+\hspace{-15pt}Possiamo definire un uguaglianza per definire il fattoriale:
+\begin{center}
+    $(n+1)! = n! \cdot (n+1)$ dove $(n+1)! = [1 \cdot 2 \cdot ... \cdot n] \cdot (n+1) = n! \cdot (n+1)$
+\end{center}
+
+\subsection{Sommatorie}
+Supponiamo di avere dei numeri naturali indicizzati con un numero naturale.
+\begin{center}
+    $a_1, a_2, ..., a_n$ e $a_j \in \mathbb{R}$ con $j \in \mathbb{N}$
+\end{center}
+Per esempio si potrebbe prendere $a_j = \frac{1}{j}$ quindi: $a_1 = \frac{1}{1}$, $a_2 = \frac{1}{2}$, $a_3 = \frac{1}{3}$, ecc.
+Oppure possiamo $a_j = \sqrt{j}$ quindi: $a_1 = \sqrt{1}$, $a_2 = \sqrt{2}$, ecc.
+
+\begin{definition}[Sommatoria]
+Definisco sommatoria degli $a_j$ per $j$ che va da $m$ ad $n$ dove $m,n \in \mathbb{N}$ e $m \leq n$, e si scrivere\footnote{Usiamo $j$ per convenzione ma è possibile utilizzare qualsiasi variabile}:
+\begin{center}\vspace{-5pt}
+    $\sum\limits_{j = m}^n a_j = a_m + a_{m+1} + a_{m+2} + ... + a_n$
+\end{center}
+\end{definition}
+\begin{example}
+$\sum\limits_{j = 1}^5 \frac{1}{j} = \frac{1}{1} + \frac{1}{2} + ... + \frac{1}{5}$
+\end{example}
+\begin{example}
+$\sum\limits_{j = 0}^3 j^2 = 0^2 + 1^2 + 2^2 + 3^2 = 1 + 4 + 9 = 14$
+\end{example}
+
+\subsection{Formula di Taylor}
+\subsubsection{Taylor con resto di Peano}
+Supponiamo di avere una funzione $f$ derivabile nel punto $x_0 \in (a,b)$, allora abbiamo visto che posso scrivere $f(x) = f(x_0) + f'(x_0) \cdot (x-x_0) + o(x - x_0)$ per $x\to x_0$. Abbiamo dunque un polinomi di grado 1 ungule a $f(x_0) + f'(x_0) \cdot (x-x_0)$ ed un resto $o(x - x_0)$, $f$ quindi differisce dal polinomio per un resto che è infinitesimo rispetto a $x- x_0$ cioè $\lim\limits_{x\to x_0} = \frac{o(x - x_0)}{x - x_0} = 0$.\\\\
+Posso precisare meglio la quantità di $o(x - x_0)$ ma $f$ deve essere derivabile più volte nel punto $x_0$.
+
+\begin{definition}[Formula di Taylor con resto di Peano]
+Dato una funzione $f:(a,b) \to \mathbb{R}$ e $x_0 \in (a,b)$. Se $f$ è derivabile n volte in $x_0$ ed almeno $n-1$ volte nel resto dell'intervallo (a,b) (cioè in $(a,b) \setminus \{x_0\}$) allora esiste un unico polinomio $P_n(x)$ di grado $\leq n$ ed una funzione $R_n(x)$ tale che:
+\begin{center}
+    $f(x) = P_n(x) + R_n(x)$ e $R_n(x) = o(x - x_0)^n$ per $x\to x_0$
+\end{center}
+Il polinomio $P_n(x)$ ha la seguente forma:
+\begin{center}\vspace{-5pt}
+    $P_n(x) = \sum\limits_{j=0}^n \frac{f^{(j)}(x_0)}{j!} \cdot (x - x_0)^j$
+\end{center}
+\end{definition}
+
+Scritto in maniera esplicita:\\
+$P_n = f(x_0) + f'(x_0) \cdot (x - x_0) + f''(x_0)\frac{f''(x_0)}{2} \cdot (x-x_0)^2 + ... + \frac{f^{(n)}(x_0)}{n!} \cdot (x - x_0)^n$
+
+\begin{observation}
+Il grado massimo del polinomio è correlato all'ordine di infinitesimo del resto. Cioè $P_n$ è di grado n e $R_n = o(x - x_0)^n$. Questo vuol dire che: $f(x) - P_n(x) = o((x-x_0)^n)$, $o((x-x_0)^n)$ è la differenza fra la funzione ed il polinomio che l'approssima.
+\end{observation}
+
+\subsubsection{Taylor con resto di Lagrange}
+\begin{definition}[Formula di Taylor con resto di Lagrange]
+Dato una funzione $f:(a,b) \to \mathbb{R}$ e $x_0 \in (a,b)$ e $f$ derivabili in $n+1$ volte in $(a,b) \setminus \{x_0\}$ e n volte in $x_0$. Allora $f(x) = P_n + R_n(x)$ ed esiste $z$ compreso tra $x$ e $x_0$ tale che:
+\begin{center}
+    $R_n(x) = \frac{f^{n+1}(z) \cdot (x - x_0)^{n+1}}{(n+1)!}$
+\end{center}
+\end{definition}
+\hspace{-15pt}Dico un punto compreso fra $x$ e $x_0$ perché a priori non so quali dei due valori sta a destra e quale sta a sinistra, quindi parlo semplicemente di punto compreso.
+
+\subsubsection{Esempi di formula di Taylor}
+\begin{example}
+$f(x) = e^x$ e $f'(x) = e^x$, $f''(x) = e^x$, ... $f^{(j)}(x) = e^x \: \forall j \in \mathbb{N}$. La calcolo in $x_0 = 0$ \footnote{Si dice che in questo caso si fa centrato in 0}.\\
+$f(0) = 1$, $f'(0) = 1$, ..., $f^{j}(0) = 1$. Quindi $e^x = (\sum\limits_{j=0}^n\frac{x^j}{j!}) + o(x^n) = (\sum\limits_{j=0}^n\frac{f^{(j)}(0)}{j!}\cdot (x-0)^j) + o(x^n)$\\
+$e^x = 1 + x + \frac{x^2}{2} + \frac{x^3}{3!} + \frac{x^4}{4!} + ... + \frac{x^n}{n!} + o(x^n)$.\\
+Per esempio in ordine 2: $e^x = 1 + x + \frac{x^2}{2} + o(x^2)$, se lo confrontiamo con il limite notevole $e^x = 1 + x + o(x)$ vediamo che $o(x)$ (che è $R_1(x)$)in realtà è $\frac{x^2}{2} + o(x^2)$ (che è $R_2(x)$).
+\end{example}
+\begin{observation}
+$R_2(x)$ in particolare è un $o(x)$ perché se faccio $\frac{R_2(x)}{x} = \frac{\frac{x^2}{2} + o(x^2)}{x} = \frac{x}{2} + o(x) \to 0$ se $x\to 0$.
+Quella con il grado 2 è più precisa di quella con il grado 1.
+\end{observation}
+
+\begin{example}
+$f(x) = \sin{x}$, $f'(x) = \cos{x}$, $f''(x) = -\sin{x}$, $f'''(x)=-\cos{x}$.\\
+$f(0) = 0$, $f'(0) = 0$, $f''(0) = 0$, $f'''(0) = -1$. $\sin{x} = \sum\limits_{i=0}^n\frac{f^{(i)}(0)}{j!} \cdot x^j + R_n(x)$.\\
+$\sin{x} = 0 + \frac{x}{1} + 0 \cdot \frac{x^2}{2} - \frac{x^3}{3! + o(x^3)} = x - \frac{x^3}{6} + o(x^3)$. Ordine $n=3$.\\
+In questo caso $P_3(x) = x - \frac{x^3}{6}$ e $R_3(x) = o(x^3)$.\\
+Proviamo con ordine 4: $\sin{x} = 0 + 1 \cdot x + 0 \cdot \frac{x^2}{2} - 1 \frac{x^3}{3!} + o \cdot \frac{x^4}{4!} + o(x^4) = x - \frac{x^3}{6} + o(x^4)$. \\
+In questo caso invece $P_4(x) = x - \frac{x^3}{6}$ e $R_4(x) = o(x^4)$, vediamo che in questo caso $P_3(x) = P_4(x)$.\\\\
+Ora confrontiamo:\\
+$\sin{x} = x - \frac{x^3}{6} + o(x^3)$ ordine 3 \hspace{.5cm} $\sin{x} = x - \frac{x^3}{6} + o(x^4)$ ordine 4.\\
+Possiamo vedere che sono vere entrambi ma la seconda è più precisa perché ha un resto più piccolo.\\
+Allo stesso modo $\sin{x} = x + o(x)$ ma visto che sappiamo che la derivata seconda del seno calcolato in 0 è 0 possiamo scrivere in maniera più precisa $\sin{x} = x + o(x^2)$.
+\end{example}
+
+\subsection{Taylor per le funzioni elementari}
+Possiamo dunque ora scrivere le varie formule di Taylo per delle funzioni ricorrenti.\\
+
+\hspace{-15pt}\textbf{Formula seno:} $\sin{x} = (\sum\limits_{j = 0}^n \frac{(-1)^j \cdot x^{2j +1}}{(2j + 1)!}) + o(x^{2n+2})$
+
+\begin{example}
+Proviamo questa formula con $n=2$.\\\\
+$\frac{(-1)^0 \cdot x^{2 \cdot 0 + 1}}{(2 \cdot 0 + 1} + \frac{(-1)^1 \cdot x^{2 \cdot 1 + 1}}{(2 \cdot 1 + 1)!} + \frac{(-1)^2 \cdot x^{2 \cdot 2 \cdot 1}}{(2 \cdot 2 + 1)!} + o(x^{2 \cdot 2 + 2}) = x - \frac{x^3}{3!} + \frac{x^5}{5!} + o(x^6)$.\\
+\end{example}
+
+\hspace{-15pt}\textbf{Formula coseno:} $\cos{x} = (\sum\limits_{j = 0}^n \frac{(-1)^j \cdot x^{2j +1}}{(2j)!}) + o(x^{2n+1})$
+\begin{example}
+Formula di Taylor di grado 7 per il coseno:\\
+$\cos{x} = 1 - \frac{x^2}{2} + \frac{x^4}{4!} - \frac{x^6}{6!} + o(x^7)$.\\
+\end{example}
+
+\hspace{-15pt}\textbf{Formula logaritmo:} $\log(1+x) = (\sum\limits_{j=1}^n(-1)^{j+1}\frac{x^j}{j}) + o(x^n)$
+\begin{example}
+Facciamo un esempio con $n=4$ della formula del logaritmo:\\
+$\log(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + o(x^4)$
+\end{example}
+
+\begin{note}
+Nota che il coseno è una funzione peri ed il polinomio dalla funzione di Taylor contiene sempre potenze pari mentre il seno essendo dispari contiene solo dispari.\\
+\end{note}
+
+\hspace{-15pt}\textbf{Formula tangente:} per la tangente la formula è molto complicata quindi scriviamo semplicemente:\\
+$\tan(x) = x + o(x^2)$ e $\tan(x) = x + \frac{x^3}{3} + \frac{2x^5}{15} + o(x^6)$.\\
+
+\hspace{-15pt}\textbf{Formula Arcotangente:} $\arctan(x) = (\sum\limits_{j = 0}^n (-1)^j \frac{x^{2j +1}}{2j +1}) + o(x^{2n+2})$
+Quindi sviluppata al settimo grado:\\
+$\arctan(x) = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + o(x^8)$
+\begin{note}
+Nota che anche nell'arcotangente come nel logaritmo non c'è il fattoriale.\\
+\end{note}
+
+\hspace{-15pt}\textbf{Formula Binomiale:} dato $\alpha \in \mathbb{R}$ possiamo scrivere:\\\\
+$(1+ \alpha) = 1 + \alpha x + \frac{\alpha(\alpha -1)}{2} \cdot x^2 + \frac{\alpha(\alpha -1)(\alpha -2)}{3!}\cdot x^3 + ... + \frac{\alpha(\alpha -1)(\alpha -2)...(\alpha - n+1)}{n!}\cdot x^n + o(x^n)$.
+
+\begin{example}
+Con $\alpha = \frac{1}{2}$ quindi $\sqrt{1 + x} = (1 + x)^{\frac{1}{2}}$.\\
+$(1 + x)^{\frac{1}{2}} = 1 + \frac{1}{2}x + \frac{\frac{1}{2}(\frac{1}{2}-1)}{2} \cdot x^2 + o(x^2) = 1 + \frac{x}{2} - \frac{1}{8}x^2 + o(x^2)$. 
+\end{example}
+
+\begin{example}
+Con invece $\alpha = -1 $ quindi con $(1 + x)^{-1} = \frac{1}{1+x}$.\\
+$\frac{1}{1+x} = 1 - x + \frac{(-1)(-2)}{2!} \cdot x^2 + \frac{(-1)(-2)(-3)}{3!} \cdot x^3 + o(x^3) = 1 - x + \frac{2}{2}x^2 - \frac{3!}{3!}\cdot x^3 + o(x^3) = 1 - x + x^2 + x^3 + o(x^3)$.\\\\
+Quindi se sostituiamo $x = -t$ abbiamo che:\\
+$\frac{1}{1-t} = 1 - (-t) + (-t)^2 - (-t^3) + o(t^3) = 1 + t + t^2 + t^3 + o(t^3)$, generalizzando possiamo scrivere:\\
+$\frac{1}{1-t} = 1 - (-t) + (-t)^2 - (-t^3) + ... + t^n + o(t^n)$
+\end{example}
+
+\begin{table}[h!]
+    \setlength{\tabcolsep}{5pt}
+    \renewcommand{\arraystretch}{2.2}
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        $e^x$ & $1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ... + \frac{x^n}{n!} + o(x^n)$  \\
+        $\log(1+x)$ & $x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \frac{x^5}{5} + ... + (-1)^{n-1}\frac{x^n}{n} + o(x^n)$ \\
+        $\sin(x)$ & $x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + ... + (-1)^n \frac{x^{2x+1}}{(2n+1)!} + o(x^{2n+2})$ \\
+        $\cos(x)$ & $1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + ... + (-1)^n\frac{x^2n}{(2n)!} + o(x^{2n+1})$ \\
+        $\tan(x)$ & $x + \frac{x^3}{3} + \frac{2}{15}x^5 + o(x^6)$\\
+        $\arctan(x)$ & $x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + ... + (-1)^n\frac{x^{2x+1}}{(2n + 1)} + o(x^{2n+2})$\\
+        $\arcsin{x}$ & $x + \frac{x^3}{6} + \frac{3}{40}x^5 + o(x^6)$\\
+        $\sqrt{1+x}$ & $1 + \frac{1}{2}x - \frac{1}{8}x^2 + \frac{1}{16}x^3 + o(x^3)$\\
+        $(1+x)^{\alpha}$ & $1 + \alpha x + \frac{\alpha(\alpha - 1)}{2}x^2 + \frac{\alpha(\alpha - 1)(\alpha - 2)}{6}x^3 + o(x^3)$\\
+        \hline
+    \end{tabular}
+    \caption{Formule di taylor}
+\end{table}
+
+
+\subsection{Utilizzo di Taylor nei limiti}
+\begin{example}
+Calcolare $\lim\limits_{x\to 0}\frac{\sin{x} - x}{e^x - \log(1 + x) - 1}$. Si può utilizzare gli o-piccoli:\\
+$\sin{x} = x + o(x^2)$ \hspace{.5cm} $e^x = 1 + x + o(x)$ \hspace{.5cm} $\log(1 + x) = x + o(x)$\\\\
+$\frac{\sin{x} - x}{e^x - \log(1 + x) - 1} = \frac{x + o(x^2) - x}{1 + x + o(x) - (x + o(x)) - 1} = \frac{o(x^2)}{o(x)}$ ma anche questo è indeterminato.\\\\
+Dobbiamo quindi andare un po' avanti negli sviluppi del numeratore e del denominatore.\\\\
+$\sin{x} = x - \frac{x^3}{6} + o(x^4)$ \hspace{.5cm} $e^x = 1 + x + \frac{x^2}{2} + o(x^2)$ \hspace{.5cm} $\log(1 + x) = x -\frac{x^2}{2} o(x^2)$\\\\
+$\frac{\sin{x} - x}{e^x - \log(1 + x) - 1} = \frac{x - \frac{x^3}{6} + o(x^4) - x}{1 + x + \frac{x^2}{2} + o(x^2) - (x - \frac{x^2}{2} + (x^2)) - 1} = \frac{-\frac{x^3}{6} + o(x^4)}{\frac{x^2}{2} + \frac{x^2}{2} + o(x^2)} = \frac{-\frac{x^3}{6} + o(x^4)}{x^2 + o(x^2)} = \frac{-\frac{x}{6} + o(x^4)}{1 + o(x^2)} = \frac{0}{1} = 0$
+\end{example}
+
+\begin{example}
+$\lim\limits_{x\to 0}\frac{(\sin{x})^2 - \sin{x^2}}{x^4}$\\
+$\sin{t} = t + o(t^2)$ \hspace{.5cm} $t= x^2$\\
+$\sin{x}^2 = (x + o(x^2))^2 = x^2 + 2x \cdot o(x^2) + (o(x^2))^2 = x^2 + o(x^3) + o(x^4) = x^2 + o(x^3)$ \hspace{.3cm}$\sin{x^2} = x^2 + o(x^4)$\\\\
+$\frac{(\sin{x})^2 - \sin{x^2}}{x^4} = \frac{x^2 + o(x^3) - x^2 + o(x^4)}{x^4} = \frac{o(x^2)}{x^4} = \frac{o(x^2)}{x^3} \cdot \frac{1}{x} = 0 \cdot \infty$ \\
+Questa è una forma indeterminata perché $\frac{o(x^2)}{x^3} \to 0$ e $\frac{1}{x} \to \infty$. Quindi aumentiamo il grado dell'approssimazione andando a migliorare $(\sin{x})^2$. $\sin{x} = x - \frac{x^3}{6} + o(x^4)$\\
+$(\sin{x})^2 = (x - \frac{x^3}{6} + o(x^4))^2 = x^2 + \frac{x^6}{36} + (o(x^4))^2 - 2x \cdot \frac{x^2}{6} + 2x \cdot o(x^4) - 2 \cdot \frac{x^3}{6} \cdot o(x^4) = x^2 \frac{x^6}{36} + o(x^8) -  \frac{x^4}{3} + o(x^5) + o(x^7) = x^2 - \frac{x^4}{3} + o(x^5)$\\
+$\frac{(\sin{x})^2 - \sin{x^2}}{x^4} = \frac{x^2 - \frac{x^4}{3} + o(x^5) - x^2 + o(x^4)}{x^4} = \frac{x^2 - \frac{x^4}{3} - x^2 + o(x^4)}{x^4} = \frac{-\frac{x^4}{3} + o(x^4)}{x^4} = \frac{-\frac{1}{3} + o(1)}{1} \to -\frac{1}{3} + 0 = -\frac{1}{3}$. (Divido sopra e sotto per $x^4$)
+\end{example}
+

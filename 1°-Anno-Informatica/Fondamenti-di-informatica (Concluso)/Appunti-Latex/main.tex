@@ -1,0 +1,93 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+
+% ----  Useful packages % ---- 
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+% ----  Useful packages % ---- 
+
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\graphicspath{ {./images/} }
+
+% ---- Set page size and margins replace ------
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+% ---- Set page size and margins replace ------
+
+% ---- Definition of custum section ---- 
+\newtheorem{note}{Note}[subsection]
+\newtheorem{definition}{Definizione}[section]
+
+\theoremstyle{definition}
+\newtheorem{example}{Esempio}[section]
+
+\theoremstyle{definition}
+\newtheorem{demostration}{Dimotrazione}[section]
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposizione}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teorema}[section]
+
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}[section]
+
+\theoremstyle{plain}
+\newtheorem{corollar}{Corollario}[section]
+% ---- Definition of custum section ---- 
+
+% ---- Footer and header ---- 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{A.A 2020-2021}
+\fancyhead[RE,LO]{Fondamenti d'informatica}
+\fancyfoot[RE,LO]{\rightmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\footrulewidth}{.5pt}
+% ---- Footer and header ---- 
+
+% ----  Language setting ---- 
+\usepackage[italian, english]{babel}
+% ----  Language setting ---- 
+
+
+\title{\textbf{Fondamenti d'informatica}}
+\author{Realizzato da: Giuntoni Matteo}
+\date{A.A 2021-2022}
+
+\begin{document}
+\input{frontespizio}
+
+\tableofcontents
+\newpage
+\maketitle
+\begin{center}
+    \vspace{-20pt}
+    \rule{11cm}{.1pt} 
+\end{center}
+
+\input{insiemi}
+\input{relazioni}
+\input{induzione}
+\input{relazioni-su-un-insiemi}
+\input{grafi}
+\input{calcolo-combinatorio}
+\end{document}

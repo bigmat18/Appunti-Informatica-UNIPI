@@ -1,0 +1,113 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+
+% ----  Useful packages % ---- 
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+% ----  Useful packages % ---- 
+
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\graphicspath{ {./images/} }
+
+% ---- Set page size and margins replace ------
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+% ---- Set page size and margins replace ------
+
+% ------- NOTA ------
+\theoremstyle{remark}
+\newtheorem{note}{Note}[subsection]
+% ------- NOTA ------
+
+% ------- OSSERVAZIONE ------
+\theoremstyle{definition}
+\newtheorem{observation}{Osservazione}[subsection]
+% ------- OSSERVAZIONE ------
+
+% ------- DEFINIZIONE ------
+\theoremstyle{plain}
+\newtheorem{definition}{Definizione}[subsection]
+% ------- DEFINIZIONE ------
+
+% ------- ESEMPIO ------
+\theoremstyle{definition}
+\newtheorem{example}{Esempio}[subsection]
+% ------- ESEMPIO ------
+
+% ------- DIMOSTRAZIONE ------
+\theoremstyle{definition}
+\newtheorem{demostration}{Dimotrazione}[subsection]
+% ------- DIMOSTRAZIONE ------
+
+% ------- TEOREMA ------
+\theoremstyle{definition}
+\newtheorem{theorem}{Teorema}[subsection]
+% ------- TEOREMA ------
+
+% ------- COROLLARIO ------
+\theoremstyle{plain}
+\newtheorem{corollaries}{Corollario}[theorem]
+% ------- COROLLARIO ------
+
+% ------- PROPOSIZIONE ------
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposizione}[subsection]
+% ------- PROPOSIZIONE ------
+
+% ---- Footer and header ---- 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{A.A 2020-2021}
+\fancyhead[RE,LO]{Analisi Matematica}
+\fancyfoot[RE,LO]{\rightmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\footrulewidth}{.5pt}
+% ---- Footer and header ---- 
+
+% ----  Language setting ---- 
+\usepackage[italian, english]{babel}
+% ----  Language setting ---- 
+
+\title{\textbf{Analisi Matematica}}
+\author{Realizzato da: Giuntoni Matteo}
+\date{A.A. 2021-2022}
+
+\begin{document}
+\tableofcontents
+\newpage
+\maketitle
+\begin{center}
+    \vspace{-20pt}
+    \rule{11cm}{.1pt} 
+\end{center}
+
+\input{introduzione}
+\input{funzioni}
+\input{massimi-minimi}
+\input{valore-assoluto}
+\input{continuità}
+\input{limiti}
+\input{infinitesimi}
+\input{asintoti}
+\input{derivate}
+\input{taylor}
+\input{convessità}
+\input{integrali}
+\input{successioni}
+\end{document}
