@@ -1,0 +1,817 @@
+\newpage
+\section{Spazzi Vettoriali}
+Motivazione geometrica: saranno punti e vettori nel piano $\mathbb{R}^2$. Un punto di $\mathbb{R}^2$ si può descrivere con due coordinate $(x_1,x_2)$, ma anche come un vettore (una freccia) dall'origine (0,0) a $(x_1, x_2)$.\\\\
+Esistono 2 operazioni che si possono fare fra due vettori:
+\begin{itemize}
+    \item \textbf{Somma} di due vettori che a livello di coordinate è: $(x_1,x_2) + (x_1', x_2') = (x_1 + x_1', x_2 + x_2')$\\
+    Geometricamente si calcolare un punto di incontro facendo il parallelogramma.
+    \item \textbf{Moltiplicare con uno scalare} $\lambda \in \mathbb{R}$: $\lambda(x_1, x_2) = (\lambda x_1, \lambda x_2)$\\
+    A livello geometrico la lunghezza è moltiplicata da $\lambda$ ma l'angolo non cambia.
+\end{itemize}
+
+\subsection{Generalizzazione operazioni}
+Queste due operazioni si possono anche generalizzare:
+\begin{itemize}
+    \item \textbf{Somma} $(x_1, x_2, x_3) + (x_1', x_2', x_3') = (x_1 + x_1', x_2 + x_2', x_3 + x_3')$.
+    \item \textbf{Moltiplicazione} $\lambda(x_1, x_2, x_3) = (\lambda x_1, \lambda x_2, \lambda x_3)$.
+\end{itemize}
+Si possono anche generalizzare queste operazione tramite le matrici e la definizione di $\mathbb{R}^n$.
+\begin{figure}[h!]
+    \vspace{-12pt}
+    \centering
+    \begin{minipage}{.3\linewidth}
+    \centering
+    \[
+    R^n = \Bigg\{ \begin{bmatrix}x_1\\x_2\\ \vdots \\ x_n\end{bmatrix} : x_i \in \mathbb{R} \Bigg\}
+    \]
+    Spazio n-dimensioni standard.
+    \end{minipage}
+    \begin{minipage}{.3\linewidth}
+    \centering
+    \[
+    \begin{bmatrix}x_1\\x_2\\ \vdots \\ x_n\end{bmatrix} + \begin{bmatrix}x_1'\\x_2'\\ \vdots \\ x_n'\end{bmatrix} = \begin{bmatrix}x_1 + x_1'\\x_2 + x_2'\\ \vdots \\ x_n + x_n'\end{bmatrix}
+    \] 
+    Definizione Somma.
+    \end{minipage}
+    \begin{minipage}{.3\linewidth}
+    \centering
+    \[
+    \lambda \cdot \begin{bmatrix}x_1\\x_2\\ \vdots \\ x_n\end{bmatrix} = \begin{bmatrix}\lambda x_1\\ \lambda x_2\\ \vdots \\ \lambda x_n\end{bmatrix}
+    \]
+    Definizione Moltiplicazione.
+    \end{minipage}
+\end{figure}
+%tutorato.di.alglin@gmail.com
+
+\begin{definition}[Spazio vettoriale]
+Uno spazio vettoriale su $\mathbb{R}$ è un insieme V che ammette due tipi di operazioni:
+\begin{itemize}
+    \item Somma: dati $v_1, v_2 \in V \Longrightarrow v_1 + v_2 \in V$.
+    \item Prodotto con $\lambda \in \mathbb{R}$: dato $v \in V \Longrightarrow \lambda \cdot v \in V$.
+\end{itemize}
+\end{definition}
+\hspace{-15pt}Per queste operazioni esistono anche una serie di assiomi che devono essere rispettati:
+\begin{table}[h!]
+    \setlength{\tabcolsep}{5pt}
+    \renewcommand{\arraystretch}{1.7}
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        Assiomi Somma & Assiomi Moltiplicazione\\
+        \hline\hline
+        $(v_1 + v_2) + v_3 = v_1 + (v_2 + v_3)$ & $(\lambda_1 + \lambda_2) v = \lambda_1 v + \lambda_2 v$\\
+        $v_1 + v_2 = v_2 + v_1$ & $\lambda(v_1 + v_2) = \lambda v_1 + \lambda v_2$\\
+        $\nexists\: 0 \in V \: : \: 0 + v = v + 0 = v \:\: \forall \:v$ & $(\lambda_1 \: \lambda_2)v = \lambda_1(\lambda_2 \: v)$\\
+        $\forall \: v \nexists \: -v \in V \: : \: v + (-v) = (-v) + v = 0$ & $(1 \cdot v) = v$\\\hline
+    \end{tabular}
+    \caption{Assiomi somma e moltiplicazioni vettori}
+\end{table}
+\vspace{-10pt}
+\begin{observation}
+$R^n$ soddisfa tutti gli assiomi sopra scritti.
+\end{observation}
+\begin{example}
+Consideriamo una matrice $n \times m$ elementi reali $M_{n\times m}(\mathbb{R})$.
+\begin{figure}[h!]
+    \begin{minipage}{.2\linewidth}
+    \vspace{-10pt}
+    \centering
+    \[
+    \begin{bmatrix}
+    a_{11} & \cdots & a_{1m}\\
+    \vdots \\
+    a_{n1} & \cdots & a_{nm}
+    \end{bmatrix}
+    \]
+    \end{minipage}
+    \begin{minipage}{.75\linewidth}
+    $\mathbb{R}[x] = \{a_nx^n + a_{n-1}x^{n-1} + \cdots + a_0 \: : \: a_i \in \mathbb{R}, n \leq 0\}$\\\\
+    Somma: se $A = [a_{ij}]$, $B = [b_{ij}] \in M_{n\times m}(\mathbb{R})$, $A + B = [a_{ij} + b_{ij}] \in M_{n\times m}(\mathbb{R})$\\\\
+    Prodotto con $\lambda \in \mathbb{R}$: $\lambda A = [\lambda a_{ij}]$
+    \end{minipage}
+\end{figure}
+\end{example}
+
+\begin{example}
+Prendiamo due funzioni continue $f, g: \mathbb{R}\to \mathbb{R}$. Possiamo effettuare le operazioni.
+Somma: $(f_1 + f_2)(x) = f_1(x) + f_2(x)$ \hspace{.3cm} Prodotto con $\lambda$: $(\lambda f)(x) = \lambda \cdots f(x)$.
+\end{example}
+
+\subsection{Sottospazio}
+Introduciamo ora il concetto di sottospazio vettoriale.
+\begin{definition}[Sottospazio]
+Sia V uno spazio vettoriale. Un \textbf{sottospazio} $W \subset V$ è un sottoinsieme tale che:
+\begin{itemize}
+    \item $v_1, v_2 \in W \Longrightarrow v_1 + v_2 \in W$.
+    \item $v \in \mathbb{W} \Longrightarrow \lambda v \in W \:\forall \: \lambda$.
+\end{itemize}
+\end{definition}
+
+\begin{proposition}
+Un sottospazio $W \subset V$ è a sua volta uno spazio vettoriale.
+\end{proposition}
+
+\begin{example}
+Prendiamo $\Bigg \{\begin{bmatrix}t_1\\ t_2\end{bmatrix} \in \mathbb{R}^n \: : \: t_1 = 0\Bigg\} \subset \mathbb{R}^n$ è un sottospazio.\\
+Un elemento generale di questo sottospazio (sottospazio con $n=2$) è: $\begin{bmatrix}0\\x_2\end{bmatrix}(x_2 \in \mathbb{R})$\\
+Se prendiamo $\begin{bmatrix}0\\x_2\end{bmatrix} + \begin{bmatrix}0\\y_2\end{bmatrix} = \begin{bmatrix}0\\x_1 + x_2\end{bmatrix} \in W$ e $\lambda \cdot \begin{bmatrix}0\\x_2\end{bmatrix} = \begin{bmatrix}0\\\lambda \cdot x_2\end{bmatrix} \in W$\\\\
+Similmente se prendiamo $\Bigg \{\begin{bmatrix}t_1\\ t_2\end{bmatrix} \in \mathbb{R}^n \: : \: t_2 = 0\Bigg\} \subset \mathbb{R}^n$ vettori di forma  $\begin{bmatrix}x_1\\0\end{bmatrix}$ che è un sottospazio.
+\end{example}
+
+\begin{example}
+Se prendiamo invece $\Bigg \{\begin{bmatrix}t_1\\ t_2\end{bmatrix} \in \mathbb{R}^n \: : \: t_1 = 1\Bigg\}$ questo non è un sottospazio perché:
+Se prendiamo il caso con $n=2$ $\begin{bmatrix}1\\x_2\end{bmatrix} + \begin{bmatrix}1\\y_2\end{bmatrix} = \begin{bmatrix}2\\x_1 + x_2\end{bmatrix}$ che non è un sottospazio.
+\end{example}
+
+\begin{example}
+Prendiamo ora $\Bigg \{\begin{bmatrix}t_1\\ t_2\end{bmatrix} \in \mathbb{R}^n \: : \: t_1 = t_2\Bigg\} \subset \mathbb{R}$ questo è un sottospazio perché:
+se facciamo $\begin{bmatrix}x_1\\x_2\end{bmatrix} + \begin{bmatrix}x_2'\\x_1'\end{bmatrix} = \begin{bmatrix}x_1 \cdot x_2'\\x_2 + x_1'\end{bmatrix}$ e $\lambda \cdot\begin{bmatrix}x_1 \\ x_2\end{bmatrix} = \begin{bmatrix}\lambda x_1 \\ \lambda x_2\end{bmatrix}$ quindi è un sottospazio.
+\end{example}
+
+\begin{example}
+Facciamo un esempio differente, prendiamo $\Bigg\{\begin{bmatrix}a & b \\ c & d\end{bmatrix} \in M_{2\times 2}(\mathbb{R})\: :\: a= 0 \Bigg\}\subset M_{2 \times 2}(\mathbb{R})$ è un sottospazio. Ma nel caso ci ci fosse stato $a=1$ non sarebbe stato un sottospazio, perché non sarebbe passato passato per (0,0).
+\end{example}
+
+\begin{example}
+Facciamo alcuni esempi prendendo delle funzioni all'interno degli spazzi vettoriali.
+\begin{itemize}
+    \item Dato $\{f \in \mathbb{R} \: : \: deg(f) \leq d\} \subset \mathbb{R}[x]$ con d fisso $\geq 0$. Questo è un sottospazio.
+    \item $\{f \in \mathbb{R} \: : \: deg(f) = d\}$ non è un sottoinsieme perché se per esempio $d=2$ abbiamo $f = x^2 + 3 \in W$, $g = -x^2 + x + 1 \in W$ ma $f + g = x + 4 \notin W$.
+    \item $\{f \in \mathbb{R} \: : \: f(0) = d\} \subset \mathbb{R}[x]$ invece è un sottoinsieme perché $f(0) = 0$, $g(0)=0 \Longrightarrow (f + g)(0) = 0$ e anche $(\lambda f)(0) = 0$.
+    \item $\{f \in \mathbb{R} \: : \: f(0) = 1\}$ non è un sottoinsieme perché già non contiene 0.
+    \item $\{f \in \mathbb{R} \: : \: f(2022) = 0\}$ è un sottoinsieme.
+\end{itemize}
+\end{example}
+\newpage
+\begin{example}
+Dati $a_1, a_2 \in \mathbb{R}$ fissi e dato il seguente insieme vettoriale\\\\
+$\Bigg \{ \begin{bmatrix}x_1 \\ x_2\end{bmatrix}\in \mathbb{R}^2 \: : \: a_1x_1 + a_2x_2 = 0\Bigg\} \subset \mathbb{R}^n$ è un sottospazio. Perché preso
+$\begin{cases}a_1x_1 + a_2x_2 \\a_1y_1 + a_2y_2 \end{cases}$\\\\
+vediamo che la somma $a_1(x_1 + y_1) + a_2(x_2 + y_2) = 0$ ed anche il prodotto con $\lambda$ fa $a_1(\lambda\: x_1) + a_2(\lambda \: x_2)=0$.\\
+Possiamo generalizzare scrivendo che, dato $a_1, a_2, \cdots, a_m \in \mathbb{R}$ fissi:\\\\
+$\Bigg \{ \begin{bmatrix}x_1 \\ \vdots \\ x_m\end{bmatrix}\in \mathbb{R}^2 \: : \: a_1x_1 + a_2x_2 + \cdots + a_mx_m = 0\Bigg\} \subset \mathbb{R}^n$ è un sottospazio.\\\\Vediamo dunque che le soluzioni di un equazioni lineari omogenee a n variabili definiscono un sottospazio di $\mathbb{R}^n$. Possiamo generalizzare ulteriormente:\\\\
+$\Bigg \{ \begin{bmatrix}x_1 \\ \vdots \\ x_m\end{bmatrix}\in \mathbb{R}^2 \: : \: \begin{array}{l}
+    a_{11}x_1 + a_{12}x_2 + \cdots + a_{1m}x_m = 0\\
+    a_{21}x_1 + a_{22}x_2 + \cdots + a_{2m}x_m = 0\\
+    \cdots\\
+    a_{n1}x_1 + a_{n2}x_2 + \cdots + a_{nm}x_m = 0\\
+\end{array}\Bigg\} \subset \mathbb{R}^n$ Quindi è un sottospazio.\\\\
+Dunque che la soluzione di un sistema di questioni lineare omogenee definisce un sottospazio $\mathbb{R}^m$.
+\end{example}
+
+\subsection{Combinazioni lineari}
+\begin{definition}[Combinazione lineare e banale]
+Sia V uno spazio vettoriale, $v_1, v_2, \cdots v_m \in V$. Una \textbf{combinazione lineare} di $v_1, \cdots, v_m$ è una somma $\lambda v_1+ \lambda v_2 + \cdots + \lambda_m v_m \in V$, dove $\lambda_1, \lambda_2, \cdots, \lambda_m \in \mathbb{R}$. La combinazione lineare è detta \textbf{banale} se $\lambda_1 = \cdots = \lambda_m = 0$. In questo caso $\lambda_1 v_1 + \cdots + \lambda v_m = 0$.
+\end{definition}
+
+\hspace{-15pt}Nota che una combinazione lineare po' essere 0 ma non banale, per esempio:\\
+$V = \mathbb{R}^2$, \hspace{.2cm} $v_1 = \begin{bmatrix}1\\1\end{bmatrix}$, $v_2 = \begin{bmatrix}2\\2\end{bmatrix}$, \hspace{.2cm}allora $-2v_1 + 1v_2 = 0$.
+
+\begin{definition}[Sottospazio generato]
+Siano $v_1, \cdots, v_m \in V$ m vettori. Il \textbf{sottospazio generato} da $v_1, \cdots, v_m$ è: $span(v_1, v_2, \cdots, v_m) = \{\lambda_1 v_1 + \lambda_2 v_2 + \cdots + \lambda_n v_m \: : \: \lambda_{1}, \cdots, \lambda_m \in \mathbb{R}\}$.\\
+Quindi $span(v_1, \cdots, v_m)$ è l'insieme delle combinazioni lineari.
+\end{definition}
+
+\begin{proposition}
+$span(v_1, \cdots, v_m) \subset V$ è un sottospazio.
+\end{proposition}
+
+\begin{demostration}
+Bisogna verificare che $v, w \in span \Longrightarrow v + w \in span$ e $\lambda v \in span \: \forall \: \lambda$.
+\end{demostration}
+
+\begin{example}
+Prendiamo $\mathbb{R}^2 = span\Big\{\begin{bmatrix}0\\1\end{bmatrix},\begin{bmatrix}1\\0\end{bmatrix}\Big\}$. $span\Big\{\begin{bmatrix}0\\1\end{bmatrix}\Big\}$ e $span\Big\{\begin{bmatrix}1\\0\end{bmatrix}\Big\}$ sono due rette.\\
+Se facciamo $span\Big\{\lambda_1 \begin{bmatrix}1\\0\end{bmatrix} + \lambda_2 \begin{bmatrix}0\\1\end{bmatrix}\Big\} = \Big\{\begin{bmatrix}\lambda_1\\\lambda_2\end{bmatrix}\Big\} = \mathbb{R}^2$
+\end{example}
+
+\begin{example}
+Sia $W = \Big\{\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix} in \mathbb{R}^3 \: : \: x_1 = 0\Big\}$ abbiamo allora che:
+$W = span\Big\{\begin{bmatrix}0\\1\\0\end{bmatrix}, \begin{bmatrix}0\\0\\1\end{bmatrix} \Big\} \subset \mathbb{R}^3$ quindi: $\Big \{\lambda_1 \begin{bmatrix}0\\1\\0\end{bmatrix} + \lambda_2 \begin{bmatrix}0\\0\\1\end{bmatrix}\} = \{\begin{bmatrix}0\\\lambda_1 \\ \lambda_2\end{bmatrix}\} = \{\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}\: : \: x_1=0\}$ è un sottospazio di $\mathbb{R}^3$ ma non è uguale a $\mathbb{R}^3$, ma è più piccolo essendo un piano attraverso l'origine.
+\end{example}
+
+\newpage
+\subsection{Vettori lineamenti indipendenti}
+\begin{definition}
+I vettori $v_1, v_2, \cdots, v_m \in V$ sono \textbf{linearmente indipendenti} se $\lambda_1 v_1 + \lambda_2 v_2 + \cdots + \lambda_m v_m = 0$ vale solo per $\lambda_1 = \cdots = \lambda_m = 0$.
+\end{definition}
+\hspace{-15pt}Questo vuol dire che se una combinazione lineare dei V è uguale a zero $\Longrightarrow$ la combinazione è banale.\\
+Se $v_1, \cdots, v_n$ non sono indipendenti allora sono \textbf{linearmente dipendenti}.\\
+$v_1, v_2, \cdots, v_m$ sono linearmente dipendenti $\Longleftrightarrow \: \exists \lambda_1, \lambda_2, \cdots, \lambda_m \in \mathbb{R}$ non tutti uguali a 0 tale che $\lambda_1 v_1 + \lambda v_2 + \cdots + \lambda_2 v_2 = 0$.
+
+\begin{proposition}
+$v_1, v_2, \cdots, v_m$ sono linearmente dipendenti $\Longleftrightarrow \: \exists \: 1 \leq i \leq n$ tale che $v_i$ è combinazione lineare dei $v_j$ per $j\neq i$.
+\end{proposition}
+
+\begin{demostration}
+Se $v_1, \cdots, v_m$ sono dipendenti allora $\exists \: \lambda_1, \cdots, \lambda_m$ non tutti ugualia 0 tale che $\lambda_1 v_1 + \cdots + \lambda_n v_m = 0$. $\exists \: i \: : \: \lambda_i \neq 0$ che possiamo usare come dividendo: $\frac{\lambda_1}{\lambda_1} v_1 + \cdots + 1v_i + \cdots + \frac{\lambda_n}{\lambda_i} v_m = 0$
+(mando tutti a destra) $v_i = -\frac{\lambda_1}{\lambda_i} v_1 + \cdots - \frac{\lambda_{i-1}}{\lambda_i}v_{i-1} - \frac{\lambda_{i+1}}{\lambda_i}v_{i+1} + -\frac{\lambda_n}{\lambda_i} v_m$.
+Se $v_i = \lambda_1 v_1 + \cdots + \lambda_{i-1}v_{i-1} + \lambda_{i+1}v_{i+1} + \cdots + \lambda_m v_m$ allora $ \lambda_1 v_1 + \cdots + \lambda_{i-1}v_{i-1} - v_i + \lambda_{i+1}v_{i+1} + \cdots + \lambda_m v_m = 0$
+\end{demostration}
+\hspace{-15pt}In pratica per vedere se m vettori $v_1, \cdots, v_m \in \mathbb{R}^n$ sono linearmente indipendenti prendiamo innanzitutto m vettori:\\
+$v_1 = \begin{bmatrix}a_11 \\ a_21 \\ \vdots \\ a_{n1}\end{bmatrix}$, $v_2 = \begin{bmatrix}a_{12}\\a_{22}\\\vdots\\ a_{n2}\end{bmatrix}$, $\cdots, v_m = \begin{bmatrix}a_{1m}\\a_{2m}\\\vdots\\ a_{nm}\end{bmatrix}$, questi sono vettori di $\mathbb{R}^m$.\\\\
+Questi vettori sono linearmente indipendente, quindi l'equazione $\lambda_1v_1 + \lambda_2 v_2 + \cdots + \lambda_mv_m = 0$ vale, se e solo se ($\lambda_1, \cdots, \lambda_m$) è soluzione del sistema:
+\[
+\begin{array}{l}
+     a_{11}x_1 + a_{12}x_2 + \cdots + a_{1m}x_m = 0\\
+     a_{21}x_1 + a_{22}x_2 + \cdots + a_{2m}x_m = 0\\
+     \cdots\\
+     a_{n1}x_1 + a_{n2}x_2 + \cdots + a_{nm}x_m = 0\\
+\end{array}
+\hspace{.5cm}
+\parbox{6cm}{Quindi $v_1, \cdots, v_m$ sono lin. indipendenti $\Longrightarrow$ il sistema sopra ammette solo la soluzione banale (0,$\cdots$,0)}
+\]
+\subsection{Interpretazioni geometrica}
+Facciamo un interpretazione geometrica di quello visto sopra ponendo $n=2$. $V = \mathbb{R}^2$, $v_1, v_2 \in \mathbb{R}^2$ sono linearmente dipendenti $v_1, v_2 \neq 0$ oppure $\exists \: \lambda_1, \lambda_2 \: : \: \lambda_1 v_1 + \lambda_2 v_2 = 0$. Ad esempio $\lambda \neq 0$, $v_1 = -\frac{\lambda_1}{\lambda_2}v_2$ e se $v_2 = \begin{bmatrix}1\\0\end{bmatrix} \Longrightarrow v_1 = \begin{bmatrix}-\lambda_2\setminus\lambda_1\\0\end{bmatrix}$ e corrisponde un punto della retta $x_2 = 0$. \\
+In generale se $v_1 = \begin{bmatrix}x_1\\x_2\end{bmatrix}$, $v_2$ deve essere $\begin{bmatrix}\lambda x_1 \\ \lambda x_2\end{bmatrix}$ quindi $v_1, v_2$ sono lin. dipendenti $\Longleftrightarrow$ i punti corrispondenti sono sulla tessa retta attraverso (0,0).
+\begin{example}
+Si decida se i seguenti vettori di $\mathbb{R}^2$ sono linearmente indipendenti:\\
+$v_1 = \begin{bmatrix}1\\2\\3\end{bmatrix}$\hspace{.5cm}$v_2 = \begin{bmatrix}1\\0\\1\end{bmatrix}$\hspace{.5cm}$v_3 = \begin{bmatrix}0\\0\\1\end{bmatrix}$\hspace{.5cm}$v_4 = \begin{bmatrix}2\\2\\4\end{bmatrix}$.\\\\
+Per faro dobbiamo cercare le soluzioni del sistema lineare omogeneo con la matrice associata.
+\[
+\begin{array}{l}
+    x_1 + x_2 + 2x_4 = 0\\
+    2x_1 + 2x_4 = 0\\
+    3x_1 + x_2 + x_3 + 4x_4
+\end{array}
+\Rightarrow
+\begin{bmatrix}
+1 & 1 & 0 & 2\\
+2 & 0 & 0 & 2\\
+3 & 1 & 1 & 4
+\end{bmatrix}
+\begin{array}{l}
+\text{Algoritmo di gauss}\\
+R_2 = R_2 - 2R_1\\
+R_3 = R_3 - 3R_1
+\end{array}
+\Rightarrow
+\begin{bmatrix}
+1 & 1 & 0 & 2\\
+0 & -2 & 0 & -2\\
+0 & -2 & 1 & -2
+\end{bmatrix}
+R_3 = R_3 - R_2
+\]
+\[
+\Rightarrow
+\begin{bmatrix}
+1 & 1 & 0 & 2\\
+0 & -2 & 0 & -2\\
+0 & 0 & 1 & 0
+\end{bmatrix}
+\parbox{6cm}{In questo caso ci sono 3 pivot, una variabile libera $\Longrightarrow \infty$ soluzioni}
+\]
+Quindi il sistema ammette soluzioni non banali $\Longrightarrow$ i vettori sono lim. dipendenti.\\ 
+Se si guardasse solo $v_1, v_2, v_3$ quello che risulterebbe sarebbe una matrice $3 \times 3$ con 3 pivot, in questo caso allora ci sarebbe solo la soluzione banale ed allora $v_1, v_2, v_3$ sarebbero lin. indipendenti.
+\end{example}
+
+\begin{proposition}
+Se $v_1, v_2, \cdots, v_n \in V$ sono vettori tali che $v_n$ è combinazione lineare di allora: $span(v_1, v_2, ..., v_n) = span(v_1, v_2, \cdots, v_{n-1})$.
+\end{proposition}
+
+\subsection{Base di un sistema lineare}
+\begin{definition}
+Un sistema $v_i, \cdots, v_n$ di vettori è una \textbf{base} di V se i vettori $v_i, \cdots, v_n$:
+\begin{itemize}
+    \item Sono linearmente indipendenti.
+    \item Lo $span(v_1, v_2, \cdots, v_n) = V$
+\end{itemize}
+\end{definition}
+
+\begin{corollaries}
+Se $span(v_1, \cdots, v_n) ) C$ si può scegliere una base di V fra i $v_1, \cdots, v_n$.
+\end{corollaries}
+
+\begin{example}
+Vogliamo trovare la base standard di $\mathbb{R}^n$.\\
+$e_1 = \begin{bmatrix}1\\0\\\vdots\\0\end{bmatrix}, e_2 = \begin{bmatrix}0\\1\\0\\\vdots\\0\end{bmatrix}, \cdots, e_n = \begin{bmatrix}0\\0\\\vdots\\0\\1\end{bmatrix}$
+Possiamo osservare che $\begin{bmatrix}\lambda_1\\\lambda_2\\\vdots\\\lambda_n\end{bmatrix} = \lambda_1 e_1 + \lambda_2 \_2 + \cdots + \lambda_ne_n$,\\\\
+dunque $span(e_1, \cdots, e_n) = \mathbb{R}^n$ e $\lambda_1e_1 + \cdots + \lambda_ne_n = 0$ se e solo se $\lambda_1= \cdots = \lambda_n = 0$. Ma questa non è l'unica base, c'è ne sono tante, ad esempio se prendiamo $n=2$.\\\\
+$\begin{bmatrix}1\\0\end{bmatrix}, \begin{bmatrix}1\\1\end{bmatrix}$ è una base perché $\lambda_1\begin{bmatrix}1\\0\end{bmatrix} + \lambda_2\begin{bmatrix}1\\1\end{bmatrix} = \begin{bmatrix}\lambda_1 + \lambda_2\\\lambda_2\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}$ se e solo se $\lambda_1 + \lambda_2 = \lambda_2 = 0 \Longleftrightarrow \lambda_1 = \lambda_2 = 0$
+\end{example}
+
+\begin{example}
+Troviamo la base standard di $M_{2\times2}(\mathbb{R})$.
+\[\begin{bmatrix}1&0\\0&0\end{bmatrix}, \hspace{.5cm} \begin{bmatrix}0&1\\0&0\end{bmatrix}, \hspace{.5cm} \begin{bmatrix}0&0\\1&0\end{bmatrix}, \hspace{.5cm} \begin{bmatrix}0&0\\0&1\end{bmatrix}\]
+Si applica lo stesso ragionamento visto sopra con $\mathbb{R}^n$.
+\end{example}
+
+\begin{example}
+Base standard di $\mathbb{R}[x]_{\leq d} = \{f \in \mathbb{R}[x] \::\: deg(x) \leq d\}$ sarebbe $1, x, x^2, \cdots, x^s$. Infatti, $a_dx^d + a_{d-1}x^{d-1} + \cdots + a_0 = a_0 \cdot 1 + a_1 \cdot x + \cdots + a_d \cdot x^d$ è il sistema indipendente
+\end{example}
+\begin{example}
+Prendiamo $\mathbb{R}[x]$ che non ammette di base finita. Infatti $\nexists f_1, \cdots, f_n \in \mathbb{R}[x] \::\: span(f_1, \cdots, f_n = \mathbb{R}[x]$ perché se $f \in span(f_1, \cdots, f_n)$ allora $deg(f) \leq max(deg(f_1), \cdots, deg(f_n))$. (Comunque è vero: $span(1,x,x^2, x^2, \cdots) = \mathbb{R}[x]$ e ogni sottoinsieme finito di $1,x, x^2, \cdots$ è lin. indipendente)
+\end{example}
+
+La dimensione di uno spazio V sarà definita come il numero degli elementi di una base. Per questo bisogna sapere: questo numero è lo stesso per ogni base.
+\begin{proposition}
+Sia V uno spazio vettoriale che ammette una base $e_1, e_2, \cdots, e_n$. Se $v_1, v_2, \cdots, v_n \in V$ e $r > n \Longrightarrow v_1, v_2, \cdots, v_n$ sono linearmente dipendenti.
+\end{proposition}
+
+\begin{demostration}
+Per $n=2$, la prima osservazione è che se la proposizione vale per $r =2$ vale per ogni $r > 2$. Infatti se $\lambda_1v_2 + \lambda_2v_2 + \lambda_3v_3 = 0$ è una combinazione lineare non banale allora $\lambda_1v_2 + \lambda_2v_2 + \lambda_3v_3 + 0 \cdot v_4 + 0 \cdot v_5 + \cdots + 0 \cdots v_r = 0$ è una combinazione non banale (perché $\lambda_1, \lambda_2$ o $\lambda_3$ è diverso da 0). Quindi siano $n=2, r=3$ e $e_1, e_2$ una base di V. Come $V=span(e_1,e_2)$, $v_1, v_2, v_3 \in span(e_1, e_2)$. Quindi:\\\\
+$\begin{array}{l}
+v_1 = a_{11}e_1 + a_{12}e_2\\
+v_2 = a_{21}e_1 + a_{22}e_2\\
+v_3 = a_{31}e_1 + a_{32}e_2
+\end{array}
+\hspace{.5cm}
+\parbox{8cm}{Dobbiamo trovare $\lambda_1, \lambda_2, \lambda_3$ non tutti $=0$ tali che $\lambda_1v_1 + \lambda_2v_2 + \lambda_3v_3 = 0$. Facciamo la sostituzione con il sistema a fianco.}$\\\\
+$\lambda_1(a_{11}e_1 + a_{12}e_2) + \lambda_2(a_{21}e_1+a_{22}e_2) + \lambda_3(a_{31}e_1 + a_{32}e_2) = 0$ che diventa $(\lambda_1a_{11} + \lambda_1a_{12})e_2 + (\lambda_2a_{21} + \lambda_2a_{22})e_2 + (\lambda_3a_{31} + \lambda_3a_{32})e_2 = 0$. Ma $e_1, e_2$ sono linearmente indipendenti, quindi:\\\\
+$\begin{array}{l}
+\lambda_1a_{11} + \lambda_2a_{21} + \lambda_3 a_{31} = 0\\
+\lambda_1a_{12} + \lambda_2a_{22} + \lambda_3 a_{32} = 0
+\end{array}
+\hspace{.3cm}
+\parbox{5cm}{Questo è un sistema omogeneo di equazioni per $\lambda_1, \lambda_2, \lambda_3$ con matrice di coefficienti}\hspace{.3cm}
+\begin{bmatrix}
+a_{11}&a_{21}&a_{31}\\
+a_{12}&a_{22}&a_{32}
+\end{bmatrix}$\\
+Se facciamo l'algoritmo di Gauss, ottengo un numero di pivot minore o uguale a 2 (perché ci sono solo due righe), allora ci sarà $\geq 1$ colonne senza pivot ed allora il sistema avrà $\infty$ soluzioni ed allora ci sarà una soluzione non banale $\lambda_1, \lambda_2, \lambda_2$. Ma se il sistema sopra ha una soluzione non banale ($\lambda_1, \lambda_2, \lambda_2$) allora anche $\lambda_1v_1 + \lambda_2 v_2 + \lambda_3 v_3 = 0$ sarà una combinazione non banale e quindi ci siamo.\\\\
+La dimostrazione per $n,r$ generale è la stessa, infatti alla fine ottengo un sistema lineare di n equazioni in $r > n$ variabili ed allora c'è sempre una soluzione non banale. $\blacksquare$
+\end{demostration}
+
+\begin{corollaries}
+Se $v_1, \cdots, v_r$ ed $e_1, \cdots, e_n$ sono due basi di V allora $r=n$.
+\end{corollaries}
+
+\begin{demostration}
+Se $r>n$, $v_1, \cdots, v_r$ è linearmente dipendente dopo la proposizione se $e_1, \cdots, e_n$ è una base, quindi $r\leq n$. Se $r<n$ e $v_1, \cdots, v_n$ è una base allora $e_1, \cdots, e_n$ è linearmente dipendete e questa è una contraddizione. Dunque $r=n$. $\blacksquare$
+\end{demostration}
+
+\subsection{Dimensione spazio vettoriale}
+\begin{definition}[Dimensione di un V]
+Se V ammette una base $e_1, \cdots, e_n$ n è la dimensione di V. La dimensione di V si indica come $dim V = n$.
+\end{definition}
+
+\begin{corollaries}
+Se la dimensione di V è n e $v_1, \cdots, v_m$ sono vettori lin. indipendenti con $m<n \Longrightarrow \:\exists\: w_{m+1}, w_{m+2}, \cdots, w_n \::\: v_1, \cdots, v_n, w_{m+1}, \cdots, w_n$ sono una base di V. 
+\end{corollaries}
+
+\begin{demostration}
+Dobbiamo verificare che $span(v_1, \cdots, v_m) = V$. Sappiamo che $span(v_1, \cdots, v_m)$ non può essere V, allora $\exists\: v \in V$ tale che $v \notin span(v_1, \cdots, v_m)$ ma allora basta vedere che $v_1, v_2, \cdots, v_m$ sono linearmente indipendenti ed allora abbiamo una contraddizione.\\
+Sia $\lambda_1v_1 + \lambda_2v_2 + \cdots + \lambda_mv_m + \lambda_0v_0 = 0$ una combinazione lineare se $\lambda=0 \Longrightarrow \lambda_1 = \lambda_2 = \cdots = \lambda_n = 0$ perché $v_1, v_n \cdots, v_m$ lin. indipendenti allora $v_1, v_2, \cdots, v_m$ lin. indipendenti. Se prendiamo un $\lambda_{m+1}\neq 0$ possiamo fare $-\frac{\lambda_1}{\lambda}v_1 - \frac{\lambda_2}{\lambda}v_2 - \cdots - \frac{\lambda_n}{\lambda}v_n = V \in span(v_1, \cdots, v_n)$, ma questa è una contraddizione $v \notin span$. $\blacksquare$
+\end{demostration}
+
+\begin{example}
+Decidiamo se $\begin{bmatrix}1\\0\\1\end{bmatrix}, \begin{bmatrix}2\\0\\0\end{bmatrix}, \begin{bmatrix}3\\2\\1\end{bmatrix}$ sono una base $\mathbb{R}^3$. \\Per faro dobbiamo solo decidere se sono indipendenti o meno, e per farlo usiamo gauss.
+\[
+\begin{bmatrix}
+1 & 2 & 3\\
+0 & 0 & 1\\
+1 & 0 & 1
+\end{bmatrix}
+R_3 - R_2 \Rightarrow
+\begin{bmatrix}
+1 & 2 & 3\\
+0 & 0 & 1\\
+0 & -2 & 1
+\end{bmatrix}
+\xRightarrow[]{\text{Scambio} R_2, R_3}
+\begin{bmatrix}
+1 & 2 & 3\\
+0 & -2 & 1\\
+0 & 0 & 1
+\end{bmatrix}
+\]
+Vediamo dunque che ci sono 3 pivot e quindi i vettori sono lineamenti indipendenti e di conseguenza abbiamo una base.
+\end{example}
+
+\begin{example}
+Prendiamo $V = \mathbb{R}[x]_{\leq 2}$. Abbiamo visto che $1, x, x^2$ sono una base questo vuol dire allora che $\mathbb{R}[x]_{< 2} = 2$. Vediamo se $1, 1+x, (1+x)^2$ forma una base. Per fare questo bisogna vedere se sono linearmente indipendenti. Supponiamo che:
+$\lambda_11 + \lambda_2(1+x) + \lambda_3(1+x)^2 = 0 \Rightarrow \lambda_1 + \lambda_2 + \lambda_2x + \lambda_3x^2 + 2x\lambda_3 + \lambda_3 = 0 \Rightarrow (\lambda_1 + \lambda_2 + \lambda_3)1 + (\lambda_2 +\lambda_3)x + \lambda_3 + x^2 = 0$.\\
+Visto che $1, x, x^2$ sono lin. indipendenti allora $\lambda_1 + \lambda_2 + \lambda_3 = 0$, $\lambda_2 + 2\lambda_3 = 0$, $\lambda_3 = 0$ sostituendo viene che $\lambda_2 = 0, \lambda_1 = 0$ allora $1, 1+x, (1+x)^2$ sono lin. indipendenti ed allora sono una base di $\mathbb{R}(x)_{<2}$.
+\end{example}
+
+\begin{proposition}
+Sia $v_1, \cdots, v_n$ una base di V, e $v \in V$ un vettore. Allora $\exists ! \: \alpha_1, \cdots, \alpha_n \in \mathbb{R} \::\: v = \alpha_1v_1 + \alpha_2v_2 + \cdots + \alpha_nv_n$. (Ogni vettore si scrive in modo unico come combinazione lineare degli elementi della base)
+\end{proposition}
+
+\begin{demostration}
+Scriviamo come $V = span(v_1, \cdots, v_n)$, l'esistenza degli $\alpha_i$ è chiaro. Se adesso $v = \alpha_1v_i + \cdots + \alpha_nv_n = \beta_1v_1 + \cdots + \beta_nv_n$ allora $0 = (\alpha_1 - \beta_1)v_1 + \cdots + (\alpha_n - \beta)v_n$ allora $\alpha_1 = \beta_1, \cdots, \alpha_1 = \beta_n$ perché i $v_i$ sono lin. indipendenti.
+\end{demostration}
+
+\begin{example}
+$W' = \{f \in \mathbb{R}[x]_{\leq 2} \::\: f(1) = f(2) = 0\}$, $W' \subset W$ (per esempio visto prima) e $dim(W) = 3 \Longrightarrow dim(W') \leq 2$. Ci sono due vettori indipendenti in $W$, $(x-1)(x-2), (x-1)(x-2)^2$ di gradi diversi $\Longrightarrow dim(W') = 2$.\\
+$W' \subset W$ in base $W'$ è $(x-1)(x-2), (x-1)(x-2)^2$ e completiamo in una base di $W$ $(x-1), (x-1)(x-2), (x-1)(x-2)^2 \in W \setminus W'$ è una base di $W$, perché sono indipendenti:\\
+$W \subset V$, $dim(V) = 4$, $dim(W) = 4$. $1, x-1, (x-1)(x-2), (x-1)(x-2)^2$ è una base di $V \setminus W$.
+\end{example}
+
+\begin{example}
+$V = M_{3\times3}(\mathbb{R})$, la dimensione è $dim(V) = 9$. Mentre $W \subset \{ A \in M_{3\times 3}(\mathbb{R}): \text{ la somma di ogni riga è 0}\}$. Supponiamo $dim(W) < 9$ elementi linearmente indipendenti di W.
+\[
+\begin{bmatrix}
+1 & -1 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & -1\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{bmatrix}
+\begin{bmatrix}
+0 & 0 & 0\\
+1 & -1 & 0\\
+0 & 0 & 0
+\end{bmatrix}
+\begin{bmatrix}
+0 & 0 & 0\\
+1 & 0 & -1\\
+0 & 0 & 0
+\end{bmatrix}
+\begin{bmatrix}
+0 & 0 & 0\\
+0 & 0 & 0\\
+1 & -1 & 0
+\end{bmatrix}
+\begin{bmatrix}
+0 & 0 & 0\\
+0 & 0 & 0\\
+1 & 0 & -1
+\end{bmatrix}
+\]
+Essendo linearmente indipendente allora $dim(W) \geq 6$. Proviamo a dire che $dim(W) = 6$. L'idea:\\
+$W_1 = \{A \in M_{3 \times 3}(\mathbb{R}) : \text{ la somma della prima riga = 0}\}$,\\ $W_1 = \{A \in M_{3 \times 3}(\mathbb{R}) : \text{ la somma della prima e della seconda riga = 0}\}$.\\
+$W \subset W_2 \subset W_1 \subset M_{3\times3}(\mathbb{R})$, sapendo $dim(M_{3\times3}(\mathbb{R})) = 9, dim(W_1) = 6, dim(W_2) = 7, dim(W) = 7$.
+\end{example}
+
+\begin{example}
+Sappiamo già: $v_1 = \begin{bmatrix}1\\2\\3\end{bmatrix}, v_2 = \begin{bmatrix}1\\0\\1\end{bmatrix}, v_3 = \begin{bmatrix}0\\0\\1\end{bmatrix}$ che sono una base di $\mathbb{R}^3$.
+Troviamo le coordinate di $\begin{bmatrix}0\\2\\1\end{bmatrix}$ rispetto a queste basi.
+$\alpha_1\begin{bmatrix}1\\2\\3\end{bmatrix} + \alpha_2\begin{bmatrix}1\\0\\1\end{bmatrix} + \alpha_3\begin{bmatrix}0\\0\\1\end{bmatrix} = \begin{bmatrix}0\\2\\1\end{bmatrix}$. Ed usiamo Gauss-Jordan.
+\[
+\begin{bmatrix}
+1 & 1 & 0 & 0\\
+2 & 0 & 0 & 2\\
+3 & 1 & 1 & 1
+\end{bmatrix}
+\begin{array}{l}
+    R_2 - 2R_1\\
+    R_3 - 3R_1
+\end{array}
+\Rightarrow
+\begin{bmatrix}
+1 & 1 & 0 & 0\\
+0 & -2 & 0 & 2\\
+0 & -2 & 1 & 1
+\end{bmatrix}
+\begin{array}{l}
+    R_3 - R_2\\
+    R_2 = \frac{1}{2}R_1
+\end{array}
+\Rightarrow
+\begin{bmatrix}
+1 & 1 & 0 & 0\\
+0 & 1 & 0 & -1\\
+0 & 0 & 1 & -1
+\end{bmatrix}
+R_1 - R_2
+\Rightarrow
+\begin{bmatrix}
+1 & 0 & 0 & 1\\
+0 & 1 & 0 & -1\\
+0 & 0 & 1 & -1
+\end{bmatrix}
+\]
+Abbiamo quindi $\alpha_1 = 1, \alpha_2 = -1, \alpha_3 = -1$.
+\end{example}
+
+\begin{example}
+Vedere se $\begin{bmatrix}1\\0\\1\end{bmatrix}, \begin{bmatrix}2\\0\\0\end{bmatrix}, \begin{bmatrix}3\\1\\1\end{bmatrix}$ è una base $\mathbb{R}^3$
+e calcolare coordinate $\begin{bmatrix}2\\0\\4\end{bmatrix}$ rispetto a base. \\
+Per calcolare le coordinate dobbiamo risolvere il sistema lineare che si crea con le 3 matrici:
+\[
+\begin{array}{l}
+x_1 + 2x_2 + 3x_3 = 2\\
+x_3 = 0\\
+x_1 + x_3 = 4
+\end{array}
+\hspace{.3cm}
+\begin{array}{r}
+x_3 = 0\\
+x_1 = 4\\
+x_2 = -1
+\end{array}
+\hspace{.5cm}
+\parbox{8cm}{Usiamo Gauss per verificare l'indipendenza perché se questi vettori sono indipendenti allora i coefficienti $4, -1, 0$ saranno le coordinate.}
+\]
+\[
+\begin{bmatrix}
+1 & 2 & 3\\
+0 & 0 & 1\\
+1 & 0 & 1
+\end{bmatrix}
+R_3 - R_1
+\begin{bmatrix}
+1 & 2 & 3\\
+0 & 0 & 1\\
+0 & -2 & -2
+\end{bmatrix}
+\text{Inverto } R_2, R_3
+\begin{bmatrix}
+1 & 2 & 3\\
+0 & -2 & -2\\
+0 & 0 & 1
+\end{bmatrix}
+\]
+Torna $x_1 = 4, x_2 = -1, x_3 = 0$, inoltre abbiamo una forma a scalini con 3 pivot allora i vettori sono indipendenti e quindi sono una base.
+\end{example}
+
+\begin{proposition}
+Se abbiamo uno spazio vettoriale $dim(V) = n$ ed abbiamo $v_1, v_2, \cdots, v_m$ vettori linearmente indipendenti di V con $m < n$ allora $\exists \: w_{m+1}, w_{m+2}, \cdots, w_n \::\: v_1, \cdots, v_m, w_{m+1}, \cdots, w_n$ sono una base di V.
+\end{proposition}
+
+\begin{demostration}
+$spa(v_1 \cdots, v_m)$ non può essere V, perché se $span(v_1, \cdots, v_m) = V \Longrightarrow v_1, \cdots, v_m$ è una base ma $m<n$ è $dim(V) = n$ e questa è una contraddizione. Quindi $span(v_1,\cdots,v_m) \neq V \Longrightarrow \exists w_{m+1} \in V \::\: w_{m+1} \notin span(v_1, \cdots, v_m)$. Ma allora $v_1, \cdots, v_{m}, w_{m+1}$ sono linearmente indipendenti tale che se $\lambda_1v_1 + \cdots + \lambda_{m}v_m + \lambda_{m+1}w_{m+1} = 0$, $\lambda_{m+1} = 0 $ allora $\lambda_1 = \cdots = \lambda_m  = 0$. Se $\lambda_{m+1} \neq 0$ allora $v_{m+1} = (-\frac{\lambda_1}{\lambda_{m+1}})v_1 + \cdots + (\frac{-\lambda_m}{\lambda_{m+1}})w_m \in span(w_1, \cdots, v_m)$ che è una contraddizione.
+\end{demostration}
+
+\hspace{-15pt}Per ricapitolare se la $dim(V) = n$ e $v_1, \cdots, v_n$ sono vettori di V possiamo dire che:
+\begin{itemize}
+    \item Se $m > n$ allora i vettori sono linearmente dipendenti.
+    \item Se $m = n$ e i vettori sono indipendenti allora si forma una base.
+    \item Se $m < n$ e i vettori sono indipendenti allora si completa in una base di V.
+\end{itemize} 
+
+\newpage
+\begin{example}
+Facciamo un esercizio che sarà suddiviso in due parti.
+\begin{itemize}
+    \item Decidiamo se i vettori $\begin{bmatrix}1\\-1\\1\end{bmatrix}, \begin{bmatrix}-1\\1\\-1\end{bmatrix}, \begin{bmatrix}-1\\-1\\1\end{bmatrix}$ sono una base di $\mathbb{R}^3$. $dim(\mathbb{R}^3) \Longrightarrow$ se sono indipendenti sono allora una base. Usiamo gauss.
+    \[
+    \begin{bmatrix}
+    1 & -1 & -1\\
+    -1 & 1 & -1 \\
+    1 & -1 & 1
+    \end{bmatrix}
+    \begin{array}{l}
+        R_2 + R_1\\
+        R_3 - R_1
+    \end{array}
+    \Rightarrow
+    \begin{bmatrix}
+    1 & -1 & -1\\
+    0 & 0 & -2 \\
+    0 & 0 & 2
+    \end{bmatrix}
+    R_2 + R_3
+    \begin{bmatrix}
+    1 & -1 & -1\\
+    0 & 0 & -2 \\
+    0 & 0 & 0
+    \end{bmatrix}
+    \]
+    Risulta avere 2 pivot e quindi i vettori sono dipendenti. I pivot però sono delle colonne 1 e 3 e quindi se escludiamo la colonna centrale abbiamo come risultato due vettori indipendenti che chiamiamo $v_1, v_2$.
+    \item Ora come secondo punto dobbiamo completare $v_1, v_2$ in una base di $\mathbb{R}^3$. Per fare questo dobbiamo trovare un terzo vettore non contenente in $span(v_1, v_2)$.\\
+    L'idea qui è che so che $v_1 = \begin{bmatrix}1\\0\\0\end{bmatrix}, e_2 = \begin{bmatrix}0\\1\\0\end{bmatrix}, e_3 = \begin{bmatrix}0\\0\\1\end{bmatrix}$ è la base standard. So anche che almeno uno di questi 3 vettori non è contenuto in $span(v_1, v_2)$ perché se $e_1, e_2, e_3 \in span(v_1, v_2) \Longrightarrow span(e_1, e_2, e_3) \subset span(v_1, v_2)$ ma $span(e_1, e_2, e_3) = \mathbb{R}^3$ e quindi abbiamo una contraddizione. A questo punto devo trovare quale dei 3 vettori non è in $span(v_1, v_2)$. Lo facciamo provando i vari vettori e trovano quello che utilizzando Guass faccia venire 3 pivots.
+    \[
+    \begin{bmatrix}
+        1 & -1 & 0\\
+        -1 & -1 & 0\\
+        1 & 1 & 1
+    \end{bmatrix}
+    \begin{array}{l}
+        R_2 + R_1\\
+        R_3 - R_1
+    \end{array}
+    \Rightarrow
+    \begin{bmatrix}
+        1 & -1 & 1\\
+        0 & -2 & 0\\
+        0 & 2 & 1
+    \end{bmatrix}
+    R_3 - 2R_2
+    \Rightarrow
+    \begin{bmatrix}
+        1 & -1 & 1\\
+        0 & -2 & 1\\
+        0 & 0 & 1
+    \end{bmatrix}
+    \]
+    Il risultato in questo caso è 3 pivot quindi i vettori sono linearmente indipendenti e quindi è una base di $\mathbb{R}^3$.
+\end{itemize}
+\end{example}
+
+\begin{proposition}
+Sia $W \subset V$ un sottospazio. Allora:
+\begin{enumerate}
+    \item Abbiamo che $dim(W) \leq dim(v)$.
+    \item E se $W \neq V$ allora $dim(W) < dim(v)$.
+\end{enumerate}
+\end{proposition}
+
+\begin{demostration}
+Per dimostrare questa proposizione bisogna andare a dimostrare i due punti separatamente.
+\begin{enumerate}
+    \item Se $r = dim(W)$ e $w_1, \cdots, w_r$ è una base di W allora se $r > n$ allora per una proposizione vista precedentemente $w_1, \cdots, w_r$ sarebbero linearmente dipendenti e questa è una contraddizione quindi $r\leq n$.
+    \item se $r = n$, $w_1, \cdots, w_r$ sono $n = r$ vettori lineamenti indipendenti di V ed allora sono una base di V quindi $span(w_1, \cdots, w_r) = V \Longrightarrow V = W$.
+\end{enumerate}
+\end{demostration}
+
+\begin{example}
+Sia $V = M_{2 \times 2}(\mathbb{R}), W = \{\begin{bmatrix}a & b \\ c & d\end{bmatrix} \in M_{2 \times 2}(\mathbb{R}) \::\: b = c\}$ (questa è definita anche matrice simmetrica).\\
+Si calcoli da dimensione di W, $dim(W)$. Partiamo dal fatto che la $dim(M_{2 \times 2}(\mathbb{R})) = 4$ (basi standard). Mentre $V \neq M_{2 \times 2}(\mathbb{R})  \Longrightarrow dim(V) \leq 3$. Vediamo però che:
+\[
+\begin{bmatrix}1 & 0 \\ 0 & 0\end{bmatrix}
+\begin{bmatrix}0 & 0 \\ 0 & 1\end{bmatrix}
+\begin{bmatrix}0 & 1 \\ 1 & 0\end{bmatrix}
+\hspace{.3cm}
+\parbox{6cm}{Sono linearmente indipendenti quindi devono essere una base di W e quindi dim(W) = 3}
+\]
+\end{example}
+
+\begin{example}
+Sia $W = \{f \in \mathbb{R}[x\ \::\: deg(f) \leq 3, f(1) = 0\}$ sottospazio di $V = \mathbb{R}[x]_{\leq 3}$. Sappiamo che la $dim(V) = 4$ (1, x, $x^2, x_3$). La proposizione mi dice che $dim(W) \leq 3$ e se trovo 3 vettori indipendenti allora $dim(W) = 3$. Possiamo vedere che $x-1, x^2-1, x_3-1$ sono lin. indipendenti quindi concludiamo che $dim(W) = 3$.
+\end{example}
+
+\begin{observation}
+Se V è un spazio, $V_1, V_2 \subset V$ sottospazi allora anche $V_1 \cup V_2$ è un sottospazio. Infatti se $v \in V_1 \cup V_2$ e $w \in V_1 \cap V_2 \Longrightarrow v+w V_1 \cap V_2$ perché $V_1$ sottospazio ed allora $v + w \in V_1$ ed allora in modo simile per $V_2 \Longrightarrow v + w \in V_2$ ed in modo simile $\lambda v \in V_1, \lambda v \in V_2 \Longrightarrow \lambda v \in V_1 \cap V_2 \forall \: \lambda \in \mathbb{R}$.
+\end{observation}
+
+\begin{example}
+Sia $W_i \subset \mathbb{R}^n$ il sottospazio delle soluzioni dell'equazione omogenea $E_i \:: a_{i1}x_1 + \cdots + a_{in}x_n = 0$. Allora $W_1 \cap W_2 \cap \cdots \cap W_r$ è il sottospazio delle soluzioni comuni di $E_1, E_2, \cdots, E_r$.
+\end{example}
+
+\subsection{Formula di Grassman}
+\begin{definition}[Somma fra sottospazi]
+Siano $V_1, V_2 \subset V$ due sottospazi. La loro somma di $V_1, V_2$ è definita come:
+\[V_1 + V_2 = \{v_1 + v_1 \::\: v_1 \in V_1, v_2 \in V_2\}\]
+\end{definition}
+
+\begin{observation}
+Si osservi che $V_1 + V_2 \subset V$ è un sottospazio a sua volta.
+\end{observation}
+
+\begin{demostration}
+Questa definizione si somma fra sottospazi è vera perché se $v, w \in V_1 + V_2$ allora:
+\[
+\begin{rcases}
+v = v_1 + v_2 & \text{ con } (v_i \in V_i)\\
+w = w_1 + w_2 & \text{ con } (w_i \in V_i)
+\end{rcases}
+\Rightarrow v+w = (v_1 + w_1) + (v_2 + w_2) \in V_1 + V_2 \text{ perché }(v_1 + w_1) \in V_1, (v_2 + w_2) \in V_2
+\]
+Se $\lambda \in \mathbb{R}$, $\lambda v = \lambda(v_1 + v_2) = \lambda v_1 + \lambda v_2 \in V_1 + V_2$ con $\lambda v_1 \in V_1$ e $\lambda v_2 \in V_2$. $\blacksquare$
+\end{demostration}
+
+\begin{proposition}
+Se $v_1, v_2, \cdots, v_n \in V_1 + V_2 \Longrightarrow span(v_1, \cdots, v_n) \subset V_1 + V_2$.
+\end{proposition}
+
+\begin{demostration}
+La dimostrazione è abbastanza veloce, infatti basta vedere che se $V_1 + V_2$ è un sottospazio che contiene $v_1, \cdots, v_n$ allora contiene le loro combinazioni. lineari.
+\end{demostration}
+
+\begin{example}
+Dato un $V_1 = \{\begin{bmatrix}a\\0\end{bmatrix}\::\: a \in \mathbb{R}\}, V_2 = \{\begin{bmatrix}0\\b\end{bmatrix}\} \::\: b \in \mathbb{R} \subset \mathbb{R}^2$ sottospazi.\\
+Allora $V_1 + V_2 = \{\begin{bmatrix}a\\b\end{bmatrix}\::\: a,b \in \mathbb{R}\} = \mathbb{R}^2$
+\end{example}
+
+\begin{example}
+Dati $V_1 = \{\begin{bmatrix}0\\a_2\\a_3\end{bmatrix}\::\: a_2, a_3 \in \mathbb{R}\}$, $V_2 = \{\begin{bmatrix}a_1\\a_2\\0\end{bmatrix}\::\: a_1, a_2 \in \mathbb{R}\} \subset \mathbb{R}^3$.\\
+Allora $V_1 + V_2 = \{\begin{bmatrix}a_1\\a_2 + a_2\\a_3\end{bmatrix} \::\: a_1, a_2, a_3 \in \mathbb{R}\} = \mathbb{R^3}$ ma anche $V_1 \cap V_2 = \{\begin{bmatrix}0\\a_2\\0\end{bmatrix} \::\: a_2 \in \mathbb{R}\}$
+\end{example}
+
+\begin{theorem}[Formula di Grassman]
+Sia $dim(V) < \infty$, $V_1, V_2 \subset V$ sottospazi allora:
+\[dim(V_1 + V_2) = dim(V_1) + dim(V_2) - dim(V_1 \cap V_2)\]
+\end{theorem}
+
+\begin{demostration}
+Per dimostrare questa formula sia $e_1, \cdots, e_4$ una base di $V_1 \cap V_2$. Si completa in una base $e_1, \cdots, e_r, v_{r+1}, \cdots, v_n$ di $V_1$ e $e_1, \cdots, e_r, w_{r+1}, \cdots, w_m$ di $V_2$. \\
+Quindi abbiamo he $dim(V_1) = n, dim(V_2) = m$ e che $V_1 \cap V_2 = r$. A questo punto verifichiamo che $e_1, \cdots, e_r, v_{r+1}, \cdots, v_n, w_{r+1}, \cdots, w_m$ è una base di $V_1 + V_2$. Se fosse una base allora $dim(V_1 + V_2) = n + m - r$.
+Per verificare se è una base verifichiamo se è lin indipendente, sia:\\
+$\lambda_1 e_1 + \cdots + \lambda_r e_r + \mu_2 v_{r+1} + \cdots + \mu_{n-r}v_n + \nu_1 w_{r+1} + \cdots + \nu_{m-r}w_m = 0$. Tutti i coefficienti $\lambda_i, \mu_i, \nu_i \in \mathbb{R}$, dobbiamo ora vedere se sono tutti uguali a 0.\\\\
+$\lambda_1 e_1 + \cdots + \lambda_r e_r + \mu_2 v_{r+1} + \cdots + \mu_{n-r}v_n = -\nu_1 w_{r+1} - \cdots - \nu_{m-r}w_m$. Vediamo che la parte $\lambda_1 e_1 + \cdots + \lambda_r e_r + \mu_2 v_{r+1} + \cdots + \mu_{n-r}v_n \in V_1$ mentre $-\nu_1 w_{r+1} - \cdots - \nu_{m-r}w_m \in V_2$, quindi $-\nu_1 w_{r+1} - \cdots - \nu_{m-r}w_m \in V_1 \cap V_2 \Longrightarrow$ come $e_1, \cdots, e_r$ è una base di $V_1 \cap V_2, \exists \: \alpha_1, \cdots, \alpha_r \::\: \alpha_1 e_1 + \cdots + \alpha_r e_r = -\nu w_{r+1} - \cdots - \nu_{m-r}w_m$. \\\\
+Ma $e_1, \cdots, e_r, w_{r+1}, \cdots, w_m$ è base di $V_2$ ed allora è linearmente indipendente ed allora $\alpha_1 = \cdots = \alpha_r = \nu_1 = \cdots = \nu_{m-r} = 0$, ma allora $\lambda_1 e_1 + \cdots + \lambda_r e_r + \mu_1 v_{r+1} + \cdots + \nu_{n-r}v_n = 0 \Longrightarrow \lambda_1 = \cdots = \lambda_r = \mu_1 = \cdots = \mu_{n-r} = 0$ perché $e_1, \cdots, e_r, v_{r+1}, \cdots, v_n$ è una base di $V_1$.\\
+Vediamo dunque che $span(e_1, \cdots, e_r, v_1, \cdots, v_{n-r}, w_1, \cdots, w_{m-r}) = V_1 + V_2$ se $v \in V_1 + V_2$, $v = v^1, v^2 \::\: v^1 \in V_1, v^2 \in V_2$. Ma allora $\exists \alpha_1, \cdots, \alpha_m, \beta_1, \cdots, \beta_m \in \mathbb{R} \::$\\
+$v^2 = \alpha_1 e_1 + \cdots + \alpha_r e_r + \alpha_{r+1}v_1 + \cdots + \alpha_n v_{n-r}$ e $v_2 = \beta_1 e_1 + \cdots + \beta_r e_r + \beta_{r+1}w_1 + \cdots + \beta_m w_{m-r}$ perché $e_1, \cdots, e_r, v_1, \cdots, v_{n-r}$ è un base di $V_1$ e $e_1, \cdots, e_r, w_1, \cdots, w_{m-r}$ è una base di $V_2$. \\
+Detto ciò allora abbiamo che $v_1 = v^1 + v^2 = (\alpha_1 + \beta_1)e_1 + \cdots + (\alpha_r + \beta_r)e_r + \alpha_{r+1}v_{r+1} + \cdots + \alpha_n v_n + \beta_{r+1}w_1 + \cdots + \beta_m w_m$. $\blacksquare$
+\end{demostration}
+
+\begin{example}
+Consideriamo i due sottospazi in $\mathbb{R}^4$ seguenti:\\
+$V= \Big\{\text{soluzioni di } \begin{array}{l}x_1 + 2x_2 + x_3 = 0\\-x_1 -x_2 + 3x_4 = 0\end{array}\Big\}, W = span\Bigg(W_1 = \begin{bmatrix}2\\0\\1\\1\end{bmatrix}, W_2 = \begin{bmatrix}3\\-2\\-2\\0\end{bmatrix}\Bigg)$\\
+Calcoliamo $dim(V \cap W), dim(V + W)$. Sappiamo che $dim(W)=2$ perché ovviamente $W_1 \neq \lambda w_2$. Bisogna dunque calcolare la $dim(V)$.
+\[
+\begin{bmatrix}
+1 & 2 & 1 & 0\\
+-1 & -1 & 0 & 3
+\end{bmatrix}
+R_2 + R_1
+\Rightarrow
+\begin{bmatrix}
+1 & 2 & 1 & 0\\
+0 & 1 & 1 & 3
+\end{bmatrix}
+\Rightarrow
+\begin{array}{l}
+    x_1 + 2x_2 + x_3 = 0\\
+    x_2 + x_3 + 3x_4 = 0
+\end{array}
+\]
+Abbiamo dunque $x_3, x_4$ come variabili libere che fa si che $x_2 = -x_3 - 3 x_4$ e $x_1 = -2(-x_3 -3x_4) - x_3 = x_3 + 6x_4$, la soluzione generale è dunque:\\\\ $\begin{bmatrix}x_3 + 6x_4 \\ -x_3 - 3x_4 \\ x_3 \\ x_4\end{bmatrix} = x_3\begin{bmatrix}1\\-1\\1\\0\end{bmatrix} + x_4\begin{bmatrix}6\\-3\\0\\1\end{bmatrix}$ \hspace{.5cm} con $v_1 = \begin{bmatrix}1\\-1\\1\\0\end{bmatrix}$ e $v_2 = \begin{bmatrix}6\\-3\\0\\1\end{bmatrix}$ \\\\
+Quindi $dim(V) = 2$ e $v_1, v_2$ è una base. Cerchiamo ora $dim(V + W)$.
+\[
+\begin{bmatrix}
+1 & 6 & 2 & 3\\
+-1 & -3 & 0 & -2\\
+1 & 0 & 1 & -2\\
+0 & 1 & 1 & 0
+\end{bmatrix}
+\begin{array}{l}
+R_2 + R_1\\
+R_3 - R_1
+\end{array}
+\Rightarrow
+\begin{bmatrix}
+1 & 6 & 2 & 3\\
+0 & 3 & 2 & 1\\
+0 & -6 & -1 & -5\\
+0 & 1 & 1 & 0
+\end{bmatrix}
+R_3 + 3R_1
+\Rightarrow
+\begin{bmatrix}
+1 & 6 & 2 & 3\\
+0 & 3 & 2 & 1\\
+0 & 0 & 3 & -3\\
+0 & 1 & 1 & 0
+\end{bmatrix}
+\text{Inverto } R_2, R_4
+\Rightarrow
+\]
+\[
+\begin{bmatrix}
+1 & 6 & 2 & 3\\
+0 & 1 & 1 & 0\\
+0 & 0 & 3 & -3\\
+0 & 3 & 2 & 1
+\end{bmatrix}
+R_4 - R_2
+\Rightarrow
+\begin{bmatrix}
+1 & 6 & 2 & 3\\
+0 & 1 & 1 & 0\\
+0 & 0 & 3 & -3\\
+0 & 0 & -1 & 1
+\end{bmatrix}
+R_4 + \frac{1}{3}R_3
+\Rightarrow
+\begin{bmatrix}
+1 & 6 & 2 & 3\\
+0 & 1 & 1 & 0\\
+0 & 0 & 3 & -3\\
+0 & 0 & 0 & 0
+\end{bmatrix}
+\]
+Abbiamo dunque 3 pivots ed allora le prime 3 colonne sono indipendenti ma $v_1, v_2, w_1, w_2$ sono dipendenti. Questo fa si che $dim(V+W) =$3.\\
+Utilizzando poi Grassman: $dim(V \cap W) = dim(V) + dim(W) - dim(V+W) = 1$
+\end{example}
+
+\begin{example}
+Siano $V = span\Bigg(\begin{bmatrix}1\\1\\1\\1\end{bmatrix}, \begin{bmatrix}1\\-1\\1\\1\end{bmatrix}\Bigg), W = span\Bigg(\begin{bmatrix}1\\0\\1\\0\end{bmatrix}\begin{bmatrix}1\\2\\0\\2\end{bmatrix}\Bigg)$.\\\\
+Chiamiamo i due vettori in V $v_1, v_2$ mentre i due in $W$ $w_1, w_2$. Trovare basi di $V + W, V \cap W$. Per $V+W$ facciamo:
+\[
+\begin{bmatrix}
+1 & 1 & 1 & 1\\
+1 & -1 & 0 & 2\\
+1 & 1 & 1 & 0\\
+1 & -1 & 0 & 2
+\end{bmatrix}
+\begin{array}{l}
+    R_2 - R_1\\
+    R_3 - R_1\\
+    R_3 - R_1
+\end{array}
+\Rightarrow
+\begin{bmatrix}
+1 & 1 & 1 & 1\\
+0 & -2 & -1 & 1\\
+0 & 0 & 0 & -1\\
+0 & -2 & -1 & 1
+\end{bmatrix}
+R_4 - R_2
+\Rightarrow
+\begin{bmatrix}
+1 & 1 & 1 & 1\\
+0 & -2 & -1 & 1\\
+0 & 0 & 0 & -1\\
+0 & 0 & 0 & 0
+\end{bmatrix}
+\]
+Abbiamo dunque 3 pivtos ed allora $dim(V+W) = 3$, perché $v_1, v_2, w_2$ sono lin. indipendenti e quindi sono una base. Utilizzando allora Grassmann: $dim(V \cap W) = dim(V) + dim(W) - dim(V+W) = 2 + 2 - 3 = 1$.\\
+In uno spazio di $dim = 1$ ogni vettore diverso da 0 è base, per trovarlo facciamo:\\
+\[\begin{array}{l}
+    x_1 + x_2 + x_3 + x_4 = 0\\
+    -x_2 - x_3 - x_4 = 0\\
+    -x_4 = 0
+\end{array}
+\hspace{.3cm}
+\parbox{7cm}{Abbiamo dunque che $x_4 = 0, x_3$ = t sono variabili libere. Quindi $x_2 = -\frac{7}{2}, x_1 = -\frac{t}{2}$}
+\]
+La soluzione generale è dunque $(-\frac{t}{2}, -\frac{t}{2}, t, 0)$ e con $t=1$ abbiamo $(\frac{1}{2}, \frac{1}{2}, -1, 0)$ che fa si abbiamo $\frac{1}{2}v_1 + \frac{1}{2}v_2 - w_1 = 0$. Dunque $w_1 = \frac{1}{2}v_1 + \frac{1}{2}v_2 \in V \cap W$.\\
+Quindi $w_1$ è una base di $V \cap W$ e questo perché so che questo spazio ha $dim = 1$ grazie a Grassman. Ogni volta che $V \cap W$ è della forma $t \cdot w_1$ allora ri dimostra che $dim(V \cap W) = 1$.
+\end{example}

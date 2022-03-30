@@ -1,0 +1,63 @@
+\newpage
+\section{Applicazione lineare}
+\begin{definition}[Applicazione lineare]
+Siano $V_1, V_2$ spazi vettoriali su $\mathbb{R}$. Un'applicazione lineare (o mappa lineare) è una mappa $\varphi: V_1 \to V_2$ soddisfano:
+\begin{enumerate}
+    \item $\varphi(v_1 + v_2) = \varphi(v_1) + \varphi(v_2) \: \forall \: v_1, v_2 \in V_1$.
+    \item $\lambda \varphi(v) = \varphi(\lambda v) \forall \: v \in V_1$.
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+Alcuni esempi di applicazioni lineari:
+\begin{itemize}
+    \item $V_1 = \mathbb{R}^n$, $V_2 = \mathbb{R}$, $\varphi\Big(\begin{bmatrix}a_1\\\vdots\\a_n\end{bmatrix}\Big) = \lambda_1a_1 + \cdots + \lambda_n a_n$ con $\lambda_1 \cdots \lambda_n$ fisso.
+    \item $V_1 = \mathbb{R}^n$, $V_2 = \mathbb{R}^2$, $\varphi\Bigg(\begin{bmatrix}a_1 \\ \vdots \\ a_n\end{bmatrix}\Bigg) = \Bigg(\begin{array}{c}\lambda_1 a_1 + \cdots + \lambda_n a_n \\ \mu_1 a_1 + \cdots + \mu_n a_n\end{array} \Bigg)$ con $\lambda_1, \cdots, \lambda_n$ e $\mu_1, \cdots, \mu_n$ fissi.
+    \item $V_1 = \mathbb{R}^n, V_2 = \mathbb{R}^{n-1}$, $\varphi\Bigg(\begin{bmatrix}a_1 \\ \vdots \\ a_n\end{bmatrix}\Bigg) = \begin{bmatrix}a_1 \\ \vdots \\ a_{n-1}\end{bmatrix}$
+    \item $V_1 = \mathbb{R}[x]_{\leq d}, V_2 = \mathbb{R}[x]_{\leq d-1}$ quindi è come scrivere $\varphi(f) = f'$. \\
+    E questo va bene perché sono rispettate le proprietà (a) e (b) della definizione sopra.
+    \item $V_1 = \{f:[0,1]\to \mathbb{R} \::\: f \text{ continua }, \int_0^1 f<\infty\}$, $V_2 = \mathbb{R}$. Vediamo che $\varphi (f) = \int_0^1 f$.\\
+    Infatti, anche in questo caso, le proprietà (a) e (b) della definizione sono rispettate.
+\end{itemize}
+\end{example}
+
+\hspace{-15pt}Sia $\varphi: V_1 \to V_2$ un'applicazione lineare e sia $e_1, \cdots, e_n$ una base di $V_1$ allora sia $v \in V_1$, $v = \lambda_1 e_1 + \lambda_2 e_2 + \cdots + \lambda_n e_n$. $\varphi(v) = \varphi(\lambda_1 e_1) + \varphi(\lambda_2 e_2) + \cdots + \varphi(\lambda_n e_n) = \lambda_1 \varphi(e_1) + \lambda_2 \varphi(e_2) + \cdots + \lambda_n \varphi(e_n)$.\\
+In conclusione, conoscere $\varphi(v) \Longleftrightarrow$ conoscere $\varphi (e_1), \cdots, \varphi (e_n)$ e lineare coordinate di v rispetto $e_1, \cdots, e_n$. Viceversa se faccio $\varphi (e_1) = v_1, \varphi(e_2) = v_2, \cdots, \varphi(e_n) = v_n$ allora $\exists !$ applicazione lineare $\varphi v_1 - \varphi v_2$ con queste proprietà.
+
+\begin{example}
+$V_1 = \mathbb{R}^n$, $V_2 = \mathbb{R}^2$ e le basi standard sono $\begin{bmatrix}1\\0\end{bmatrix}, \begin{bmatrix}0\\1\end{bmatrix}$. Esiste una sola $\varphi: \mathbb{R}^2 \to \mathbb{R}^2$ tale che $\varphi \Big(\begin{bmatrix}1\\0\end{bmatrix}\Big) = \Big(\begin{bmatrix}0\\0\end{bmatrix}\Big)$, $\varphi \Big(\begin{bmatrix}0\\1\end{bmatrix}\Big) = \Big(\begin{bmatrix}0\\1\end{bmatrix}\Big)$. Infatti tale $\varphi$ è dato da $\varphi \Big(\begin{bmatrix}x_1\\x_2\end{bmatrix}\Big) = \Big(\begin{bmatrix}0\\x_2\end{bmatrix}\Big)$
+\end{example}
+
+\subsection{Nucleo e immagine}
+\begin{definition}
+Sia $\varphi: V_1 \to V_2$ un'applicazione lineare possiamo definire di $\varphi$:
+\begin{itemize}
+    \item \textbf{Il nucleo}: $Ker(\varphi) = \{v \in V_1 \::\: \varphi(v) = 0\} \subset V_1$ sottospazio. 
+    \item \textbf{L'immagine}: $Im(\varphi) = \{v_2 \in V_2 \::\: \exists v_1 \in V_1 \::\: \varphi(v_1) = v_2\} \subset V_2$ sottospazio.
+\end{itemize}
+\end{definition}
+
+\begin{example}
+Alcuni esempi di nucleo ed immagine di un'applicazione lineare.
+\begin{enumerate}
+    \item Per $\varphi: \mathbb{R}^2 \to \mathbb{R}^2$, $\varphi\Bigg(\begin{bmatrix}x_1\\x_2\end{bmatrix}\Bigg) = \begin{bmatrix}0\\x_2\end{bmatrix}$.\\
+    $Ker(\varphi) = \{\begin{bmatrix}x_1\\0\end{bmatrix} \::\: x_1 \in \mathbb{R}\} = span\Bigg(\begin{bmatrix}1\\0\end{bmatrix}\Bigg)$ \hspace{.3cm} $Im(\varphi) = \{\begin{bmatrix}0\\x_2\end{bmatrix} \::\: x_2 \in \mathbb{R}\} = span\Bigg(\begin{bmatrix}0\\1\end{bmatrix}\Bigg)$
+    \item $\varphi: \mathbb{R}^2 \to \mathbb{R}^2$, $\varphi\Bigg(\begin{bmatrix}x_1\\x_2\end{bmatrix}\Bigg) = \begin{bmatrix}x_1\\0\end{bmatrix}$.\\
+    $Ker(\varphi) = \{\begin{bmatrix}x_1\\0\end{bmatrix} \::\: x_1 \in \mathbb{R}\} = span\Bigg(\begin{bmatrix}1\\0\end{bmatrix}\Bigg)$ \hspace{.3cm} $Im(\varphi) = \{\begin{bmatrix}x_2\\0\end{bmatrix} \::\: x_2 \in \mathbb{R}\} = span\Bigg(\begin{bmatrix}1\\0\end{bmatrix}\Bigg)$
+    \item $\varphi: \mathbb{R}[x]_{\leq d} \to \mathbb{R}[x]_{\leq d-1}$, $Ker(\varphi) = \{$ polinomi costanti $\} = span(1)$ \hspace{.3cm} $Im(\varphi) = \mathbb{R}[x]_{d-1}$
+\end{enumerate}
+\end{example}
+
+\begin{theorem}
+Sia $dim(V_1) < \infty$ e sia $\varphi: V_1 \to V_2$ un'applicazione lineare, allora vale che:
+\[dim\: Ker(\varphi) + dim \: Im(\varphi) = dim \: V_1\]
+\end{theorem}
+
+\begin{demostration}
+Per dimostrare il teorema sopra partiamo prendendo $v_1, \cdots, v_r$ una base di $Ker(\varphi)$ (quindi $dim\:Ker(\varphi) = r$), e $w_1, \cdots, w_s$ una base di $Im(\varphi)$ (quindi $dim\:Im(\varphi) = s$). \\\\
+Siano poi $\overline{v_1}, \cdots, \overline{v_s} \in V_1$ tali che $\varphi(\overline{v_1}) = w_1, \cdots, \varphi(\overline{v_s}) = w_s$. Noi dobbiamo dimostrare che $v_1, \cdots, v_r, \overline{v_1}, \cdots, \overline{v_2}$ è una base di $V_1$ (in questo modo dimostriamo che $dim\:V_1 = r + s$ ed il teorema è verificato).\\\\
+Verifichiamo l'indipendenza lineare. Supponiamo che $\lambda_1 v_1 + \cdots + \lambda_r v_r + \lambda_{r+1}\overline{v_1} + \cdots + \lambda_{r+s}\overline{v_s} = 0$. Applichiamo $\varphi$: $\lambda_1 v_1 + \cdots + \lambda_r v_r + \varphi(\lambda_{r+1}\overline{v_1} + \cdots + \lambda_{r+2}\overline{v_s}) = 0$ ($\varphi(v_1) = 0 \:\forall : i$). quindi $\lambda_{r+1}\varphi(\overline{v_1}) + \cdots + \lambda_{r+2}\varphi(\overline{v_s}) = 0$ che è come scrivere $\lambda_{r+1}w_1 + \cdots + \lambda_{r+s}w_s = 0 \Longrightarrow \lambda_{r+1} = \cdots = \lambda_{r+s} = 0$ perché $w_1, \cdots, w_s$ base.\\\\
+Quindi $\lambda_1 v_1 + \cdots + \lambda_r v_r = 0$ ed allora $\lambda_1 = \cdots = \lambda_r = 0$ perché $v_1, \cdots, v_r$ è una base di $Ker(\varphi)$.\\
+In fine $\lambda_1 = \cdots = \lambda_r = \lambda_{r+1} = \cdots = \lambda_{r+s} = 0$.\\
+$span(v_1, \cdots, v_r, \overline{v_1}, \cdots, \overline{v_s}) = v_1$ tale che sia $v \i V_1$. $\varphi(v) \in Im(\varphi) \Longrightarrow \exists \: \overline{\lambda_1}, \cdots, \overline{\lambda_s}$ tale che $\varphi(v) = \overline{\lambda_1}w_1 + \cdots + \overline{\lambda_s}w_s$. Ma allora $\varphi(v - \overline{\lambda_1}\overline{v_1} - \cdots - \overline{\lambda_s}\overline{v_s}) = \varphi(v) - \overline{\lambda_1}\varphi(\overline{v_1}) - \cdots - \overline{\lambda_s}\varphi(\overline{v_s}) = 0$. Quindi $v - \overline{\lambda_1}\overline{v_1} - \cdots - \overline{\lambda_s}\overline{v_s} \in Ker(\varphi)$, ma allora $v - \overline{\lambda_1}\overline{v_1} - \cdots - \overline{\lambda_s}\overline{v_s} = \lambda_1 v_1 + \cdots + \lambda_r v_r$ $\forall \: \lambda_{1}, \cdots, \lambda_r$ perché $v_1, \cdots, v_r$ base di $Ker(\varphi)$. In somma $v = \lambda_1 v_1 + \cdots + \lambda_r v_r + \overline{\lambda_1}\overline{v_1} + \cdots + \overline{\lambda_s}\overline{v_s}$
+\end{demostration}
