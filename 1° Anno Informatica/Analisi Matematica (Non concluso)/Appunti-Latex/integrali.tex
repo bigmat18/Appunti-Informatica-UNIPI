@@ -110,23 +110,49 @@ Esempio di una funzione non integrabile. (Esempio con la funzione di Dirichlet).
     \includegraphics[width=5cm]{images/funzione-dirichlet.png}
 \end{wrapfigure}
 $f(x) = \begin{cases}1 & x\in\mathbb{Q} \\ 0 & x \notin \mathbb{Q} \end{cases}$ con $f: [0,1] \to \mathbb{R}$.\\
-Per qualsiasi intervallo $[x_{i-1}, x_i] \subseteq [0,1]$ si ha che:\\\\ 
+Per qualsiasi intervallo $[x_{i-1}, x_i] \subseteq [0,1]$ si ha che:\\\\
 $sup(f(x))_{x \in [x_{i-1}, x_i]} = 1$ e $inf(f(x))_{x \in [x_{i-1}, x_i]} = 0$. \\
-Segue che $S'(f,A) = 0 \:\: \forall A$ suddivisione di $[0,1] \Longrightarrow S'(f) = 0$ e $S''(f,A) = 1 \:\: \forall A $ suddivisione di $[0,1] \Longrightarrow S''(f) = 1$.
-Quindi $S'(f) \neq S''(f) \Longrightarrow f$ non è integrabile.\\\\
-\hspace{-15pt}Se $f$ è integrabile, $S''(f,A) - S'(f,A)$ (la differenza, l'area della regione verde nell'immagine) "tende a 0" al raffinarsi delle suddivisioni.
+Segue che $S'(f,A) = 0 \:\: \forall A$ suddivisione di $[0,1] \Longrightarrow S'(f) = 0$ e $S''(f,A) = 1 \:\: \forall A $ suddivisione di $[0,1] \Longrightarrow S''(f) = 1$. Quindi $S'(f) \neq S''(f) \Longrightarrow f$ non è integrabile.\\\\
 
+\begin{wrapfigure}[3]{l}{5cm}
+    \vspace{-30pt}
+    \centering
+    \includegraphics[width=4cm]{images/differenze-aree-integrale.png}
+\end{wrapfigure}
+
+Se $f$ è integrabile, $S''(f,A) - S'(f,A)$ (la differenza, l'area della regione verde nell'immagine) "tende a 0" al raffinarsi delle suddivisioni.
+\vspace{15pt}
 \subsection{Calcolo degli integrali}
 \begin{theorem}
 Siano $f,g$ integrabili su $[a,b]$ e un numero $k \in \mathbb{R}$, allora: $f+g, k\cdot, |f|$ sono integrabili, e si ha che:
-\begin{itemize}
+\begin{enumerate}
     \item $\int_a^b (f+g)\:dx = \int_a^b f(x)\:dx + \int_a^b g(x)\:dx$.
     \item $\int_a^b (k\cdot f)\:dx = k \cdot \int_a^b f(x) \:dx$.
     \item Se $f(x) \leq g(x) \forall x \in [a,b]$ allora $\int_a^b f(x) \:dx \leq \int_a^b g(x)\:dx$.
     \item $\big|\int_a^b f(x) \:dx \big| \leq \int_a^b |f(x)|\:dx$.
     \item Se $a < c < b$ allora $\int_a^b f(x) \:dx = \int_a^c f(x) \:dx + \int_c^b f(x)\:dx$.
-\end{itemize}
+\end{enumerate}
 \end{theorem}
+
+\newpage
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{.3\textwidth}
+        \centering
+        \includegraphics[width=4.5cm]{images/teorema-calcolo-integrali-1.png}
+        \caption{Caso 1°}
+    \end{subfigure}
+    \begin{subfigure}{.3\textwidth}
+        \centering
+        \includegraphics[width=4.5cm]{images/teorema-calcolo-integrali-2.png} 
+        \caption{Caso 2°}
+    \end{subfigure}
+    \begin{subfigure}{.3\textwidth}
+        \centering
+        \includegraphics[width=4.5cm]{images/teorema-calcolo-integrali-3.png}
+        \caption{Caso 3°}
+    \end{subfigure}
+\end{figure}
 
 \begin{observation}
 Osserviamo anche che se $f: [a,b] \to \mathbb{R}$ è constante, cioè $f(x) = k \:\: \forall x \in [a,b]$ allora $\int_a^b f(x) \:dx = k \cdot (b-a)$
@@ -136,10 +162,16 @@ Osserviamo anche che se $f: [a,b] \to \mathbb{R}$ è constante, cioè $f(x) = k 
 \begin{definition}[Media Integrabile]
 Se $f: [a,b] \to \mathbb{R}$ integrabile, si dice \textbf{media integrabile} di $f$ su $[a,b]$.
 \vspace{-10pt}
-\[m = \frac{1}{b-a} \cdot \int_a^b f(x) \:dx\]
+\[m = \frac{1}{b-a} \cdot \int_a^b f(x) \:dx\]\\
 \end{definition}
+\begin{wrapfigure}[2]{l}{5cm}
+\vspace{-45pt}
+    \centering
+    \includegraphics[width=4cm]{images/media-integrabile.png}
+\end{wrapfigure}
+\vspace{-10pt}
 Graficamente, m è l'altezza di un rettangolo di base $b-a$, con la stessa area del sotto grafico di $f$.
-
+\vspace{15pt}
 \begin{theorem}[Teorema della media integrale]
 Sia $f:[a,b] \to \mathbb{R}$ integrabile, allora:
 \vspace{-5pt}
@@ -200,7 +232,6 @@ Se prendiamo per esempio $\int 2x\:dx = \{x^2 + k \:\:|\:\: k \in \mathbb{R}\}$ 
 
 \hspace{-15pt}L'integrale di Riemainn $\int_a^b f(x)\:dx$ invece è un numero reale, e rappresenta l'area del sotto grafico di $f$, e si dice \textbf{integrale definito} e $a,b$ sono gli \textbf{estremi di integrazione} ("a" è inferiore e "b" superiore). 
 
-\newpage
 \subsection{Formule per integrali indefiniti}
 Dalle formule per le derivate seguono formule per le primitive di una funzione f(x). Vedere la tabella di seguito.
 \begin{table}[h!]
@@ -229,13 +260,14 @@ Sia $I \subseteq \mathbb{R}$ un intervallo, $a \in I$, $f: I \to \mathbb{R}$ con
 \end{theorem}
 
 \begin{demostration}
-Mostriamo che $F$ è derivabile calcolandone il rapporto incrementale in $x_0 \in I$ arbitrario, e poi facendo il limite.\\
-$\frac{F(x) - F(x_0)}{x - x_0} = \frac{1}{x - x_0}\big( \int_a^x f(y) \:dt - \int_a^{x_0} f(y) \:dt \big) = \frac{1}{x - x_0} \int_{x_0}^x f(t) \:dt$. In risultato è la media integrale di $f$ sull'intervallo di estremi $x$ e $x_0$.\\
+Mostriamo che $F$ è derivabile calcolandone il rapporto incrementale in $x_0 \in I$ arbitrario, e poi facendo il limite.\\\\
+$\frac{F(x) - F(x_0)}{x - x_0} = \frac{1}{x - x_0}\big( \int_a^x f(y) \:dt - \int_a^{x_0} f(y) \:dt \big) = \frac{1}{x - x_0} \int_{x_0}^x f(t) \:dt$. In risultato è la media integrale di $f$ sull'intervallo di estremi $x$ e $x_0$.\\\\
 Visto che $f$ è continua, per il teorema della media integrale $\exists \: z(x)$ compreso tra $x_0$ e $x$ tale che $f(z(x)) = \frac{1}{x - x_0} \int_{x_0}^x f(t) \:dt$.\\
-Quindi $F'(x_0) = \lim\limits_{x\to x_0}\frac{F(x) - F(x_0)}{x - x_0} = \lim\limits_{x\to x_0}f(z(x))$. Cambio variabile e prendo $y = z(x)$. Devo capire a cosa tende $y$ quando $x\to x_0$. So che $z(x)$ è compreso tra $x_0$ e $x$ (ad esempio se $x \leq x_0$, so che $x \leq z(x) \leq x_0$) quindi per il teorema dei carabinieri ho che $\lim\limits_{cx \to x_0}y = x_0$.\\
+Quindi $F'(x_0) = \lim\limits_{x\to x_0}\frac{F(x) - F(x_0)}{x - x_0} = \lim\limits_{x\to x_0}f(z(x))$. Cambio variabile e prendo $y = z(x)$. Devo capire a cosa tende $y$ quando $x\to x_0$. So che $z(x)$ è compreso tra $x_0$ e $x$ (ad esempio se $x \leq x_0$, so che $x \leq z(x) \leq x_0$) quindi per il teorema dei carabinieri ho che $\lim\limits_{cx \to x_0}y = x_0$.\\\\
 Segue che $\lim\limits_{x \to x_0}f(z(x)) = \lim\limits_{y \to x_0} f(y) = f(x_0)$ (questo per la continuità di f). Questo dimostra che $F'(x_0) = f(x_0)$m quindi $F'(x) = f(x) \:\: \forall x \in I$. $\blacksquare$
 \end{demostration}
 
+\newpage
 \subsection{Teorema di Torricelli}
 \begin{theorem}[Teorema di Torricelli]
 $I \subseteq \mathbb{R}$ intervallo, $f: I \to \mathbb{R}$ funzione continua, $a \in I$. Se G è una primitiva di $f$ in I, allora $\exists k \in \mathbb{R}$ tale che $G(x) = \int_a^x f(t) \:dt + k$ e $\forall \alpha, \beta \in I$ abbiamo che $\int_{\alpha}^{\beta}f(t) \:dt = G(\beta) - G(\alpha)$.
@@ -365,17 +397,33 @@ Consideriamo integrali nella forma $\int \frac{p(x)}{q(x)} \:dx$ dove $p(x)$ e $
 \subsection{Integrali impropri}
 Gli Integrali impropri o generalizzati estendo la definizione di integrale definito al caso in cui l'integrale non è limitato, oppure l'intervallo di integrazione non è limitato.
 \begin{example}
-Dobbiamo dare un senso per esempio a $\int_0^{+\infty}e^{-x}\:dx$. Intuitivamente rappresenta l'area di tutto il sotto grafico sopra $(0,+\infty)$.\\
-Formalmente definiremo un limite: $\lim\limits_{M\to +\infty}\int_0^Me^{-x}\:dx = \lim\limits_{M\to + \infty}[-e^{-x}]^M_0=\lim\limits_{M\to +\infty}-e^{-M}+1 = 1$.\\
-IN questo caso il sotto grafico sopra $[0,+\infty)$ ha area finita uguale a 1.
+Dobbiamo dare un senso per esempio a $\int_0^{+\infty}e^{-x}\:dx$.
 \end{example}
+\begin{wrapfigure}[6]{r}{5cm}
+    \vspace{-25pt}
+    \centering
+    \includegraphics[width=4.5cm]{images/esempio-integrale-improprio-1.png}
+\end{wrapfigure}
+Intuitivamente rappresenta l'area di tutto il sotto grafico sopra $(0,+\infty)$.
+Formalmente definiremo un limite: \\\\
+$\lim\limits_{M\to +\infty}\int_0^Me^{-x}\:dx = \lim\limits_{M\to + \infty}[-e^{-x}]^M_0=\lim\limits_{M\to +\infty}-e^{-M}+1 = 1$.\\
+In questo caso il sotto grafico $[0,+\infty)$ ha area finita uguale a 1.
+
 \begin{example}
 Se invece prendiamo $\int_0^{+\infty}\frac{1}{1+x}dx = \lim\limits_{M\to +\infty}\int_0^{M}\frac{1}{1+x}dx = \lim\limits_{M\to +\infty}[\log(1+x)]_0^M = \lim\limits_{M\to +\infty}(\log(1+M)-0) = +\infty$. In questo caso l'area del sotto grafico è infinito.
 \end{example}
+\newpage
 \begin{example}
-$\int_0^1 \frac{1}{\sqrt{x}}dx$ notiamo che la funzione $\frac{1}{\sqrt{x}}$ non è limitata su $[0,1)$.\\
-$\lim\limits_{M\to 0^+}\int_M^1 \frac{1}{\sqrt{x}}dx = \lim\limits_{M\to 0^+}[2\sqrt{x}]_M^1 = \lim\limits_{M\to 0^+}(2-2\sqrt{M}) = 2$, l'area del sotto grafico di $\frac{1}{\sqrt{x}}$ sopra a $[0,1]$.
+Facciamo un' altro esempio di integrale improprio con $\int_0^1 \frac{1}{\sqrt{x}}dx$.
 \end{example}
+\begin{wrapfigure}[5]{l}{4.5cm}
+    \vspace{-25pt}
+    \centering
+    \includegraphics[width=3.7cm]{images/esempio-intergale-improprio-2.png}
+\end{wrapfigure}
+$\int_0^1 \frac{1}{\sqrt{x}}dx$ notiamo che la funzione $\frac{1}{\sqrt{x}}$ non è limitata sull'intervallo compreso fra $[0,1)$.\\\\
+$\lim\limits_{M\to 0^+}\int_M^1 \frac{1}{\sqrt{x}}dx = \lim\limits_{M\to 0^+}[2\sqrt{x}]_M^1 = \lim\limits_{M\to 0^+}(2-2\sqrt{M}) = 2$, l'area del sotto grafico di $\frac{1}{\sqrt{x}}$ sopra a $[0,1]$.
+\vspace{10pt}
 \begin{example}
 $\int_0^1 \frac{1}{x}dx = \lim\limits_{M\to 0^+}\int_0^1 \frac{1}{x}dx = \lim\limits_{M\to 0^+}[\log(x)]_M^1 = \lim\limits_{M\to 0^+} (0-\log(M)) = + \infty$.\\
 Quindi in questo caso il sotto grafico ha area infinita.
@@ -392,8 +440,14 @@ Dati due punti $a\in \mathbb{R}$ e $b \in \mathbb{\overline{R}}$, $a<b$ e $f:[a,
 $\int_0^{+\infty}e^{-x}\:dx$ converge \hfill $\int_0^{+\infty}\frac{1}{1+x}\:dx$ diverge pos. \hfill $\int_0^1 \frac{1}{\sqrt{x}}\:dx$ converge \hfill $\int_0^1\frac{1}{x}\:dx$ diverge pos.
 
 \begin{example}
-Esempio in cui il limite non esiste: $\int_0^{+\infty}\cos(x)\:dx = \lim\limits_{M\to +\infty}\int_0^M\cos(x)\:dx = \lim\limits_{M\to +\infty}[\sin(x)]_0^M = \lim\limits_{M\to +\infty}(\sin(M)-0)$ e questo non esiste.
+Esempio in cui il limite non esiste: 
 \end{example}
+\begin{wrapfigure}[2]{l}{4.5cm}
+    \vspace{-25pt}
+    \centering
+    \includegraphics[width=4cm]{images/esempio-integrale-improprio-3.png}
+\end{wrapfigure}
+$\int_0^{+\infty}\cos(x)\:dx = \lim\limits_{M\to +\infty}\int_0^M\cos(x)\:dx = \lim\limits_{M\to +\infty}[\sin(x)]_0^M = \lim\limits_{M\to +\infty}(\sin(M)-0)$ e questo non esiste.\\\\
 
 \hspace{-15pt}Analogamente si definisce $\int_a^b f(x)\:dx$ quando $f:(a,b] \to \mathbb{R}$ con $a \in \mathbb{\overline{R}}$, $b\in \mathbb{R}$ e $f$ integrabile su $[M,B] \forall a < M < b$ come $\lim\limits_{M\to a^+}\in_M^b f(x) \:dx$ (se esiste).\\\\
 Se però abbiamo $f:(a,b)\to \mathbb{R}$ questa funzione "ha un problema" in entrambi a e b, ad esempio $\int_{-\infty}^{+\infty}\frac{1}{1+x^2}\:dx$ oppure $\int_{-1}^1 \frac{1}{1-x^2}\:dx$.
