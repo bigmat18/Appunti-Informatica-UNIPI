@@ -1,0 +1,17 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Introduzione}{2}{}%
+\contentsline {subsection}{\numberline {1.1}Puntatori}{2}{}%
+\contentsline {subsection}{\numberline {1.2}Operatori sui puntatori}{2}{}%
+\contentsline {subsection}{\numberline {1.3}Strutture dati}{3}{}%
+\contentsline {subsection}{\numberline {1.4}Notazione asintotica}{3}{}%
+\contentsline {subsection}{\numberline {1.5}Big-O notation}{4}{}%
+\contentsline {subsubsection}{\numberline {1.5.1}Limite superiore asintotico}{4}{}%
+\contentsline {subsubsection}{\numberline {1.5.2}Limite inferiore asintotico}{5}{}%
+\contentsline {subsubsection}{\numberline {1.5.3}Limite asintotico stretto}{5}{}%
+\contentsline {subsubsection}{\numberline {1.5.4}Teoremi sulla notazione asintotica}{5}{}%
+\contentsline {subsubsection}{\numberline {1.5.5}Limite superiore asintotico non stretto}{6}{}%
+\contentsline {subsubsection}{\numberline {1.5.6}Limite inferiore asintotico non stretto}{6}{}%
+\contentsline {section}{\numberline {2}Array}{7}{}%
+\contentsline {subsection}{\numberline {2.1}BinarySearch}{7}{}%
+\contentsline {subsubsection}{\numberline {2.1.1}Codice dell'algoritmo}{8}{}%
+\contentsline {subsubsection}{\numberline {2.1.2}Calcolo caso pessimo e migliore}{8}{}%

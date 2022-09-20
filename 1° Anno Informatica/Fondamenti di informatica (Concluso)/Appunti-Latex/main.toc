@@ -1,0 +1,108 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Insiemi}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Notazione}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Specificare un insieme}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Proprietà degli insiemi}{4}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Confrontare due insiemi}{4}{subsubsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.2}Inclusione fra insiemi}{4}{subsubsection.1.3.2}%
+\contentsline {subsubsection}{\numberline {1.3.3}Proprietà di uguaglianza ed inclusione}{4}{subsubsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.4}Operazioni su insiemi}{5}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Tavola delle leggi}{5}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}Algebra di Bool}{6}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}Dimostrazioni}{6}{subsection.1.7}%
+\contentsline {subsubsection}{\numberline {1.7.1}Diagramma di Eulero-Venn}{6}{subsubsection.1.7.1}%
+\contentsline {subsubsection}{\numberline {1.7.2}Argomentazioni sostitutive}{7}{subsubsection.1.7.2}%
+\contentsline {subsubsection}{\numberline {1.7.3}Argomentazione discorsiva}{7}{subsubsection.1.7.3}%
+\contentsline {subsection}{\numberline {1.8}Prodotto Cartesiano}{8}{subsection.1.8}%
+\contentsline {subsection}{\numberline {1.9}Insiemi di insiemi}{8}{subsection.1.9}%
+\contentsline {section}{\numberline {2}Relazioni}{9}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Identità}{9}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Composizione}{9}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Relazione opposta}{10}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Leggi}{10}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Dimostrazione proprietà associativa}{11}{subsubsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.5}Proprietà fondamentali}{12}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}Teorema di caratterizzazione}{13}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}Proprietà di chiusura per composizione}{13}{subsubsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.6}Funzione}{13}{subsection.2.6}%
+\contentsline {subsubsection}{\numberline {2.6.1}Composizione fra funzioni}{14}{subsubsection.2.6.1}%
+\contentsline {subsubsection}{\numberline {2.6.2}Proprietà di chiusura per funzioni}{14}{subsubsection.2.6.2}%
+\contentsline {subsubsection}{\numberline {2.6.3}Caratterizzazione in biezione}{14}{subsubsection.2.6.3}%
+\contentsline {subsubsection}{\numberline {2.6.4}Insiemi di biezione}{15}{subsubsection.2.6.4}%
+\contentsline {subsubsection}{\numberline {2.6.5}Proprietà insiemi di biezione}{16}{subsubsection.2.6.5}%
+\contentsline {subsection}{\numberline {2.7}N-upla}{16}{subsection.2.7}%
+\contentsline {section}{\numberline {3}Induzione}{17}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Schema generale induttivo}{17}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Definizione induttiva dell'insieme $\mathbb {N}$}{17}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Definizione induttiva di funzioni}{18}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Dimostrazione induttiva di proprietà}{18}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Principio di Induzione forte sui naturali}{20}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Relazioni su un insieme}{21}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Proprietà di relazione su un insieme}{21}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Riflessiva}{21}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Simmetrica}{22}{subsubsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.3}Transitiva}{22}{subsubsection.4.1.3}%
+\contentsline {subsubsection}{\numberline {4.1.4}Anti-simmetrica}{23}{subsubsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.2}Teorema di caratterizzazione}{24}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Chiusure}{24}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Chiusura riflessiva}{24}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Chiusura simmetrica}{25}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}Chiusura transitiva}{25}{subsubsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.4}Stella di kleene}{26}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Apllicazione al While}{26}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}Leggi stella di kleene}{27}{subsubsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.5}Relazioni di equivalenza}{28}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}Classe di equivalenza}{28}{subsubsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.2}Teorema di biiezione}{28}{subsubsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.6}Relazioni di ordinamento}{28}{subsection.4.6}%
+\contentsline {subsubsection}{\numberline {4.6.1}Ordinamento parziale}{28}{subsubsection.4.6.1}%
+\contentsline {subsubsection}{\numberline {4.6.2}Ordinamento}{29}{subsubsection.4.6.2}%
+\contentsline {subsubsection}{\numberline {4.6.3}Ordinamento lessiografico}{29}{subsubsection.4.6.3}%
+\contentsline {section}{\numberline {5}Grafi}{30}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Grafo orientato}{30}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Notazione sui grafi orientati}{30}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Grafi orientati come relazioni e proprietà TUSI}{30}{subsubsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.3}Hand-shaking lemma}{31}{subsubsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.2}Rappresentazione grafi}{31}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Matrici di adiacenza}{32}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Liste di adiacenza}{32}{subsubsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.3}Grafi orientati etichettati e pesati}{32}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Cammini}{33}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}Walk, trail e path}{33}{subsubsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.2}Enunciati sui cammini}{33}{subsubsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.3}Walk chiusi, circuiti, cicli}{35}{subsubsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.5}Connettività}{36}{subsection.5.5}%
+\contentsline {subsubsection}{\numberline {5.5.1}Componenti connesse e partizioni}{36}{subsubsection.5.5.1}%
+\contentsline {subsubsection}{\numberline {5.5.2}Proprietà connettività}{37}{subsubsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.6}Grafo orientato aciclico (DAGs)}{37}{subsection.5.6}%
+\contentsline {subsubsection}{\numberline {5.6.1}Ordinamento topologico}{38}{subsubsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.7}Grafo non orientato}{38}{subsection.5.7}%
+\contentsline {subsubsection}{\numberline {5.7.1}Hand-shaking lemma}{39}{subsubsection.5.7.1}%
+\contentsline {subsubsection}{\numberline {5.7.2}Rappresentazione grafi non orientati}{39}{subsubsection.5.7.2}%
+\contentsline {subsubsection}{\numberline {5.7.3}Cammini nei grafi non orientati}{39}{subsubsection.5.7.3}%
+\contentsline {subsubsection}{\numberline {5.7.4}Cicli e connettività nei grafi non orientati}{40}{subsubsection.5.7.4}%
+\contentsline {subsection}{\numberline {5.8}Cammini Euleriani}{40}{subsection.5.8}%
+\contentsline {subsection}{\numberline {5.9}Cicli e path Hamiltoniani}{41}{subsection.5.9}%
+\contentsline {subsubsection}{\numberline {5.9.1}Il problema del commesso viaggiatore}{41}{subsubsection.5.9.1}%
+\contentsline {subsection}{\numberline {5.10}Distanze}{41}{subsection.5.10}%
+\contentsline {subsubsection}{\numberline {5.10.1}Diametro, altezza, profondità}{43}{subsubsection.5.10.1}%
+\contentsline {subsection}{\numberline {5.11}Alberi}{44}{subsection.5.11}%
+\contentsline {subsubsection}{\numberline {5.11.1}Albero radicato}{45}{subsubsection.5.11.1}%
+\contentsline {subsection}{\numberline {5.12}Isomorfismo}{46}{subsection.5.12}%
+\contentsline {subsection}{\numberline {5.13}Grafi notevoli}{46}{subsection.5.13}%
+\contentsline {section}{\numberline {6}Calcolo combinatorio}{47}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Cardinalità insiemi}{47}{subsection.6.1}%
+\contentsline {subsubsection}{\numberline {6.1.1}Cardinalità di operazioni su insiemi}{48}{subsubsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.2}Principio di inclusione-esclusione}{48}{subsubsection.6.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.3}Cardinalità del prodotto cartesiano}{49}{subsubsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.2}Relazioni e cardinalità}{51}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Pigeonhole Principle}{51}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}Regola di biiezione}{51}{subsubsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.3}Permutazioni}{52}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Cardinalità delle biiezioni tra due insiemi}{52}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Anagrammi e permutazioni con ripetizioni}{52}{subsubsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.4}Disposizioni}{53}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Combinazioni}{53}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Contare sui grafi}{54}{subsection.6.6}%
+\contentsline {subsubsection}{\numberline {6.6.1}Grafi non orientati}{54}{subsubsection.6.6.1}%
+\contentsline {subsubsection}{\numberline {6.6.2}Grafi orientati}{54}{subsubsection.6.6.2}%
