@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.20)  20 SEP 2022 22:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.20)  21 SEP 2022 17:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -634,7 +634,7 @@ italian.ldf    See the documentation concerning the babel-italian typesetting
 italian.ldf    on input line 92.
 
 (frontespizio.tex
-<./images//marchio_unipi_pant541.png, id=823, 564.4287pt x 300.6432pt>
+<./images//marchio_unipi_pant541.png, id=827, 564.4287pt x 300.6432pt>
 File: ./images//marchio_unipi_pant541.png Graphic file (type png)
 <use ./images//marchio_unipi_pant541.png>
 Package pdftex.def Info: ./images//marchio_unipi_pant541.png  used on input lin
@@ -664,377 +664,383 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.53 ...tinuità con i limiti}{28}{subsection.6.3}
+l.53 ...berline {6.2}I limiti}{29}{subsection.6.2}
                                                   % [1] [2] [3] [4])
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
  [5]
 (introduzione.tex
-<./images//Intervallo.png, id=1068, 423.5825pt x 137.51375pt>
+<./images//Intervallo.png, id=1073, 423.5825pt x 137.51375pt>
 File: ./images//Intervallo.png Graphic file (type png)
 <use ./images//Intervallo.png>
 Package pdftex.def Info: ./images//Intervallo.png  used on input line 26.
 (pdftex.def)             Requested size: 142.26378pt x 46.18541pt.
 
-Underfull \hbox (badness 1478) in paragraph at lines 31--33
-\OML/cmm/m/it/10 I$ \OT1/cmr/m/n/10 e $\OML/cmm/m/it/10 x < y$\OT1/cmr/m/n/10 ,
- tutto il seg-mento tra x e y sta
+Underfull \hbox (badness 2828) in paragraph at lines 30--32
+\OT1/cmr/m/n/10 tra gli es-tremi dell'intervallo, questo ap-par-tiene
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--33
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 31--33
+Underfull \hbox (badness 10000) in paragraph at lines 30--32
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--33
+Underfull \hbox (badness 10000) in paragraph at lines 30--32
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--33
+Underfull \hbox (badness 10000) in paragraph at lines 30--32
 
  []
 
-<./images//Esempio-intervallo-1.png, id=1069, 297.11pt x 92.345pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--32
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--32
+
+ []
+
+<./images//Esempio-intervallo-1.png, id=1074, 297.11pt x 92.345pt>
 File: ./images//Esempio-intervallo-1.png Graphic file (type png)
 <use ./images//Esempio-intervallo-1.png>
 Package pdftex.def Info: ./images//Esempio-intervallo-1.png  used on input line
- 42.
+ 40.
 (pdftex.def)             Requested size: 170.71652pt x 53.06271pt.
-<./images//Esempio-intervallo-2.png, id=1070, 530.98375pt x 97.36375pt>
+<./images//Esempio-intervallo-2.png, id=1075, 530.98375pt x 97.36375pt>
 File: ./images//Esempio-intervallo-2.png Graphic file (type png)
 <use ./images//Esempio-intervallo-2.png>
 Package pdftex.def Info: ./images//Esempio-intervallo-2.png  used on input line
- 47.
+ 45.
 (pdftex.def)             Requested size: 213.39566pt x 39.12901pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 39--50
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 37--48
 [][] [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 35--51
+Underfull \hbox (badness 10000) in paragraph at lines 33--49
 
  []
 
 [6 <./images//Intervallo.png> <./images//Esempio-intervallo-1.png> <./images//E
 sempio-intervallo-2.png>]) (funzioni.tex [7]
-<./images//Esempio-grafico.png, id=1097, 354.32375pt x 330.23375pt>
+<./images//Esempio-grafico.png, id=1102, 354.32375pt x 330.23375pt>
 File: ./images//Esempio-grafico.png Graphic file (type png)
 <use ./images//Esempio-grafico.png>
-Package pdftex.def Info: ./images//Esempio-grafico.png  used on input line 25.
+Package pdftex.def Info: ./images//Esempio-grafico.png  used on input line 30.
 (pdftex.def)             Requested size: 128.03763pt x 113.80981pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 40--41
+Underfull \hbox (badness 10000) in paragraph at lines 45--46
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 40--41
+Underfull \hbox (badness 10000) in paragraph at lines 45--46
 
  []
 
 [8 <./images//Esempio-grafico.png>]
-<./images//Esempio-invertibilita.png, id=1115, 621.32124pt x 542.025pt>
+<./images//Esempio-invertibilita.png, id=1119, 621.32124pt x 542.025pt>
 File: ./images//Esempio-invertibilita.png Graphic file (type png)
 <use ./images//Esempio-invertibilita.png>
 Package pdftex.def Info: ./images//Esempio-invertibilita.png  used on input lin
-e 91.
+e 108.
 (pdftex.def)             Requested size: 142.2562pt x 113.80379pt.
 
-Underfull \hbox (badness 1924) in paragraph at lines 95--96
+Underfull \hbox (badness 1924) in paragraph at lines 112--113
 \OT1/cmr/m/n/10 y=x cio^^Re alla biset-trice del primo e del terzo quad-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
 
  []
 
 
-Underfull \hbox (badness 3557) in paragraph at lines 97--99
-[][]\OT1/cmr/bx/n/10 Esempio 2.5.1. []\OT1/cmr/m/n/10 Se ve-di-amo nell'immagin
+Underfull \hbox (badness 3557) in paragraph at lines 114--116
+[][]\OT1/cmr/bx/n/10 Esempio 2.6.1. []\OT1/cmr/m/n/10 Se ve-di-amo nell'immagin
 e [[][]6[][]] pren-
  []
 
 
-Underfull \hbox (badness 1668) in paragraph at lines 97--99
+Underfull \hbox (badness 1668) in paragraph at lines 114--116
 \OT1/cmr/m/n/10 dendo l'inverso della fun-zione $\OML/cmm/m/it/10 f\OT1/cmr/m/n
 /10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 x[]$ \OT1/cmr/m/n/1
 0 definita in
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--99
+Underfull \hbox (badness 10000) in paragraph at lines 114--116
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--99
+Underfull \hbox (badness 10000) in paragraph at lines 114--116
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--99
+Underfull \hbox (badness 10000) in paragraph at lines 114--116
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--99
+Underfull \hbox (badness 10000) in paragraph at lines 114--116
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--99
+Underfull \hbox (badness 10000) in paragraph at lines 114--116
 
  []
 
-<./images//funzione-crescente.png, id=1119, 720.6925pt x 391.4625pt>
+[9 <./images//Esempio-invertibilita.png>]
+<./images//funzione-crescente.png, id=1141, 720.6925pt x 391.4625pt>
 File: ./images//funzione-crescente.png Graphic file (type png)
 <use ./images//funzione-crescente.png>
 Package pdftex.def Info: ./images//funzione-crescente.png  used on input line 1
-30.
+51.
 (pdftex.def)             Requested size: 170.71538pt x 113.80792pt.
-<./images//funzione-decrescente.png, id=1120, 473.77pt x 486.81876pt>
+<./images//funzione-decrescente.png, id=1142, 473.77pt x 486.81876pt>
 File: ./images//funzione-decrescente.png Graphic file (type png)
 <use ./images//funzione-decrescente.png>
 Package pdftex.def Info: ./images//funzione-decrescente.png  used on input line
- 136.
+ 157.
 (pdftex.def)             Requested size: 170.71611pt x 113.80815pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 128--140
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 149--161
 [][] [] 
  []
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[9 <./images//Esempio-invertibilita.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 144--145
+Underfull \hbox (badness 10000) in paragraph at lines 165--166
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--150
+Underfull \hbox (badness 10000) in paragraph at lines 170--171
 
  []
 
-<./images//rapporto_incrementale.png, id=1137, 738.76pt x 410.53375pt>
+<./images//rapporto_incrementale.png, id=1145, 738.76pt x 410.53375pt>
 File: ./images//rapporto_incrementale.png Graphic file (type png)
 <use ./images//rapporto_incrementale.png>
 Package pdftex.def Info: ./images//rapporto_incrementale.png  used on input lin
-e 154.
+e 175.
 (pdftex.def)             Requested size: 190.63338pt x 105.93443pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 163--164
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 163--164
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 163--164
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
 
  []
 
-<./images//esempio-particolare.png, id=1141, 892.33376pt x 526.96875pt>
+[10 <./images//funzione-crescente.png> <./images//funzione-decrescente.png> <./
+images//rapporto_incrementale.png>]
+<./images//esempio-particolare.png, id=1167, 892.33376pt x 526.96875pt>
 File: ./images//esempio-particolare.png Graphic file (type png)
 <use ./images//esempio-particolare.png>
 Package pdftex.def Info: ./images//esempio-particolare.png  used on input line 
-188.
+210.
 (pdftex.def)             Requested size: 247.53888pt x 146.18329pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[10 <./images//funzione-crescente.png> <./images//funzione-decrescente.png> <./
-images//rapporto_incrementale.png>] [11 <./images//esempio-particolare.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 247--248
+ [11 <./images//esempio-particolare.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 270--271
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 250--251
+Underfull \hbox (badness 10000) in paragraph at lines 273--274
 
  []
 
-<./images//funzione-pari.png, id=1177, 433.62pt x 453.695pt>
+<./images//funzione-pari.png, id=1181, 433.62pt x 453.695pt>
 File: ./images//funzione-pari.png Graphic file (type png)
 <use ./images//funzione-pari.png>
-Package pdftex.def Info: ./images//funzione-pari.png  used on input line 257.
+Package pdftex.def Info: ./images//funzione-pari.png  used on input line 280.
 (pdftex.def)             Requested size: 85.35826pt x 89.30437pt.
-<./images//funzione-dispari.png, id=1178, 376.40625pt x 503.8825pt>
+<./images//funzione-dispari.png, id=1182, 376.40625pt x 503.8825pt>
 File: ./images//funzione-dispari.png Graphic file (type png)
 <use ./images//funzione-dispari.png>
-Package pdftex.def Info: ./images//funzione-dispari.png  used on input line 262
+Package pdftex.def Info: ./images//funzione-dispari.png  used on input line 285
 .
 (pdftex.def)             Requested size: 71.13188pt x 95.22353pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 255--265
-[][] [] 
- []
-
-<./images//funzione-periodica.png, id=1179, 738.76pt x 247.92625pt>
-File: ./images//funzione-periodica.png Graphic file (type png)
-<use ./images//funzione-periodica.png>
-Package pdftex.def Info: ./images//funzione-periodica.png  used on input line 2
-74.
-(pdftex.def)             Requested size: 199.16928pt x 66.83884pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 280--281
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 280--281
-
- []
-
-[12 <./images//funzione-pari.png> <./images//funzione-dispari.png> <./images//f
-unzione-periodica.png>]
-<./images//parabole.png, id=1200, 457.71pt x 432.61626pt>
-File: ./images//parabole.png Graphic file (type png)
-<use ./images//parabole.png>
-Package pdftex.def Info: ./images//parabole.png  used on input line 293.
-(pdftex.def)             Requested size: 113.80563pt x 99.58545pt.
-<./images//esponente-negativo-dispari.png, id=1201, 344.28625pt x 434.62375pt>
-File: ./images//esponente-negativo-dispari.png Graphic file (type png)
-<use ./images//esponente-negativo-dispari.png>
-Package pdftex.def Info: ./images//esponente-negativo-dispari.png  used on inpu
-t line 299.
-(pdftex.def)             Requested size: 113.80917pt x 99.58334pt.
-
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 291--303
-[][] [] 
- []
-
-<./images//esponente-dispari.png, id=1202, 337.26pt x 436.63126pt>
-File: ./images//esponente-dispari.png Graphic file (type png)
-<use ./images//esponente-dispari.png>
-Package pdftex.def Info: ./images//esponente-dispari.png  used on input line 30
-8.
-(pdftex.def)             Requested size: 113.80746pt x 105.27333pt.
-<./images//esponsente-negativo-pari.png, id=1203, 338.26375pt x 442.65375pt>
-File: ./images//esponsente-negativo-pari.png Graphic file (type png)
-<use ./images//esponsente-negativo-pari.png>
-Package pdftex.def Info: ./images//esponsente-negativo-pari.png  used on input 
-line 314.
-(pdftex.def)             Requested size: 113.81068pt x 99.57928pt.
-
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 306--318
-[][] [] 
- []
-
-<./images//radice-pari.png, id=1209, 596.2275pt x 286.06876pt>
-File: ./images//radice-pari.png Graphic file (type png)
-<use ./images//radice-pari.png>
-Package pdftex.def Info: ./images//radice-pari.png  used on input line 331.
-(pdftex.def)             Requested size: 179.25244pt x 86.00461pt.
-<./images//radice-dispari.png, id=1210, 456.70625pt x 237.88875pt>
-File: ./images//radice-dispari.png Graphic file (type png)
-<use ./images//radice-dispari.png>
-Package pdftex.def Info: ./images//radice-dispari.png  used on input line 337.
-(pdftex.def)             Requested size: 170.71652pt x 88.9213pt.
-
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 329--341
-[][] [] 
- []
-
-[13 <./images//parabole.png> <./images//esponente-negativo-dispari.png> <./imag
-es//esponente-dispari.png> <./images//esponsente-negativo-pari.png> <./images//
-radice-pari.png> <./images//radice-dispari.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 349--350
-
- []
-
-<./images//esponenziale.png, id=1232, 335.2525pt x 404.51125pt>
-File: ./images//esponenziale.png Graphic file (type png)
-<use ./images//esponenziale.png>
-Package pdftex.def Info: ./images//esponenziale.png  used on input line 357.
-(pdftex.def)             Requested size: 113.81102pt x 137.32214pt.
-<./images//esponsenziale-base-minore.png, id=1233, 348.30125pt x 392.46625pt>
-File: ./images//esponsenziale-base-minore.png Graphic file (type png)
-<use ./images//esponsenziale-base-minore.png>
-Package pdftex.def Info: ./images//esponsenziale-base-minore.png  used on input
- line 363.
-(pdftex.def)             Requested size: 113.81102pt x 128.2387pt.
-
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 355--367
-[][] [] 
- []
-
-<./images//logaritmo.png, id=1236, 449.68pt x 369.38pt>
-File: ./images//logaritmo.png Graphic file (type png)
-<use ./images//logaritmo.png>
-Package pdftex.def Info: ./images//logaritmo.png  used on input line 383.
-(pdftex.def)             Requested size: 142.26062pt x 113.80771pt.
-<./images//logaritmo-base-minore.png, id=1237, 463.7325pt x 412.54124pt>
-File: ./images//logaritmo-base-minore.png Graphic file (type png)
-<use ./images//logaritmo-base-minore.png>
-Package pdftex.def Info: ./images//logaritmo-base-minore.png  used on input lin
-e 389.
-(pdftex.def)             Requested size: 142.26254pt x 113.81114pt.
-
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 381--393
-[][] [] 
- []
-
-<./images//seno.png, id=1238, 599.23875pt x 241.90375pt>
-File: ./images//seno.png Graphic file (type png)
-<use ./images//seno.png>
-Package pdftex.def Info: ./images//seno.png  used on input line 410.
-(pdftex.def)             Requested size: 170.71652pt x 68.91374pt.
-<./images//arcoseno.png, id=1239, 195.73125pt x 270.00874pt>
-File: ./images//arcoseno.png Graphic file (type png)
-<use ./images//arcoseno.png>
-Package pdftex.def Info: ./images//arcoseno.png  used on input line 416.
-(pdftex.def)             Requested size: 56.90396pt x 65.4379pt.
-
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 408--420
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 278--288
 [][] [] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[14 <./images//esponenziale.png> <./images//esponsenziale-base-minore.png> <./i
-mages//logaritmo.png> <./images//logaritmo-base-minore.png>]
-<./images//coseno.png, id=1259, 634.37pt x 220.825pt>
-File: ./images//coseno.png Graphic file (type png)
-<use ./images//coseno.png>
-Package pdftex.def Info: ./images//coseno.png  used on input line 435.
-(pdftex.def)             Requested size: 170.71652pt x 59.42473pt.
-<./images//arcocoseno.png, id=1260, 292.09125pt x 329.23pt>
-File: ./images//arcocoseno.png Graphic file (type png)
-<use ./images//arcocoseno.png>
-Package pdftex.def Info: ./images//arcocoseno.png  used on input line 441.
-(pdftex.def)             Requested size: 99.58603pt x 76.82147pt.
+<./images//funzione-periodica.png, id=1183, 738.76pt x 247.92625pt>
+File: ./images//funzione-periodica.png Graphic file (type png)
+<use ./images//funzione-periodica.png>
+Package pdftex.def Info: ./images//funzione-periodica.png  used on input line 3
+00.
+(pdftex.def)             Requested size: 199.16928pt x 66.83884pt.
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 306--307
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 306--307
+
+ []
+
+<./images//parabole.png, id=1206, 457.71pt x 432.61626pt>
+File: ./images//parabole.png Graphic file (type png)
+<use ./images//parabole.png>
+Package pdftex.def Info: ./images//parabole.png  used on input line 318.
+(pdftex.def)             Requested size: 113.80563pt x 99.58545pt.
+<./images//esponente-negativo-dispari.png, id=1207, 344.28625pt x 434.62375pt>
+File: ./images//esponente-negativo-dispari.png Graphic file (type png)
+<use ./images//esponente-negativo-dispari.png>
+Package pdftex.def Info: ./images//esponente-negativo-dispari.png  used on inpu
+t line 324.
+(pdftex.def)             Requested size: 113.80917pt x 99.58334pt.
+
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 316--328
+[][] [] 
+ []
+
+<./images//esponente-dispari.png, id=1208, 337.26pt x 436.63126pt>
+File: ./images//esponente-dispari.png Graphic file (type png)
+<use ./images//esponente-dispari.png>
+Package pdftex.def Info: ./images//esponente-dispari.png  used on input line 33
+3.
+(pdftex.def)             Requested size: 113.80746pt x 105.27333pt.
+<./images//esponsente-negativo-pari.png, id=1209, 338.26375pt x 442.65375pt>
+File: ./images//esponsente-negativo-pari.png Graphic file (type png)
+<use ./images//esponsente-negativo-pari.png>
+Package pdftex.def Info: ./images//esponsente-negativo-pari.png  used on input 
+line 339.
+(pdftex.def)             Requested size: 113.81068pt x 99.57928pt.
+
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 331--343
+[][] [] 
+ []
+
+[13 <./images//funzione-pari.png> <./images//funzione-dispari.png> <./images//f
+unzione-periodica.png> <./images//parabole.png> <./images//esponente-negativo-d
+ispari.png> <./images//esponente-dispari.png> <./images//esponsente-negativo-pa
+ri.png>]
+<./images//radice-pari.png, id=1232, 596.2275pt x 286.06876pt>
+File: ./images//radice-pari.png Graphic file (type png)
+<use ./images//radice-pari.png>
+Package pdftex.def Info: ./images//radice-pari.png  used on input line 356.
+(pdftex.def)             Requested size: 179.25244pt x 86.00461pt.
+<./images//radice-dispari.png, id=1233, 456.70625pt x 237.88875pt>
+File: ./images//radice-dispari.png Graphic file (type png)
+<use ./images//radice-dispari.png>
+Package pdftex.def Info: ./images//radice-dispari.png  used on input line 362.
+(pdftex.def)             Requested size: 170.71652pt x 88.9213pt.
+
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 354--366
+[][] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 374--375
+
+ []
+
+<./images//esponenziale.png, id=1236, 335.2525pt x 404.51125pt>
+File: ./images//esponenziale.png Graphic file (type png)
+<use ./images//esponenziale.png>
+Package pdftex.def Info: ./images//esponenziale.png  used on input line 382.
+(pdftex.def)             Requested size: 113.81102pt x 137.32214pt.
+<./images//esponsenziale-base-minore.png, id=1237, 348.30125pt x 392.46625pt>
+File: ./images//esponsenziale-base-minore.png Graphic file (type png)
+<use ./images//esponsenziale-base-minore.png>
+Package pdftex.def Info: ./images//esponsenziale-base-minore.png  used on input
+ line 388.
+(pdftex.def)             Requested size: 113.81102pt x 128.2387pt.
+
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 380--392
+[][] [] 
+ []
+
+<./images//logaritmo.png, id=1240, 449.68pt x 369.38pt>
+File: ./images//logaritmo.png Graphic file (type png)
+<use ./images//logaritmo.png>
+Package pdftex.def Info: ./images//logaritmo.png  used on input line 408.
+(pdftex.def)             Requested size: 142.26062pt x 113.80771pt.
+<./images//logaritmo-base-minore.png, id=1241, 463.7325pt x 412.54124pt>
+File: ./images//logaritmo-base-minore.png Graphic file (type png)
+<use ./images//logaritmo-base-minore.png>
+Package pdftex.def Info: ./images//logaritmo-base-minore.png  used on input lin
+e 414.
+(pdftex.def)             Requested size: 142.26254pt x 113.81114pt.
+
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 406--418
+[][] [] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[14 <./images//radice-pari.png> <./images//radice-dispari.png> <./images//espon
+enziale.png> <./images//esponsenziale-base-minore.png>]
+<./images//seno.png, id=1263, 599.23875pt x 241.90375pt>
+File: ./images//seno.png Graphic file (type png)
+<use ./images//seno.png>
+Package pdftex.def Info: ./images//seno.png  used on input line 435.
+(pdftex.def)             Requested size: 170.71652pt x 68.91374pt.
+<./images//arcoseno.png, id=1264, 195.73125pt x 270.00874pt>
+File: ./images//arcoseno.png Graphic file (type png)
+<use ./images//arcoseno.png>
+Package pdftex.def Info: ./images//arcoseno.png  used on input line 441.
+(pdftex.def)             Requested size: 56.90396pt x 65.4379pt.
 
 Overfull \hbox (2.2222pt too wide) in paragraph at lines 433--445
 [][] [] 
  []
 
-<./images//tangente.png, id=1263, 686.565pt x 627.34375pt>
+<./images//coseno.png, id=1267, 634.37pt x 220.825pt>
+File: ./images//coseno.png Graphic file (type png)
+<use ./images//coseno.png>
+Package pdftex.def Info: ./images//coseno.png  used on input line 460.
+(pdftex.def)             Requested size: 170.71652pt x 59.42473pt.
+<./images//arcocoseno.png, id=1268, 292.09125pt x 329.23pt>
+File: ./images//arcocoseno.png Graphic file (type png)
+<use ./images//arcocoseno.png>
+Package pdftex.def Info: ./images//arcocoseno.png  used on input line 466.
+(pdftex.def)             Requested size: 99.58603pt x 76.82147pt.
+
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 458--470
+[][] [] 
+ []
+
+[15 <./images//logaritmo.png> <./images//logaritmo-base-minore.png> <./images//
+seno.png> <./images//arcoseno.png> <./images//coseno.png> <./images//arcocoseno
+.png>]
+<./images//tangente.png, id=1289, 686.565pt x 627.34375pt>
 File: ./images//tangente.png Graphic file (type png)
 <use ./images//tangente.png>
-Package pdftex.def Info: ./images//tangente.png  used on input line 461.
+Package pdftex.def Info: ./images//tangente.png  used on input line 486.
 (pdftex.def)             Requested size: 119.50148pt x 109.1933pt.
-<./images//arcotangente.png, id=1264, 670.505pt x 315.1775pt>
+<./images//arcotangente.png, id=1290, 670.505pt x 315.1775pt>
 File: ./images//arcotangente.png Graphic file (type png)
 <use ./images//arcotangente.png>
-Package pdftex.def Info: ./images//arcotangente.png  used on input line 468.
+Package pdftex.def Info: ./images//arcotangente.png  used on input line 493.
 (pdftex.def)             Requested size: 142.26378pt x 66.87213pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 458--472
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 483--497
 [][] [] 
  []
 
@@ -1042,12 +1048,10 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 458--472
 
 LaTeX Warning: Command \O invalid in math mode on input line 4.
 
-[15 <./images//seno.png> <./images//arcoseno.png> <./images//coseno.png> <./ima
-ges//arcocoseno.png> <./images//tangente.png> <./images//arcotangente.png>]
 
 LaTeX Warning: Command \O invalid in math mode on input line 7.
 
-<./images//dimostrazione-massimo.png, id=1287, 564.1075pt x 182.6825pt>
+<./images//dimostrazione-massimo.png, id=1293, 564.1075pt x 182.6825pt>
 File: ./images//dimostrazione-massimo.png Graphic file (type png)
 <use ./images//dimostrazione-massimo.png>
 Package pdftex.def Info: ./images//dimostrazione-massimo.png  used on input lin
@@ -1098,6 +1102,8 @@ LaTeX Warning: Command \O invalid in math mode on input line 32.
 
 LaTeX Warning: Command \O invalid in math mode on input line 35.
 
+[16 <./images//tangente.png> <./images//arcotangente.png> <./images//dimostrazi
+one-massimo.png>]
 
 LaTeX Warning: Command \O invalid in math mode on input line 55.
 
@@ -1110,13 +1116,13 @@ LaTeX Warning: Command \O invalid in math mode on input line 61.
 
 LaTeX Warning: Command \O invalid in math mode on input line 69.
 
-[16 <./images//dimostrazione-massimo.png>]
 
 LaTeX Warning: Command \O invalid in math mode on input line 72.
 
 
 LaTeX Warning: Command \O invalid in math mode on input line 88.
 
+[17]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 110.
@@ -1129,8 +1135,8 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 110.
 
-[17]
-<./images//parte-intera.png, id=1326, 350.30875pt x 88.33pt>
+[18]
+<./images//parte-intera.png, id=1343, 350.30875pt x 88.33pt>
 File: ./images//parte-intera.png Graphic file (type png)
 <use ./images//parte-intera.png>
 Package pdftex.def Info: ./images//parte-intera.png  used on input line 131.
@@ -1145,7 +1151,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 137--138
 
  []
 
-<./images//funzione-parte-intera.png, id=1327, 714.67pt x 540.0175pt>
+<./images//funzione-parte-intera.png, id=1344, 714.67pt x 540.0175pt>
 File: ./images//funzione-parte-intera.png Graphic file (type png)
 <use ./images//funzione-parte-intera.png>
 Package pdftex.def Info: ./images//funzione-parte-intera.png  used on input lin
@@ -1171,7 +1177,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 152--155
 
  []
 
-<images/massimo_es1.png, id=1330, 474.77374pt x 162.6075pt>
+<images/massimo_es1.png, id=1347, 474.77374pt x 162.6075pt>
 File: images/massimo_es1.png Graphic file (type png)
 <use images/massimo_es1.png>
 Package pdftex.def Info: images/massimo_es1.png  used on input line 185.
@@ -1181,9 +1187,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 181--188
 
  []
 
-[18 <./images//parte-intera.png> <./images//funzione-parte-intera.png> <./image
+[19 <./images//parte-intera.png> <./images//funzione-parte-intera.png> <./image
 s/massimo_es1.png>]
-<images/massimo_es2.png, id=1353, 457.71pt x 611.28375pt>
+<images/massimo_es2.png, id=1369, 457.71pt x 611.28375pt>
 File: images/massimo_es2.png Graphic file (type png)
 <use images/massimo_es2.png>
 Package pdftex.def Info: images/massimo_es2.png  used on input line 198.
@@ -1251,12 +1257,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 201--204
 
  []
 
-<images/crescente-max-min.png, id=1354, 1050.92625pt x 469.755pt>
+<images/crescente-max-min.png, id=1370, 1050.92625pt x 469.755pt>
 File: images/crescente-max-min.png Graphic file (type png)
 <use images/crescente-max-min.png>
 Package pdftex.def Info: images/crescente-max-min.png  used on input line 216.
 (pdftex.def)             Requested size: 170.71652pt x 76.30202pt.
-<images/descrescente-max-min.png, id=1355, 601.24625pt x 407.5225pt>
+<images/descrescente-max-min.png, id=1371, 601.24625pt x 407.5225pt>
 File: images/descrescente-max-min.png Graphic file (type png)
 <use images/descrescente-max-min.png>
 Package pdftex.def Info: images/descrescente-max-min.png  used on input line 22
@@ -1267,26 +1273,26 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 214--226
 [][] [] 
  []
 
-) (valore-assoluto.tex [19 <./images/massimo_es2.png> <./images/crescente-max-m
+) (valore-assoluto.tex [20 <./images/massimo_es2.png> <./images/crescente-max-m
 in.png> <./images/descrescente-max-min.png>]
-<./images//es-proprieta-valore-assoluto.png, id=1371, 799.98875pt x 340.27126pt
+<./images//es-proprieta-valore-assoluto.png, id=1387, 799.98875pt x 340.27126pt
 >
 File: ./images//es-proprieta-valore-assoluto.png Graphic file (type png)
 <use ./images//es-proprieta-valore-assoluto.png>
 Package pdftex.def Info: ./images//es-proprieta-valore-assoluto.png  used on in
 put line 35.
 (pdftex.def)             Requested size: 284.52756pt x 121.023pt.
- [20 <./images//es-proprieta-valore-assoluto.png>]
+ [21 <./images//es-proprieta-valore-assoluto.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 63--65
 
  []
 
-) (continuità.tex [21]
+) (continuità.tex [22]
 
 Package wrapfig Warning: wrapfigure used inside a conflicting environment on in
 put line 18.
 
-<images/esempio-non-continuita.png, id=1398, 392.46625pt x 608.2725pt>
+<images/esempio-non-continuita.png, id=1414, 392.46625pt x 608.2725pt>
 File: images/esempio-non-continuita.png Graphic file (type png)
 <use images/esempio-non-continuita.png>
 Package pdftex.def Info: images/esempio-non-continuita.png  used on input line 
@@ -1364,14 +1370,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--48
 
  []
 
-[22 <./images/esempio-non-continuita.png>]
-<images/esempio1-osservazione-prop1.png, id=1420, 517.935pt x 371.3875pt>
+[23 <./images/esempio-non-continuita.png>]
+<images/esempio1-osservazione-prop1.png, id=1436, 517.935pt x 371.3875pt>
 File: images/esempio1-osservazione-prop1.png Graphic file (type png)
 <use images/esempio1-osservazione-prop1.png>
 Package pdftex.def Info: images/esempio1-osservazione-prop1.png  used on input 
 line 105.
 (pdftex.def)             Requested size: 156.49014pt x 112.21046pt.
-<images/esempio2-osservzione-prop1.png, id=1423, 466.74374pt x 643.40375pt>
+<images/esempio2-osservzione-prop1.png, id=1439, 466.74374pt x 643.40375pt>
 File: images/esempio2-osservzione-prop1.png Graphic file (type png)
 <use images/esempio2-osservzione-prop1.png>
 Package pdftex.def Info: images/esempio2-osservzione-prop1.png  used on input l
@@ -1392,7 +1398,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 122--125
 
  []
 
-[23 <./images/esempio1-osservazione-prop1.png> <./images/esempio2-osservzione-p
+[24 <./images/esempio1-osservazione-prop1.png> <./images/esempio2-osservzione-p
 rop1.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 134--139
 
@@ -1408,7 +1414,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 161--162
 
  []
 
-<images/esempio-teorema-zeri.png, id=1443, 636.3775pt x 392.46625pt>
+<images/esempio-teorema-zeri.png, id=1460, 636.3775pt x 392.46625pt>
 File: images/esempio-teorema-zeri.png Graphic file (type png)
 <use images/esempio-teorema-zeri.png>
 Package pdftex.def Info: images/esempio-teorema-zeri.png  used on input line 16
@@ -1429,7 +1435,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 172--175
 
  []
 
-[24 <./images/esempio-teorema-zeri.png>]
+[25 <./images/esempio-teorema-zeri.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 193--196
 
  []
@@ -1439,7 +1445,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 198--201
 
  []
 
-) (limiti.tex [25]
+) (limiti.tex [26]
 Underfull \hbox (badness 10000) in paragraph at lines 21--22
 
  []
@@ -1448,13 +1454,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--22
 Package wrapfig Warning: wrapfigure used inside a conflicting environment on in
 put line 25.
 
-<images/esempio-intorno-su-estremi.png, id=1472, 607.26875pt x 179.67125pt>
+<images/esempio-intorno-su-estremi.png, id=1488, 607.26875pt x 179.67125pt>
 File: images/esempio-intorno-su-estremi.png Graphic file (type png)
 <use images/esempio-intorno-su-estremi.png>
 Package pdftex.def Info: images/esempio-intorno-su-estremi.png  used on input l
 ine 27.
 (pdftex.def)             Requested size: 199.16928pt x 58.92705pt.
-<images/esempio-intorno-sepezzato.png, id=1473, 615.29875pt x 159.59625pt>
+<images/esempio-intorno-sepezzato.png, id=1489, 615.29875pt x 159.59625pt>
 File: images/esempio-intorno-sepezzato.png Graphic file (type png)
 <use images/esempio-intorno-sepezzato.png>
 Package pdftex.def Info: images/esempio-intorno-sepezzato.png  used on input li
@@ -1488,9 +1494,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 50--52
 
 LaTeX Warning: Command \O invalid in math mode on input line 58.
 
-[26 <./images/esempio-intorno-su-estremi.png> <./images/esempio-intorno-sepezza
+[27 <./images/esempio-intorno-su-estremi.png> <./images/esempio-intorno-sepezza
 to.png>]
-<images/insieme-N.png, id=1492, 378.41376pt x 100.375pt>
+<images/insieme-N.png, id=1508, 378.41376pt x 100.375pt>
 File: images/insieme-N.png Graphic file (type png)
 <use images/insieme-N.png>
 Package pdftex.def Info: images/insieme-N.png  used on input line 69.
@@ -1522,12 +1528,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 74--75
 
  []
 
-<images/min-max-locale.png, id=1494, 560.0925pt x 274.02374pt>
+<images/min-max-locale.png, id=1510, 560.0925pt x 274.02374pt>
 File: images/min-max-locale.png Graphic file (type png)
 <use images/min-max-locale.png>
 Package pdftex.def Info: images/min-max-locale.png  used on input line 99.
 (pdftex.def)             Requested size: 219.08612pt x 107.1866pt.
-<images/min-max-locale-stretto.png, id=1495, 572.1375pt x 491.8375pt>
+<images/min-max-locale-stretto.png, id=1511, 572.1375pt x 491.8375pt>
 File: images/min-max-locale-stretto.png Graphic file (type png)
 <use images/min-max-locale-stretto.png>
 Package pdftex.def Info: images/min-max-locale-stretto.png  used on input line 
@@ -1538,13 +1544,13 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 97--109
 [][] [] 
  []
 
-[27 <./images/insieme-N.png> <./images/min-max-locale.png> <./images/min-max-lo
+[28 <./images/insieme-N.png> <./images/min-max-locale.png> <./images/min-max-lo
 cale-stretto.png>]
 
 Package wrapfig Warning: wrapfigure used inside a conflicting environment on in
 put line 160.
 
-<images/es-continuita-limiti.png, id=1514, 626.34pt x 691.58376pt>
+<images/es-continuita-limiti.png, id=1530, 626.34pt x 691.58376pt>
 File: images/es-continuita-limiti.png Graphic file (type png)
 <use images/es-continuita-limiti.png>
 Package pdftex.def Info: images/es-continuita-limiti.png  used on input line 16
@@ -1555,14 +1561,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 167--175
 
  []
 
-[28 <./images/es-continuita-limiti.png>]
-<images/limite-tende-sopra.png, id=1531, 515.9275pt x 239.89626pt>
+[29 <./images/es-continuita-limiti.png>]
+<images/limite-tende-sopra.png, id=1547, 515.9275pt x 239.89626pt>
 File: images/limite-tende-sopra.png Graphic file (type png)
 <use images/limite-tende-sopra.png>
 Package pdftex.def Info: images/limite-tende-sopra.png  used on input line 219.
 
 (pdftex.def)             Requested size: 156.49014pt x 72.76375pt.
-<images/lim-tende-sotto.png, id=1532, 536.0025pt x 256.96pt>
+<images/lim-tende-sotto.png, id=1548, 536.0025pt x 256.96pt>
 File: images/lim-tende-sotto.png Graphic file (type png)
 <use images/lim-tende-sotto.png>
 Package pdftex.def Info: images/lim-tende-sotto.png  used on input line 224.
@@ -1581,8 +1587,8 @@ mr/m/n/10 0$ se pren-di-amo un in-torno di $\OML/cmm/m/it/10 x[]$ \OT1/cmr/m/n/
 ne
  []
 
-[29 <./images/limite-tende-sopra.png> <./images/lim-tende-sotto.png>]
-<images/es-limite-non-esiste.png, id=1549, 617.30624pt x 315.1775pt>
+[30 <./images/limite-tende-sopra.png> <./images/lim-tende-sotto.png>]
+<images/es-limite-non-esiste.png, id=1566, 617.30624pt x 315.1775pt>
 File: images/es-limite-non-esiste.png Graphic file (type png)
 <use images/es-limite-non-esiste.png>
 Package pdftex.def Info: images/es-limite-non-esiste.png  used on input line 24
@@ -1593,7 +1599,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 254--256
 
  []
 
-[30 <./images/es-limite-non-esiste.png>] [31]
+[31 <./images/es-limite-non-esiste.png>] [32]
 Underfull \hbox (badness 10000) in paragraph at lines 376--385
 
  []
@@ -1618,7 +1624,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 386--388
 
  []
 
-[32] [33]
+[33] [34]
 Underfull \hbox (badness 10000) in paragraph at lines 502--505
 
  []
@@ -1638,13 +1644,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 508--513
 
  []
 
-[34]
+[35]
 Underfull \hbox (badness 10000) in paragraph at lines 513--516
 
  []
 
-[35]
-<images/es-weirstrass-generalizzato.png, id=1623, 1053.9375pt x 518.93875pt>
+[36]
+<images/es-weirstrass-generalizzato.png, id=1640, 1053.9375pt x 518.93875pt>
 File: images/es-weirstrass-generalizzato.png Graphic file (type png)
 <use images/es-weirstrass-generalizzato.png>
 Package pdftex.def Info: images/es-weirstrass-generalizzato.png  used on input 
@@ -1695,73 +1701,73 @@ Underfull \hbox (badness 10000) in paragraph at lines 593--601
 
  []
 
-) (infinitesimi.tex [36 <./images/es-weirstrass-generalizzato.png>]
+) (infinitesimi.tex [37 <./images/es-weirstrass-generalizzato.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 46--50
 
  []
 
-[37]
-Underfull \hbox (badness 10000) in paragraph at lines 77--80
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 77--80
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 83--93
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 83--93
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 83--93
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 83--93
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 83--93
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 83--93
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 83--93
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 83--93
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 83--93
-
- []
-
 [38]
+Underfull \hbox (badness 10000) in paragraph at lines 77--80
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--80
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--93
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--93
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--93
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--93
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--93
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--93
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--93
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--93
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--93
+
+ []
+
+[39]
 Underfull \hbox (badness 10000) in paragraph at lines 130--133
 
  []
 
-) (asintoti.tex [39]
-<images/asintoto-esponenziale.png, id=1679, 555.07375pt x 373.395pt>
+) (asintoti.tex [40]
+<images/asintoto-esponenziale.png, id=1695, 555.07375pt x 373.395pt>
 File: images/asintoto-esponenziale.png Graphic file (type png)
 <use images/asintoto-esponenziale.png>
 Package pdftex.def Info: images/asintoto-esponenziale.png  used on input line 1
@@ -1797,7 +1803,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--21
 
  []
 
-<images/asintoto-arctan.png, id=1680, 803.0pt x 418.56375pt>
+<images/asintoto-arctan.png, id=1696, 803.0pt x 418.56375pt>
 File: images/asintoto-arctan.png Graphic file (type png)
 <use images/asintoto-arctan.png>
 Package pdftex.def Info: images/asintoto-arctan.png  used on input line 28.
@@ -1812,7 +1818,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--36
 
  []
 
-<images/asintoto-verticale-1.png, id=1681, 345.29pt x 408.52625pt>
+<images/asintoto-verticale-1.png, id=1697, 345.29pt x 408.52625pt>
 File: images/asintoto-verticale-1.png Graphic file (type png)
 <use images/asintoto-verticale-1.png>
 Package pdftex.def Info: images/asintoto-verticale-1.png  used on input line 48
@@ -1833,7 +1839,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 52--55
 
  []
 
-[40 <./images/asintoto-esponenziale.png> <./images/asintoto-arctan.png> <./imag
+[41 <./images/asintoto-esponenziale.png> <./images/asintoto-arctan.png> <./imag
 es/asintoto-verticale-1.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 66--70
 
@@ -1849,8 +1855,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 77--81
 
  []
 
-) (derivate.tex [41]
-<images/derivata-rapporto-incrementale.png, id=1706, 807.015pt x 475.7775pt>
+) (derivate.tex [42]
+<images/derivata-rapporto-incrementale.png, id=1723, 807.015pt x 475.7775pt>
 File: images/derivata-rapporto-incrementale.png Graphic file (type png)
 <use images/derivata-rapporto-incrementale.png>
 Package pdftex.def Info: images/derivata-rapporto-incrementale.png  used on inp
@@ -1881,13 +1887,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 33--39
 
  []
 
-[42 <./images/derivata-rapporto-incrementale.png>]
-<images/punto-angoloso.png, id=1721, 528.97626pt x 281.05pt>
+[43 <./images/derivata-rapporto-incrementale.png>]
+<images/punto-angoloso.png, id=1737, 528.97626pt x 281.05pt>
 File: images/punto-angoloso.png Graphic file (type png)
 <use images/punto-angoloso.png>
 Package pdftex.def Info: images/punto-angoloso.png  used on input line 79.
 (pdftex.def)             Requested size: 170.71652pt x 90.70117pt.
-<images/punto-cuspide.png, id=1722, 448.67625pt x 235.88126pt>
+<images/punto-cuspide.png, id=1738, 448.67625pt x 235.88126pt>
 File: images/punto-cuspide.png Graphic file (type png)
 <use images/punto-cuspide.png>
 Package pdftex.def Info: images/punto-cuspide.png  used on input line 85.
@@ -1912,7 +1918,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 98--104
 
  []
 
-[43 <./images/punto-angoloso.png> <./images/punto-cuspide.png>]
+[44 <./images/punto-angoloso.png> <./images/punto-cuspide.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 112--115
 
  []
@@ -1927,47 +1933,47 @@ Underfull \hbox (badness 10000) in paragraph at lines 155--158
 
  []
 
-[44]
-Underfull \hbox (badness 10000) in paragraph at lines 184--189
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 184--189
-
- []
-
 [45]
-Underfull \hbox (badness 10000) in paragraph at lines 236--242
+Underfull \hbox (badness 10000) in paragraph at lines 184--189
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 236--242
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 236--242
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 257--262
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 257--262
+Underfull \hbox (badness 10000) in paragraph at lines 184--189
 
  []
 
 [46]
-Underfull \hbox (badness 10000) in paragraph at lines 299--302
+Underfull \hbox (badness 10000) in paragraph at lines 236--242
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 236--242
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 236--242
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 257--262
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 257--262
 
  []
 
 [47]
+Underfull \hbox (badness 10000) in paragraph at lines 299--302
+
+ []
+
+[48]
 Underfull \hbox (badness 10000) in paragraph at lines 376--383
 
  []
@@ -2008,7 +2014,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 404--411
 
  []
 
-[48]
+[49]
 Underfull \hbox (badness 10000) in paragraph at lines 426--429
 
  []
@@ -2018,12 +2024,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 426--429
 
  []
 
-) (taylor.tex [49]
+) (taylor.tex [50]
 Underfull \hbox (badness 10000) in paragraph at lines 45--47
 
  []
 
-[50]
+[51]
 Underfull \hbox (badness 10000) in paragraph at lines 88--98
 
  []
@@ -2048,7 +2054,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 112--114
 
  []
 
-[51]
+[52]
 Underfull \hbox (badness 10000) in paragraph at lines 123--124
 
  []
@@ -2093,30 +2099,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 175--181
 
  []
 
-[52]
+[53]
 Underfull \hbox (badness 10000) in paragraph at lines 184--191
 
  []
 
-) (convessità.tex [53]
-<images/convessa.png, id=1881, 666.49pt x 442.65375pt>
+) (convessità.tex [54]
+<images/convessa.png, id=1898, 666.49pt x 442.65375pt>
 File: images/convessa.png Graphic file (type png)
 <use images/convessa.png>
 Package pdftex.def Info: images/convessa.png  used on input line 10.
 (pdftex.def)             Requested size: 108.12054pt x 71.80542pt.
-<images/concava.png, id=1882, 565.11125pt x 402.50375pt>
+<images/concava.png, id=1899, 565.11125pt x 402.50375pt>
 File: images/concava.png Graphic file (type png)
 <use images/concava.png>
 Package pdftex.def Info: images/concava.png  used on input line 26.
 (pdftex.def)             Requested size: 108.12054pt x 77.00468pt.
-<images/interpretazione-geometrica-convessita.png, id=1883, 870.25125pt x 494.8
+<images/interpretazione-geometrica-convessita.png, id=1900, 870.25125pt x 494.8
 4875pt>
 File: images/interpretazione-geometrica-convessita.png Graphic file (type png)
 <use images/interpretazione-geometrica-convessita.png>
 Package pdftex.def Info: images/interpretazione-geometrica-convessita.png  used
  on input line 70.
 (pdftex.def)             Requested size: 156.49014pt x 88.98587pt.
- [54 <./images/convessa.png> <./images/concava.png>]
+ [55 <./images/convessa.png> <./images/concava.png>]
 Underfull \hbox (badness 1194) in paragraph at lines 72--73
 \OT1/cmr/m/n/10 ef-fi-ciente an-go-lare sulla tan-gente cresce, e questo vuol
  []
@@ -2126,8 +2132,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 72--73
 
  []
 
-[55 <./images/interpretazione-geometrica-convessita.png>]
-<images/seno-concavo-convesso.png, id=1911, 991.705pt x 366.36874pt>
+[56 <./images/interpretazione-geometrica-convessita.png>]
+<images/seno-concavo-convesso.png, id=1927, 991.705pt x 366.36874pt>
 File: images/seno-concavo-convesso.png Graphic file (type png)
 <use images/seno-concavo-convesso.png>
 Package pdftex.def Info: images/seno-concavo-convesso.png  used on input line 8
@@ -2158,41 +2164,41 @@ Underfull \hbox (badness 10000) in paragraph at lines 107--109
 
  []
 
-[56 <./images/seno-concavo-convesso.png>]
+[57 <./images/seno-concavo-convesso.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 159--162
 
  []
 
-[57]
+[58]
 Underfull \hbox (badness 10000) in paragraph at lines 207--212
 
  []
 
-[58]) (integrali.tex [59]
-<images/area-sottografico.png, id=1962, 431.6125pt x 298.11375pt>
+[59]) (integrali.tex [60]
+<images/area-sottografico.png, id=1979, 431.6125pt x 298.11375pt>
 File: images/area-sottografico.png Graphic file (type png)
 <use images/area-sottografico.png>
 Package pdftex.def Info: images/area-sottografico.png  used on input line 6.
 (pdftex.def)             Requested size: 113.81102pt x 78.60857pt.
-<./images//somma-superiore.png, id=1963, 454.69875pt x 427.5975pt>
+<./images//somma-superiore.png, id=1980, 454.69875pt x 427.5975pt>
 File: ./images//somma-superiore.png Graphic file (type png)
 <use ./images//somma-superiore.png>
 Package pdftex.def Info: ./images//somma-superiore.png  used on input line 46.
 (pdftex.def)             Requested size: 113.81102pt x 107.02307pt.
-<./images//somma-inferiore.png, id=1964, 589.20125pt x 384.43625pt>
+<./images//somma-inferiore.png, id=1981, 589.20125pt x 384.43625pt>
 File: ./images//somma-inferiore.png Graphic file (type png)
 <use ./images//somma-inferiore.png>
 Package pdftex.def Info: ./images//somma-inferiore.png  used on input line 51.
 (pdftex.def)             Requested size: 128.0374pt x 83.53795pt.
-<./images//somma-indipendente.png, id=1965, 684.5575pt x 403.5075pt>
+<./images//somma-indipendente.png, id=1982, 684.5575pt x 403.5075pt>
 File: ./images//somma-indipendente.png Graphic file (type png)
 <use ./images//somma-indipendente.png>
 Package pdftex.def Info: ./images//somma-indipendente.png  used on input line 5
 6.
 (pdftex.def)             Requested size: 128.0374pt x 75.4666pt.
- [60 <./images/area-sottografico.png> <./images//somma-superiore.png> <./images
+ [61 <./images/area-sottografico.png> <./images//somma-superiore.png> <./images
 //somma-inferiore.png> <./images//somma-indipendente.png>]
-<images/area-positiva-negativa.png, id=1984, 530.98375pt x 281.05pt>
+<images/area-positiva-negativa.png, id=2000, 530.98375pt x 281.05pt>
 File: images/area-positiva-negativa.png Graphic file (type png)
 <use images/area-positiva-negativa.png>
 Package pdftex.def Info: images/area-positiva-negativa.png  used on input line 
@@ -2203,7 +2209,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 75--77
 
  []
 
-<images/funzione-dirichlet.png, id=1985, 453.695pt x 316.18124pt>
+<images/funzione-dirichlet.png, id=2001, 453.695pt x 316.18124pt>
 File: images/funzione-dirichlet.png Graphic file (type png)
 <use images/funzione-dirichlet.png>
 Package pdftex.def Info: images/funzione-dirichlet.png  used on input line 110.
@@ -2224,27 +2230,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 112--116
 
  []
 
-<images/differenze-aree-integrale.png, id=1986, 514.92375pt x 345.29pt>
+<images/differenze-aree-integrale.png, id=2002, 514.92375pt x 345.29pt>
 File: images/differenze-aree-integrale.png Graphic file (type png)
 <use images/differenze-aree-integrale.png>
 Package pdftex.def Info: images/differenze-aree-integrale.png  used on input li
 ne 120.
 (pdftex.def)             Requested size: 113.81102pt x 76.31703pt.
-[61 <./images/area-positiva-negativa.png> <./images/funzione-dirichlet.png> <./
+[62 <./images/area-positiva-negativa.png> <./images/funzione-dirichlet.png> <./
 images/differenze-aree-integrale.png>]
-<images/teorema-calcolo-integrali-1.png, id=2011, 428.60126pt x 248.93pt>
+<images/teorema-calcolo-integrali-1.png, id=2027, 428.60126pt x 248.93pt>
 File: images/teorema-calcolo-integrali-1.png Graphic file (type png)
 <use images/teorema-calcolo-integrali-1.png>
 Package pdftex.def Info: images/teorema-calcolo-integrali-1.png  used on input 
 line 142.
 (pdftex.def)             Requested size: 128.0374pt x 74.3643pt.
-<images/teorema-calcolo-integrali-2.png, id=2012, 481.8pt x 278.03876pt>
+<images/teorema-calcolo-integrali-2.png, id=2028, 481.8pt x 278.03876pt>
 File: images/teorema-calcolo-integrali-2.png Graphic file (type png)
 <use images/teorema-calcolo-integrali-2.png>
 Package pdftex.def Info: images/teorema-calcolo-integrali-2.png  used on input 
 line 147.
 (pdftex.def)             Requested size: 128.0374pt x 73.8878pt.
-<images/teorema-calcolo-integrali-3.png, id=2013, 549.05125pt x 393.47pt>
+<images/teorema-calcolo-integrali-3.png, id=2029, 549.05125pt x 393.47pt>
 File: images/teorema-calcolo-integrali-3.png Graphic file (type png)
 <use images/teorema-calcolo-integrali-3.png>
 Package pdftex.def Info: images/teorema-calcolo-integrali-3.png  used on input 
@@ -2255,7 +2261,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 165--166
 
  []
 
-<images/media-integrabile.png, id=2014, 442.65375pt x 279.0425pt>
+<images/media-integrabile.png, id=2030, 442.65375pt x 279.0425pt>
 File: images/media-integrabile.png Graphic file (type png)
 <use images/media-integrabile.png>
 Package pdftex.def Info: images/media-integrabile.png  used on input line 170.
@@ -2265,7 +2271,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 184--188
 
  []
 
-[62 <./images/teorema-calcolo-integrali-1.png> <./images/teorema-calcolo-integr
+[63 <./images/teorema-calcolo-integrali-1.png> <./images/teorema-calcolo-integr
 ali-2.png> <./images/teorema-calcolo-integrali-3.png> <./images/media-integrabi
 le.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 263--268
@@ -2282,12 +2288,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 263--268
 
  []
 
-[63]
+[64]
 Underfull \hbox (badness 10000) in paragraph at lines 322--325
 
  []
 
-[64]
+[65]
 Underfull \hbox (badness 10000) in paragraph at lines 339--342
 
  []
@@ -2312,7 +2318,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 369--374
 
  []
 
-[65]
+[66]
 Overfull \hbox (6.50078pt too wide) in paragraph at lines 385--387
 \OT1/cmr/m/n/10 (se si fosse scelto $\OML/cmm/m/it/10 k \OT1/cmr/m/n/10 = \OMS/
 cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 3$ in-vece che $\OML/cmm/m/it/10 k \OT1/cmr/m/n/
@@ -2320,7 +2326,7 @@ cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 3$ in-vece che $\OML/cmm/m/it/10 k \OT1/cmr/m/n/
 ]\OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 ^^@[]\OT1/cmr/m/n/10 ) +
  []
 
-<images/esempio-integrale-improprio-1.png, id=2070, 374.39874pt x 229.85875pt>
+<images/esempio-integrale-improprio-1.png, id=2087, 374.39874pt x 229.85875pt>
 File: images/esempio-integrale-improprio-1.png Graphic file (type png)
 <use images/esempio-integrale-improprio-1.png>
 Package pdftex.def Info: images/esempio-integrale-improprio-1.png  used on inpu
@@ -2338,8 +2344,8 @@ Overfull \hbox (31.42665pt too wide) in paragraph at lines 413--414
 /cmr/m/n/10 =
  []
 
-[66 <./images/esempio-integrale-improprio-1.png>]
-<images/esempio-intergale-improprio-2.png, id=2083, 387.4475pt x 286.06876pt>
+[67 <./images/esempio-integrale-improprio-1.png>]
+<images/esempio-intergale-improprio-2.png, id=2099, 387.4475pt x 286.06876pt>
 File: images/esempio-intergale-improprio-2.png Graphic file (type png)
 <use images/esempio-intergale-improprio-2.png>
 Package pdftex.def Info: images/esempio-intergale-improprio-2.png  used on inpu
@@ -2350,7 +2356,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 424--427
 
  []
 
-<images/esempio-integrale-improprio-3.png, id=2084, 524.96124pt x 223.83624pt>
+<images/esempio-integrale-improprio-3.png, id=2100, 524.96124pt x 223.83624pt>
 File: images/esempio-integrale-improprio-3.png Graphic file (type png)
 <use images/esempio-integrale-improprio-3.png>
 Package pdftex.def Info: images/esempio-integrale-improprio-3.png  used on inpu
@@ -2376,7 +2382,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 468--472
 
  []
 
-[67 <./images/esempio-intergale-improprio-2.png> <./images/esempio-integrale-im
+[68 <./images/esempio-intergale-improprio-2.png> <./images/esempio-integrale-im
 proprio-3.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 482--488
 
@@ -2387,7 +2393,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 491--494
 
  []
 
-[68] [69]
+[69] [70]
 Underfull \hbox (badness 10000) in paragraph at lines 624--631
 
  []
@@ -2403,7 +2409,7 @@ Overfull \hbox (10.86278pt too wide) in paragraph at lines 644--649
 so pos-si-amo: $[][] [] = [] [][] [] =$
  []
 
-[70]
+[71]
 Overfull \hbox (5.95515pt too wide) in paragraph at lines 656--659
 [][]\OT1/cmr/bx/n/10 Esempio 13.10.7. []\OT1/cmr/m/n/10 Ve-di-amo come $[][] []
 $ di-verge(questo da un es-em-pio di $\OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/c
@@ -2425,8 +2431,8 @@ $\OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 )\OML/cmm
 10 ^^U \OT1/cmr/m/n/10 0$ e $[] [] = [] [] = [] []$
  []
 
-[71] [72]) (successioni.tex [73]
-<images/esempio-successione-1.png, id=2159, 472.76625pt x 266.9975pt>
+[72] [73]) (successioni.tex [74]
+<images/esempio-successione-1.png, id=2175, 472.76625pt x 266.9975pt>
 File: images/esempio-successione-1.png Graphic file (type png)
 <use images/esempio-successione-1.png>
 Package pdftex.def Info: images/esempio-successione-1.png  used on input line 1
@@ -2453,21 +2459,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 15--17
 
  []
 
-<images/limite-successione-1.png, id=2160, 448.67625pt x 205.76875pt>
+<images/limite-successione-1.png, id=2176, 448.67625pt x 205.76875pt>
 File: images/limite-successione-1.png Graphic file (type png)
 <use images/limite-successione-1.png>
 Package pdftex.def Info: images/limite-successione-1.png  used on input line 45
 .
 (pdftex.def)             Requested size: 142.26378pt x 65.24136pt.
-<images/limite-successione-2.png, id=2161, 367.3725pt x 241.90375pt>
+<images/limite-successione-2.png, id=2177, 367.3725pt x 241.90375pt>
 File: images/limite-successione-2.png Graphic file (type png)
 <use images/limite-successione-2.png>
 Package pdftex.def Info: images/limite-successione-2.png  used on input line 50
 .
 (pdftex.def)             Requested size: 113.81102pt x 74.94139pt.
-[74 <./images/esempio-successione-1.png> <./images/limite-successione-1.png> <.
+[75 <./images/esempio-successione-1.png> <./images/limite-successione-1.png> <.
 /images/limite-successione-2.png>]
-<images/esempio-sottosuccessioni.png, id=2179, 444.66125pt x 382.42876pt>
+<images/esempio-sottosuccessioni.png, id=2195, 444.66125pt x 382.42876pt>
 File: images/esempio-sottosuccessioni.png Graphic file (type png)
 <use images/esempio-sottosuccessioni.png>
 Package pdftex.def Info: images/esempio-sottosuccessioni.png  used on input lin
@@ -2488,40 +2494,40 @@ Underfull \hbox (badness 10000) in paragraph at lines 79--82
 
  []
 
-[75 <./images/esempio-sottosuccessioni.png>]
-<images/limitatezza-successioni.png, id=2196, 498.86375pt x 205.76875pt>
+[76 <./images/esempio-sottosuccessioni.png>]
+<images/limitatezza-successioni.png, id=2212, 498.86375pt x 205.76875pt>
 File: images/limitatezza-successioni.png Graphic file (type png)
 <use images/limitatezza-successioni.png>
 Package pdftex.def Info: images/limitatezza-successioni.png  used on input line
  145.
 (pdftex.def)             Requested size: 142.26378pt x 58.67923pt.
-<images/teorema-minimo.png, id=2197, 473.77pt x 299.1175pt>
+<images/teorema-minimo.png, id=2213, 473.77pt x 299.1175pt>
 File: images/teorema-minimo.png Graphic file (type png)
 <use images/teorema-minimo.png>
 Package pdftex.def Info: images/teorema-minimo.png  used on input line 152.
 (pdftex.def)             Requested size: 113.81102pt x 71.85356pt.
-<images/esempio-mas-min-succesioni-1.png, id=2198, 437.635pt x 253.94875pt>
+<images/esempio-mas-min-succesioni-1.png, id=2214, 437.635pt x 253.94875pt>
 File: images/esempio-mas-min-succesioni-1.png Graphic file (type png)
 <use images/esempio-mas-min-succesioni-1.png>
 Package pdftex.def Info: images/esempio-mas-min-succesioni-1.png  used on input
  line 171.
 (pdftex.def)             Requested size: 128.0374pt x 74.29811pt.
-<images/esempio-mas-min-succesioni-2.png, id=2199, 421.575pt x 265.99374pt>
+<images/esempio-mas-min-succesioni-2.png, id=2215, 421.575pt x 265.99374pt>
 File: images/esempio-mas-min-succesioni-2.png Graphic file (type png)
 <use images/esempio-mas-min-succesioni-2.png>
 Package pdftex.def Info: images/esempio-mas-min-succesioni-2.png  used on input
  line 176.
 (pdftex.def)             Requested size: 113.81102pt x 71.80708pt.
-<images/esempio-mas-min-succesioni-3.png, id=2200, 463.7325pt x 284.06125pt>
+<images/esempio-mas-min-succesioni-3.png, id=2216, 463.7325pt x 284.06125pt>
 File: images/esempio-mas-min-succesioni-3.png Graphic file (type png)
 <use images/esempio-mas-min-succesioni-3.png>
 Package pdftex.def Info: images/esempio-mas-min-succesioni-3.png  used on input
  line 181.
 (pdftex.def)             Requested size: 113.81102pt x 69.7148pt.
- [76 <./images/limitatezza-successioni.png> <./images/teorema-minimo.png> <./im
+ [77 <./images/limitatezza-successioni.png> <./images/teorema-minimo.png> <./im
 ages/esempio-mas-min-succesioni-1.png> <./images/esempio-mas-min-succesioni-2.p
 ng> <./images/esempio-mas-min-succesioni-3.png>]
-<images/esempio-mas-min-successioni-4.png, id=2220, 401.5pt x 226.8475pt>
+<images/esempio-mas-min-successioni-4.png, id=2236, 401.5pt x 226.8475pt>
 File: images/esempio-mas-min-successioni-4.png Graphic file (type png)
 <use images/esempio-mas-min-successioni-4.png>
 Package pdftex.def Info: images/esempio-mas-min-successioni-4.png  used on inpu
@@ -2537,7 +2543,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 196--197
 
  []
 
-<images/legame-lim-successioni-funzioni.png, id=2221, 490.83376pt x 306.14375pt
+<images/legame-lim-successioni-funzioni.png, id=2237, 490.83376pt x 306.14375pt
 >
 File: images/legame-lim-successioni-funzioni.png Graphic file (type png)
 <use images/legame-lim-successioni-funzioni.png>
@@ -2558,7 +2564,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 215--216
 Package wrapfig Warning: Collision between wrapping environments on input line 
 221.
 
-<images/esempio-dim-con-legame-succ-fun.png, id=2222, 475.7775pt x 212.795pt>
+<images/esempio-dim-con-legame-succ-fun.png, id=2238, 475.7775pt x 212.795pt>
 File: images/esempio-dim-con-legame-succ-fun.png Graphic file (type png)
 <use images/esempio-dim-con-legame-succ-fun.png>
 Package pdftex.def Info: images/esempio-dim-con-legame-succ-fun.png  used on in
@@ -2583,7 +2589,7 @@ S/cmsy/m/n/10 1$ \OT1/cmr/m/n/10 tro-vi-amo $([] \OML/cmm/m/it/10 n[]\OT1/cmr/m
 cmr/m/n/10 )([] \OML/cmm/m/it/10 n\OT1/cmr/m/n/10 ) +
  []
 
-[77 <./images/esempio-mas-min-successioni-4.png> <./images/legame-lim-successio
+[78 <./images/esempio-mas-min-successioni-4.png> <./images/legame-lim-successio
 ni-funzioni.png> <./images/esempio-dim-con-legame-succ-fun.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 249--251
 
@@ -2595,7 +2601,7 @@ LaTeX Font Warning: Command \Large invalid in math mode on input line 279.
 
 LaTeX Font Warning: Command \Large invalid in math mode on input line 280.
 
-[78] [79]
+[79] [80]
 Underfull \hbox (badness 10000) in paragraph at lines 369--373
 
  []
@@ -2605,8 +2611,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 369--373
 
  []
 
-) (serie.tex [80]
-<images/serie-numeriche.png, id=2281, 414.54875pt x 225.84375pt>
+) (serie.tex [81]
+<images/serie-numeriche.png, id=2297, 414.54875pt x 225.84375pt>
 File: images/serie-numeriche.png Graphic file (type png)
 <use images/serie-numeriche.png>
 Package pdftex.def Info: images/serie-numeriche.png  used on input line 11.
@@ -2626,13 +2632,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 47--50
 
  []
 
-[81 <./images/serie-numeriche.png>]
+[82 <./images/serie-numeriche.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 58--60
 
  []
 
-[82] [83] [84]
-<images/legame-serie-integrali-impropri.png, id=2339, 392.46625pt x 246.9225pt>
+[83] [84] [85]
+<images/legame-serie-integrali-impropri.png, id=2355, 392.46625pt x 246.9225pt>
 
 File: images/legame-serie-integrali-impropri.png Graphic file (type png)
 <use images/legame-serie-integrali-impropri.png>
@@ -2648,7 +2654,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 224--229
 Package wrapfig Warning: Collision between wrapping environments on input line 
 231.
 
-<images/legame-serie-integrali-impropri-2.png, id=2340, 498.86375pt x 273.02pt>
+<images/legame-serie-integrali-impropri-2.png, id=2356, 498.86375pt x 273.02pt>
 
 File: images/legame-serie-integrali-impropri-2.png Graphic file (type png)
 <use images/legame-serie-integrali-impropri-2.png>
@@ -2689,7 +2695,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 237--238
 
  []
 
-[85 <./images/legame-serie-integrali-impropri.png> <./images/legame-serie-integ
+[86 <./images/legame-serie-integrali-impropri.png> <./images/legame-serie-integ
 rali-impropri-2.png>]
 Overfull \hbox (3.95906pt too wide) in paragraph at lines 279--280
 [][]\OT1/cmr/bx/n/10 Definizione 15.10.1 \OT1/cmr/m/n/10 (Con-ver-genza as-so-l
@@ -2698,13 +2704,13 @@ $ \OT1/cmr/bx/it/10 con-verge as-so-lu-ta-mente \OT1/cmr/m/it/10 se $[][] \OMS/
 cmsy/m/n/10 j\OML/cmm/m/it/10 a[]\OMS/cmsy/m/n/10 j$
  []
 
-[86]
+[87]
 Overfull \hbox (8.16629pt too wide) in paragraph at lines 328--331
 \OML/cmm/m/it/10 a[] \OT1/cmr/m/n/10 = []$, $\OML/cmm/m/it/10 b[] \OT1/cmr/m/n/
 10 = [] + [] = []$. Si ha $[] [] = [] [] = [] [] =
  []
 
-) (più-variabili.tex [87]
+) (più-variabili.tex [88]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 4.
@@ -2717,7 +2723,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 4.
 
-<images/ess-vettore.png, id=2377, 581.17125pt x 299.1175pt>
+<images/ess-vettore.png, id=2393, 581.17125pt x 299.1175pt>
 File: images/ess-vettore.png Graphic file (type png)
 <use images/ess-vettore.png>
 Package pdftex.def Info: images/ess-vettore.png  used on input line 41.
@@ -2734,20 +2740,20 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 45.
 
-[88 <./images/ess-vettore.png>]
-<images/sfera-piena-priva-bordo.png, id=2389, 808.01875pt x 236.885pt>
+[89 <./images/ess-vettore.png>]
+<images/sfera-piena-priva-bordo.png, id=2405, 808.01875pt x 236.885pt>
 File: images/sfera-piena-priva-bordo.png Graphic file (type png)
 <use images/sfera-piena-priva-bordo.png>
 Package pdftex.def Info: images/sfera-piena-priva-bordo.png  used on input line
  59.
 (pdftex.def)             Requested size: 170.71652pt x 50.04732pt.
-<images/circonferenza-esclusa.png, id=2390, 416.55624pt x 245.91875pt>
+<images/circonferenza-esclusa.png, id=2406, 416.55624pt x 245.91875pt>
 File: images/circonferenza-esclusa.png Graphic file (type png)
 <use images/circonferenza-esclusa.png>
 Package pdftex.def Info: images/circonferenza-esclusa.png  used on input line 6
 4.
 (pdftex.def)             Requested size: 113.81102pt x 67.18695pt.
-<images/ess-sfera.png, id=2391, 980.66376pt x 378.41376pt>
+<images/ess-sfera.png, id=2407, 980.66376pt x 378.41376pt>
 File: images/ess-sfera.png Graphic file (type png)
 <use images/ess-sfera.png>
 Package pdftex.def Info: images/ess-sfera.png  used on input line 77.
@@ -2771,14 +2777,14 @@ LaTeX Warning: Command \O invalid in math mode on input line 90.
 
 LaTeX Warning: Command \O invalid in math mode on input line 90.
 
-[89 <./images/sfera-piena-priva-bordo.png> <./images/circonferenza-esclusa.png>
+[90 <./images/sfera-piena-priva-bordo.png> <./images/circonferenza-esclusa.png>
  <./images/ess-sfera.png>]
-<images/ess-punti-interni.png, id=2405, 938.50626pt x 255.95625pt>
+<images/ess-punti-interni.png, id=2422, 938.50626pt x 255.95625pt>
 File: images/ess-punti-interni.png Graphic file (type png)
 <use images/ess-punti-interni.png>
 Package pdftex.def Info: images/ess-punti-interni.png  used on input line 111.
 (pdftex.def)             Requested size: 227.62204pt x 62.07516pt.
-<images/punti-accumulazione.png, id=2406, 541.02126pt x 377.41pt>
+<images/punti-accumulazione.png, id=2423, 541.02126pt x 377.41pt>
 File: images/punti-accumulazione.png Graphic file (type png)
 <use images/punti-accumulazione.png>
 Package pdftex.def Info: images/punti-accumulazione.png  used on input line 131
@@ -2788,7 +2794,7 @@ Package pdftex.def Info: images/punti-accumulazione.png  used on input line 131
 
 LaTeX Warning: Command \O invalid in math mode on input line 133.
 
-[90 <./images/ess-punti-interni.png> <./images/punti-accumulazione.png>]
+[91 <./images/ess-punti-interni.png> <./images/punti-accumulazione.png>]
 
 LaTeX Warning: Command \O invalid in math mode on input line 174.
 
@@ -2801,7 +2807,7 @@ Overfull \hbox (4.49956pt too wide) in paragraph at lines 182--183
 Re chiusa. 
  []
 
-<images/oss-punto-accumulo.png, id=2425, 450.68375pt x 270.00874pt>
+<images/oss-punto-accumulo.png, id=2441, 450.68375pt x 270.00874pt>
 File: images/oss-punto-accumulo.png Graphic file (type png)
 <use images/oss-punto-accumulo.png>
 Package pdftex.def Info: images/oss-punto-accumulo.png  used on input line 209.
@@ -2819,18 +2825,18 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 213.
 
-<images/piano_R2.png, id=2426, 413.545pt x 215.80624pt>
+<images/piano_R2.png, id=2442, 413.545pt x 215.80624pt>
 File: images/piano_R2.png Graphic file (type png)
 <use images/piano_R2.png>
 Package pdftex.def Info: images/piano_R2.png  used on input line 217.
 (pdftex.def)             Requested size: 113.81102pt x 59.39134pt.
-<images/retta-2-punti.png, id=2427, 556.0775pt x 286.06876pt>
+<images/retta-2-punti.png, id=2443, 556.0775pt x 286.06876pt>
 File: images/retta-2-punti.png Graphic file (type png)
 <use images/retta-2-punti.png>
 Package pdftex.def Info: images/retta-2-punti.png  used on input line 225.
 (pdftex.def)             Requested size: 128.0374pt x 65.86862pt.
-[91 <./images/oss-punto-accumulo.png> <./images/piano_R2.png>]
-<images/retta-perpendicolare-in-R3.png, id=2441, 425.59pt x 334.24875pt>
+[92 <./images/oss-punto-accumulo.png> <./images/piano_R2.png>]
+<images/retta-perpendicolare-in-R3.png, id=2457, 425.59pt x 334.24875pt>
 File: images/retta-perpendicolare-in-R3.png Graphic file (type png)
 <use images/retta-perpendicolare-in-R3.png>
 Package pdftex.def Info: images/retta-perpendicolare-in-R3.png  used on input l
@@ -2841,7 +2847,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 239--244
 
  []
 
-<images/retta-tangente-in-R3.png, id=2442, 907.39pt x 436.63126pt>
+<images/retta-tangente-in-R3.png, id=2458, 907.39pt x 436.63126pt>
 File: images/retta-tangente-in-R3.png Graphic file (type png)
 <use images/retta-tangente-in-R3.png>
 Package pdftex.def Info: images/retta-tangente-in-R3.png  used on input line 26
@@ -2852,7 +2858,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 258--263
 
  []
 
-[92 <./images/retta-2-punti.png> <./images/retta-perpendicolare-in-R3.png>]
+[93 <./images/retta-2-punti.png> <./images/retta-perpendicolare-in-R3.png>]
 Underfull \hbox (badness 1019) in paragraph at lines 263--266
 \OT1/cmr/m/n/10 amo $\OML/cmm/m/it/10 y[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 f\
 OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]\OT1/cmr/m/n/10 )$ pos-si-amo fare lo svilu
@@ -2876,13 +2882,13 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 286.
 
-<images/retta-passante-2-punti-R3.png, id=2455, 612.2875pt x 317.185pt>
+<images/retta-passante-2-punti-R3.png, id=2471, 612.2875pt x 317.185pt>
 File: images/retta-passante-2-punti-R3.png Graphic file (type png)
 <use images/retta-passante-2-punti-R3.png>
 Package pdftex.def Info: images/retta-passante-2-punti-R3.png  used on input li
 ne 293.
 (pdftex.def)             Requested size: 119.50148pt x 61.90163pt.
-[93 <./images/retta-tangente-in-R3.png> <./images/retta-passante-2-punti-R3.png
+[94 <./images/retta-tangente-in-R3.png> <./images/retta-passante-2-punti-R3.png
 >]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -2896,7 +2902,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 302.
 
-<images/retta-passante-3-punti-R3.png, id=2467, 908.39375pt x 416.55624pt>
+<images/retta-passante-3-punti-R3.png, id=2483, 908.39375pt x 416.55624pt>
 File: images/retta-passante-3-punti-R3.png Graphic file (type png)
 <use images/retta-passante-3-punti-R3.png>
 Package pdftex.def Info: images/retta-passante-3-punti-R3.png  used on input li
@@ -2923,83 +2929,83 @@ Overfull \hbox (5.09424pt too wide) detected at line 314
 \OT1/cmr/m/n/10 = [] = [] = [] = []
  []
 
-[94 <./images/retta-passante-3-punti-R3.png>]
-<images/disegno-R3-ess1.png, id=2476, 538.01pt x 417.56pt>
+[95 <./images/retta-passante-3-punti-R3.png>]
+<images/disegno-R3-ess1.png, id=2492, 538.01pt x 417.56pt>
 File: images/disegno-R3-ess1.png Graphic file (type png)
 <use images/disegno-R3-ess1.png>
 Package pdftex.def Info: images/disegno-R3-ess1.png  used on input line 338.
 (pdftex.def)             Requested size: 113.81102pt x 88.32732pt.
-<images/disegno-R3-ess2.png, id=2479, 464.73625pt x 361.35pt>
+<images/disegno-R3-ess2.png, id=2495, 464.73625pt x 361.35pt>
 File: images/disegno-R3-ess2.png Graphic file (type png)
 <use images/disegno-R3-ess2.png>
 Package pdftex.def Info: images/disegno-R3-ess2.png  used on input line 343.
 (pdftex.def)             Requested size: 113.81102pt x 88.49017pt.
-<images/disegno-R3-ess3.png, id=2482, 685.56125pt x 439.6425pt>
+<images/disegno-R3-ess3.png, id=2498, 685.56125pt x 439.6425pt>
 File: images/disegno-R3-ess3.png Graphic file (type png)
 <use images/disegno-R3-ess3.png>
 Package pdftex.def Info: images/disegno-R3-ess3.png  used on input line 348.
 (pdftex.def)             Requested size: 113.81102pt x 72.98062pt.
-<images/disegno-R3-ess4.png, id=2485, 580.1675pt x 510.90875pt>
+<images/disegno-R3-ess4.png, id=2501, 580.1675pt x 510.90875pt>
 File: images/disegno-R3-ess4.png Graphic file (type png)
 <use images/disegno-R3-ess4.png>
 Package pdftex.def Info: images/disegno-R3-ess4.png  used on input line 376.
 (pdftex.def)             Requested size: 85.35826pt x 75.16739pt.
-<images/disegno-R3-ess5.png, id=2488, 617.30624pt x 457.71pt>
+<images/disegno-R3-ess5.png, id=2504, 617.30624pt x 457.71pt>
 File: images/disegno-R3-ess5.png Graphic file (type png)
 <use images/disegno-R3-ess5.png>
 Package pdftex.def Info: images/disegno-R3-ess5.png  used on input line 381.
 (pdftex.def)             Requested size: 85.35826pt x 63.28975pt.
-<images/disegno-R3-ess6.png, id=2491, 421.575pt x 395.4775pt>
+<images/disegno-R3-ess6.png, id=2507, 421.575pt x 395.4775pt>
 File: images/disegno-R3-ess6.png Graphic file (type png)
 <use images/disegno-R3-ess6.png>
 Package pdftex.def Info: images/disegno-R3-ess6.png  used on input line 386.
 (pdftex.def)             Requested size: 85.35826pt x 80.07169pt.
-<images/disegno-R3-ess7.png, id=2494, 404.51125pt x 409.53pt>
+<images/disegno-R3-ess7.png, id=2510, 404.51125pt x 409.53pt>
 File: images/disegno-R3-ess7.png Graphic file (type png)
 <use images/disegno-R3-ess7.png>
 Package pdftex.def Info: images/disegno-R3-ess7.png  used on input line 391.
 (pdftex.def)             Requested size: 85.35826pt x 86.41626pt.
- [95 <./images/disegno-R3-ess1.png> <./images/disegno-R3-ess2.png> <./images/di
+ [96 <./images/disegno-R3-ess1.png> <./images/disegno-R3-ess2.png> <./images/di
 segno-R3-ess3.png> <./images/disegno-R3-ess4.png> <./images/disegno-R3-ess5.png
 > <./images/disegno-R3-ess6.png> <./images/disegno-R3-ess7.png>]
-<images/disegno-R3-ess8.png, id=2517, 528.97626pt x 305.14pt>
+<images/disegno-R3-ess8.png, id=2534, 528.97626pt x 305.14pt>
 File: images/disegno-R3-ess8.png Graphic file (type png)
 <use images/disegno-R3-ess8.png>
 Package pdftex.def Info: images/disegno-R3-ess8.png  used on input line 429.
 (pdftex.def)             Requested size: 85.35826pt x 49.23778pt.
-<images/disegno-R3-ess10.png, id=2520, 467.7475pt x 287.0725pt>
+<images/disegno-R3-ess10.png, id=2537, 467.7475pt x 287.0725pt>
 File: images/disegno-R3-ess10.png Graphic file (type png)
 <use images/disegno-R3-ess10.png>
 Package pdftex.def Info: images/disegno-R3-ess10.png  used on input line 434.
 (pdftex.def)             Requested size: 85.35826pt x 52.38481pt.
-<images/disegno-R3-ess11.png, id=2523, 402.50375pt x 478.78876pt>
+<images/disegno-R3-ess11.png, id=2540, 402.50375pt x 478.78876pt>
 File: images/disegno-R3-ess11.png Graphic file (type png)
 <use images/disegno-R3-ess11.png>
 Package pdftex.def Info: images/disegno-R3-ess11.png  used on input line 439.
 (pdftex.def)             Requested size: 85.35826pt x 101.53487pt.
-<images/disegno-R3-ess12.png, id=2526, 541.02126pt x 297.11pt>
+<images/disegno-R3-ess12.png, id=2543, 541.02126pt x 297.11pt>
 File: images/disegno-R3-ess12.png Graphic file (type png)
 <use images/disegno-R3-ess12.png>
 Package pdftex.def Info: images/disegno-R3-ess12.png  used on input line 444.
 (pdftex.def)             Requested size: 85.35826pt x 46.87213pt.
-<images/curva-semplice-non-chiusa.png, id=2529, 347.2975pt x 305.14pt>
+<images/curva-semplice-non-chiusa.png, id=2546, 347.2975pt x 305.14pt>
 File: images/curva-semplice-non-chiusa.png Graphic file (type png)
 <use images/curva-semplice-non-chiusa.png>
 Package pdftex.def Info: images/curva-semplice-non-chiusa.png  used on input li
 ne 485.
 (pdftex.def)             Requested size: 91.04872pt x 79.99568pt.
-<images/semplice-chiusa.png, id=2532, 239.89626pt x 236.885pt>
+<images/semplice-chiusa.png, id=2549, 239.89626pt x 236.885pt>
 File: images/semplice-chiusa.png Graphic file (type png)
 <use images/semplice-chiusa.png>
 Package pdftex.def Info: images/semplice-chiusa.png  used on input line 490.
 (pdftex.def)             Requested size: 91.04872pt x 89.90518pt.
-<images/non-chiusa-non-semplice.png, id=2535, 362.35374pt x 383.4325pt>
+<images/non-chiusa-non-semplice.png, id=2552, 362.35374pt x 383.4325pt>
 File: images/non-chiusa-non-semplice.png Graphic file (type png)
 <use images/non-chiusa-non-semplice.png>
 Package pdftex.def Info: images/non-chiusa-non-semplice.png  used on input line
  495.
 (pdftex.def)             Requested size: 91.04872pt x 96.34349pt.
-<images/chiusa-non-semplice.png, id=2538, 855.195pt x 162.6075pt>
+<images/chiusa-non-semplice.png, id=2555, 855.195pt x 162.6075pt>
 File: images/chiusa-non-semplice.png Graphic file (type png)
 <use images/chiusa-non-semplice.png>
 Package pdftex.def Info: images/chiusa-non-semplice.png  used on input line 501
@@ -3010,22 +3016,22 @@ Overfull \hbox (62.73833pt too wide) in paragraph at lines 501--502
  [][] 
  []
 
-[96 <./images/disegno-R3-ess8.png> <./images/disegno-R3-ess10.png> <./images/di
+[97 <./images/disegno-R3-ess8.png> <./images/disegno-R3-ess10.png> <./images/di
 segno-R3-ess11.png> <./images/disegno-R3-ess12.png>]
-<images/ess-curva-piano.png, id=2558, 480.79625pt x 486.81876pt>
+<images/ess-curva-piano.png, id=2574, 480.79625pt x 486.81876pt>
 File: images/ess-curva-piano.png Graphic file (type png)
 <use images/ess-curva-piano.png>
 Package pdftex.def Info: images/ess-curva-piano.png  used on input line 530.
 (pdftex.def)             Requested size: 113.81102pt x 115.23438pt.
- [97 <./images/curva-semplice-non-chiusa.png> <./images/semplice-chiusa.png> <.
+ [98 <./images/curva-semplice-non-chiusa.png> <./images/semplice-chiusa.png> <.
 /images/non-chiusa-non-semplice.png> <./images/chiusa-non-semplice.png> <./imag
 es/ess-curva-piano.png>]
-<images/ess-curva-piano-2.png, id=2577, 555.07375pt x 423.5825pt>
+<images/ess-curva-piano-2.png, id=2593, 555.07375pt x 423.5825pt>
 File: images/ess-curva-piano-2.png Graphic file (type png)
 <use images/ess-curva-piano-2.png>
 Package pdftex.def Info: images/ess-curva-piano-2.png  used on input line 542.
 (pdftex.def)             Requested size: 113.81102pt x 86.8479pt.
-<images/ess-funzioni-2-var.png, id=2578, 805.0075pt x 468.75125pt>
+<images/ess-funzioni-2-var.png, id=2594, 805.0075pt x 468.75125pt>
 File: images/ess-funzioni-2-var.png Graphic file (type png)
 <use images/ess-funzioni-2-var.png>
 Package pdftex.def Info: images/ess-funzioni-2-var.png  used on input line 566.
@@ -3045,11 +3051,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 568--571
 
 LaTeX Warning: Command \O invalid in math mode on input line 589.
 
-[98 <./images/ess-curva-piano-2.png> <./images/ess-funzioni-2-var.png>]
+[99 <./images/ess-curva-piano-2.png> <./images/ess-funzioni-2-var.png>]
 
 LaTeX Warning: Command \O invalid in math mode on input line 609.
 
-<images/ess-insiemi-livello-1.png, id=2593, 820.06375pt x 271.0125pt>
+<images/ess-insiemi-livello-1.png, id=2609, 820.06375pt x 271.0125pt>
 File: images/ess-insiemi-livello-1.png Graphic file (type png)
 <use images/ess-insiemi-livello-1.png>
 Package pdftex.def Info: images/ess-insiemi-livello-1.png  used on input line 6
@@ -3060,51 +3066,51 @@ Overfull \hbox (9.18889pt too wide) in paragraph at lines 620--621
  [][] 
  []
 
-<images/ess-insiemi-livello-2.png, id=2596, 471.7625pt x 290.08376pt>
+<images/ess-insiemi-livello-2.png, id=2612, 471.7625pt x 290.08376pt>
 File: images/ess-insiemi-livello-2.png Graphic file (type png)
 <use images/ess-insiemi-livello-2.png>
 Package pdftex.def Info: images/ess-insiemi-livello-2.png  used on input line 6
 25.
 (pdftex.def)             Requested size: 105.2751pt x 64.73044pt.
-<images/ess-insiemi-livello-3.png, id=2599, 479.7925pt x 426.59375pt>
+<images/ess-insiemi-livello-3.png, id=2615, 479.7925pt x 426.59375pt>
 File: images/ess-insiemi-livello-3.png Graphic file (type png)
 <use images/ess-insiemi-livello-3.png>
 Package pdftex.def Info: images/ess-insiemi-livello-3.png  used on input line 6
 30.
 (pdftex.def)             Requested size: 93.89418pt x 83.48161pt.
-) (limiti-più-variabili.tex [99 <./images/ess-insiemi-livello-1.png> <./images
-/ess-insiemi-livello-2.png> <./images/ess-insiemi-livello-3.png>]
-<images/limiti-piu-variabili-+inf.png, id=2615, 612.2875pt x 343.2825pt>
+) (limiti-più-variabili.tex [100 <./images/ess-insiemi-livello-1.png> <./image
+s/ess-insiemi-livello-2.png> <./images/ess-insiemi-livello-3.png>]
+<images/limiti-piu-variabili-+inf.png, id=2631, 612.2875pt x 343.2825pt>
 File: images/limiti-piu-variabili-+inf.png Graphic file (type png)
 <use images/limiti-piu-variabili-+inf.png>
 Package pdftex.def Info: images/limiti-piu-variabili-+inf.png  used on input li
 ne 23.
 (pdftex.def)             Requested size: 113.81102pt x 63.80482pt.
-<images/limiti-piu-variabili--inf.png, id=2618, 647.41875pt x 362.35374pt>
+<images/limiti-piu-variabili--inf.png, id=2634, 647.41875pt x 362.35374pt>
 File: images/limiti-piu-variabili--inf.png Graphic file (type png)
 <use images/limiti-piu-variabili--inf.png>
 Package pdftex.def Info: images/limiti-piu-variabili--inf.png  used on input li
 ne 28.
 (pdftex.def)             Requested size: 113.81102pt x 63.69482pt.
- [100 <./images/limiti-piu-variabili-+inf.png> <./images/limiti-piu-variabili--
+ [101 <./images/limiti-piu-variabili-+inf.png> <./images/limiti-piu-variabili--
 inf.png>]
-<images/ess-lim-2var-asseX.png, id=2640, 442.65375pt x 338.26375pt>
+<images/ess-lim-2var-asseX.png, id=2656, 442.65375pt x 338.26375pt>
 File: images/ess-lim-2var-asseX.png Graphic file (type png)
 <use images/ess-lim-2var-asseX.png>
 Package pdftex.def Info: images/ess-lim-2var-asseX.png  used on input line 87.
 (pdftex.def)             Requested size: 142.26378pt x 108.7163pt.
-<images/ess-lim-2var-2.png, id=2641, 542.025pt x 313.17pt>
+<images/ess-lim-2var-2.png, id=2657, 542.025pt x 313.17pt>
 File: images/ess-lim-2var-2.png Graphic file (type png)
 <use images/ess-lim-2var-2.png>
 Package pdftex.def Info: images/ess-lim-2var-2.png  used on input line 99.
 (pdftex.def)             Requested size: 113.81102pt x 65.7533pt.
-<images/ess-lim-2var-3.png, id=2642, 568.1225pt x 447.6725pt>
+<images/ess-lim-2var-3.png, id=2658, 568.1225pt x 447.6725pt>
 File: images/ess-lim-2var-3.png Graphic file (type png)
 <use images/ess-lim-2var-3.png>
 Package pdftex.def Info: images/ess-lim-2var-3.png  used on input line 125.
 (pdftex.def)             Requested size: 122.34692pt x 96.40482pt.
 
-[101 <./images/ess-lim-2var-asseX.png> <./images/ess-lim-2var-2.png>] [102 <./i
+[102 <./images/ess-lim-2var-asseX.png> <./images/ess-lim-2var-2.png>] [103 <./i
 mages/ess-lim-2var-3.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -3118,14 +3124,14 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 165.
 
-[103]
+[104]
 Overfull \hbox (13.00212pt too wide) in paragraph at lines 195--197
 [][]\OT1/cmr/bx/n/10 Esempio 17.6.2. []\OT1/cmr/m/n/10 Pren-di-amo $[] \OML/cmm
 /m/it/10 xye[]$\OT1/cmr/m/n/10 . Come sem-pre vale che il lim-ite vale per $[] 
 \OMS/cmsy/m/n/10 ([])
  []
 
-) (calcolo-differenziale-più-variabili.tex [104]
+) (calcolo-differenziale-più-variabili.tex [105]
 Underfull \hbox (badness 10000) in paragraph at lines 4--7
 
  []
@@ -3140,12 +3146,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--7
 
  []
 
-<images/derivata-parziale.png, id=2683, 640.3925pt x 392.46625pt>
+<images/derivata-parziale.png, id=2699, 640.3925pt x 392.46625pt>
 File: images/derivata-parziale.png Graphic file (type png)
 <use images/derivata-parziale.png>
 Package pdftex.def Info: images/derivata-parziale.png  used on input line 11.
 (pdftex.def)             Requested size: 119.50148pt x 73.2339pt.
-<images/derivata-parziale-geometricamente.png, id=2684, 1039.885pt x 616.3025pt
+<images/derivata-parziale-geometricamente.png, id=2700, 1039.885pt x 616.3025pt
 >
 File: images/derivata-parziale-geometricamente.png Graphic file (type png)
 <use images/derivata-parziale-geometricamente.png>
@@ -3162,9 +3168,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--42
 
  []
 
-[105 <./images/derivata-parziale.png> <./images/derivata-parziale-geometricamen
+[106 <./images/derivata-parziale.png> <./images/derivata-parziale-geometricamen
 te.png>]
-<images/deri-direzionale.png, id=2697, 776.9025pt x 347.2975pt>
+<images/deri-direzionale.png, id=2713, 776.9025pt x 347.2975pt>
 File: images/deri-direzionale.png Graphic file (type png)
 <use images/deri-direzionale.png>
 Package pdftex.def Info: images/deri-direzionale.png  used on input line 60.
@@ -3217,7 +3223,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 86--88
 
  []
 
-[106 <./images/deri-direzionale.png>]
+[107 <./images/deri-direzionale.png>]
 Overfull \hbox (29.73462pt too wide) in paragraph at lines 107--109
 [][]\OT1/cmr/bx/n/10 Esempio 18.3.1. []\OT1/cmr/m/n/10 Con-sid-e-ri-amo $\OML/c
 mm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y\OT1/cmr/m/n/10 ) = []$
@@ -3256,7 +3262,7 @@ Overfull \hbox (3.0471pt too wide) in paragraph at lines 119--122
 enza
  []
 
-[107]
+[108]
 Underfull \hbox (badness 10000) in paragraph at lines 136--138
 
  []
@@ -3276,7 +3282,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 140--145
 
  []
 
-[108]
+[109]
 Overfull \hbox (0.98949pt too wide) in paragraph at lines 160--161
 []$\OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y\OT1/cmr/m/n/10 ) = 
 \OML/cmm/m/it/10 x[]$\OT1/cmr/m/n/10 , $\OML/cmm/m/it/10 f[]\OT1/cmr/m/n/10 (\O
@@ -3291,19 +3297,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 165--166
 
  []
 
-[109]
-<images/sign-geom-gradiante.png, id=2735, 575.14874pt x 444.66125pt>
+[110]
+<images/sign-geom-gradiante.png, id=2751, 575.14874pt x 444.66125pt>
 File: images/sign-geom-gradiante.png Graphic file (type png)
 <use images/sign-geom-gradiante.png>
 Package pdftex.def Info: images/sign-geom-gradiante.png  used on input line 170
 .
 (pdftex.def)             Requested size: 142.26378pt x 109.98445pt.
-<images/ess-gradiante-1.png, id=2736, 721.69624pt x 351.3125pt>
+<images/ess-gradiante-1.png, id=2752, 721.69624pt x 351.3125pt>
 File: images/ess-gradiante-1.png Graphic file (type png)
 <use images/ess-gradiante-1.png>
 Package pdftex.def Info: images/ess-gradiante-1.png  used on input line 185.
 (pdftex.def)             Requested size: 133.72786pt x 65.09364pt.
-<images/ess-gradiane-2.png, id=2737, 800.9925pt x 510.90875pt>
+<images/ess-gradiane-2.png, id=2753, 800.9925pt x 510.90875pt>
 File: images/ess-gradiane-2.png Graphic file (type png)
 <use images/ess-gradiane-2.png>
 Package pdftex.def Info: images/ess-gradiane-2.png  used on input line 197.
@@ -3313,14 +3319,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 209--211
 
  []
 
-) (max-min-più-variabili.tex [110 <./images/sign-geom-gradiante.png> <./images
+) (max-min-più-variabili.tex [111 <./images/sign-geom-gradiante.png> <./images
 /ess-gradiante-1.png> <./images/ess-gradiane-2.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 4--7
 
  []
 
-[111]
-<images/max-min-ess-insiemi-livello-1.png, id=2766, 916.42375pt x 463.7325pt>
+[112]
+<images/max-min-ess-insiemi-livello-1.png, id=2782, 916.42375pt x 463.7325pt>
 File: images/max-min-ess-insiemi-livello-1.png Graphic file (type png)
 <use images/max-min-ess-insiemi-livello-1.png>
 Package pdftex.def Info: images/max-min-ess-insiemi-livello-1.png  used on inpu
@@ -3330,11 +3336,11 @@ t line 79.
 
 LaTeX Warning: Command \O invalid in math mode on input line 84.
 
-[112 <./images/max-min-ess-insiemi-livello-1.png>]
+[113 <./images/max-min-ess-insiemi-livello-1.png>]
 
 LaTeX Warning: Command \O invalid in math mode on input line 85.
 
-<images/max-min-ess-insiemi-livello-2.png, id=2779, 677.53125pt x 499.8675pt>
+<images/max-min-ess-insiemi-livello-2.png, id=2795, 677.53125pt x 499.8675pt>
 File: images/max-min-ess-insiemi-livello-2.png Graphic file (type png)
 <use images/max-min-ess-insiemi-livello-2.png>
 Package pdftex.def Info: images/max-min-ess-insiemi-livello-2.png  used on inpu
@@ -3345,7 +3351,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 98--100
 
  []
 
-<images/max-min-ess-insiemi-livello-3.png, id=2780, 922.44624pt x 561.09625pt>
+<images/max-min-ess-insiemi-livello-3.png, id=2796, 922.44624pt x 561.09625pt>
 File: images/max-min-ess-insiemi-livello-3.png Graphic file (type png)
 <use images/max-min-ess-insiemi-livello-3.png>
 Package pdftex.def Info: images/max-min-ess-insiemi-livello-3.png  used on inpu
@@ -3362,20 +3368,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 109--110
 
  []
 
-[113 <./images/max-min-ess-insiemi-livello-2.png> <./images/max-min-ess-insiemi
+[114 <./images/max-min-ess-insiemi-livello-2.png> <./images/max-min-ess-insiemi
 -livello-3.png>]
-<images/ess-max-min-classico-R2.png, id=2795, 808.01875pt x 471.7625pt>
+<images/ess-max-min-classico-R2.png, id=2812, 808.01875pt x 471.7625pt>
 File: images/ess-max-min-classico-R2.png Graphic file (type png)
 <use images/ess-max-min-classico-R2.png>
 Package pdftex.def Info: images/ess-max-min-classico-R2.png  used on input line
  142.
 (pdftex.def)             Requested size: 128.0374pt x 74.74928pt.
- [114 <./images/ess-max-min-classico-R2.png>]
+ [115 <./images/ess-max-min-classico-R2.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 199--200
 
  []
 
-[115]
+[116]
 Underfull \hbox (badness 10000) in paragraph at lines 203--209
 
  []
@@ -3385,7 +3391,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 203--209
 
  []
 
-<images/ess-moltip-lagrange-1.png, id=2829, 984.67876pt x 544.0325pt>
+<images/ess-moltip-lagrange-1.png, id=2845, 984.67876pt x 544.0325pt>
 File: images/ess-moltip-lagrange-1.png Graphic file (type png)
 <use images/ess-moltip-lagrange-1.png>
 Package pdftex.def Info: images/ess-moltip-lagrange-1.png  used on input line 2
@@ -3396,7 +3402,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 217--218
 
  []
 
-<images/ess-moltip-lagrange-2.png, id=2830, 1009.7725pt x 426.59375pt>
+<images/ess-moltip-lagrange-2.png, id=2846, 1009.7725pt x 426.59375pt>
 File: images/ess-moltip-lagrange-2.png Graphic file (type png)
 <use images/ess-moltip-lagrange-2.png>
 Package pdftex.def Info: images/ess-moltip-lagrange-2.png  used on input line 2
@@ -3421,7 +3427,7 @@ Overfull \hbox (35.36674pt too wide) in paragraph at lines 237--238
 []\OT1/cmr/m/n/10 Prima provi-amo il sis-tema $[] \OMS/cmsy/m/n/10 ([]) []$
  []
 
-[116 <./images/ess-moltip-lagrange-1.png> <./images/ess-moltip-lagrange-2.png>]
+[117 <./images/ess-moltip-lagrange-1.png> <./images/ess-moltip-lagrange-2.png>]
 
 Overfull \hbox (63.43669pt too wide) in paragraph at lines 238--242
 [] \OT1/cmr/m/n/10 = [] = []$
@@ -3460,22 +3466,22 @@ Overfull \hbox (2.77737pt too wide) in paragraph at lines 245--246
 equazione
  []
 
-<images/molt-lagrange-1.png, id=2843, 668.4975pt x 623.32875pt>
+<images/molt-lagrange-1.png, id=2859, 668.4975pt x 623.32875pt>
 File: images/molt-lagrange-1.png Graphic file (type png)
 <use images/molt-lagrange-1.png>
 Package pdftex.def Info: images/molt-lagrange-1.png  used on input line 257.
 (pdftex.def)             Requested size: 170.71652pt x 159.17975pt.
-<images/molt-lagrange-2.png, id=2844, 512.91624pt x 700.6175pt>
+<images/molt-lagrange-2.png, id=2860, 512.91624pt x 700.6175pt>
 File: images/molt-lagrange-2.png Graphic file (type png)
 <use images/molt-lagrange-2.png>
 Package pdftex.def Info: images/molt-lagrange-2.png  used on input line 261.
 (pdftex.def)             Requested size: 113.81102pt x 155.45126pt.
-[117 <./images/molt-lagrange-1.png> <./images/molt-lagrange-2.png>]
+[118 <./images/molt-lagrange-1.png> <./images/molt-lagrange-2.png>]
 
 Package wrapfig Warning: wrapfigure used inside a conflicting environment on in
 put line 287.
 
-<images/weristrass-generalizzato-R2.png, id=2854, 759.83875pt x 335.2525pt>
+<images/weristrass-generalizzato-R2.png, id=2870, 759.83875pt x 335.2525pt>
 File: images/weristrass-generalizzato-R2.png Graphic file (type png)
 <use images/weristrass-generalizzato-R2.png>
 Package pdftex.def Info: images/weristrass-generalizzato-R2.png  used on input 
@@ -3513,7 +3519,7 @@ mm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) = +\OMS/cmsy/m
 Package wrapfig Warning: Stationary wrapfigure forced to float on input line 29
 7.
 
-[118]
+[119]
 
 Package wrapfig Warning: Stationary wrapfigure forced to float on input line 30
 0.
@@ -3537,40 +3543,40 @@ Underfull \hbox (badness 10000) in paragraph at lines 313--315
 
  []
 
-[119 <./images/weristrass-generalizzato-R2.png>]
+[120 <./images/weristrass-generalizzato-R2.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 366--369
 
  []
 
-[120]
-<images/min-hessiano.png, id=2891, 376.40625pt x 434.62375pt>
+[121]
+<images/min-hessiano.png, id=2907, 376.40625pt x 434.62375pt>
 File: images/min-hessiano.png Graphic file (type png)
 <use images/min-hessiano.png>
 Package pdftex.def Info: images/min-hessiano.png  used on input line 376.
 (pdftex.def)             Requested size: 85.35826pt x 98.56204pt.
-<images/max-hessiano.png, id=2892, 309.155pt x 416.55624pt>
+<images/max-hessiano.png, id=2908, 309.155pt x 416.55624pt>
 File: images/max-hessiano.png Graphic file (type png)
 <use images/max-hessiano.png>
 Package pdftex.def Info: images/max-hessiano.png  used on input line 381.
 (pdftex.def)             Requested size: 85.35826pt x 115.00778pt.
-<images/sella-hessiano.png, id=2893, 378.41376pt x 397.485pt>
+<images/sella-hessiano.png, id=2909, 378.41376pt x 397.485pt>
 File: images/sella-hessiano.png Graphic file (type png)
 <use images/sella-hessiano.png>
 Package pdftex.def Info: images/sella-hessiano.png  used on input line 386.
 (pdftex.def)             Requested size: 85.35826pt x 89.66074pt.
- [121 <./images/min-hessiano.png> <./images/max-hessiano.png> <./images/sella-h
+ [122 <./images/min-hessiano.png> <./images/max-hessiano.png> <./images/sella-h
 essiano.png>]
-<images/ess-legamu-defi.png, id=2905, 743.77875pt x 487.8225pt>
+<images/ess-legamu-defi.png, id=2921, 743.77875pt x 487.8225pt>
 File: images/ess-legamu-defi.png Graphic file (type png)
 <use images/ess-legamu-defi.png>
 Package pdftex.def Info: images/ess-legamu-defi.png  used on input line 449.
 (pdftex.def)             Requested size: 128.0374pt x 83.97083pt.
- [122] [123 <./images/ess-legamu-defi.png>]
+ [123] [124 <./images/ess-legamu-defi.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 463--464
 
  []
 
-<images/ess-legamu-defi-2.png, id=2921, 765.86125pt x 511.9125pt>
+<images/ess-legamu-defi-2.png, id=2937, 765.86125pt x 511.9125pt>
 File: images/ess-legamu-defi-2.png Graphic file (type png)
 <use images/ess-legamu-defi-2.png>
 Package pdftex.def Info: images/ess-legamu-defi-2.png  used on input line 468.
@@ -3595,24 +3601,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 473--475
 
  []
 
-<images/sup-implicita.png, id=2922, 753.81625pt x 363.3575pt>
+<images/sup-implicita.png, id=2938, 753.81625pt x 363.3575pt>
 File: images/sup-implicita.png Graphic file (type png)
 <use images/sup-implicita.png>
 Package pdftex.def Info: images/sup-implicita.png  used on input line 479.
 (pdftex.def)             Requested size: 128.0374pt x 61.71451pt.
-) [124 <./images/ess-legamu-defi-2.png> <./images/sup-implicita.png>] (main.aux
+) [125 <./images/ess-legamu-defi-2.png> <./images/sup-implicita.png>] (main.aux
 )
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: F3AC587B6B74B58EC79092EBCF2A7909;37830.
+(rerunfilecheck)             Checksum: 216321CF9E4A5B1CBDCD653E365D6A4C;37925.
  ) 
 Here is how much of TeX's memory you used:
- 16202 strings out of 478338
- 285611 string characters out of 2830528
- 564642 words of memory out of 3000000
- 32947 multiletter control sequences out of 15000+600000
+ 16212 strings out of 478338
+ 285742 string characters out of 2830528
+ 564645 words of memory out of 3000000
+ 32948 multiletter control sequences out of 15000+600000
  483013 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,18n,77p,1363b,712s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -3659,9 +3665,9 @@ amsfonts/symbols/msam10.pfb><C:/Users/Filippo Ghirardini/AppData/Local/Programs
 /MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/Filippo Ghirar
 dini/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm7.pf
 b>
-Output written on main.pdf (125 pages, 9242446 bytes).
+Output written on main.pdf (126 pages, 9247072 bytes).
 PDF statistics:
- 3329 PDF objects out of 3580 (max. 8388607)
- 1272 named destinations out of 1440 (max. 500000)
- 2391 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3347 PDF objects out of 3580 (max. 8388607)
+ 1281 named destinations out of 1440 (max. 500000)
+ 2399 words of extra memory for PDF output out of 10000 (max. 10000000)
 
