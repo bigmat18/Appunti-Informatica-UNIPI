@@ -10,9 +10,15 @@
 \contentsline {subsection}{\numberline {1.5}Tavola delle leggi}{5}{subsection.1.5}%
 \contentsline {subsection}{\numberline {1.6}Algebra di Bool}{6}{subsection.1.6}%
 \contentsline {subsection}{\numberline {1.7}Dimostrazioni}{6}{subsection.1.7}%
+<<<<<<< Updated upstream
 \contentsline {subsubsection}{\numberline {1.7.1}Diagramma di Eulero-Venn}{6}{subsubsection.1.7.1}%
 \contentsline {subsubsection}{\numberline {1.7.2}Argomentazioni sostitutive}{7}{subsubsection.1.7.2}%
 \contentsline {subsubsection}{\numberline {1.7.3}Argomentazione discorsiva}{7}{subsubsection.1.7.3}%
+=======
+\contentsline {subsubsection}{\numberline {1.7.1}Grafica}{6}{subsubsection.1.7.1}%
+\contentsline {subsubsection}{\numberline {1.7.2}Sostituzione}{7}{subsubsection.1.7.2}%
+\contentsline {subsubsection}{\numberline {1.7.3}Discorsiva}{7}{subsubsection.1.7.3}%
+>>>>>>> Stashed changes
 \contentsline {subsection}{\numberline {1.8}Prodotto Cartesiano}{8}{subsection.1.8}%
 \contentsline {subsection}{\numberline {1.9}Insiemi di insiemi}{8}{subsection.1.9}%
 \contentsline {section}{\numberline {2}Relazioni}{9}{section.2}%

@@ -157,9 +157,9 @@ Per tutti gli insieme A, B, C (dell'universo \textit{U}) valgono le uguaglianze 
 L'algebra di bool sta alla base dell'informatica e si compone di solo 2 elementi che possono essere rappresentati in tanti modi: V - F, Vero - Falso, True - False, 1 - 0, $\O$ - U \\ \\
 Su questi elementi possono essere applicate una serie di operazioni che sono: \\
 \textbf{And}, \&\&, $\land$ \hspace{.3cm} \textbf{Or}, $||$, $\lor$ \hspace{.3cm} \textbf{Not}, $\sim$, $\lnot$
-\textbf{Implicazione:}\footnote{La parte a sinistra della freccia si chiama premessa, la parte a destra invece conseguenza} $A \Longrightarrow B$, se A allora B \\
-\textbf{Conseguenza:} $A \Longleftarrow B$, A se B \\ 
-\textbf{Doppia implicazione:} $A \iff B$, A se e solo se B
+\textbf{Implicazione:}\footnote{La parte a sinistra della freccia si chiama \textbf{premessa}, la parte a destra invece \textbf{conseguenza}} $A \Longrightarrow B$, se $A$ allora $B$ \\
+\textbf{Conseguenza:} $A \Longleftarrow B$, $A$ se $B$ \\ 
+\textbf{Doppia implicazione:} $A \iff B$, $A$ se e solo se $B$
 
 \begin{table}[h!]
     \centering
@@ -176,15 +176,20 @@ Su questi elementi possono essere applicate una serie di operazioni che sono: \\
     \caption{Operazioni con algebra booleana}
 \end{table}
 \begin{note}
-Se nella tabella andiamo a sostituire lo \O \: con 0 e U con 1 o con qualsiasi altro valore corrispondente nell'algebra di boole il risultato invariato.
+Se nella tabella andiamo a sostituire lo \O \: con 0 e U con 1 o con qualsiasi altro valore corrispondente nell'algebra di boole il risultato resta invariato.
 \end{note}
 
 \subsection{Dimostrazioni}
-Una \textbf{legge} è \textbf{valida} se vale per tutte le scelte dell'insieme che prendiamo in considerazione. Una \textbf{dimostrazione} indica la validità di una legge. Un \textbf{controesempio} mostra che la legge può non essere valida. Ci sono 3 tecniche di dimostrazione: \textbf{Diagramma di eulero-venn}, \textbf{Argomentazione discorsiva} e \textbf{Regole di sostituzione}
+Una \textbf{legge} è \textbf{valida} se vale per tutte le scelte dell'insieme che prendiamo in considerazione. Una \textbf{dimostrazione} indica la validità di una legge. Un \textbf{controesempio} mostra che la legge non è valida per ogni possibilità.
+Ci sono 3 tecniche di dimostrazione: \textbf{grafica} (diagramma di Eulero-Venn), \textbf{discorsiva} e tramite \textbf{sostituzione}
 
-\subsubsection{Diagramma di Eulero-Venn}
+\subsubsection{Grafica}
 \begin{example}
-    Dimostriamo la legge distributiva mediamente i diagrammi di eulero-venn. Legge:\\$A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$.
+    Dimostriamo la legge distributiva mediamente i diagrammi di Eulero-Venn.
+    \begin{equation}
+    	A \cup (B \cap C) = (A \cup B) \cap (A \cup C)
+    \end{equation}
+	%TODO inserire il titolo per la serie di diagrammi: prima il lato sinistro della dimostrazione e poi il lato destro
     \begin{figure}[h!]
         \begin{subfigure}{.3\textwidth}
             \includegraphics[width=4cm]{Dimostrazione-distibutiva-eulero-venn-1.png}
@@ -227,14 +232,14 @@ Una \textbf{legge} è \textbf{valida} se vale per tutte le scelte dell'insieme c
 \end{example}
 
 
-\subsubsection{Argomentazioni sostitutive}
-Questo tipo di dimostrazione si basa sull'utilizzare le leggi sopra riportate per dimostrare un'affermazione, andando a scomporre tale affermazioni in modo che richiami ad un legge fondamentale.
+\subsubsection{Sostituzione}
+Questo tipo di dimostrazione si basa sull'utilizzare leggi preesistenti per dimostrare un'affermazione, scomponendo tale affermazione in modo che si possa ricorrere ad un legge fondamentale.
 \begin{example}
     $(A \cup B) \cup C = A \cup (C \cup B)$
     \begin{enumerate}
-        \item Commutativa: $(A \cup B) \cup C = A \cup (B \cup C)$
+        \item \textbf{Commutativa}: $(A \cup B) \cup C = A \cup (\mathbf{B \cup C})$
     \end{enumerate}
-    L'ipotesi è vera per la proprietà associativa.
+    L'ipotesi è vera per la proprietà \emph{associativa}.
 \end{example}
 \begin{example}
     $A \cup (\overline{A} \cap B)$
@@ -246,9 +251,12 @@ Questo tipo di dimostrazione si basa sull'utilizzare le leggi sopra riportate pe
     L'ipotesi è così verificata.
 \end{example}
  
-\subsubsection{Argomentazione discorsiva}
-Esempio con dimostrazione della proprietà distributiva: $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$ \\ \\
-\textit{Teniamo conto che: $X = Y \iff (X \subseteq Y) \land (Y \subseteq X)$} \\
+\subsubsection{Discorsiva}
+Esempio di dimostrazione della proprietà distributiva:
+\begin{equation}
+	A \cup (B \cap C) = (A \cup B) \cap (A \cup C)
+\end{equation}
+Teniamo conto che: $X = Y \iff (X \subseteq Y) \land (Y \subseteq X)$.\\
 Andiamo a questo punto a sostituire X con la prima parte della proprietà distributiva, $A \cup (B \cap C)$ e Y con la seconda $(A \cup B) \cap (A \cup C)$. 
 Applicando la considerazione scritta sopra otteniamo due condizione che devono entrambi essere vere per far si che la condizione di uguaglianza iniziale $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$ sia vera e quindi la proprietà sia verificata. Queste due condizioni sono:
 \begin{itemize}
