@@ -1,133 +1,176 @@
 \section{Insiemi}
-Gli insiemi sono definibili come delle correlazioni di elementi e saranno alla base del corso di FDI. \footnote{Ricorda che all'interno di un insieme gli elementi possono essere ripetuti, in tal caso per le varie operazioni da fare questi elementi ripetuti andranno considerati come unici} \\ \\
-\textbf{Cardinalità}: si rappresenta con n o \(|A|\) ed è uno dei paramenti di un insieme ed è il numero di elementi nell'insieme. \\ \\
-Gli insiemi possono inoltre essere finiti o infiniti.\\
-\textbf{Finiti}: quando hanno un numero finito di elementi.\\
-\textbf{Infiniti}: quando invece il numero di elementi è infinito.
+Gli insiemi sono definibili come delle correlazioni di elementi e saranno alla base del corso di FDI. \footnote{Ricorda che all'interno di un insieme gli elementi possono essere ripetuti, in tal caso per le varie operazioni da fare questi elementi ripetuti andranno considerati come unici} \\
+Gli insiemi possono essere:
+\begin{itemize}
+	\item \textbf{Finiti}: quando hanno un numero finito di elementi
+	\item \textbf{Infiniti}: quando invece il numero di elementi è infinito
+\end{itemize}
 \begin{example}
 Esempi insiemi finiti ed infiniti:
-\begin{itemize}
-    \item Insieme finito: \(A = \{a_1, a_2, a_3, ..., a_n \}\) \(|A| = n\). \footnote{I tre puntini '...' si utilizzano quando non si è in grado di scrivere tutti gli elementi}
-    \item Insieme finito: \(GS = \{lun, mar, mer, ..., dom\}\) \(|GS| = 7\).
-    \item Insieme infinito: \(A = \{..., a_i-1, a_i, a_i+1, ...\}\) \(|A| = \infty\).
-\end{itemize}
+	\begin{itemize}
+	    \item Insieme finito: $A = \{a_1, a_2, a_3, \ldots, a_n \}$
+	    \footnote{I tre puntini '$\ldots$' si utilizzano quando non si è in grado di scrivere tutti gli elementi}
+	    \item Insieme finito: $GS = \{lun, mar, mer, \ldots, dom\}$
+	    \item Insieme infinito: $A = \{\ldots, a_i-1, a_i, a_i+1, \ldots\}$
+	\end{itemize}
+\end{example}
+\begin{example}
+	Alcuni insiemi infiniti ricorrenti:\\
+	$\mathbb{N} =$ num. naturali
+	\hspace{.5cm}
+	$\mathbb{Z} =$ num. interi
+	\hspace{.5cm}
+	$\mathbb{Q} =$ num. razionali
+	\hspace{.5cm}
+	$\mathbb{R} =$ num. reali
 \end{example}
 
 \subsection{Notazione}
-\textbf{Elementi:} Lettere piccole dell'alfabeto. Ess: a, b, c - \(a_1, a_2, a_3\) \\
-\textbf{Insiemi:} Lettere maiuscole dell'alfabeto. Ess: A, B, C \\
-\textbf{Appartiene:} \(a \in A\) \hspace { 1cm } \textbf{Non Appartiene:} \(a \notin A\) \hspace { 1cm } \textbf{Tale che:} $|$ 
+\textbf{Elementi:} Lettere piccole dell'alfabeto. E.g. $a, b, c$ - $a_1, a_2, a_3$ \\
+\textbf{Insiemi:} Lettere maiuscole dell'alfabeto. E.g. $A, B, C$ \\
+\textbf{Appartiene:} $a \in A$ \hspace { 1cm } \textbf{Non Appartiene:} $a \notin A$ \hspace { 1cm } \textbf{Tale che:} $\mid$ 
+
+\subsection{Definire un insieme}
+Un insieme può essere scritto in due forme, quella estensionale e quella intensionale.
+\subsubsection{Estensionale}
+Detto anche per enumerazione, consiste nell'elencare esplicitamente tutti gli elementi.
 \begin{example}
-Alcuni insiemi infiniti ricorrenti:\\
-\(\mathbb{N}\) = num. naturali \hspace{.5cm} \(\mathbb{Z}\) = num. interi \hspace{.5cm} \(\mathbb{Q}\) = num. razionali \hspace{.5cm} \(\mathbb{R}\) = num. reali
+	Esempi estensionale:\\
+	$ore = \{1, 2, 3, \ldots, 24\}$  -  $vocali = \{a, e, i, o, u\}$ \\
+	$n = \{0, 1, 2, \ldots, n-1\}$  -  $\O = \{\}$ (insieme vuoto)
 \end{example}
 
-\subsection{Specificare un insieme}
-Un insieme può essere scritto sotto due forme, quella estensionale e quella intenzionale.
-\begin{itemize}
-    \item \textbf{Estensionale} o per enumerazione: si va ad elencare esplicitamente tutti gli oggetti.
-    \begin{example}
-        Esempi estensionale:\\
-        \(ore = \{1, 2, 3, ..., 24\}\)  -  \(vocali = \{a, e, i, o, u\}\) \\
-        $n = \{0, 1, 2, ..., n-1\}$  -  $\O = \{\}$ (insieme vuoto)
-    \end{example}
-    \item \textbf{Intenzionale} o per proprietà: si va ad elencare implicitamente tutti gli oggetti attraverso una regola che li caratterizza.
-    \begin{example}
-        Esempi intenzionale:\\
-        $ore_1 = \{n \in \mathbb{N} \:|\: n \geq\ 1$ and $n \leq 24\}$ \hspace{.7cm} $N_p = \{n \in \mathbb{N} \:|\: n$ è divisibile per 2 $\}$ \\
-        $N_d = \{n \in \mathbb{N} \:|\: n$ non è divisibile per 2$\}$ \hspace{.7cm} $\mathbb{Q} = \{n/m \:|\: n \in \mathbb{Z}, \, m \in \mathbb{N}$, ma $ m \neq 0\}$
-    \end{example}
-\end{itemize}
+\subsubsection{Intensionale}
+Detto anche per proprietà, consiste nel descrivere implicitamente tutti gli elementi di un insieme $A$ attraverso una \emph{proprietà} $P$ che li caratterizza.
+\begin{equation}
+	X = \{x \in A \mid P(x)\}
+\end{equation}
+\begin{example}
+	Esempi intensionale:\\
+	$ore_1 = \{n \in \mathbb{N} \mid n \geq\ 1$ and $n \leq 24\}$
+	\hspace{.7cm}
+	$N^p = \{n \in \mathbb{N} \mid n$ è divisibile per 2 $\}$
+	\\
+	$N^d = \{n \in \mathbb{N} \mid n$ non è divisibile per 2$\}$ \hspace{.7cm}
+	$\mathbb{Q} = \{\dfrac{n}{m} \mid n \in \mathbb{Z}, m \in \mathbb{N}$ con $ m \neq 0\}$
+\end{example}
 
 \newpage
 \subsection{Proprietà degli insiemi}
-\subsubsection{Confrontare due insiemi}
-$A = B$ se contengono esattamente gli stessi elementi.\\
-$A \neq B$ almeno un elemento di A non occorre in B oppure almeno un elemento di B non occorre in A.\\\\
-\textbf{Domanda:} Con $A = \{a, e, b, c, o, u\}$ e $B = \{a, b, e, b, c, o, o, u\}$, $A = B$ ?\\
-Se partiamo dalla definizione di insiemi uguali, cioè che A = B quando A contiene gli stessi elementi di B e viceversa possiamo concludere che SI in questa casistica A e B sono uguali. \\
-Da qui possiamo definire una \textbf{proprietà del confronto}:
-A = B equivale a dire che ogni elemento di $a \in A$ e anche $a \in B$ e ogni elemento $b \in B$ è anche $b \in A$. \\
-Inoltre, continuando su questo ragionamento possiamo anche vedere come la cardinalità di due insiemi uguali non necessariamente è uguale.
+\subsubsection{Uguaglianza}
+Due insiemi $A$ e $B$ sono \textbf{uguali} ($A=B$) se hanno gli stessi elementi, altrimenti sono \textbf{diversi} ($A \neq B$).
 
-\subsubsection{Inclusione fra insiemi}
-\begin{wrapfigure}{r}{5.5cm}
-    \vspace{-10pt}
-    \includegraphics[width=6cm]{Eulero-venn-contenuto-uguale.png}
+\begin{example}
+	Dati tre insiemi
+	\\$V = \{a, e, i, o, u\}$
+	\\$V1 = \{a, i, e, o, u, e, i, a\}$
+	\\$B = \{x \mid x$ è una vocale della lingua italiana$\}$
+	\\possiamo dire che $V = V1 = B$
+\end{example}
+
+\textbf{Domanda} Con $A = \{a, e, b, c, o, u\}$ e $B = \{a, b, e, b, c, o, o, u\}$, $A = B$ ?\\
+Se partiamo dalla definizione di insiemi uguali, cioè che $A = B$ quando $A$ contiene gli stessi elementi di $B$ e viceversa, possiamo concludere che \textbf{si} in questa casistica $A$ e $B$ sono uguali. Possiamo quindi definire:
+\begin{definition}[Proprietà del confronto]
+	$A = B$ equivale a dire che ogni elemento $a \in A$ vale che $a \in B$ e ogni elemento $b \in B$ vale $b \in A$.
+\end{definition}
+
+\subsubsection{Inclusione}
+%TODO Cercare di carpire come posizionare decentemente l'immagine
+Prendiamo come esempio due insiemi $A$ e $B$:
+\begin{wrapfigure}{r}{5cm}
+    \includegraphics[width=4cm]{Eulero-venn-contenuto-uguale.png}
     \caption{Contenuto uguale}
     \label{fig:contenuto-uguale}
 \end{wrapfigure}
-\textbf{Contenuto uguale:} $A \subseteq B$ \hspace{.3cm} Figura [\ref{fig:contenuto-uguale}] \\(Ogni elemento di A è anche elemento di B e possono essere uguali, ma non necessariamente) \\
-$A \subseteq U$ \hspace{.3cm} $A \subseteq B$ \hspace{.3cm} $B \subseteq U$ \footnote{con il simbolo "U", chiamato universo, si indicano tutti i possibili elementi che possiamo trovare in un insieme.} \\ \\
-\textbf{Inclusione impropria e stretta:} $A \subset B$ \hspace{.2cm} \\(da usare solo quando vuoi specificare che $A \neq B$) \\
-Proprietà: Per ogni insieme di A si ha che:\\
-$\O \subseteq A$ \hspace{.2cm} $A \subseteq U$ \\ \\
-\textbf{Insiemi disgiunti:} A e B si dicono insiemi disgiunti quando non hanno elementi in comune: \\
-$\{$non esiste $x \in U \: | \: x \in A \: and \: x \in B\}$\\
+\begin{definition}[Sottoinsieme]
+	$A$ è un sottoinsieme di $B$ ($A \subseteq B$) se ogni elemento di $A$ appartiene anche a $B$. $A$ e $B$ possono essere uguali ma non è necessario. Ad esempio in figura [\ref{fig:contenuto-uguale}] $A \subseteq B$, $A \subseteq \mathbf{U}$ e $B \subseteq \mathbf{U}$ \footnote{con il simbolo "U", chiamato universo, si indicano tutti i possibili elementi che possiamo trovare in un insieme.}
+\end{definition}
+
+\begin{definition}[Sottoinsieme stretto]
+	$A$ è un sottoinsieme di $B$ ($A \subset B$) se ogni elemento di $A$ appartiene anche a $B$. $A$ e $B$ non sono uguali. Ad esempio in figura [\ref{fig:contenuto-uguale}] $A \subset B$.
+\end{definition}
+
+\begin{definition}[Insiemi disgiunti]
+	Due insiemi $A$ e $B$ si dicono disgiunti se non hanno elementi in comune.
+	%TODO Aggiungere nel disegno un insieme C disgiunto da A e B
+\end{definition}
 
 \subsubsection{Proprietà di uguaglianza ed inclusione}
 Per tutti gli insiemi A, B, C valgono le proprietà scritte in tabella \ref{tab:proprietà-uguaglianza-inclusione}.
 \begin{table}[h!]
-    \vspace{10pt}
     \centering
     \setlength{\tabcolsep}{7pt}
     \renewcommand{\arraystretch}{2.5}
     \begin{tabular}{|c|c|c|}
         \hline
-        \textbf{Riflessiva} & A = A & $A \subseteq A$ \\ \hline
-        \textbf{Transitiva} & Se A = B e B = C allora A = C & Se $A \subseteq B$ e $B \subseteq C$ allora  $A \subseteq C$\\ \hline
-        \textbf{Simmetrica} & Se A = B allora B = A & \textit{Niente} \\ \hline
-        \textbf{Antisimmetrica} & \textit{Niente} & Se $A \subseteq B$ e $B \subseteq A$ allora A = B \\
+        \textbf{Riflessiva} & $A = A$ & $A \subseteq A$ \\
+        \hline
+        \textbf{Transitiva} & Se $A = B$ e $B = C \implies A = C$ & Se $A \subseteq B$ e $B \subseteq C \implies A \subseteq C$\\
+        \hline
+        \textbf{Simmetrica} & Se $A = B \implies B = A$ & \textit{Niente}\\
+        \hline
+        \textbf{Antisimmetrica} & \textit{Niente} & Se $A \subseteq B$ e $B \subseteq A \implies A = B$\\
         \hline
     \end{tabular}
     \caption{Proprietà Uguaglianza ed Inclusione}
     \label{tab:proprietà-uguaglianza-inclusione}
 \end{table}
 
-\newpage
+\subsubsection{Paradosso di Russell}
+Sia $NV = \{X \mid X \neq \O\}$.\\
+Sia $CS = \{X \mid X\ \in X\}$ l'insieme degli insiemi che appartengono a se stessi.\\
+Sia $NCS = \{X \mid X \notin X\}$ l'insieme degli insiemi che non appartengono a se stessi.\\
+Abbiamo un paradosso in quanto se assumiamo che $NCS \in NCS$ allora $NCS \notin NCS$, mentre se assumiamo che $NCS \notin NCS$ allora $NCS \in NCS$.
+
 \subsection{Operazioni su insiemi}
-\textbf{Cardinalità:} (solo per insiemi finiti) si indica con $|A|$
+\subsubsection{Cardinalità}
+\label{sec:cardinalita}
+Si rappresenta con $n$ o $\lvert A \rvert$ ed è il numero di elementi dell'insieme. Valgono le seguenti proprietà:
+\begin{itemize}
+	\item Se $A \subseteq B \implies \lvert A \rvert \leq \lvert B \rvert$ 
+	\item Se $A = B \implies \lvert A \rvert = \lvert B \rvert$
+	\item Se $A = \O \implies \vert A \rvert = 0$
+\end{itemize}
+\begin{note}
+	Dati due insiemi $V = \{a, e, i, o ,u\}$ e $V1 = \{a, a, e, i, i, u, o, e\}$ allora $\lvert V \rvert = \lvert V1 \rvert = \lvert B \rvert$
+\end{note}
 \begin{example}
     Esempi cardinalità:\\
-    $|\overline{A}| = |U| - |A|$ \hspace{.6cm} $|A \cup B| = |A| + |B| - |A \cap B|$ \hspace{.6cm} $|A \setminus B| = |A| - |A \cap B|$\\
+    %TODO Inserire esempi
 \end{example}
-\hspace{-15pt}\textbf{Unione:} $A \cup B = \{x \in U \: | \: x \in A \: or \: x \in B\}$ \hfill
-\textbf{Intersezione:} $A \cup B = \{x \in U \: | \: x \in A \: or \: x \in B\}$
+
+\subsubsection{Unione}
 \begin{figure}[h!]
-    \vspace{-7pt}
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includegraphics[width=5cm]{Unione.png}
-        \caption{Unione}
-        \label{fig:unione}
-    \end{subfigure}
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includegraphics[width=5cm]{Intersezione.png}
-        \caption{Intersezione}
-        \label{fig:intesezione}
-    \end{subfigure}
-\end{figure}
-\\
-\textbf{Differenza:} $A \setminus B = \{x \in U \: | \: x \in A \: and \: x \notin B\}$\hspace{1cm}
-\textbf{Complemento:} $\overline{A} = \{c \in U \: | \: x \notin A\}$
-\begin{figure}[h!]
-        \vspace{-10pt}
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includegraphics[width=5cm]{Differenza.png}
-        \caption{Differenza}
-        \label{fig:differenza}
-    \end{subfigure}
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includegraphics[width=4cm]{Complemento.png}
-        \caption{Complemento}
-        \label{fig:complemento}
-    \end{subfigure}
+	\centering
+    \includegraphics[width=5cm]{Unione.png}
+    \caption{$A \cup B = \{x \in U \mid x \in A \vee x \in B\}$}
+    \label{fig:unione}
 \end{figure}
 
-\vspace{-5pt}
+\subsubsection{Intersezione}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=5cm]{Intersezione.png}
+	\caption{$A \cup B = \{x \in U \mid x \in A \vee x \in B\}$}
+	\label{fig:intesezione}
+\end{figure}
+
+\subsubsection{Differenza}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=5cm]{Differenza.png}
+	\caption{$A \setminus B = \{x \in U \mid x \in A \wedge x \notin B\}$}
+	\label{fig:differenza}
+\end{figure}
+
+\subsubsection{Complemento}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=4cm]{Complemento.png}
+    \caption{$\overline{A} = \{c \in U \mid x \notin A\}$}
+    \label{fig:complemento}
+\end{figure}
+
 \subsection{Tavola delle leggi}
 Per tutti gli insieme A, B, C (dell'universo \textit{U}) valgono le uguaglianze nella tabella \ref{tab:leggi-insiemi}
 \begin{table}[h!]
@@ -180,8 +223,8 @@ Se nella tabella andiamo a sostituire lo \O \: con 0 e U con 1 o con qualsiasi a
 \end{note}
 
 \subsection{Dimostrazioni}
-Una \textbf{legge} è \textbf{valida} se vale per tutte le scelte dell'insieme che prendiamo in considerazione. Una \textbf{dimostrazione} indica la validità di una legge. Un \textbf{controesempio} mostra che la legge non è valida per ogni possibilità.
-Ci sono 3 tecniche di dimostrazione: \textbf{grafica} (diagramma di Eulero-Venn), \textbf{discorsiva} e tramite \textbf{sostituzione}
+Una \textbf{legge} è \textbf{valida} se vale per tutte le scelte dell'insieme che prendiamo in considerazione. Una \textbf{dimostrazione} indica la validità di una legge. Un \textbf{controesempio} mostra che la legge non è valida per almeno un caso (appunto il controesempio).
+Ci sono 3 tecniche di dimostrazione: \textbf{grafica} (diagramma di Eulero-Venn), \textbf{discorsiva} e tramite \textbf{sostituzione}.
 
 \subsubsection{Grafica}
 \begin{example}
@@ -317,24 +360,33 @@ Non avendo nessun' altro caso da dimostrare abbiamo concluso la dimostrazione. $
 \subsection{Prodotto Cartesiano}
 Prendendo 2 insiemi A, B il loro prodotto cartesiano si definisce come:
 \begin{center}
-    $A \: X \: B = \{(a, b) \: | \: a \in A, \: b \in B\}$
+    $A \times B = \{(a, b) \mid a \in A, b \in B\}$
 \end{center}
+\begin{note}
+	In un prodotto cartesiano $\lvert A \times B \rvert = \lvert A \rvert * \lvert B \rvert$ e $A \times \O = \O$
+\end{note}
 \begin{example}
-    Esempio prodotto cartesiano:\\\\
+    Esempio prodotto cartesiano:\\
     $A = \{501234, 501227, 678980\}$ N. matricola \hspace{1cm}
     $B = \{18, 19, 20, ..., 30L\}$ Voti \\
     $A \: X \: B = \{(501234, 18), (501234, 19), ..., (678980, 30L)\}$\\ \\
-    I sotto insiemi che si vanno a creare con il prodotto cartesiano si indicano con le parentesi tonde "(...)" e possono essere di due tipi:
+    I sottoinsiemi che si vanno a creare con il prodotto cartesiano si indicano con le parentesi tonde "($\ldots$)" e possono essere di due tipi:
     \begin{itemize}
-        \item \textbf{Coppia Ordinata:} si tiene conto dell'ordinamento degli elementi. Ess: $(a, b) \neq (b, a)$.
-        \item \textbf{Coppia Non Ordinata:} non si tiene conto dell'ordinamento degli elementi. Ess: $(a, b) = (b, a)$.
-\end{itemize}
+        \item \textbf{Coppia Ordinata:} si tiene conto dell'ordinamento degli elementi. E.g. $(a, b) \neq (b, a)$.
+        \item \textbf{Coppia Non Ordinata:} non si tiene conto dell'ordinamento degli elementi. E.g. $(a, b) = (b, a)$.
+	\end{itemize}
 \end{example}
 
 \subsection{Insiemi di insiemi}
-\begin{definition}[Insieme]
-Un insieme di insieme è quando uno o più elementi di un insieme è a sua volta un insieme.
+\begin{definition}
+Un insieme di insiemi è quando uno o più elementi di un insieme è a sua volta un insieme.
 \end{definition}
+\begin{note}
+	Preso $A = \{\{a\}, \{a, b\}, \{a, b, c\}\}$, si nota che $a \notin A$ mentre $\{a\} \in A$.
+\end{note}
+\begin{note}
+	Sapendo che $\O = \{\}$ possiamo dedurre che $\lvert \{\{\}\}\rvert = 1$.
+\end{note}
 \begin{example}
 Esempi insiemi di insiemi:
     \begin{itemize}
@@ -343,9 +395,16 @@ Esempi insiemi di insiemi:
     \end{itemize}
 \end{example}
 
-\begin{definition}[Insieme delle parti]
-L'insieme della parti, per esempio di A, si indica come P(A) e si definisce come tutti i possibili sottoinsiemi di A. $P(A) = \{x \subseteq A\}$. La \textbf{cardinalità} nell'insieme delle parti si calcola come: $P(A) = 2^{|A|}$
+\subsubsection{Insieme delle parti}
+\begin{definition}
+Dato un insieme $A$, l'insieme delle parti di $A$ si indica come $P(A)$ e si definisce come tutti i possibili sottoinsiemi di $A$.
+\begin{equation}
+	P(A) = \{x \subseteq A\}
+\end{equation}
+\begin{note}
+	La \hyperref[sec:cardinalita]{\textbf{cardinalità}} nell'insieme delle parti si calcola come: $P(A) = 2^{|A|}$
+\end{note}
 \end{definition}
 \begin{example}
-    Con $A = \{a, b, c\}$, $\wp(A) = \{\O, \{a\}, \{b\}, \{c\}, \{a, b\}, \{a, c\}, \{c, b\}, \{a, b, c\}\}$
+    Con $A = \{a, b, c\}$, $P(A) = \{\O, \{a\}, \{b\}, \{c\}, \{a, b\}, \{a, c\}, \{c, b\}, \{a, b, c\}\}$
 \end{example}
