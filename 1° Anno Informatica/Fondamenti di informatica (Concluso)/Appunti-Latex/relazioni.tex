@@ -225,9 +225,9 @@ Prendendo in considerazioni due insiemi $A$ e $B$ ed una relazione R, dove R $\s
 %TODO Integrare la definizione logica di "al più"
 %TODO Aggiungere esempi da relazioni già viste
 \\
-$\forall \: \: a \in A \bullet \exists$ al più un $b \in B \bullet (a, b) \in R$
+$\forall a \in A . \exists$ al più un $b \in B . (a, b) \in R$
 \hspace{2.4cm} 
-$\forall \: \: b \in B \bullet \exists$ al più un $a \in A \bullet (a, b) \in R$
+$\forall b \in B . \exists$ al più un $a \in A . (a, b) \in R$
 \begin{figure}[h!]
     \vspace{-7pt}
     \begin{subfigure}{.3\textwidth}
@@ -289,54 +289,77 @@ Una funzione può essere definita utilizzando le proprietà fondamentali delle r
 \begin{definition}[Funzione]
 Dati due insiemi $A, B$ ed una relazione $R \subseteq A \times B$, tale relazioni si definisce funzione quando rispetta la proprietà \textbf{totale} e \textbf{univalente} quindi tutti gli elementi dell'insieme $A$ hanno uno ed un solo corrispettivo in $B$.
 \end{definition}
+\begin{example}
+	Ad esempio ne lcaso dei booleani, dato l'insieme $B=\{$true, false$\}$:
+	\begin{itemize}
+		\item $\neg : B \rightarrow B$ $B = {(t, f), (f, t)}$
+		\item $\wedge : B \times B \rightarrow B$
+	\end{itemize}
+\end{example}
 
-Una funzione è inoltre iniettiva quando rispetta la proprietà iniettiva e suriettiva quando rispetta quella surgettiva.
 \begin{definition}[Funzione parziale]
     Una funzione si dice parziale se rispetta solamente la proprietà univalente.
 \end{definition}
-\begin{definition}[Biezione]
-Dati due insiemi A, B ed una relazione R $\subseteq$ A X B, tale relazioni si definisce funzione biettiva quando rispetta tutte e 4 le proprietà.
-\end{definition}
 \begin{example}
-    Esempio con i booleani:\\
-    bool = $\{$True, False$\}$ \hspace{1cm} 2 = $\{0, 1\}$\\
-    Questi due insiemi sono biettivi.
+	Un esempio è la funzione $f:\frac{1}{x}$ con $f: \mathbf{R} \rightarrow \mathbf{R}$
 \end{example}
+
+\begin{definition}[Funzioni iniettive e surgettive]
+	
+\end{definition}
+
+\begin{definition}[Biezione]
+Dati due insiemi $A, B$ ed una relazione $R \subseteq A \times B$, tale relazioni si definisce funzione biettiva quando rispetta tutte e 4 le proprietà. Quindi:
+\begin{itemize}
+	\item $ \forall a \in A$ esiste \textbf{esattamente un} $b \in B . (a, b) \in \mathbf{R}$
+	\item $ \forall b \in B$ esiste \textbf{esattamente un} $a \in A . (a, b) \in \mathbf{R}$
+\end{itemize}
+\end{definition}
+
 \textbf{Domanda:} Se dati due insiemi A, B dove $|A| \neq |B|$ la loro relazione R $\subseteq$ A X B può essere una biezione?\\
 La risposta è NO visto che avendo cardinalità diverse esisterà sempre un elemento in B che o non ha corrispettivo o ne ha 2.
 
-\subsubsection{Composizione fra funzioni}
-La composizione fra funzioni è una casistica particolare di quella fra relazioni.
+\subsubsection{Composizione di funzioni}
+\begin{proposition}
+	Per tutti gli insiemi $A, B, C$ e tutte le funzioni $f:A\rightarrow B$ e $g:B\rightarrow C$, la relazione $f;g$ è una funzione, $f;g:A \rightarrow C$.
+\end{proposition}
 \begin{example}
-    Dati due funzioni f e g dove:\\
-   $f: A \longrightarrow B$ \hspace{.5cm} $g: B \longrightarrow C$ \footnote{Scrivere una funzione "f" nella forma $f: A \longrightarrow B$  equivale a scrivere f $\subseteq$ A X B}\\ 
-    La compozione si scrive come f;g e sarebbe f;g $\subseteq$ A X C \footnote{è possibile scrivere la composizione fra funzioni anche come $g \bullet f$ oppure $g(f())$.}\\ \\
-    \textbf{NOTA:} indichiamo con $fun(A,B) = \{f | f: \: A \longrightarrow B\}$ l'insieme di tutte le funzioni che vanno da A a B.
+    Dati due funzioni $f$ e $g$ dove:\\
+	$f: A \rightarrow B$ \hspace{.5cm} $g: B \rightarrow C$ \footnote{Scrivere una funzione "$f$" nella forma $f: A \rightarrow B$  equivale a scrivere f $\subseteq A \times B$}\\ 
+    La compozione si scrive come $f;g$ e sarebbe $f;g \subseteq A \times C$ \footnote{É possibile scrivere la composizione di funzioni anche come $g \cdot f$ oppure $g(f())$}
 \end{example}
+\begin{note}
+	Indichiamo con $fun(A,B) = \{f \mid f: A \rightarrow B\}$ l'insieme di tutte le funzioni che vanno da $A$ a $B$. Di conseguenza $fun(A, B) \subseteq rel(A, B)$.
+\end{note}
 
 \subsubsection{Proprietà di chiusura per funzioni}
-Per tutti gli insiemi A, B, C e per tutte le relazioni, funzioni, $i: A \longrightarrow B$ e $j: B \longrightarrow C$ valgono le seguenti proprietà:
+Per tutti gli insiemi $A, B, C$ e per tutte le relazioni, funzioni, $i: A \rightarrow B$ e $j: B \rightarrow C$ valgono le seguenti proprietà:
 \begin{enumerate}
-    \item $Id_A$ è una biezione, essendo che sarebbe una relazione con se stesso.
-    \item Se prendiamo $i: A \longrightarrow B$ e $j: B \longrightarrow C$, dove entrambi le funzioni sono biezioni, la loro composizioni, i;j: $A \longrightarrow C$ è a sua volta una biezioni.
-    \item Se prendiamo la funzione $i: A \longrightarrow B$ biettiva, il suo opposto $i^{op}: B \longrightarrow A$ è a sua volta biettiva.
+    \item $Id_A$ è una biezione, essendo una relazione con se stesso
+    \item Se prendiamo $i: A \rightarrow B$ e $j: B \rightarrow C$, dove entrambe le funzioni sono biezioni, la loro composizione, $i;j: A \rightarrow C$ è a sua volta una biezione
+    \item Se prendiamo la funzione $i: A \rightarrow B$ biettiva, il suo opposto $i^{op}: B \rightarrow A$ è a sua volta biettiva
 \end{enumerate}
 
 \subsubsection{Caratterizzazione in biezione}\label{caratterizzazione-biezione}
-\begin{definition}[Caratterizzazione]
-In maniera rigorosa la caratterizzazione, applicata alla biezione, si definiscine:
-$\forall \: A, B \: \bullet \: \forall \: R \subseteq$ A X B, R è biezione $\Longleftrightarrow Id_A = R;R^{op} \land Id_B = R^{op};R$.
-\end{definition}
+Per tutti gli insiemi $A, B$, per tutte le relazioni $R: A\leftrightarrow B$ vale che:
+\begin{itemize}
+	\item $R$ è una biiezione se e solo se $Id_A = R;R^{op}$ e $Id_B = R^{op};R$
+	\item Una relazione $S:B\leftrightarrow A$ è l'inversa di $R$ se $Id_A = R;S$ e $Id_B = S;R$
+	\item $R:A\leftrightarrow B$
+\end{itemize}
+
 \textbf{Spiegazione:} Per definire la proprietà di caratterizzazione per una relazione biettiva bisogna partire da cos'è una relazione biettiva: una relazione è biezione quando è contemporaneamente totale, univalente, surgettiva ed iniettiva. \\Da qui capiamo che se una relazione ha tutte e 4 le proprietà a suo volta dovrà rispettare per ciascuna di esse la caratterizzazione associata vista nel paragrafo \ref{teorema-caratterizzazione}. \\Quindi semplicemente riscriviamo questa quattro proprietà semplificando $Id_A \subseteq R;R^{op}$ con $R;R^{op} \subseteq Id_A$ in $Id_A = R;R^{op}$ e $Id_B \subseteq R^{op};$ con $R^{op};R \subseteq Id_B$ con $Id_B = R^{op};R$ (possiamo fare questa "semplificazione" perché due insiemi sono uguali quando uno è sottoinsieme dell'altro, come in questo caso).
 \begin{example}
     Come si usa la caratterizzazione:\\
     Dati due insiemi A, B ed una relazione R $\subseteq$ A X B. Se riusciamo a trovare una relazione S $\subseteq$ B X A tale che venga soddisfatta la definizione sopra scritta per cui $Id_A = R;S \land S;R = Id_B$ è equivalente a dimostrare che la relazione R è una biezione.
 \end{example}
 
-\newpage
 \subsubsection{Insiemi di biezione}
 \begin{definition}[Insiemi di biezione]
-Dati due insiemi A e B, essi sono in biezioni \footnote{nota che puoi chiamare due insiemi di biezione anche in corrispondenza, 1-1 o una relazione biunivoca} se esiste una biezione che va da $i: A \longrightarrow B$, e si scrive come $A \cong B$\footnote{attenzione: usare il simbolo $\cong$ invece che un semplice = vuole dire che non per forza le due parti devono essere uguali, quindi si sopperisce ad un eventuale mancanza di uguaglianza}
+Dati due insiemi A e B, essi sono in biezione
+\footnote{puoi chiamare due insiemi in biezione anche in corrispondenza, 1-1 o in una relazione biunivoca}
+se esiste una biezione $i: A \rightarrow B$, e si scrive come $A \cong B$
+\footnote{attenzione: usare il simbolo $\cong$ invece che un semplice = vuole dire che non per forza le due parti devono essere ugualia}
 \end{definition}
 \begin{example}
     Esempi insiemi di biezione:
@@ -352,7 +375,7 @@ Dati due insiemi A e B, essi sono in biezioni \footnote{nota che puoi chiamare d
     \end{itemize}
 \end{example}
 \begin{example} Esempio particolare con dimostrazione \\
-        Per tutti gli insiemi A, B, C vale che:
+        Per tutti gli insiemi $A, B, C$ vale che:
         \begin{equation}
             (A \times B) \times C \cong A \times (B \times C)
         \end{equation}
@@ -388,7 +411,7 @@ Dati due insiemi A e B, essi sono in biezioni \footnote{nota che puoi chiamare d
 \end{example}
 
 \subsubsection{Proprietà insiemi di biezione}
-Per tutti gli insiemi A, B, C valgono le proprietà scritte nella tabella \ref{tab:proprietà-insiemi-biezione}.
+Per tutti gli insiemi $A, B, C$ valgono le proprietà scritte nella tabella \ref{tab:proprietà-insiemi-biezione}.
 \begin{table}[h!]
     \centering
     \setlength{\tabcolsep}{8pt}
@@ -396,8 +419,8 @@ Per tutti gli insiemi A, B, C valgono le proprietà scritte nella tabella \ref{t
     \begin{tabular}{|c|c|}
     \hline
         \textbf{Riflessiva} & A $\cong$ A  \\
-        \textbf{Simmetrica} & A $\cong$ B $\Longleftrightarrow$ B $\cong$ A \\
-        \textbf{Transitiva} & A $\cong$ B, B $\cong$ C $\Longrightarrow$ A $\cong$ C \\ \hline
+        \textbf{Simmetrica} & A $\cong B \Longrightarrow B \cong A$ \\
+        \textbf{Transitiva} & $A \cong B$, $B \cong C \Longrightarrow A \cong C$\\ \hline
     \end{tabular}
     \caption{Proprietà insiemi di biezione}
     \label{tab:proprietà-insiemi-biezione}
