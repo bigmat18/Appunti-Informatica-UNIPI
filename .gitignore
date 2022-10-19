@@ -8,3 +8,6 @@
 *.toc
 
 *.out
+
+*.blg
+*.bbl
