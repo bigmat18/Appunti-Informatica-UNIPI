@@ -1,32 +1,32 @@
 \newpage
 \section{Relazioni su un insieme}
 \begin{definition}[Relazioni su un insieme]
-Dato un insieme A, una relazione su un insieme A è un sottoinsieme A X A, cioè un elemento di rel(A,A), dove rel(A,A) è l'insieme delle possibili relazioni A X A. Quindi una relazione $R \subseteq$ A X A.
+Dato un insieme $A$, una relazione su un insieme $A$ è un sottoinsieme $A \times A$, cioè un elemento di $rel(A,A)$, dove $rel(A,A)$ è l'insieme delle possibili relazioni $A \times A$. Quindi una relazione $R \subseteq A \times A$.
 \end{definition}
 Le relazioni su insiemi sono caratterizzate dal fatto che si sviluppano fra due insiemi uguali. Infatti non è una relazione su un insieme un $R \subseteq$ A X B.
 \begin{example}
 Alcuni esempi generali di relazioni su un insieme:
 \begin{itemize}
-    \item Succ = $\{(x,y) \in \mathbb{N}$ X $\mathbb{N}\: \setminus\: y=x+1\}$
-    \item $id_A \in$ rel(A,A) è una relazione su A
-    \item S è l'insieme degli studenti. CompagnoDiClasse $\in$ rel(S,S)
-    \item Somma $\in$ rel(($\mathbb{Z}, \mathbb{Z}$), $\mathbb{Z}$) Somma non è una relazione su in inseme.
+    \item Succ = $\{(x,y) \in \mathbb{N} \times \mathbb{N} \mid y=x+1\}$
+    \item $id_A \in rel(A,A)$ è una relazione su $A$
+    \item $S$ è l'insieme degli studenti. CompagnoDiClasse $\in rel(S,S)$
+    \item Somma $\in$ rel(($\mathbb{Z}, \mathbb{Z}$), $\mathbb{Z}$) Somma \textbf{NON} è una relazione su in inseme.
 \end{itemize}
 \end{example}
 
 \subsection{Proprietà di relazione su un insieme}
 \subsubsection{Riflessiva}
-Dato un inseme A, una relazione $R: A \longleftrightarrow A$ possiamo definirla come:
+Dato un inseme $A$, una relazione $R: A \rightarrow A$ possiamo definirla come:
 \begin{definition}[Riflessiva]
     R è una relazione \textbf{riflessiva} se per tutti gli $a \in A$ vale che $(a, a) \in R$
     \begin{center}
         $\forall \: a \in A . (a, a) \in R$
     \end{center}
 \end{definition}
-Rappresentiamo \textbf{graficamente} ora una relazione riflessiva. \\Dato un insieme A di partenza dove A = $\{a, b, c, d\}$:
+Rappresentiamo \textbf{graficamente} ora una relazione riflessiva. \\Dato un insieme $A$ di partenza dove $A = \{a, b, c, d\}$:
 \begin{itemize}
     \item Il caso [\ref{fig:relazione-riflessiva}] è riflessivo perché ogni elemento è collegato a se stesso \footnote{Il collegamento di un elemento a se stesso viene anche chiamata cappio}.
-    \item Il caso [\ref{fig:relazione-non-riflessiva}] non è riflessivo perché gli elementi $c$ e $b$ non sono collegati con loro stesso.
+    \item Il caso [\ref{fig:relazione-non-riflessiva}] \textbf{non} è riflessivo perché gli elementi $c$ e $b$ non sono collegati con loro stesso.
 \end{itemize}
 \begin{figure}[h!]
     \vspace{-15pt}
@@ -48,22 +48,22 @@ Rappresentiamo \textbf{graficamente} ora una relazione riflessiva. \\Dato un ins
 \begin{example}
 Alcuni esempi di relazioni riflessive:
     \begin{itemize}
-        \item L'Identità di A $Id_A: A \longleftrightarrow A$ è riflessiva.
-        \item La relazione completa $A$ X $A:A \longleftrightarrow A$ è riflessiva.
-        \item La relazione vuota $\O: A \longleftrightarrow A$ non è riflessiva perché non ci sono relazioni fra elementi.
-        \item La relazione minore $<: \mathbb{N} \longleftrightarrow \mathbb{N}$ \footnote{La relazione minore è definita come: $< = \{(x,y) \in \mathbb{N}$ X $\mathbb{N}\:|\: x < y\}$} non è riflessiva perché un numero non è minore di se stesso.
-        \item La relazione minore-uguale $\leq: \mathbb{N} \longleftrightarrow \mathbb{N}$ \footnote{La relazione minore-uguale è definita come: $\leq = \{(x,y) \in \mathbb{N}$ X $\mathbb{N}\:|\: x \leq y\}$} è riflessiva.
-        \item La relazione madre:EU $\longleftrightarrow$ EU non è riflessiva.
+        \item L'Identità di A $Id_A: A \leftrightarrow A$ è riflessiva.
+        \item La relazione completa $A \times A:A \leftrightarrow A$ è riflessiva.
+        \item La relazione vuota $\O: A \leftrightarrow A$ non è riflessiva perché non ci sono relazioni fra elementi. Se $A = \O$ allora sarebbe stata riflessiva.
+        \item La relazione minore stretto $<: \mathbb{N} \leftrightarrow \mathbb{N}$ \footnote{La relazione minore è definita come: $< = \{(x,y) \in \mathbb{N}$ X $\mathbb{N}\:|\: x < y\}$} non è riflessiva perché un numero non è minore di se stesso.
+        \item La relazione minore-uguale $\leq: \mathbb{N} \leftrightarrow \mathbb{N}$ \footnote{La relazione minore-uguale è definita come: $\leq = \{(x,y) \in \mathbb{N}$ X $\mathbb{N}\:|\: x \leq y\}$} è riflessiva.
+        \item La relazione madre: $EU \leftrightarrow EU$ non è riflessiva.
     \end{itemize}
 \end{example}
 
 \newpage
 \subsubsection{Simmetrica}
-Dato un inseme A, una relazione $R: A \longleftrightarrow A$ possiamo definirla come:
+Dato un inseme A, una relazione $R: A \leftrightarrow A$ possiamo definirla come:
 \begin{definition}[Simmetrica]
     R è una relazione \textbf{simmetrica} se per tutti gli $a,b \in A$ vale che se $(a, b) \in R$ allora $(b,a) \in R$.
     \begin{center}
-        $\forall \: a,b \in A . (a, b) \in R \Longrightarrow (b,a) \in R$
+        $\forall \: a,b \in A . (a, b) \in R \Rightarrow (b,a) \in R$
     \end{center}
 \end{definition}
 Rappresentiamo \textbf{graficamente} ora una relazione simmetrica. \\Dato un insieme A di partenza dove A = $\{a, b, c, d\}$:
@@ -91,28 +91,28 @@ Rappresentiamo \textbf{graficamente} ora una relazione simmetrica. \\Dato un ins
 \begin{example}
 Alcuni esempi di relazioni simmetrica:
     \begin{itemize}
-        \item L'Identità di A $Id_A: A \longleftrightarrow A$ è simmetrica.
-        \item La relazione completa $A$ X $A:A \longleftrightarrow A$ è simmetrica.
-        \item La relazione vuota $\O: A \longleftrightarrow A$ è simmetrica.
-        \item La relazione minore $<: \mathbb{N} \longleftrightarrow \mathbb{N}$ non è simmetrica perché se un elemento $a$ è minore di un elemento $b$ non può essere che esista l'inverso.
-        \item La relazione minore-uguale $\leq: \mathbb{N} \longleftrightarrow \mathbb{N}$ non è riflessiva perché ci sono casi in cui $a$ è minore di un elemento $b$ che non permettono l'inverso.
+        \item L'Identità di $A Id_A: A \rightarrow A$ è simmetrica.
+        \item La relazione completa $A \times A:A \rightarrow A$ è simmetrica.
+        \item La relazione vuota $\O: A \rightarrow A$ è simmetrica.
+        \item La relazione minore stretto $<: \mathbb{N} \longleftrightarrow \mathbb{N}$ non è simmetrica perché se un elemento $a$ è minore di un elemento $b$ non può essere che esista l'inverso.
+        \item La relazione minore-uguale $\leq: \mathbb{N} \leftrightarrow \mathbb{N}$ non è riflessiva perché ci sono casi in cui $a$ è minore di un elemento $b$ che non permettono l'inverso.
         \item La relazioni di amicizia su facebook FbFreind:FB $\longleftrightarrow$ FB è simmetrica.
         \item La relazioni di follow su instagram IGFollow:IG $\longleftrightarrow$ IG non è simmetrica perchè se te sei follow di un utente questo utente non necessariamente lo è di te.
     \end{itemize}
 \end{example}
 
 \subsubsection{Transitiva}
-Dato un inseme A, una relazione $R: A \longleftrightarrow A$ possiamo definirla come:
+Dato un inseme A, una relazione $R: A \leftrightarrow A$ possiamo definirla come:
 \begin{definition}[Transitiva]
     R è una relazione \textbf{transitiva} se per tutti gli $a,b,c \in A$ vale che se $(a, b) \in R$ e $(b, c) \in R$ allora $(a, c) \in R$
     \begin{center}
-        $\forall \: a,b,c \in A . (a, b) \in R \land (b, c) \in R \Longrightarrow (a,c) \in R$
+        $\forall a,b,c \in A . (a, b) \in R \land (b, c) \in R \Rightarrow (a,c) \in R$
     \end{center}
 \end{definition}
-Rappresentiamo \textbf{graficamente} ora una relazione transitiva. \\Dato un insieme A di partenza dove A = $\{a, b, c, d\}$:
+Rappresentiamo \textbf{graficamente} ora una relazione transitiva. \\Dato un insieme $A$ di partenza dove $A = \{a, b, c, d\}$:
 \begin{itemize}
     \item Il caso [\ref{fig:relazione-transitiva}] è transitiva perché ogni caso in cui un elemento che si trova "nel mezzo" fra due altri elementi prevede un collegamento fra questi due elementi.
-    \item Il caso [\ref{fig:relazione-non-transitiva}] non è transitiva perché esiste (d,c) e (c,a) ma non (a,c).
+    \item Il caso [\ref{fig:relazione-non-transitiva}] non è transitiva perché esiste $(d,c)$ e $(c,a)$ ma non $(a,c)$.
 \end{itemize}
 \begin{figure}[h!]
     \vspace{-10pt}
@@ -135,28 +135,28 @@ Rappresentiamo \textbf{graficamente} ora una relazione transitiva. \\Dato un ins
 \begin{example}
 Alcuni esempi di relazioni transitiva:
     \begin{itemize}
-        \item L'Identità di A $Id_A: A \longleftrightarrow A$ è transitiva.
-        \item La relazione completa $A$ X $A:A \longleftrightarrow A$ è transitiva.
-        \item La relazione vuota $\O: A \longleftrightarrow A$ è transitiva.
-        \item La relazione minore $<: \mathbb{N} \longleftrightarrow \mathbb{N}$ è transitiva.
-        \item La relazione minore-uguale $\leq: \mathbb{N} \longleftrightarrow \mathbb{N}$ è transitiva.
-        \item La relazioni di amicizia su facebook FbFreind: FB $\longleftrightarrow$ FB non è transitiva perché se te sei amico di una persona e questa persona ha amico un altro utente non necessariamente te sei amico di quest'altro utente.
-        \item La relazioni di follow su instagram IGFollow: IG $\longleftrightarrow$ IG non è transitiva perché se te hai come follow una persona e questa persona ha come follow un altro utente non necessariamente te sei hai come follow di quest'altro utente.
+        \item L'Identità di A $Id_A: A \leftrightarrow A$ è transitiva.
+        \item La relazione completa $A$ X $A:A \leftrightarrow A$ è transitiva.
+        \item La relazione vuota $\O: A \leftrightarrow A$ è transitiva.
+        \item La relazione minore $<: \mathbb{N} \leftrightarrow \mathbb{N}$ è transitiva.
+        \item La relazione minore-uguale $\leq: \mathbb{N} \leftrightarrow \mathbb{N}$ è transitiva.
+        \item La relazioni di amicizia su facebook FbFreind: FB $\leftrightarrow$ FB non è transitiva perché se te sei amico di una persona e questa persona ha amico un altro utente non necessariamente te sei amico di quest'altro utente.
+        \item La relazioni di follow su instagram IGFollow: IG $\leftrightarrow$ IG non è transitiva perché se te hai come follow una persona e questa persona ha come follow un altro utente non necessariamente te sei hai come follow di quest'altro utente.
     \end{itemize}
 \end{example}
 
 \subsubsection{Anti-simmetrica}
-Dato un inseme A, una relazione $R: A \longleftrightarrow A$ possiamo definirla come:
+Dato un inseme A, una relazione $R: A \leftrightarrow A$ possiamo definirla come:
 \begin{definition}[Anti-simmetrica]
-    R è una relazione \textbf{Anti-simmetrica} se per tutti gli $a,b \in A$ vale che se $(a, b) \in R$ e $(b, a) \in R$ allora $a = b$
+    R è una relazione \textbf{anti-simmetrica} se per tutti gli $a,b \in A$ vale che se $(a, b) \in R$ e $(b, a) \in R$ allora $a = b$
     \begin{center}
-        $\forall \: a,b \in A . (a, b) \in R \land (b, a) \in R \Longrightarrow a = b$
+        $\forall \: a,b \in A . (a, b) \in R \land (b, a) \in R \Rightarrow a = b$
     \end{center}
 \end{definition}
-Rappresentiamo \textbf{graficamente} ora una relazione anti-simmetrica. \\Dato un insieme A di partenza dove A = $\{a, b, c, d\}$:
+Rappresentiamo \textbf{graficamente} ora una relazione anti-simmetrica. \\Dato un insieme $A$ di partenza dove $A = \{a, b, c, d\}$:
 \begin{itemize}
     \item Il caso [\ref{fig:relazione-anti-simmetrica}] è anti-simmetrica perché la premessa è negata, quindi per le varie coppie di valori non esistono coppie simmetriche.
-    \item Il caso [\ref{fig:relazione-non-anti-simmetrica}] non è anti-simmetrica perché esiste sia la coppia (a,b) e (b,a) ma a è diverso da b.
+    \item Il caso [\ref{fig:relazione-non-anti-simmetrica}] non è anti-simmetrica perché esiste sia la coppia $(a,b)$ e $(b,a)$ ma a è diverso da $b$.
 \end{itemize}
 \begin{figure}[h!]
     \vspace{-10pt}
@@ -178,22 +178,22 @@ Rappresentiamo \textbf{graficamente} ora una relazione anti-simmetrica. \\Dato u
 \begin{example}
 Alcuni esempi di relazioni anti-simmetrica:
     \begin{itemize}
-        \item L'Identità di A $Id_A: A \longleftrightarrow A$ è anti-simmetrica.
-        \item La relazione completa $A$ X $A:A \longleftrightarrow A$ non è anti-simmetrica perchè sicuramente esisterà sia (a,b) che (b,a) ma non necessariamente a = b.
-        \item La relazione vuota $\O: A \longleftrightarrow A$ è anti-simmetrica.
-        \item La relazione minore $<: \mathbb{N} \longleftrightarrow \mathbb{N}$ è anti-simmetrica \footnote{Ricorda che se cade la premessa allora la conclusione è sempre vera per le leggi logiche sugli operatori}.
-        \item La relazione minore-uguale $\leq: \mathbb{N} \longleftrightarrow \mathbb{N}$ è anti-simmetrica.
+        \item L'Identità di $A Id_A: A \leftrightarrow A$ è anti-simmetrica.
+        \item La relazione completa $A \times A:A \leftrightarrow A$ non è anti-simmetrica perchè sicuramente esisterà sia $(a,b)$ che $(b,a)$ ma non necessariamente $a = b$.
+        \item La relazione vuota $\O: A \leftrightarrow A$ è anti-simmetrica.
+        \item La relazione minore $<: \mathbb{N} \leftrightarrow \mathbb{N}$ è anti-simmetrica \footnote{Ricorda che se cade la premessa allora la conclusione è sempre vera per le leggi logiche sugli operatori}.
+        \item La relazione minore-uguale $\leq: \mathbb{N} \leftrightarrow \mathbb{N}$ è anti-simmetrica.
     \end{itemize}
 \end{example}
 
 \subsection{Teorema di caratterizzazione}
 \begin{theorem}[Teorema di caratterizzazione]\label{Teorema-caratterizzazione}
-    Pero tutti gli insiemi A e per tutte le relazioni $R: A \longleftrightarrow A$ vale che:
+    Pero tutti gli insiemi $A$ e per tutte le relazioni $R: A \rightarrow A$ vale che:
     \begin{enumerate}
-        \item R è \textbf{riflessiva} $\Longleftrightarrow$ $Id_A \subseteq R$.
-        \item R è \textbf{simmetrica} $\Longleftrightarrow$ $R \subseteq R^{op}$ (o anche $R^{op} \subseteq R, R = R^{op}$).
-        \item R è \textbf{transitiva} $\Longleftrightarrow$ $R;R \subseteq R$.
-        \item R è \textbf{anti-simmetrica} $\Longleftrightarrow$ $R \cap R^{op} \subseteq Id_A$.
+        \item $R$ è \textbf{riflessiva} $\Longleftrightarrow Id_A \subseteq R$.
+        \item $R$ è \textbf{simmetrica} $\Longleftrightarrow R \subseteq R^{op}$ (o anche $R^{op} \subseteq R, R = R^{op}$).
+        \item $R$ è \textbf{transitiva} $\Longleftrightarrow R;R \subseteq R$.
+        \item $R$ è \textbf{anti-simmetrica} $\Longleftrightarrow R \cap R^{op} \subseteq Id_A$.
     \end{enumerate}
 \end{theorem}
 \begin{demostration}[Simmetrica]
@@ -211,27 +211,41 @@ Per effettuare questa dimostrazione andiamo a dimostrare i due sensi dell'implic
 \subsection{Chiusure}
 Le chiusure servono per rendere una relazione in un determinato modo tra riflessiva, simmetrica transitiva, applicando delle operazioni fra insiemi.
 \subsubsection{Chiusura riflessiva}
-La chiusura riflessiva di R è il modo "minimale" per rendere R riflessiva.
+La chiusura riflessiva di $R$ è il modo "minimale" per rendere $R$ riflessiva.
 \begin{definition}[Chiusura riflessiva]
-    Sia $R: A \longleftrightarrow A$ una relazione su in insieme A, la chiusura \textbf{riflessiva} di R è la relazione $R \cup Id_A$
+    Sia $R: A \leftrightarrow A$ una relazione su in insieme $A$, la chiusura \textbf{riflessiva} di $R$ è la relazione $R \cup Id_A$
 \end{definition}
 \begin{example}
 Alcuni esempi di chiusure riflessive:\\
-$Id_A: A \longleftrightarrow A$ = $Id_A$ \hspace{.7cm} $A: A \longleftrightarrow A$ = $A$ X $A$ \hspace{.7cm} $\O: A \longleftrightarrow A$ = $Id_A$ \\$<: \mathbb{N} \longleftrightarrow \mathbb{N}$ = $\leq$  \hspace{.7cm} $\leq: \mathbb{N} \longleftrightarrow \mathbb{N}$ = $\leq$
+$Id_A: A \leftrightarrow A = Id_A$
+\hspace{.7cm}
+$A: A \leftrightarrow A = A \times A$
+\hspace{.7cm}
+$\O: A \leftrightarrow A = Id_A$ \\
+$<: \mathbb{N} \leftrightarrow \mathbb{N} = \leq$
+\hspace{.7cm}
+$\leq: \mathbb{N} \leftrightarrow \mathbb{N}$ = $\leq$
 \end{example}
 \begin{note}
 Nota che per ogni $S: A \longleftrightarrow A$, se $R \subseteq S$ ed $R$ è riflessiva, allora $R \cup Id_A \subseteq S$ 
 \end{note}
 
 \subsubsection{Chiusura simmetrica}
-La chiusura simmetria di R è un metodo "minimale" per rendere R simmetrica.
-Sia $R: A \longleftrightarrow A$ una relazione su in insieme A:
+La chiusura simmetria di $R$ è un metodo "minimale" per rendere $R$ simmetrica.
+Sia $R: A \longleftrightarrow A$ una relazione su in insieme $A$:
 \begin{definition}[Chiusura simmetrica]
-    Sia $R: A \longleftrightarrow A$ una relazione su in insieme A, la chiusura \textbf{simmetrica} di R è la relazione $R \cup R^{op}$
+    Sia $R: A \longleftrightarrow A$ una relazione su in insieme A, la chiusura \textbf{simmetrica} di $R$ è la relazione $R \cup R^{op}$
 \end{definition}
 \begin{example}
 Alcuni esempi di chiusure riflessive:\\
-$Id_A: A \longleftrightarrow A$ = $Id_A$ \hspace{.7cm} $A: A \longleftrightarrow A$ = $A$ X $A$ \hspace{.7cm} $\O: A \longleftrightarrow A$ = $\O$ \\$<: \mathbb{N} \longleftrightarrow \mathbb{N}$ = $\neq$  \hspace{.7cm} $\leq: \mathbb{N} \longleftrightarrow \mathbb{N}$ = $\mathbb{N}$ X $\mathbb{N}$
+$Id_A: A \longleftrightarrow A$ = $Id_A$
+\hspace{.7cm}
+$A: A \longleftrightarrow A = A \times A$
+\hspace{.7cm}
+$\O: A \longleftrightarrow A = \O$ \\
+$<: \mathbb{N} \longleftrightarrow \mathbb{N} = \neq$
+\hspace{.7cm}
+$\leq: \mathbb{N} \longleftrightarrow \mathbb{N} = \mathbb{N} \times \mathbb{N}$
 \end{example}
 
 \begin{note}
@@ -239,75 +253,67 @@ Nota che per ogni $S: A \longleftrightarrow A$, se $R \subseteq S$ ed $R$ è sim
 \end{note}
 
 \subsubsection{Chiusura transitiva}
-Per arrivare a capire la chiusura transitiva come opera bisogna partire da un'intuizione. La proprietà transitiva intanto dice in maniera informale che $\forall x,y \in A X A. \exists (x,y)$ se $x$ "può raggiungere" $y$ in R; capiamo dunque come la chiusura transitiva arricchisce R con tutte le coppie (x,y) tali che y è raggiungibile da x seguendo degli archi.\\ \\
-Sia data dunque una relazione $R: A \longleftrightarrow A$ dove $R = \{(a,b), (b,c), (c,d), (d,e), (d,f)\}$, e rappresentiamo graficamente i vari "passaggi per rendere tale relazione transitiva.
+Per arrivare a capire come opera la chiusura transitiva bisogna partire da un'intuizione. La proprietà transitiva intanto dice in maniera informale che $\forall x,y \in A \times A. \exists (x,y)$ se $x$ "può raggiungere" $y$ in $R$; capiamo dunque come la chiusura transitiva arricchisce $R$ con tutte le coppie $(x,y)$ tali che $y$ è raggiungibile da $x$ seguendo degli archi.\\ \\
+Sia data dunque una relazione $R: A \leftrightarrow A$ dove $R = \{(a,b), (b,c), (c,d), (d,e), (d,f)\}$, e rappresentiamo graficamente i vari "passaggi per rendere tale relazione transitiva.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}{.3\textwidth}
         \centering
         \includegraphics[width=5cm]{images/chiusura-transitiva-1.png}
-        \caption{R}
-        \label{}
+        \caption{$R$}
     \end{subfigure}
     \hfill
     \begin{subfigure}{.3\textwidth}
         \centering
         \includegraphics[width=5cm]{images/chiusura-transitiva-2.png}
-        \caption{R;R}
-        \label{}
+        \caption{$R;R$}
     \end{subfigure}
     \hfill
     \begin{subfigure}{.3\textwidth}
         \centering
         \includegraphics[width=5cm]{images/chiusura-transitiva-3.png}
-        \caption{R $\cup$ R;R}
-        \label{}
+        \caption{$R \cup R;R$}
     \end{subfigure}
     \hfill
     \begin{subfigure}{.3\textwidth}
         \vspace{15pt}
         \centering
         \includegraphics[width=5cm]{images/chiusura-transitiva-4.png}
-        \caption{(R;R);R}
-        \label{}
+        \caption{$(R;R);R$}
     \end{subfigure}
     \hfill
     \begin{subfigure}{.3\textwidth}
         \vspace{15pt}
         \centering
         \includegraphics[width=5cm]{images/chiusura-transitiva-5.png}
-        \caption{R $\cup$ R;R $\cup$ R;R;R}
-        \label{}
+        \caption{$R \cup R;R \cup R;R;R$}
     \end{subfigure}
     \hfill
     \begin{subfigure}{.3\textwidth}
         \vspace{15pt}
         \centering
         \includegraphics[width=5cm]{images/chiusura-transitiva-6.png}
-        \caption{((R;R);R);R}
-        \label{}
+        \caption{$((R;R);R);R$}
     \end{subfigure}
     \hfill
     \begin{subfigure}{.3\textwidth}
         \vspace{15pt}
         \centering
         \includegraphics[width=5cm]{images/chiusura-transitiva-7.png}
-        \caption{R $\cup$ R;R $\cup$ R;R;R $\cup$ R;R;R;R}
-        \label{}
+        \caption{$R \cup R;R \cup R;R;R \cup R;R;R;R$}
     \end{subfigure}
     \hspace{2cm}
     \begin{subfigure}{.3\textwidth}
         \vspace{15pt}
         \centering
         \includegraphics[width=5cm]{images/chiusura-transitiva-8.png}
-        \caption{(((R;R);R);R);R}
-        \label{}
+        \caption{$(((R;R);R);R);R$}
     \end{subfigure}
 \end{figure}
 \\
 Come si vede nelle sequenza di passi sopra, il metodo per fra diventare una relazione transitiva si basa sul ripetere una serie di composizioni ed unirle fra loro finché non si raggiunge uno stato o di vuoto (come in questo caso) o di loop. Questo genere di operazione può essere definita in modo più formale tramite la composizione n-aria di relazione.
 \begin{definition}[Composizione n-aria di relazione]
-    Sia A u insieme e $R: A \longleftrightarrow A$ una relazione su A, $\forall n \in \mathbb{N}$, la composizione n-aria della relazione R, $R^n$ è definita induttivamente come:
+    Sia $A$ un insieme e $R: A \leftrightarrow A$ una relazione su $A$, $\forall n \in \mathbb{N}$, la composizione n-aria $R^n$ è definita induttivamente come:
     \begin{enumerate}
         \item \underline{Caso base:} $R^0 = Id_A$
         \item \underline{Passo induttivo:} $R^{n+1} = R;R^n$
@@ -316,70 +322,75 @@ Come si vede nelle sequenza di passi sopra, il metodo per fra diventare una rela
 \begin{example}
 $R^0 = Id_A$ \hspace{.3cm} $R^1 = R;Id_A = R$ \hspace{.3cm} $R^2 = R;R$ \hspace{.3cm} $R^3 = R;R;R$ e così via.
 \end{example}
-Ora possiamo chiaramente definire la chiusura transitiva.
+Ora possiamo definire la chiusura transitiva.
 \begin{definition}[Chiusura transitiva]
-    Sia $R: A \longleftrightarrow A$ una relazione su in insieme A, la chiusura transitiva di R è la relazione definita come $R^{+} = \bigcup\limits_{n \in \mathbb{N}^+} R^{n}$ con $\O \notin R^{+}$.
+    Sia $R: A \leftrightarrow A$ una relazione su un insieme $A$, la chiusura transitiva di $R$ è la relazione definita come $R^{+} = \bigcup\limits_{n \in \mathbb{N}^+} R^{n}$ con $\O \notin R^{+}$.
 \end{definition}
 \begin{example}
 Alcuni esempi di chiusure transitiva:\\
-$Id_A^+ = Id_A$ \hspace{.7cm} $(A: A \longleftrightarrow A)^+$ = $A$ X $A$ \hspace{.7cm} $(\O: A \longleftrightarrow A)^+$ = $\O$
+$Id_A^+ = Id_A$ \hspace{.7cm} $(A \times A)^+:A\leftrightarrow A = A \times A$ \hspace{.7cm} $(\O: A \leftrightarrow A)^+$ = $\O$
 \end{example}
 
-\subsection{Stella di kleene}
-\begin{definition}[Stella di kleene]
-    Sia A un insieme ed $R: A \longleftrightarrow A$ una relazione su A. La chiusura di kleene (o stella di kleene) è la combinazione della chiusura riflessiva e transitiva di R ed è definita come:
+\subsection{Stella di Kleene}
+\begin{definition}[Stella di Kleene]
+    Sia $A$ un insieme ed $R: A \leftrightarrow A$ una relazione su $A$. La chiusura (o stella) di Kleene è la combinazione della chiusura riflessiva e transitiva di R ed è definita come:
     \begin{center}
-         $R^* = \bigcup\limits_{n \in \mathbb{N}} R^n$ \:\: quindi \:\: $R^* = (R^+) \cup (Id_A)$
+         $R^\ast = \bigcup\limits_{n \in \mathbb{N}} R^n$ $\longrightarrow$ $R^\ast = (R^+) \cup (Id_A)$
     \end{center}
 \end{definition}
 \begin{example}
-Facciamo un esempio in cui consideriamo l'insieme $A = \{a,b,c,d\}$ ed applichiamo la stella di kleene alla relazione $R = \{(a,b),(a,d),(b,c)\}$.
+Facciamo un esempio in cui consideriamo l'insieme $A = \{a,b,c,d\}$ ed applichiamo la stella di Kleene alla relazione $R = \{(a,b),(a,d),(b,c)\}$.
 \end{example}
 \begin{figure}[h!]
     \vspace{-20pt}
     \begin{subfigure}{.3\textwidth}
         \centering
-        \includegraphics[width=4cm]{images/stella-kleene-1.png}
-        \caption{R di partenza}
+        \includegraphics[width=4cm]{images/stella-Kleene-1.png}
+        \caption{$R$ di partenza}
     \end{subfigure}
     \hfill
     \begin{subfigure}{.3\textwidth}
         \centering
-        \includegraphics[width=4cm]{images/stella-kleene-2.png}
-        \caption{R di partenza + transitiva (rosso)}
+        \includegraphics[width=4cm]{images/stella-Kleene-2.png}
+        \caption{$R$ di partenza + transitiva (rosso)}
     \end{subfigure}
     \hfill
     \begin{subfigure}{.3\textwidth}
         \centering
-        \includegraphics[width=4cm]{images/stella-kleene-3.png}
-        \caption{R di partenza + transitiva (rosso) + riflessiva (verde)}
+        \includegraphics[width=4cm]{images/stella-Kleene-3.png}
+        \caption{$R$ di partenza + transitiva (rosso) + riflessiva (verde)}
     \end{subfigure}
 \end{figure}
 
-\subsubsection{Apllicazione al While}
+\subsubsection{Applicazione al while}
 Prendiamo come esempio questo pezzo di codice while:
 \begin{center}
     while ($x \geq 2$) do $\{x = x - 2\}$
 \end{center}
 Andiamo ora a definire i 3 componenti di questo ciclo.
 \begin{itemize}
-    \item $C = \{(x, x-2) | x \in \mathbb{Z}\}: \mathbb{Z} \longleftrightarrow \mathbb{Z}$.
-    Identifica il \textbf{corpo} del while, cioè $x = x - 2$, che è la parte che viene eseguita ad ogni iterazione.
-    \item $G = \{(x,x) | x \in \mathbb{Z} \: \land \: x \geq 2\}: \mathbb{Z} \longleftrightarrow \mathbb{Z}$. Identifica la \textbf{guardi}, cioè $x \geq 2$. Si può notare che $G \subseteq Id_{\mathbb{Z}}$ essendo che associa coppie di valori uguali, l'unica cosa che contraddistingue $G$ dall'identità e che i valori devono soddisfare la condizione $x \geq 2$.
-    \item $\overline{G} = \{(x,x)\:|\:x \in \mathbb{Z} \: \land \: x < 2\}$.
+    \item $C = \{(x, x-2) \mid x \in \mathbb{Z}\}: \mathbb{Z} \leftrightarrow \mathbb{Z}$.
+    Identifica il \textbf{corpo} del while, cioè $x = x - 2$, ovvero la parte eseguita ad ogni iterazione.
+    
+    \item $G = \{(x,x) \mid x \in \mathbb{Z} \land x \geq 2\}: \mathbb{Z} \leftrightarrow \mathbb{Z}$. Identifica la \textbf{guardia}, cioè $x \geq 2$. Si può notare che $G \subseteq Id_{\mathbb{Z}}$, associando coppie di valori uguali, l'unica cosa che contraddistingue $G$ dall'identità è che i valori devono soddisfare la condizione $x \geq 2$.
+    
+    \item $\overline{G} = \{(x,x) \mid x \in \mathbb{Z} \land x < 2\} : \mathbb{Z} \leftrightarrow \mathbb{Z}$.
     Identifica la \textbf{negazione della guardia} che sarebbe $\overline{G} = Id_{\mathbb{Z}} \setminus G$ cioè tutti i valori che non rispettano la condizione del while.
 \end{itemize}
 Utilizziamo i 3 componenti appena scritti per andare a definire il pezzo di programma sopra come una relazione.
 \begin{equation}\label{while-relazione}
-    W = (G;C)^*;\overline{G}
+    W = (G;C)^\ast;\overline{G}:\mathbb{Z}\leftrightarrow \mathbb{Z}
 \end{equation}
 Spieghiamo velocemente la forma scritta sopra [\ref{while-relazione}]. L'obbiettivo è ottenere una relazione che associ un valore consentito dalla guardia al valore finale che uscirà dal while.\\
-La prima composizione che troviamo (G;C) è una relazione che dato una qualsiasi numero che rispetti le regole scritte nella guardia restituisce quel numero meno 2 ($x = x - 2$); andando poi ad applicare la stella di kleene su quella relazione, $(G;C)^*$ stiamo semplicemente aggiungendo la proprietà transitiva e riflessiva all'insieme, quindi per qualsiasi numero che rispetta le condizioni della guardia esisteranno delle coppie per tutti i "cicli" che il while permette, facciamo un esempio: prendiamo $x = 6$, il valore di x rispetta la guardia perché $x \in \mathbb{Z}$ e $x \geq 2$, inoltre, per la prima composizione, esisterà anche la coppia $(x, x-2)$ e cioè (6,4); ora, visto che la relazione è composta da tutti i numeri appartenenti a $\mathbb{Z}$ esisterà anche la coppia con partenza $x = 4$ e quindi formata da (4,2) e così anche le coppie (2,2) e (2,0); se applichiamo quindi la proprietà transitiva si andranno allora a creare le coppie (6,4), (6,2) e (6,0) che possiamo vedere che sono i vari passaggi del while.\\
-Arrivati a questo punto però noi vogliamo ottenere una relazione che dano un valore restituisca il risultato finale del ciclo, quindi, riferendosi all'esempio di prima, basterà "eliminare" tutte le coppie "intermedie, e questo si fa con l'ultima composizione, $(G;C)^*;\overline{G}$ dove $;\overline{G}$ permette di creare coppie fra i valori di partenza e il valore che non rispetta più la condizione del while, quindi (6,0), (4,0) ecc.
+La prima composizione che troviamo $(G;C)$ è una relazione che dato una qualsiasi numero che rispetti le regole scritte nella guardia restituisce quel numero meno $2$ ($x = x - 2$); andando poi ad applicare la stella di Kleene su quella relazione, $(G;C)^\ast$ stiamo semplicemente aggiungendo la proprietà transitiva e riflessiva all'insieme, quindi per qualsiasi numero che rispetta le condizioni della guardia esisteranno delle coppie per tutti i "cicli" che il while permette, facciamo un esempio: prendiamo $x = 6$, il valore di $x$ rispetta la guardia perché $x \in \mathbb{Z}$ e $x \geq 2$, inoltre, per la prima composizione, esisterà anche la coppia $(x, x-2)$ e cioè $(6,4)$; ora, visto che la relazione è composta da tutti i numeri appartenenti a $\mathbb{Z}$ esisterà anche la coppia con partenza $x = 4$ e quindi formata da $(4,2)$ e così anche le coppie $(2,2)$ e $(2,0)$; se applichiamo quindi la proprietà transitiva si andranno allora a creare le coppie $(6,4), (6,2)$ e $(6,0)$ che possiamo vedere che sono i vari passaggi del while.\\
+Arrivati a questo punto però noi vogliamo ottenere una relazione che da un valore restituisca il risultato finale del ciclo. Quindi, riferendosi all'esempio di prima, basterà "eliminare" tutte le coppie "intermedie", e questo si fa con l'ultima composizione, $(G;C)^\ast;\overline{G}$ dove $;\overline{G}$ permette di creare coppie fra i valori di partenza e il valore che non rispetta più la condizione del while, quindi $(6,0), (4,0), \ldots$
 \begin{demostration}
-    Andiamo ora a dimostrare che per ogni coppia $(a,b) \in \mathbb{Z}$ X $\mathbb{X}$, $(a,b) \in W$ se e solo se il programma while eseguito a partite da uno stato in cui $x = a$ termina in uno stato in cui $x = b$. \\ \\
-    \textbf{Caso 1°} (\underline{$x < 2$}) - Quello che dobbiamo dimostrare in questo caso è che le coppie $(a,a) \in W$ perché dati dei valori inferiori a 2 il ciclo non parte e quindi restituirà lo stesso valore.\\ \\ In questo caso teoricamente per la legge con cui è costruita la relazione G, $(a,a) \neq G$ e per cioè si verifica anche la condizione $(a,a)\neq G;C$, però nel caso $(G;C)^*$ si aggiunge all'insieme anche tutta $Id_{\mathbb{Z}}$ per la proprietà della stella di kleene, $Id_{\mathbb{Z}} \subseteq (G;C)^*$, allora arriviamo a vedere che $(a,a) \in (G;C)^*$ e che $(a,a) \in \overline{G}$ (questo perché a sono i valori minori di 2 e quindi rispettano la legge della relazione $\overline{G}$) quindi di conseguenza $(a,a) \in (G;C)^*;\overline{G}$ come desiderato. $\blacksquare$ \\ \\
-    \textbf{Caso 2°} (\underline{$x \geq 2$}) - In questo caso dobbiamo invece dimostrare l'appartenenza all'insieme W di tutte le coppie con un x di partenza valido per l'attivazione del ciclo while.\\ \\
+    Andiamo ora a dimostrare che per ogni coppia $(a,b) \in \mathbb{Z} \times \mathbb{X}$, $(a,b) \in W$ se e solo se il programma while eseguito a partite da uno stato in cui $x = a$ termina in uno stato in cui $x = b$. \\\\
+    
+    \textbf{Caso 1°} (\underline{$x < 2$}) - Quello che dobbiamo dimostrare in questo caso è che le coppie $(a,a) \in W$ perché dati dei valori inferiori a 2 il ciclo non parte e quindi restituirà lo stesso valore.\\ \\ In questo caso teoricamente per la legge con cui è costruita la relazione G, $(a,a) \neq G$ e per cioè si verifica anche la condizione $(a,a)\neq G;C$, però nel caso $(G;C)^*$ si aggiunge all'insieme anche tutta $Id_{\mathbb{Z}}$ per la proprietà della stella di Kleene, $Id_{\mathbb{Z}} \subseteq (G;C)^*$, allora arriviamo a vedere che $(a,a) \in (G;C)^*$ e che $(a,a) \in \overline{G}$ (questo perché a sono i valori minori di 2 e quindi rispettano la legge della relazione $\overline{G}$) quindi di conseguenza $(a,a) \in (G;C)^*;\overline{G}$ come desiderato. $\blacksquare$ \\\\
+    
+    \textbf{Caso 2°} (\underline{$x \geq 2$}) - In questo caso dobbiamo invece dimostrare l'appartenenza all'insieme W di tutte le coppie con un x di partenza valido per l'attivazione del ciclo while.\\\\
+    
     Questa seconda casistica si dimostra in maniera intuitiva. Vediamo come prima cosa che $(a,a) \in G$ e $(a,a-2) \in C$ quindi $(a,a-2) \in (G;C)$, quindi per ogni $a \geq 2$ si andranno a costruire i vari passaggi del while, descrivibile come $(G;C)^n$ con $n \in \mathbb{N}^+$ dove $n$ è l'n-esima iterazione. Ad esempio:
     \begin{table}[h!]
         \centering
@@ -393,10 +404,10 @@ Arrivati a questo punto però noi vogliamo ottenere una relazione che dano un va
     \vspace{-10pt}
     Nota che nell'esempio sopra $(6, -2) \notin (G;C)^4$ in quanto $(0, -2) \notin G;C$
     \end{note}
-    Ora per concludere la dimostrazione basta considerare che la composizione $(G;C)^*;\overline{G}$ va ad associare ogni interazione valida all'interno di while $(a,a-2)$ con i valori che non la validano (che si trovano nella relazione $\overline{G}$) quindi seguendo l'esempio sopra $(7,1) \in W$ e $(6,0) \in W$. Poiché questo ragionamento può essere applicato ag ogni numero pari o dispari maggiore o uguale a 2, questo conclude anche questo caso della dimostrazione. $\blacksquare$
+    Ora per concludere la dimostrazione basta considerare che la composizione $(G;C)^\ast;\overline{G}$ va ad associare ogni interazione valida all'interno di while $(a,a-2)$ con i valori che non la validano (che si trovano nella relazione $\overline{G}$) quindi seguendo l'esempio sopra $(7,1) \in W$ e $(6,0) \in W$. Poiché questo ragionamento può essere applicato ag ogni numero pari o dispari maggiore o uguale a $2$, questo conclude anche questo caso della dimostrazione. $\blacksquare$
 \end{demostration}
 
-\subsubsection{Leggi stella di kleene}
+\subsubsection{Leggi stella di Kleene}
 Per tutti gli insiemi A e le relazioni $R: A \longleftrightarrow A$ e $S: A \longleftrightarrow A$ valgono le seguenti uguaglianze.
 \begin{table}[h!]
     \centering
@@ -417,26 +428,29 @@ Per tutti gli insiemi A e le relazioni $R: A \longleftrightarrow A$ e $S: A \lon
         \hline
     \end{tabular}
     \caption{Leggi stella di Kleene}
-    \label{tab:leggi-stella-kleene}
+    \label{tab:leggi-stella-Kleene}
 \end{table}
 
 \subsection{Relazioni di equivalenza}
 \begin{definition}[Relazioni di equivalenza]
-    Sia A un insieme $R: A \longleftrightarrow A$ una relazione su A, si dice che R è una relazione di equivalenza se \textbf{riflessiva}, \textbf{simmetrica}, \textbf{transitiva}. 
+    Sia A un insieme $R: A \leftrightarrow A$ una relazione su $A$, si dice che $R$ è una relazione di equivalenza se \textbf{riflessiva}, \textbf{simmetrica}, \textbf{transitiva}. 
 \end{definition}
 \begin{example}
 Alcuni esempi di relazioni di equivalenza:\\
-$Id_A: A \longleftrightarrow A$ SI \hspace{.7cm} $A: A \longleftrightarrow A$ SI \hspace{.7cm} $\O: A \longleftrightarrow A$ NO \\$<: \mathbb{N} \longleftrightarrow \mathbb{N}$ NO perché non riflessiva \hspace{.7cm} $\leq: \mathbb{N} \longleftrightarrow \mathbb{N}$ NO perché non simmetrica
+$Id_A: A \leftrightarrow A$ SI \hspace{.7cm} $A: A \leftrightarrow A$ SI \hspace{.7cm} $\O: A \leftrightarrow A$ NO (SI se $A=\O$) \\
+$<: \mathbb{N} \leftrightarrow \mathbb{N}$ NO perché non riflessiva \hspace{.7cm} $\leq: \mathbb{N} \leftrightarrow \mathbb{N}$ NO perché non simmetrica
+\end{example}
+\begin{example}
+	$A = \{a, b, c, d\}$ $R=\{(a,a), (b,b), (a,b), (b,a), (c,c), (d,d)\}$ è una relazione di equivalenza.
 \end{example}
 
 \subsubsection{Classe di equivalenza}
 \begin{definition}[Classe di equivalenza]
-    Data $R: A \longleftrightarrow A$ una relazione di equivalenza, ed $a \in A$, la classe di equivalenza di a si definisce come l'insieme: 
+    Data $R: A \leftrightarrow A$ una relazione di equivalenza, ed $a \in A$, la classe di equivalenza di $a$ si definisce come l'insieme: 
     \begin{equation}
-        [a]_R = \{b \in A \:|\: (a,b) \in R\}
+        [a]_R = \{b \in A \mid (a,b) \in R\}
     \end{equation}
 \end{definition}
-La definizione vuol dire che, una classe di equivalenza di un determinato insieme di relazioni è un insieme di elementi appartenenti a questa relazione il quale, questi elementi, sono legati fra di loro da una relazione.
 \begin{example}
     Prendiamo $A = \{a,b,c,d\}$ ed $R = \{(a,b), (b,a), (a,a), (b,b), (c,c), (d,d)\}$\\
     Le classi di equivalenza saranno per ogni elemento di A le seguenti:\\
@@ -448,21 +462,13 @@ La definizione vuol dire che, una classe di equivalenza di un determinato insiem
 \end{example}
 
 \subsubsection{Teorema di biiezione}
-\begin{definition}[Partizione]
-    Dato un $F = A_1, A_2, A_3, ..., A_k$, F è una partizione di A se:
-\end{definition}
-\begin{enumerate}
-    \item $\forall i \: A_i \neq \O$
-    \item $\bigcup^m_{i=1}A_j = A$
-    \item $\forall i, j A_i \cap A_j = \O\text{ con } i \neq j$
-\end{enumerate}
-Ora con la definizione di partizione e di classe di equivalenza possiamo osservare che:
+Conoscendo la definizione di partizione e di classe di equivalenza possiamo osservare che:
 \begin{itemize}
-    \item L'insieme di tutte le classi di equivalenza di R definisce una partizione dell'insieme A.
+    \item L'insieme di tutte le classi di equivalenza di $R$ definisce una partizione dell'insieme $A$.
     \[EC_R = \{[a]_r \:|\: a \in A\}\]
-    \item Viceversa, ogni partizione di A definisce una relazione di equivalenza.
+    \item Viceversa, ogni partizione di $A$ definisce una relazione di equivalenza.
     \begin{center}
-        $Rf = \{(a,b) \in A \times A \: | \: \exists i a,b \in A_i\}$
+        $Rf = \{(a,b) \in A \times A \mid \exists i a,b \in A_i\}$
     \end{center}
 \end{itemize}
 
@@ -476,14 +482,22 @@ Ora con la definizione di partizione e di classe di equivalenza possiamo osserva
 \subsection{Relazioni di ordinamento}
 \subsubsection{Ordinamento parziale}
 \begin{definition}[Ordinamento parziale]
-    Sia A un insieme e $R: A \longleftrightarrow A$ una relazione su A. Si dice che R è una relazione di ordinamento parziale se è \textbf{riflessiva}, \textbf{transitiva} e \textbf{anti-simmetrica}.
+    Sia $A$ un insieme e $R: A \leftrightarrow A$ una relazione su $A$. Si dice che $R$ è una relazione di ordinamento parziale se è \textbf{riflessiva}, \textbf{transitiva} e \textbf{anti-simmetrica}.
 \end{definition}
 \begin{note}
     Nota che gli ordinamenti si scrivono utilizzando o il simbolo $\prec$, $\preceq$ oppure $\sqsubset$, $\sqsubseteq$.
 \end{note}
 \begin{example}
 Alcuni esempi di ordinamento parziale:\\
-$Id_A: A \longleftrightarrow A$ SI \hspace{.7cm} $A: A \longleftrightarrow A$ NO  \hspace{.7cm} $\O: A \longleftrightarrow A$ NO \\$<: \mathbb{N} \longleftrightarrow \mathbb{N}$ NO perché non riflessiva \hspace{.7cm} $\leq: \mathbb{N} \longleftrightarrow \mathbb{N}$ SI.
+$Id_A: A \leftrightarrow A$ SI \hspace{.7cm} $A \times A: A \leftrightarrow A$ NO  \hspace{.7cm} $\O: A \leftrightarrow A$ NO (SI se $A = \O $) \\
+$<: \mathbb{N} \leftrightarrow \mathbb{N}$ NO perché non riflessiva \hspace{.7cm} $\leq: \mathbb{N} \leftrightarrow \mathbb{N}$ SI.
+\end{example}
+\begin{example}
+	Dato un insieme $A = \{a,b,c\} $:
+	\begin{itemize}
+		\item $R=\{(a,b), (b,c)\}$ NON è una relazione di ordinamento parziale
+		\item $S = \{(a,a),(b,b)(a,b),(a,c),(b,c),(c,c)\}$
+	\end{itemize} 
 \end{example}
 
 \begin{proposition}
@@ -502,14 +516,15 @@ Innanzitutto capiamo cosa crea questo insieme. Essendo il prodotto cartesiano fr
 
 \subsubsection{Ordinamento}
 \begin{definition}[Ordinamento]
-    Sia $R: A \longleftrightarrow A$ una relazione di ordinamento parziale su un insieme A, si dice che R è ordinamento se R soddisfa le seguenti proprietà (totalità). Per tutti gli $(a,b) \in A \times A$ vale che $(b,a) \in R$ oppure $(b,a) \in R$. Formalmente:
+    Sia $R: A \leftrightarrow A$ una relazione di ordinamento parziale su un insieme $A$, si dice che $R$ è ordinamento se soddisfa le seguenti proprietà (totalità). Per tutti gli $(a,b) \in A \times A$ vale che $(b,a) \in R$ oppure $(b,a) \in R$. Formalmente:
     \begin{equation}
-        \forall (a,b) \in A \times A \: | \: (a,b) \in R \lor (b,a) \in R
+        \forall (a,b) \in A \times A \times (a,b) \in R \lor (b,a) \in R
     \end{equation}
 \end{definition}
 \begin{example}
 Alcuni esempi di ordinamento:\\
-$Id_A: A \longleftrightarrow A$ NO \hspace{.5cm} $A: A \longleftrightarrow A$ Non è un ordinamento parziale  \hspace{.5cm} $\leq: \mathbb{N} \longleftrightarrow \mathbb{N}$ SI \\$<: \mathbb{N} \longleftrightarrow \mathbb{N}$ Non è un ord. parziale \hspace{.7cm} $\O: A \longleftrightarrow A$ Non è un ord. parziale.
+$Id_A: A \longleftrightarrow A$ NO \hspace{.5cm} $A \times A: A \longleftrightarrow A$ Non è un ordinamento parziale  \hspace{.5cm} $\leq: \mathbb{N} \longleftrightarrow \mathbb{N}$ SI \\
+$<: \mathbb{N} \longleftrightarrow \mathbb{N}$ Non è un ord. parziale \hspace{.7cm} $\O: A \longleftrightarrow A$ Non è un ord. parziale.
 \end{example}
 
 \subsubsection{Ordinamento lessiografico}
