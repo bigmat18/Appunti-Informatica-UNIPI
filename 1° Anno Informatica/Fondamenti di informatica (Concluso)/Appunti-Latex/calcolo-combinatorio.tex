@@ -6,21 +6,21 @@ Il calcolo combinatorio serve per dare delle risposte a domande come: quanti son
 Per questa forma di calcolo si fa molto utilizzo del concetto di cardinalità di un insieme.
 
 \begin{definition}[Cardinalità]
-La \textbf{cardinalità} di un insieme (finito) A è il numero dei suoi elementi e si indica con $|A|$.
+La \textbf{cardinalità} di un insieme (finito) A è il numero dei suoi elementi e si indica con $\lvert A\rvert$.
 \end{definition}
 
 \begin{example}
-$|\{a,e,i,o,u\}| = |\{i,i,i,o,u,e,a,a\}| = 5$ (Le ripetizioni non si contano)\\
-$|\O| = 0$ \hspace{.7cm} $|n| = |\{0,1,2,...,n-1\}| = n$ \hspace{.7cm} $|2| = |\{0,1\}| = 2$
+$\lvert \{a,e,i,o,u\}\rvert = \lvert\{i,i,i,o,u,e,a,a\}\rvert = 5$ (Le ripetizioni non si contano)\\
+$\lvert \O \rvert = 0$ \hspace{.7cm} $\lvert n\rvert = \lvert\{0,1,2,\ldots,n-1\}\rvert = n$ \hspace{.7cm} $\lvert 2\rvert = \lvert\{0,1\}\rvert = 2$
 \end{example}
 
 \begin{lemma}[Lemma-x]\label{lemma-x}
-Dato un insieme A, sia $P = \{A_i\}_{i \in I}$ una partizione di $A$ quindi:
+Dato un insieme $A$, sia $P = \{A_i\}_{i \in I}$ una partizione di $A$ quindi:
 \begin{itemize}
     \item $\bigcup\limits_{i \in I}A_i = A$ (Punto (2) della definizione di partizione)
     \item $\forall i,j \in I . i\neq j \Longrightarrow A_i \cap A_j = \O$ (Punto (3) della definizione di partizione)
 \end{itemize}
-Allora vale che $|A| = \sum\limits_{i\in I}|A_i|$.
+Allora vale che $\lvert A\rvert = \sum\limits_{i\in I}\lvert A_i\rvert$.
 \end{lemma}
 \begin{note}
 Notare che nella proposizione sopra non è necessario che valga la condizione (1) di una partizione quindi che ($\forall i \in I . A_i \neq \O$), e ciò perché se consideriamo una partizione vuota essa non andrà ad influire sulla somma delle cardinalità avendo valore 0. 
