@@ -1,0 +1,113 @@
+\section{Condizioni}
+\subsubsection{Condizioni su array}
+Dato un array \textbf{a} di dimensione N, voglio verificare se la proprietà P vale per tutti gli elementi dell'array.
+\begin{equation}
+	\forall i \in [0, N).\mathcal{P}(a[i])
+\end{equation}
+\begin{example}
+	Verifico che tutti gli elementi dell'array siano dispari.
+	\begin{equation}
+		\forall i \in [0, N).a[i]%2==1
+	\end{equation}
+	\begin{lstlisting}[language=C, caption=Verifica di proprietà su tutti gli elementi mathescape=true]
+		int check_array_dispari(int a[], size_t dim) {
+			int indice = 0;
+			while (indice < dim && a[indice]%2 == 1){
+				indice++;
+			}
+			if (indice == dim) {
+				return 1;
+			} else {
+				return 0;
+			}	
+		}
+	\end{lstlisting}
+	Blocco lo scorrimento dell'array quando la proprietà \textbf{NON} viene soddisfatta almeno una volta.
+\end{example}
+
+\noindent
+Se invece voglio verificare che la proprietà P valga per almeno un elemento:
+\begin{equation}
+	\exists i \in [0, N).\mathcal{P}(a[i])
+\end{equation}
+\begin{example}
+	Verifico che almeno un elemento dell'array è uguale a 26.
+	\begin{equation}
+		\exists i \in [0, N).a[i]==26
+	\end{equation}
+	\begin{lstlisting}[language=C, caption=Verifica di proprietà su almeno un elemento, mathescape=true]
+		int esiste_in_array(int a[], size_t dim, in n) {
+			size_t indice = 0;
+			_Bool trovato = 0;
+			while (indice < dim && !trovato){
+				if(a[indice] == n) {
+					trovato = 1;	
+				}
+				indice++;
+			}
+			return trovato;
+		}
+	\end{lstlisting}
+	Blocco lo scorrimento dell'array nel momento in cui trovo un elemento che soddisfa la proprietà, utilizzando un \textit{flag}.
+\end{example}
+\subsection{Condizioni su matrici}
+Una \textbf{matrice} è un array di array. Può essere \textit{multidimensionale} $N \times M$ e voglio verificare se tutti i suoi elementi oppure solo uno di essi verificano una proprietà P.
+\begin{equation}
+	\forall i \in [0, N), \forall j \in [0,M).\mathcal{P}(a[i,j])
+\end{equation}
+\begin{equation}
+	\exists i \in [0, N), \exists j \in [0,M).\mathcal{P}(a[i,j])
+\end{equation}
+\begin{definition}[Matrice quadrata]
+	Una matrice è \textbf{quadrata} se a lo stesso numero di righe e di colonne. In questo caso per scorrerla si può usare un solo indice:
+	\begin{equation}
+		\exists i,j \in [0, N).\mathcal{P}(a[i,j])
+	\end{equation}
+\end{definition}
+
+\begin{example}
+	Verifico se tutti gli elementi della matrice sono positivi.
+	\begin{equation}
+		\forall i \in [0, N), \forall j \in [0, M) . a[i, j] > 0
+	\end{equation}
+	\begin{lstlisting}[language=C, caption=Verifica di proprietà su tutti gli elementi della matrice, mathescape=true]
+		int check_matrice_pos(int a[][COL], size_t dim) {
+			size_t row, col;
+			row = col = 0;
+			while (row < dim && a[row][col] > 0) {
+				col = 0;
+				while (col < COL && a[row][col] > 0) {
+					col++;
+				}
+				if (col == COL) {
+					row++;
+				}
+			}
+			if (row == dim && col == COL) {
+				return 1;
+			}
+			else {
+				return 0;
+			}
+		}
+	\end{lstlisting}
+\end{example}
+\begin{definition}[Matrice simmetrica]
+	Una matrice è \textbf{simmetrica} se è quadrata e se le posizioni simmetriche rispetto alla diagonale principale contengono gli stessi elementi.
+\end{definition}
+\begin{definition}[Matrice triangolare]
+	Una matrice è \textbf{triangolare} superiore o inferiore se le posizioni rispettivamente sopra o sotto la diagonale contengono tutti 0.
+\end{definition}
+\begin{definition}[Matrice tridiagonale]
+	Una matrice \textbf{tridiagonale} \color{red} può \color{black} avere elementi non nulli solo sulla diagonale principale e la sua diagonale superiore ed inferiore.
+\end{definition}
+
+\subsection{Contare elementi che verificano una proprietà}
+Dato un array \textbf{a} di dimensione $N$ per contare tutti gli elementi che verificano una proprietà $P$:
+\begin{equation}
+	\#\{i \lvert i\in [0, N-1] \land \mathcal{P}(a[i])\}
+\end{equation}
+Data invece una matrice \textbf{a} di dimensione $N \times M$:
+\begin{equation}
+	\#\{(i,j) \lvert i \in [0, N-1] \land j \in [0, M-1]\}
+\end{equation}

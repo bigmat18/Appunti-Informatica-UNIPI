@@ -1,0 +1,43 @@
+\newpage
+\section{Gestione della memoria}
+\subsection{Record di attivazione}
+\begin{definition}
+	è l'insieme di strutture dati e funzioni necessarie all'esecuzione dei programmi viene aggiunto al codice eseguibile dal compilatore.
+\end{definition}
+\begin{definition}[Activation record o stack frame]
+	Contiene tutte le informazioni necessarie all'esecuzione del blocco o della funzione.
+\end{definition}
+\begin{definition}[Dynamic chain o call chain]
+	Rappresenta la sequenza di chiamate e e serve a garantire il corretto ordine di esecuzione.
+\end{definition}
+\begin{definition}[Static chain]
+	Implementa lo scoping statico e garantisce che i nomi siano referenziati rispettando la visibilità di variabili e funzioni.
+\end{definition}
+\begin{tabular} { |c|c|}
+	\hline
+	Puntatore catena dinamica  & Indirizzo del record di attivazione della funzione chiamante\\
+	\hline
+	Puntatore catena statica & Indirizzo del prossimo record di attivazione dove risolvere i nomi
+		non presenti nel blocco corrente (implementazione dello scoping
+		statico) \\
+	\hline
+	Indirizzo di ritorno & Indirizzo dell’istruzione da eseguire al termine della funzione/blocco corrente \\
+	\hline
+	Indirizzo risultato & Indirizzo nel record di attivazione del chiamante per memorizzare il risultato \\
+	\hline
+	Parametri & Spazio riservato alla associazione parametri formali - parametri attuali \\
+	\hline
+	Variabili locali & Spazio riservato alla allocazione delle variabili locali al blocco \\
+	\hline
+	Risultati temporanei & Spazio riservato alla allocazione delle variabili temporanee generate dal compilatore \\
+	\hline
+\end{tabular}
+\subsection{Divisione della memoria}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=18cm]{images/gestione-memoria.png}
+	\caption{Gestione della memoria di un programma}
+\end{figure}
+\begin{note}
+	Partiamo dal presupposto che un \textbf{blocco} sia considerato come una funzione senza parametri.
+\end{note}
