@@ -1,81 +1,97 @@
 \section{Relazioni}
 \begin{definition}[Relazione]
-Prendiamo in considerazione un prodotto cartesiano con due insieme A, B che sia A X B = $\{(a,b) \: | \: a \in A, b \in B\} = $ U (Universo). 
-\\Una relazione è $R \subseteq U$ dove, come scritto sopra, U = A X B. In una relazione A è detto \textbf{insieme di partenza} e B è detto \textbf{insieme di arrivo}.
+	\label{def:relazione}
+	Prendiamo in considerazione un prodotto cartesiano con due insieme $A, B$ che sia $A \times B = \{(a,b) \: | \: a \in A, b \in B\} = $ U (Universo). 
+	\\
+	Una relazione è $R \subseteq U$ dove, come scritto sopra, $U = A \times B$.
+	\\
+	In una relazione A è detto \textbf{insieme di partenza} e B è detto \textbf{insieme di arrivo}.
 \end{definition}
-\hspace{-15pt}In sintesi possiamo definire una relazione come un sottoinsieme del prodotto cartesiano fra due insiemi.\\
-L'insieme $rel(A,B)$ è l'inseme di tutte le possibili relazioni fra A e B.
+
+%TODO Magari si può rimuovere questo hspace
+\hspace{-15pt}
+In sintesi possiamo definire una relazione come un sottoinsieme del prodotto cartesiano fra due insiemi.
+\\
+L'insieme $rel(A,B)$ è l'inseme di tutte le possibili relazioni fra $A$ e $B$.
 \begin{example}
-    Esempio relazione.\\\\
-    Prendiamo due insiemi e facciamo il prodotto cartesiano.\\
-    $S = \{$luca, mario, angela, gino, maria$\}$. Insieme degli studenti.\\
-    $C = \{$PA, LAB, FI, AN$\}$. Insieme dei corsi.\\ \\
-    Il prodotto cartesiano fra S e C è uguale a tutte le possibile coppie ordinate che si possono formare fra i due insieme, quindi: \hspace{.2cm}
-    S X C = $\{$(luca, PA), (luca, LAB), ..., (marica, AN)$\}$.\\ \\
-    In questo caso possiamo creare una relazione del prodotto cartesiano andando appunto a prendere un sottoinsieme di A X B andando a stabilire una regola o condizione per scegliere quali coppie ordinate vogliamo nella nostra relazione, esempio:\\
-    $R \subseteq$ A X B è una relazione che specifica quali esami sono stati sostenuti dai vari studenti.
+    Esempio relazione.\\
+    Prendiamo due insiemi e facciamo il prodotto cartesiano.
+    \begin{itemize}
+    	\item Insieme degli \textbf{studenti} $S = \{luca, mario, angela, gino, maria\}$
+    	\item Insieme dei \textbf{corsi} $C = \{PA, LAB, FI, AN\}$
+    \end{itemize}
+    Il prodotto cartesiano fra $S$ e $C$ è uguale a tutte le possibile coppie ordinate che si possono formare fra i due insieme, quindi:
+    \begin{equation}
+    	S \times C = \{(luca, PA), (luca, LAB), ..., (marica, AN)\}
+    \end{equation}
+    In questo caso possiamo creare una relazione del prodotto cartesiano andando appunto a prendere un sottoinsieme di $A \times B$ e stabilendo una regola o condizione per scegliere quali coppie ordinate vogliamo, ad esempio $R \subseteq A \times B$ è una relazione che specifica quali esami sono stati sostenuti dai vari studenti.
 \end{example}
+
 \subsection{Identità}
-L'identità è un altro tipo di operazione che è possibile fare sulle relazioni, oltre a quelle insiemistiche.
-\begin{definition}[Identità]
-Preso un insieme A, l'identità su A è una relazione con se stessa, e si scrive $Id_A \subseteq$ A X A, quindi si può vedere come nell'identità di un insieme ogni elementi è identico a se stesso. Inoltre l'identità di un insieme si definisce come:
-\end{definition}
-\vspace{-20pt}
+Quando l'insieme di partenza e quello di arrivo coincidono, si ottengono alcuni casi particolari di \hyperref[def:relazione]{relazioni}. Un esempio è il seguente:
+\begin{example}
+	Sia $\mathbb{U}$ l'insieme di tutti gli esseri umani, e consideriamo le seguenti relazioni di parentela:
+	\begin{itemize}
+		\item $Madre = {(x, y) \in \mathbb{U} \times \mathbb{U} \implies x \text{ madre di } y}$
+		\item $Padre = {(x, y) \in \mathbb{U} \times \mathbb{U} \implies x \text{ padre di } y}$
+		\item $Figlia = {(x, y) \in \mathbb{U} \times \mathbb{U} \implies x \text{ figlio di } y}$
+		\item $Figlio = {(x, y) \in \mathbb{U} \times \mathbb{U} \implies x \text{ figlia di } y}$
+	\end{itemize}
+\end{example}
+\begin{example}[Identità]
+Preso un insieme A, l'identità su A è una relazione con se stessa, e si scrive $Id_A \subseteq$ A X A. Si può quindi vedere come nell'identità di un insieme ogni elementi è identico a se stesso. Inoltre l'identità di un insieme si definisce come:
+\end{example}
+\vspace{-10pt}
 \begin{equation}
-    Id_A = \{(a,a) \: | \: a \in A\}
+    Id_A = \{(a,a) \mid a \in A\}
 \end{equation}
 \vspace{-20pt}
 \subsection{Composizione}
 \begin{definition}[Composizione]
-La composizione, date due relazioni $R \subseteq$ A X B e $S \subseteq$ B X C si scrive R;S e sarebbe una relazione che si sviluppa fra gli elementi degli insiemi diversi di R ed S, in questo caso A e C, che però hanno uno stesso collegamento ad un elemento dell'insieme B. Matematicamente si definisce come:
+Siano $R: A \rightarrow B$ e $S: B \rightarrow C$. La \textbf{composizione} di R con S è la relazione $R;S: A \rightarrow C$ così definita:
 \end{definition}
-
+%TODO Aggiungere esempio fatto a lezione con sorella e zia (vedi slide)
+%TODO Aggiungere immagini
 \begin{equation}
-    R;S = \{(a, c) \in A \: X \: C \: \: | \: \: \exists \: b \in B \: \: . \: \: (a,b) \in R  \land (b,c) \in S\}
+    R;S = \{(x, z) \in A \times C \mid \exists b \in B . (x, y) \in R \land (y,z) \in S\}\footnote{Il simbolo "." indica \emph{tale che}. Ad esempio $\exists x.P$ indica che esiste un x per cui vale la proprietà P.}
 \end{equation}
-\\
-\textbf{NOTA:} l'insieme di arrivo di R deve essere uguale all'insieme di partenza di S per effettuare l'operazione di composizione.
-\\
-\begin{wrapfigure}{l}{8cm}
-    \vspace{-15pt}
-    \centering
-    \includegraphics[width=7.2cm]{esempio-composizione.png}
-    \caption{Esempio composizione}
-    \label{fig:esempio-composizione}
-\end{wrapfigure}
+
+\begin{note}
+	L'insieme di arrivo di R deve essere uguale all'insieme di partenza di S per effettuare l'operazione di composizione.
+\end{note}
+
+%TODO Fare l'esempio basandosi su padre/madre ma con nonni (vedi dispensa)
 \begin{example}
-\vspace{-15pt}
-Nell'esempio in figura [\ref{fig:esempio-composizione}] prendiamo in considerazione i seguenti insiemi:\\ \\
-$Sd = \{$lucia, mario, gino, maria$\}$\\
-$C = \{$PA, LAB, FI, AN$\}$\\
-$P = \{$paperino, pippi, pluto$\}$ \\ \\
-Effettuiamo un'operazione di composizione. Come possiamo vedere il risultato è un insieme che unisce gli elementi di Sd e P che avevano una relazione con un elemento di C in comune.\\
 \end{example}
 
 \subsection{Relazione opposta}
 \begin{definition}[Relazione opposta]
-Dato un insieme A e B ed una relazione $R \subseteq$ A X B, una relazione opposta è inversione dell'associazione degli elementi degli insiemi A e B da (a,b) a (b,a) e si definisce formalmente come: $R^{op} = \{(b, a) \in$ B X A $|$ $(a,b) \in R\}$
+Sia $R:A\rightarrow B$ una relazione. La \textbf{relazione opposta} di $R$ è la relazione $R^{op}:B\rightarrow A$ definita come: 
+\begin{equation}
+	R^{op} = \{(y, x) \in B \times A \mid (x, y) \in R\}
+\end{equation}
 \end{definition}
+%TODO OSS: non posso fare Rop;Sop in quanto l'insieme di partenza di Sop non è l'insieme di arrivo di Rop. posso però fare Sop;Rop. Inserisci grafico preso da slide
 
 \begin{example}
     A = $\{$pagine web$\}$ \hspace{.5cm} B = $\{$parole del vocabolario$\}$ \hspace{.5cm} $R \subseteq$ A X B\\
     Si associa ciascuna pagina web con le parole in essa contenuta:
     \begin{itemize}
-        \item $(a,b) \in \mathbb{R}$ dice che nella pagina web "a" è contenuta la parola "b".
-        \item $R^{op}$ ($(b,a) \in \mathbb{R}$) dice per ogni parola "b" quali sono le pagine web che le contengono.
+        \item $(x, y) \in \mathbb{R}$ dice che nella pagina web "x" è contenuta la parola "y".
+        \item $R^{op}$ ($(y, x) \in \mathbb{R}$) dice per ogni parola "y" quali sono le pagine web che le contengono.
     \end{itemize}
 \end{example}
 
 \subsection{Leggi}
-Come per gli insiemi, anche per le relazioni esistono delle utili leggi che regolano il comportamento delle varie operazioni. Le relazioni, essendo di base degli insieme, valgono le stesse leggi scritte nella sezione degli insiemi, tabella \ref{tab:leggi-insiemi}. \\ \\
-Per tutti gli insiemi A, B, C, D e per tutte le relazioni $R \subseteq A \: X \: B$, $S \subseteq B \: X \: C$, $T \subseteq C \: X \: D$, valgono le leggi scritte nelle tabelle \ref{tab:leggi-composizione}, \ref{tab:leggi-relazioni-opposte}, \ref{tab:leggi-distributività}.
+Come per gli insiemi, anche per le relazioni esistono delle leggi che regolano il comportamento delle varie operazioni. \\ \\
+Per tutti gli insiemi A, B, C, D e per tutte le relazioni $R \subseteq A \times B$, $S \subseteq B \times C$, $T \subseteq C \times D$, valgono le leggi scritte nelle tabelle \ref{tab:leggi-composizione}, \ref{tab:leggi-relazioni-opposte}, \ref{tab:leggi-distributività}, una volta preso $A \times B$ come universo.
 \begin{table}[h!]
     \setlength{\tabcolsep}{8pt}
     \renewcommand{\arraystretch}{2}
     \centering
     \begin{tabular}{|c|c|}
     \hline
-        \textbf{Associatività} & (R;S);T = R;(S;T) \\ 
+        \textbf{Associatività} & (R;S);T = R;(S;T) \\
         \textbf{Unità} & $Id_A$;R = R;$Id_B$ = R \\
         \textbf{Assorbimento} & $\O$;S = S;$\O$ = $\O$ \\ \hline
     \end{tabular}
@@ -113,11 +129,13 @@ Per tutti gli insiemi A, B, C, D e per tutte le relazioni $R \subseteq A \: X \:
     \label{tab:leggi-distributività}
 \end{table}
 \\
+%TODO Sistemare la spiegazione delle leggi citando la definizione e usando maybe le subsections
 \textbf{Spiegazione Associatività:}\\
 R;S $\subseteq$ A X C, facendo la composizione con T la prima parte dell'uguaglianza (R;S);T $\subseteq$ A X D. A sua volta, analizzando la seconda parte dell'uguaglianza, S;T $\subseteq$ B X D che poi se andiamo a comporre con R risulta che R;(S;T) $\subseteq$ A X D. Possiamo così vedere che l'uguaglianza è verificata. Per la dimostrazione discorsiva completa vedere in seguito. \\ \\
 \textbf{Spiegazione Unità:}\\
-Essendo che $Id_A$ = A X A e $Id_B$ = B X B vediamo che la prima parte dell'uguaglianza $Id_A$;R = A X B e la seconda è R;$Id_B$ = A X B, quindi la prima uguaglianza è verificata. La seconda uguaglianza si verifica in automatico visto che A X B è uguale a R.
+Essendo che $Id_A = A \times A$ e $Id_B = B \times B$ vediamo che la prima parte dell'uguaglianza $Id_A;R = A \times B$ e la seconda è $R;Id_B = A \times B$, quindi la prima uguaglianza è verificata. La seconda uguaglianza si verifica in automatico visto che $A \times B = R$.
 
+%TODO OSS: Dimostrare che data R:A->B allora R;(BxC)=AxB è falso (vedi slide)
 
 \subsubsection{Dimostrazione proprietà associativa}
 \begin{demostration}
@@ -180,8 +198,13 @@ Essendo che $Id_A$ = A X A e $Id_B$ = B X B vediamo che la prima parte dell'ugua
 
 
 \subsection{Proprietà fondamentali}
-Prendendo in considerazioni due insiemi A e B ed una relazione R, dove R $\subseteq$ A X B, valgono le seguenti proprietà.\\ \\
-\textbf{Totale:} $\forall \: \: a \in A \bullet \exists \: \: b \in B \bullet (a, b) \in R$ \hfill \textbf{Surgettiva:} $\forall \: \: b \in B \bullet \exists \: \: a \in A \bullet (a, b) \in R$
+Prendendo in considerazioni due insiemi $A$ e $B$ ed una relazione R, dove R $\subseteq$ A X B, valgono le seguenti proprietà.\\ \\
+%TODO Inserire definizione ed esempi con relazioni già visti (vedi slide)
+\textbf{Totale}: $\forall a \in A . (\exists b \in B . (a, b) \in R)$
+\hfill
+\textbf{Surgettiva}: $\forall \: \: b \in B . (\exists a \in A . (a, b) \in R)$
+%TODO La totale e la surgettiva è simmetica
+%TODO Acronimo TUSI
 \begin{figure}[h!]
     \vspace{-8pt}
     \begin{subfigure}{.3\textwidth}
@@ -197,7 +220,14 @@ Prendendo in considerazioni due insiemi A e B ed una relazione R, dove R $\subse
     \end{subfigure}
 \end{figure}
 \\
-\textbf{Univalente:} \hspace{6.3cm} \textbf{Iniettiva:}\\ $\forall \: \: a \in A \bullet \exists$ al più un $b \in B \bullet (a, b) \in R$ \hspace{2.4cm}  $\forall \: \: b \in B \bullet \exists$ al più un $a \in A \bullet (a, b) \in R$
+\textbf{Univalente}: \hspace{6.3cm} \textbf{Iniettiva}:
+%TODO Sistemare layout
+%TODO Integrare la definizione logica di "al più"
+%TODO Aggiungere esempi da relazioni già viste
+\\
+$\forall a \in A . \exists$ al più un $b \in B . (a, b) \in R$
+\hspace{2.4cm} 
+$\forall b \in B . \exists$ al più un $a \in A . (a, b) \in R$
 \begin{figure}[h!]
     \vspace{-7pt}
     \begin{subfigure}{.3\textwidth}
@@ -213,89 +243,123 @@ Prendendo in considerazioni due insiemi A e B ed una relazione R, dove R $\subse
     \end{subfigure}
 \end{figure}
 \\
-Le proprietà fra di loro sono legate da un rapporto di dualità in particolare totale con surgettiva e univalente con iniettiva, questo vuol dire che:
+Le proprietà fra di loro sono legate da un rapporto di \textbf{dualità}:
+%TODO inserire link alla proprietà (e.g. totale)
 \begin{itemize}
-    \item R $\subseteq$ A X B è totale $\Longleftrightarrow$ $R^{op} \subseteq$ B X A è surgettiva.
-    \item R $\subseteq$ A X B è surgettiva $\Longleftrightarrow$ $R^{op} \subseteq$ B X A è totale.
-    \item R $\subseteq$ A X B è univalente $\Longleftrightarrow$ $R^{op} \subseteq$ B X A è iniettiva.
-    \item R $\subseteq$ A X B è iniettiva $\Longleftrightarrow$ $R^{op} \subseteq$ B X A è univalente.
+    \item R $\subseteq A \times B$ è totale $\Longleftrightarrow$ $R^{op} \subseteq B \times A$ è surgettiva.
+    \item R $\subseteq A \times B$ è surgettiva $\Longleftrightarrow$ $R^{op} \subseteq B \times A$ è totale.
+    \item R $\subseteq A \times B$ è univalente $\Longleftrightarrow$ $R^{op} \subseteq B \times A$ è iniettiva.
+    \item R $\subseteq A \times B$ è iniettiva $\Longleftrightarrow$ $R^{op} \subseteq B \times A$ è univalente.
 \end{itemize}
 
-\subsubsection{Teorema di caratterizzazione}\label{teorema-caratterizzazione}
-Prendendo due insiemi A e B ed una relazione R tale che R $\subseteq$ A X B. Possiamo vedere come ogni proprietà fondamentale vale solo se sono soddisfatte delle condizioni che le caratterizzano:
+\subsubsection{Teorema di caratterizzazione}
+\label{teorema-caratterizzazione}
+%TODO Sistemare le label
+Prendendo due insiemi $A$ e $B$ ed una relazione $R$ tale che $R \subseteq A \times B$. Possiamo vedere come ogni proprietà fondamentale vale solo se sono soddisfatte determinate condizioni:
+%TODO Aggiungere esempio grafico (slide)
 \begin{itemize}
-    \item R \textbf{Totale} $\Longleftrightarrow \: Id_A \subseteq R;R^{op}$ - Spiegazione:\\
-    La congiunzione fra R che è A X B e il suo opposto che è B X A torna un insieme A X A, per questo l'identità di A ($Id_A$), che sarebbe un insieme A X A, è un sottoinsieme di $R;R^{op}$.\\
-    Se R non fosse totale vorrebbe dire che alcuni elementi di R(A) non sono collegati.
-    \item R \textbf{Univalente} $\Longleftrightarrow \: R^{op};R \subseteq Id_B$ - Spiegazione:\\
-    La congiunzione fra $R^{op}$ che sarebbe B X A e R, che è A X B, forma un insieme B X B che è quindi sottoinsieme di $Id_B$, che sarebbe B X B.
-    \item R \textbf{Surgettiva} $\Longleftrightarrow \: Id_B \subseteq \: R^{op};R$ - Spiegazione:\\
-    La congiunzione fra $R^{op}$ ed R, che sono rispettivamente B X A e A X B, torna una relazione B X B, quindi $Id_B$, che è B X B, è sottoinsieme.
-    \item R \textbf{Iniettiva} $\Longleftrightarrow \: R;R^{op} \subseteq Id_A$ - Spiegazione: \\
-    La congiunzione fra R ed $R^{op}$ torna A X A, essendo che R è A X B e l'opposto è B X A, che è sottoinsieme di $Id_A$ che è A X A.
+    \item \textbf{Totale} $\Longleftrightarrow Id_A \subseteq R;R^{op}$\\
+    La congiunzione fra $R$ che è $A \times B$ e il suo opposto che è $B \times A$ torna un insieme $A \times A$, per questo l'identità di $A$ ($Id_A$), che sarebbe un insieme $A \times A$, è un sottoinsieme di $R;R^{op}$.\\
+    Se $R$ non fosse totale vorrebbe dire che alcuni elementi di $R(A)$ non sono collegati.
+    
+    \item \textbf{Univalente} $\Longleftrightarrow R^{op};R \subseteq Id_B$\\
+    La congiunzione fra $R^{op}$ che sarebbe $B \times A$ e $R$, che è $A \times B$, forma un insieme $B \times B$ che è quindi sottoinsieme di $Id_B$, che sarebbe $B \times B$.
+    
+    \item \textbf{Surgettiva} $\Longleftrightarrow Id_B \subseteq R^{op};R$\\
+    La congiunzione fra $R^{op}$ ed $R$, che sono rispettivamente $B \times A$ e $A \times B$, torna una relazione $B \times B$, quindi $Id_B$, che è $B \times B$, è sottoinsieme.
+    
+    \item \textbf{Iniettiva} $\Longleftrightarrow R;R^{op} \subseteq Id_A$\\
+    La congiunzione fra $R$ ed $R^{op}$ torna $A \times A$, essendo che $R$ è $A \times B$ e l'opposto è $B \times A$, che è sottoinsieme di $Id_A$ che è $A \times A$.
 \end{itemize}
+
+%TODO Inserire le 2 dimostrazioni del teorema di caratterizzazione (slide) e specificare una nota per "se e solo se" che indica che va dimostrato sia che se A allora B ma anche che se NON A allora NON B
 
 \subsubsection{Proprietà di chiusura per composizione}
-Per tutti gli insiemi A, B, C e per tutte le relazioni, R $\subseteq$ A X B e S $\subseteq$ B X C valgono le seguenti proprietà:
+Per tutti gli insiemi $A, B, C$ e per tutte le relazioni, $R \subseteq A \times B$ e $S \subseteq B \times C$ vale che:
 \begin{enumerate}
-    \item Se R ed S sono totali allora la loro composizione R;S è totale.
-    \item Se R ed S sono univalenti allora la loro composizione R;S è univalente.
-    \item Se R ed S sono surgettive allora la loro composizione R;S è surgettiva.
-    \item Se R ed S sono iniettive allora la loro composizione R;S è iniettiva.
+    \item Se $R$ ed $S$ sono totali allora la loro composizione $R;S$ è totale.
+    \item Se $R$ ed $S$ sono univalenti allora la loro composizione $R;S$ è univalente.
+    \item Se $R$ ed $S$ sono surgettive allora la loro composizione $R;S$ è surgettiva.
+    \item Se $R$ ed $S$ sono iniettive allora la loro composizione $R;S$ è iniettiva.
 \end{enumerate}
 
 \subsection{Funzione}
 Una funzione può essere definita utilizzando le proprietà fondamentali delle relazioni.
+%TODO Esempi grafici
 \begin{definition}[Funzione]
-Dati due insiemi A, B ed una relazione R $\subseteq$ A X B, tale relazioni si definisce funzione quando rispetta la proprietà \textbf{totale} e \textbf{univalente} quindi tutti gli elementi dell'insieme A hanno uno ed un solo corrispettivo in B.
+Dati due insiemi $A, B$ ed una relazione $R \subseteq A \times B$, tale relazioni si definisce funzione quando rispetta la proprietà \textbf{totale} e \textbf{univalente} quindi tutti gli elementi dell'insieme $A$ hanno uno ed un solo corrispettivo in $B$.
 \end{definition}
-Una funzione è inoltre infittiva quando rispetta la proprietà iniettiva e suriettiva quando rispetta quella surgettiva.
+\begin{example}
+	Ad esempio ne lcaso dei booleani, dato l'insieme $B=\{$true, false$\}$:
+	\begin{itemize}
+		\item $\neg : B \rightarrow B$ $B = {(t, f), (f, t)}$
+		\item $\wedge : B \times B \rightarrow B$
+	\end{itemize}
+\end{example}
+
 \begin{definition}[Funzione parziale]
     Una funzione si dice parziale se rispetta solamente la proprietà univalente.
 \end{definition}
-\begin{definition}[Biezione]
-Dati due insiemi A, B ed una relazione R $\subseteq$ A X B, tale relazioni si definisce funzione biettiva quando rispetta tutte e 4 le proprietà.
-\end{definition}
 \begin{example}
-    Esempio con i booleani:\\
-    bool = $\{$True, False$\}$ \hspace{1cm} 2 = $\{0, 1\}$\\
-    Questi due insiemi sono biettivi.
+	Un esempio è la funzione $f:\frac{1}{x}$ con $f: \mathbf{R} \rightarrow \mathbf{R}$
 \end{example}
+
+\begin{definition}[Funzioni iniettive e surgettive]
+	
+\end{definition}
+
+\begin{definition}[Biezione]
+Dati due insiemi $A, B$ ed una relazione $R \subseteq A \times B$, tale relazioni si definisce funzione biettiva quando rispetta tutte e 4 le proprietà. Quindi:
+\begin{itemize}
+	\item $ \forall a \in A$ esiste \textbf{esattamente un} $b \in B . (a, b) \in \mathbf{R}$
+	\item $ \forall b \in B$ esiste \textbf{esattamente un} $a \in A . (a, b) \in \mathbf{R}$
+\end{itemize}
+\end{definition}
+
 \textbf{Domanda:} Se dati due insiemi A, B dove $|A| \neq |B|$ la loro relazione R $\subseteq$ A X B può essere una biezione?\\
 La risposta è NO visto che avendo cardinalità diverse esisterà sempre un elemento in B che o non ha corrispettivo o ne ha 2.
 
-\subsubsection{Composizione fra funzioni}
-La composizione fra funzioni è una casistica particolare di quella fra relazioni.
+\subsubsection{Composizione di funzioni}
+\begin{proposition}
+	Per tutti gli insiemi $A, B, C$ e tutte le funzioni $f:A\rightarrow B$ e $g:B\rightarrow C$, la relazione $f;g$ è una funzione, $f;g:A \rightarrow C$.
+\end{proposition}
 \begin{example}
-    Dati due funzioni f e g dove:\\
-   $f: A \longrightarrow B$ \hspace{.5cm} $g: B \longrightarrow C$ \footnote{Scrivere una funzione "f" nella forma $f: A \longrightarrow B$  equivale a scrivere f $\subseteq$ A X B}\\ 
-    La compozione si scrive come f;g e sarebbe f;g $\subseteq$ A X C \footnote{è possibile scrivere la composizione fra funzioni anche come $g \bullet f$ oppure $g(f())$.}\\ \\
-    \textbf{NOTA:} indichiamo con $fun(A,B) = \{f | f: \: A \longrightarrow B\}$ l'insieme di tutte le funzioni che vanno da A a B.
+    Dati due funzioni $f$ e $g$ dove:\\
+	$f: A \rightarrow B$ \hspace{.5cm} $g: B \rightarrow C$ \footnote{Scrivere una funzione "$f$" nella forma $f: A \rightarrow B$  equivale a scrivere f $\subseteq A \times B$}\\ 
+    La compozione si scrive come $f;g$ e sarebbe $f;g \subseteq A \times C$ \footnote{É possibile scrivere la composizione di funzioni anche come $g \cdot f$ oppure $g(f())$}
 \end{example}
+\begin{note}
+	Indichiamo con $fun(A,B) = \{f \mid f: A \rightarrow B\}$ l'insieme di tutte le funzioni che vanno da $A$ a $B$. Di conseguenza $fun(A, B) \subseteq rel(A, B)$.
+\end{note}
 
 \subsubsection{Proprietà di chiusura per funzioni}
-Per tutti gli insiemi A, B, C e per tutte le relazioni, funzioni, $i: A \longrightarrow B$ e $j: B \longrightarrow C$ valgono le seguenti proprietà:
+Per tutti gli insiemi $A, B, C$ e per tutte le relazioni, funzioni, $i: A \rightarrow B$ e $j: B \rightarrow C$ valgono le seguenti proprietà:
 \begin{enumerate}
-    \item $Id_A$ è una biezione, essendo che sarebbe una relazione con se stesso.
-    \item Se prendiamo $i: A \longrightarrow B$ e $j: B \longrightarrow C$, dove entrambi le funzioni sono biezioni, la loro composizioni, i;j: $A \longrightarrow C$ è a sua volta una biezioni.
-    \item Se prendiamo la funzione $i: A \longrightarrow B$ biettiva, il suo opposto $i^{op}: B \longrightarrow A$ è a sua volta biettiva.
+    \item $Id_A$ è una biezione, essendo una relazione con se stesso
+    \item Se prendiamo $i: A \rightarrow B$ e $j: B \rightarrow C$, dove entrambe le funzioni sono biezioni, la loro composizione, $i;j: A \rightarrow C$ è a sua volta una biezione
+    \item Se prendiamo la funzione $i: A \rightarrow B$ biettiva, il suo opposto $i^{op}: B \rightarrow A$ è a sua volta biettiva
 \end{enumerate}
 
 \subsubsection{Caratterizzazione in biezione}\label{caratterizzazione-biezione}
-\begin{definition}[Caratterizzazione]
-In maniera rigorosa la caratterizzazione, applicata alla biezione, si definiscine:
-$\forall \: A, B \: \bullet \: \forall \: R \subseteq$ A X B, R è biezione $\Longleftrightarrow Id_A = R;R^{op} \land Id_B = R^{op};R$.
-\end{definition}
+Per tutti gli insiemi $A, B$, per tutte le relazioni $R: A\leftrightarrow B$ vale che:
+\begin{itemize}
+	\item $R$ è una biiezione se e solo se $Id_A = R;R^{op}$ e $Id_B = R^{op};R$
+	\item Una relazione $S:B\leftrightarrow A$ è l'inversa di $R$ se $Id_A = R;S$ e $Id_B = S;R$
+	\item $R:A\leftrightarrow B$
+\end{itemize}
+
 \textbf{Spiegazione:} Per definire la proprietà di caratterizzazione per una relazione biettiva bisogna partire da cos'è una relazione biettiva: una relazione è biezione quando è contemporaneamente totale, univalente, surgettiva ed iniettiva. \\Da qui capiamo che se una relazione ha tutte e 4 le proprietà a suo volta dovrà rispettare per ciascuna di esse la caratterizzazione associata vista nel paragrafo \ref{teorema-caratterizzazione}. \\Quindi semplicemente riscriviamo questa quattro proprietà semplificando $Id_A \subseteq R;R^{op}$ con $R;R^{op} \subseteq Id_A$ in $Id_A = R;R^{op}$ e $Id_B \subseteq R^{op};$ con $R^{op};R \subseteq Id_B$ con $Id_B = R^{op};R$ (possiamo fare questa "semplificazione" perché due insiemi sono uguali quando uno è sottoinsieme dell'altro, come in questo caso).
 \begin{example}
     Come si usa la caratterizzazione:\\
     Dati due insiemi A, B ed una relazione R $\subseteq$ A X B. Se riusciamo a trovare una relazione S $\subseteq$ B X A tale che venga soddisfatta la definizione sopra scritta per cui $Id_A = R;S \land S;R = Id_B$ è equivalente a dimostrare che la relazione R è una biezione.
 \end{example}
 
-\newpage
 \subsubsection{Insiemi di biezione}
 \begin{definition}[Insiemi di biezione]
-Dati due insiemi A e B, essi sono in biezioni \footnote{nota che puoi chiamare due insiemi di biezione anche in corrispondenza, 1-1 o una relazione biunivoca} se esiste una biezione che va da $i: A \longrightarrow B$, e si scrive come $A \cong B$\footnote{attenzione: usare il simbolo $\cong$ invece che un semplice = vuole dire che non per forza le due parti devono essere uguali, quindi si sopperisce ad un eventuale mancanza di uguaglianza}
+Dati due insiemi A e B, essi sono in biezione
+\footnote{puoi chiamare due insiemi in biezione anche in corrispondenza, 1-1 o in una relazione biunivoca}
+se esiste una biezione $i: A \rightarrow B$, e si scrive come $A \cong B$
+\footnote{attenzione: usare il simbolo $\cong$ invece che un semplice = vuole dire che non per forza le due parti devono essere ugualia}
 \end{definition}
 \begin{example}
     Esempi insiemi di biezione:
@@ -311,7 +375,7 @@ Dati due insiemi A e B, essi sono in biezioni \footnote{nota che puoi chiamare d
     \end{itemize}
 \end{example}
 \begin{example} Esempio particolare con dimostrazione \\
-        Per tutti gli insiemi A, B, C vale che:
+        Per tutti gli insiemi $A, B, C$ vale che:
         \begin{equation}
             (A \times B) \times C \cong A \times (B \times C)
         \end{equation}
@@ -347,7 +411,7 @@ Dati due insiemi A e B, essi sono in biezioni \footnote{nota che puoi chiamare d
 \end{example}
 
 \subsubsection{Proprietà insiemi di biezione}
-Per tutti gli insiemi A, B, C valgono le proprietà scritte nella tabella \ref{tab:proprietà-insiemi-biezione}.
+Per tutti gli insiemi $A, B, C$ valgono le proprietà scritte nella tabella \ref{tab:proprietà-insiemi-biezione}.
 \begin{table}[h!]
     \centering
     \setlength{\tabcolsep}{8pt}
@@ -355,8 +419,8 @@ Per tutti gli insiemi A, B, C valgono le proprietà scritte nella tabella \ref{t
     \begin{tabular}{|c|c|}
     \hline
         \textbf{Riflessiva} & A $\cong$ A  \\
-        \textbf{Simmetrica} & A $\cong$ B $\Longleftrightarrow$ B $\cong$ A \\
-        \textbf{Transitiva} & A $\cong$ B, B $\cong$ C $\Longrightarrow$ A $\cong$ C \\ \hline
+        \textbf{Simmetrica} & A $\cong B \Longrightarrow B \cong A$ \\
+        \textbf{Transitiva} & $A \cong B$, $B \cong C \Longrightarrow A \cong C$\\ \hline
     \end{tabular}
     \caption{Proprietà insiemi di biezione}
     \label{tab:proprietà-insiemi-biezione}
@@ -364,7 +428,7 @@ Per tutti gli insiemi A, B, C valgono le proprietà scritte nella tabella \ref{t
 
 \subsection{N-upla}
 \begin{definition}[N-upla]
-Una sequenza su A di lunghezza n che è una n-upla ($a_0, a_1, a_2, ...,a_{n-1}$) dove per tutti gli indici $i \in \{0,1,...,n-1\}$ di $j \in A$ l'insieme $A^n$ du tutte le sequenze è definito come:
+Sia $A$ un insieme e $n \in \mathbf{N}$. Una sequenza su $A$ di lunghezza $n$ è una n-upla ($a_0, a_1, \ldots, a_{n-1}$) dove $a_i \in A$ per ogni indice $i \in \{0,1,\ldots,n-1\}$. Definiamo quindi l'insieme $A^n$ du tutte le sequenze come:
 \begin{equation}
     A^n = \{(a_0,a_1, ..., a_{n+1}) \:|\: \forall \: i \in \{0,...,n-1\}\:.\: a_i \in A\}
 \end{equation}

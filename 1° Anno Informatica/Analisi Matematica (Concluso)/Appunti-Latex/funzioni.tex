@@ -2,10 +2,13 @@
 \section{Funzioni}
 \begin{definition}[Funzione]
 - $f: A \longrightarrow B$: \\
-Dati due insiemi A, B, detti corrispettivamente dominio e codominio, una funzione è una "legge" o "regola" che associa ad ogni elemento di $a \in A$ uno ed uno solo elemento di B, che si denota con f(a).
+Dati due insiemi A, B, detti corrispettivamente dominio e codominio, una funzione è una "legge" o "regola" che associa ad ogni elemento di $a \in A$ uno ed uno solo elemento di B.
 \end{definition}
 \begin{note}
-Tipicamente in questo corso le funzioni saranno date come formule del tipo $f(x) = x^2 - 7x - e^x$ andando poi a specificare dominio e codominio in questo modo $f: \mathbb{R} \longrightarrow \mathbb{R}$
+Tipicamente in questo corso le funzioni saranno date come formule del tipo $f(x) = x^2 - 7x - e^x$ specificando dominio e codominio in questo modo $f: \mathbb{R} \longrightarrow \mathbb{R}$. Si noti che la definizione di una funzione \textbf{deve} includere sia la funzione che il suo dominio. Ad esempio $f: \mathbb{R} \longrightarrow \mathbb{R} \: f(x)=x^2$ e $g: \mathbb{R} \geq 0 \longrightarrow \mathbb{R} g(x)=x^2$ sono due funzioni diverse.
+\end{note}
+\begin{note}
+	Se non vengono specificati dominio e codominio allora il dominio è il sottoinsieme più grande di $\mathbb{R}$ in cui la formula ha senso. Per la funzione $f(x)=\frac{1}{x}$ il dominio è ${x \in \mathbb{R} \mid x \neq 0}$.
 \end{note}
 \begin{example}
     Esempi funzioni:
@@ -16,6 +19,8 @@ Tipicamente in questo corso le funzioni saranno date come formule del tipo $f(x)
         \item $h(x) = x^2$ \hspace{.3cm} $h(0, +\infty) \longrightarrow (-\infty,1)$ \hspace{.3cm}Non va bene perché se preindiamo x=3 $f(3) = 9$ e 9 non fa parte del codominio. 
     \end{itemize}
 \end{example}
+
+\subsection{Grafico}
 Una funzione $f: A \longrightarrow B$ con $A,B \in \mathbb{R}$ ha un \textbf{grafico} che si indica come:
 \begin{equation}
     graph(f) = \{(a,b) \in A \:X\: B\ \:|\: b = f(a)\}
@@ -57,6 +62,12 @@ Prendendo $f: A \longrightarrow B$ e $D \subseteq A$ l'immagine di D tramite f �
 \begin{definition}[Suriettiva]
 Una funzione si dice suriettiva quando ogni elemento del codominio è immagine di almeno un elemento del dominio. Quindi prendendo una f(x), per che sia suriettiva deve l'immagine I essere uguale ad un valore, $I(f) = b$.
 \end{definition}
+\begin{equation}
+	\forall y \in B \exists x \in A
+\end{equation}
+\begin{note}
+	La suriettività si traduce graficamente nel fatto una qualsiasi retta orizzontale intersechi il grafico almeno una volta.
+\end{note}
 \begin{example}
     Esempi funzioni suriettive:
     \begin{itemize}
@@ -69,6 +80,12 @@ Una funzione si dice suriettiva quando ogni elemento del codominio è immagine d
 \begin{definition}[Iniettiva]
 Una funzione iniettiva è una funzione che associa, a elementi distinti del dominio, elementi distinti del codominio. Quindi prendendo una f(x) è iniettiva se prendendo due valori $x_1, x_2$ dove $x_1 \neq x_2 \Longrightarrow f(x_1) \neq f(x_2)$. (Input diversi danno output diversi).
 \end{definition}
+\begin{equation}
+	x_{1}, x_{2} \in A \wedge x_{1} \neq x_{2} \implies f(x_{1}) \neq f(x_{2})
+\end{equation}
+\begin{note}
+	L'iniettività si traduce graficamente nel fatto una qualsiasi retta orizzontale intersechi il grafico al più una volta.
+\end{note}
 \begin{example}
     Esempi funzioni iniettiva:
     \begin{itemize}
@@ -88,7 +105,7 @@ Se una funzione è biunivoca si dice che tale funzione è anche invertibile.
 \end{definition}
 \begin{wrapfigure}{l}{6cm}
     \centering
-    \includegraphics[width=5cm, height=4cm]{Esempio-invertibilità.png}
+    \includegraphics[width=5cm, height=4cm]{Esempio-invertibilita.png}
     \caption{$f(x) = x^2$ e $g(x) = \sqrt{x}$}
     \label{fig:esempio-invertibilità}
 \end{wrapfigure}
@@ -100,7 +117,7 @@ Se vediamo nell'immagine [\ref{fig:esempio-invertibilità}] prendendo l'inverso 
 
 \subsection{Funzioni Monotone}
 \begin{definition}[Monotone]
-Dato un insieme $A \in \mathbb{R}$ e $x_1, x_2 \in A$ con $x_1 < x_2$ se $\forall x_1, x_2$ risulta ciò che è scritto in Tabella \ref{tab:monotone}.
+Dati $A, B \in \mathbb{R}$ e $f:A \longrightarrow B$. $x_1, x_2 \in A$ con $x_1 < x_2$ se $\forall x_1, x_2$ risulta ciò che è scritto in Tabella \ref{tab:monotone}.
 \end{definition}
 \begin{table}[h!]
     \centering
@@ -121,6 +138,10 @@ Andando a considerare la Tabella \ref{tab:monotone} possiamo dire che:
     \item \textbf{Strettamente monotona} nei casi [1] e [3] della tabella.
     \item \textbf{Debolmente monotona} nei casi [2] e [4] della tabella.
 \end{itemize}
+
+\begin{observation}
+	Se $f$ è strettamente monotona allora è iniettiva in quanto dati $x_{1} \neq x_{2}$ con $x_{1} < x_{2} \implies f(x_{1}) < f(x_{2})$ e in particolare $f(x_{1}) \neq f(x_{2})$. Nkn vale però il contrario, infatti una funzione iniettiva non è per forza strettamente monotona (ad esempio data $f(x)=\frac{1}{x}$ con $f:\mathbb{R} \setminus \{0\} \longrightarrow \mathbb{R} \setminus \{0\}$ )
+\end{observation}
 
 \begin{example}
     Esempi funzioni crescenti e decrescenti:\\
@@ -155,10 +176,11 @@ Andando a considerare la Tabella \ref{tab:monotone} possiamo dire che:
     \caption{$\frac{\Delta_y}{\Delta_x}$}
     \label{fig:esempio-invertibilità}
 \end{wrapfigure}
-f(x) è strettamente crescente se e solo se il \textbf{rapporto incrementale}\footnote{I rapporto incrementale misura quanto il punto della f si sposta in verticale in rapporto a quanto abbiamo l'asciasse in orizzontale.} è maggiore di 0:
+Definito il \textbf{rapporto incrementale}\footnote{I rapporto incrementale misura quanto il punto della f si sposta in verticale in rapporto a quanto abbiamo l'asciasse in orizzontale.} come:
 \begin{equation}
-    \frac{f(x_1) - f(x_2)}{x_1 - x_2} > 0
+    \frac{\Delta_y}{\Delta_x}=\frac{f(x_1) - f(x_2)}{x_1 - x_2}
 \end{equation}
+
 \begin{note}
     Il denominatore ed il numeratori devono essere concordi per fare in modo che il rapporto incrementale sia maggiore di 0 e quindi la funzione crescente. \\ \\\\
 \end{note}
@@ -201,15 +223,16 @@ Continuando ad analizzare il rapporto incrementale possiamo ricavare anche i cas
 \end{example}
 
 \subsubsection{Composizione con funzioni monotone}
-\begin{note}
-     Il simbolo della composizione è "$\circ$", come $f \circ g$.
-\end{note}
-Prendendo i considerazioni 3 insiemi A, B, C tali che $A, B, C \subset \mathbb{R}$ e 2 funzioni f(x) e g(x) così definitine: \hspace{.2cm} $f: A \longrightarrow B$, $g: B \longrightarrow C $.
+\begin{definition}[Composizione]
+	La composizione di funzioni si definisce come $g \circ f:A \longrightarrow C$, $(g \circ f)(a)=g(f(a))$
+\end{definition}
+Prendendo i considerazioni 3 insiemi A, B, C tali che $A, B, C \subset \mathbb{R}$ e 2 funzioni f(x) e g(x) così definite: \hspace{.2cm} $f: A \longrightarrow B$, $g: B \longrightarrow C $.
 \begin{enumerate}
     \item Se f è crescente e g è crescente allora $g \circ f$ è crescente.
-    \item Se f è crescente e g è decrescente allora $g \circ f$ è decrescente. (Vale anche l'inverso).
-    \item Se f è decrescente e g è decrescente allo $g \circ f$ è crescente. 
+    \item Se f è crescente e g è decrescente allora $g \circ f$ è decrescente e viceversa ($ x_{1} < x_{2} \implies f(x_{1}) < f(x_{2}) \implies g(f(x_{1})) < g(f(x_{2})) $).
+    \item Se f è decrescente e g è decrescente allora $g \circ f$ è crescente ($ x_{1} < x_{2} \implies f(x_{1}) > f(x_{2}) \implies g(f(x_{1})) < g(f(x_{2})) $).
 \end{enumerate}
+
 \begin{example}
     $h(x) = e^{x^3}$\\
     La funzione h si ottiene dalla composizione di:
@@ -230,7 +253,7 @@ Prendendo i considerazioni 3 insiemi A, B, C tali che $A, B, C \subset \mathbb{R
 
 \subsection{Insieme di definizione}
 \begin{definition}[Insieme di definizione]
-    Prendendo una funzione f(x) l'insieme di definizione o dominio naturale di una funzione è il più grande sottoinsieme di $\mathbb{R}$ dove ha senso la funzione f(x).
+    Data una funzione f(x) l'insieme di definizione o dominio naturale di una funzione è il più grande sottoinsieme di $\mathbb{R}$ dove ha senso la funzione f(x).
 \end{definition}
 \begin{example}
     $f(x) = \frac{1}{x}$ \hspace{.3cm} L'insieme di definizione è $\mathbb{R} \setminus \{0\}$
@@ -238,13 +261,13 @@ Prendendo i considerazioni 3 insiemi A, B, C tali che $A, B, C \subset \mathbb{R
 
 \subsection{Funzioni pari e dispari}
 \begin{definition}[Pari]
-    La funzione è \textbf{Pari} se $f(x) = f(-x) \: \forall x$ nel dominio di $f \longrightarrow f$.
+    La funzione è \textbf{Pari} se $f(x) = f(-x) \: \forall x$ nel dominio di $f \longrightarrow f$. Il grafico di una funzione pari è simmetrico rispetto all'asse $y$.
 \end{definition}
 \begin{definition}[Dispari]
-    La funzione è \textbf{Dispari} se $f(x) = -f(-x) \: \forall x$ nel dominio di $f \longrightarrow f$.
+    La funzione è \textbf{Dispari} se $f(x) = -f(-x) \: \forall x$ nel dominio di $f \longrightarrow f$. Il grafico di una funzione dispari è simmetrico rispetto all'origine.
 \end{definition}
 \begin{note}
-    Il dominio di f deve essere tale che se $x \in Dominio$ allora $-x \in Codominio$.\\
+    Il dominio di f deve essere simmetrico.\\
 \end{note}
 \begin{example}
 Esempio funzioni pari e dispari.\\
@@ -263,6 +286,9 @@ $f(-x) = (-x)^2 = x^2 = f(x)$, f(x) è \textbf{pari}: \hfill $f(-x) = (-x)^2 = x
         \caption{$f(x) = x^3$, \hspace{.2cm} graph(f) con f dispari}
     \end{subfigure}
 \end{figure}
+\begin{note}
+	Una funzione del tipo $f(x)=x^(2n)$ con $n \in \mathbb{N}$ è sempre pari mentre una funzione del tipo $f(x)=x^(2n+1)$ con $n \in \mathbb{N}$ è sempre dispari.
+\end{note}
 
 \subsection{Funzione periodica}
 \begin{definition}[Periodicità]
@@ -275,12 +301,11 @@ $f(-x) = (-x)^2 = x^2 = f(x)$, f(x) è \textbf{pari}: \hfill $f(-x) = (-x)^2 = x
     \caption{$sin(x) = sin(x + 2\pi)$}
     \label{fig:funzione-periodica}
 \end{wrapfigure}
-Inoltre il dominio di f(x) deve essere tale che $x \in$ Dominio è uguale e a $x + P \in$ codominio.
+Inoltre il dominio di f(x) deve essere tale che $x \in dom(f) \implies x + P \in dom(f)$.
 \begin{example}
 In figura [\ref{fig:funzione-periodica}] un esempio di funzione periodica.\\\\
 \end{example}
 
-\newpage
 \subsection{Funzioni Elementari}
 \subsubsection{Retta}
 \textbf{Funzione retta:} $f(x) = ax + b$. \hspace{.3cm} $a,b \in \mathbb{R}$ \\ Dove la "a" si dice coefficiente angolare, ed indica la pendenza della retta mentre la lettera "b" si chiama termine noto, ed indica il punto di incontro con l'asse Y.

@@ -1,28 +1,79 @@
 \newpage
 \section{Induzione}
-L'induzione è un metodo formale che aiuta a definire in modo rigoroso insiemi, funzioni ma anche serve per dimostrare che una proprietà è vera per tutti gli elementi di un tale insieme. Diventa sopratutto unitile quando queste definizioni sono un insiemi, funzioni di cardinalità o di lunghezza notevolmente grande (ma sempre finiti).
+L'induzione è un metodo formale che permette di definire in modo rigoroso insiemi, funzioni. Serve anche per dimostrare che una proprietà è vera per tutti gli elementi di un determinato insieme. Diventa sopratutto utile quando queste definizioni sono insiemi, funzioni di cardinalità o di lunghezza notevolmente grande (ma sempre finiti).
+
+\subsection{Sommatorie, produzioni}
+\subsubsection{Sommatoria}
+\begin{definition}
+	Sia $a:\mathbf{N}^+ \rightarrow \mathbf{N}$ una successione di anturali $a_1, a_2, \ldots, a_n$. La sommatoria degli $a_i$ per $i$ che va da $1$ a $n$ è:
+	\begin{equation}
+		\sum\limits_{i=1}^n a_i = a_1 + a_2 + \ldots + a_n
+	\end{equation}
+\end{definition}
+Possiamo definirla come di seguito in maniera induttiva:
+\begin{itemize}
+	\item Clausola base: $\sum\limits_{i=1}^0 a_i = 0$
+	\item Clausola induttiva: $\sum\limits_{i=1}^{n+1} a_i = \bigg(\sum\limits_{i=1}^n a_i) + a_{n+1}$
+\end{itemize}
+
+\subsubsection{Sommatoria da \emph{k}}
+\begin{definition}
+	Sia $a:\mathbf{N}^+ \rightarrow \mathbf{N}$ una successione di naturali $a_1, a_2, \ldots, a_n$. Sia $k \in \mathbf{N}^+$. La sommatoria degli $a_i$ per $i$ che va da $k$ a $n$ è:
+	\begin{equation}
+		\sum\limits_{i=k}^n a_i = a_1 + a_2 + \ldots + a_n
+	\end{equation}
+\end{definition}
+Possiamo definirla come di seguito in maniera induttiva:
+\begin{itemize}
+	\item Clausola base: $\sum\limits_{i=k}^0 a_i = 0$
+	\item Clausola induttiva:
+	$ \sum\limits_{i=k}^{n+1} a_i = 
+	\begin{cases}
+		0 & \text{se } k > n+1 \\
+		\bigg(\sum\limits_{i=1}^n a_i) + a_{n+1} & \text{se } k \leq n+1
+	\end{cases}$
+\end{itemize}
+
+\subsubsection{Produttoria da \emph{k}}
+\begin{definition}
+	Sia $a:\mathbf{N}^+ \rightarrow \mathbf{N}$ una successione di naturali $a_1, a_2, \ldots, a_n$. Sia $k \in \mathbf{N}^+$. La produttoria degli $a_i$ per $i$ che va da $k$ a $n$ è:
+	\begin{equation}
+		\prod\limits_{i=k}^n a_i = a_1 \cdot a_2 \cdot \ldots \cdot a_n
+	\end{equation}
+\end{definition}
+Possiamo definirla come di seguito in maniera induttiva:
+\begin{itemize}
+	\item Clausola base: $\sum\limits_{i=k}^0 a_i = 0$
+	\item Clausola induttiva: $\sum\limits_{i=k}^{n+1} a_i = \begin{cases}
+		0 & \text{se } k>n+1 \\
+		\bigg(\sum\limits_{i=1}^n a_i) \cdot a_{n+1} & \text{se } k \leq n+1
+	\end{cases}$
+\end{itemize}
+
+%TODO Inserire de morgan n-ario e intersezione n-aria
+
 \subsection{Schema generale induttivo}
-Schema generare induttivo usato per definire un insieme A, e con il quale tramite una regola finita andiamo a rappresentare infinite soluzioni:
+La definizione per induzione di un insieme $A$ sfrutta uno schema generale che permette di rappresentare infinite soluzioni:
+
 \begin{enumerate}
-    \item \textbf{Clausola base}, o caso base, che stabilisce che certi oggetti appartengono all'insieme. Questi elementi costituiscono i mattoncini per costruire altri elementi dell’insieme. Nel nostro caso andiamo ad elencare un numero finito di elementi che appartengono ad A.
-    \item \textbf{Clausola induttiva} o passo induttivo, che descrive in che modo gli elementi dell'insieme possono essere usati per produrre altri elementi dell'insieme. Nel nostro caso usiamo elementi di A per costruirne o definirne altri.
-    \item \textbf{Clausola terminale}, che stabilisce che l'insieme che si sta definendo non contiene altri elementi oltre a quelli ottenuti dalle due clausole precedenti. Quindi l'insieme definito è il più piccolo insieme che soddisfa la clausola base e quella induttiva. Nel nostro caso definiamo che gli unici elementi che soddisfano A sono quelli definiti nelle condizioni 1 e 2. \footnote{La clausola terminale di solito non viene specificata essendo sotto intesa}
+    \item \textbf{Clausola base}, o caso base, che stabilisce che certi oggetti appartengono all'insieme. Questi elementi costituiscono i mattoncini per costruire altri elementi dell’insieme. Nel nostro caso andiamo ad elencare un numero finito di elementi che appartengono ad $A$.
+    \item \textbf{Clausola induttiva} o passo induttivo, che descrive in che modo gli elementi dell'insieme possono essere usati per produrre altri elementi dell'insieme. Nel nostro caso usiamo elementi di $A$ per costruirne o definirne altri.
+    \item \textbf{Clausola terminale}, che stabilisce che l'insieme che si sta definendo non contiene altri elementi oltre a quelli ottenuti dalle due clausole precedenti. Quindi l'insieme definito è il più piccolo insieme che soddisfa la clausola base e quella induttiva. Nel nostro caso definiamo che gli unici elementi che soddisfano A sono quelli definiti nelle condizioni $1$ e $2$. \footnote{La clausola terminale di solito non viene specificata essendo sotto intesa}
 \end{enumerate}
 \begin{example}
     Riscrivendo per intero in nostro esempio con A:\\
-    \underline{Clausola base:} $A_1$ X $A_2$ è una n-upla\\
-    \underline{Clausola induttiva:} $A_1$ X $A_2$ X $A_3$ è una n-upla\\ \\
+    \underline{Clausola base:} $A_1 \times A_2$ è una n-upla\\
+    \underline{Clausola induttiva:} $A_1 \times A_2 \times A_3$ è una n-upla\\ \\
     Tramite queste due clausole possiamo andare a ricreare ogni n-upla (2-upla, 3-upla, ecc..) andando semplicemente a ripetere la clausola induttiva partendo da quella base. Infatti una 3-upla è clausola base per 1 volta clausola induttiva, mentre una 4-upla è la clausola base più due ripetizioni della clausola induttiva: \\
-    3-upla = $A_1$ X $A_2$ X $A_3$ \hspace{.5cm} 4-upla = $A_1$ X $A_2$ X $A_3$ X $A_4$ \hspace{.5cm} e così per ogni n-upla
+    3-upla = $A_1 \times A_2 \times A_3$ \hspace{.5cm} 4-upla = $A_1 \times A_2 \times A_3 \times A_4$ \hspace{.5cm} e così per ogni n-upla
 \end{example}
 \begin{example}
     Altri esempi particolari di casi induttivi:
     \begin{itemize}
-        \item \textbf{Chiusura di kleene} o stella di kleene: $A^{*} = \bigcup\limits_{n=0}^{\infty} A^n$ \hspace{.3cm} $A^n =$ A X A x A ... (n volte).\\
-        Parte da 0 perché si considera quella che in informatica sarebbe la stringa vuota, cioè $A^0 = \{\}$, che si rappresentata con $\epsilon$.
+        \item \textbf{Chiusura di kleene} o stella di kleene: $A^{*} = \bigcup\limits_{n=0}^{\infty} A^n$ \hspace{.3cm} $A^n = A \times A \times A \ldots$ ($n$ volte). Parte da $0$ perché si considera quella che in informatica sarebbe la stringa vuota, cioè $A^0 = \{\}$, che si rappresentata con $\epsilon$.
         \item \textbf{Chiusura positiva}: $A^{+} = \bigcup\limits_{n=1}^{\infty} A^n$ \hspace{.3cm} Uguale alla stella di kleene ma senza insieme vuoto.
     \end{itemize}
-    Entrambi questi casi sono operazioni molto consuete nel mondo dell'informatica, essendo che possiamo vedere A come un insieme di caratteri per esempio A = unicode, e tramite queste operazioni si vanno a creare tutte le possibili sequenze o stringhe con quei caratteri.
+    Entrambi questi casi sono operazioni molto consuete nel mondo dell'informatica, essendo che possiamo vedere $A$ come un insieme di caratteri per esempio $A = unicode$, e tramite queste operazioni si vanno a creare tutte le possibili sequenze o stringhe con quei caratteri.
 \end{example}
 
 \subsection{Definizione induttiva dell'insieme $\mathbb{N}$}
@@ -33,7 +84,7 @@ Schema generare induttivo usato per definire un insieme A, e con il quale tramit
         \item \underline{Clausola induttiva:} se $n \in \mathbb{N}$ allora $(n + 1) \in \mathbb{N}$.
     \end{enumerate}
 \end{definition}
-Definendo le tre clausole è immediato capire la definizione dell'insieme $\mathbb{N}$ per induzione. Infatti possiamo ricavare qualsiasi numero dell'insieme semplicemente partendo da 0 (che già sappiamo per clausola base appartenere all'insieme) e ripetendo la clausola induttiva tante volta quanto mi serve. 
+Definendo le tre clausole è immediato capire la definizione dell'insieme $\mathbb{N}$ per induzione. Infatti possiamo ricavare qualsiasi numero dell'insieme semplicemente partendo da 0 (che già sappiamo per clausola base appartenere all'insieme) e ripetendo la clausola un numero illimitato \footnote{Illimitato è diverso da infinito in quanto quest'ultimo non è un numero mentre il primo si} di volte. 
 
 \begin{example}
     Altri esempi analoghi alla definizione dell'insieme $\mathbb{N}$:
@@ -47,7 +98,7 @@ Definendo le tre clausole è immediato capire la definizione dell'insieme $\math
 \end{example}
 
 \subsection{Definizione induttiva di funzioni}
-Per andare ad effettuare la definizione induttiva di una funzione bisogna andare (1) a stabilire il valore delle funzioni per gli elementi appartenenti alla clausola base e (2) una regola per andare a calcolare il valore della funzione sugli elementi che vi appartengono, stabiliti dalla clausola induttiva. Successivamente tramiti te la clausola terminale definiamo che i punti (1) e (2) sono sufficienti a definire la funzione per tutti gli elementi dell'insieme. Quindi, prendendo una $f: A \longrightarrow B$:
+Per andare ad effettuare la definizione induttiva di una funzione bisogna andare (1) a stabilire il valore delle funzioni per gli elementi appartenenti alla clausola base e (2) una regola per andare a calcolare il valore della funzione sugli elementi che vi appartengono, stabiliti dalla clausola induttiva. Successivamente tramite te la clausola terminale definiamo che i punti (1) e (2) sono sufficienti a definire la funzione per tutti gli elementi dell'insieme. Quindi, prendendo una $f: A \rightarrow B$:
 \begin{itemize}
     \item La \textbf{clausola base} sarà il valore di f(a) per alcuni $a \in A$.
     \item La \textbf{clausola induttiva} invece indicherà il valore di f(a) utilizzando valori di f già definiti in precedenza.
@@ -57,16 +108,16 @@ Per andare ad effettuare la definizione induttiva di una funzione bisogna andare
     \begin{definition}[Numeri triangolari]
         Per ogni $n \in \mathbb{N}$ in numero triangolare $T_n$ è uguale alla somma di tutti i numeri minori o uguali a n:
         \begin{equation}\label{numeri-triangolari}
-            T_n: \mathbb{N} \longrightarrow \mathbb{N} \: \: \: o \: \: \: T_n = fun(\mathbb{N},\mathbb{N}) \hspace{1cm} T_n = \sum_{\substack{i=0}}^n i
+            T_n: \mathbb{N} \rightarrow \mathbb{N} = fun(\mathbb{N},\mathbb{N}) \hspace{1cm} T_n = \sum_{\substack{i=0}}^n i
         \end{equation}
     \end{definition}
     \begin{enumerate}
         \item \underline{Clausola base:} $T_0 = 0$
         \item \underline{Passo induttivo:} $T_{n + 1} = T_n + (n + 1)$
     \end{enumerate}
-    Per andare a dimostrare questa casistica possiamo procedere per casi andando a controllare $n=1, n=2, n=3, ...$ e dimostrare la validità per questi casi, cosa che però non porta ad un risultato per un generico numero $n$. Per dimostrare la validità bisogna andare a dimostrare quella che vine chiamata \textit{formula di gauss}.
+    Per dimostrare ciò possiamo procedere per casi andando a controllare $n=1, n=2, n=3, \ldots$ e dimostrando la validità per questi casi, cosa che però non porta ad un risultato per un generico numero $n$. Per dimostrare la validità bisogna dimostrare quella che vine chiamata \textit{formula di Gauss}.
     \begin{equation}\label{formula-gauss}
-        \forall\: \: n \in \mathbb{N} \: . \: \bigg(T_n = \frac{n \cdot (n + 1)}{2}\bigg)
+        \forall n \in \mathbb{N} . \bigg(T_n = \frac{n \cdot (n + 1)}{2}\bigg)
     \end{equation}
 \end{example}
 
@@ -75,7 +126,7 @@ Per andare a dimostrare una proprietà bisogna applicare il principio di induzio
 \begin{definition}[\textbf{Principio di induzione}]
     Se (caso base) $P(0)$ è vera, e se (passo induttivo) per ogni $n \in \mathbb{N}$ vale che se $P(n)$ è vera allora anche $P(n+1)$ lo è, allora $P(m)$ è vera per ogni $m \in \mathbb{N}$
     \begin{equation}
-        \frac{P(0) \: \: \: \forall \: \: n \in \mathbb{N}\:.\:(P(n) \Longrightarrow P(n+1)}{\forall \: \: m \in \mathbb{N}\:.\:P(m)}
+        \frac{P(0) \wedge \forall n \in \mathbb{N}.(P(n) \Rightarrow P(n+1))}{\forall m \in \mathbb{N}.P(m)}
     \end{equation}
 \end{definition}
 \begin{proposition}[Formula di gauss]
@@ -93,17 +144,17 @@ Per dimostrare la formula di gauss (\ref{formula-gauss}) per induzione è suffic
 \end{enumerate}
 \end{demostration}
 \begin{example}[De Morgan]
-    Facciamo un altro esempio andando a dimostrare la proprietà di \textbf{De Morgan} per induzione. Tale proprietà dice che:
+    Facciamo un altro esempio andando a dimostrare la proprietà di \textbf{De Morgan} per induzione:
     \begin{center}
         $\overline{(A \cup B)} = \overline{A} \cap \overline{B}$
     \end{center}
-    Noi dobbiamo andare a dimostrare che questa legge può vale per più insiemi utilizzando l'induzione. Quindi dobbiamo far valere la generalizzazione:
+    Noi dobbiamo dimostrare che questa legge può valere per più insiemi utilizzando l'induzione. Quindi dobbiamo far valere la generalizzazione:
     \begin{center}
-        $DM(n) = \forall \: \: A_1, ..., A_n \: \cdot \: \Bigg(\overline{\Big( \bigcup\limits_{i=1}^{n} A_i \Big)} = \bigcap\limits_{i=1}^{n}\overline{A_i} \Bigg)$
+        $DM(n) = \forall A_1, \ldots , A_n \cdot \Bigg(\overline{\Big( \bigcup\limits_{i=1}^{n} A_i \Big)} = \bigcap\limits_{i=1}^{n}\overline{A_i} \Bigg)$
     \end{center}
     Noi a questo punto dobbiamo in particolare andare a dimostrare che per ogni $n \geq 2$ vale $DM(n)$:
     \begin{center}
-        $\forall\: \: n \: . \: (n \geq 2 \Longrightarrow DM(n))$
+        $\forall n . (n \geq 2 \Longrightarrow DM(n))$
     \end{center}
     \begin{enumerate}
         \item \underline{Caso base:} $DM(2)$ diche che $\overline{(A_1 \cup A_2)} = \overline{A_1} \cap \overline{A_2}$, ed è dimostrato perché è ciò che dice la legge di De Morgan.
@@ -122,18 +173,18 @@ Per dimostrare la formula di gauss (\ref{formula-gauss}) per induzione è suffic
 \begin{example}[Numeri di Fibonacci]
     La successione dei numeri di Fibonacci può essere definita induttivamente come:
     \begin{enumerate}
-        \item $f_1 = 1$
-        \item $f_2 = 1$
-        \item $f_n = f_{n-1} + f_{n-2}$ \hspace{.5cm} se $n > 2$
+        \item Caso base: $f_1 = 1$
+        \item Caso base: $f_2 = 1$
+        \item Passo induttivo: $f_n = f_{n-1} + f_{n-2}$ \hspace{.5cm} se $n > 2$
     \end{enumerate}
     \begin{demostration}[Numeri di Fibonacci]
         Proviamo a dimostrare questa successione numerica. Sia $f_i$ l'i-esimo numero di Fibonacci, noi dobbiamo dimostrare per induzione che:
         \begin{equation}
-            \forall \: \: n \in \mathbb{N}^{+}\:.\: \bigg(\sum_{\substack{i=1}}^n f_i^2 = f_n \: \cdot \:f_{n+1} \bigg)
+            \forall n \in \mathbb{N}^{+}.\bigg(\sum_{\substack{i=1}}^n f_i^2 = f_n \cdot f_{n+1} \bigg)
         \end{equation}
         \begin{enumerate}
-            \item \underline{Caso base:} Poiché noi dobbiamo dimostrare per tutti gli $n$ tale che $n \in \mathbb{N}^{+}$ per il caso base dobbiamo considerare $n = 1$, quindi il nostro caso base sarà $\sum_{i=1}^1\:f_i^{2} = f_1 \: \cdot \: f_{2}$. questo caso è dimostriamo immediatamente dalla definizione di $f_i$
-            \item \underline{Passo induttivo:} Assumiamo per ipotesi induttiva che valga $\sum_{i=1}^n\:f_i^{2} = f_n \: \cdot \: f_{n+1}$
+            \item \underline{Caso base:} Poiché noi dobbiamo dimostrare per tutti gli $n$ tale che $n \in \mathbb{N}^{+}$ per il caso base dobbiamo considerare $n = 1$, quindi il nostro caso base sarà $\sum_{i=1}^1 f_i^{2} = f_1 \cdot f_{2}$. questo caso è dimostriamo immediatamente dalla definizione di $f_i$
+            \item \underline{Passo induttivo:} Assumiamo per ipotesi induttiva che valga $\sum_{i=1}^n f_i^{2} = f_n \cdot f_{n+1}$
         \end{enumerate}
         Una volta assunto per vero il passo induttivo possiamo dimostrare il caso $n+1$, ciò porta a dimostrare che:\\ \\
         $\sum_{i=1}^{n+1}\:f_i^{2} = \sum_{i=1}^{n}\:f_n^2 \: + \: f_{n+1}^2$ \hspace{.3cm} Togliamo l'ultimo termine dalla sommatoria e scriviamolo esplicitamente. \\ \\
@@ -144,11 +195,25 @@ Per dimostrare la formula di gauss (\ref{formula-gauss}) per induzione è suffic
     \end{demostration}
 \end{example}
 
-\subsection{Principio di Induzione forte sui naturali}
+\subsection{Principio di induzione forte sui naturali}
 Il Principio di Induzione Forte sui naturali ci permette di rafforzare le ipotesi del passo induttivo e portare avanti la dimostrazione in modo più semplice.
 \begin{definition}[Induzione Forte]
-    Se per ogni $n \in \mathbb{N}$ vale che se P(0), P(1),..., P(n-1) sono vere allora anche P(n) lo è, allora P(m) è vera per ogni $m \in \mathbb{N}$.
+    Se per ogni $n \in \mathbb{N}$ vale che se $P(0), P(1),\ldots, P(n-1)$ sono vere allora anche $P(n)$ lo è, allora $P(m)$ è vera per ogni $m \in \mathbb{N}$.
     \begin{equation}
         \frac{\forall n . (P(0) \: \land P(1) \land ... \land P(n-1) \rightarrow P(n))}{\forall m . P(m)}
     \end{equation}
 \end{definition}
+\begin{example}
+	Per dimostrare il:
+	\begin{definition}[Teorema fondamentale dell'Aritmetica]
+		Ogni intero $n$ maggiore di $1$ o è un numero primo oppure può essere scritto come prodotto di numeri primi.
+	\end{definition}
+	\begin{itemize}
+		\item Caso base: $P(2)$: $2$ è primo
+		\item Passo induttivo: dimostro $P(m)$ assumendo $P(n)$ valga $\forall n \in \mathbf{N}^+ . n<m$
+		\begin{itemize}
+			\item Se $m$ è primo allora $P(m)$ vale
+			\item Se $m$ non è primo allora ha un fattore \textbf{non banale} $x$ ovvero $m = x \cdot y . x < m \wedge y<m$. Per induzione forte $x \cdot y$ può essere scritto come prodotto di numeri primi quindi $P(m)$ vale
+		\end{itemize}
+	\end{itemize}
+\end{example}

@@ -1,0 +1,31 @@
+\newpage
+\section{Ricorsione}
+\begin{definition}[Ricorsione]
+	A tempo di \textbf{compilazione}: una funzione usa il suo nome (chiama se stessa) nel suo corpo.
+	A tempo di \textbf{esecuzione}: chiamate annidate della \textbf{stessa} funzione
+\end{definition}
+\begin{example}[Fattoriale]
+	Il fattoriale di un intero non negativo n è il prodotto
+	degli interi positivi $<= n$ escluso lo $0$. Si indica con
+	$n!$ e si impone per definizione $0! = 1$.
+	\begin{equation}
+		n! = \prod_{i=1}^{n} i=n*(n-1)*\ldots*1
+	\end{equation}
+	oppure definita in maniera ricorsiva:
+	\begin{equation}
+		n! = \begin{cases}
+			1, \hspace{50px} n=0 \\
+			n*(n-1)!, \hspace{6px} n>0
+		\end{cases}
+	\end{equation}
+	In maniera programmatica possiamo scriverlo come:
+	\begin{lstlisting}[language=Swift, caption=Fattoriale con ricorsione, mathescape=true]
+		func F(var n: Int) -> Int {
+			if (n-1) {
+				return 1
+			} else {
+				return n * F(n-1)
+			}
+		}
+	\end{lstlisting}
+\end{example}

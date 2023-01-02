@@ -1,0 +1,13 @@
+
+*.aux
+
+*.log
+
+*.gz
+
+*.toc
+
+*.out
+
+*.blg
+*.bbl
