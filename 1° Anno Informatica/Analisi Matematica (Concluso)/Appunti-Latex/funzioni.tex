@@ -2,7 +2,7 @@
 \section{Funzioni}
 \begin{definition}[Funzione]
 - $f: A \longrightarrow B$: \\
-Dati due insiemi A, B, detti corrispettivamente dominio e codominio, una funzione è una "legge" o "regola" che associa ad ogni elemento di $a \in A$ uno ed uno solo elemento di B.
+Dati due insiemi $A$, $B$, detti dominio e codominio, una funzione è una "legge" o "regola" che associa ad ogni elemento di $A$ uno ed uno solo elemento di $B$.
 \end{definition}
 \begin{note}
 Tipicamente in questo corso le funzioni saranno date come formule del tipo $f(x) = x^2 - 7x - e^x$ specificando dominio e codominio in questo modo $f: \mathbb{R} \longrightarrow \mathbb{R}$. Si noti che la definizione di una funzione \textbf{deve} includere sia la funzione che il suo dominio. Ad esempio $f: \mathbb{R} \longrightarrow \mathbb{R} \: f(x)=x^2$ e $g: \mathbb{R} \geq 0 \longrightarrow \mathbb{R} g(x)=x^2$ sono due funzioni diverse.
@@ -16,14 +16,14 @@ Tipicamente in questo corso le funzioni saranno date come formule del tipo $f(x)
         \item $g(x) = x^2 - 7x - e^x$ \hspace{.3cm} $g(0,+\infty) \longrightarrow \mathbb{R}$
         \item $g(x) = x^2$ \hspace{.3cm} $g(0, +\infty) \longrightarrow (0, +\infty)$. \hspace{.3cm}Va bene perché $x^2 > 0$ per qualsiasi valore di x.
         \item $h(x) = x^2$ \hspace{.3cm} $h(0, +\infty) \longrightarrow (-\infty, 0)$. \hspace{.3cm}Questa forma non va bene non definendo una funzione perché la formula non mi da numeri di $(-\infty, 0)$.
-        \item $h(x) = x^2$ \hspace{.3cm} $h(0, +\infty) \longrightarrow (-\infty,1)$ \hspace{.3cm}Non va bene perché se preindiamo x=3 $f(3) = 9$ e 9 non fa parte del codominio. 
+        \item $h(x) = x^2$ \hspace{.3cm} $h(0, +\infty) \longrightarrow (-\infty,1)$ \hspace{.3cm}Non va bene perché se prendiamo x=3 $f(3) = 9$ e 9 non fa parte del codominio. 
     \end{itemize}
 \end{example}
 
 \subsection{Grafico}
 Una funzione $f: A \longrightarrow B$ con $A,B \in \mathbb{R}$ ha un \textbf{grafico} che si indica come:
 \begin{equation}
-    graph(f) = \{(a,b) \in A \:X\: B\ \:|\: b = f(a)\}
+    graph(f) = \{(a,b) \in A \times B\ \mid b = f(a)\}
 \end{equation}
 \begin{wrapfigure}[8]{l}{7cm}
     \centering
@@ -109,7 +109,7 @@ Se una funzione è biunivoca si dice che tale funzione è anche invertibile.
     \caption{$f(x) = x^2$ e $g(x) = \sqrt{x}$}
     \label{fig:esempio-invertibilità}
 \end{wrapfigure}
-Se f è una funzione invertibile i grafici di f e di $f^i$ (la funzione inversa) sono simmetrici rispetto alla retta y=x cioè alla bisettrice del primo e del terzo quadrante. \\
+Se f è una funzione invertibile i grafici di f e di $f^{-1}$ (la funzione inversa) sono simmetrici rispetto alla retta $y=x$ cioè alla bisettrice del primo e del terzo quadrante. \\
 \begin{example}
 Se vediamo nell'immagine [\ref{fig:esempio-invertibilità}] prendendo l'inverso della funzione $f(x) = x^2$ definita in $[0, +\infty] \longrightarrow \mathbb{R}$ e cioè la funzione $g(x) = \sqrt{x}$ è simmetrica.
 \\ \\ \\ \\ \\
@@ -140,9 +140,12 @@ Andando a considerare la Tabella \ref{tab:monotone} possiamo dire che:
 \end{itemize}
 
 \begin{observation}
-	Se $f$ è strettamente monotona allora è iniettiva in quanto dati $x_{1} \neq x_{2}$ con $x_{1} < x_{2} \implies f(x_{1}) < f(x_{2})$ e in particolare $f(x_{1}) \neq f(x_{2})$. Nkn vale però il contrario, infatti una funzione iniettiva non è per forza strettamente monotona (ad esempio data $f(x)=\frac{1}{x}$ con $f:\mathbb{R} \setminus \{0\} \longrightarrow \mathbb{R} \setminus \{0\}$ )
+	Se $f$ è \textbf{strettamente monotona} allora è \textbf{iniettiva} in quanto dati $x_{1} \neq x_{2}$ con $x_{1} < x_{2} \implies f(x_{1}) < f(x_{2})$ e in particolare $f(x_{1}) \neq f(x_{2})$. Non vale però il contrario, infatti una funzione iniettiva non è per forza strettamente monotona (ad esempio data $f(x)=\frac{1}{x}$ con $f:\mathbb{R} \setminus \{0\} \longrightarrow \mathbb{R} \setminus \{0\}$ )
 \end{observation}
 
+\begin{observation}
+	Se $f$ è \textbf{strettamente crescente} allora è anche \textbf{debolmente crescente}.
+\end{observation}
 \begin{example}
     Esempi funzioni crescenti e decrescenti:\\
     \begin{figure}[h!]
@@ -166,6 +169,7 @@ Andando a considerare la Tabella \ref{tab:monotone} possiamo dire che:
     \end{itemize}
 \end{example}
 
+\newpage
 \begin{observation}
     Osservazione sul rapporto incrementale:\\
 \end{observation}
@@ -235,7 +239,7 @@ Prendendo i considerazioni 3 insiemi A, B, C tali che $A, B, C \subset \mathbb{R
 
 \begin{example}
     $h(x) = e^{x^3}$\\
-    La funzione h si ottiene dalla composizione di:
+    La funzione $h$ si ottiene dalla composizione di:
     \begin{itemize}
         \item $f: \mathbb{R} \longrightarrow \mathbb{R}$ \hspace{.3cm} $f(x) = x^3$. Funzione crescente.
         \item $g: \mathbb{R} \longrightarrow \mathbb{R}$ \hspace{.3cm} $g(t) = e^t$. Funzione decrescente.
@@ -261,13 +265,13 @@ Prendendo i considerazioni 3 insiemi A, B, C tali che $A, B, C \subset \mathbb{R
 
 \subsection{Funzioni pari e dispari}
 \begin{definition}[Pari]
-    La funzione è \textbf{Pari} se $f(x) = f(-x) \: \forall x$ nel dominio di $f \longrightarrow f$. Il grafico di una funzione pari è simmetrico rispetto all'asse $y$.
+    La funzione è \textbf{pari} se $f(x) = f(-x) \: \forall x$ nel dominio di $f \longrightarrow f$. Il grafico di una funzione pari è simmetrico rispetto all'asse $y$.
 \end{definition}
 \begin{definition}[Dispari]
-    La funzione è \textbf{Dispari} se $f(x) = -f(-x) \: \forall x$ nel dominio di $f \longrightarrow f$. Il grafico di una funzione dispari è simmetrico rispetto all'origine.
+    La funzione è \textbf{dispari} se $f(x) = -f(-x) \: \forall x$ nel dominio di $f \longrightarrow f$. Il grafico di una funzione dispari è simmetrico rispetto all'origine.
 \end{definition}
 \begin{note}
-    Il dominio di f deve essere simmetrico.\\
+    Il dominio di $f$ deve essere simmetrico.\\
 \end{note}
 \begin{example}
 Esempio funzioni pari e dispari.\\
@@ -307,8 +311,8 @@ In figura [\ref{fig:funzione-periodica}] un esempio di funzione periodica.\\\\
 \end{example}
 
 \subsection{Funzioni Elementari}
-\subsubsection{Retta}
-\textbf{Funzione retta:} $f(x) = ax + b$. \hspace{.3cm} $a,b \in \mathbb{R}$ \\ Dove la "a" si dice coefficiente angolare, ed indica la pendenza della retta mentre la lettera "b" si chiama termine noto, ed indica il punto di incontro con l'asse Y.
+\subsubsection{Lineari}
+\textbf{Funzione retta}: $f(x) = ax + b$. \hspace{.3cm} $a,b \in \mathbb{R}$ \\ Dove $a$ (coefficiente angolare) indica la pendenza della retta, mentre $b$ (termine noto) indica il punto di incontro con l'asse $Y$.
 
 \subsubsection{Esponente positivo o negativo}
 \textbf{Fun. Esp. positivo:} $f(x) = x^k$, $k \in \mathbb{N}$. \hfill \textbf{Fun. Esp. negativo:} $f(x) = x^k$, $k \in \mathbb{N}$, $k < 0$.
@@ -342,7 +346,7 @@ In figura [\ref{fig:funzione-periodica}] un esempio di funzione periodica.\\\\
     \end{subfigure}
 \end{figure}
 \begin{observation}
-    \textbf{k pari:} Le funzioni con il k pari sono funzioni pari e hanno tutte una forma simile a quella in figura [\ref{fig:esponente-positivo-pari}] per le funzioni con k positive e per le funzioni con k negativo figura [\ref{fig:esponente-negativo-pari}].
+    \textbf{k pari}: Le funzioni con il $k$ pari sono funzioni pari e hanno tutte una forma simile a quella in figura [\ref{fig:esponente-positivo-pari}] per le funzioni con k positive e per le funzioni con k negativo figura [\ref{fig:esponente-negativo-pari}].
 \end{observation}
 \begin{observation}
     \textbf{k dispari:} Le funzioni con il k positivo e dispari sono funzioni dispari e hanno tutte una forma simile a quella in figura [\ref{fig:esponente-positivo-dispari}] per le funzioni con k positive e per le funzioni con k negativo figura [\ref{fig:esponente-negativo-dispari}].
@@ -365,13 +369,13 @@ In figura [\ref{fig:funzione-periodica}] un esempio di funzione periodica.\\\\
     \end{subfigure}
 \end{figure}
 \begin{note}
-    p e q non possono essere entrambi pari perché in tal caso sono divisibili fra di loro e quindi portabili ad una forma ridotta.
+    $p$ e $q$ non possono essere entrambi pari perché in tal caso sono divisibili fra di loro e quindi portabili ad una forma ridotta.
 \end{note}
 \begin{observation}
-    \textbf{q pari:} Le funzioni con il q pari ha dominio $ x \geq 0$ ed è invertibile sono come funzione $f: [0, +\infty) \longrightarrow [0, +\infty)$. È rappresentata in figura [\ref{fig:radice-pari}].
+    \textbf{q pari:} Le funzioni con il $q$ pari ha dominio $ x \geq 0$ ed è invertibile sono come funzione $f: [0, +\infty) \longrightarrow [0, +\infty)$. È rappresentata in figura [\ref{fig:radice-pari}].
 \end{observation}
 \begin{observation}
-    \textbf{q dispari:} Le funzioni con il q positivo ha dominio $x \in \mathbb{R}$ ed è ugualmente invertibile su tutto $\mathbb{R}$, è inoltre una funzione dispari. È rappresentata in figura [\ref{fig:radice-dispari}].\\
+    \textbf{q dispari:} Le funzioni con il $q$ positivo ha dominio $x \in \mathbb{R}$ ed è ugualmente invertibile su tutto $\mathbb{R}$, è inoltre una funzione dispari. È rappresentata in figura [\ref{fig:radice-dispari}].\\
 \end{observation}
 
 \subsubsection{Esponenziale}
