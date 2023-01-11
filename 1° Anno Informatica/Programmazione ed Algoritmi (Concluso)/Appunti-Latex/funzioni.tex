@@ -50,8 +50,9 @@ Il \textbf{compilatore} dovrà poi eseguire le seguenti verifiche:
 	\item deve esserci un \textbf{return statement} nel corpo della funzione
 	\item il \textbf{tipo} dell'espressione nel \emph{return statement} deve coincidere con quello della dichiarazione
 \end{itemize}
-\subsection{Scoping}
-\subsubsection{Statico}
+\begin{definition}[Principio di corrispondenza]
+	Parti di programma che hanno effetti simili devono avere una sintassi simile. Facilità di apprendimento del linguaggio e di interpretazione dei programmi.
+\end{definition}
 \begin{definition}[Scoping statico]
 	Le \textbf{variabili libere} nel corpo delle funzioni vengono legate a tempo di compilazione costruendo le \textbf{chiusure}.
 \end{definition}
@@ -61,7 +62,7 @@ Il \textbf{compilatore} dovrà poi eseguire le seguenti verifiche:
 La dichiarazione di funzione genera nell’\textbf{ambiente dinamico} un legame tra il \textbf{nome della funzione} e una'\textbf{astrazione} che contiene tutte le informazioni necessarie ad eseguire la chiamata della funzione.
 \begin{align}
 	\centering
-	[(nomeFunzione), \lambda(parametri formali) . {[(variabili necessarie)], C}]
+	[(nomeFunzione), \lambda(parametri formali) . {[(\textbf{variabili libere})], C}]
 \end{align}
 \begin{lstlisting}[language=Swift, caption=Esempio di scoping statico, mathescape=true]
 	var COVID19:Bool = true;
@@ -85,7 +86,7 @@ La dichiarazione di funzione genera nell’\textbf{ambiente dinamico} un legame 
 \end{lstlisting}
 \subsubsection{Dinamico}
 Le \textbf{variabili libere} vengono legate a tempo di \textbf{esecuzione} quando vengono utilizzate. Nella chiusura della funzione registro solo il suo corpo al momento della dichiarazione.
-\begin{lstlisting}[language=Swift, caption=Esempio di scoping statico, mathescape=true]
+\begin{lstlisting}[language=Swift, caption=Esempio di scoping dinamico, mathescape=true]
 	var COVID19:Bool = true;
 	
 	var mioCosto:Double = 100;

@@ -4,6 +4,12 @@
 	A tempo di \textbf{compilazione}: una funzione usa il suo nome (chiama se stessa) nel suo corpo.
 	A tempo di \textbf{esecuzione}: chiamate annidate della \textbf{stessa} funzione
 \end{definition}
+\noindent Una funzione ricorsiva è chiamata per risolvere un problema scomposto in:
+\begin{itemize}
+	\item \textbf{Caso base}: la funzione restituisce un valore
+	\item \textbf{Passo ricorsivo}: la funzione viene chiamata su un problema analogo a quello iniziale ma di dimensioni minori, avvicinandosi al \emph{caso base}
+\end{itemize}
+Quando si  arriva al caso base viene effettuata una sequenza inversa di return statement, combinando i risultati parziali in quello finale.
 \begin{example}[Fattoriale]
 	Il fattoriale di un intero non negativo n è il prodotto
 	degli interi positivi $<= n$ escluso lo $0$. Si indica con
@@ -29,3 +35,22 @@
 		}
 	\end{lstlisting}
 \end{example}
+
+\subsection{Ricorsione e iterazione}
+\begin{tabular} { |c|p{150px}|p{150px}|}
+	\hline
+	& \textbf{Ricorsione} & \textbf{Iterazione} \\
+	\hline
+	Controllo di terminazione & Condizione di ricorsione & Condizione di controllo nel loop \\
+	\hline
+	Ripetizioni & Chiamate ricorsive della funzione & Esecuzione ripetuta del corpo dell'iterazione \\
+	\hline
+	Convergenza alla terminazione & I passi ricorsivi riducono il problema al caso base & Il contatore si avvicina al valore di termine \\
+	\hline
+	Ripetizione infinita & Il passo ricorsivo non riduce il problema e non si avvicina al caso base & La condizione di controllo non è mai falsa \\
+	\hline
+\end{tabular}
+\vspace{15pt}
+
+\noindent Nella \emph{ricorsione}, al contrario dell'\emph{iterazione}, ogni chiamata alla funzione genera un nuovo record di attivazione contenente una nuova copia delle variabili e consumando lo stack di esecuzione. Questo può generare \textbf{overhead}.\\
+In generale ogni problema \emph{ricorsivo} può essere anche scritto \emph{iterativamente}. È consigliato scriverlo ricorsivamente quando ciò facilita la lettura del problema stesso.
