@@ -35,7 +35,7 @@ Possiamo semplificarlo tramite la creazione della seguente funzione:
 		C
 	}
 \end{lstlisting}
-\subsubsection{Anatomia di una funzione}
+\subsection{Anatomia di una funzione}
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=13.5cm]{images/anatomia-funzione.png}
@@ -50,6 +50,7 @@ Il \textbf{compilatore} dovrà poi eseguire le seguenti verifiche:
 	\item deve esserci un \textbf{return statement} nel corpo della funzione
 	\item il \textbf{tipo} dell'espressione nel \emph{return statement} deve coincidere con quello della dichiarazione
 \end{itemize}
+\subsubsection{Ambiente statico}
 \begin{definition}[Principio di corrispondenza]
 	Parti di programma che hanno effetti simili devono avere una sintassi simile. Facilità di apprendimento del linguaggio e di interpretazione dei programmi.
 \end{definition}
@@ -84,7 +85,7 @@ La dichiarazione di funzione genera nell’\textbf{ambiente dinamico} un legame 
 		print(calcolaIVA(mioCosto));
 	}
 \end{lstlisting}
-\subsubsection{Dinamico}
+\subsubsection{Ambiente dinamico}
 Le \textbf{variabili libere} vengono legate a tempo di \textbf{esecuzione} quando vengono utilizzate. Nella chiusura della funzione registro solo il suo corpo al momento della dichiarazione.
 \begin{lstlisting}[language=Swift, caption=Esempio di scoping dinamico, mathescape=true]
 	var COVID19:Bool = true;

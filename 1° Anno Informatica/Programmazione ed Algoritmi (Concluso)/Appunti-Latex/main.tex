@@ -26,8 +26,13 @@
 \theoremstyle{definition}
 \newtheorem{example}{Esempio}[section]
 
+% ------- OSSERVAZIONE ------
 \theoremstyle{definition}
-\newtheorem{demostration}{Dimotrazione}[section]
+\newtheorem{observation}{Osservazione}[subsection]
+% ------- OSSERVAZIONE ------
+
+\theoremstyle{definition}
+\newtheorem{demostration}{Dimostrazione}[section]
 
 \theoremstyle{plain}
 \newtheorem{theorem}{Teorema}[section]
@@ -37,7 +42,7 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{A.A 2021-2022}
+\fancyhead[LE,RO]{A.A 2022-2023}
 \fancyhead[RE,LO]{Programmazione ed Algoritmi}
 \fancyfoot[RE,LO]{\rightmark}
 \fancyfoot[LE,RO]{\thepage}
@@ -89,25 +94,31 @@
 
 \usepackage{multicol}
 
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
 \title{\textbf{Programmazione ed Algoritmi}}
-\author{Realizzato da: Giuntoni Matteo}
-\date{A.A 2021-2022}
+\author{Realizzato da: Giuntoni Matteo e Ghirardini Filippo}
+\date{A.A 2022-2023}
 
 \begin{document}
-\tableofcontents
-\newpage
 \maketitle
-\begin{center}
-    \vspace{-20pt}
-    \rule{11cm}{.1pt} 
-\end{center}
+\newpage
+\tableofcontents
 
 \input{introduzione}
 \input{array}
-\input{complessita}
 \input{funzioni}
 \input{gestione_memoria}
 \input{ricorsione}
 \input{condizioni}
 \input{heap}
+\input{algoritmi}
+\input{complessita}
 \end{document}
