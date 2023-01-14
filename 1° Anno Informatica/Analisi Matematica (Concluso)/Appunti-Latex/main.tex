@@ -13,6 +13,7 @@
 \usepackage{wrapfig}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{xcolor}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks,
@@ -72,13 +73,14 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{A.A 2021-2022}
+\fancyhead[LE,RO]{A.A 2022-2023}
 \fancyhead[RE,LO]{Analisi Matematica}
 \fancyfoot[RE,LO]{\rightmark}
 \fancyfoot[LE,RO]{\thepage}
 
 \renewcommand{\headrulewidth}{.5pt}
 \renewcommand{\footrulewidth}{.5pt}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 % ---- Footer and header ---- 
 
 % ----  Language setting ---- 
@@ -86,8 +88,8 @@
 % ----  Language setting ---- 
 
 \title{\textbf{Analisi Matematica}}
-\author{Realizzato da: Giuntoni Matteo}
-\date{A.A. 2021-2022}
+\author{Realizzato da: Giuntoni Matteo e Ghirardini FIlippo}
+\date{A.A. 2022-2023}
 
 \begin{document}
 \input{frontespizio}
@@ -118,4 +120,5 @@
 \input{limiti-più-variabili}
 \input{calcolo-differenziale-più-variabili}
 \input{max-min-più-variabili}
+\input{cheatsheet}
 \end{document}

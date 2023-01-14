@@ -1,0 +1,202 @@
+\newpage
+\section{Cheatsheet}
+
+\begin{table}[h!]
+	\setlength{\tabcolsep}{7pt}
+	\renewcommand{\arraystretch}{2}
+	\centering
+	\begin{tabular}{|c|P{180px}|}
+		\hline
+		\textbf{Disuguaglianza triangolare} & \multirowcell{2}{ $|a + b| \leq |a| + |b|$\\$||a| + |b|| \leq |a - b| $} \\
+		\hline
+		\textbf{Rapporto incrementale} & $\frac{\Delta y}{\Delta x} = \frac{f(x_1)-f(x_0)}{x_1-x_0}$ \\
+		\hline
+		\textbf{Funzione pari e dispari} & \multirowcell{2}{$f(-x) = f(x)$ \\ $f(-x) = -f(x)$} \\
+		\hline
+		\textbf{Boh} & $f(x)^{g(x)} = e^{{\log{(f(x)}^ {g(x)})}} = e^{ g(x) \cdot \log{(f(x))}}$ \\
+		\hline
+	\end{tabular}
+	\caption{Formule varie}
+\end{table}
+
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{2.15}
+	\centering
+	\begin{tabular}{|c|P{210px}|}
+		\hline
+		\textbf{Zeri} &  \multirowcell{2}{\color{blue} $f: [a, b] \longrightarrow \mathbb{R}$ continua\\ \color{red}$f(a) \cdot f(b) < 0 \Longrightarrow \exists c \in (a, b) : f(c) = 0$ } \\
+		\hline
+		\textbf{Confronto} & \multirowcell{5}{\color{blue}$A \subset \mathbb{R}$, $x_0 \in Acc(x)$, $f,g: A \to \mathbb{R}$ \\ \color[HTML]{00A64F}$\lim\limits_{x\to x_0}f(x) = l_1 \wedge \lim\limits_{x\to x_0}g(x) = l_2 \wedge $ \\ \color[HTML]{00A64F}$\exists U \text{ intorno } x_0:x \in U \cap A \setminus \{x_0\} $ \\ \color{red}$f(x) \leq g(x) \Longrightarrow l_1 \leq l_2$ \\ \color{red}$f(x) \geq g(x) \Longrightarrow l_1 \geq l_2$}\\
+		\hline
+		\textbf{Weirstrass} & \multirowcell{7}{
+			\color{blue}$a,b \in \overline{\mathbb{R}}$, $f: (a,b) \to \mathbb{R}$ continua:\\
+			\color[HTML]{00A64F}$\exists \: \lim\limits_{x \to a}f(x) = l_1 \wedge \exists \lim\limits_{x \to b}f(x) = l_2$\\
+			\color{red}$f$ lim. inf. $\Longleftrightarrow$ $l_1 \neq -\infty \wedge l_2 \neq -\infty$ \\
+			\color{red}$f$ lim. sup. $\Longleftrightarrow$ $l_1 \neq +\infty \wedge l_2 \neq +\infty$\\
+			\color{red}$f$ lim. $\Longleftrightarrow$ $l_1 \in \mathbb{R} \wedge l_2 \in \mathbb{R}$\\
+			\color{red}$f$ ha min $\Longleftrightarrow \: \exists x_0 \in (a,b) : f(x_0) \leq min\{l_1, l_2\}$\\
+			\color{red}$f$ ha max $\Longleftrightarrow \: \exists x_0 \in (a,b) : f(x_0) \geq max\{l_1, l_2\}$
+		}\\
+		\hline
+		\textbf{Carabinieri} & Se due funzioni hanno lo stesso limite ed una è inferiore all'altra, se esiste una $g(x)$ in mezzo a queste due, avrà lo stesso limite\\
+		\hline
+		\textbf{Lagrange} & \\
+		\hline
+	\end{tabular}
+	\caption{Teoremi}
+\end{table}
+
+\begin{definition}[Continuità in un punto]
+	\begin{equation}
+		\lim_{x \leftarrow {x_0}^+} f(x) = \lim_{x \leftarrow {x_0}^-} f(x) = f(x_0)
+	\end{equation}
+\end{definition}
+
+\begin{table}[h!]
+	\setlength{\tabcolsep}{7pt}
+	\renewcommand{\arraystretch}{1.5}
+	\centering
+	\begin{tabular}{|c c c|}
+		\hline
+		$[1]$ $(+\infty) + (-\infty)$ & $[2]$ $(-\infty) + (+\infty)$ & $[3]$ $0 \cdot (\pm \infty)$ \\
+		$[4]$ $(\pm \infty)^0$ & $[5]$ $(0^+)^0$ & $[6]$ $(1)^{\pm \infty}$\\ 
+		\hline
+	\end{tabular}
+	\caption{Forme indeterminate}
+\end{table}
+
+\begin{itemize}
+	\item Se $\lim\limits_{x\to x_0}f(x) = 0^+ \Longrightarrow \lim\limits_{x\to x_0}\frac{1}{f(x)} = +\infty$.
+	\item Se $\lim\limits_{x\to x_0}f(x) = 0^- \Longrightarrow \lim\limits_{x\to x_0}\frac{1}{f(x)} = -\infty$.
+	\item Se $\lim\limits_{x\to x_0}f(x) = +\infty \Longrightarrow \lim\limits_{x\to x_0}\frac{1}{f(x)} = 0^+$.
+	\item Se $\lim\limits_{x\to x_0}f(x) = -\infty \Longrightarrow \lim\limits_{x\to x_0}\frac{1}{f(x)} = 0^-$.
+	\item Se $\lim\limits_{x\to x_0}f(x) = l$ con $l \neq 0, \pm\infty \Longrightarrow \lim\limits_{x\to x_0}\frac{1}{f(x)} = \frac{1}{l}$.
+\end{itemize}
+
+\begin{table}[h!]
+	\setlength{\tabcolsep}{7pt}
+	\renewcommand{\arraystretch}{1.5}
+	\centering
+	\begin{tabular}{|c c|c|}
+		\hline
+		$\lim\limits_{x\to +\infty}x^n = +\infty$ & $\lim\limits_{x\to +\infty}\frac{1}{x^n} = \frac{1}{+\infty} = 0$ & $\lim\limits_{x\to +\infty}a^x = +\infty$ e $\lim\limits_{x\to -\infty}a^x = 0^+$ se $a \geq 1$ \\\hline
+		$\lim\limits_{x\to +\infty}e^x = +\infty$ & $\lim\limits_{x\to -\infty}e^x = 0^+$ & $\lim\limits_{x\to +\infty}a^x = 1$ e $\lim\limits_{x\to -\infty}a^x = 1$ se $a = 1$  \\\hline
+		$\lim\limits_{x\to 0^+}\log(x) = -\infty$ & $\lim\limits_{x\to +\infty}\log(x) = +\infty$ & $\lim\limits_{x\to +\infty}a^x = 0^+$ e $\lim\limits_{x\to -\infty}a^x = +\infty$ se $0 < a < 1$ \\
+		\hline
+	\end{tabular}
+	\vspace{-5pt}
+	\caption{Limiti fondamentali}
+\end{table}
+
+Limite di un polinomio che tende ad infinito: raccoglimento
+Limite di rapporto di polinomi che tende ad infinito: raccoglimento
+
+\begin{table}[h!]
+	\centering
+	\setlength{\tabcolsep}{10pt}
+	\renewcommand{\arraystretch}{2.5}
+	\begin{tabular}{|c|c|}
+		\hline
+		$\lim\limits_{x\to 0}\frac{\sin(x)}{x} = 1$ & $\lim\limits_{x\to 0} \frac{1-\cos(x)}{x^2} = \frac{1}{2}$ \\\hline
+		$\lim\limits_{x\to 0}\frac{e^x-1}{x} = 1$ & $\lim\limits_{x\to 0}\frac{\log(1+x)}{x} = 1$\\
+		\hline
+	\end{tabular}
+	\caption{Limiti notevoli}
+\end{table}
+
+\begin{itemize}
+	\item $\lim\limits_{x\to +\infty}\frac{\log(x)}{x} = \frac{+\infty}{+\infty}$ forma indeterminata.\\
+	Eseguiamo un cambio di variali con $y = \log(x)$ e $x = e^y$. Se $x\to +\infty \Longrightarrow y = \log(x) \to +\infty$\\\\
+	Torna che $\lim\limits_{x \to +\infty}\frac{\log(x)}{x} = \lim\limits_{y\to +\infty}\frac{y}{e^y} = 0$
+	\item $\lim\limits_{x\to +\infty}\frac{(\log(x))^\beta}{x^\alpha}$ con $\alpha, \beta \in \mathbb{R}$ e $\alpha, \beta > 0$\\
+	Possiamo risolvere con un cambio di variabile $y = \log(x)$, $x = e^y$ e se $x \to +\infty \Longrightarrow y\to +\infty$\\\\
+	Quindi $\lim\limits_{x\to +\infty}\frac{(\log(x))^\beta}{x^\alpha} = \lim\limits_{y \to +\infty}\frac{y^\beta}{(e^y)^\alpha} = \lim\limits_{y \to +\infty}\frac{y^\beta}{e^{y\cdot\alpha}} = 0$  (l'esponenziale cresce più velocemente).
+	\item $\lim\limits_{x\to 0^+}x\log(x) = 0 \cdot (-\infty)$ forma indeterminata.\\
+	Facciamo il cambio di variabile $y = \log(x)$, e $x = e^y$ con $x\to 0^+ \Longrightarrow y\to -\infty$.\\\\
+	$\lim\limits_{x\to 0^+}x\log(x) = \lim\limits_{y\to -\infty}e^y \cdot y = 0^+ \cdot (-\infty)$ ancora indeterminata.\\
+	Possiamo fare un altro cambio di varibile con $z = -y$, e $y = -z$ e se $y \to -\infty \Longrightarrow z \to +\infty$\\\\
+	$\lim\limits_{y\to -\infty}e^y \cdot y = \lim\limits_{z\to +\infty}e^{-z} \cdot (-z) = \frac{-z}{e^z} = 0$
+	\item $\lim\limits_{x\to 0^+}x^\alpha \cdot \log(x)$ con $\alpha > 0$.\\
+	Cambio di variabile con $y = x^\alpha$, e $x = y^{\frac{1}{\alpha}}$ e con $x\to 0^+ \Longrightarrow y\to^+$\\\\
+	$\lim\limits_{x\to 0^+}x^\alpha \cdot \log(x) = \lim\limits_{y\to 0^+}y \cdot \log(y^{\frac{1}{\alpha}}) = \lim\limits_{y\to 0^+}\frac{y}{\alpha} \cdot \log(y) = \frac{1}{\alpha}\lim\limits_{y\to 0^+} y \cdot \log(y) = 0$ per l'esempio sopra.
+\end{itemize}
+
+\begin{center}
+	\vspace{-8pt}
+	$\lim\limits_{x\to 0}\frac{f(x)}{g(x)} = 0$ allora $f(x) = o(g(x))$
+\end{center}
+
+\subsection{o-piccolo}
+\begin{equation}
+	f(x) = o(g(x)) \Leftrightarrow \lim_{x \rightarrow x_0} \frac{f(x)}{g(x)} = 0
+\end{equation}
+Dato un $A \subset \mathbb{R}$, un $x_0 \in Acc(A)$, e due funzioni $f,g: A \to \mathbb{R}$ e con tutti gli o-piccoli che si intendono per $x\to x_0$, valgono le seguenti proprietà.
+\begin{enumerate}
+	\item $f(x) \cdot o(g(x)) = o(f(x) \cdot g(x))$.
+	\item Se $k \in \mathbb{R}$, e $k \neq 0 \Longrightarrow o(k \cdot g(x)) = o(g(x))$.
+	\item $o(g) + o(g) = o(g)$. 
+	\item Se $\lim\limits_{x\to x_0}f(x) = 0 \Longrightarrow f(x) \cdot g(x) = o(g(x))$.
+	\item Se $\lim\limits_{x\to x_0}f(x) = 0 \Longrightarrow o(g) + o(f \cdot g) = o(g)$.
+	\item $o(o(g)) = o(g)$.
+	\item $o(f + g) = o(f) + o(g)$.
+	\item $o(g) \cdot o(f) = o(f \cdot f)$.
+\end{enumerate}
+
+\begin{definition}[O-grande]
+	Dato $A \subset \mathbb{R}$, $x_0 \in Acc(A)$, e $f,g: A \to \mathbb{R}$. Se $\exists M \in \mathbb{R}$ t.c. $|f(x)| \geq M \cdot |g(x)|    \forall x \in U \cap A \setminus \{x_0\}$ dove $U$ è un intorno di $x_0$, allora si dice che $f$ è O-grande di $g$ per $x$ che tende a $x_0$ e si scrive $f(x) = O(g(x))$ per $x\to x_0$.
+\end{definition}
+
+\begin{definition}
+	Dato $A \subset \mathbb{R}$, $x_0 \in Acc(A)$, e $f,g: A \to \mathbb{R}$ infinitesime per $x\to x_0$ (cioè $\lim\limits_{x\to x_0}f(x) = 0$ e $\lim\limits_{x\to x_0}g(x) = 0$). Se esistono $L, \alpha \in \mathbb{R}$ con $L \neq 0$ t.c. $f(x) = L \cdot (g(x))^\alpha + o((g(x))^\alpha)$ per $x\to x_0$ si dice che $f$ è infinitesima di ordine $\alpha$ rispetto a $g$ con parte principali $L(g(x))^\alpha$ per x che tende a $x_0$.\\
+	Stessa definizioni del caso in. cui $f$ e $g$ siano divergenti (cioè $\lim\limits_{x\to x_0}f(x) = \pm\infty$ e $\lim\limits_{x\to x_0}g(x) = \pm\infty$)
+\end{definition}
+
+Formula per l'asintoto obliquo
+
+Derivabilità
+
+\begin{table}[h!]
+	\setlength{\tabcolsep}{5pt}
+	\renewcommand{\arraystretch}{2.2}
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		$e^x$ & $1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ... + \frac{x^n}{n!} + o(x^n)$  \\
+		$\log(1+x)$ & $x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \frac{x^5}{5} + ... + (-1)^{n-1}\frac{x^n}{n} + o(x^n)$ \\
+		$\sin(x)$ & $x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + ... + (-1)^n \frac{x^{2x+1}}{(2n+1)!} + o(x^{2n+2})$ \\
+		$\cos(x)$ & $1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + ... + (-1)^n\frac{x^2n}{(2n)!} + o(x^{2n+1})$ \\
+		$\tan(x)$ & $x + \frac{x^3}{3} + \frac{2}{15}x^5 + o(x^6)$\\
+		$\arctan(x)$ & $x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + ... + (-1)^n\frac{x^{2x+1}}{(2n + 1)} + o(x^{2n+2})$\\
+		$\arcsin{x}$ & $x + \frac{x^3}{6} + \frac{3}{40}x^5 + o(x^6)$\\
+		$\sqrt{1+x}$ & $1 + \frac{1}{2}x - \frac{1}{8}x^2 + \frac{1}{16}x^3 + o(x^3)$\\
+		$(1+x)^{\alpha}$ & $1 + \alpha x + \frac{\alpha(\alpha - 1)}{2}x^2 + \frac{\alpha(\alpha - 1)(\alpha - 2)}{6}x^3 + o(x^3)$\\
+		\hline
+	\end{tabular}
+	\caption{Formule di taylor}
+\end{table}
+
+Confronto tra infiniti e infinitesimi
+\begin{tabular}{|c|}
+	\hline
+	$\lim_{x \rightarrow +\infty} \frac{a^x}{x^\alpha} = + \infty$ se $a>1$ \\
+	\hline
+	$\lim_{x \rightarrow +\infty} \frac{a^x}{x^\alpha} = 0^+$ se $0<a<1$ \\
+	\hline
+	$\lim_{x \rightarrow +\infty} \frac{{\log{x}}^\beta}{x^\alpha} = 0$ \\
+	\hline
+	$\lim_{x \rightarrow 0^+} x^\alpha \cdot \log{x} = 0$ \\
+	\hline
+\end{tabular}
+
+\subsection{Teorema di Lagrange}
+\begin{theorem}[Teorema di Lagrange]
+	Data una $f: [a,b] \to \mathbb{R}$, continua in $[a,b]$ e derivabile in $(a,b)$. Allora $\exists c \in (a,b)$ tale che:
+	\begin{center}\vspace{-5pt}
+		$f'(c) = \frac{f(b) - f(a)}{b - a}$
+	\end{center}
+\end{theorem}
+
+De l'Hopital
+
+Derivate fondamentali
+Inclusa composta e inversa
