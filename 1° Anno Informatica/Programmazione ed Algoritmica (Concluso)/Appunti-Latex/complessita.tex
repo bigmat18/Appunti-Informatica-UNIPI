@@ -353,7 +353,7 @@ Ci sono tre casi possibili:
 	\end{example}
 	\item \textbf{Uguale}: $f(n) = \Theta(n^{\log_b{a}}\cdot \ln^k{n})$ per qualche costante $k \geq 0$. \\ $f(n)$ e $n^{\log_b{a}}$ crescono allo stesso modo. \\
 	\emph{Soluzione}: $T(n) = \Theta(n^{\log_b{a}} \cdot \ln^{k+1}{n})$
-	\item \textbf{Maggiore}: $f(n) = \Omega(n^{\log_b{a} + \epsilon}$ per qualche costante $\epsilon > 0$. \\ $f(n)$ cresce \textbf{polinomialmente} più in fretta di $n^{\log_b{a}}$ di un fattore $N^\epsilon$ e rispetta la \textbf{condizione di regolarità}: $a \cdot f(\frac{n}{b}) \leq c \cdot f(n)$ per qualche costante $c<1$ e $n > n_0$. \\
+	\item \textbf{Maggiore}: $f(n) = \Omega(n^{\log_b{a} + \epsilon})$ per qualche costante $\epsilon > 0$. \\ $f(n)$ cresce \textbf{polinomialmente} più in fretta di $n^{\log_b{a}}$ di un fattore $N^\epsilon$ e rispetta la \textbf{condizione di regolarità}: $a \cdot f(\frac{n}{b}) \leq c \cdot f(n)$ per qualche costante $c<1$ e $n > n_0$. \\
 	\emph{Soluzione}: $T(n) = \Theta(f(n))$
 \end{itemize}
 \begin{observation}
