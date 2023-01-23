@@ -1,23 +1,24 @@
+% !TeX spellcheck = it_IT
 \newpage
 \section{Algoritmo di Gauss}
-Utilizzando le proprietà (1), (2) e (3) viste sopra si ottiene un algoritmo per semplificare (E), poi trovare le soluzioni.
-In un primo momento si considera $b_1 = ... = b_n = 0$ e mettiamo i coefficienti in una matrice $n \times m$, [$a_{ij}$]:
+Utilizzando le proprietà (1), (2) e (3) viste sopra si ottiene un algoritmo per semplificare $(E)$.
+In un primo momento si considera $b_1 = \ldots = b_n = 0$ e mettiamo i coefficienti in una matrice $n \times m$, [$a_{ij}$]:
 \[
 \begin{bmatrix}
-a_{11} & a_{12} & \cdots & a_{1m}\\
-a_{21} & a_{22} & \cdots & a_{2m}\\
-\cdots & \cdots & \cdots & \cdots \\
-a_{n1} & a_{n2} & \cdots & a_{nm}
+a_{11} & a_{12} & \ldots & a_{1m}\\
+a_{21} & a_{22} & \ldots & a_{2m}\\
+& \vdots & & \\
+a_{n1} & a_{n2} & \ldots & a_{nm}
 \end{bmatrix}
 \xRightarrow[]{\text{(Con operazioni)}}
 \begin{bmatrix}
-\cdots\:\: \cdots \:\: \cdots \:\: \cdots \\
-a_{j1} + \lambda a_{i1} + a_{j2} + \lambda a_{i2} + \cdots + a_{jm} + \lambda a_{im}\\
-\cdots \:\: \cdots \:\: \cdots \:\: \cdots
+\ldots \\
+a_{j1} + \lambda a_{i1} + a_{j2} + \lambda a_{i2} + \ldots + a_{jm} + \lambda a_{im}\\
+\ldots
 \end{bmatrix}
 \]
 Le operazioni di prima si traducono come:
-\begin{enumerate}[label=\Alph*]
+\begin{enumerate}
     \item Scambiare due righe fra di loro.
     \item Sostituire la riga $R_j$ con la riga $R_j + \lambda R_i$.
     \item Moltiplicare una riga per $\lambda \neq 0$.
@@ -25,9 +26,9 @@ Le operazioni di prima si traducono come:
 Partendo da una matrice l'algoritmo produce, utilizzando le 2 operazioni una matrice detta \textbf{a forma di scalini}.
 
 \begin{definition}[Matrice a forma a scalini]
-Una matrice è a forma a scalini se:
+Una matrice è a forma a scalini (per righe) se:
 \begin{itemize}
-    \item Le righe (0,...,0) sono "in fondo" alla matrice (sulla parte sinistra).
+    \item Le righe $(0,\ldots,0)$ sono "in fondo" alla matrice (partendo da sinistra).
     \item Il primo elemento di ogni riga (se esiste) è a destra del primo elemento diverso da 0 della riga precedente. Tale elemento si dice pivot.
 \end{itemize}
 \end{definition}
@@ -50,7 +51,7 @@ Esempio di matrici in forma a scalini e non:
             0 & 0 & 1
             \end{bmatrix}
         \]
-        NO, non è in forma a scalini.
+        NO
     \end{minipage}
     \begin{minipage}{.3\linewidth}
         \centering
@@ -61,7 +62,7 @@ Esempio di matrici in forma a scalini e non:
             0 & 0 & 1
             \end{bmatrix}
         \]
-        SI, è in forma a scalini.
+        SI
     \end{minipage}
     \begin{minipage}{.3\linewidth}
         \centering
@@ -72,7 +73,7 @@ Esempio di matrici in forma a scalini e non:
             0 & 0 & 1
             \end{bmatrix}
         \]
-        NO, non è in forma a scalini.
+        NO
      \end{minipage}
 \end{figure}
 \end{example}
