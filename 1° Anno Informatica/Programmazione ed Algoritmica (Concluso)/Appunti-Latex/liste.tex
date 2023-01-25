@@ -1,0 +1,74 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Liste}
+Una \textbf{struct} (struttura) \textbf{autoreferenziale} ha un membro puntatore che punta a una struttura dello stesso tipo, chiamato \textbf{link}, e che serve a creare una \emph{catena} (lista) di nodi collegati tra loro.
+\begin{lstlisting}[language=C, caption=Esempio di una struct]
+	struct nodo {
+		int dato;
+		struct nodo *nextPtr;
+	} n1, n2, n3;
+\end{lstlisting}
+
+\begin{definition}[Struttura dinamica]
+	È una struttura dati che può \textbf{variare} la sua dimensione a tempo di esecuzione, aumentando e diminuendo. Alcuni esempi sono proprio le \textbf{liste}, oltre che le pile, le code e gli alberi binari.
+\end{definition}
+
+\begin{note}
+	L'ultimo nodo di una lista conterrà nel link \textbf{null}.
+\end{note}
+
+\subsection{Confronto tra liste e array}
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{|p{150px}|p{150px}|}
+		\hline
+		\textbf{Liste} & \textbf{Array} \\
+		\hline
+		Contiene sequenze di dati & Contiene sequenze di dati \\ 
+		\hline
+		Create dinamicamente a tempo di esecuzione e la dimensione non può essere prevista a tempo di compilazione & Creati staticamente a tempo di esecuzione e la dimensione deve essere calcolabile a tempo di compilazione \\
+		\hline
+		La dimensione è variabile &  La dimensione è costante e tutti gli elementi sono allocati a tempo di definizione\\
+		\hline
+		Diventa piena solo quando termina la memoria disponibile nell'heap & Diventa pieno quando sono pieni tutti gli elementi \\
+		\hline
+		Non sono memorizzate in celle contigue & Sono in celle contigue \\
+		\hline
+		Possono essere manipolate senza spostare elementi & Per manipolarli bisogna spostare gli elementi \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsection{Operazioni sulle liste}
+\subsubsection{Insert}
+Viene codificata come segue:
+\begin{lstlisting}[language=C, caption=Esempio di una struct]
+	void insert(NodoPtr *lPtr, int val) {
+		// Alloco nuovo nodo
+		NodoPtr nuovoPtr = malloc(sizeof(Nodo));
+		if (nuovoPtr != NULL) {
+			// Inizializzo nodo
+			nuovoPtr->dato = val;
+			nuovoPtr->prossimoPtr = NULL;
+			NodoPtr precedentePtr = NULL;
+			NodoPtr correntePtr = *lPtr;
+			while (correntePtr != NULL && val > correntePtr->dato) {
+				precedentePtr = correntePtr;
+				correntePtr = correntePtr->prossimoPtr;
+			}
+			if (precedentePtr == NULL) {
+				// Inserimento all'inizio della lista
+				nuovoPtr->prossimoPtr = *lPtr;
+				*lPtr = nuovoPtr;
+			}
+			else {
+				// Inserimento tra due nodi
+				precedentePtr->prossimoPtr = nuovoPtr;
+				nuovoPtr->prossimoPtr = correntePtr;
+			}
+		}
+		else {
+			puts("Memoria esaurita");
+		}
+	}
+\end{lstlisting}
