@@ -1,6 +1,7 @@
 % !TeX spellcheck = it_IT
 \newpage
 \section{Algoritmo di Gauss}
+\subsection{Matrice a scalini}
 Utilizzando le proprietà (1), (2) e (3) viste sopra si ottiene un algoritmo per semplificare $(E)$.
 In un primo momento si considera $b_1 = \ldots = b_n = 0$ e mettiamo i coefficienti in una matrice $n \times m$, [$a_{ij}$]:
 \[
@@ -78,14 +79,23 @@ Esempio di matrici in forma a scalini e non:
 \end{figure}
 \end{example}
 
+\begin{observation}
+	Quando ci troviamo davanti ad una matrice a scalini possiamo avere due casi principali:
+	\begin{enumerate}
+		\item Se abbiamo che ogni colonna ha un \textbf{pivot}, notiamo che partendo dal basso avremo $a \cdot X_m = 0 \Rightarrow X_m = 0$. Quindi sostituendo nella riga precedente avremo che $b \cdot X_{m-1} + a \cdot X_m = 0 \Rightarrow X_{m-1} = 0$ e così via fino ad arrivare ad una \textbf{soluzione banale}, ovvero $(0, \ldots, 0)$.
+		\item Altrimenti per ogni colonna senza \textbf{pivot} avremo una variabile libera che dà $\infty$ soluzioni.
+	\end{enumerate}
+\end{observation}
+
+\subsection{Algoritmo in un sistema omogeneo}
 \begin{definition}[Algoritmo di Gauss]
-Ogni matrice $n \times m$ si mette in forma a scalini (per righe) con operazioni del tipo (A) e (B).
-\begin{enumerate}
+Ogni matrice $n \times m$ si mette in forma a scalini (per righe) con operazioni del tipo 1 e 2.
+\begin{enumerate}[start=0]
     \item Se la matrice è già in forma a scalini abbiamo finito.
-    \item Si cerca il primo elemento diverso da 0 della prima colonna diversa da 0.
-    \item Cambiamo righe si può supporre che questo elemento è il pivot della prima riga. Notiamo che se siamo in forma a scalini abbiamo finito sennò procediamo.
-    \item Si annullano tutti gli elementi della colonna del pivot sotto il pivot  con operazioni del tipo (B). Se siamo in forma a scalini finiamo sennò continuiamo.
-    \item Non consideriamo la prima riga (la cancelliamo) e ricominciamo con l'algoritmo.
+    \item Si cerca il primo elemento diverso da $0$ della prima colonna diversa da $0$.
+    \item Cambiando $n$ righe si può supporre che questo elemento è il pivot della prima riga. Se siamo in forma a scalini abbiamo finito, altrimenti procediamo.
+    \item Si annullano tutti gli elementi della colonna del pivot sotto il pivot  con operazioni del tipo (B). Se siamo in forma a scalini abbiamo finito, altrimenti procediamo.
+    \item Non consideriamo la prima riga e ricominciamo dal punto 1.
 \end{enumerate}
 \end{definition}
 
@@ -146,7 +156,7 @@ x_1 + 5x_2 + 2x_3 + x_4 = 0
         Applichiamo (4) e non consideriamo la riga $R_1$ per poi ripetere l'operazione (3) facendo $R_3 = R_3 - 3R_2$
     \end{minipage}
 \end{figure}
-\hspace{-15pt}Vediamo così che la matrice finale è ha forma di scalini. Possiamo ora prendendo i numeri nella matrice andare a riscrivere il sistema di equazioni associato. Il sistema è il seguente:
+\noindent Vediamo così che la matrice finale è in forma a scalini. Possiamo ora prendere i numeri nella matrice e andare a riscrivere il sistema di equazioni associato. Per il nostro esempio abbiamo:
 \[
 \begin{array}{l}
 x_1 + x_2 + 3x_4 = 0\\
@@ -163,8 +173,10 @@ x_1 + x_2 + 3x_4 = 0\\
 \end{bmatrix}
 \]
 A questo punto se consideriamo $x_4 = t$ abbiamo che $x_3 = -5t$ e di conseguenza $2x_2 - 5t + t = 0$ e quindi $x_2 = 2t$ ed ancora abbiamo $x_1 = 2t -3t -t$. Possiamo dunque dire che in questo esempio $x_4$ essendo una colonna senza pivot è una "variabile libera" e quindi ci sono più soluzioni.\\
-Potrebbe esserci anche il caso in cui la colonna contenga un pivot e quinci ci sarebbe un unica soluzione.\\\\
-Se consideriamo invece un sistema non omogeneo formato aggiungendo una colonna con $b_1, ..., b_n$, è possibile utilizzare ugualmente l'algoritmo di guass aggiungendo una colonna alla matrice.
+Potrebbe esserci anche il caso in cui la colonna contenga un pivot e quinci ci sarebbe un unica soluzione.
+
+\subsection{Algoritmo in un sistema non omogeneo}
+Se consideriamo invece un sistema non omogeneo formato aggiungendo una colonna con $b_1, ..., b_n$, è possibile utilizzare ugualmente l'algoritmo di Gauss aggiungendo una colonna alla matrice.
 
 \begin{example}
 Prendiamo il seguente sistema di equazioni e mettiamolo su una matrice:
@@ -278,7 +290,6 @@ x_3 - x_4 = -1\\
 \]
 Da questo esempio possiamo vedere una caratteristica comune per questa tipologia di esercizi, cioè che il sistema di equazione ha un unica soluzione se ogni colonna contiene un pivot.
 
-\newpage
 \begin{example}
 Altro esempio di sistema di applicazione dell'algoritmo di gauss.
 \[
@@ -376,7 +387,7 @@ In sintesi possiamo riassumere i 3 casi visti in questi esempi come di seguito:
 \end{itemize}
 
 \subsection{Algoritmo di Gauss-Jordan}
-Questo algoritmo estendo l'algoritmo di gauss producendo una matrice ridotta a scalini.
+Questo algoritmo estende l'algoritmo di Gauss producendo una matrice ridotta a scalini.
 \begin{definition}[Matrice ridotta]
 Una matrice è in forma \textbf{ridotta} a scalini se:
 \begin{itemize}
