@@ -1,0 +1,60 @@
+\section{Aritmetica di Macchina}
+Per una macchina la scrittura $(x + y) + z \neq x + (y + z)$. Vediamo dunque che ci sono alcuni punti focali da considerare
+per far si che una macchina funzioni correttamente:
+
+\begin{itemize}
+    \item Trovare uno standard per come memorizzare i numeri.
+    \item Trovare uno standard per come manipolare i numeri.
+\end{itemize}
+
+\hspace{-15pt}Da questi due punti possiamo ricondurci ad un solo problema, come andare a rappresentare i numeri.
+
+\subsection{Teorema di rapresentazione}
+\begin{theorem}
+    Dato $x \in \mathbb{R}, x \neq 0$ esistono e sono univocamente determinati.
+    \begin{enumerate}
+        \item un intero $p \in \mathbb{Z}$ detto esponente della rappresentazione.
+        \item una successione di numeri naturiali $\{d_i\}_{i\geq 1}$ con $d_i \neq 0, 0 \leq d_i \leq B - 1$ e $d_i$
+        non definitvamente uguali a \(B - 1\), dette cire della rappresentazione; tali per cui si ha
+    \end{enumerate}
+    \begin{equation}
+        x = sign(x)B^p \sum_{i=1}^{+\infty}d_i B^{-1}.
+    \end{equation}
+\end{theorem}
+
+\hspace{-15pt}Andiamo ora ad analizzare il significato di questo teorema. Esso descrive quella che viene chiamata rappresentazione
+in virgola mobile, in quanto l'esponente \(p\) on è determinato in modo da avere la parte intera nulla. Le cose da considerare
+in questo teorema sono:
+\begin{itemize}
+    \item La condizione \(d_i \neq 0\) e \(d_i\) non definitivamente uguale a \(B - 1\) sono introdotte per garantire
+    l'unicità delle rappresentazioni. Ad esempio:
+    \[B = 10 \text{ abbiamo } 1 = +10^1 (1 \cdot 10^{-1}) = +10^2 (0 \cdot 10^{-1} + 1 \cdot 10^{-1})\]
+    Quindi due rappresentazioni diverse per lo stesso numero, però considerando le condizioni scritte sopra la seconda non risulta
+    accettabile perché la prima cifra è nulla.
+    \item Il caso \(x=0\) non ammette rapresentazione normalizzata. Questa casistica viene trattata dalla macchina in un modo
+    particolare, per questo abbiamo la condizione \(x\neq \).
+    \item Questa rapresentazione si estende anche all'insieme dei numeri complessi del tipo \(z = a + ib\), utilizzando una rapresentazione
+    come coppie di numeri reali del tipo \((a,b)\).
+\end{itemize}
+
+Possiamo dedurre che visto che stiamo lavornano con registri di meoria di un calcolatore con memoria a numero finito, anche la quantità
+di cifre rapresentabili saranno a numero finito esso vinene chiamato \textbf{insieme dei numeri di macchina}.\\
+
+Dal teorema di rapresentazione in base di un numero reale può avvenire assegnando delle posizioni di meoria per il segno, 
+per l'esponente e per le cifre della rappresentazione.
+
+\begin{definition}[Insieme die numeri di macchina]
+    Si definisce l'insieme dei nuermi di macchina in rappresentazione floating point con t cifre, base B e range \(-m, M\) l'insieme dei numeri reali.
+    \[\mathbb{F}(B, t, m, M) = \{0\} \cup \{s \in \mathbb{R} \::\: x = sign(x) B^p \sum_{i=1}^{t} d_i B^{-1}, 0\leq d_i \leq B - 1, d_1 \neq 0, -m \leq p \leq M\}\]
+\end{definition}
+
+\hspace{-15pt}Si osserva in questa definizione che:
+\begin{itemize}
+    \item L'insieme \(\mathbb{F}\) ha cardinalità finita \(N = 2B^{t-1}(B-1)(M + m + 1) + 1\).
+    \item L'insieme dei numeri di macchina \(\mathbb{F}(B, t, m, M)\) è simmetrico rispetto all'origine.
+    \item Possiamo definire \(\Omega = B^M (B-1) \sum_{i=1}^{t} b^{-1}\) come il più grande numero macchina e \(\omega = B^{-m} B^{-1}\) come
+    invece il più piccolo.
+    \item Posto un \(x = B^P \sum_{i=1}^{t}d_i B^{-1}\) possiamo definire il suo successiovo numero di macchina come
+    \(y = B^p(\sum_{i=1}^{t-1}d_i B^{-1} + (d_t + 1)B^{-t})\). Da qui vediamo che la distanza \(y - x = B^p - t\) porta
+    i numeri ad essere non equispaziali fra di loro, quindi la distanza aumento con l'avicinarci a \(\Omega\)
+\end{itemize}
