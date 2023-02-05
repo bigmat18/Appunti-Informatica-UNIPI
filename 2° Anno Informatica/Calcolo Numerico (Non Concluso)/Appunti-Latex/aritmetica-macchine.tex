@@ -58,3 +58,47 @@ per l'esponente e per le cifre della rappresentazione.
     \(y = B^p(\sum_{i=1}^{t-1}d_i B^{-1} + (d_t + 1)B^{-t})\). Da qui vediamo che la distanza \(y - x = B^p - t\) porta
     i numeri ad essere non equispaziali fra di loro, quindi la distanza aumento con l'avicinarci a \(\Omega\)
 \end{itemize}
+
+\begin{example}
+    Facciamo ora un esempio in cui andiamo a rappresentare il numero successivo di \(x = B^p \sum_{t}^{i=1} d_i B^{-1}\). Esso
+    si può scrivere come \(y = B^p \bigg( \sum_{i=1}^{t-1} d_i B^{-1} + (d_t + 1)B^{-t} \bigg)\).\\
+    Mentre si può scrivere la distanza fra questi due valori come \(y - x = B^p - t\).
+\end{example}
+
+\hspace{-15pt}E' stato fissato uno standard IEEE 754 fra gli anni 70/80, questo standard dice che, visto ci sono macchine che hanno metodi di rappresentazione
+diversi bisogna fissare un standard, esso appunto dice che \(B = 2\) ed i registri sono a 32 o 64 bit.\\\\
+Questa rapresentazione ha uno svantaggio che può sembrare minimo ma non lo è, lo 0 si rappresenta due volte con \(-0, +0\). Per ovviare
+a questo problema si è andato ad abbandonare questa rappresentazione in esponenti ma si rapprensentato i numeri nel seguente modo:
+\(p_1 2^0 + p_1 2^1 + \dots + p_11 s^10 \) che rappresentano numeri da 0 a \(2^11 - 1\) quindi 2047 numeri, mentre lo 0 si può scrivere come:
+\begin{itemize}
+    \item O tenendo tutti i valori a 0
+    \item Oppure tendendo tutti i valori a 1
+\end{itemize}
+
+\hspace{-15pt}In entrambi i casi abbiamo un range di valori che va da \([-1022, 1024]\). A questo punto ho \(2^{P-1022}\) numeri che la 
+macchina rappresneta come \(\pm 2^{P - 1022}(0.1d_1 \dots d_{52})\).\\
+Impostando questo standard abbiamo \(\Omega = 2^{1024}(01 \dots 1)_2\) e \(\omega = 2^{-1022} (101)_2\).\\
+
+\begin{observation}
+    Quando \(p=0\) abbiamo i numeri che si trovano nella porzione della retta dei numeri che è compresa fra \(-\omega\) \(\omega\)
+    e possiamo qui avere anche tuti 0 e quindi si introduce il caso dei numeri denormalizzati.
+\end{observation}
+
+\hspace{-15pt}Se abbiamo l'esponante uguale a tutti 1, la convensione è che tutte le cifre della mantissa sono tutti uguali a 0/1
+questo numero indica il \(\pm \infty\) altrimenti sta a signifiare NaN (not a number). Questi valori ci permettono di gestire
+forme indeterminate.
+
+\subsection{Errore di rappresentazione}
+Quando si va a rappresentare un numero reale non nullo \(x \in \mathbb{R}\) e con \(x \neq 0\) si può andare a commettere degli 
+errori di rappresentazione detto anche \textbf{errore relativo di approssimazione}, e di definisce come, prendendo un \(\tilde{x} \in \mathbb{F}(B, t, m, M)\)
+\[\epsilon_x = \frac{\tilde{x} - x}{x} = \frac{\eta x}{x}, x \neq 0\]
+
+\hspace{-15pt}Definiamo \(|\epsilon_x| = \big | \frac{\tilde{x} - x}{x}\big | \leq \frac{B^{P-t}}{| x|} \leq \frac{B^{P - t}}{B^{P - 1}} = B^{1 - t} = u\)
+la \(u\) è definita come \textbf{precisione di macchina}.\\
+
+\hspace{-15pt}Andiamo inoltre a definire le conidizioni di underflow e overflow. Dato un \(x \in \mathbb{R}, x \neq 0\) abbiamo che:
+\begin{enumerate}
+    \item Se \(|x| < \omega\) o \(|x| > \Omega\) overflow. In questo caso si va ad associare il \(+\infty\).
+    \item Se invece \(\omega \leq |x| \leq \Omega\) abbiamo underflow. In questo caso allora prendiamo una \(x = B^p \sum_{i = 1}^{\infty}d_i B^{-1}
+    \longrightarrow B^p \sum_{i=1}^{t}d_i B^{-1} = \tilde{x}\) che è una approssimazione 
+\end{enumerate}
