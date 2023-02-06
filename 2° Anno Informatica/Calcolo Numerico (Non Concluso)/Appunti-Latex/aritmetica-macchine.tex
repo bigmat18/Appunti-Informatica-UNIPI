@@ -102,3 +102,32 @@ la \(u\) è definita come \textbf{precisione di macchina}.\\
     \item Se invece \(\omega \leq |x| \leq \Omega\) abbiamo underflow. In questo caso allora prendiamo una \(x = B^p \sum_{i = 1}^{\infty}d_i B^{-1}
     \longrightarrow B^p \sum_{i=1}^{t}d_i B^{-1} = \tilde{x}\) che è una approssimazione 
 \end{enumerate}
+
+\subsection{Operazioni di macchina}
+Consideriamo ora due numeri \(x, y \in \mathbb{F}\) e chiediamoci perché la macchina non possa fare l'operazione \(x + y\). La risposta
+è che i risultati da questa operazione di ritornano fra i numeri di macchina. Per ovviare a questo problema dovremo usare le Operazioni 
+di macchina che si identificano come \(\oplus \ominus \otimes \oslash\).\\
+Nel nostro caso l'addizione di macchina \(x \oplus y = troncamento(x + y) = (x+ y)(1 + \epsilon_1)\) con \(|\epsilon_1| \leq u\) con \(e_1\)
+detto errore locale dell'operazione.
+
+\begin{example}
+    Supponiamo di dover calcolare in macchina la funzione \(f(x) = \frac{x - 1}{x}\). In macchina questa funzione corrisponderebbe a
+    \(g(\tilde{x}) = (\tilde{x} \ominus 1) \oslash \tilde{x} \). Abbiamo quinidi:
+    \[g(\tilde{x}) = \frac{(x (1 + \epsilon_x) - 1)(1 + \epsilon_1)}{x(1 + \epsilon_x)} \cdot (1 + \epsilon_1) = 
+    \frac{(x (1 + \epsilon_x) - 1)(1 + \epsilon_1 + \epsilon_2)}{x(1 + \epsilon_x)} =
+    \frac{(x (1 + \epsilon_x) - 1)(1 + \epsilon_1 + \epsilon_2 - \epsilon_x)}{x}\]
+    \[g(\tilde{x}) = (\tilde{x} \oplus 1) \oslash \tilde{x} = \frac{(x (1 + \epsilon_x) - 1)(1 + \epsilon_1 + \epsilon_2 - \epsilon_x)}{x}\]
+    \[\frac{g(\tilde{x} - f(x))}{f(x)} = \frac{((x-1)/x) + (\epsilon_1 + \epsilon_2)((x-1)/x) + \epsilon_2 / x - ((x-1)/ x)}{(x-1)/x} = \epsilon_1 + \epsilon_2 - \frac{\epsilon_x}{x - 1}\]
+\end{example}
+
+\begin{example}
+    Supponiamo ora di calcolare la funzione \(f(x) = \frac{x - 1}{x}\) in un altro modo, \(g_2(\tilde{x}) = \frac{g_2(\tilde{x}) - f(x)}{f(x)}\) ed 
+    andiamo a fare l'analisi dell'errore.
+    \[\frac{g_1(\tilde{x}) - f(x)}{f(x)} \doteq \epsilon_1 + \epsilon_2 + \frac{\epsilon_1}{(x-1)} \text{ Questo è il risultato di un analisi al primo ordine}\]
+    \[g_2(\tilde{x}) = 1 \ominus \frac{1}{\tilde{x}}(1 + \delta_1) = 1 \ominus \frac{1}{x}(1 + \delta_1)(1 - \epsilon_x) = [1 -\frac{1}{x} (1 - \delta_1)(1-\epsilon_1)](1 + \delta_2)\]
+    \[\doteq (1 + \delta_1) - \frac{1}{x}(1 + \delta_1 + \delta_2 + \epsilon_x) \doteq (1 - \frac{1}{x}) + \delta_2(1 - \frac{1}{x}) - \frac{\delta_1}{x} + \frac{\epsilon_x}{x}
+    \doteq \delta_2 - \frac{\delta_1}{x - 1} + \frac{\epsilon_x}{x-1}\]
+    \[\frac{g_2(\tilde{x}) - f(x)}{f(x)} = \delta_2 - \frac{\delta_1}{x - 1} + \frac{\epsilon_x}{x-1}\]
+    Questo è il risultato finale dove \(\delta_2 - \frac{\delta_1}{x - 1}\) viene definita come parte stabilità mentre \(\delta_2 - \frac{\delta_1}{x - 1}\) viene
+    chiamato condizionamento,il risulato finale viene definito invece numero stabile.
+\end{example}

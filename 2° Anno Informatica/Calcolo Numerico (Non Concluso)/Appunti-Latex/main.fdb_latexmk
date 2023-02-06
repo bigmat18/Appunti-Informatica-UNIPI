@@ -1,12 +1,13 @@
 # Fdb version 3
-["pdflatex"] 1675636566 "/Users/matteogiu/Desktop/Università/Appunti-Repository/2° Anno Informatica/Calcolo Numerico (Non Concluso)/Appunti-Latex/main.tex" "/Users/matteogiu/Desktop/Università/Appunti-Repository/2° Anno Informatica/Calcolo Numerico (Non Concluso)/Appunti-Latex/main.pdf" "main" 1675636568
+["pdflatex"] 1675684756 "/Users/matteogiu/Desktop/Università/Appunti-Repository/2° Anno Informatica/Calcolo Numerico (Non Concluso)/Appunti-Latex/main.tex" "/Users/matteogiu/Desktop/Università/Appunti-Repository/2° Anno Informatica/Calcolo Numerico (Non Concluso)/Appunti-Latex/main.pdf" "main" 1675684758
   "/Users/matteogiu/Desktop/Università/Appunti-Repository/2° Anno Informatica/Calcolo Numerico (Non Concluso)/Appunti-Latex/./images//marchio_unipi_pant541.png" 1674722580 176739 066b5d4463adf1c48940d465b736a16e ""
-  "/Users/matteogiu/Desktop/Università/Appunti-Repository/2° Anno Informatica/Calcolo Numerico (Non Concluso)/Appunti-Latex/aritmetica-macchine.tex" 1675636566 6968 34a7b3487c62a9cc0730a661d4d014fa ""
+  "/Users/matteogiu/Desktop/Università/Appunti-Repository/2° Anno Informatica/Calcolo Numerico (Non Concluso)/Appunti-Latex/aritmetica-macchine.tex" 1675683695 9565 4186ea8c59e1af0efea3497330f38435 ""
+  "/Users/matteogiu/Desktop/Università/Appunti-Repository/2° Anno Informatica/Calcolo Numerico (Non Concluso)/Appunti-Latex/calcolo-errori.tex" 1675684756 1375 a8c1b3fb1970fdc8d803c2fd5897870f ""
   "/Users/matteogiu/Desktop/Università/Appunti-Repository/2° Anno Informatica/Calcolo Numerico (Non Concluso)/Appunti-Latex/frontespizio.tex" 1674730776 829 33ecd53150e24f9cff35a18c8e51644b ""
-  "/Users/matteogiu/Desktop/Università/Appunti-Repository/2° Anno Informatica/Calcolo Numerico (Non Concluso)/Appunti-Latex/main.aux" 1675636567 1151 37c00a8c49fb67d1bfc3b9fcaf11fd0b "pdflatex"
-  "/Users/matteogiu/Desktop/Università/Appunti-Repository/2° Anno Informatica/Calcolo Numerico (Non Concluso)/Appunti-Latex/main.out" 1675636567 545 e22c5e64ed8ea0f6f013e0eb37a84fec "pdflatex"
-  "/Users/matteogiu/Desktop/Università/Appunti-Repository/2° Anno Informatica/Calcolo Numerico (Non Concluso)/Appunti-Latex/main.tex" 1674731942 2890 658e38b3cf94bde2c89b8f164621261a ""
-  "/Users/matteogiu/Desktop/Università/Appunti-Repository/2° Anno Informatica/Calcolo Numerico (Non Concluso)/Appunti-Latex/main.toc" 1675636567 292 42679972865abca8f340d5d62229ae60 "pdflatex"
+  "/Users/matteogiu/Desktop/Università/Appunti-Repository/2° Anno Informatica/Calcolo Numerico (Non Concluso)/Appunti-Latex/main.aux" 1675684758 1397 4d7c21b5e134253f0ce0ecd6912667d9 "pdflatex"
+  "/Users/matteogiu/Desktop/Università/Appunti-Repository/2° Anno Informatica/Calcolo Numerico (Non Concluso)/Appunti-Latex/main.out" 1675684758 867 16759e3222da4fc718746fc575644ea4 "pdflatex"
+  "/Users/matteogiu/Desktop/Università/Appunti-Repository/2° Anno Informatica/Calcolo Numerico (Non Concluso)/Appunti-Latex/main.tex" 1675683725 2917 c38f3f0c1a22d0a32fb376d113c83539 ""
+  "/Users/matteogiu/Desktop/Università/Appunti-Repository/2° Anno Informatica/Calcolo Numerico (Non Concluso)/Appunti-Latex/main.toc" 1675684758 456 3573ff238bce31fb8e1eb0e65a064bff "pdflatex"
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
