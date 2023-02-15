@@ -1,0 +1,52 @@
+\section{Input output}
+Quando andiamo a parlare dei sistemi di input output le cose principale da considerare sono i 
+disponsitivi di I/O i device controller, i buses, la gestione dell'I/O ed i device drivers.\\
+
+Solitamente le operazioni di I/O hanno un grosso impatto sul tempo di esecuzione dei programmi.
+Supponiamo per esempio di andare a calcolare il tempo di esecuzione con \(T_{exe} = T_{cpu} + T_{I/O} = \frac{1}{10}T_{cpu}\) perciò
+\(T_{exe} = \frac{11}{10}T_{cpu}\).
+
+Se andiamo ad aumentare il tempo \(T_{cpu}\) di 10 volte lasciando inalterato il \(T_{I/O}\) abbiamo
+un \(T_{cpu}^{enhanced} = \frac{1}{10} T_{cpu}\) così \(T_{exe} = \frac{1}{10}T_{cpu} + \frac{1}{10}T_{cpu} = \frac{1}{5}T_{cpu}\)
+Consideriamo copi che l'aumento di velocià \(= \frac{T_{exe} \text{before enhancmente}}{T_{exe} \text{after enhancmente}} = \frac{11}{5} = 5.5\)
+
+\subsection{Legge di Amdahl}
+Proposto da Gene Amdahl nel 1967. Si occupa della potenziale velocità massima raggiungibile da un programma parallelo quando si aumenta il numero di processori da 1 a N.
+Può essere applicato a qualsiasi processo di ottimizzazione. 
+Si consideri un programma in cui solo la frazione f può essere ottimizzata (ad esempio, parallelizzata utilizzando N processori), mentre la frazione (1-f) rimane inalterata (ad esempio, è intrinsecamente sequenziale).
+\[\text{Speedup} = \frac{Tempo di esecuzione proma del miglioramento}{\text{Tempo di esecuzione dopo il migliormaneto}} = \frac{T(1- f) + Tf}{T(1 - f) + \frac{T(1-f) + \frac{Tf}{N}} = \frac{1}{(1 - f) + \frac{f}{N}}}\]
+
+\begin{observation}
+    L'accelerazione è vincolata dalla frazione sequenziale (1-f), cioè dalla parte del processo che non posso (o non sono in grado) di valorizzare!
+\end{observation}
+
+\hspace{-15pt}
+Le prestazioni del sottosistema I/O sono molto importanti, ma non sono tutto. Altri aspetti importanti sono:
+\begin{itemize}
+    \item \textbf{Affidabilità} gestite da metriche del tempo medio al guasto (MTTF), prevenzione dei guasti (componenti migliori), tolleranza ai guasti (introduzione di un certo livello di ridondanza).
+    \item \textbf{Disponibilità} invece gestite da Tempo medio di riparazione (MTTR), e dalla formula \(\frac{MTTF}{MTTF + MTTR}\)
+\end{itemize}
+
+\hspace{-15pt}I dispositivi I/O hanno due tipologie di porte: porte di controllo, e porte data.
+\begin{itemize}
+    \item Controllo: sia comandi che rapporti di stato, come diciamo al dispositivo cosa fare, come il dispositivo ci racconta le sue caratteristiche, come il dispositivo ci informa sullo stato operativo.
+    \item Data: Alla/dalla memoria del dispositivo.
+\end{itemize}
+
+\hspace{-15pt}I/O funzioni di controllo abbiamo invece il control and imting, la comunicazioni fra processi (command decoding, data exchange, status reporting, address recognition), comunicazione
+fra i device, il data buffering (per ottimizare il trasferimento dei dati e compensare le differenze di velocità).
+
+\subsection{Connessione bus}
+Servono per il controllo del trasferimento da un dispositivo al processore:
+\begin{enumerate}
+    \item la CPU controlla lo stato del dispositivo del modulo I/O.
+    \item Il controller I/O restituisce lo stato se pronta.
+    \item La CPU richiede il trasferimento dei dati tramite un comando al controllore.
+    \item Il controller I/O riceve i dati dal dispositivo periferico.
+    \item il controller I/O trasferisce i dati al processore.
+\end{enumerate}
+
+\hspace{-15pt}Questi passaggi richiedono una o più azioni di arbitrato del bus per implementare il protocollo di comunicazione.
+
+Andiamo ora a definire l'interconnesione fra bus, essa si definisce come una raccolta di linee di dati trattate insieme come un singolo segnale logico
+utilizzato anche per indicare una raccolta condivisa di linee con più dispositivi connessi (chiamati rubinetti), si definiscono su essi alcuni fattori di prestazione: lunghezza fisica, numero di prese collegate
