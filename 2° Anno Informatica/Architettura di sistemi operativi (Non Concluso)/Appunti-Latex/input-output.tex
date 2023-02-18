@@ -14,7 +14,7 @@ Consideriamo copi che l'aumento di velocià \(= \frac{T_{exe} \text{before enhan
 Proposto da Gene Amdahl nel 1967. Si occupa della potenziale velocità massima raggiungibile da un programma parallelo quando si aumenta il numero di processori da 1 a N.
 Può essere applicato a qualsiasi processo di ottimizzazione. 
 Si consideri un programma in cui solo la frazione f può essere ottimizzata (ad esempio, parallelizzata utilizzando N processori), mentre la frazione (1-f) rimane inalterata (ad esempio, è intrinsecamente sequenziale).
-\[\text{Speedup} = \frac{Tempo di esecuzione proma del miglioramento}{\text{Tempo di esecuzione dopo il migliormaneto}} = \frac{T(1- f) + Tf}{T(1 - f) + \frac{T(1-f) + \frac{Tf}{N}} = \frac{1}{(1 - f) + \frac{f}{N}}}\]
+\[\text{Speedup} = \frac{\text{Tempo di esecuzione proma del miglioramento}}{\text{Tempo di esecuzione dopo il migliormaneto}} = \frac{T(1- f) + Tf}{T(1 - f) + \frac{Tf}{N}} = \frac{1}{(1 - f) + \frac{f}{N}}\]
 
 \begin{observation}
     L'accelerazione è vincolata dalla frazione sequenziale (1-f), cioè dalla parte del processo che non posso (o non sono in grado) di valorizzare!
@@ -47,15 +47,47 @@ Servono per il controllo del trasferimento da un dispositivo al processore:
 \end{enumerate}
 
 \hspace{-15pt}Questi passaggi richiedono una o più azioni di arbitrato del bus per implementare il protocollo di comunicazione.
-
 Andiamo ora a definire l'interconnesione fra bus, essa si definisce come una raccolta di linee di dati trattate insieme come un singolo segnale logico
 utilizzato anche per indicare una raccolta condivisa di linee con più dispositivi connessi (chiamati rubinetti), si definiscono su essi alcuni fattori di prestazione: lunghezza fisica, numero di prese collegate.
+\\\\Un bus è un mezzo di trasmissione condiviso, solo un dispositivo alla volta può trasmettere con successo. Il bus di sistema collega i principali componenti (processore, memoria, bus I/O), centinaia di linee separate, linee classificate in tre gruppi: dati, indirizzo, controllo.
+\\Alcuni tipi di bus sono:
+\begin{itemize}
+    \item \textbf{System bus} Collega processore e memoria, I/O interfacciato con adattatori: breve, pochi tocchi e quindi più veloce e larghezza di banda elevata, inoltre non è standard (ovvero specifico del sistema).
+    \item \textbf{I/O bus} Connette dispositivi I/O, nessuna connessione diretta con processore e memoria: più tempo, più tocchi è uguale a più lentezza e larghezza di banda inferiore. E' uno standard di settore (ad es. ATA/SCSI).
+    \item \textbf{Backplane bus} Connette CPU, memoria, dispositivi I/O. Lunghe, molti tocchi allora lento e larghezza di banda medio/bassa. Gestisce diversi dispositivi con diverse larghezze di banda ed è standard di settore.
+\end{itemize}
+
+\subsubsection{Bus design}
+Il design di un bus si basa su soddisfare gli obbiettivi di avere un alta performance, standardizzazione e bassi costi. Per esempio 
+il bus di sistema enfatizza le prestazioni, l'I/O e i bus backplain enfatizzano i costi e la standardizzazione.\\
+Uno dei problemi principali di progettazioni da affrontare è il seguente: 
+\begin{itemize}
+    \item I cavi sono condivisi o separati? La risposta è che i bus più ampi (ovvero, una maggiore larghezza di banda) sono più costosi e più suscettibili allo skew.
+    \item Come viene acquisito e rilasciato il controllo del bus? La riposta è tramite due metodologie \textbf{Atomic transactions} che permette una bassa utilizzazione ed una bassa complessita, e le \textbf{Split-transactions}
+    dove le richieste/risposte possono essere intervallate; ciò significa un utilizzo più elevato ma un design più complesso (ad es. ID per identificare richieste diverse).
+    \item Il bus ha è cloccato (ha un tempo di clock)? Per rispondere al problema del clock bisogna introdurre due opzioni possibili.
+    \begin{itemize}
+        \item \underline{\textbf{Sincrono}}. Tutti i dispositivi collegati al bus condividono lo stesso bus clock. Gli eventi si verificano all'estremità del segnale di clock. Un protocollo possibile è che al ciclo \(X\) l'unità di I/O scrive una richiesta READ sul bus; al ciclo \(X + \Delta\) l'unità può leggere i dati dal bus.
+        \(\Delta\) è il tempo massimo per scrivere i dati sul bus da parte di un'unità collegata.\\
+        Potenziale abbiamo il problema di skew dell'orologio e questa soluzione è limitata a bus brevi (ad esempio, bus di sistema).
+        \item \underline{\textbf{Asincrono}}. Il bus non ha il clock. Nessun disallineamento dell'orologio, si occupa di dispositivi con velocità diverse: può essere più lungo, quindi più lento. \\
+        Richiede protocolli di handshaking. Inoltre il protocollo possibilo funzione nel seguente modo (3 linee di controllo, 1 linea dati in cui i dati e l'indirizzo sono multiplexati): UIO1 scrive una richiesta READ (WRITE) ReadReq (WriteReq) nella linea di controllo e 
+        l'indirizzo nella linea dati, UIO2 legge il indirizzo e scrive un ACK nella linea di controllo a UIO13. UIO2 scrive i dati sul bus e scrive la riga DataReadycontrol per notificare UIO14. UIO1 legge i dati e invia un ACK nella linea di controllo a UIO2.
+    \end{itemize}
+    \item Come si devide chi prende un bus per trasferire dati? Le comunicazioni bus devono essere gestite da un protocollo di comunicazione. Ne possiamo vedere due:
+    \begin{itemize}
+        \item \underline{\textbf{Bus master}}. Il concetto dietro questo protocolle è che, un unità che può avviare una richiesta di bus. Esso ha una configurazione più semplice: un solo master mentre di solito i bus hanno più master.
+        \item \underline{\textbf{Arbitration}}. Il concetto invece di questo protocolle è che si va ha scegliere un master tra più richieste cercando di implementare la priorità e l'equità (prevenendo la fame). Solo un master alla volta (tutti gli altri ascoltano il bus). Il ruolo dell'arbitro è gestire le richieste del bus e assegnare le sovvenzioni considerando le priorità e l'equità.\\\\
+        Per andare ad implementale questo sistema possiamo usare un metodo \textbf{centralizzato}, dove un dispositivo dedicato (Arbiter) raccoglie le richieste e poi decide (potenziale problema di collo di bottiglia). Si può usare un metodo ri raccolta Daisy-chain, non equo, oppure con linee di richiesta/risposta indipendenti (ampiamente utilizzate).
+        \\\\Oppure possiamo usare un metodo \textbf{distribuito} dove ogni dispositivo vede le richieste contemporaneamente e partecipa alla selezione del master successivo (più complesso da realizzare e necessita di molte linee di controllo).
+    \end{itemize}
+\end{itemize}
+
 
 \subsection{Gestione dell I/O}
 Quando andiamo a parlare di gestione dei dispositivi di input output ci chiedimao come la CPU da i comandi 
 hai dispositivi di I/O? Come la CPU sa quando i dispositivi di I/O completando le operazioni? Come fanno i 
-disponsitivi di I/O ad eseguire il data transfers?\\
-
+disponsitivi di I/O ad eseguire il data transfers?\\\\
 Partiamo dal rispondere alla prima domanda. Inanzitutto soltato il sistema operativo può mandare comandi hai dispositiv
 di I/O ed i programmatori per mandare comandi all'I/O deve utilizzare delle chiamate di sistema. Da qui possiamo avere
 due opzioni per mandare comandi hia device di I/O:
@@ -63,6 +95,8 @@ due opzioni per mandare comandi hia device di I/O:
     \item I/O istruzioni: istruzioni ISA che indirizzano i registri dei dispositivi I/O. Sono delle istruzioni di privilegio disponibile soltato in kernel mode.
     \item Memory-mapped I/O: una porzione degli indirizzi fisici rispervata all'I/O.
 \end{itemize}
+
+\hspace{-15pt}
 
 \subsection{Memory-mapped I/O}
 I registri interni dei dispositivi sono mappati su locazioni di memoria principali (a indirizzi fisici riservati). 
@@ -89,8 +123,8 @@ molte volte solo per scoprire che il dispositivo non ha completato l'operazione.
 Il problema principale visto nel programmed I/O è la perdita di tempo per l'alta velocità della CPU, come alternativa al polling
 si introduce quello che viene chiamato interrupts.
 \begin{itemize}
-    \item The CPU issues commands to a device and continues doing other tasks. 
-    \item I/O device generates an interrupt when the status changes, i.e., the data is ready
+    \item La CPU invia comandi a un dispositivo e continua a svolgere altre attività. 
+    \item Il dispositivo I/O genera un interrupt quando lo stato cambia, cioè i dati sono pronti.
     \item Gli interrupt di I/O sono asincroni.
     \item I/O interrupts sono prioritari, dove in particolare i dispositivi I/O con larghezza di banda elevata hanno una priorità maggiore rispetto a quelli con larghezza di banda ridotta.
 \end{itemize} 
@@ -116,7 +150,7 @@ a questo problma introduciamo la direct memory access (DMA).\\\\
 Esso è meccanismi che forniscono a un dispositivo di controllo I/O la capacità di trasferire i dati direttamente da e verso la memoria principale senza coinvolgere la CPU. 
 DMA disaccoppia il protocollo CPU-memoria dal protocollo memoria-dispositivo I/O. Interrupt utilizzati dal dispositivo I/O per comunicare con la CPU solo al completamento del trasferimento I/O o quando si verifica un errore.\\\\
 DMA è implementato con un controller specializzato. Per eseguire DMA, un dispositivo I/O è collegato a un controller DMA: è possibile collegare più dispositivi allo stesso controller. Il controller stesso è visto come un dispositivo I/O mappato in memoria, 
-inoltre il controller DMA si occupa dell'arbitrato del bus e del trasferimento dei dati: diventa il master del bus. Il controller DMA e la CPU si contendono il bus di memoria.\\\\
+inoltre il controller DMA si occupa dell'arbitrato del bus e del trasferimento dei dati: diventa il master del bus. Il controller DMA e la CPU si contendono il bus di memoria.
 Ci sono tre passi nel transfer DMA:
 \begin{enumerate}
     \item La CPU imposta DMA fornendo identità, op, indirizzo di memoria e numero di byte da trasferire.
@@ -127,15 +161,14 @@ Ci sono tre passi nel transfer DMA:
 \begin{example}
     Facciamo un esempio, assumiamo i seguenti dati: 500Mhz CPU, il device di un disco ha un tempo di trasferimento 4MB/s, 16B di interfaccie
     e un utilizzo di 50\(\%\), la gestione degli interrupt richiede 400 cicli, il trasferimento dei dati richiede 100 cicli, l'installazione DMA richiede 1600 cicli, trasferisce un blocco da 16 KB alla volta.\\\\
-    Overhead del processore per I/O guidato da interrupt senza DMA (il processore è coinvolto per ogni trasferimento di dati (16 B)) si calcola facendo 0.5 * (4MB/s) / (16B) * [(400 + 100) cicli / 500M cicli (s)] = 12.5 \(\%\).\\\\
-    Overhead del processore per I/O guidato da interrupt con trasferimento DMA (Il processore è coinvolto una volta per trasferimento a blocchi (16 KB)) si calcola invece facendo 0.5 * (4M B/s) / (16KB) * [(1600 + 400) / (5ooM cicli/s)] = 0.05 \[\%\]
+    Overhead del processore per I/O guidato da interrupt senza DMA (il processore è coinvolto per ogni trasferimento di dati (16 B)) si calcola facendo 0.5 * (4MB/s) / (16B) * [(400 + 100) cicli / 500M cicli/s] = 12.5 \(\%\).\\\\
+    Overhead del processore per I/O guidato da interrupt con trasferimento DMA (Il processore è coinvolto una volta per trasferimento a blocchi (16 KB)) si calcola invece facendo 0.5 * (4M B/s) / (16KB) * [(1600 + 400) / (5ooM cicli/s)] = 0.05 \(\%\)
 \end{example}
 
 \hspace{-15pt}Notiamo da questo esempio che Senza DMA: il processore avvia tutti i trasferimenti di dati, tutti i trasferimenti passano attraverso la traduzione degli indirizzi (MMU), i trasferimenti possono essere di qualsiasi dimensione e attraversare i limiti della pagina virtuale, 
 nessun impatto sulla gerarchia della cache, le cache non contengono mai dati obsoleti.\\\\
 Mentre con DMA: il controller DMA avvia i trasferimenti di dati, esiste un altro percorso per il sistema di memoria, potenziali problemi: 
 i controller DMA utilizzano indirizzi virtuali o fisici? Cosa succede se scrivono i dati in una posizione di memoria cache?\\\\
-
 Per rispondere alla domanda, quali indirizzi il processore specifica al controller DMA? Abbiamo la virtual DMA e la 
 DMA fisica:
 \begin{itemize}
