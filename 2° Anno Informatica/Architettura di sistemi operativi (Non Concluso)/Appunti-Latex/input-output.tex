@@ -1,14 +1,19 @@
 \section{Input output}
 Quando andiamo a parlare dei sistemi di input output le cose principale da considerare sono i 
-disponsitivi di I/O i device controller, i buses, la gestione dell'I/O ed i device drivers.\\
+disponsitivi di I/O i device controller, i buses, la gestione dell'I/O ed i device drivers.
 
-Solitamente le operazioni di I/O hanno un grosso impatto sul tempo di esecuzione dei programmi.
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=13cm]{images/input-output-iodevice.png}
+    \caption{Input/output e I/O devices}
+\end{figure}
+
+\hspace{-15pt}Solitamente le operazioni di I/O hanno un grosso impatto sul tempo di esecuzione dei programmi.
 Supponiamo per esempio di andare a calcolare il tempo di esecuzione con \(T_{exe} = T_{cpu} + T_{I/O} = \frac{1}{10}T_{cpu}\) perciò
-\(T_{exe} = \frac{11}{10}T_{cpu}\).
-
-Se andiamo ad aumentare il tempo \(T_{cpu}\) di 10 volte lasciando inalterato il \(T_{I/O}\) abbiamo
+\(T_{exe} = \frac{11}{10}T_{cpu}\).\\\\
+\hspace{-15pt}Se andiamo ad aumentare il tempo \(T_{cpu}\) di 10 volte lasciando inalterato il \(T_{I/O}\) abbiamo
 un \(T_{cpu}^{enhanced} = \frac{1}{10} T_{cpu}\) così \(T_{exe} = \frac{1}{10}T_{cpu} + \frac{1}{10}T_{cpu} = \frac{1}{5}T_{cpu}\)
-Consideriamo copi che l'aumento di velocià \(= \frac{T_{exe} \text{before enhancmente}}{T_{exe} \text{after enhancmente}} = \frac{11}{5} = 5.5\)
+Consideriamo copi che l'aumento di velocià uguale a: \[\frac{T_{exe} \text{before enhancmente}}{T_{exe} \text{after enhancmente}} = \frac{11}{5} = 5.5\]
 
 \subsection{Legge di Amdahl}
 Proposto da Gene Amdahl nel 1967. Si occupa della potenziale velocità massima raggiungibile da un programma parallelo quando si aumenta il numero di processori da 1 a N.
@@ -33,6 +38,13 @@ Le prestazioni del sottosistema I/O sono molto importanti, ma non sono tutto. Al
     \item Data: Alla/dalla memoria del dispositivo.
 \end{itemize}
 
+\vspace{-10pt}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=12cm]{images/generic-io-device.png}
+    \caption{I/O device generico}
+\end{figure}
+
 \hspace{-15pt}I/O funzioni di controllo abbiamo invece il control and imting, la comunicazioni fra processi (command decoding, data exchange, status reporting, address recognition), comunicazione
 fra i device, il data buffering (per ottimizare il trasferimento dei dati e compensare le differenze di velocità).
 
@@ -46,11 +58,23 @@ Servono per il controllo del trasferimento da un dispositivo al processore:
     \item il controller I/O trasferisce i dati al processore.
 \end{enumerate}
 
-\hspace{-15pt}Questi passaggi richiedono una o più azioni di arbitrato del bus per implementare il protocollo di comunicazione.
+\begin{wrapfigure}{r}{7cm}
+    \vspace{-35pt}
+    \centering
+    \includegraphics[width=6cm]{images/io-controller-diagram.png}
+    \caption{I/O device generico}
+\end{wrapfigure}
+Questi passaggi richiedono una o più azioni di arbitrato del bus per implementare il protocollo di comunicazione.
 Andiamo ora a definire l'interconnesione fra bus, essa si definisce come una raccolta di linee di dati trattate insieme come un singolo segnale logico
 utilizzato anche per indicare una raccolta condivisa di linee con più dispositivi connessi (chiamati rubinetti), si definiscono su essi alcuni fattori di prestazione: lunghezza fisica, numero di prese collegate.
 \\\\Un bus è un mezzo di trasmissione condiviso, solo un dispositivo alla volta può trasmettere con successo. Il bus di sistema collega i principali componenti (processore, memoria, bus I/O), centinaia di linee separate, linee classificate in tre gruppi: dati, indirizzo, controllo.
-\\Alcuni tipi di bus sono:
+\newpage
+
+% \begin{wrapfigure}{l}{2.5cm}
+%     \centering
+%     \includegraphics[width=2.5cm]{images/buses-type.png}
+% \end{wrapfigure}
+\hspace{-15pt}Alcuni tipi di bus sono:
 \begin{itemize}
     \item \textbf{System bus} Collega processore e memoria, I/O interfacciato con adattatori: breve, pochi tocchi e quindi più veloce e larghezza di banda elevata, inoltre non è standard (ovvero specifico del sistema).
     \item \textbf{I/O bus} Connette dispositivi I/O, nessuna connessione diretta con processore e memoria: più tempo, più tocchi è uguale a più lentezza e larghezza di banda inferiore. E' uno standard di settore (ad es. ATA/SCSI).
