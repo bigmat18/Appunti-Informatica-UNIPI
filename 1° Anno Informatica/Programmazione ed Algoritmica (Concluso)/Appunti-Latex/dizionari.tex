@@ -1,0 +1,46 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Dizionari}
+\begin{definition}
+	Un dizionario è una \textbf{struttura dati astratta} e consiste in una collezione di \textbf{coppie} della forma:
+	\begin{itemize}
+		\item \textbf{Chiave}: è il meccanismo di accesso all'elemento ed è \textbf{univoca} nella collazione
+		\item \textbf{Elemento}:  è un qualsiasi tipo
+	\end{itemize} 
+\end{definition}
+Le operazioni che possono essere eseguite sui dizionari sono \emph{inserimento}, \emph{ricerca} e \emph{cancellazione}.
+\subsection{Indirizzamento diretto}
+Ogni elemento del dizionario viene mappato con una chiave estratta da un determinato universo $U$ e che corrisponde alla posizione nell'array dove viene inserito. \\
+La complessità di questa tecnica è $O(1)$ per tutte e tre le operazioni possibili sui dizionari. Il problema si presenta quando le chiavi usate $N$ sono molto minori dell'universo iniziale $U$ e abbiamo quindi che $\frac{N}{U} < 1$ con un conseguente \textbf{spreco di spazio di memoria} in quanto lo spazio nell'array dovrà comunque essere allocato.
+\subsection{Chaining}
+Un modo per evitare i problemi dell'\emph{indirizzamento diretto} è utilizzando un array più piccolo dell'universo possibile di chiavi. Questo ovviamente causa situazioni in cui c'è un \textbf{conflitto} perché due o più elementi voglio utilizzare la stessa chiave. Viene quindi creata una \textbf{lista} di elementi associata alla posizione in cui si è creato il conflitto e ogni nuovo elemento che vuole inserirsi lì verrà messo sulla testa della lista. \\
+Per capire ogni elemento a quale chiave deve essere associato si utilizza una \textbf{funzione di hash} che deve essere definita in modo da ridurre il numero di collisioni e da generare sempre lo stesso indice per la stessa chiave.
+%TODO Inserisci immagini
+\subsection{Open addressing}
+I conflitti di indirizzo vengono risolti cercando la prima posizione libera. Questo processo di ricerca viene chiamato \textbf{probing}. Questa operazione può avvenire in diversi modi:
+\begin{itemize}
+	\item \emph{Lineare}: vado alla posizione successiva
+	\item \emph{Quadratico}: uso una funzione quadratica
+	\item \emph{Doppio hash}: utilizzo la funzione hash per cercare la posizione successiva
+\end{itemize}
+\begin{example}
+	Esempio di esecuzione di \emph{probing}:
+	\begin{gather*}
+		probe(0) \longrightarrow h(i) \\
+		probe(1) \longrightarrow (h(i) + f(1))\\
+		\vdots \\
+		probe(j) \longrightarrow (h(i) + f(j))\\
+		\vdots \\
+		probe(m-1) \longrightarrow Fail\\
+	\end{gather*}
+\end{example}
+
+\begin{example}
+	Esempio di \emph{probing lineare}.
+\end{example}
+\begin{observation}
+	Il problema che nasce dell'open addressing lineare è il \textbf{clustering primario}. Quando infatti si verifica una collisione, viene riempita una cella di memoria nelle vicinanze, aumentando così il rischio di collisione e aumentando il tempo necessario per la ricerca. \\ Questo avviene perché la \emph{probabilità} che uno slot preceduto da slot pieni sia riempito è pari a $\frac{i + 1}{m}$.
+\end{observation}
+\begin{observation}
+	Il problema che deriva dall'utilizzo di open addressing quadratico è il \textbf{clustering secondario}. Infatti in questo caso se due chiavi hanno la stessa posizione iniziale la loro sequenza di tentativi sarà la stessa.
+\end{observation}

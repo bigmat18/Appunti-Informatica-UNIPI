@@ -42,7 +42,7 @@ Una \textbf{struct} (struttura) \textbf{autoreferenziale} ha un membro puntatore
 \subsection{Operazioni sulle liste}
 \subsubsection{Insert}
 Viene codificata come segue:
-\begin{lstlisting}[language=C, caption=Esempio di una struct]
+\begin{lstlisting}[language=C, caption=Inserimento in una lista]
 	void insert(NodoPtr *lPtr, int val) {
 		// Alloco nuovo nodo
 		NodoPtr nuovoPtr = malloc(sizeof(Nodo));
@@ -72,3 +72,117 @@ Viene codificata come segue:
 		}
 	}
 \end{lstlisting}
+
+\subsubsection{Delete}
+Viene codificata come segue:
+\begin{lstlisting}[language=C, caption=Cancellazione in una lista]
+void delete(NodoPtr *lPtr, int val) {
+	if (*lPtr != NULL) {
+		if (val == (*lPtr)->dato) {
+			NodoPtr tempPtr = *lPtr;
+			*lPtr = (*lPtr)->prossimoPtr;
+			free(tempPtr);
+		}
+		else {
+			NodoPtr precedentePtr = *lPtr;
+			NodoPtr correntePtr = (*lPtr)->prossimoPtr;
+			while (correntePtr != NULL && correntePtr->dato != val) {
+				precedentePtr = correntePtr;
+				correntePtr = correntePtr->prossimoPtr;
+			}
+			if (correntePtr != NULL) {
+				NodoPtr tempPtr = correntePtr;
+				precedentePtr->prossimoPtr = correntePtr->prossimoPtr;
+				free(tempPtr);
+			}
+		}
+	}
+}
+\end{lstlisting}
+
+\subsubsection{Verifica se è vuota}
+\begin{lstlisting}[language=C, caption=Verificare se la lista è vuota]
+int is_empty(NodoPtr lPtr) {
+	return lPtr == NULL;
+}
+\end{lstlisting}
+
+\subsection{Liste particolari}
+\subsubsection{Pile}
+\begin{definition}
+	Una \textbf{pila} è una lista in cui inserimenti e cancellazioni possono essere fatte solo sulla testa della lista (politica \textbf{LIFO}).
+\end{definition}
+Le operazioni che possono essere eseguite sulle pile sono:
+\begin{itemize}
+	\item \textbf{Push}: inserimento di un nuovo nodo in testa
+	\begin{lstlisting}[language=C]
+		void push(NodoPtr *topPtr, int val) {
+			// alloco nuovo nodo
+			NodoPtr nuovoPtr = malloc(sizeof(Nodo));
+			if (nuovoPtr != NULL) { // Spazio disponibile
+				// inizializzo nodo
+				nuovoPtr->dato = val;
+				nuovoPtr->prossimoPtr = *topPtr;
+				*topPtr = nuovoPtr;
+			}
+			else {
+				puts("Memoria esaurita");
+			}
+		}
+	\end{lstlisting}
+	\item  \textbf{Pop}: cancellazione di un elemento in testa
+	\begin{lstlisting}[language=C]
+		int pop(NodoPtr *topPtr) {
+			int val = (*topPtr)->dato;
+			NodoPtr tempPtr = *topPtr;
+			*topPtr = (*topPtr)->prossimoPtr;
+			free(tempPtr);
+			return val;
+		}
+	\end{lstlisting}
+	\item \textbf{is\_empty}, \textbf{stampa\_pila}
+\end{itemize}
+
+\subsubsection{Code}
+\begin{definition}
+	Una \textbf{pila} è una lista in cui inserimenti e cancellazioni possono essere fatte solo alla fine della lista (politica \textbf{FIFO}).
+\end{definition}
+Le operazioni che possono essere eseguite sulle pile sono:
+\begin{itemize}
+	\item \textbf{Enqueue}: inserimento di un nuovo nodo alla fine della coda
+	\begin{lstlisting}[language=C]
+		void enqueue(NodoPtr *testaPtr, NodoPtr * codaPtr, int val) {
+			// alloco nuovo nodo
+			NodoPtr nuovoPtr = malloc(sizeof(Nodo));
+			if (nuovoPtr != NULL) { // Spazio disponibile
+				// inizializzo nodo
+				nuovoPtr->dato = val;
+				nuovoPtr->prossimoPtr = NULL;
+				if (is_empty(*testaPtr)) {
+					*testaPtr = nuovoPtr;
+				}
+				else {
+					(*codaPtr)->prossimoPtr = nuovoPtr;
+					*codaPtr = nuovoPtr;
+				}
+			}
+			else {
+				puts("Memoria esaurita");
+			}
+		}
+	\end{lstlisting}
+	\item  \textbf{Dequeue}: cancellazione di un elemento in testa
+	\begin{lstlisting}[language=C]
+		int dequeue(NodoPtr *testaPtr, NodoPtr * codaPtr) {
+			int val = (*testaPtr)->dato;
+			NodoPtr tempPtr = *testaPtr;
+			*testaPtr = (*testaPtr)->prossimoPtr;	
+			if (*testaPtr == NULL) {
+				*codaPtr = NULL;
+			}
+			free(tempPtr);
+			return val;
+		}
+	\end{lstlisting}
+	\item \textbf{is\_empty}, \textbf{stampa\_coda}
+\end{itemize}

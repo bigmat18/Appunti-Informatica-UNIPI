@@ -1,0 +1,111 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Alberi}
+%TODO Integrare robe ovvie sugli alberi
+\subsection{Rappresentazione}
+\subsubsection{Array}
+Per rappresentare un albero \emph{binario} di profondità $d$ possiamo utilizzare un \textbf{array} di dimensione $2^{d+1}-1$. Questa scelta può portare a dei vantaggi e svantaggi:
+\begin{itemize}
+	\item \textbf{Vantaggi}:
+	\begin{itemize}
+		\item Accesso diretto ai nodi
+	\end{itemize}
+	\item \textbf{Svantaggi}:
+	\begin{itemize}
+		\item L'\emph{altezza} dell'albero deve essere nota
+		\item Spreco di memoria
+		\item \emph{Inserimento} e \emph{cancellazione} sono operazioni complicate
+	\end{itemize}
+\end{itemize}
+Per questi motivi gli array si usano raramente per la rappresentazione di alberi.
+\subsubsection{Liste}
+Il modo più usato per la rappresentazione di alberi è quello delle \textbf{liste}, codificandoli come segue:
+\begin{lstlisting}[language=C, caption=Alberi con liste, mathescape=true]
+	struct node {
+		int data;
+		struct node *left;
+		struct node *right;
+	}
+\end{lstlisting}
+Questa scelta ci porta a vantaggi e svantaggi:
+\begin{itemize}
+	\item \textbf{Vantaggi}:
+	\begin{itemize}
+		\item L'\emph{altezza} dell'albero non deve essere nota
+		\item Nessuno spreco di memoria
+		\item \emph{Inserimento} e \emph{cancellazione} sono operazioni facili
+	\end{itemize}
+	\item \textbf{Svantaggi}:
+	\begin{itemize}
+		\item Mancanza di accesso diretto ai nodi
+		\item Memoria aggiuntiva per memorizzare figlio destro e sinistro
+	\end{itemize}
+\end{itemize}
+
+\subsection{Visitare}
+Possiamo effettuare l'operazione di \textbf{visita} su un albero binario in tre modi diversi. Tutti questi algoritmi avranno \textbf{complessità} $O(n)$.
+\subsubsection{Anticipata}
+\begin{lstlisting}[language=C, caption=Alberi con liste, mathescape=true]
+	Anticipata(x):
+		if x != NULL
+			print(x.key)
+			Anticipata(x.left)
+			Anticipata(x.right)
+\end{lstlisting}
+\begin{example}
+	%TODO Da finire
+\end{example}
+\subsubsection{Posticipata}
+\begin{lstlisting}[language=C, caption=Alberi con liste, mathescape=true]
+	Posticipata(x):
+		if x != NULL
+			Posticipata(x.left)
+			Posticipata(x.right)
+			print(x.key)
+\end{lstlisting}
+\begin{example}
+	%TODO Da finire
+\end{example}
+\subsubsection{Simmetrica}
+\begin{lstlisting}[language=C, caption=Alberi con liste, mathescape=true]
+	Simmetrica(x):
+		if x != NULL
+			Simmetrica(x.left)
+			print(x.key)
+			Simmetrica(x.right)
+\end{lstlisting}
+\begin{example}
+	%TODO Da finire
+\end{example}
+\subsection{Albero binario di ricerca}
+Un caso particolare di albero binario è un albero binario di ricerca. Questo rispecchia le seguenti proprietà, dato un nodo $x$, applicate ricorsivamente:
+\begin{itemize}
+	\item $x.left.key \leq x.key$, ovvero tutti i nodi alla sinistra sono i minori di $x$
+	\item $x.right.key \geq x.key$, ovvero tutti i nodi alla destra sono i maggiori di $x$
+\end{itemize}
+\begin{note}
+	Per effettuare la stampa \textbf{ordinata} degli elementi dobbiamo utilizzare la visita \textbf{simmetrica}.
+\end{note}
+\subsubsection{Ricerca}
+Algoritmo ricorsivo per la ricerca di un elemento:
+\begin{lstlisting}[language=C, caption=Ricerca ricorsiva, mathescape=true]
+	RicercaABR_R(x, k)
+		if x == NULL OR k == x.key
+			return x
+		if k < x.key
+			return RicercaABR_R(x.left, k)
+		else return RicercaABR_R(x.right, k)
+\end{lstlisting}
+Algoritmi per la ricerca del valore minimo e massimo di un albero:
+\begin{lstlisting}[language=C, caption=Ricerca del minimo, mathescape=true]
+	RicercaMIN_I(x)
+		while x.left != NULL
+			x = x.left
+		return x
+\end{lstlisting}
+\begin{lstlisting}[language=C, caption=Ricerca del massimo, mathescape=true]
+	RicercaMAX_I(x)
+		while x.right != NULL
+			x = x.right
+		return x
+\end{lstlisting}
