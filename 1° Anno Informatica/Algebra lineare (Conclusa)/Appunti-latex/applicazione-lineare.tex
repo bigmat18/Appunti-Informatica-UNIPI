@@ -1,10 +1,11 @@
+% !TeX spellcheck = it_IT
 \newpage
 \section{Applicazione lineare}
 \begin{definition}[Applicazione lineare]
-Siano $V_1, V_2$ spazi vettoriali su $\mathbb{R}$. Un'applicazione lineare (o mappa lineare) è una mappa $\varphi: V_1 \to V_2$ soddisfano:
+Siano $V_1, V_2$ spazi vettoriali su $\mathbb{R}$. Un'applicazione lineare (o mappa lineare) è una mappa $\varphi: V_1 \to V_2$ tale che:
 \begin{enumerate}
-    \item $\varphi(v_1 + v_2) = \varphi(v_1) + \varphi(v_2) \: \forall \: v_1, v_2 \in V_1$.
-    \item $\lambda \varphi(v) = \varphi(\lambda v) \forall \: v \in V_1$.
+    \item $\varphi(v_1 + v_2) = \varphi(v_1) + \varphi(v_2)$, $\forall v_1, v_2 \in V_1$.
+    \item $\lambda \varphi(v) = \varphi(\lambda v)$, $\forall  v \in V_1$.
 \end{enumerate}
 \end{definition}
 
@@ -12,7 +13,7 @@ Siano $V_1, V_2$ spazi vettoriali su $\mathbb{R}$. Un'applicazione lineare (o ma
 Alcuni esempi di applicazioni lineari:
 \begin{itemize}
     \item $V_1 = \mathbb{R}^n$, $V_2 = \mathbb{R}$, $\varphi\Big(\begin{bmatrix}a_1\\\vdots\\a_n\end{bmatrix}\Big) = \lambda_1a_1 + \cdots + \lambda_n a_n$ con $\lambda_1 \cdots \lambda_n$ fisso.
-    \item $V_1 = \mathbb{R}^n$, $V_2 = \mathbb{R}^2$, $\varphi\Bigg(\begin{bmatrix}a_1 \\ \vdots \\ a_n\end{bmatrix}\Bigg) = \Bigg(\begin{array}{c}\lambda_1 a_1 + \cdots + \lambda_n a_n \\ \mu_1 a_1 + \cdots + \mu_n a_n\end{array} \Bigg)$ con $\lambda_1, \cdots, \lambda_n$ e $\mu_1, \cdots, \mu_n$ fissi.
+    \item $V_1 = \mathbb{R}^n$, $V_2 = \mathbb{R}^2$, $\varphi\Bigg(\begin{bmatrix}a_1 \\ \vdots \\ a_n\end{bmatrix}\Bigg) = \begin{bmatrix}{c}\lambda_1 a_1 + \cdots + \lambda_n a_n \\ \mu_1 a_1 + \cdots + \mu_n a_n\end{bmatrix}$ con $\lambda_1, \cdots, \lambda_n$ e $\mu_1, \cdots, \mu_n$ fissi.
     \item $V_1 = \mathbb{R}^n, V_2 = \mathbb{R}^{n-1}$, $\varphi\Bigg(\begin{bmatrix}a_1 \\ \vdots \\ a_n\end{bmatrix}\Bigg) = \begin{bmatrix}a_1 \\ \vdots \\ a_{n-1}\end{bmatrix}$
     \item $V_1 = \mathbb{R}[x]_{\leq d}, V_2 = \mathbb{R}[x]_{\leq d-1}$ quindi è come scrivere $\varphi(f) = f'$. \\
     E questo va bene perché sono rispettate le proprietà (a) e (b) della definizione sopra.
@@ -61,3 +62,411 @@ Quindi $\lambda_1 v_1 + \cdots + \lambda_r v_r = 0$ ed allora $\lambda_1 = \cdot
 In fine $\lambda_1 = \cdots = \lambda_r = \lambda_{r+1} = \cdots = \lambda_{r+s} = 0$.\\
 $span(v_1, \cdots, v_r, \overline{v_1}, \cdots, \overline{v_s}) = v_1$ tale che sia $v \i V_1$. $\varphi(v) \in Im(\varphi) \Longrightarrow \exists \: \overline{\lambda_1}, \cdots, \overline{\lambda_s}$ tale che $\varphi(v) = \overline{\lambda_1}w_1 + \cdots + \overline{\lambda_s}w_s$. Ma allora $\varphi(v - \overline{\lambda_1}\overline{v_1} - \cdots - \overline{\lambda_s}\overline{v_s}) = \varphi(v) - \overline{\lambda_1}\varphi(\overline{v_1}) - \cdots - \overline{\lambda_s}\varphi(\overline{v_s}) = 0$. Quindi $v - \overline{\lambda_1}\overline{v_1} - \cdots - \overline{\lambda_s}\overline{v_s} \in Ker(\varphi)$, ma allora $v - \overline{\lambda_1}\overline{v_1} - \cdots - \overline{\lambda_s}\overline{v_s} = \lambda_1 v_1 + \cdots + \lambda_r v_r$ $\forall \: \lambda_{1}, \cdots, \lambda_r$ perché $v_1, \cdots, v_r$ base di $Ker(\varphi)$. In somma $v = \lambda_1 v_1 + \cdots + \lambda_r v_r + \overline{\lambda_1}\overline{v_1} + \cdots + \overline{\lambda_s}\overline{v_s}$
 \end{demostration}
+\begin{observation}
+	Supponiamo che $v_1, \hdots, v_n$ sia una base di $V_1$. Allora $\varphi$ è unicamente determinata dai valori $\varphi(v_1), \hdots, \varphi(v_n)$. \\
+	Infatti $\forall v \in V_1 $ si scrive in modo unico come $v=\lambda_1v_1 + \hdots + \lambda_n v_n$. Ma allora
+	\begin{equation*}
+		\varphi(v)  = (\lambda_1v_1 + \hdots + \lambda_n v_n) = \varphi(\lambda_{1}v_1) + \varphi(\lambda_nv_n) = \lambda_1\varphi(v_1) + \hdots + \lambda_n\varphi(v_n)
+	\end{equation*}
+	Viceversa, dati vettori $w_1, \hdots, w_n \in V_2$, $\exists \varphi: V_1 \rightarrow V_2$ lineare tale che $\varphi(v_1)=w_1, \hdots, \varphi(v_n) = w_n$ perché $\varphi(v)$ deve essere $v=\lambda_1v_1 + \hdots + \lambda_n v_n = \lambda_{1}w_1 + \hdots + \lambda_nw_n$.
+\end{observation}
+\begin{example}
+	Troviamo $\varphi:\mathbf{R}^2\rightarrow\mathbf{R}^2$ tale che:
+	\begin{equation*}
+		\varphi \bigg(
+		\begin{bmatrix}
+			1 \\ 0
+		\end{bmatrix}
+		\bigg) = 
+		\begin{bmatrix}
+			0 \\ 1
+		\end{bmatrix}
+		\text{ e }
+		\varphi \bigg(
+		\begin{bmatrix}
+			0 \\ 1
+		\end{bmatrix}
+		\bigg) = 
+		\begin{bmatrix}
+			1 \\ 0
+		\end{bmatrix}
+	\end{equation*}
+	Un elemento generico di $\mathbf{R}^2$ è:
+	\begin{equation*}
+		\begin{bmatrix}
+			a_1 \\ a_2
+		\end{bmatrix}
+		= a_1
+		\begin{bmatrix}
+			1 \\ 0
+		\end{bmatrix}
+		+ a_2
+		\begin{bmatrix}
+			0 \\ 1
+		\end{bmatrix}
+	\end{equation*}
+	Allora abbiamo che:
+	%TODO Sei rimasto indietro
+	
+\end{example}
+\begin{example}
+	Troviamo $\varphi:\mathbf{R}^2\rightarrow\mathbf{R}^2$ tale che:
+	\begin{equation*}
+		\varphi \bigg(
+		\begin{bmatrix}
+			1 \\ 0
+		\end{bmatrix}
+		\bigg) = 
+		\begin{bmatrix}
+			0 \\ 0
+		\end{bmatrix}
+		\text{ e }
+		\varphi \bigg(
+		\begin{bmatrix}
+			0 \\ 1
+		\end{bmatrix}
+		\bigg) = 
+		\begin{bmatrix}
+			0 \\ 1
+		\end{bmatrix}
+	\end{equation*}
+	Usiamo l'elemento generico di $\mathbf{R}^2$ dell'esempio precedente e abbiamo che:
+	%TODO Sei rimasto indietro
+\end{example}
+\begin{observation}
+	Sappiamo che $dim(V_1) = dim(V_2) = n$. Sia $a_1, \hdots, a_n$ base di $V_1$ e $a'_1, \hdots, a'_n$ base di $V_2$. \\
+	Sappiamo che $\exists \varphi: V_1 \rightarrow V_2$ tale che $\varphi(a_1) = a'_1, \hdots, \varphi(a_n)=a'_n$ e $\exists \psi: V_2 \rightarrow V_1$ tale che $\varphi(a'_1) = a_1, \hdots, \varphi(a'_n)=a_n$ %TODO Probabilmente hai sbagliato a copiare e sei pure rimasto indietro
+\end{observation}
+\begin{example}
+	Dati $V_1 = M_{2 \times 2}(\mathbf{R})$ e $V_2 = \mathbf{R}^4$ e le loro basi:
+	\begin{equation*}
+		\text{Base di }V_1:
+		\begin{bmatrix}
+			1 & 0 \\
+			0 & 0
+		\end{bmatrix},
+		\begin{bmatrix}
+			0 & 1 \\
+			0 & 0
+		\end{bmatrix},
+		\begin{bmatrix}
+			0 & 0 \\
+			1 & 0
+		\end{bmatrix},
+		\begin{bmatrix}
+			0 & 0 \\
+			0 & 1
+		\end{bmatrix}
+		\text{Base di }V_2:
+		\begin{bmatrix}
+			1 \\ 0 \\ 0 \\ 0
+		\end{bmatrix},
+		\begin{bmatrix}
+			0 \\ 1 \\ 0 \\ 0
+		\end{bmatrix},
+		\begin{bmatrix}
+			0 \\ 0 \\ 1 \\ 0
+		\end{bmatrix},
+		\begin{bmatrix}
+			0 \\ 0 \\ 0 \\ 1
+		\end{bmatrix}
+	\end{equation*}
+	Abbiamo quindi che:
+	\begin{equation*}
+		\varphi \bigg(
+		\begin{bmatrix}
+			1 & 0 \\
+			0 & 0
+		\end{bmatrix}
+		\bigg)
+		=
+		\begin{bmatrix}
+			1 \\ 0 \\ 0 \\ 0
+		\end{bmatrix},
+		\varphi \bigg(
+		\begin{bmatrix}
+			0 & 1 \\
+			0 & 0
+		\end{bmatrix}
+		\bigg)
+		=
+		\begin{bmatrix}
+			0 \\ 1 \\ 0 \\ 0
+		\end{bmatrix},
+		\varphi \bigg(
+		\begin{bmatrix}
+			0 & 0 \\
+			1 & 0
+		\end{bmatrix}
+		\bigg)
+		=
+		\begin{bmatrix}
+			0 \\ 0 \\ 1 \\ 0
+		\end{bmatrix},
+		\varphi \bigg(
+		\begin{bmatrix}
+			0 & 0 \\
+			0 & 1
+		\end{bmatrix}
+		\bigg)
+		=
+		\begin{bmatrix}
+			0 \\ 0 \\ 0 \\ 1
+		\end{bmatrix}
+	\end{equation*}
+	\begin{equation*}
+		\varphi \bigg(
+		\begin{bmatrix}
+			a_{11} & a_{12} \\
+			a_{21} & a_{22}
+		\end{bmatrix}
+		\bigg)
+		=
+		\begin{bmatrix}
+			a_{11} \\ a_{12} \\
+			a_{21} \\ a_{22}
+		\end{bmatrix}
+		\text{ Mentre l'inversa è: }
+		\varphi \bigg(
+		\begin{bmatrix}
+			a_{11} \\ a_{12} \\
+			a_{21} \\ a_{22}
+		\end{bmatrix}
+		\bigg)
+		=
+		\begin{bmatrix}
+			a_{11} & a_{12} \\
+			a_{21} & a_{22}
+		\end{bmatrix}
+	\end{equation*}
+\end{example}
+%TODO Da fare generalizzazione
+\begin{definition}
+	Se $dim(V)=n$, esiste un \textbf{isomorfismo} $\varphi: V \xrightarrow{\sim} \mathbf{R}^n$. Se $a_1, \hdots, a_n$ è una base di $V$, poniamo
+	\begin{equation*}
+		\varphi(a_1)=
+		\begin{bmatrix}
+			1 \\ 0 \\ \vdots \\ 0
+		\end{bmatrix},
+		\varphi(a_2)=
+		\begin{bmatrix}
+			0 \\ 1 \\ \vdots \\ 0
+		\end{bmatrix},
+		\hdots,
+		\varphi(a_n)=
+		\begin{bmatrix}
+			0 \\ 0 \\ \vdots \\ 1
+		\end{bmatrix}
+	\end{equation*}
+	Otteniamo quindi $\forall v \in V_1$:
+	\begin{equation*}
+		v = \lambda_{1}a_1 + \ldots + \lambda_n a_n \leadsto \varphi(v) = \begin{bmatrix}
+			\lambda_{1} \\
+			\lambda_{2} \\
+			\vdots \\
+			\lambda_{n}
+		\end{bmatrix}
+		\text{ Inversa: } \psi : 
+		\begin{bmatrix}
+			\lambda_{1} \\
+			\vdots
+			\lambda_{n}
+		\end{bmatrix}
+		\mapsto
+		\lambda_{1}a_1 + \ldots + \lambda_{n} a_n.
+	\end{equation*}
+\end{definition}
+
+%TODO Problema
+\begin{example}
+	Sia $\varphi: \mathbf{R}^n \rightarrow \mathbb{R}^m$ un'applicazione lineare. Conoscendo i valori di $\varphi$ sulla base standard, come si calcola $\varphi(v)$ per $v \in \mathbf{R}^n$ generale?\\
+	Ipotizziamo che $n = m = 2$. Conosciamo
+	\begin{equation*}
+		\varphi \bigg(
+		\begin{bmatrix}
+			1 \\ 0
+		\end{bmatrix}
+		\bigg) = 
+		\begin{bmatrix}
+			a_{11} \\
+			a_{21}
+		\end{bmatrix}
+		\varphi \bigg(
+		\begin{bmatrix}
+			0 \\ 1
+		\end{bmatrix}
+		\bigg) = 
+		\begin{bmatrix}
+			a_{12} \\
+			a_{22}
+		\end{bmatrix}
+	\end{equation*}
+	Se abbiamo un vettore generale
+	\begin{equation*}
+		v = \begin{bmatrix}
+			b_1 \\ b_2
+		\end{bmatrix} \in \mathbf{R}^2
+	\end{equation*}
+	allora
+	\begin{equation*}
+		\begin{bmatrix}
+			b_1 \\ b_2
+		\end{bmatrix} = 
+		b_1 \begin{bmatrix}
+			1 \\ 0
+		\end{bmatrix} + 
+		b_2 \begin{bmatrix}
+			0 \\ 1
+		\end{bmatrix} = 
+		b_1
+		\varphi \bigg(
+		\begin{bmatrix}
+			1 \\ 0
+		\end{bmatrix} \bigg) +
+		b_2 \varphi \bigg( \begin{bmatrix}
+			0 \\ 1
+		\end{bmatrix}
+		\bigg) =
+		b1 \begin{bmatrix}
+			a_{11} \\ a_{21}
+		\end{bmatrix} +
+		b2 \begin{bmatrix}
+			a_{12} \\ a_{22}
+		\end{bmatrix} =
+		\begin{bmatrix}
+			a_{11}b_1 + a_{12}b_2 \\
+			a_{21}b_1 + a_{22}b_2 
+		\end{bmatrix}
+	\end{equation*}
+\end{example}
+\begin{definition}[Prodotto di una matrice e un vettore colonna]
+	Sia $A \in M_{m \times m}(\mathbf{R})$, $v \in \mathbb{R}^n$, il loro prodotto è
+	\begin{equation*}
+		\begin{bmatrix}
+			a_{11}, \ldots, a_{1n} \\
+			\vdots \\
+			a_{m1}, \ldots, a_{mn}
+		\end{bmatrix}
+		\begin{bmatrix}
+			b_1 \\
+			\vdots \\
+			b_n
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			a_{11}b_{1} + a_{12}b_{2} + \ldots a_{1n}b_n\\
+			a_{21}b_{1} + a_{22}b_{2} + \ldots a_{2n}b_n\\
+			\vdots \\
+			a_{m1}b_{1} + a_{m2}b_{2} + \ldots a_{mn}b_n\\
+		\end{bmatrix} \in \mathbf{R}^m
+	\end{equation*}
+\end{definition}
+\begin{example}
+	Dati $\varphi: \mathbb{R}^3 \rightarrow \mathbf{R}$, $\varphi \bigg(\begin{bmatrix}
+		x \\ y \\ z
+	\end{bmatrix}\bigg) = x + 2y + 3z$. Troviamo $\varphi \bigg(\begin{bmatrix}
+1 \\ -1 \\ 1
+\end{bmatrix}\bigg) = 1 + 2 \cdot (-1) + 3 \cdot 1$.
+Ma anche:
+\begin{equation*}
+	\varphi\bigg(
+	\begin{bmatrix}
+		1 \\ 0 \\ 0
+	\end{bmatrix}
+	\bigg) = 1,
+	\varphi\bigg(
+	\begin{bmatrix}
+		0 \\ 1 \\ 0
+	\end{bmatrix}
+	\bigg) = 2,
+	\varphi\bigg(
+	\begin{bmatrix}
+		10 \\ 0 \\ 1
+	\end{bmatrix}
+	\bigg) = 3
+\end{equation*}
+Matrice di $\varphi$: $A \in M_{1 \times 3} (\mathbf{R})$, $A = [1, 2, 3]$
+\begin{equation*}
+	A \cdot \begin{bmatrix}
+		1 \\ -1 \\ 1
+	\end{bmatrix} = [1, 2, 3] \cdot \begin{bmatrix}
+	1 \\ -1 \\ 1
+\end{bmatrix} = 1 \cdot 1 + 2 \cdot (-1) + 3 \cdot 1 = 2
+\end{equation*}
+\end{example}
+\begin{example}
+	Dati $\varphi: \mathbf{R}^2 \rightarrow \mathbf{R}^2$, $\varphi\bigg(\begin{bmatrix}
+		x \\ y
+	\end{bmatrix}\bigg) = \begin{bmatrix}
+	x+y \\ x - y
+\end{bmatrix}$, $\varphi\bigg(\begin{bmatrix}
+1 \\ 1
+\end{bmatrix}\bigg) = \begin{bmatrix}
+2 \\ 0
+\end{bmatrix}$\\
+Matrice di $\varphi$:
+%TODO Ti sei perso di nuovo
+\end{example}
+%TODO Sarebbe una generalizzazione
+\begin{definition}
+	Sia $\varphi: V \rightarrow W$ un'applicazione lineare dove $dim(V) = n$ e $dim(W)=m$.\\
+	Sia $B = \{a_1, \ldots, a_n\}$ base di $V$ e $B' = \{a'_1, \ldots, a'_m\}$ base di $W$.
+	Scriviamo
+	\begin{equation*}
+		\varphi(a_1) = a_{11}a'_1 + a_{21}a'_2 + \ldots + a_{m1}a'_m
+		\varphi(a_2) = a_{12}a'_1 + a_{22}a'_2 + \ldots + a_{m2}a'_m
+		\vdots
+		\varphi(a_n) = a_{1n}a'_1 + a_{2n}a'_2 + \ldots + a_{mn}a'_m
+	\end{equation*}
+	La matrice di $\varphi$ rispetto alle basi $B$, $B'$ è:
+	\begin{equation*}
+		A = \begin{bmatrix}
+			a_{11} & a_{12} & \ldots & a_{1n} \\
+			a_{21} & a_{22} & \ldots & a_{2n} \\
+			\vdots \\
+			a_{m1} & a_{m2} & \ldots & a_{mn}
+		\end{bmatrix} = \begin{bmatrix}
+		\varphi(a_1) & \vdots & \varphi(a_2) & \vdots & \ldots & \vdots & \varphi(a_n)
+	\end{bmatrix}
+	\end{equation*}
+\end{definition}
+\begin{theorem}
+	Se $v=b_1a_1 + \ldots + b_na_n$ è un vettore di $V$. Le coordinate di $\varphi(v)$ rispetto alla base $B'$ sono date dal vettore
+	\begin{equation*}
+		A: \begin{bmatrix}
+			b_1 \\
+			\vdots \\
+			b_n
+		\end{bmatrix} \in \mathbf{R}^m
+	\end{equation*}
+\end{theorem}
+%TODO Tutti i mathbf sono bb
+\begin{example}
+	Dati $\varphi: \mathbb{R}^2 \rightarrow \mathbb{R}$ e $\varphi \bigg( \begin{bmatrix}
+		x \\ y
+	\end{bmatrix}\bigg) = x + 2y$. \\
+La matrice di $\varphi$ rispetto alla base standard di $\mathbb{R}^2$ in partenza è:
+\begin{equation*}
+	\varphi\bigg(\begin{bmatrix}
+		1 \\ 0
+	\end{bmatrix}\bigg) = 1
+	\varphi\bigg(\begin{bmatrix}
+		0 \\ 1
+	\end{bmatrix}\bigg) = 2
+	A = [1, 2] \in M_{1 \times 2}(\mathbb{R})
+\end{equation*}
+Se considero la base $\begin{bmatrix}
+	1 \\ 0
+\end{bmatrix}$, $\begin{bmatrix}
+1 \\ 1
+\end{bmatrix}$ di $\mathbb{R}^2$ in partenza:
+\begin{equation*}
+	\varphi\bigg(\begin{bmatrix}
+		1 \\ 0
+	\end{bmatrix}\bigg) = 1,
+	\varphi\bigg(\begin{bmatrix}
+		1 \\ 1
+	\end{bmatrix}\bigg) = 3
+	
+\end{equation*}
+\end{example}

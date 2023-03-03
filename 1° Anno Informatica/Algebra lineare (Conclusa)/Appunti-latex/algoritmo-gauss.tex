@@ -432,7 +432,7 @@ Esempio di matrici in forma a scalini ridotta e non.
 L'algoritmo sfrutta le 2 operazioni viste per l'algoritmo di gauss (A) e (B) ma aggiungendo anche l'operazione (C). Questo algoritmo, partendo da una matrice a scalini genera una matrice ridotta a scalini.
 \begin{enumerate}
     \item Con l'algoritmo di Gauss portiamo la matrice in forma a scalini.
-    \item In ogni riga si cerca il pivot (se esiste). Poi se il pivot è $\lambda \neq 1$, moltiplicare la riga per $\frac{1}{\lambda}$ (operazione (C)).
+    \item In ogni riga si cerca il pivot (se esiste). Se il pivot è $\lambda \neq 1$, moltiplicare la riga per $\frac{1}{\lambda}$ (operazione (C)).
     \item Nella colonna dei pivot gli elementi sotto (e nella riga a sinistra) sono già uguali a 0. Annullare gli elementi sopra della colonna con operazioni del tipo (B).\\
     Questa operazione non cambia gli altri pivot perché sono o a sinistra o sotto.
 \end{enumerate}

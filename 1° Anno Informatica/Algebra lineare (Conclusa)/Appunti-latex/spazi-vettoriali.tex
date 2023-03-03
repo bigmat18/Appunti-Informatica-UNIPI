@@ -1,48 +1,48 @@
+% !TeX spellcheck = it_IT
 \newpage
 \section{Spazi vettoriali}
-Motivazione geometrica: saranno punti e vettori nel piano $\mathbb{R}^2$. Un punto di $\mathbb{R}^2$ si può descrivere con due coordinate $(x_1,x_2)$, ma anche come un vettore (una freccia) dall'origine (0,0) a $(x_1, x_2)$.\\\\
-Esistono 2 operazioni che si possono fare fra due vettori:
-\begin{itemize}
-    \item \textbf{Somma} di due vettori che a livello di coordinate è: $(x_1,x_2) + (x_1', x_2') = (x_1 + x_1', x_2 + x_2')$\\
-    Geometricamente si calcolare un punto di incontro facendo il parallelogramma.
-    \item \textbf{Moltiplicare con uno scalare} $\lambda \in \mathbb{R}$: $\lambda(x_1, x_2) = (\lambda x_1, \lambda x_2)$\\
-    A livello geometrico la lunghezza è moltiplicata da $\lambda$ ma l'angolo non cambia.
-\end{itemize}
-
-\subsection{Generalizzazione operazioni}
-Queste due operazioni si possono anche generalizzare:
+\subsection{Spazio n-dimensionale}
+\begin{definition}
+	Uno spazio \textbf{n-dimensionale} standard su $\mathbf{R}$ si rappresenta come:
+	\begin{equation*}	
+		R^n = \Bigg\{ \begin{bmatrix}x_1\\x_2\\ \vdots \\ x_n\end{bmatrix} : x_i \in \mathbb{R} \Bigg\}
+	\end{equation*}
+\end{definition}
+\noindent Geometricamente uno spazio n-dimensionale con $n=2$ sarà un punto sul piano cartesiano.\\
+\begin{minipage}{.3\linewidth}
+	\centering
+	\[
+	\begin{bmatrix}a_1\\a_2\end{bmatrix} \Longleftrightarrow Punto
+	\] 
+\end{minipage}
+%TODO Inserire piano cartesiano con punto
+\subsection{Operazioni}
+Sugli spazi \emph{n-dimensionali} si possono effettuare alcune operazioni:
 \begin{itemize}
     \item \textbf{Somma} $(x_1, x_2, x_3) + (x_1', x_2', x_3') = (x_1 + x_1', x_2 + x_2', x_3 + x_3')$.
     \item \textbf{Moltiplicazione} $\lambda(x_1, x_2, x_3) = (\lambda x_1, \lambda x_2, \lambda x_3)$.
 \end{itemize}
-Si possono anche generalizzare queste operazione tramite le matrici e la definizione di $\mathbb{R}^n$.
 \begin{figure}[h!]
     \vspace{-12pt}
     \centering
     \begin{minipage}{.3\linewidth}
     \centering
     \[
-    R^n = \Bigg\{ \begin{bmatrix}x_1\\x_2\\ \vdots \\ x_n\end{bmatrix} : x_i \in \mathbb{R} \Bigg\}
-    \]
-    Spazio n-dimensioni standard.
-    \end{minipage}
-    \begin{minipage}{.3\linewidth}
-    \centering
-    \[
     \begin{bmatrix}x_1\\x_2\\ \vdots \\ x_n\end{bmatrix} + \begin{bmatrix}x_1'\\x_2'\\ \vdots \\ x_n'\end{bmatrix} = \begin{bmatrix}x_1 + x_1'\\x_2 + x_2'\\ \vdots \\ x_n + x_n'\end{bmatrix}
     \] 
-    Definizione Somma.
+    Somma
     \end{minipage}
     \begin{minipage}{.3\linewidth}
     \centering
     \[
     \lambda \cdot \begin{bmatrix}x_1\\x_2\\ \vdots \\ x_n\end{bmatrix} = \begin{bmatrix}\lambda x_1\\ \lambda x_2\\ \vdots \\ \lambda x_n\end{bmatrix}
     \]
-    Definizione Moltiplicazione.
+    Moltiplicazione
     \end{minipage}
 \end{figure}
-%tutorato.di.alglin@gmail.com
+%TODO Inserire rappresentazione geometrica di somma e prodotto
 
+\subsection{Spazio vettoriale}
 \begin{definition}[Spazio vettoriale]
 Uno spazio vettoriale su $\mathbb{R}$ è un insieme V che ammette due tipi di operazioni:
 \begin{itemize}
@@ -70,6 +70,7 @@ Uno spazio vettoriale su $\mathbb{R}$ è un insieme V che ammette due tipi di op
 \begin{observation}
 $R^n$ soddisfa tutti gli assiomi sopra scritti.
 \end{observation}
+\newpage
 \begin{example}
 Consideriamo una matrice $n \times m$ elementi reali $M_{n\times m}(\mathbb{R})$.
 \begin{figure}[h!]
@@ -94,8 +95,9 @@ Consideriamo una matrice $n \times m$ elementi reali $M_{n\times m}(\mathbb{R})$
 
 \begin{example}
 Prendiamo due funzioni continue $f, g: \mathbb{R}\to \mathbb{R}$. Possiamo effettuare le operazioni.
-Somma: $(f_1 + f_2)(x) = f_1(x) + f_2(x)$ \hspace{.3cm} Prodotto con $\lambda$: $(\lambda f)(x) = \lambda \cdots f(x)$.
+Somma: $(f_1 + f_2)(x) = f_1(x) + f_2(x)$ \hspace{.3cm} Prodotto con $\lambda$: $(\lambda f)(x) = \lambda \ldots f(x)$.
 \end{example}
+%TODO Ti sei perso, vedi di integrare
 
 \subsection{Sottospazio}
 Introduciamo ora il concetto di sottospazio vettoriale.
@@ -111,19 +113,24 @@ Sia V uno spazio vettoriale. Un \textbf{sottospazio} $W \subset V$ è un sottoin
 Un sottospazio $W \subset V$ è a sua volta uno spazio vettoriale.
 \end{proposition}
 
+\subsubsection{Interpretazione geometrica}
+%TODO Sistema un po'
+Un sottospazio vettoriale è una retta che passa per l'origine o un piano che passa per l'origine. IMPORTANTE: passa per l'origine
+
+%TODO Cerca di renderlo più leggibile e di capirci qualcosa
 \begin{example}
-Prendiamo $\Bigg \{\begin{bmatrix}t_1\\ t_2\end{bmatrix} \in \mathbb{R}^n \: : \: t_1 = 0\Bigg\} \subset \mathbb{R}^n$ è un sottospazio.\\
+Dato uno spazio vettoriale:
+\begin{equation*}
+	V = \mathbb{R}^n = \Bigg \{\begin{bmatrix}t_1\\ t_2\end{bmatrix}: t_i \in \mathbb{R}\Bigg\}
+\end{equation*}
+Prendiamo un sottospazio vettoriale di $V$:
+\begin{equation*}
+	\Bigg \{\begin{bmatrix}t_1\\ t_2\end{bmatrix} \in \mathbb{R}^n : t_1 = 0\Bigg\} \subset \mathbb{R}^n
+\end{equation*}
 Un elemento generale di questo sottospazio (sottospazio con $n=2$) è: $\begin{bmatrix}0\\x_2\end{bmatrix}(x_2 \in \mathbb{R})$\\
 Se prendiamo $\begin{bmatrix}0\\x_2\end{bmatrix} + \begin{bmatrix}0\\y_2\end{bmatrix} = \begin{bmatrix}0\\x_1 + x_2\end{bmatrix} \in W$ e $\lambda \cdot \begin{bmatrix}0\\x_2\end{bmatrix} = \begin{bmatrix}0\\\lambda \cdot x_2\end{bmatrix} \in W$\\\\
-Similmente se prendiamo $\Bigg \{\begin{bmatrix}t_1\\ t_2\end{bmatrix} \in \mathbb{R}^n \: : \: t_2 = 0\Bigg\} \subset \mathbb{R}^n$ vettori di forma  $\begin{bmatrix}x_1\\0\end{bmatrix}$ che è un sottospazio.
-\end{example}
-
-\begin{example}
-Se prendiamo invece $\Bigg \{\begin{bmatrix}t_1\\ t_2\end{bmatrix} \in \mathbb{R}^n \: : \: t_1 = 1\Bigg\}$ questo non è un sottospazio perché:
-Se prendiamo il caso con $n=2$ $\begin{bmatrix}1\\x_2\end{bmatrix} + \begin{bmatrix}1\\y_2\end{bmatrix} = \begin{bmatrix}2\\x_1 + x_2\end{bmatrix}$ che non è un sottospazio.
-\end{example}
-
-\begin{example}
+Similmente se prendiamo $\Bigg \{\begin{bmatrix}t_1\\ t_2\end{bmatrix} \in \mathbb{R}^n \: : \: t_2 = 0\Bigg\} \subset \mathbb{R}^n$ vettori di forma  $\begin{bmatrix}x_1\\0\end{bmatrix}$ che è un sottospazio.\\\\
+Se prendiamo invece $\Bigg \{\begin{bmatrix}t_1\\ t_2\end{bmatrix} \in \mathbb{R}^n \: : \: t_1 = 1\Bigg\}$ questo non è un sottospazio perché se prendiamo il caso con $n=2$ $\begin{bmatrix}1\\x_2\end{bmatrix} + \begin{bmatrix}1\\y_2\end{bmatrix} = \begin{bmatrix}2\\x_1 + x_2\end{bmatrix}$ che non è un sottospazio.\\\\
 Prendiamo ora $\Bigg \{\begin{bmatrix}t_1\\ t_2\end{bmatrix} \in \mathbb{R}^n \: : \: t_1 = t_2\Bigg\} \subset \mathbb{R}$ questo è un sottospazio perché:
 se facciamo $\begin{bmatrix}x_1\\x_2\end{bmatrix} + \begin{bmatrix}x_2'\\x_1'\end{bmatrix} = \begin{bmatrix}x_1 \cdot x_2'\\x_2 + x_1'\end{bmatrix}$ e $\lambda \cdot\begin{bmatrix}x_1 \\ x_2\end{bmatrix} = \begin{bmatrix}\lambda x_1 \\ \lambda x_2\end{bmatrix}$ quindi è un sottospazio.
 \end{example}
@@ -133,22 +140,31 @@ Facciamo un esempio differente, prendiamo $\Bigg\{\begin{bmatrix}a & b \\ c & d\
 \end{example}
 
 \begin{example}
-Facciamo alcuni esempi prendendo delle funzioni all'interno degli spazzi vettoriali.
+Facciamo alcuni esempi prendendo delle funzioni all'interno degli spazi vettoriali.
 \begin{itemize}
-    \item Dato $\{f \in \mathbb{R} \: : \: deg(f) \leq d\} \subset \mathbb{R}[x]$ con d fisso $\geq 0$. Questo è un sottospazio.
-    \item $\{f \in \mathbb{R} \: : \: deg(f) = d\}$ non è un sottoinsieme perché se per esempio $d=2$ abbiamo $f = x^2 + 3 \in W$, $g = -x^2 + x + 1 \in W$ ma $f + g = x + 4 \notin W$.
-    \item $\{f \in \mathbb{R} \: : \: f(0) = d\} \subset \mathbb{R}[x]$ invece è un sottoinsieme perché $f(0) = 0$, $g(0)=0 \Longrightarrow (f + g)(0) = 0$ e anche $(\lambda f)(0) = 0$.
-    \item $\{f \in \mathbb{R} \: : \: f(0) = 1\}$ non è un sottoinsieme perché già non contiene 0.
-    \item $\{f \in \mathbb{R} \: : \: f(2022) = 0\}$ è un sottoinsieme.
+    \item Dato $\{f \in \mathbb{R}[x] : deg(f) \leq d\} \subset \mathbb{R}[x]$ con $d$ fisso $\geq 0$. Questo è un sottospazio perché:
+    \begin{itemize}
+    	\item Se $deg(f_1) \leq d$, $deg(f_2) \leq d \Longrightarrow deg(f_1 + f_2) \leq d$
+    	\item  Se $deg(f) \leq d \Longrightarrow deg(\lambda \cdot f) \leq d$, $\forall \lambda$
+    \end{itemize}
+    \item $\{f \in \mathbb{R}[x] : deg(f) = d\} \subset \mathbb{R}[x]$ non è un sottospazio per diverse ragioni:
+    \begin{itemize}
+    	\item Se $d>0$ allora $0 \notin W_d$
+    	\item Se $d=2$ abbiamo $f = x^2 + 3 \in W$, $g = -x^2 + x + 1 \in W$ ma $f + g = x + 4 \notin W$.
+    \end{itemize}
+    \item $\{f \in \mathbb{R} \: : \: f(0) = d\} \subset \mathbb{R}[x]$ invece è un sottospazio perché $f(0) = 0$, $g(0)=0 \Longrightarrow (f + g)(0) = 0$ e anche $(\lambda f)(0) = 0$.
+    \item $\{f \in \mathbb{R} \: : \: f(0) = 1\}$ non è un sottospazio perché non contiene 0.
+    \item $\{f \in \mathbb{R} \: : \: f(2022) = 0\}$ è un sottospazio.
 \end{itemize}
 \end{example}
-\newpage
+
 \begin{example}
 Dati $a_1, a_2 \in \mathbb{R}$ fissi e dato il seguente insieme vettoriale\\\\
 $\Bigg \{ \begin{bmatrix}x_1 \\ x_2\end{bmatrix}\in \mathbb{R}^2 \: : \: a_1x_1 + a_2x_2 = 0\Bigg\} \subset \mathbb{R}^n$ è un sottospazio. Perché preso
 $\begin{cases}a_1x_1 + a_2x_2 \\a_1y_1 + a_2y_2 \end{cases}$\\\\
-vediamo che la somma $a_1(x_1 + y_1) + a_2(x_2 + y_2) = 0$ ed anche il prodotto con $\lambda$ fa $a_1(\lambda\: x_1) + a_2(\lambda \: x_2)=0$.\\
-Possiamo generalizzare scrivendo che, dato $a_1, a_2, \cdots, a_m \in \mathbb{R}$ fissi:\\\\
+vediamo che la somma $a_1(x_1 + y_1) + a_2(x_2 + y_2) = 0$ ed anche il prodotto con $\lambda$ fa $a_1(\lambda\: x_1) + a_2(\lambda \: x_2)=0$.
+\subsubsection{Generalizzazione}
+Possiamo dire che, dato $a_1, a_2, \cdots, a_m \in \mathbb{R}$ fissi:\\\\
 $\Bigg \{ \begin{bmatrix}x_1 \\ \vdots \\ x_m\end{bmatrix}\in \mathbb{R}^2 \: : \: a_1x_1 + a_2x_2 + \cdots + a_mx_m = 0\Bigg\} \subset \mathbb{R}^n$ è un sottospazio.\\\\Vediamo dunque che le soluzioni di un equazioni lineari omogenee a n variabili definiscono un sottospazio di $\mathbb{R}^n$. Possiamo generalizzare ulteriormente:\\\\
 $\Bigg \{ \begin{bmatrix}x_1 \\ \vdots \\ x_m\end{bmatrix}\in \mathbb{R}^2 \: : \: \begin{array}{l}
     a_{11}x_1 + a_{12}x_2 + \cdots + a_{1m}x_m = 0\\
@@ -158,22 +174,21 @@ $\Bigg \{ \begin{bmatrix}x_1 \\ \vdots \\ x_m\end{bmatrix}\in \mathbb{R}^2 \: : 
 \end{array}\Bigg\} \subset \mathbb{R}^n$ Quindi è un sottospazio.\\\\
 Dunque che la soluzione di un sistema di questioni lineare omogenee definisce un sottospazio $\mathbb{R}^m$.
 \end{example}
-
+\newpage
 \subsection{Combinazioni lineari}
 \begin{definition}[Combinazione lineare e banale]
-Sia V uno spazio vettoriale, $v_1, v_2, \cdots v_m \in V$. Una \textbf{combinazione lineare} di $v_1, \cdots, v_m$ è una somma $\lambda v_1+ \lambda v_2 + \cdots + \lambda_m v_m \in V$, dove $\lambda_1, \lambda_2, \cdots, \lambda_m \in \mathbb{R}$. La combinazione lineare è detta \textbf{banale} se $\lambda_1 = \cdots = \lambda_m = 0$. In questo caso $\lambda_1 v_1 + \cdots + \lambda v_m = 0$.
+Sia V uno spazio vettoriale e $v_1, v_2, \ldots, v_m$ vettori in $V$. Una \textbf{combinazione lineare} di $v_1, \ldots, v_m$ è una somma $\lambda v_1+ \lambda v_2 + \ldots + \lambda_m v_m \in V$, dove $\lambda_1, \lambda_2, \ldots, \lambda_m \in \mathbb{R}$. La combinazione lineare è detta \textbf{banale} se $\lambda_1 = \ldots = \lambda_m = 0$. In questo caso $\lambda_1 v_1 + \ldots + \lambda v_m = 0$.
 \end{definition}
 
-\hspace{-15pt}Nota che una combinazione lineare po' essere 0 ma non banale, per esempio:\\
+\noindent Nota che una combinazione lineare può essere $0$ ma non banale, per esempio:\\
 $V = \mathbb{R}^2$, \hspace{.2cm} $v_1 = \begin{bmatrix}1\\1\end{bmatrix}$, $v_2 = \begin{bmatrix}2\\2\end{bmatrix}$, \hspace{.2cm}allora $-2v_1 + 1v_2 = 0$.
 
 \begin{definition}[Sottospazio generato]
-Siano $v_1, \cdots, v_m \in V$ m vettori. Il \textbf{sottospazio generato} da $v_1, \cdots, v_m$ è: $span(v_1, v_2, \cdots, v_m) = \{\lambda_1 v_1 + \lambda_2 v_2 + \cdots + \lambda_n v_m \: : \: \lambda_{1}, \cdots, \lambda_m \in \mathbb{R}\}$.\\
-Quindi $span(v_1, \cdots, v_m)$ è l'insieme delle combinazioni lineari.
+Siano $v_1, \ldots, v_m \in V$ vettori. Il \textbf{sottospazio generato} da $v_1, \ldots, v_m$ è $Span(v_1, v_2, \ldots, v_m) = \{\lambda_1 v_1 + \lambda_2 v_2 + \ldots + \lambda_n v_m : \lambda_{1}, \ldots, \lambda_m \in \mathbb{R}\}$. Questo rappresenta l'insieme delle combinazioni lineari.
 \end{definition}
 
 \begin{proposition}
-$span(v_1, \cdots, v_m) \subset V$ è un sottospazio.
+$Span(v_1, \cdots, v_m) \subset V$ è un sottospazio.
 \end{proposition}
 
 \begin{demostration}
@@ -186,7 +201,7 @@ Se facciamo $span\Big\{\lambda_1 \begin{bmatrix}1\\0\end{bmatrix} + \lambda_2 \b
 \end{example}
 
 \begin{example}
-Sia $W = \Big\{\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix} in \mathbb{R}^3 \: : \: x_1 = 0\Big\}$ abbiamo allora che:
+Sia $W = \Big\{\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix} \in \mathbb{R}^3 \: : \: x_1 = 0\Big\}$ abbiamo allora che:
 $W = span\Big\{\begin{bmatrix}0\\1\\0\end{bmatrix}, \begin{bmatrix}0\\0\\1\end{bmatrix} \Big\} \subset \mathbb{R}^3$ quindi: $\Big \{\lambda_1 \begin{bmatrix}0\\1\\0\end{bmatrix} + \lambda_2 \begin{bmatrix}0\\0\\1\end{bmatrix}\} = \{\begin{bmatrix}0\\\lambda_1 \\ \lambda_2\end{bmatrix}\} = \{\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}\: : \: x_1=0\}$ è un sottospazio di $\mathbb{R}^3$ ma non è uguale a $\mathbb{R}^3$, ma è più piccolo essendo un piano attraverso l'origine.
 \end{example}
 
@@ -637,7 +652,7 @@ Sia $W_i \subset \mathbb{R}^n$ il sottospazio delle soluzioni dell'equazione omo
 \subsection{Formula di Grassman}
 \begin{definition}[Somma fra sottospazi]
 Siano $V_1, V_2 \subset V$ due sottospazi. La loro somma di $V_1, V_2$ è definita come:
-\[V_1 + V_2 = \{v_1 + v_1 \::\: v_1 \in V_1, v_2 \in V_2\}\]
+\[V_1 + V_2 = \{v_1 + v_2 : v_1 \in V_1, v_2 \in V_2\}\]
 \end{definition}
 
 \begin{observation}
@@ -657,7 +672,7 @@ Se $\lambda \in \mathbb{R}$, $\lambda v = \lambda(v_1 + v_2) = \lambda v_1 + \la
 \end{demostration}
 
 \begin{proposition}
-Se $v_1, v_2, \cdots, v_n \in V_1 + V_2 \Longrightarrow span(v_1, \cdots, v_n) \subset V_1 + V_2$.
+Se $v_1, v_2, \cdots, v_n \in V_1 + V_2 \Longrightarrow span(v_1, \hdots, v_n) \subset V_1 + V_2$.
 \end{proposition}
 
 \begin{demostration}
@@ -693,26 +708,38 @@ Detto ciò allora abbiamo che $v_1 = v^1 + v^2 = (\alpha_1 + \beta_1)e_1 + \cdot
 
 \begin{example}
 Consideriamo i due sottospazi in $\mathbb{R}^4$ seguenti:\\
-$V= \Big\{\text{soluzioni di } \begin{array}{l}x_1 + 2x_2 + x_3 = 0\\-x_1 -x_2 + 3x_4 = 0\end{array}\Big\}, W = span\Bigg(W_1 = \begin{bmatrix}2\\0\\1\\1\end{bmatrix}, W_2 = \begin{bmatrix}3\\-2\\-2\\0\end{bmatrix}\Bigg)$\\
-Calcoliamo $dim(V \cap W), dim(V + W)$. Sappiamo che $dim(W)=2$ perché ovviamente $W_1 \neq \lambda w_2$. Bisogna dunque calcolare la $dim(V)$.
+$V= \Big\{\text{soluzioni di } \begin{array}{l}x_1 + 2x_2 + x_3 = 0\\-x_1 -x_2 + 3x_4 = 0\end{array}\Big\}, W = span\Bigg(w_1 = \begin{bmatrix}2\\0\\1\\1\end{bmatrix}, w_2 = \begin{bmatrix}3\\-2\\-2\\0\end{bmatrix}\Bigg)$\\
+Calcoliamo $dim(V \cap W), dim(V + W)$. Sappiamo che $dim(W)=2$ perché $w_1 $ e $w_2$ sono \textbf{linearmente indipendenti}. Questo è ovvio in quanto abbiamo solo due vettori che non sono uno il multiplo dell'altro.\\
+Bisogna dunque calcolare la $dim(V)$ tramite Gauss-Jordan:
 \[
 \begin{bmatrix}
 1 & 2 & 1 & 0\\
 -1 & -1 & 0 & 3
 \end{bmatrix}
-R_2 + R_1
-\Rightarrow
+\xrightarrow{R_2 + R_1}
 \begin{bmatrix}
 1 & 2 & 1 & 0\\
 0 & 1 & 1 & 3
 \end{bmatrix}
-\Rightarrow
-\begin{array}{l}
-    x_1 + 2x_2 + x_3 = 0\\
-    x_2 + x_3 + 3x_4 = 0
-\end{array}
+\xrightarrow{R_1 - 2R_2}
+\begin{bmatrix}
+	1 & 0 & -1 & -6\\
+	0 & 1 & 1 & 3
+\end{bmatrix}
 \]
-Abbiamo dunque $x_3, x_4$ come variabili libere che fa si che $x_2 = -x_3 - 3 x_4$ e $x_1 = -2(-x_3 -3x_4) - x_3 = x_3 + 6x_4$, la soluzione generale è dunque:\\\\ $\begin{bmatrix}x_3 + 6x_4 \\ -x_3 - 3x_4 \\ x_3 \\ x_4\end{bmatrix} = x_3\begin{bmatrix}1\\-1\\1\\0\end{bmatrix} + x_4\begin{bmatrix}6\\-3\\0\\1\end{bmatrix}$ \hspace{.5cm} con $v_1 = \begin{bmatrix}1\\-1\\1\\0\end{bmatrix}$ e $v_2 = \begin{bmatrix}6\\-3\\0\\1\end{bmatrix}$ \\\\
+Abbiamo dunque $x_3, x_4$ come variabili libere che fa si che $x_1 = x_3 + 6 x_4$ e $x_2 = -x_3 - 3x_4$, la soluzione generale è dunque:\\\\
+$\begin{bmatrix}
+	x_1 \\ x_2 \\ x_3 \\ x_4
+\end{bmatrix}
+= x_3
+\begin{bmatrix}
+	1\\-1\\1\\0
+\end{bmatrix}
+ + x_4
+\begin{bmatrix}
+	6\\-3\\0\\1
+\end{bmatrix}$
+\hspace{.5cm} con $v_1 = \begin{bmatrix}1\\-1\\1\\0\end{bmatrix}$ e $v_2 = \begin{bmatrix}6\\-3\\0\\1\end{bmatrix}$ \\\\
 Quindi $dim(V) = 2$ e $v_1, v_2$ è una base. Cerchiamo ora $dim(V + W)$.
 \[
 \begin{bmatrix}
@@ -721,45 +748,37 @@ Quindi $dim(V) = 2$ e $v_1, v_2$ è una base. Cerchiamo ora $dim(V + W)$.
 1 & 0 & 1 & -2\\
 0 & 1 & 1 & 0
 \end{bmatrix}
-\begin{array}{l}
-R_2 + R_1\\
-R_3 - R_1
-\end{array}
-\Rightarrow
+\xrightarrow[R_2 + R_1]{R_3 - R_1}
 \begin{bmatrix}
 1 & 6 & 2 & 3\\
 0 & 3 & 2 & 1\\
 0 & -6 & -1 & -5\\
 0 & 1 & 1 & 0
 \end{bmatrix}
-R_3 + 3R_1
-\Rightarrow
+\xrightarrow{R_3 + 3R_1}
 \begin{bmatrix}
 1 & 6 & 2 & 3\\
 0 & 3 & 2 & 1\\
 0 & 0 & 3 & -3\\
 0 & 1 & 1 & 0
 \end{bmatrix}
-\text{Inverto } R_2, R_4
-\Rightarrow
-\]
-\[
+\xrightarrow{\text{Inverto } R_2, R_4}
 \begin{bmatrix}
 1 & 6 & 2 & 3\\
 0 & 1 & 1 & 0\\
 0 & 0 & 3 & -3\\
 0 & 3 & 2 & 1
 \end{bmatrix}
-R_4 - R_2
-\Rightarrow
+\]
+\[
+\xrightarrow{R_4 - R_2}
 \begin{bmatrix}
 1 & 6 & 2 & 3\\
 0 & 1 & 1 & 0\\
 0 & 0 & 3 & -3\\
 0 & 0 & -1 & 1
 \end{bmatrix}
-R_4 + \frac{1}{3}R_3
-\Rightarrow
+\xrightarrow{R_4 + \frac{1}{3}R_3}
 \begin{bmatrix}
 1 & 6 & 2 & 3\\
 0 & 1 & 1 & 0\\
@@ -768,7 +787,7 @@ R_4 + \frac{1}{3}R_3
 \end{bmatrix}
 \]
 Abbiamo dunque 3 pivots ed allora le prime 3 colonne sono indipendenti ma $v_1, v_2, w_1, w_2$ sono dipendenti. Questo fa si che $dim(V+W) =$3.\\
-Utilizzando poi Grassman: $dim(V \cap W) = dim(V) + dim(W) - dim(V+W) = 1$
+Utilizzando poi Grassman: $dim(V \cap W) = dim(V) + dim(W) - dim(V+W) = 2 + 2 - 3 = 1$
 \end{example}
 
 \begin{example}
@@ -814,4 +833,77 @@ In uno spazio di $dim = 1$ ogni vettore diverso da 0 è base, per trovarlo facci
 \]
 La soluzione generale è dunque $(-\frac{t}{2}, -\frac{t}{2}, t, 0)$ e con $t=1$ abbiamo $(\frac{1}{2}, \frac{1}{2}, -1, 0)$ che fa si abbiamo $\frac{1}{2}v_1 + \frac{1}{2}v_2 - w_1 = 0$. Dunque $w_1 = \frac{1}{2}v_1 + \frac{1}{2}v_2 \in V \cap W$.\\
 Quindi $w_1$ è una base di $V \cap W$ e questo perché so che questo spazio ha $dim = 1$ grazie a Grassman. Ogni volta che $V \cap W$ è della forma $t \cdot w_1$ allora ri dimostra che $dim(V \cap W) = 1$.
+\end{example}
+\begin{example}
+	Dati $V = M_{3 \times 3}(R)$, $V_1 = \{\text{matrici diagonali}\}$ e $V_2 = \{\text{matrici dove la 1° riga = 2° riga}\}$.
+	\[
+	\text{Base di $V_1$: }
+	\begin{bmatrix}
+		1 & 0 & 0 \\
+		0 & 0 & 0 \\
+		0 & 0 & 0 
+	\end{bmatrix}
+	\text{,}
+	\begin{bmatrix}
+		0 & 0 & 0 \\
+		0 & 1 & 0 \\
+		0 & 0 & 0 
+	\end{bmatrix}
+	\text{,}
+	\begin{bmatrix}
+		0 & 0 & 0 \\
+		0 & 0 & 0 \\
+		0 & 0 & 1
+	\end{bmatrix}
+	\Rightarrow dim(V_1) = 3
+	\]
+	\[
+	\text{Base di $V_2$: }
+	\begin{bmatrix}
+		1 & 0 & 0 \\
+		1 & 0 & 0 \\
+		0 & 0 & 0 
+	\end{bmatrix}
+	\text{,}
+	\begin{bmatrix}
+		0 & 1 & 0 \\
+		0 & 1 & 0 \\
+		0 & 0 & 0 
+	\end{bmatrix}
+	\text{,}
+	\begin{bmatrix}
+		0 & 0 & 1 \\
+		0 & 0 & 1 \\
+		0 & 0 & 0
+	\end{bmatrix}
+	\text{,}
+	\begin{bmatrix}
+		0 & 0 & 0 \\
+		0 & 0 & 0 \\
+		1 & 0 & 0
+	\end{bmatrix}
+	\text{,}
+	\begin{bmatrix}
+		0 & 0 & 0 \\
+		0 & 0 & 0 \\
+		0& 1 & 0
+	\end{bmatrix}
+	\text{,}
+	\begin{bmatrix}
+		0 & 0 & 0 \\
+		0 & 0 & 0 \\
+		0 & 0 & 1
+	\end{bmatrix}
+	\Rightarrow dim(V_1) = 6
+	\]
+	\[
+	\text{Elemento generale di $V_1 \cap V_2$: }
+	\begin{bmatrix}
+		0 & 0 & 0 \\
+		0 & 0 & 0 \\
+		0 & 0 & 1
+	\end{bmatrix}
+	\Rightarrow dim(V_1 \cap V_2) = 1
+	\]
+	Grassmann: $dim(V_1 + V_2) = 3 + 6 - 1 = 8$
 \end{example}
