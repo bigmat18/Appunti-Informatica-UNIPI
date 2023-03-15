@@ -1,0 +1,35 @@
+\newpage
+\section{Concorrenza}
+% .... copia ....
+Nella roadmap dei thread possiamo vedere vari tipi di implementazione:
+\begin{itemize}
+    \item Single-thread process multipli (prima UNIX)
+    \item User-level threads mulipli, dentro un processo UNIX (prima JAVA)
+    \item Mix fra processi single thread e multi-thread e kernel threads (Linux, MacOS, Wundows). Per un kernel un
+    kernel thread ed un single thread user proccess sempbrano simili.
+\end{itemize}
+
+\subsection{User-level threads}
+Sono dei thread implementati a livello di una libreria per utenti. The OS non è conscio di cosa accade al livello di user.
+Abbiamo inoltre una tabella di thread all'interno di ogni processo. Scheduling dei thread implementati dal Run Time Support (RTS) del processo. I thread possono utilizzare thread_yield() per rilasciare il processore, *preemptive scheduler con Scheduler Activations in Windows.
+Un'invocazione a una chiamata di sistema bloccante blocca tutti i thread del processi.\\\\
+L'implementazioni user-level avviene tramite la thread_create(thread, func, args).
+
+\begin{definition}[thread_create]
+    Alloca blocco di controllo del thread, alloca stack, 
+    crea stack frame per la base dello stack (stub), put func, argson stack, 
+    inserisci thread nell'elenco pronto. Verrà eseguito qualche tempo dopo (forse subito!).
+\end{definition}
+
+\hspace{-15pt}Esiste anche un'altra funzione chiamata stub che chiama *(func)(args) e poi chiama thread_exit().\\
+Andiamo ora o porci una domanda. Cosa succede se un thread mette troppe procedure al suo interno? (guarda registrazione)\\\\
+Per terminare vediamo alcuni pro e contro di user-level threads. I pro sono:
+\begin{itemize}
+    \item Creazione, terminazione e cambio di contesto molto efficienti: non sono necessarie invocazioni di chiamate di sistema, solo chiamate alla libreria dei thread: in caso di cambio di contesto, lo spazio di indirizzamento rimane lo stesso.
+    \item Può essere implementato su qualsiasi sistema operativo che non supporta il multithreading, ad es. prime versioni di UNIX.
+\end{itemize}
+\hspace{-15pt}Mentra i contro di questo tipo di threads sono:
+\begin{itemize}
+    \item Il blocco delle chiamate di sistema blocca tutti i thread a livello utente di un processo.
+    \item Non sfruttare le architetture multiprocessore: tutti i thread di un processo sono pianificati sullo stesso processore.
+\end{itemize}
