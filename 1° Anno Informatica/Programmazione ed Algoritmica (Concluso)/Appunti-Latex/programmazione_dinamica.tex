@@ -1,0 +1,101 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Programmazione dinamica}
+Si applica negli algoritmi ricorsivi in cui i sotto problemi ottenuti dalla tecnica \emph{Divide et impera} si ripropongono più volte, causando uno spreco di risorse considerevole. Si dice che questi sotto problemi non sono \textbf{indipendenti}. \\
+La tecnica consiste nel memorizzare le soluzioni in una \textbf{tabella} dei sotto problemi in modo da potervi accedere quando li si incontra di nuovo senza doverli risolvere nuovamente.
+\begin{example}[Fibonacci]
+	Generare la sequenza di Fibonacci, che ricordiamo essere definita come:
+	\begin{equation*}
+		F_n = 
+		\begin{cases}
+			0 & n=0 \\
+			1 & n=1 \\
+			F_{n-1} + F_{n-2} & n \geq 2
+		\end{cases}
+	\end{equation*}
+	\begin{lstlisting}[language=C, caption=Fibonacci, mathescape=true]
+		Fib(n)
+			if(n==0) return 0;
+			if(n==1) return 1;
+			return Fib(n-1)+Fib(n-2);
+	\end{lstlisting}
+	In questa soluzione di codice le somme eseguite sono in numero esponenziale:
+	\begin{equation*}
+		T(n) = 
+		\begin{cases}
+			0 & n \leq 1 \\
+			1 + T(n-1) + T(n-2) & n > 1
+		\end{cases}
+	\end{equation*}
+	Per calcolare la successione di Fibonacci con \textbf{memoization} di tipo \textbf{top down} usiamo il seguente algoritmo, sempre ricorsivo:
+	 \begin{lstlisting}[language=C, caption=Fibonacci dinamico top-down, mathescape=true]
+	 	Fib(n)
+	 		F: new array(0:n)	// Dimensione n+1
+	 		for i=0 to n
+	 			F(i) = -1
+	 		return FibRic(n, F)
+	 	
+	 	FibRic(n, F)
+	 		if(n==0 || n==1) return n;
+	 		if(F(n) != -1) return F[n]
+	 		else
+	 			F[n] = FibRic(n-1, F) + FibRic(n-2, F);
+	 			return F[n];
+	 \end{lstlisting}
+ 	Utilizzando invece il metodo \textbf{bottom-up}:
+ 	\begin{lstlisting}[language=C, caption=Fibonacci dinamico bottom-up, mathescape=true]
+ 		Fib(n)
+ 			F: new array(0:n)	// Dimensione n+1
+ 			F[0] = 0;
+ 			F[1] = 1;
+	 		for i=2 to n
+	 			F(i) = F[i-1] + F[i-2]
+ 			return F[n]
+ 	\end{lstlisting}
+ 	La complessità di questi algoritmi è $\Theta(n)$ in tempo e $\Theta(n)$ in spazio, a differenza dell'algoritmo non dinamico che ha una complessità di $\phi^n$ in tempo e %TODO Boh? so solo che non è lineare perché anche se non uso strutture dati di supporto ho lo stack dei record di attivazione dato che non è ricorsivo
+ 	Per ottimizzare l'algoritmo in spazio possiamo fare nel modo seguente:
+ 	\begin{lstlisting}[language=C, caption=Fibonacci spazio costante, mathescape=true]
+ 		Fib(n)
+ 			if(n==0) return 0;
+ 			if(n==1 || n==2) return 1;
+ 			a = 1
+ 			b = 1
+ 			for i=3 to n
+ 				c = a+b
+ 				a = b
+ 				b = c
+ 			return b;
+ 	\end{lstlisting}
+ 	\begin{observation}[Complessità in spazio]
+ 		Come sappiamo il numero di cifre necessarie per rappresentare un numero $n$ è $\log_x n$ dove $x$ è la base in cui scriviamo il numero. Di conseguenza in quest'ultimo algoritmo in realtà è \textbf{pseudo-polinomiale} in quanto passiamo da un'istanza di input logaritmica ad una complessità lineare.
+ 	\end{observation}
+\end{example}
+
+\subsection{Struttura di un algoritmo }
+La programmazione dinamica si applica a problemi di ottimizzazione con queste caratteristiche:
+\begin{itemize}
+	\item \textbf{Sottostruttura ottima}: la soluzione ottima del problema si può costruire dalle soluzioni ottime dei sottoproblemi
+	\item \textbf{Sovrapposizione dei sottoproblemi} (o ripetizione)
+\end{itemize}
+Gli algoritmi sono costituiti da 4 fasi:
+\begin{enumerate}
+	\item Definizione dei sotto problemi e dimensionamento della tabella.
+	\item Soluzione diretta dei sotto problemi elementari e inserimento di questi nella tabella (approccio \textbf{bottom-up})
+	\item Definizione della regola ricorsiva per ottenere la soluzione di un sotto problema a partire dalle soluzioni dei sotto problemi già risolti (già nella tabella)
+	\item Restituzione del risultato relativo al problema di dimensione $n$
+\end{enumerate}
+
+\begin{example}[Taglio della corda]
+	Data una corda di lunghezza $n$ e una tabella di prezzi (un pezzo di dimensione diversa ha un valore diverso), trovare il taglio ottimale della corda per massimizzare il guadagno.\\
+	Un possibile modo di affrontare il problema è tramite \textbf{brute-force}, che comporta analizzare ogni possibile taglio della corda. Notiamo che possiamo dividere la corda in $2^{n -1}$ possibili modi.\\
+	Un approccio \textbf{ricorsivo} al problema è quello di tagliare la corda al punto $i$. In questo modo abbiamo che il ricavo massimo ottenibile sarà il prezzo del pezzo tagliato $p(i)$ e il ricavo massimo della corda restante $r_{n-i}$. In generale il ricavo massimo quindi sarà $r_n = max_{1 \leq i \leq n}(p(i)+r(n-i))$.
+	\begin{lstlisting}[language=C, caption=Taglio della corda, mathescape=true]
+		CUT_ROD(P, n)
+			if(n==0) return 0;
+			q = -$\infty$
+			for i=1 to n
+				q = max{q, p[i] + CUT_ROD(P, n-i)}
+			return q;
+	\end{lstlisting}
+	Questo algoritmo, per quanto breve, è estremamente inefficiente (esponenziale) a causa della ripetizione degli stessi sotto problemi. È quindi necessaria la \emph{programmazione dinamica}.
+\end{example}

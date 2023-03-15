@@ -1,0 +1,66 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Grafi}
+Per la definizione di grafo si rimanda agli appunti di Fondamenti dell'Informatica. Ricordiamo solo le caratteristiche principali:
+\begin{itemize}
+	\item \textbf{V} rappresenta l'insieme di vertici
+	\item \textbf{E} rappresenta l'insieme di archi
+	\item Un grafo si dice \textbf{denso} quando $\lvert E \rvert \approx \lvert V \rvert^2$
+	\item Un grafo si dice \textbf{sparso} quando $\lvert E \rvert \approx \lvert V \rvert$
+	\item Un grafo può essere \textbf{orientato} o \textbf{non orientato}
+	\item Il grafo è \textbf{pesato} quando viene associato un \emph{peso} agli archi o ai nodi
+\end{itemize}
+\subsection{Rappresentazione}
+Dato un grafo con $n$ vertici tale che $V = \{1, 2, \ldots, n\}$ abbiamo due possibili modi di rappresentarlo.
+\subsubsection{Matrice di adiacenza}
+Una \textbf{matrice di adiacenza} rappresenta il grafo come una \textbf{matrice} $A$ di dimensione $n \times n$.  In questa matrice se un arco $(i, j)$ esiste allora l'elemento $A[i, j]$ sarà valorizzato a $1$, altrimenti sarà $0$. Lo \emph{spazio occupato} da questa matrice è $\lvert V \rvert ^2$ il che la rende efficiente solo per grafi piccoli.
+\begin{note}
+	Si noti che se il grafo è \textbf{non orientato} serve solo metà matrice, in quanto $(i, j) = (j, i)$.
+\end{note}
+\subsubsection{Lista di adiacenza}
+Una \textbf{lista di adiacenza} rappresenta il grafo come un array di liste la cui dimensione dipende dal numero di archi presenti. Occupa $n+m$ spazio.
+
+\subsection{Ricerca in un grafo}
+Per cercare un elemento in un grafo dobbiamo esplorare ogni vertice e arco a partire da una sorgente $s$. Come risultato otteniamo un \textbf{albero} basato sul grafo iniziale che ha la sorgente come radice (o una foresta se il grafo non è connesso).
+
+\begin{definition}[Percorso minimo]
+	Un percorso minimo in un grafo $G$ tra due vertici $s, v$ è un percorso da $s$ a $v$  che contiene il minimo numero di archi. La sua lunghezza è detta \textbf{distanza minima} e viene indicata come $\delta(s, v)$. \\
+	Una proprietà importante dato un arco tra due nodi $(u,v)$ e un nodo $v$ è la seguente:
+	\begin{equation*}
+		\delta(s, v) \leq \delta(s, u) + 1
+	\end{equation*}
+\end{definition}
+\subsubsection{Breadth-First Search}
+Questo algoritmo esplora il grafo un vertice alla volta espandendo la frontiera dei vertici esplorati in \textbf{ampiezza}. Per evitare di attraversare più volte nodi già visitati associamo alcuni "colori" ad ogni nodo:
+\begin{itemize}
+	\item \textbf{Bianco}: vertici non ancora visitati
+	\item \textbf{Grigio}: vertici visitati ma non ancora esplorati
+	\item  \textbf{Nero}: vertici completamente esplorati
+\end{itemize}
+Il concetto quindi è di esplorare i vertici scorrendo le \emph{liste di adiacenza} dei vertici grigi. Ogni vertice da esplorare viene aggiunto in una \textbf{queue} (coda) e appena vengono terminati e diventano neri vengono rimossi. Di seguito una possibile implementazione dell'algoritmo:
+\begin{lstlisting}[language=C, caption=Implementazione di BFS, mathescape=true]
+BFS(G, s) {
+	inizializza vertici; // Vertici inizializzati ad $\infty$
+	Q = {s}; // Q coda inizializzata con s e 0
+	while (Q non vuota) {
+		u = RemoveTop(Q);
+		for each v $\in$ u->adj {
+			if (v->d == infinito)
+			v->d = u->d + 1;
+			v->p = u;
+			Enqueue(Q, v);
+		}
+	}
+}
+\end{lstlisting}
+La \textbf{complessità} in tempo di questo algoritmo è $O(V + E)$ mentre quella in spazio è $O(V)$. \\
+L'algoritmo in questione genera un \textbf{albero breadth-first}, dove i cammini verso la radice rappresentano i cammini minimi nel grafo $G$.
+\begin{definition}[Albero breadth-first]
+	Dato un grafo $G = \langle V, E \rangle$ con sorgente $s$, un albero breadth-first è un albero $G' = \langle V', E' \rangle, V' \subseteq V, E' \subseteq E$  tale che:
+	\begin{itemize}
+		\item $G'$ è un \textbf{sottografo} di $G$
+		\item Un vertice $v$ appartiene all'albero se e solo se quel vertice è \textbf{raggiungibile} dalla sorgente nel grafo $G$
+		\item Per ogni vertice dell'albero il percorso dalla sorgente è \textbf{minimo}
+	\end{itemize}
+\end{definition}
+\subsubsection{Depth-First Search}
