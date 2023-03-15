@@ -1,0 +1,35 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Autovalori}
+\begin{definition}[Autovalori]
+	Sia $V$ uno spazio vettoriale su $\mathbb{R}$ ($dim(V) < \infty$) e $\phi: V \to V$. $\lambda \in \mathbb{R}$ è \textbf{autovalore} di $\phi$ se $\exists v \neq 0$ in $V$ tale che $\phi(V) = \lambda \cdot v$. In questo caso $v$ è \textbf{autovettore} di $\phi$ (associato a $\lambda$).
+\end{definition}
+\begin{observation}
+	Alcune osservazioni su questa definizione:
+	\begin{enumerate}
+		\item $v$ può essere autovettore per un solo $\lambda$. Infatti, se $\begin{cases}
+			\phi(v)=\lambda_{1} \cdot v \\
+			\phi(v)=\lambda_{2} \cdot v
+		\end{cases} \Longrightarrow (\lambda_{1} - \lambda_{2}) \cdot v = 0 \Longrightarrow \lambda_{1} = \lambda_{2}$
+		\item In generale ci sono molti autovettori associati allo stesso $\lambda$
+	\end{enumerate}
+\end{observation}
+
+\begin{definition}[Diagonalizzabile]
+	$\phi$ è \textbf{diagonalizzabile} se $\exists$ base $B$ tale che $[\phi]^B_B$ è una matrice \textbf{diagonale}.
+\end{definition}
+
+\begin{proposition}
+	$\phi$ è diagonalizzabile se e solo se $V$ ammette una base costituita da autovettori di $\phi$. \\
+\end{proposition}
+
+\begin{example}
+	Se $\phi: \mathbb{R}^2 \to \mathbb{R}^2$, $v \mapsto A \cdot v$  dove $A = \begin{bmatrix}
+		1 & 1 \\
+		0  &1
+	\end{bmatrix}$ $\Longrightarrow$ $\phi$ non è diagonalizzabile.  
+\end{example}
+
+\subsection{Come trovare gli autovalori?}
+$\lambda$ è autovalore per $\phi$ se e solo se $\phi(v) = \lambda \cdot v$ per un $v \neq 0$. Quindi $\phi(v) - \lambda \cdot v = 0 \Longrightarrow (\phi - \lambda \cdot id) \cdot v = 0$.
+%TODO Ti sei perso

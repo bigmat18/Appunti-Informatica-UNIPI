@@ -294,9 +294,9 @@ Un sistema $v_i, \cdots, v_n$ di vettori è una \textbf{base} di V se i vettori 
 \end{itemize}
 \end{definition}
 
-\begin{corollaries}
+\begin{corollary}
 Se $span(v_1, \cdots, v_n) ) C$ si può scegliere una base di V fra i $v_1, \cdots, v_n$.
-\end{corollaries}
+\end{corollary}
 
 \begin{example}
 Vogliamo trovare la base standard di $\mathbb{R}^n$.\\
@@ -348,9 +348,9 @@ Se facciamo l'algoritmo di Gauss, ottengo un numero di pivot minore o uguale a 2
 La dimostrazione per $n,r$ generale è la stessa, infatti alla fine ottengo un sistema lineare di n equazioni in $r > n$ variabili ed allora c'è sempre una soluzione non banale. $\blacksquare$
 \end{demostration}
 
-\begin{corollaries}
+\begin{corollary}
 Se $v_1, \cdots, v_r$ ed $e_1, \cdots, e_n$ sono due basi di V allora $r=n$.
-\end{corollaries}
+\end{corollary}
 
 \begin{demostration}
 Se $r>n$, $v_1, \cdots, v_r$ è linearmente dipendente dopo la proposizione se $e_1, \cdots, e_n$ è una base, quindi $r\leq n$. Se $r<n$ e $v_1, \cdots, v_n$ è una base allora $e_1, \cdots, e_n$ è linearmente dipendete e questa è una contraddizione. Dunque $r=n$. $\blacksquare$
@@ -361,9 +361,9 @@ Se $r>n$, $v_1, \cdots, v_r$ è linearmente dipendente dopo la proposizione se $
 Se V ammette una base $e_1, \cdots, e_n$ n è la dimensione di V. La dimensione di V si indica come $dim V = n$.
 \end{definition}
 
-\begin{corollaries}
+\begin{corollary}
 Se la dimensione di V è n e $v_1, \cdots, v_m$ sono vettori lin. indipendenti con $m<n \Longrightarrow \:\exists\: w_{m+1}, w_{m+2}, \cdots, w_n \::\: v_1, \cdots, v_n, w_{m+1}, \cdots, w_n$ sono una base di V. 
-\end{corollaries}
+\end{corollary}
 
 \begin{demostration}
 Dobbiamo verificare che $span(v_1, \cdots, v_m) = V$. Sappiamo che $span(v_1, \cdots, v_m)$ non può essere V, allora $\exists\: v \in V$ tale che $v \notin span(v_1, \cdots, v_m)$ ma allora basta vedere che $v_1, v_2, \cdots, v_m$ sono linearmente indipendenti ed allora abbiamo una contraddizione.\\

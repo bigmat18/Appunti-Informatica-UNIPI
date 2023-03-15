@@ -1,0 +1,178 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Determinante}
+
+\begin{definition}[Determinante]
+	Il determinante $det(A)$ di una matrice $A \in M_{n \times n}(\mathbb{R})$ è uno scalare in $\mathbb{R}$.
+	\begin{equation*}
+		n=1 A=[a] det(A)=a
+	\end{equation*}
+	\begin{equation*}
+		n=2 A=\begin{bmatrix}
+			a & b\\
+			c & d
+		\end{bmatrix}
+		det(A) = ad - bc
+	\end{equation*}
+	Si noti che $det(A)\neq0 \Longleftrightarrow$ le colonne di $A$ sono linearmente indipendenti.
+\end{definition}
+\begin{theorem}
+	Se $n=2$, $A=\begin{bmatrix}
+		a & b \\ c & d
+	\end{bmatrix}$, $a,b,c,d \geq 0$ e $ad - bc \neq 0$ allora $det(A)$ corrisponde all'area del parallelogramma definita da $\begin{bmatrix}
+		a \\ c
+	\end{bmatrix}$. $\begin{bmatrix}
+		b \\ d
+	\end{bmatrix}$.
+	%TODO Inserisci disegno area del parallelogramma
+	\begin{example}
+		Di seguito alcuni esempi del calcolo del determinante e della corrispondenza con l'area del parallelogramma.
+		\begin{enumerate}
+			\item $A=\begin{bmatrix}
+				1 & 0 \\ 0 & 1
+			\end{bmatrix}$, $det(A)=1 \cdot 1 - 0 \cdot 0 = 1$
+			\item $A=\begin{bmatrix}
+				1 & 1 \\ 0 & 1
+			\end{bmatrix}$, $det(A)=1 \cdot 1 - 1 \cdot 0 = 1$
+			\item $A=\begin{bmatrix}
+				1 & 1 \\ 0 & 2
+			\end{bmatrix}$, $det(A)=1 \cdot 2 - 1 \cdot 0 = 2$
+			\item $A=\begin{bmatrix}
+				1 & 1 \\ 1 & 2
+			\end{bmatrix}$, $det(A)=1 \cdot 2 - 1 \cdot 1 = 1$
+		\end{enumerate}
+		%TODO Inserisci disegno area
+	\end{example}
+\end{theorem}
+
+\begin{definition}[Determinante per induzione]
+	Se $A \in M_{n \times m}(\mathbb{R})$, sia $A_{ij}$ una matrice ottenuta da $A$ cancellando la riga $i$ e la colonna $j$.
+	\begin{equation*}
+		A_{ij} \in M_{(n-1)(m-1)}(\mathbb{R})
+	\end{equation*}
+	Il determinante si può definire induttivamente come segue:
+	\begin{itemize}
+		\item \textbf{Ipotesi induttiva}: supponiamo che $det(A_{ij}) \in M_{(n-1)(m-1)}(\mathbb{R})$ sia già definito
+		\item  \textbf{Passo induttivo}: $det(A)$ si definisce come 
+		%TODO Ti sei perso e il pc si è scaricato
+	\end{itemize}
+\end{definition}
+\begin{definition}[Formula di Cramer]
+	Dati una matrice $A = [a_{ij}] \in M_{n \times m}(\mathbb{R})$, la \textbf{matrice aggiunta} $\tilde{A} = [\tilde{a}_{ij}] \in M_{n \times m}(\mathbb{R})$ e sia $\tilde{a}_{ij} = (-1)^{i+j} \cdot det(A_{ij})$, allora:
+	\begin{equation*}
+		A \cdot \tilde{A} = det(A) \cdot I
+	\end{equation*}
+\end{definition}
+\begin{corollary}
+	Se $det(A) \neq 0$, $A$ è \textbf{invertibile} e
+	\begin{equation*}
+		A^{-1} = \frac{1}{det(A)} \cdot \tilde{A}
+	\end{equation*}
+\end{corollary}
+\begin{example}
+	\begin{equation*}
+		A = \begin{bmatrix}
+			1 & 0 & 3 \\
+			0 & 2 & 0 \\
+			4 & 0 & 1
+		\end{bmatrix}
+	\end{equation*}
+	\begin{equation*}
+		det(A) = 2 \cdot \begin{bmatrix}
+			1 & 3 \\
+			4 & 1
+		\end{bmatrix} = -22
+	\end{equation*}
+	\begin{equation*}
+		\tilde{A} = \begin{bmatrix}
+			2 & 0 & -6 \\
+			0 & -11 & 0 \\ 
+			-8 & 0 & 2
+		\end{bmatrix} \Longrightarrow A^{-1} = -\frac{1}{22} \cdot \tilde{A}
+	\end{equation*}
+	\begin{equation}
+		A^{-1} = \begin{bmatrix}
+			-\frac{1}{11} & 0 & \frac{3}{11} \\
+			0 & \frac{1}{2} & 0 \\
+			\frac{4}{11} & 0 & -\frac{1}{11}
+		\end{bmatrix}
+	\end{equation}
+	\begin{equation*}
+		A \cdot A^{-1} = \begin{bmatrix}
+			1 & 0 & 0 \\
+			0 & 1 & 0 \\
+			0 & 0 & 1
+		\end{bmatrix}
+	\end{equation*}
+\end{example}
+
+\begin{proposition}
+	Se $A$ è invertibile allora $det(A) \neq 0$
+\end{proposition}
+
+\begin{theorem}[Teorema di Binet]
+	Dati $A$, $B \in M_{n \times m}(\mathbb{R})$ vale che
+	\begin{equation*}
+		det(A \cdot B) = det(A) \cdot det(B)
+	\end{equation*}
+\end{theorem}
+\begin{proposition}
+	Sapendo che $\exists A^{-1} \Longrightarrow A \cdot A^{-1} = I$ allora:
+	\begin{equation*}
+		det(A) \cdot det(A^{-1}) = det(A \cdot A^{-1}) = det(I)
+	\end{equation*}
+\end{proposition}
+
+\begin{theorem}
+	Sia $A \in M_{n \times m}(\mathbb{R})$ allora sono equivalenti:
+	\begin{enumerate}
+		\item $A$ è \textbf{invertibile}
+		\item $det(A) \neq 0$
+		\item Le colonne di $A$ sono \textbf{linearmente indipendenti}
+	\end{enumerate}
+\end{theorem}
+
+\begin{observation}
+	Dati questi teoremi, facciamo alcune osservazioni:
+	\begin{enumerate}
+		\item Data una matrice $n=2$ $A = \begin{bmatrix}
+			a& b \\
+			c & d
+		\end{bmatrix} $\\
+		$\begin{bmatrix}
+			a \\ c
+		\end{bmatrix}$, $\begin{bmatrix}
+			b \\ d
+		\end{bmatrix}$ sono \textbf{linearmente indipendenti} $\Longleftrightarrow$ Non sono collineari \\
+		$\Longleftrightarrow$ l'area del parallelogramma associato è diversa da $0$\\
+		$\Longleftrightarrow det(A) \neq 0$
+		
+		\item (3) $\Longleftrightarrow rango(A) = n$
+		\item Le condizioni sono equivalenti %TODO Non so cosa significhi
+		\item Le righe di $A$ sono linearmente indipendenti
+	\end{enumerate}
+\end{observation}
+
+\begin{definition}[Matrice trasposta]
+	Se $A = [a_{ij}]$ la sua trasposta è la matrice $A^t = [a_{ji}]$, ovvero la riga $i$ di $A$ diventa la colonna $i$ di $A^t$.
+\end{definition}
+\begin{observation}
+	\begin{equation*}
+		det(A) = det(A^t)
+	\end{equation*}
+	Da questo deduciamo che (2) $\Longleftrightarrow det(A^t) \neq 0 \Longleftrightarrow $ le colonne di $A^t$ sono linearmente indipendenti $\Longleftrightarrow$ (4)
+\end{observation}
+
+\begin{proposition}
+	Sia $\phi : V \to V$ un'applicazione lineare, $B$, $B'$ due basi di $V$ e $A=[\phi]^B_B$, $A' = [\phi]^{B'}_{B'}$. Allora $det(A) = det(A')$. Quindi $det(A)$ dipende solo da $\phi'$.
+\end{proposition}
+
+\begin{theorem}
+	Sia $\phi: V \to V$ un'applicazione lineare, $B$ una qualsiasi base e $A = [\phi]^B_B$ allora è equivalente dire:
+	\begin{enumerate}
+		\item $\phi$ è un \textbf{isomorfismo}
+		\item $det(A) \neq 0$
+		\item $im(\phi) = V$
+		\item $ker(\phi) = \{0\}$
+	\end{enumerate}
+\end{theorem}
