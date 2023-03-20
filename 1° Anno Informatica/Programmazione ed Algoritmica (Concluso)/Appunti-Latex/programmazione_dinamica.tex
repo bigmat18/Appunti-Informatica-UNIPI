@@ -99,3 +99,19 @@ Gli algoritmi sono costituiti da 4 fasi:
 	\end{lstlisting}
 	Questo algoritmo, per quanto breve, è estremamente inefficiente (esponenziale) a causa della ripetizione degli stessi sotto problemi. È quindi necessaria la \emph{programmazione dinamica}.
 \end{example}
+
+\begin{example}[Longest common subsequence]
+	
+\end{example}
+
+\begin{example}[Edit distance]
+	Date due parole $X$, $Y$ determinarne la distanza.\\
+	La prima fase è quella dell'\textbf{allineamento}: ad ogni carattere o spazio di $X$ corrisponde un carattere o uno spazio di $Y$.\\
+	Una volta eseguito l'allineamento, si calcola la distanza con queste regole:
+	\begin{itemize}
+		\item \textbf{MATCH} (caratteri corrispondenti uguali) $\rightarrow$ distanza + 0
+		\item \textbf{MISMATCH} (caratteri corrispondenti diversi) $\rightarrow$ distanza + 1
+		\item \textbf{SPACE} (carattere e spazio) $\rightarrow$ distanza + 1
+	\end{itemize}
+	Il problema della edit-distance è determinare la distanza \emph{minima}.
+\end{example}
