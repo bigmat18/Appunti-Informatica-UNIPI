@@ -30,6 +30,44 @@
 	\end{bmatrix}$ $\Longrightarrow$ $\phi$ non è diagonalizzabile.  
 \end{example}
 
+\begin{proposition}
+	Sia $\lambda$ autovalore di $\phi$, $v$ autovettori associati a $\lambda$, insieme a $0$, formano un sottospazio di $V$.
+\end{proposition}
+
+\begin{proposition}
+	Se $\lambda_{1}, \ldots, \lambda_{r}$ sono autovettori \textbf{distinti} di $\phi$ ($\lambda_{1} \neq \lambda_j$, $i \neq j$)
+	\begin{equation*}
+		\begin{rcases}
+			v_1 \text{ autovettore per } \lambda_{1} \\
+			\vdots \\
+			v_r \text{ autovettore per } \lambda_{r} \\
+		\end{rcases} \Longrightarrow v_1, \ldots, v_r \text{ sono linearmente indipendenti}
+	\end{equation*}
+\end{proposition}
+
+\begin{corollary}Valgono i seguenti punti:
+	\begin{enumerate}
+		\item Ci sono solo un numero finito di autovalori distinti di $\phi$, infatti sono $\leq dim(V)$
+		\item $\phi$ è \textbf{diagonalizzabile} $\Longleftrightarrow$ $\lambda_1, \ldots, \lambda_r$ sono gli autovalori di $\phi$, $dim(V_{\lambda_{1}}) + \ldots + dim(V_{\lambda_r}) = dim(V)$
+		\item Se $\phi$ ammette $n = dim(V)$ autovalori distinti, allora $\phi$ è diagonalizzabile
+ 	\end{enumerate}
+\end{corollary}
+
+\begin{definition}[Polinomio caratteristico]
+	Il polinomio caratteristico di $A$ è:
+	\begin{equation*}
+		P_A(t) := det(A-t \cdot i)
+	\end{equation*}
+	dove $\lambda$ è autovalore per $A$ $\Longleftrightarrow$ $\lambda$ è radice di $P_A(t)$.
+\end{definition}
+
+\begin{observation}
+	$P_A(t)$ non dipende da $A_{ij}$ ma dipende solo da $\phi'$. Infatti, se $B$ è la matrice di $\phi$ rispetto ad un'altra base, sappiamo:
+	\begin{equation*}
+		B = P \cdot A \cdot P^{-1}
+	\end{equation*}
+\end{observation}
+
 \subsection{Come trovare gli autovalori?}
 $\lambda$ è autovalore per $\phi$ se e solo se $\phi(v) = \lambda \cdot v$ per un $v \neq 0$. Quindi $\phi(v) - \lambda \cdot v = 0 \Longrightarrow (\phi - \lambda \cdot id) \cdot v = 0$.
 %TODO Ti sei perso
