@@ -68,6 +68,32 @@
 	\end{equation*}
 \end{observation}
 
-\subsection{Come trovare gli autovalori?}
-$\lambda$ è autovalore per $\phi$ se e solo se $\phi(v) = \lambda \cdot v$ per un $v \neq 0$. Quindi $\phi(v) - \lambda \cdot v = 0 \Longrightarrow (\phi - \lambda \cdot id) \cdot v = 0$.
-%TODO Ti sei perso
+\subsection{Richiami sui polinomi}
+Un polinomio su $\mathbb{R}[x]$ è della forma $a_nX^n + a_{n-1}x^{n-1}+\ldots+a_1 x + a_0$ se $a_n \neq 0$, $n = deg(f)$ il grado di $f$. $a \in \mathbb{R}$ è radice di $f$ se $f(a) = 0$.
+\begin{proposition}
+	Se $f \neq 0$, $a$ radice di $f$ $\Longrightarrow$ $f = (x-a)g$ dove $deg(g) = deg(f)-1$.
+\end{proposition}
+\begin{corollary}
+	Si può scrivere $f=(x-a)^m h$, dove $h(a) \neq 0$. $m$ è la molteplicità della radice $a$.
+\end{corollary}
+
+\subsection{Molteplicità}
+\begin{definition}
+	Sia $\phi: V \to V$ un'applicazione lineare con $dim(V)=n$, $A$ matrice di $\phi$ rispetto ad ua base e $\lambda$ un autovalore di $\phi$:
+	\begin{itemize}
+		\item La \textbf{molteplicità algebrica} di $\lambda$ è la sua molteplicità come radice di $P_A(t)$
+		\item La \textbf{molteplicità geometrica} di $\lambda$ è la dimensione dell'autospazio $V_\lambda$ di $\lambda$.
+	\end{itemize}
+\end{definition}
+
+\begin{theorem}
+	La molteplicità algebrica di $\lambda$ è $\geq$ della molteplicità geometrica di $\lambda$.
+\end{theorem}
+
+\begin{corollary}
+	$\phi$ è diagonalizzabile se e solo se la somma della molteplicità algebriche degli autovalori è un per tutti gli autovalori $\lambda$:
+	\begin{equation*}
+			\text{molt. alg. }(\lambda) = \text{ molt. geom. }(\lambda)
+	\end{equation*}
+	Si osserva inoltre che molt. geom. $(\lambda) \geq 1$. Quindi se molt. alg. $(\lambda) = 1 \Longrightarrow $ molt. geom. $(\lambda) = $ molt. alg. $(\lambda) = 1$.
+\end{corollary}

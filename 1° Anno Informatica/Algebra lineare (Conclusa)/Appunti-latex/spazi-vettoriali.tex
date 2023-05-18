@@ -71,7 +71,7 @@ Uno spazio vettoriale su $\mathbb{R}$ è un insieme V che ammette due tipi di op
 $R^n$ soddisfa tutti gli assiomi sopra scritti.
 \end{observation}
 \newpage
-\begin{example}
+\begin{example}[Matrici]
 Consideriamo una matrice $n \times m$ elementi reali $M_{n\times m}(\mathbb{R})$.
 \begin{figure}[h!]
     \begin{minipage}{.2\linewidth}
@@ -93,11 +93,25 @@ Consideriamo una matrice $n \times m$ elementi reali $M_{n\times m}(\mathbb{R})$
 \end{figure}
 \end{example}
 
-\begin{example}
-Prendiamo due funzioni continue $f, g: \mathbb{R}\to \mathbb{R}$. Possiamo effettuare le operazioni.
-Somma: $(f_1 + f_2)(x) = f_1(x) + f_2(x)$ \hspace{.3cm} Prodotto con $\lambda$: $(\lambda f)(x) = \lambda \ldots f(x)$.
+\begin{example}[Polinomi]
+	Presi dei polinomi a coefficienti reali del tipo:
+	\begin{equation*}
+		\mathbb{R}[x] = \{a_n \cdot x^n + a_{n-1} \cdot x^{n-1} + \ldots + a_0 \vert a_i \in \mathbb{R} \wedge n \geq 0\}
+	\end{equation*}
+	Possiamo eseguire entrambe le operazioni:
+	\begin{itemize}
+		\item \emph{Somma}: $(a_n \cdot x^n + a_{n-1} \cdot x^{n-1} + \ldots + a_0) + (b_m \cdot x^m + b_{m-1} \cdot x^{m-1} + \ldots + b_0)$ con $m \geq n$ è uguale a $b_m \cdot x^m + \ldots + (a_n + b_n) \cdot x^n + (a_{n-1} + b_{n-1}) \cdot x^{n-1} + \ldots + (a_0 + b_0)$
+		\item  \emph{Prodotto con $\lambda$}: $\lambda \cdot (a_n \cdot x^n + \ldots + a_0) = \lambda \cdot a_n \cdot x^n + \ldots + \lambda \cdot a_0)$ 
+	\end{itemize}
 \end{example}
-%TODO Ti sei perso, vedi di integrare
+
+\begin{example}[Funzioni]
+Prendiamo due funzioni continue $f, g: \mathbb{R}\to \mathbb{R}$. Possiamo effettuare le operazioni:
+\begin{itemize}
+	\item \emph{Somma}: $(f_1 + f_2)(x) = f_1(x) + f_2(x)$
+	\item \emph{Prodotto con $\lambda$}: $(\lambda f)(x) = \lambda \cdot f(x)$
+\end{itemize}
+\end{example}
 
 \subsection{Sottospazio}
 Introduciamo ora il concetto di sottospazio vettoriale.
@@ -115,7 +129,7 @@ Un sottospazio $W \subset V$ è a sua volta uno spazio vettoriale.
 
 \subsubsection{Interpretazione geometrica}
 %TODO Sistema un po'
-Un sottospazio vettoriale è una retta che passa per l'origine o un piano che passa per l'origine. IMPORTANTE: passa per l'origine
+Un sottospazio vettoriale è una retta che passa per l'origine o un piano che \textbf{passa per l'origine}. 
 
 %TODO Cerca di renderlo più leggibile e di capirci qualcosa
 \begin{example}
@@ -208,9 +222,9 @@ $W = span\Big\{\begin{bmatrix}0\\1\\0\end{bmatrix}, \begin{bmatrix}0\\0\\1\end{b
 \newpage
 \subsection{Vettori lineamenti indipendenti}
 \begin{definition}
-I vettori $v_1, v_2, \cdots, v_m \in V$ sono \textbf{linearmente indipendenti} se $\lambda_1 v_1 + \lambda_2 v_2 + \cdots + \lambda_m v_m = 0$ vale solo per $\lambda_1 = \cdots = \lambda_m = 0$.
+I vettori $v_1, v_2, \cdots, v_m \in V$ sono \textbf{linearmente indipendenti} se l'unico caso in cui $\lambda_1 v_1 + \lambda_2 v_2 + \cdots + \lambda_m v_m = 0$ si ha quando $\lambda_1 = \cdots = \lambda_m = 0$.
 \end{definition}
-\hspace{-15pt}Questo vuol dire che se una combinazione lineare dei V è uguale a zero $\Longrightarrow$ la combinazione è banale.\\
+\noindent Questo vuol dire che se una combinazione lineare dei V è uguale a zero $\Longrightarrow$ la combinazione è banale.\\
 Se $v_1, \cdots, v_n$ non sono indipendenti allora sono \textbf{linearmente dipendenti}.\\
 $v_1, v_2, \cdots, v_m$ sono linearmente dipendenti $\Longleftrightarrow \: \exists \lambda_1, \lambda_2, \cdots, \lambda_m \in \mathbb{R}$ non tutti uguali a 0 tale che $\lambda_1 v_1 + \lambda v_2 + \cdots + \lambda_2 v_2 = 0$.
 
@@ -224,17 +238,17 @@ Se $v_1, \cdots, v_m$ sono dipendenti allora $\exists \: \lambda_1, \cdots, \lam
 Se $v_i = \lambda_1 v_1 + \cdots + \lambda_{i-1}v_{i-1} + \lambda_{i+1}v_{i+1} + \cdots + \lambda_m v_m$ allora $ \lambda_1 v_1 + \cdots + \lambda_{i-1}v_{i-1} - v_i + \lambda_{i+1}v_{i+1} + \cdots + \lambda_m v_m = 0$
 \end{demostration}
 \hspace{-15pt}In pratica per vedere se m vettori $v_1, \cdots, v_m \in \mathbb{R}^n$ sono linearmente indipendenti prendiamo innanzitutto m vettori:\\
-$v_1 = \begin{bmatrix}a_11 \\ a_21 \\ \vdots \\ a_{n1}\end{bmatrix}$, $v_2 = \begin{bmatrix}a_{12}\\a_{22}\\\vdots\\ a_{n2}\end{bmatrix}$, $\cdots, v_m = \begin{bmatrix}a_{1m}\\a_{2m}\\\vdots\\ a_{nm}\end{bmatrix}$, questi sono vettori di $\mathbb{R}^m$.\\\\
+$v_1 = \begin{bmatrix}a_{11} \\ a_{21} \\ \vdots \\ a_{n1}\end{bmatrix}$, $v_2 = \begin{bmatrix}a_{12}\\a_{22}\\\vdots\\ a_{n2}\end{bmatrix}$, $\cdots, v_m = \begin{bmatrix}a_{1m}\\a_{2m}\\\vdots\\ a_{nm}\end{bmatrix}$, questi sono vettori di $\mathbb{R}^m$.\\\\
 Questi vettori sono linearmente indipendente, quindi l'equazione $\lambda_1v_1 + \lambda_2 v_2 + \cdots + \lambda_mv_m = 0$ vale, se e solo se ($\lambda_1, \cdots, \lambda_m$) è soluzione del sistema:
 \[
 \begin{array}{l}
      a_{11}x_1 + a_{12}x_2 + \cdots + a_{1m}x_m = 0\\
      a_{21}x_1 + a_{22}x_2 + \cdots + a_{2m}x_m = 0\\
-     \cdots\\
+     \vdots\\
      a_{n1}x_1 + a_{n2}x_2 + \cdots + a_{nm}x_m = 0\\
 \end{array}
 \hspace{.5cm}
-\parbox{6cm}{Quindi $v_1, \cdots, v_m$ sono lin. indipendenti $\Longrightarrow$ il sistema sopra ammette solo la soluzione banale (0,$\cdots$,0)}
+\parbox{6cm}{Quindi $v_1, \cdots, v_m$ sono lin. indipendenti $\Longrightarrow$ il sistema sopra ammette solo la soluzione banale (0,$\ldots$,0)}
 \]
 \subsection{Interpretazioni geometrica}
 Facciamo un interpretazione geometrica di quello visto sopra ponendo $n=2$. $V = \mathbb{R}^2$, $v_1, v_2 \in \mathbb{R}^2$ sono linearmente dipendenti $v_1, v_2 \neq 0$ oppure $\exists \: \lambda_1, \lambda_2 \: : \: \lambda_1 v_1 + \lambda_2 v_2 = 0$. Ad esempio $\lambda \neq 0$, $v_1 = -\frac{\lambda_1}{\lambda_2}v_2$ e se $v_2 = \begin{bmatrix}1\\0\end{bmatrix} \Longrightarrow v_1 = \begin{bmatrix}-\lambda_2\setminus\lambda_1\\0\end{bmatrix}$ e corrisponde un punto della retta $x_2 = 0$. \\
@@ -319,59 +333,79 @@ Base standard di $\mathbb{R}[x]_{\leq d} = \{f \in \mathbb{R}[x] \::\: deg(x) \l
 Prendiamo $\mathbb{R}[x]$ che non ammette di base finita. Infatti $\nexists f_1, \cdots, f_n \in \mathbb{R}[x] \::\: span(f_1, \cdots, f_n = \mathbb{R}[x]$ perché se $f \in span(f_1, \cdots, f_n)$ allora $deg(f) \leq max(deg(f_1), \cdots, deg(f_n))$. (Comunque è vero: $span(1,x,x^2, x^2, \cdots) = \mathbb{R}[x]$ e ogni sottoinsieme finito di $1,x, x^2, \cdots$ è lin. indipendente)
 \end{example}
 
-La dimensione di uno spazio V sarà definita come il numero degli elementi di una base. Per questo bisogna sapere: questo numero è lo stesso per ogni base.
 \begin{proposition}
-Sia V uno spazio vettoriale che ammette una base $e_1, e_2, \cdots, e_n$. Se $v_1, v_2, \cdots, v_n \in V$ e $r > n \Longrightarrow v_1, v_2, \cdots, v_n$ sono linearmente dipendenti.
+	Sia $v_1, \ldots, v_n$ una base di V, e $v \in V$ un vettore. Allora $\nexists  \alpha_1, \ldots, \alpha_n \in \mathbb{R} \vert v = \alpha_1\cdot v_1 + \alpha_2\cdot v_2 + \ldots + \alpha_n\cdot v_n$. (Ogni vettore si scrive in modo unico come combinazione lineare degli elementi della base)
 \end{proposition}
 
 \begin{demostration}
-Per $n=2$, la prima osservazione è che se la proposizione vale per $r =2$ vale per ogni $r > 2$. Infatti se $\lambda_1v_2 + \lambda_2v_2 + \lambda_3v_3 = 0$ è una combinazione lineare non banale allora $\lambda_1v_2 + \lambda_2v_2 + \lambda_3v_3 + 0 \cdot v_4 + 0 \cdot v_5 + \cdots + 0 \cdots v_r = 0$ è una combinazione non banale (perché $\lambda_1, \lambda_2$ o $\lambda_3$ è diverso da 0). Quindi siano $n=2, r=3$ e $e_1, e_2$ una base di V. Come $V=span(e_1,e_2)$, $v_1, v_2, v_3 \in span(e_1, e_2)$. Quindi:\\\\
-$\begin{array}{l}
-v_1 = a_{11}e_1 + a_{12}e_2\\
-v_2 = a_{21}e_1 + a_{22}e_2\\
-v_3 = a_{31}e_1 + a_{32}e_2
-\end{array}
-\hspace{.5cm}
-\parbox{8cm}{Dobbiamo trovare $\lambda_1, \lambda_2, \lambda_3$ non tutti $=0$ tali che $\lambda_1v_1 + \lambda_2v_2 + \lambda_3v_3 = 0$. Facciamo la sostituzione con il sistema a fianco.}$\\\\
-$\lambda_1(a_{11}e_1 + a_{12}e_2) + \lambda_2(a_{21}e_1+a_{22}e_2) + \lambda_3(a_{31}e_1 + a_{32}e_2) = 0$ che diventa $(\lambda_1a_{11} + \lambda_1a_{12})e_2 + (\lambda_2a_{21} + \lambda_2a_{22})e_2 + (\lambda_3a_{31} + \lambda_3a_{32})e_2 = 0$. Ma $e_1, e_2$ sono linearmente indipendenti, quindi:\\\\
-$\begin{array}{l}
-\lambda_1a_{11} + \lambda_2a_{21} + \lambda_3 a_{31} = 0\\
-\lambda_1a_{12} + \lambda_2a_{22} + \lambda_3 a_{32} = 0
-\end{array}
-\hspace{.3cm}
-\parbox{5cm}{Questo è un sistema omogeneo di equazioni per $\lambda_1, \lambda_2, \lambda_3$ con matrice di coefficienti}\hspace{.3cm}
-\begin{bmatrix}
-a_{11}&a_{21}&a_{31}\\
-a_{12}&a_{22}&a_{32}
-\end{bmatrix}$\\
-Se facciamo l'algoritmo di Gauss, ottengo un numero di pivot minore o uguale a 2 (perché ci sono solo due righe), allora ci sarà $\geq 1$ colonne senza pivot ed allora il sistema avrà $\infty$ soluzioni ed allora ci sarà una soluzione non banale $\lambda_1, \lambda_2, \lambda_2$. Ma se il sistema sopra ha una soluzione non banale ($\lambda_1, \lambda_2, \lambda_2$) allora anche $\lambda_1v_1 + \lambda_2 v_2 + \lambda_3 v_3 = 0$ sarà una combinazione non banale e quindi ci siamo.\\\\
-La dimostrazione per $n,r$ generale è la stessa, infatti alla fine ottengo un sistema lineare di n equazioni in $r > n$ variabili ed allora c'è sempre una soluzione non banale. $\blacksquare$
-\end{demostration}
-
-\begin{corollary}
-Se $v_1, \cdots, v_r$ ed $e_1, \cdots, e_n$ sono due basi di V allora $r=n$.
-\end{corollary}
-
-\begin{demostration}
-Se $r>n$, $v_1, \cdots, v_r$ è linearmente dipendente dopo la proposizione se $e_1, \cdots, e_n$ è una base, quindi $r\leq n$. Se $r<n$ e $v_1, \cdots, v_n$ è una base allora $e_1, \cdots, e_n$ è linearmente dipendete e questa è una contraddizione. Dunque $r=n$. $\blacksquare$
+	Scriviamo come $V = span(v_1, \ldots, v_n)$, l'esistenza degli $\alpha_i$ è chiaro. Se adesso $v = \alpha_1\cdot v_i + \ldots + \alpha_n\cdot v_n = \beta_1\cdot v_1 + \ldots + \beta_n\cdot v_n$ allora $0 = (\alpha_1 - \beta_1)\cdot v_1 + \ldots + (\alpha_n - \beta)\cdot v_n$ allora $\alpha_1 = \beta_1, \ldots, \alpha_1 = \beta_n$ perché i $v_i$ sono lin. indipendenti.
 \end{demostration}
 
 \subsection{Dimensione spazio vettoriale}
-\begin{definition}[Dimensione di un V]
-Se V ammette una base $e_1, \cdots, e_n$ n è la dimensione di V. La dimensione di V si indica come $dim V = n$.
-\end{definition}
+La dimensione di uno spazio vettoriale $V$ sarà definita come il numero degli elementi di una sua base. Questo numero sarà lo stesso per ogni base.
+\begin{proposition}
+	Sia V uno spazio vettoriale che ammette una base $e_1, e_2, \ldots, e_n$. Se $v_1, v_2, \ldots, v_n \in V$ e $r > n \Longrightarrow v_1, v_2, \ldots, v_n$ sono linearmente dipendenti.
+\end{proposition}
+
+\begin{demostration}
+	Per $n=2$, la prima osservazione è che se la proposizione vale per $r =2$ vale per ogni $r > 2$. Infatti se $\lambda_1v_2 + \lambda_2v_2 + \lambda_3v_3 = 0$ è una combinazione lineare non banale allora $\lambda_1v_2 + \lambda_2v_2 + \lambda_3v_3 + 0 \cdot v_4 + 0 \cdot v_5 + \ldots + 0 \cdot v_r = 0$ è una combinazione non banale (perché $\lambda_1, \lambda_2$ o $\lambda_3$ è diverso da 0). Quindi siano $n=2, r=3$ e $e_1, e_2$ una base di V. Come $V=span(e_1,e_2)$, $v_1, v_2, v_3 \in span(e_1, e_2)$. Quindi:\\\\
+	$\begin{array}{l}
+		v_1 = a_{11}e_1 + a_{12}e_2\\
+		v_2 = a_{21}e_1 + a_{22}e_2\\
+		v_3 = a_{31}e_1 + a_{32}e_2
+	\end{array}
+	\hspace{.5cm}
+	\parbox{8cm}{Dobbiamo trovare $\lambda_1, \lambda_2, \lambda_3$ non tutti $=0$ tali che $\lambda_1v_1 + \lambda_2v_2 + \lambda_3v_3 = 0$. Facciamo la sostituzione con il sistema a fianco.}$\\\\
+	$\lambda_1(a_{11}e_1 + a_{12}e_2) + \lambda_2(a_{21}e_1+a_{22}e_2) + \lambda_3(a_{31}e_1 + a_{32}e_2) = 0$ che diventa $(\lambda_1a_{11} + \lambda_1a_{12})e_2 + (\lambda_2a_{21} + \lambda_2a_{22})e_2 + (\lambda_3a_{31} + \lambda_3a_{32})e_2 = 0$. Ma $e_1, e_2$ sono linearmente indipendenti, quindi:\\\\
+	$\begin{array}{l}
+		\lambda_1a_{11} + \lambda_2a_{21} + \lambda_3 a_{31} = 0\\
+		\lambda_1a_{12} + \lambda_2a_{22} + \lambda_3 a_{32} = 0
+	\end{array}
+	\hspace{.3cm}
+	\parbox{5cm}{Questo è un sistema omogeneo di equazioni per $\lambda_1, \lambda_2, \lambda_3$ con matrice di coefficienti}\hspace{.3cm}
+	\begin{bmatrix}
+		a_{11}&a_{21}&a_{31}\\
+		a_{12}&a_{22}&a_{32}
+	\end{bmatrix}$\\
+	Se facciamo l'algoritmo di Gauss, ottengo un numero di pivot minore o uguale a 2 (perché ci sono solo due righe), allora ci sarà $\geq 1$ colonne senza pivot ed allora il sistema avrà $\infty$ soluzioni ed allora ci sarà una soluzione non banale $\lambda_1, \lambda_2, \lambda_2$. Ma se il sistema sopra ha una soluzione non banale ($\lambda_1, \lambda_2, \lambda_2$) allora anche $\lambda_1v_1 + \lambda_2 v_2 + \lambda_3 v_3 = 0$ sarà una combinazione non banale e quindi ci siamo.\\\\
+	La dimostrazione per $n,r$ generale è la stessa, infatti alla fine ottengo un sistema lineare di n equazioni in $r > n$ variabili ed allora c'è sempre una soluzione non banale. $\blacksquare$
+\end{demostration}
 
 \begin{corollary}
-Se la dimensione di V è n e $v_1, \cdots, v_m$ sono vettori lin. indipendenti con $m<n \Longrightarrow \:\exists\: w_{m+1}, w_{m+2}, \cdots, w_n \::\: v_1, \cdots, v_n, w_{m+1}, \cdots, w_n$ sono una base di V. 
+	Sia $e_1,\ldots, e_n$ una base di $V$. Se $v_1,\ldots,v_n$ è un sistema linearmente indipendente $\Longrightarrow$ anche $v_1, \ldots, v_n$ è una base di $V$.
 \end{corollary}
 
 \begin{demostration}
-Dobbiamo verificare che $span(v_1, \cdots, v_m) = V$. Sappiamo che $span(v_1, \cdots, v_m)$ non può essere V, allora $\exists\: v \in V$ tale che $v \notin span(v_1, \cdots, v_m)$ ma allora basta vedere che $v_1, v_2, \cdots, v_m$ sono linearmente indipendenti ed allora abbiamo una contraddizione.\\
-Sia $\lambda_1v_1 + \lambda_2v_2 + \cdots + \lambda_mv_m + \lambda_0v_0 = 0$ una combinazione lineare se $\lambda=0 \Longrightarrow \lambda_1 = \lambda_2 = \cdots = \lambda_n = 0$ perché $v_1, v_n \cdots, v_m$ lin. indipendenti allora $v_1, v_2, \cdots, v_m$ lin. indipendenti. Se prendiamo un $\lambda_{m+1}\neq 0$ possiamo fare $-\frac{\lambda_1}{\lambda}v_1 - \frac{\lambda_2}{\lambda}v_2 - \cdots - \frac{\lambda_n}{\lambda}v_n = V \in span(v_1, \cdots, v_n)$, ma questa è una contraddizione $v \notin span$. $\blacksquare$
+	Dobbiamo dimostrare che $Span(v1,\ldots,v_n)=V$.\\
+	Sia $v \in V$. Per la proposizione 3.9.1, il sistema di $n+1$ vettori $v_1,\ldots,v_n,v$ è linearmente dipendente. Quindi $\exists \lambda_{1},\ldots,\lambda_{n+1}$ non tutti $=0$ tali che $\lambda_{1} \cdot v_1 + \ldots + \lambda_n \cdot v_n + \lambda_{n+1} \cdot v = 0$. (*)\\
+	Se $\lambda_{n+1}=0$ allora $\lambda_1 \cdot v_1 + \ldots + \lambda_n \cdot v_n = 0 \Longrightarrow \lambda_{1} = \ldots = \lambda_n = 0$ perché $v_1,\ldots,v_n$ sono \textbf{indipendenti} $\Longrightarrow $ con $\lambda_1, \ldots, \lambda_{n+1}$ non tutti $=0$.\\
+	Quindi $\lambda_{n+1} \neq 0$. Ma allora  (*) mi dà $v=-\frac{\lambda_{1}}{\lambda{n+1}} + \ldots + (-\frac{\lambda_n}{\lambda_{n+1}}) \cdot v_n \Longrightarrow v \in Span(v_1, \ldots, v_n)$. \\
+	Questo vale per ogni $v \in V \Longrightarrow V = Span(v_1, \ldots, v_n)$.
+\end{demostration}
+
+\begin{corollary}
+	Se $v_1, \ldots, v_r$ ed $e_1, \ldots, e_n$ sono due basi di V allora $r=n$.
+\end{corollary}
+
+\begin{demostration}
+	Se $r>n$, $v_1, \ldots, v_r$ è linearmente dipendente se $e_1, \ldots, e_n$ è una base (proposizione 3.8.1), quindi $r\leq n$. Se $r<n$ e $v_1, \ldots, v_n$ è una base allora $e_1, \ldots, e_n$ è linearmente dipendete e questa è una contraddizione. Dunque $r=n$. $\blacksquare$
+\end{demostration}
+
+\begin{definition}[Dimensione di un V]
+Se V ammette una base $e_1, \ldots, e_n$ n è la dimensione di V. La dimensione di V si indica come $dim V = n$.
+\end{definition}
+
+\begin{corollary}
+Se la dimensione di V è n e $v_1, \ldots, v_m$ sono vettori lin. indipendenti con $m<n \Longrightarrow \:\exists\: w_{m+1}, w_{m+2}, \cdots, w_n \vert v_1, \ldots, v_n, w_{m+1}, \cdots, w_n$ sono una base di V. 
+\end{corollary}
+
+\begin{demostration}
+Dobbiamo verificare che $span(v_1, \ldots, v_m) = V$. Sappiamo che $span(v_1, \ldots, v_m)$ non può essere V, allora $\exists v \in V$ tale che $v \notin span(v_1, \ldots, v_m)$. Ma allora basta vedere che $v_1, v_2, \ldots, v_m$ sono linearmente indipendenti ed allora abbiamo una contraddizione.\\
+Sia $\lambda_1 \cdot v_1 + \lambda_2 \cdot v_2 + \ldots + \lambda_m \cdot v_m + \lambda_0 \cdot v_0 = 0$ una combinazione lineare se $\lambda=0 \Longrightarrow \lambda_1 = \lambda_2 = \cdots = \lambda_n = 0$ perché $v_1, v_n \ldots, v_m$ lin. indipendenti allora $v_1, v_2, \ldots, v_m$ lin. indipendenti. Se prendiamo un $\lambda_{m+1}\neq 0$ possiamo fare $-\frac{\lambda_1}{\lambda \cdot }v_1 - \frac{\lambda_2}{\lambda} \cdot v_2 - \ldots - \frac{\lambda_n}{\lambda} \cdot v_n = V \in span(v_1, \ldots, v_n)$, ma questa è una contraddizione $v \notin span$. $\blacksquare$
 \end{demostration}
 
 \begin{example}
-Decidiamo se $\begin{bmatrix}1\\0\\1\end{bmatrix}, \begin{bmatrix}2\\0\\0\end{bmatrix}, \begin{bmatrix}3\\2\\1\end{bmatrix}$ sono una base $\mathbb{R}^3$. \\Per faro dobbiamo solo decidere se sono indipendenti o meno, e per farlo usiamo gauss.
+Decidiamo se $\begin{bmatrix}1\\0\\1\end{bmatrix}, \begin{bmatrix}2\\0\\0\end{bmatrix}, \begin{bmatrix}3\\2\\1\end{bmatrix}$ sono una base $\mathbb{R}^3$. \\Per faro dobbiamo solo decidere se sono indipendenti o meno, e per farlo usiamo Gauss.
 \[
 \begin{bmatrix}
 1 & 2 & 3\\
@@ -399,14 +433,6 @@ Prendiamo $V = \mathbb{R}[x]_{\leq 2}$. Abbiamo visto che $1, x, x^2$ sono una b
 $\lambda_11 + \lambda_2(1+x) + \lambda_3(1+x)^2 = 0 \Rightarrow \lambda_1 + \lambda_2 + \lambda_2x + \lambda_3x^2 + 2x\lambda_3 + \lambda_3 = 0 \Rightarrow (\lambda_1 + \lambda_2 + \lambda_3)1 + (\lambda_2 +\lambda_3)x + \lambda_3 + x^2 = 0$.\\
 Visto che $1, x, x^2$ sono lin. indipendenti allora $\lambda_1 + \lambda_2 + \lambda_3 = 0$, $\lambda_2 + 2\lambda_3 = 0$, $\lambda_3 = 0$ sostituendo viene che $\lambda_2 = 0, \lambda_1 = 0$ allora $1, 1+x, (1+x)^2$ sono lin. indipendenti ed allora sono una base di $\mathbb{R}(x)_{<2}$.
 \end{example}
-
-\begin{proposition}
-Sia $v_1, \cdots, v_n$ una base di V, e $v \in V$ un vettore. Allora $\exists ! \: \alpha_1, \cdots, \alpha_n \in \mathbb{R} \::\: v = \alpha_1v_1 + \alpha_2v_2 + \cdots + \alpha_nv_n$. (Ogni vettore si scrive in modo unico come combinazione lineare degli elementi della base)
-\end{proposition}
-
-\begin{demostration}
-Scriviamo come $V = span(v_1, \cdots, v_n)$, l'esistenza degli $\alpha_i$ è chiaro. Se adesso $v = \alpha_1v_i + \cdots + \alpha_nv_n = \beta_1v_1 + \cdots + \beta_nv_n$ allora $0 = (\alpha_1 - \beta_1)v_1 + \cdots + (\alpha_n - \beta)v_n$ allora $\alpha_1 = \beta_1, \cdots, \alpha_1 = \beta_n$ perché i $v_i$ sono lin. indipendenti.
-\end{demostration}
 
 \begin{example}
 $W' = \{f \in \mathbb{R}[x]_{\leq 2} \::\: f(1) = f(2) = 0\}$, $W' \subset W$ (per esempio visto prima) e $dim(W) = 3 \Longrightarrow dim(W') \leq 2$. Ci sono due vettori indipendenti in $W$, $(x-1)(x-2), (x-1)(x-2)^2$ di gradi diversi $\Longrightarrow dim(W') = 2$.\\
@@ -540,7 +566,7 @@ Se abbiamo uno spazio vettoriale $dim(V) = n$ ed abbiamo $v_1, v_2, \cdots, v_m$
 \end{proposition}
 
 \begin{demostration}
-$spa(v_1 \cdots, v_m)$ non può essere V, perché se $span(v_1, \cdots, v_m) = V \Longrightarrow v_1, \cdots, v_m$ è una base ma $m<n$ è $dim(V) = n$ e questa è una contraddizione. Quindi $span(v_1,\cdots,v_m) \neq V \Longrightarrow \exists w_{m+1} \in V \::\: w_{m+1} \notin span(v_1, \cdots, v_m)$. Ma allora $v_1, \cdots, v_{m}, w_{m+1}$ sono linearmente indipendenti tale che se $\lambda_1v_1 + \cdots + \lambda_{m}v_m + \lambda_{m+1}w_{m+1} = 0$, $\lambda_{m+1} = 0 $ allora $\lambda_1 = \cdots = \lambda_m  = 0$. Se $\lambda_{m+1} \neq 0$ allora $v_{m+1} = (-\frac{\lambda_1}{\lambda_{m+1}})v_1 + \cdots + (\frac{-\lambda_m}{\lambda_{m+1}})w_m \in span(w_1, \cdots, v_m)$ che è una contraddizione.
+$Span(v_1 \ldots, v_m)$ non può essere V, perché se $span(v_1, \cdots, v_m) = V \Longrightarrow v_1, \cdots, v_m$ è una base ma $m<n$ è $dim(V) = n$ e questa è una contraddizione. Quindi $span(v_1,\cdots,v_m) \neq V \Longrightarrow \exists w_{m+1} \in V \::\: w_{m+1} \notin span(v_1, \cdots, v_m)$. Ma allora $v_1, \cdots, v_{m}, w_{m+1}$ sono linearmente indipendenti tale che se $\lambda_1v_1 + \cdots + \lambda_{m}v_m + \lambda_{m+1}w_{m+1} = 0$, $\lambda_{m+1} = 0 $ allora $\lambda_1 = \cdots = \lambda_m  = 0$. Se $\lambda_{m+1} \neq 0$ allora $v_{m+1} = (-\frac{\lambda_1}{\lambda_{m+1}})v_1 + \cdots + (\frac{-\lambda_m}{\lambda_{m+1}})w_m \in span(w_1, \cdots, v_m)$ che è una contraddizione.
 \end{demostration}
 
 \hspace{-15pt}Per ricapitolare se la $dim(V) = n$ e $v_1, \cdots, v_n$ sono vettori di V possiamo dire che:
@@ -550,7 +576,6 @@ $spa(v_1 \cdots, v_m)$ non può essere V, perché se $span(v_1, \cdots, v_m) = V
     \item Se $m < n$ e i vettori sono indipendenti allora si completa in una base di V.
 \end{itemize} 
 
-\newpage
 \begin{example}
 Facciamo un esercizio che sarà suddiviso in due parti.
 \begin{itemize}
@@ -613,15 +638,15 @@ Facciamo un esercizio che sarà suddiviso in due parti.
 Sia $W \subset V$ un sottospazio. Allora:
 \begin{enumerate}
     \item Abbiamo che $dim(W) \leq dim(v)$.
-    \item E se $W \neq V$ allora $dim(W) < dim(v)$.
+    \item Se $W \neq V$ allora $dim(W) < dim(v)$.
 \end{enumerate}
 \end{proposition}
 
 \begin{demostration}
 Per dimostrare questa proposizione bisogna andare a dimostrare i due punti separatamente.
 \begin{enumerate}
-    \item Se $r = dim(W)$ e $w_1, \cdots, w_r$ è una base di W allora se $r > n$ allora per una proposizione vista precedentemente $w_1, \cdots, w_r$ sarebbero linearmente dipendenti e questa è una contraddizione quindi $r\leq n$.
-    \item se $r = n$, $w_1, \cdots, w_r$ sono $n = r$ vettori lineamenti indipendenti di V ed allora sono una base di V quindi $span(w_1, \cdots, w_r) = V \Longrightarrow V = W$.
+    \item Se $r = dim(W)$ e $w_1, \ldots, w_r$ è una base di W allora se $r > n$ per una proposizione vista precedentemente $w_1, \ldots, w_r$ sarebbero linearmente dipendenti e questa è una contraddizione quindi $r\leq n$.
+    \item Se $r = n$, $w_1, \ldots, w_r$ sono $n = r$ vettori lineamenti indipendenti di V ed allora sono una base di V quindi $span(w_1, \ldots, w_r) = V \Longrightarrow V = W$.
 \end{enumerate}
 \end{demostration}
 
