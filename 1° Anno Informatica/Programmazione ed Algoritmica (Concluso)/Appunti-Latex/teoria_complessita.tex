@@ -1,0 +1,75 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Teoria della complessità}
+Come abbiamo visto nella definizione 15.1 dividiamo i problemi in diverse categorie.\\
+I problemi che vedremo in questa sezione sono \textbf{presumibilmente intrattabili}, ovvero che abbiamo a disposizione solo algoritmi di costo \emph{esponenziale} per risolverli ma che \ul{nessuno ha dimostrato effettivamente che non possano esistere algoritmi polinomiali}.
+
+\begin{example}[Problema della clique]
+	Dato un grafo $F= (V,E)$ e un intero $k > 0$, stabilire se $G$ contiene un clique (sottografo completo) di almeno $k$ nodi.
+	%TODO Inserire esempi grafici
+\end{example}
+
+\begin{example}[Problema del cammino (o ciclo) Hamiltoniano]
+	Dato un grafo $G=(V,E)$, trovare un cammino (o ciclo) semplice che passa da tutti i vertici di G una ed una sola volta.
+	%TODO Inserire esempi grafici
+\end{example}
+
+\subsection{Velocità dei calcolatori}
+Studiamo ora la dimensione dei dati trattabili in funzione dell'incremento della velocità dei calcolatori per dimostrare che lo sviluppo tecnologico non riesce a bilanciare un algoritmo inefficiente.
+
+Dati due calcolatori $C_1$, $C_2$ con $C_2$ $k$ volte più veloce di $C_1$. Il tempo di calcolo a disposizione è $t$ e:
+\begin{itemize}
+	\item $n_1$ rappresenta i dati trattabili nel tempo $t$ su $C_1$
+	\item $n_2$ rappresenta i dati trattabili nel tempo $t$ su $C_2$
+\end{itemize}
+
+\begin{observation}
+	Usare $C_2$ per un tempo $t$ equivale a usare $C_1$ per un tempo $k \cdot t$.
+\end{observation}
+
+\noindent\textbf{Algoritmo polinomiale} che risolve il problema in $c \cdot n^s$ secondi ($c$, $s$ costanti).
+\begin{itemize}
+	\item $C_1$: $c \cdot n_1^s = t$ $\longrightarrow$ $n_1 = (\frac{t}{c})^\frac{1}{s}$
+	\item $C_2$: $c \cdot n_2^s = t$ $\longrightarrow$ $n_1 = (k \cdot \frac{t}{c})^\frac{1}{s} = k^{\frac{1}{s}} \cdot (\frac{t}{c})^\frac{1}{s}$
+\end{itemize} 
+Concludiamo quindi che il miglioramento è di un fattore moltiplicativo $K^\frac{1}{s}$. Ad esempio per $k = 10^9$ e $s=3$ i dati trattabili saranno moltiplicati per $10^3$.
+
+\subsection{Tipi di problemi}
+I tipi di problemi che possiamo studiare sono i seguenti:
+\begin{itemize}
+	\item \textbf{Problemi decisionali}: richiedono una risposta binaria, ad esempio determinare se un numero è primo
+	\item \textbf{Problemi di ricerca}: data un'istanza $x$, richiedono di restituire una soluzione $s$, ad esempio trovare un cammino tra due vertici.
+	\item \textbf{Problemi di ottimizzazione}: data un'istanza $x$, si vuole trovare la \emph{migliore} soluzione $s$ tra tutte le soluzioni possibili. Ad esempio la ricerca della clique di dimensione massima.
+\end{itemize}
+
+\subsection{Problemi decisionali}
+Nella teoria della complessità si studiano solamente i problemi \textbf{decisionali}, questo perché:
+\begin{itemize}
+	\item Essendo la risposta binaria, non ci si deve preoccupare del tempo richiesto per restituire la soluzione e quindi tutto il tempo è speso per il calcolo
+	\item La difficoltà di un problema è già presente nella usa versione decisionale. 
+	Tutti i problemi di ottimizzazione sono esprimibili in forma decisionale, chiedendo l'esistenza di una soluzione che soddisfi una certa proprietà. Il problema di \textbf{ottimizzazione} è quindi almeno tanto difficile quanto quello decisionale e quindi mi basta caratterizzare la complessità di quest'ultimo per dare un limite inferiore alla complessità del primo.
+\end{itemize}
+
+\subsection{Classi di complessità}
+Dato un problema decisionale $\Pi$ ed un algoritmo $A$, diciamo che $A$ risolve $\Pi$ se, data un'istanza di input $x$
+\begin{equation*}
+	A(x) = 1 \Longleftrightarrow \Pi(x) = 1
+\end{equation*}
+$A$ risolve $P$ in tempo $t(n)$ e spazio $s(n)$ se il tempo di esecuzione e l’occupazione di memoria di $A$ sono rispettivamente $t(n)$ e $s(n)$.
+Data una qualunque funzione $f(n)$:
+\begin{itemize}
+	\item $Time(f(n))$: insieme dei problemi decisionali che possono essere risolti in \textbf{tempo} $O(f(n))$.
+	\item $Space(f(n))$: insieme dei problemi decisionali che possono essere risolti in spazio $O(f(n))$
+\end{itemize}
+
+\subsubsection{Classe P}
+\begin{definition}[Algoritmo polinomiale in tempo]
+	esistono due costanti c, n0 > 0 t.c. il numero di
+	passi elementari è al più nc per ogni input di
+	dimensione n e per ogni n > n0
+\end{definition}
+\begin{definition}[Classe P]
+	è la classe dei problemi risolvibili in tempo
+	polinomiale nella dimensione n dell’istanza di
+	ingresso
+\end{definition}

@@ -1,0 +1,81 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Teoria della calcolabilità}
+Si occupa delle questioni fondamentali circa la \textbf{potenza} e le \textbf{limitazioni} dei sistemi di calcolo. \\
+L'origine risale alla prima metà del ventesimo secolo, quando i logici matematici iniziarono ad esplorare i concetti di:
+\begin{itemize}
+	\item Computazione
+	\item Algoritmo
+	\item Problema risolvibile per via algoritmica
+\end{itemize}
+e dimostrano l'esistenza di problemi che non ammettono un algoritmo di risoluzione.\\
+\begin{definition}[Problemi computazionali]
+	Problemi formulati \textbf{matematicamente} di cui cerchiamo una soluzione algoritmica. Si classificano in:
+	\begin{itemize}
+		\item Problemi \textbf{non decidibili}, non ammettono un algoritmo di risoluzione
+		\item Problemi \textbf{decidibili}, che a loro volta possono essere:
+		\begin{itemize}
+			\item \textbf{Trattabili}, ovvero di costo polinomiale
+			\item \textbf{Non trattabili}, ovvero di costo esponenziale
+		\end{itemize}
+	\end{itemize}
+\end{definition}
+
+\noindent Facciamo ora la distinzione tra:
+\begin{itemize}
+	\item \textbf{Calcolabilità}: sfrutta le nozioni di \emph{algoritmo} e di \emph{problema non decidibile}. Ha lo scopo di classificare i problemi in risolvibili e non risolvibili.
+	\item  \textbf{Complessità}: sfrutta le nozioni di \emph{algoritmo efficiente} e di \emph{problema non trattabile}. Ha lo scopo di classificare i problemi in “facili” e “difficili”.
+\end{itemize}
+
+\subsection{Problemi indecidibili}
+\subsection{Problemi decidibili ma intrattabili}
+\begin{example}[Torre di Hanoi]
+	%TODO Descrizione del problema
+		\begin{lstlisting}[language=C, caption=Torre di Hanoi, mathescape=true]
+			TorriHanoi(n, p, t, s)
+				if(n==1) print p->t;
+				else{
+					TorriHanoi(n-1, p, s, t);
+					print p->t;
+					TorriHanoi(n-1, s, t, p);
+				}
+	\end{lstlisting}
+	Scriviamo la relazione di ricorrenza:
+	\begin{equation*}
+		\begin{cases}
+			1 & n=1 \\
+			2M(n-1)+1 & n>1
+		\end{cases}
+	\end{equation*}
+	Non essendo risolvibile con il Master's Theorem, proviamo con il metodo di sostituzione:
+	\begin{table}[!h]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|c|c|}
+			\hline
+			\textbf{n} & 1 & 2 & 3 & 4 & $\ldots$ & $i$ \\
+			\hline
+		\end{tabular}
+	\end{table}
+	Dalla sostituzione sembra che $M(n)=2^n-1$. Dimostriamolo per induzione su $n$:
+	\begin{itemize}
+		\item \textbf{Caso base}: per $n=1$, $M(1)=1$ e $2^1-1 = 2-1 = 1$
+		\item \textbf{Ipotesi induttiva}: $M(i) = 2^i-1$, $\forall i < n$
+		\item \textbf{Passo induttivo}: per $n>1$, $M(n)=2M(n-1)+1=2(2^n-1)+1 = 2^{n+1}-1$
+	\end{itemize}
+	%TODO Qua ti sei perso
+	Abbiamo quindi dimostrato che 
+	Ora vogliamo capire qual'è il numero di mosse \textbf{necessarie} 
+	
+	La conclusione è che l'algoritmo ricorsivo dimostrato in precedenza è \textbf{ottimo} in quanto $2^n-1$ mosse sono \textbf{necessarie} e \textbf{sufficienti}.\\
+	Se i monaci spostassero 1 disco al secondo, per spostare i 64 dischi ci vorrebbero comunque $2^{64}-1$ secondi, ovvero circa $585 \cdot 10^9$ anni.\\
+	È quindi lecito dire che un problema con soluzione esponenziale è spesso a livello pratico assimilabile ad un problema indecidibile.
+\end{example}
+\begin{example}[Generazione delle sequenze binarie]
+	Dato $A=\{a_0, a_1, \ldots, a_{n-1}\}$ insieme di $n$ oggetti. Il numero di sottoinsiemi di $A$ è $2^n$ in quanto lo possiamo descivere con sequenze binarie. Ad esempio dato $A' \subseteq A$ tale che $A'=\{a_0, a_3, a_5, a_6\}$:
+	\begin{equation*}
+		\begin{cases}
+			2
+		\end{cases}
+	\end{equation*}
+	
+\end{example}
