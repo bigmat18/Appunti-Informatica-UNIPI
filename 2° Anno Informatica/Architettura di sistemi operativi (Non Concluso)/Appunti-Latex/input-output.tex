@@ -1,3 +1,4 @@
+\newpage
 \section{Input output}
 Quando andiamo a parlare dei sistemi di input output le cose principale da considerare sono i 
 disponsitivi di I/O i device controller, i buses, la gestione dell'I/O ed i device drivers.
@@ -70,10 +71,6 @@ utilizzato anche per indicare una raccolta condivisa di linee con più dispositi
 \\\\Un bus è un mezzo di trasmissione condiviso, solo un dispositivo alla volta può trasmettere con successo. Il bus di sistema collega i principali componenti (processore, memoria, bus I/O), centinaia di linee separate, linee classificate in tre gruppi: dati, indirizzo, controllo.
 \newpage
 
-% \begin{wrapfigure}{l}{2.5cm}
-%     \centering
-%     \includegraphics[width=2.5cm]{images/buses-type.png}
-% \end{wrapfigure}
 \hspace{-15pt}Alcuni tipi di bus sono:
 \begin{itemize}
     \item \textbf{System bus} Collega processore e memoria, I/O interfacciato con adattatori: breve, pochi tocchi e quindi più veloce e larghezza di banda elevata, inoltre non è standard (ovvero specifico del sistema).
@@ -107,6 +104,11 @@ Uno dei problemi principali di progettazioni da affrontare è il seguente:
     \end{itemize}
 \end{itemize}
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=8.5cm]{images/daily-chain-arbitrain.png}
+    \caption{Daily chain arbitrain}
+\end{figure}
 
 \subsection{Gestione dell I/O}
 Quando andiamo a parlare di gestione dei dispositivi di input output ci chiedimao come la CPU da i comandi 
@@ -120,9 +122,12 @@ due opzioni per mandare comandi hia device di I/O:
     \item Memory-mapped I/O: una porzione degli indirizzi fisici rispervata all'I/O.
 \end{itemize}
 
-\hspace{-15pt}
-
 \subsection{Memory-mapped I/O}
+\begin{wrapfigure}{r}{5cm}
+    \vspace{-20pt}
+    \centering
+    \includegraphics[width=4.5cm]{images/memory-mapped-io.png}
+\end{wrapfigure}
 I registri interni dei dispositivi sono mappati su locazioni di memoria principali (a indirizzi fisici riservati). 
 I comandi di I/O sono lettura/scrittura di memoria standard. Le operazioni in quelle posizioni vengono reindirizzate ai controller del dispositivo dalla MMU. 
 Gli accessi in modalità utente alle aree mappate in memoria generano eccezioni di violazione della memoria.

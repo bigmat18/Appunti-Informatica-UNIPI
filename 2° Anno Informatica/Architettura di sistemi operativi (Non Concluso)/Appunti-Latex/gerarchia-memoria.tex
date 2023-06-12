@@ -3,6 +3,12 @@ I principi fondamentali che andremo a vedere sono legati alle tecnologie con cui
 
 \subsection{Memory Technologies}
 Partiamo dicendo che esistono varie tipologie di memorie, che possono essere distinte in primo luogo in \textbf{memorie volatili}, e \textbf{memorie non volatili}. Fra memorie volatili abbiamo:
+\begin{wrapfigure}{r}{5cm}
+    \centering
+    \includegraphics[width=4cm]{images/memory-hierarcgy.png}
+    \caption{Gerarchia memoria}
+\end{wrapfigure}
+
 \begin{itemize}
     \item Latches, flip-flops, register files (o semplici registri).
     \item SRAM (Static Random-Access Memory).
@@ -36,13 +42,25 @@ Un altro interessanto confronto da fare fra le memorie e relativo ai costi, le c
 \hspace{-15pt}Da qui possiamo capire che nella selezione della memorie va trovato un compromesso fra i parametri visti precedentemente per andare ad avere memorie sufficientemente grandi per contenere i dati richiesti ma allo steso tempo sufficientemente veloci per evitare il \textbf{von Neumann Bottleneck}.
 
 \subsection{Von Neumann architecture}
+\begin{wrapfigure}{r}{6.5cm}
+    \vspace{-25pt}
+    \centering
+    \includegraphics[width=6cm]{images/von-numan.png}
+    \caption{Von-Neumann}
+\end{wrapfigure}
 Le perfomance dei computer sono limitate nella velocità della CPU dal trasferimento di dati fra le memorie esterne dall'unità di calcolo.\\
-Per andare a mitigare questo problema andiamo a inserire memorie più piccole vicino al processore, mentre più ci si allontana si avrà memorie di grosse ma anche più lente. Da qui vorremmo che il processore lavori alla velocità della memoria più vicina.\\
+Per andare a mitigare questo problema andiamo a inserire memorie più piccole vicino al processore, mentre più ci si allontana si avrà memorie di grosse ma anche più lente. Da qui vorremmo che il processore lavori alla velocità della memoria più vicina.\\\\
 
+\begin{wrapfigure}{l}{6.5cm}
+    \vspace{-10pt}
+    \centering
+    \includegraphics[width=6cm]{images/von-newmann-bottleneck.png}
+    \caption{Von-Neumann Bottleneck}
+\end{wrapfigure}
 L'obbiettivo è quindi di fornire l'illusione di avere una memoria grande quando al memoria più lontana e veloce quando la memoria più vicina.
-Per creare questa illusione andiamo a far risiedere i dati inizialmente nel livello più lontano e più capiente. Per far accedere il processore bisognerà a andare a spostare i dati. Un primo problema è che fra le memorie diverse i dati saranno salvati in indirizzi diversi, che quindi dovranno esser mappati.\\
-
+Per creare questa illusione andiamo a far risiedere i dati inizialmente nel livello più lontano e più capiente. Per far accedere il processore bisognerà a andare a spostare i dati. Un primo problema è che fra le memorie diverse i dati saranno salvati in indirizzi diversi, che quindi dovranno esser mappati.\\\\
 Un altro aspetto è che i trasferimenti di memoria possono non essere di una singola parola, un altro problema è che se un dato viene modificato in una memoria bisogna decidere come propagare le modifiche. Capiamo dunque che si sono un insieme di problemi per andare a implementare questa soluzione.
+
 
 \subsection{Terminologia}
 Introduciamo innanzitutto un po' di terminologia che ci servirà successivamente.
@@ -137,12 +155,27 @@ end: ...
 
 In questo frammento di codice viene eseguito il loop N volte, e quindi ogni struttura viene richiesta N volte in maniera sequenziale, in questo caso sia la localizzazione temporale che spaziale viene utilizzata.\\
 'Sum' è ripetutamente letta e scritta, quindi utilizza la località temporale, 'A' è salvata come un insieme contiguo di celle di memoria, quindi utilizzerà la località spaziale.
-
+\newpage
 \subsubsection{Cache Memories}
 La cache memory è la memoria più vicina al processore, solitamente sono le SRAM, ma alcune volte sono implementate anche come DRAM. Ad oggi tutte le architetture hanno alcuni livelli di cache integrati nel chip, essa può essere più o meno grande, ne può avere più di un livello.
 
 \subsubsection{Gestione del movimento dei dati}
 Fra il primo livello di cache e i registri il trasferimento è gestione dal compilato. Il trasferimento fra caches e RAM viene invece gestito dalla microarchitettura. In fine la gestione dei trasferimenti fra RAM e storate viene fatta dal sistema operativo.
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \includegraphics[width=6.5cm]{images/cache-memories.png}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \includegraphics[width=6.5cm]{images/cache-based-architecture.png}
+        \caption{}
+    \end{subfigure}
+\end{figure}
+    
 
 \subsection{Utilizzo della cache}
 L'organizzazione della cache avviene non a blocchi ma a line, ogni linea contiene blocchi di memoria (8-16 memory words). la prima volta che il processore richiede la memory ad una cache miss succede che il blocco contenente la parola si trasferisce dentro la cache. \\
@@ -199,15 +232,19 @@ Da qui possiamo distingure vari metodi di organizzaziazione:
     \item N-way set associatice, in cui N definisce il numero di blocchi conetnuti in un set quindi S=B/N
     \item Fully associative, in cui in questo caso nell'insieme c'è uno unico blocco contenente tutta la cache.
 \end{enumerate}
-
 Da ora andremo a considerare un sistema a 32-bit di indirizzi e 32-bit di parole quindi la memoria ha \(2^{30}\) parole.
-Andimo ora a visualizafe la cache come una lista di indirizzi che parte da 0 ed arriva a quello finale. Avremo sempre i primi due bit a 0 per indicizare il bite.
+Andimo ora a visualizzare la cache come una lista di indirizzi che parte da 0 ed arriva a quello finale. Avremo sempre i primi due bit a 0 per indicizare il bite.
 La funzione di mapping diretta della cache è una funzione rigida.\\
 
+\begin{wrapfigure}{r}{6.5cm}
+    \centering
+    \includegraphics[width=6cm]{images/direct-mapped.png}
+    \caption{Direcet mapped}
+\end{wrapfigure}
 %Riguarda le slide per l'esempio
 
 Per capire dov mettere l'indice della tabella, cioè l'indice di blocco, e per capire se la parola che stiamo inserendo è quella giusta si va a prendere l'indirizzo e si va a
-raggruppare.
+ragruppare.
 
 %iinserisci immagine
 
@@ -235,36 +272,136 @@ possono essere considerati valide o meno, perchè ci sono casi in cui vogliamo r
     Poi prendiamo un processore con 2Ghz con un mapping diretto L1 ai dati dalla cache con C = 128, b=8, \(t_m = 100\) cicli è \(t_{L1} = 4\) cicli. 'A' inizia all'indirizzo 0x00000000, 
     'B' inizia all'indirizzo 0x00000040 e 'C' inizia all'inidirizzo 0x00000080. %Il resto copialo dalle slide
 \end{example}
-
-Quindi per risasumere possiamo dire che i pro sono:
+\hspace{-15pt}Quindi per risasumere possiamo dire che i pro sono:
 \begin{itemize}
     \item La realizzazione è semplice
     \item E' molto veloce in caso di hits
 \end{itemize}
-
 Mentre nel caso dei contro abbiamo:
 \begin{itemize}
     \item La funzione di mapping a posizione fisse può generare potenzialmente molti conflitti.
     \item La troppa rigidità potrebbe avere un grosso impatto sul numero dei conflitti nella casch, essi dipendono dal posizionamento della memoria e dall'utilizzo delle strutture dati.
 \end{itemize}
 
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \includegraphics[width=4.7cm]{images/fully-associative.png}
+        \caption{Fully associative}
+    \end{subfigure}
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \includegraphics[width=4.7cm]{images/n-way-associative.png}
+        \caption{N-way associative}
+    \end{subfigure}
+\end{figure}
+
 \subsection{Cache associativa}
 La cahce ad accesso diretto ha una funzione di mapping fissa ed un dato indirizzo può andare solo ad una linea di cache. Mentre una cache ad accesso indiretto possono essserci più indirizzi sulla stessa
 linea di cache.
-Che si divide a sua olta in cache Fully associative e N-way set-associative cache.\\
+Che si divide a sua olta in cache Fully associative e N-way set-associative cache.
 
 
 \subsection{Cache miss}
 Le tipologie di cache miss sono le seguenti:
 \begin{itemize}
-    \item \textbf{Compulsory misses} questo tipologia di cache misses viene causato dal primo acceso al blocco che non è mai stato in cache.
-    \item \textbf{Capacity misses} causato dalla cache che non coneinte tutti i bocchi necessari.
+    \item \textbf{Compulsory miss} questo tipologia di cache misses viene causato dal primo acceso al blocco che non è mai stato in cache.
+    \item \textbf{Capacity miss} causato dalla cache che non coneinte tutti i bocchi necessari.
     \item \textbf{Conflict miss} solo per la mappatura diretta per i set associativi
 \end{itemize}
+A questo punto, visti i vari strumenti della cache e le tipologie di miss possnaimo andare  avedere come ridurre i cache miss tramite l'utilizzo di alcune tecniche:
+\begin{itemize}
+    \item \textbf{Aumentare la dimensione dei blocchi}. Andando così ad unmentare la località spaziale ma umentando anche la miss penalty.
+    \item \textbf{Aumenteare l'associativià}. Meno conflitti ma un maggiore tempo di hit.
+    \item \textbf{Aumentare dim. dei case}. Porta a meno capacity miss e conflitti ma aumenta l'hit time.
+    \item \textbf{Usare algoritmi di cache-oblivius}.
+\end{itemize}
+In caso comunque avvengano dobbiamo andarli a gestire. Un errore nella cache blocca l'intero processore, congelando 
+il contenuto di tutti i registri durante l'attesa della memoria: in effetti, un processore più avanzato consente l'esecuzione fuori ordine di altre istruzioni durante l'attesa della memoria.
+Gli steps che vengono eseguiti per la gestione di un cache miss (\textbf{fautl management}):
+\begin{enumerate}
+    \item Indica al livello di memoria successivo di leggere il valore mancante.
+    \item Attendi che la memoria risponda (questo può richiedere più cicli).
+    \item Aggiorna la riga della cache corrispondente con i dati ricevuti.
+    \item Riavvia l'esecuzione dell'istruzione (ora è un hit della cache).
+\end{enumerate}
 
 
 \subsection{Gestione delle scritture}
 Dobbiamo definire quelle che sono le \textbf{write hits}, se l'istruzione di stroe scribe il dato soltanto dentro la cache, dopo la cache
-è la memoria potrebbeero avere differenti valori (quindi abbiamo un inconsistenza)\\
+è la memoria potrebbeero avere differenti valori (quindi abbiamo un inconsistenza).\\
+Abbiamo poi \textbf{write miss}. 
+\begin{itemize}
+    \item Chiediamoci se possiamo recuperare il blocco dalla memoria alla cache e poi andiamo a sovrascivere la parola mancante?
+    La risposta è si e questa policy si chiama \textbf{write-allocate}.
+    Il blocco viene caricato nella cache seguito da un hit di scrittura (utilizzato principalmente nella politica Write-Back).
+    \item Poi chiediamoci anche se dovremmo scrivere la parola direttamente al livello di memoria successivo? 
+    Questa politica è chiamata \textbf{no-write-allocate}, il blocco non viene caricato nella cache (utilizzato principalmente nella politica Write-Through)
+\end{itemize}
 
-Abbiamo poi \textbf{write miss} possiamo recuperare il blocco dalla memoria alla cache e poi andiamo a sovrascivere la parola mancante?
+\subsubsection{Write-Through}
+Gli hit di scrittura aggiornano sempre sia la cache che il successivo livello di memoria.
+\begin{itemize}
+    \item \textbf{Pro}: Soluzione semplice, facile da implementare. I dati sono sempre coerenti tra i due livelli di memoria.
+    \item \textbf{Contro}: La velocità di scrittura dipende dalla velocità di scrittura del livello di memoria inferiore. Maggiore traffico di memoria, per ogni singola scrittura potrebbero esserci più scritture in ogni livello di memoria.
+\end{itemize}
+
+\subsubsection{Write-Back}
+I colpi di scrittura aggiornano solo la cache, quindi il blocco modificato viene scritto nel livello di memoria inferiore quando viene sostituito. 
+\begin{itemize}
+    \item \textbf{Pro}: la velocità delle scritture è quella della cache: minore traffico di memoria rispetto a Write-Through, le successive scritture sullo stesso blocco di cache non producono traffico con il livello di memoria inferiore più costoso.
+    \item \textbf{Contro}: 
+    Abbiamo bisogno di tenere traccia dei blocchi modificati (bit sporchi). Più complesso da implementare rispetto al Write-Through. La sostituzione della riga della cache è più costosa.
+\end{itemize}
+Il write-back può migliorare le prestazioni specialmente quando la CPU genera istruzioni di memorizzazione più velocemente di quanto la memoria principale può gestire, tuttavia, il costo delle scritture nella cache è maggiore se si verifica un errore di scrittura, dobbiamo prima riscrivere il blocco in memoria (se il dirty bit è 1). 
+Ciò richiede almeno due cicli anche per un hit di scrittura: un ciclo per verificare un hit seguito da un ciclo per eseguire effettivamente la scrittura. In alternativa, possiamo usare un buffer di scrittura per trattenere temporaneamente i dati da scrivere mentre il blocco della cache è controllato per un colpo. 
+Il processore esegue la ricerca nella cache e inserisce i dati nel buffer di scrittura durante il normale ciclo di accesso alla cache. Supponendo un riscontro nella cache, i nuovi dati vengono scritti dal buffer di scrittura nella cache al successivo ciclo di accesso alla cache inutilizzato (pipelining degli accessi).
+
+\subsubsection{Ottimizzare le scritture}
+Poiché la scrittura nella memoria off-chip è costosa, gli archivi di memoria sono bufferizzati, un \textbf{buffer di scrittura} viene utilizzato per conservare i dati in attesa di essere scritti nella memoria.
+L'esecuzione continua immediatamente dopo la scrittura dei dati nella cache e nel buffer di scrittura, la memoria memorizza nella memoria principale viene eseguita in parallelo con il calcolo della CPU, 
+la CPU va in stallo solo se il buffer di scrittura è pieno, quindi la larghezza di banda richiesta dalla memoria principale è un fattore critico, in particolare per il modello di cache Writhe-Through!
+
+\subsection{Cache replacement}
+In una direct mapped cache, il blocco richiesto può andare esattamente in una posizione, quindi non abbiamo scelta: 
+se il blocco da sostituire è stato modificato e la politica di scrittura è Write-Back, dobbiamo aggiornare la memoria di livello inferiore. 
+Cache associativa, possiamo scegliere dove posizionare il blocco richiesto: 
+\begin{itemize}
+    \item Fully associative cache, tutti i blocchi sono candidati per la sostituzione.
+    \item N-way set-associative cache, dobbiamo scegliere tra gli Nblocchi nel set selezionato.
+\end{itemize}
+
+\subsubsection{Cache replacement policy}
+Per decidere quali blocchi andare a rimpiazzare si possono applicare delle policy di rimpiazzamento, alcune di queste sono:
+\begin{itemize}
+    \item Lo schema più utilizzato è \textbf{Least Recent Used (LRU)}. Considera la località temporale, il blocco sostituito è quello che è rimasto inutilizzato per il tempo più lungo. 
+    Per una cache set-associativa a 2 vie, può essere implementato con 1 bit (usare bit --U), per un 4 vie è ancora fattibile con 2 bit, per più di 4 vie diventa abbastanza complicato (pseudo-LRU).
+    \item Per le cache altamente associative, una politica \textbf{Random} offre all'incirca le stesse prestazioni di LRU.
+\end{itemize}
+
+\begin{example}
+    Considera una piccola cache con 4 blocchi, b=1. Trova il numero di errori per una cache a mappatura diretta per la seguente sequenza ordinata di indirizzi di blocco 0, 8, 0, 6, 8.
+\end{example}
+
+\subsection{Designing the Memory System}
+La penalità di errore può essere ridotta aumentando la larghezza di banda del bus tra DRAM e cache. Ci sono tre possibili organizzazioni:
+\begin{itemize}
+    \item \textbf{Semplice}: una parola alla volta viene letta dalla memoria.
+    \item \textbf{Ampia memoria}: N parole alla volta vengono lette dalla memoria.
+    \item \textbf{Interleaved}: K banchi di memoria indipendenti in grado di servire K richieste contemporaneamente.
+\end{itemize}
+Consideriamo il tempo di trasferimento del blocco della cache per l'organizzazione della memoria Simplevs Interleaved.
+
+\subsection{Problemi cache}
+La memorizzazione nella cache è essenziale per ridurre il collo di bottiglia di von Neuman e ottenere prestazioni ragionevoli sui sistemi moderni•Tuttavia, la memorizzazione nella cache introduce alcuni problemi nei sistemi multiprocessore/multicore. 
+Problema di coerenza della cache, salsa condivisione degrado delle prestazioni nei multiprocessori coerenti con la cache, due variabili non correlate sono collocate nello stesso blocco della cache e accesso in modalità lettura/scrittura da thread diversi!
+
+\subsubsection{Problemi di corerenza}
+Supponiamo un'architettura SMP: SMP: Symmetric Multiprocessors, caching di dati privati e condivisi, i dati core privati vengono memorizzati nella cache in L1, riducendo così l'AMAT e le comunicazioni di memoria off-chip. 
+Quando i dati condivisi vengono memorizzati nella cache, i valori condivisi può essere replicato in più core cache private. Questo riduce anche la contesa di memoria! Cosa succede se i dati condivisi vengono scritti? 
+La memorizzazione nella cache dei dati condivisi introduce un nuovo problema: \textbf{la coerenza della cache}.
+
+\subsubsection{Write invalidate protocol}
+Il protocollo di invalidazione della scrittura invalida le copie dei dati presenti in altre cache durante un'operazione di scrittura. 
+Una semplice implementazione utilizza un protocollo bus di snooping per garantire che il processore acquisisca l'accesso esclusivo a un blocco di cache prima che scriva in esso.
