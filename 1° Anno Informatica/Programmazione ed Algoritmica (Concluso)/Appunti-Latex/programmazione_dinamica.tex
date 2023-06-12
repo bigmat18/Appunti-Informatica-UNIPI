@@ -115,3 +115,42 @@ Gli algoritmi sono costituiti da 4 fasi:
 	\end{itemize}
 	Il problema della edit-distance è determinare la distanza \emph{minima}.
 \end{example}
+
+\subsection{Tecnica Greedy}
+\begin{example}[Zaino frazionario]
+	Il problema è quello dello zaino visto in precedenza ma in questo caso il ladro può prendere anche frazioni di oggetti.
+	
+	\textbf{Correttezza}: occorre dimostrare che il problema soddisfi gli elementi della tecnica greedy:
+	\begin{itemize}
+		\item \emph{Sottostruttura ottima}
+		\item \emph{Proprietà della scelta greedy}: per assurdo, supponiamo che qualche scelta non sia greedy (localmente ottima). Anziché scegliere un oggetto $m$ di valore specifico $\frac{v_m}{w_m}$ , scegliamo $p$ kg dell'oggetto $q$ di valore specifico $\frac{v_q}{w_q}$.
+		\begin{equation*}
+			\frac{v_q}{w_q} < \frac{v_m}{w_m}
+		\end{equation*}
+		Sia $r=min\{p, w_m\}$
+		%TODO Ti sei perso
+	\end{itemize}
+\end{example}
+
+\begin{example}[Scheduling delle attività]
+	Ogni attività inizia e finisce in due istanti di tempo diversi. \\
+	\begin{table}[!h]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+			\hline
+			\textbf{i} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
+			\hline
+			\textbf{$S_i$} \\
+			\hline
+			\textbf{$T_i$} \\
+			\hline
+		\end{tabular}
+	\end{table}
+	Il problema consiste nel massimizzare il numero di attività eseguibili rispettando il vincolo di \emph{non sovrapposizione}.\\
+	Utilizziamo la strategia greedy:
+	\begin{itemize}
+		\item Seleziona l'attività che finisce prima
+		\item Elimina le attività che non sono compatibili, ovvero che si sovrappongono con quella selezionata
+		\item Ripeti
+	\end{itemize}
+\end{example}
