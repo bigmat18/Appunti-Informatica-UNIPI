@@ -124,7 +124,7 @@ due opzioni per mandare comandi hia device di I/O:
 
 \subsection{Memory-mapped I/O}
 \begin{wrapfigure}{r}{5cm}
-    \vspace{-20pt}
+    \vspace{-3cm0pt}
     \centering
     \includegraphics[width=4.5cm]{images/memory-mapped-io.png}
 \end{wrapfigure}
@@ -134,7 +134,7 @@ Gli accessi in modalità utente alle aree mappate in memoria generano eccezioni 
 
 \subsection{Programmed I/O}
 Per andare invece ora a rispondere alla seconda domanda che era stata posta. Come la CPU sa quando i dispositivi di I/O completando le operazioni?
-Introduciamo due concetti che possano risolvere questo probelma:
+Introduciamo due concetti che possano risolvere questo probelma.
 \begin{itemize}
     \item Programmed I/O: la cpu gestisce direttamente le operazioni e gli status di I/O.
     \item Interrupt-driven I/O: Un interrupt è un evento asincrono proveniente da un dispositivo (ad es. modulo I/O, timer, controller DMA). A volte le eccezioni sono anche c
@@ -162,6 +162,25 @@ si introduce quello che viene chiamato interrupts.
 e se l'iterrupt viene ricevuto salva il contesto corrente (ovvero i registri, non necessariamente tutti) e passa al livello privilegiato (ovvero PL1 su processore ARM), sulla base dell'ID dell'interrupt e della priorità dell'interrupt, il gestore dell'interrupt associato è pronto per essere eseguito, \footnote{I passaggi precedenti sono atomici dal punto di vista del sistema operativo!} 
 esegui poi il gestore (ovvero, il sistema operativo gestisce l'interrupt) e ripristina il contesto per l'esecuzione dell'istruzione successiva: \footnote{il ripristino è un'operazione atomica per il sistema operativo! }
 
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{.32\textwidth}
+        \centering
+        \includegraphics[width=3cm]{images/programmed-io.png}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}{.32\textwidth}
+        \centering
+        \includegraphics[width=3cm]{images/interrupt-driven-io.png}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}{.32\textwidth}
+        \centering
+        \includegraphics[width=4.5cm]{images/interrupt-manager.png}
+        \caption{}
+    \end{subfigure}
+\end{figure}
+
 \begin{example}
     Facciamo ora un esempio, assumiamo di avere una CPU ad una velocità di 500MHz ed un costo di polling di 400 cicli. Abbiamo poi un mouse come dispositivo a banda lenta.
     Vogliamo aver un poll di 30 volte al secondo.\\\\
@@ -176,6 +195,19 @@ esegui poi il gestore (ovvero, il sistema operativo gestisce l'interrupt) e ripr
 Andiamo ora a rispondere all'ultima domanda che ci eravamo posti, come i device di I/O eseguno il trasferimento dei dati?
 Sappiamo ora che l'I/O guidato da interrupt elimina i problemi di polling, tuttavia, il sistema operativo deve trasferire i dati una parola alla volta. Questo va bene solo per dispositivi I/O a bassa larghezza di banda (ad es. mouse), per ovviare
 a questo problma introduciamo la direct memory access (DMA).\\\\
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{.32\textwidth}
+        \centering
+        \includegraphics[width=3cm]{images/dma-controller.png}
+        \caption{DMA controller}
+    \end{subfigure}
+    \begin{subfigure}{.32\textwidth}
+        \centering
+        \includegraphics[width=3cm]{images/dma-transfer.png}
+        \caption{DMA transfer}
+    \end{subfigure}
+\end{figure}
 Esso è meccanismi che forniscono a un dispositivo di controllo I/O la capacità di trasferire i dati direttamente da e verso la memoria principale senza coinvolgere la CPU. 
 DMA disaccoppia il protocollo CPU-memoria dal protocollo memoria-dispositivo I/O. Interrupt utilizzati dal dispositivo I/O per comunicare con la CPU solo al completamento del trasferimento I/O o quando si verifica un errore.\\\\
 DMA è implementato con un controller specializzato. Per eseguire DMA, un dispositivo I/O è collegato a un controller DMA: è possibile collegare più dispositivi allo stesso controller. Il controller stesso è visto come un dispositivo I/O mappato in memoria, 
@@ -193,8 +225,7 @@ Ci sono tre passi nel transfer DMA:
     Overhead del processore per I/O guidato da interrupt senza DMA (il processore è coinvolto per ogni trasferimento di dati (16 B)) si calcola facendo 0.5 * (4MB/s) / (16B) * [(400 + 100) cicli / 500M cicli/s] = 12.5 \(\%\).\\\\
     Overhead del processore per I/O guidato da interrupt con trasferimento DMA (Il processore è coinvolto una volta per trasferimento a blocchi (16 KB)) si calcola invece facendo 0.5 * (4M B/s) / (16KB) * [(1600 + 400) / (5ooM cicli/s)] = 0.05 \(\%\)
 \end{example}
-
-\hspace{-15pt}Notiamo da questo esempio che Senza DMA: il processore avvia tutti i trasferimenti di dati, tutti i trasferimenti passano attraverso la traduzione degli indirizzi (MMU), i trasferimenti possono essere di qualsiasi dimensione e attraversare i limiti della pagina virtuale, 
+Notiamo da questo esempio che Senza DMA: il processore avvia tutti i trasferimenti di dati, tutti i trasferimenti passano attraverso la traduzione degli indirizzi (MMU), i trasferimenti possono essere di qualsiasi dimensione e attraversare i limiti della pagina virtuale, 
 nessun impatto sulla gerarchia della cache, le cache non contengono mai dati obsoleti.\\\\
 Mentre con DMA: il controller DMA avvia i trasferimenti di dati, esiste un altro percorso per il sistema di memoria, potenziali problemi: 
 i controller DMA utilizzano indirizzi virtuali o fisici? Cosa succede se scrivono i dati in una posizione di memoria cache?\\\\
@@ -204,12 +235,37 @@ DMA fisica:
     \item Virtual DMA: Il controller DMA deve eseguire internamente la traduzione degli indirizzi utilizzando una piccola cache (TLB) inizializzata dal sistema operativo quando richiede un trasferimento I/O. Complesso ma flessibile (ad esempio, grandi trasferimenti tra pagine).
     \item Physical DMA: Il controller DMA funziona con indirizzi fisici. Trasferimenti alla granularità della pagina, il sistema operativo suddivide i trasferimenti di grandi dimensioni in blocchi delle dimensioni della pagina. Più semplice, ma meno flessibile.
 \end{itemize}
-
-\hspace{-15pt}La DMA ha anche un'integrazione con la cache essendo che la memorizzazione nella cache riduce le istruzioni della CPU e la latenza di accesso ai dati e riduce l'utilizzo della memoria da parte della CPU, lasciando così più larghezza di banda di memoria/bus per i trasferimenti DMA. Ma le cache introducono un problema di coerenza per DMA: se il DMA scrive nella memoria principale, la versione dei dati nella cache è obsoleta. Per le cache write-back, il controller DMA potrebbe leggere i vecchi valori dei dati dalla memoria mentre i dati nella cache hanno il set di bit sporchi. La soluzione è lo svuotamento/invalidamento selettivo delle linee memorizzate nella cache 
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{.32\textwidth}
+        \centering
+        \includegraphics[width=4cm]{images/divice-access.png}
+        \caption{Device access}
+    \end{subfigure}
+    \begin{subfigure}{.32\textwidth}
+        \centering
+        \includegraphics[width=4cm]{images/kernel-io-structure.png}
+        \caption{Kernel IO structure}
+    \end{subfigure}
+\end{figure}
+La DMA ha anche un'integrazione con la cache essendo che la memorizzazione nella cache riduce le istruzioni della CPU e la latenza di accesso ai dati e riduce l'utilizzo della memoria da parte della CPU, lasciando così più larghezza di banda di memoria/bus per i trasferimenti DMA. Ma le cache introducono un problema di coerenza per DMA: se il DMA scrive nella memoria principale, la versione dei dati nella cache è obsoleta. Per le cache write-back, il controller DMA potrebbe leggere i vecchi valori dei dati dalla memoria mentre i dati nella cache hanno il set di bit sporchi. La soluzione è lo svuotamento/invalidamento selettivo delle linee memorizzate nella cache 
 coinvolte nei trasferimenti DMA: richiede una logica aggiuntiva per la coerenza della cache HW!\\\\
 L'accesso hai device è gestito tramite, uno stack software che fornisce modi per accedere a un'ampia gamma di dispositivi I/O. 
 Un'interfaccia comune, in POSIX equivalente all'accesso ai file, in termini di chiamate di sistema 
 di apertura/chiusura, lettura/scrittura. Driver di dispositivo per ogni dispositivo specifico, parte superiore HW, 
 indipendenti (per migliorare la portabilità), parte inferiore HW-dipendente.
-
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{.32\textwidth}
+        \centering
+        \includegraphics[width=7cm]{images/device-driver.png}
+        \caption{Device driver}
+    \end{subfigure}
+    \hspace{3cm}
+    \begin{subfigure}{.32\textwidth}
+        \centering
+        \includegraphics[width=4cm]{images/io-request-life-cycle.png}
+        \caption{IO request life cycle}
+    \end{subfigure}
+\end{figure}
 
