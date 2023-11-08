@@ -1,0 +1,822 @@
+==5358== Memcheck, a memory error detector
+==5358== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==5358== Using Valgrind-3.21.0.GIT-lbmacos-4233f2e8ac-20230112 and LibVEX; rerun with -h for copyright info
+==5358== Command: ./main
+==5358== Parent PID: 90553
+==5358== 
+--5358-- 
+--5358-- Valgrind options:
+--5358--    --leak-check=full
+--5358--    --show-leak-kinds=all
+--5358--    --track-origins=yes
+--5358--    --verbose
+--5358--    --log-file=valgrind-out.txt
+--5358-- Output from sysctl({CTL_KERN,KERN_VERSION}):
+--5358--   Darwin Kernel Version 21.6.0: Wed Aug 10 14:25:27 PDT 2022; root:xnu-8020.141.5~2/RELEASE_X86_64
+--5358-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand-rdseed
+--5358-- Page sizes: currently 4096, max supported 4096
+--5358-- Valgrind library directory: /usr/local/Cellar/valgrind/HEAD-4233f2e/libexec/valgrind
+==5358== 
+==5358== Support for macOS 11 and later is currently experimental
+==5358== Some reports (especially memory leaks) might be missing or incorrect
+==5358== 
+--5358-- ./main (rx at 0x100000000, rw at 0x100004000)
+--5358--    reading syms   from primary file (3 14)
+--5358--    dSYM= ./main.dSYM/Contents/Resources/DWARF/main
+--5358--    reading dwarf3 from dsyms file
+--5358-- /usr/lib/dyld (rx at 0x100010000, rw at 0x10007c000)
+--5358--    reading syms   from primary file (1 2318)
+--5358-- Scheduler: using generic scheduler lock implementation.
+--5358-- Reading suppressions file: /usr/local/Cellar/valgrind/HEAD-4233f2e/libexec/valgrind/default.supp
+==5358== embedded gdbserver: reading from /var/folders/57/0scbjmcx2p5__c91clyglhw80000gn/T//vgdb-pipe-from-vgdb-to-5358-by-matteogiu-on-???
+==5358== embedded gdbserver: writing to   /var/folders/57/0scbjmcx2p5__c91clyglhw80000gn/T//vgdb-pipe-to-vgdb-from-5358-by-matteogiu-on-???
+==5358== embedded gdbserver: shared mem   /var/folders/57/0scbjmcx2p5__c91clyglhw80000gn/T//vgdb-pipe-shared-mem-vgdb-5358-by-matteogiu-on-???
+==5358== 
+==5358== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==5358== don't want to do, unless you know exactly what you're doing,
+==5358== or are doing some strange experiment):
+==5358==   /usr/local/Cellar/valgrind/HEAD-4233f2e/libexec/valgrind/../../bin/vgdb --pid=5358 ...command...
+==5358== 
+==5358== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==5358==   /path/to/gdb ./main
+==5358== and then give GDB the following command
+==5358==   target remote | /usr/local/Cellar/valgrind/HEAD-4233f2e/libexec/valgrind/../../bin/vgdb --pid=5358
+==5358== --pid is optional if only one valgrind process is running
+==5358== 
+--5358-- REDIR: 0x100012a60 (dyld:strcmp) redirected to 0x258058890 (???)
+--5358-- REDIR: 0x100051b62 (dyld:arc4random) redirected to 0x25805892e (???)
+--5358-- REDIR: 0x100011aa0 (dyld:strlen) redirected to 0x25805885f (???)
+--5358-- REDIR: 0x10001318d (dyld:strlcat) redirected to 0x2580588c9 (???)
+--5358-- REDIR: 0x100011b00 (dyld:strcpy) redirected to 0x2580588ac (???)
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x10002E435: dyld4::SyscallDelegate::getDyldCache(dyld3::SharedCacheOptions const&, dyld3::SharedCacheLoadInfo&) const (in /usr/lib/dyld)
+==5358==    by 0x100018088: dyld4::ProcessConfig::DyldCache::DyldCache(dyld4::ProcessConfig::Process&, dyld4::ProcessConfig::Security const&, dyld4::ProcessConfig::Logging const&, dyld4::SyscallDelegate&) (in /usr/lib/dyld)
+==5358==    by 0x1000172A0: dyld4::ProcessConfig::ProcessConfig(dyld4::KernelArgs const*, dyld4::SyscallDelegate&) (in /usr/lib/dyld)
+==5358==    by 0x100015495: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c5210 is on thread 1's stack
+==5358==  7968 bytes below stack pointer
+==5358== 
+==5358== Warning: set address range perms: large range [0x7ff801256000, 0x7ff901056000) (defined)
+==5358== Warning: set address range perms: large range [0x7ff820c9e000, 0x7ff841256000) (noaccess)
+==5358== Warning: set address range perms: large range [0x7ff8448f2000, 0x7ff881256000) (noaccess)
+==5358== Warning: set address range perms: large range [0x7ff88d39a000, 0x7ff901056000) (noaccess)
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x1000193EE: dyld4::ProcessConfig::PathOverrides::forEachInsertedDylib(void ( block_pointer)(char const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000159C7: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c6b04 is on thread 1's stack
+==5358==  156 bytes below stack pointer
+==5358== 
+--5358-- /usr/local/Cellar/valgrind/HEAD-4233f2e/libexec/valgrind/vgpreload_core-amd64-darwin.so (rx at 0x1001d1000, rw at 0x1001d5000)
+--5358--    reading syms   from primary file (3 4)
+--5358--    dSYM= /usr/local/Cellar/valgrind/HEAD-4233f2e/libexec/valgrind/vgpreload_core-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_core-amd64-darwin.so
+--5358-- /usr/local/Cellar/valgrind/HEAD-4233f2e/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so (rx at 0x1001e8000, rw at 0x1001ec000)
+--5358--    reading syms   from primary file (75 13)
+--5358--    dSYM= /usr/local/Cellar/valgrind/HEAD-4233f2e/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_memcheck-amd64-darwin.so
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x10002059D: dyld4::RuntimeState::findPrebuiltLoader(char const*) const (in /usr/lib/dyld)
+==5358==    by 0x100022417: dyld4::Loader::makeDyldCacheLoader(Diagnostics&, dyld4::RuntimeState&, char const*, dyld4::Loader::LoadOptions const&, unsigned int) (in /usr/lib/dyld)
+==5358==    by 0x1000234CA: invocation function for block in dyld4::Loader::getLoader(Diagnostics&, dyld4::RuntimeState&, char const*, dyld4::Loader::LoadOptions const&) (in /usr/lib/dyld)
+==5358==    by 0x1000229F2: dyld4::Loader::forEachResolvedAtPathVar(dyld4::RuntimeState&, char const*, dyld4::Loader::LoadOptions const&, dyld4::ProcessConfig::PathOverrides::Type, bool&, void ( block_pointer)(char const*, dyld4::ProcessConfig::PathOverrides::Type, bool&)) (in /usr/lib/dyld)
+==5358==    by 0x10002259D: invocation function for block in dyld4::Loader::forEachPath(Diagnostics&, dyld4::RuntimeState&, char const*, dyld4::Loader::LoadOptions const&, void ( block_pointer)(char const*, dyld4::ProcessConfig::PathOverrides::Type, bool&)) (in /usr/lib/dyld)
+==5358==    by 0x100019C86: dyld4::ProcessConfig::PathOverrides::forEachPathVariant(char const*, dyld3::Platform, bool, bool&, void ( block_pointer)(char const*, dyld4::ProcessConfig::PathOverrides::Type, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000224FF: dyld4::Loader::forEachPath(Diagnostics&, dyld4::RuntimeState&, char const*, dyld4::Loader::LoadOptions const&, void ( block_pointer)(char const*, dyld4::ProcessConfig::PathOverrides::Type, bool&)) (in /usr/lib/dyld)
+==5358==    by 0x100022D79: dyld4::Loader::getLoader(Diagnostics&, dyld4::RuntimeState&, char const*, dyld4::Loader::LoadOptions const&) (in /usr/lib/dyld)
+==5358==    by 0x100027B4E: invocation function for block in dyld4::JustInTimeLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&) (in /usr/lib/dyld)
+==5358==    by 0x100042523: invocation function for block in dyld3::MachOFile::forEachDependentDylib(void ( block_pointer)(char const*, bool, bool, bool, unsigned int, unsigned int, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x1048c2d80 is on thread 1's stack
+==5358==  8288 bytes below stack pointer
+==5358== 
+--5358-- REDIR: 0x100014641 (dyld:strcat) redirected to 0x258058870 (???)
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x100027908: dyld4::JustInTimeLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&) (in /usr/lib/dyld)
+==5358==    by 0x100015AF8: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c69c8 is on thread 1's stack
+==5358==  264 bytes below stack pointer
+==5358== 
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c6b00 is on thread 1's stack
+==5358==  336 bytes below stack pointer
+==5358== 
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x100015BE6: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c6668 is on thread 1's stack
+==5358==  968 bytes below stack pointer
+==5358== 
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x10001E167: dyld4::RuntimeState::notifyDebuggerLoad(dyld3::Array<dyld4::Loader const*> const&) (in /usr/lib/dyld)
+==5358==    by 0x100015BE6: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c6470 is on thread 1's stack
+==5358==  304 bytes below stack pointer
+==5358== 
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x100015BF5: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c5748 is on thread 1's stack
+==5358==  4776 bytes below stack pointer
+==5358== 
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x10001B6A7: dyld4::RuntimeState::addPermanentRanges(dyld3::Array<dyld4::Loader const*> const&) (in /usr/lib/dyld)
+==5358==    by 0x100015C89: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c66a0 is on thread 1's stack
+==5358==  752 bytes below stack pointer
+==5358== 
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x100015E3F: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c5760 is on thread 1's stack
+==5358==  4928 bytes below stack pointer
+==5358== 
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x10004DD95: dyld3::MachOAnalyzer::forEachBindTarget_Opcodes(Diagnostics&, bool, void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000285CD: dyld4::JustInTimeLoader::forEachBindTarget(Diagnostics&, dyld4::RuntimeState&, void ( block_pointer)(unsigned int, unsigned int, dyld4::Loader::ResolvedSymbol const&), bool, void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&), void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100028218: dyld4::JustInTimeLoader::applyFixups(Diagnostics&, dyld4::RuntimeState&, dyld4::DyldCacheDataConstLazyScopedWriter&, bool) const (in /usr/lib/dyld)
+==5358==    by 0x100015E3F: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c5228 is on thread 1's stack
+==5358==  168 bytes below stack pointer
+==5358== 
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x100028FAF: invocation function for block in dyld4::JustInTimeLoader::forEachBindTarget(Diagnostics&, dyld4::RuntimeState&, void ( block_pointer)(unsigned int, unsigned int, dyld4::Loader::ResolvedSymbol const&), bool, void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&), void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004F14C: invocation function for block in dyld3::MachOAnalyzer::forEachBindTarget_Opcodes(Diagnostics&, bool, void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004E636: dyld3::MachOAnalyzer::forEachBind_OpcodesRegular(Diagnostics&, dyld3::MachOLoaded::LinkEditInfo const&, dyld3::MachOFile::SegmentInfo const*, void ( block_pointer)(char const*, dyld3::MachOLoaded::LinkEditInfo const&, dyld3::MachOFile::SegmentInfo const*, bool, bool, unsigned int, int, unsigned int, unsigned char, unsigned long long, unsigned char, char const*, bool, bool, unsigned long long, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004E0E2: dyld3::MachOAnalyzer::forEachBindUnified_Opcodes(Diagnostics&, bool, void ( block_pointer)(unsigned long long, dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(unsigned long long, dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004DD95: dyld3::MachOAnalyzer::forEachBindTarget_Opcodes(Diagnostics&, bool, void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000285CD: dyld4::JustInTimeLoader::forEachBindTarget(Diagnostics&, dyld4::RuntimeState&, void ( block_pointer)(unsigned int, unsigned int, dyld4::Loader::ResolvedSymbol const&), bool, void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&), void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100028218: dyld4::JustInTimeLoader::applyFixups(Diagnostics&, dyld4::RuntimeState&, dyld4::DyldCacheDataConstLazyScopedWriter&, bool) const (in /usr/lib/dyld)
+==5358==    by 0x100015E3F: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c4960 is on thread 1's stack
+==5358==  336 bytes below stack pointer
+==5358== 
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x100028FAF: invocation function for block in dyld4::JustInTimeLoader::forEachBindTarget(Diagnostics&, dyld4::RuntimeState&, void ( block_pointer)(unsigned int, unsigned int, dyld4::Loader::ResolvedSymbol const&), bool, void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&), void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004F14C: invocation function for block in dyld3::MachOAnalyzer::forEachBindTarget_Opcodes(Diagnostics&, bool, void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004EB0B: dyld3::MachOAnalyzer::forEachBind_OpcodesLazy(Diagnostics&, dyld3::MachOLoaded::LinkEditInfo const&, dyld3::MachOFile::SegmentInfo const*, void ( block_pointer)(char const*, dyld3::MachOLoaded::LinkEditInfo const&, dyld3::MachOFile::SegmentInfo const*, bool, bool, unsigned int, int, unsigned int, unsigned char, unsigned long long, unsigned char, char const*, bool, bool, unsigned long long, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004E11D: dyld3::MachOAnalyzer::forEachBindUnified_Opcodes(Diagnostics&, bool, void ( block_pointer)(unsigned long long, dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(unsigned long long, dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004DD95: dyld3::MachOAnalyzer::forEachBindTarget_Opcodes(Diagnostics&, bool, void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000285CD: dyld4::JustInTimeLoader::forEachBindTarget(Diagnostics&, dyld4::RuntimeState&, void ( block_pointer)(unsigned int, unsigned int, dyld4::Loader::ResolvedSymbol const&), bool, void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&), void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100028218: dyld4::JustInTimeLoader::applyFixups(Diagnostics&, dyld4::RuntimeState&, dyld4::DyldCacheDataConstLazyScopedWriter&, bool) const (in /usr/lib/dyld)
+==5358==    by 0x100015E3F: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c4990 is on thread 1's stack
+==5358==  336 bytes below stack pointer
+==5358== 
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x100025E60: dyld4::Loader::hasExportedSymbol(Diagnostics&, dyld4::RuntimeState&, char const*, dyld4::Loader::ExportedSymbolMode, dyld4::Loader::ResolvedSymbol*, dyld3::Array<dyld4::Loader const*>*) const (in /usr/lib/dyld)
+==5358==    by 0x10002582A: dyld4::Loader::resolveSymbol(Diagnostics&, dyld4::RuntimeState&, int, char const*, bool, bool, void ( block_pointer)(unsigned int, unsigned int, dyld4::Loader::ResolvedSymbol const&), bool) const (in /usr/lib/dyld)
+==5358==    by 0x100028FAF: invocation function for block in dyld4::JustInTimeLoader::forEachBindTarget(Diagnostics&, dyld4::RuntimeState&, void ( block_pointer)(unsigned int, unsigned int, dyld4::Loader::ResolvedSymbol const&), bool, void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&), void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004F14C: invocation function for block in dyld3::MachOAnalyzer::forEachBindTarget_Opcodes(Diagnostics&, bool, void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004EB0B: dyld3::MachOAnalyzer::forEachBind_OpcodesLazy(Diagnostics&, dyld3::MachOLoaded::LinkEditInfo const&, dyld3::MachOFile::SegmentInfo const*, void ( block_pointer)(char const*, dyld3::MachOLoaded::LinkEditInfo const&, dyld3::MachOFile::SegmentInfo const*, bool, bool, unsigned int, int, unsigned int, unsigned char, unsigned long long, unsigned char, char const*, bool, bool, unsigned long long, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004E11D: dyld3::MachOAnalyzer::forEachBindUnified_Opcodes(Diagnostics&, bool, void ( block_pointer)(unsigned long long, dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(unsigned long long, dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004DD95: dyld3::MachOAnalyzer::forEachBindTarget_Opcodes(Diagnostics&, bool, void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000285CD: dyld4::JustInTimeLoader::forEachBindTarget(Diagnostics&, dyld4::RuntimeState&, void ( block_pointer)(unsigned int, unsigned int, dyld4::Loader::ResolvedSymbol const&), bool, void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&), void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100028218: dyld4::JustInTimeLoader::applyFixups(Diagnostics&, dyld4::RuntimeState&, dyld4::DyldCacheDataConstLazyScopedWriter&, bool) const (in /usr/lib/dyld)
+==5358==    by 0x100015E3F: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c3e60 is on thread 1's stack
+==5358==  336 bytes below stack pointer
+==5358== 
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x1000247E7: dyld4::Loader::applyFixupsGeneric(Diagnostics&, dyld4::RuntimeState&, dyld3::Array<void const*> const&, dyld3::Array<void const*> const&, bool, dyld3::Array<dyld4::Loader::MissingFlatLazySymbol> const&) const (in /usr/lib/dyld)
+==5358==    by 0x100028264: dyld4::JustInTimeLoader::applyFixups(Diagnostics&, dyld4::RuntimeState&, dyld4::DyldCacheDataConstLazyScopedWriter&, bool) const (in /usr/lib/dyld)
+==5358==    by 0x100015E3F: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c5358 is on thread 1's stack
+==5358==  168 bytes below stack pointer
+==5358== 
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x10004FA08: dyld3::MachOAnalyzer::forEachBindLocation_Opcodes(Diagnostics&, void ( block_pointer)(unsigned long long, unsigned int, bool&), void ( block_pointer)(unsigned long long, unsigned int, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100024886: dyld4::Loader::applyFixupsGeneric(Diagnostics&, dyld4::RuntimeState&, dyld3::Array<void const*> const&, dyld3::Array<void const*> const&, bool, dyld3::Array<dyld4::Loader::MissingFlatLazySymbol> const&) const (in /usr/lib/dyld)
+==5358==    by 0x100028264: dyld4::JustInTimeLoader::applyFixups(Diagnostics&, dyld4::RuntimeState&, dyld4::DyldCacheDataConstLazyScopedWriter&, bool) const (in /usr/lib/dyld)
+==5358==    by 0x100015E3F: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c51d8 is on thread 1's stack
+==5358==  168 bytes below stack pointer
+==5358== 
+==5358== Invalid read of size 1
+==5358==    at 0x100012A40: strncmp (in /usr/lib/dyld)
+==5358==    by 0x10003F412: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff901256000 is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== Invalid read of size 4
+==5358==    at 0x10003F41B: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff901256010 is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== Invalid read of size 4
+==5358==    at 0x10003F42B: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff901256014 is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== Invalid read of size 4
+==5358==    at 0x10003F49E: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff901256138 is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== Invalid read of size 8
+==5358==    at 0x10003F4C5: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff9012562b8 is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== Invalid read of size 8
+==5358==    at 0x10003F4CC: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff9012562a8 is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== Invalid read of size 8
+==5358==    at 0x10003F4D0: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff9012562b0 is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== Invalid read of size 4
+==5358==    at 0x10003F4D4: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff9012562dc is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== Invalid read of size 4
+==5358==    at 0x10003F4D8: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff9012562d8 is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== Invalid read of size 8
+==5358==    at 0x10003F4E1: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff9012562d0 is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x10001A6C8: dyld4::RuntimeState::withLoadersReadLock(void ( block_pointer)()) (in /usr/lib/dyld)
+==5358==    by 0x10001F0E1: dyld4::RuntimeState::setObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==5358==    by 0x100032D44: dyld4::APIs::_dyld_objc_notify_register(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==5358==    by 0x7FF801405343: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013BF992: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013CD1B7: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371894: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x1048c5f60 is on thread 1's stack
+==5358==  336 bytes below stack pointer
+==5358== 
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x10001A6C8: dyld4::RuntimeState::withLoadersReadLock(void ( block_pointer)()) (in /usr/lib/dyld)
+==5358==    by 0x100035943: dyld4::APIs::_dyld_register_for_bulk_image_loads(void (*)(unsigned int, mach_header const**, char const**)) (in /usr/lib/dyld)
+==5358==    by 0x7FF8012AC44A: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8012ABA60: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C3718A4: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004B603: dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==  Address 0x1048c5ef8 is on thread 1's stack
+==5358==  328 bytes below stack pointer
+==5358== 
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x100038825: dyld4::APIs::runAllInitializersForMain() (in /usr/lib/dyld)
+==5358==    by 0x10001638C: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c6610 is on thread 1's stack
+==5358==  336 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== HEAP SUMMARY:
+==5358==     in use at exit: 0 bytes in 0 blocks
+==5358==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==5358== 
+==5358== All heap blocks were freed -- no leaks are possible
+==5358== 
+==5358== ERROR SUMMARY: 360 errors from 29 contexts (suppressed: 0 from 0)
+==5358== 
+==5358== 1 errors in context 1 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x10001B6A7: dyld4::RuntimeState::addPermanentRanges(dyld3::Array<dyld4::Loader const*> const&) (in /usr/lib/dyld)
+==5358==    by 0x100015C89: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c66a0 is on thread 1's stack
+==5358==  752 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== 1 errors in context 2 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x100015BF5: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c5748 is on thread 1's stack
+==5358==  4776 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== 1 errors in context 3 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x10001E167: dyld4::RuntimeState::notifyDebuggerLoad(dyld3::Array<dyld4::Loader const*> const&) (in /usr/lib/dyld)
+==5358==    by 0x100015BE6: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c6470 is on thread 1's stack
+==5358==  304 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== 1 errors in context 4 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x100015BE6: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c6668 is on thread 1's stack
+==5358==  968 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== 1 errors in context 5 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x100027908: dyld4::JustInTimeLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&) (in /usr/lib/dyld)
+==5358==    by 0x100015AF8: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c69c8 is on thread 1's stack
+==5358==  264 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== 1 errors in context 6 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x10002059D: dyld4::RuntimeState::findPrebuiltLoader(char const*) const (in /usr/lib/dyld)
+==5358==    by 0x100022417: dyld4::Loader::makeDyldCacheLoader(Diagnostics&, dyld4::RuntimeState&, char const*, dyld4::Loader::LoadOptions const&, unsigned int) (in /usr/lib/dyld)
+==5358==    by 0x1000234CA: invocation function for block in dyld4::Loader::getLoader(Diagnostics&, dyld4::RuntimeState&, char const*, dyld4::Loader::LoadOptions const&) (in /usr/lib/dyld)
+==5358==    by 0x1000229F2: dyld4::Loader::forEachResolvedAtPathVar(dyld4::RuntimeState&, char const*, dyld4::Loader::LoadOptions const&, dyld4::ProcessConfig::PathOverrides::Type, bool&, void ( block_pointer)(char const*, dyld4::ProcessConfig::PathOverrides::Type, bool&)) (in /usr/lib/dyld)
+==5358==    by 0x10002259D: invocation function for block in dyld4::Loader::forEachPath(Diagnostics&, dyld4::RuntimeState&, char const*, dyld4::Loader::LoadOptions const&, void ( block_pointer)(char const*, dyld4::ProcessConfig::PathOverrides::Type, bool&)) (in /usr/lib/dyld)
+==5358==    by 0x100019C86: dyld4::ProcessConfig::PathOverrides::forEachPathVariant(char const*, dyld3::Platform, bool, bool&, void ( block_pointer)(char const*, dyld4::ProcessConfig::PathOverrides::Type, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000224FF: dyld4::Loader::forEachPath(Diagnostics&, dyld4::RuntimeState&, char const*, dyld4::Loader::LoadOptions const&, void ( block_pointer)(char const*, dyld4::ProcessConfig::PathOverrides::Type, bool&)) (in /usr/lib/dyld)
+==5358==    by 0x100022D79: dyld4::Loader::getLoader(Diagnostics&, dyld4::RuntimeState&, char const*, dyld4::Loader::LoadOptions const&) (in /usr/lib/dyld)
+==5358==    by 0x100027B4E: invocation function for block in dyld4::JustInTimeLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&) (in /usr/lib/dyld)
+==5358==    by 0x100042523: invocation function for block in dyld3::MachOFile::forEachDependentDylib(void ( block_pointer)(char const*, bool, bool, bool, unsigned int, unsigned int, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x1048c2d80 is on thread 1's stack
+==5358==  8288 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== 1 errors in context 7 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x1000193EE: dyld4::ProcessConfig::PathOverrides::forEachInsertedDylib(void ( block_pointer)(char const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000159C7: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c6b04 is on thread 1's stack
+==5358==  156 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== 1 errors in context 8 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x10002E435: dyld4::SyscallDelegate::getDyldCache(dyld3::SharedCacheOptions const&, dyld3::SharedCacheLoadInfo&) const (in /usr/lib/dyld)
+==5358==    by 0x100018088: dyld4::ProcessConfig::DyldCache::DyldCache(dyld4::ProcessConfig::Process&, dyld4::ProcessConfig::Security const&, dyld4::ProcessConfig::Logging const&, dyld4::SyscallDelegate&) (in /usr/lib/dyld)
+==5358==    by 0x1000172A0: dyld4::ProcessConfig::ProcessConfig(dyld4::KernelArgs const*, dyld4::SyscallDelegate&) (in /usr/lib/dyld)
+==5358==    by 0x100015495: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c5210 is on thread 1's stack
+==5358==  7968 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== 2 errors in context 9 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x10001A6C8: dyld4::RuntimeState::withLoadersReadLock(void ( block_pointer)()) (in /usr/lib/dyld)
+==5358==    by 0x100035943: dyld4::APIs::_dyld_register_for_bulk_image_loads(void (*)(unsigned int, mach_header const**, char const**)) (in /usr/lib/dyld)
+==5358==    by 0x7FF8012AC44A: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8012ABA60: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C3718A4: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004B603: dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==  Address 0x1048c5ef8 is on thread 1's stack
+==5358==  328 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== 2 errors in context 10 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x10001A6C8: dyld4::RuntimeState::withLoadersReadLock(void ( block_pointer)()) (in /usr/lib/dyld)
+==5358==    by 0x10001F0E1: dyld4::RuntimeState::setObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==5358==    by 0x100032D44: dyld4::APIs::_dyld_objc_notify_register(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==5358==    by 0x7FF801405343: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013BF992: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013CD1B7: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371894: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x1048c5f60 is on thread 1's stack
+==5358==  336 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== 2 errors in context 11 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x100025E60: dyld4::Loader::hasExportedSymbol(Diagnostics&, dyld4::RuntimeState&, char const*, dyld4::Loader::ExportedSymbolMode, dyld4::Loader::ResolvedSymbol*, dyld3::Array<dyld4::Loader const*>*) const (in /usr/lib/dyld)
+==5358==    by 0x10002582A: dyld4::Loader::resolveSymbol(Diagnostics&, dyld4::RuntimeState&, int, char const*, bool, bool, void ( block_pointer)(unsigned int, unsigned int, dyld4::Loader::ResolvedSymbol const&), bool) const (in /usr/lib/dyld)
+==5358==    by 0x100028FAF: invocation function for block in dyld4::JustInTimeLoader::forEachBindTarget(Diagnostics&, dyld4::RuntimeState&, void ( block_pointer)(unsigned int, unsigned int, dyld4::Loader::ResolvedSymbol const&), bool, void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&), void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004F14C: invocation function for block in dyld3::MachOAnalyzer::forEachBindTarget_Opcodes(Diagnostics&, bool, void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004EB0B: dyld3::MachOAnalyzer::forEachBind_OpcodesLazy(Diagnostics&, dyld3::MachOLoaded::LinkEditInfo const&, dyld3::MachOFile::SegmentInfo const*, void ( block_pointer)(char const*, dyld3::MachOLoaded::LinkEditInfo const&, dyld3::MachOFile::SegmentInfo const*, bool, bool, unsigned int, int, unsigned int, unsigned char, unsigned long long, unsigned char, char const*, bool, bool, unsigned long long, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004E11D: dyld3::MachOAnalyzer::forEachBindUnified_Opcodes(Diagnostics&, bool, void ( block_pointer)(unsigned long long, dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(unsigned long long, dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004DD95: dyld3::MachOAnalyzer::forEachBindTarget_Opcodes(Diagnostics&, bool, void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000285CD: dyld4::JustInTimeLoader::forEachBindTarget(Diagnostics&, dyld4::RuntimeState&, void ( block_pointer)(unsigned int, unsigned int, dyld4::Loader::ResolvedSymbol const&), bool, void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&), void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100028218: dyld4::JustInTimeLoader::applyFixups(Diagnostics&, dyld4::RuntimeState&, dyld4::DyldCacheDataConstLazyScopedWriter&, bool) const (in /usr/lib/dyld)
+==5358==    by 0x100015E3F: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c3e60 is on thread 1's stack
+==5358==  336 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== 3 errors in context 12 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x10004FA08: dyld3::MachOAnalyzer::forEachBindLocation_Opcodes(Diagnostics&, void ( block_pointer)(unsigned long long, unsigned int, bool&), void ( block_pointer)(unsigned long long, unsigned int, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100024886: dyld4::Loader::applyFixupsGeneric(Diagnostics&, dyld4::RuntimeState&, dyld3::Array<void const*> const&, dyld3::Array<void const*> const&, bool, dyld3::Array<dyld4::Loader::MissingFlatLazySymbol> const&) const (in /usr/lib/dyld)
+==5358==    by 0x100028264: dyld4::JustInTimeLoader::applyFixups(Diagnostics&, dyld4::RuntimeState&, dyld4::DyldCacheDataConstLazyScopedWriter&, bool) const (in /usr/lib/dyld)
+==5358==    by 0x100015E3F: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c51d8 is on thread 1's stack
+==5358==  168 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== 3 errors in context 13 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x1000247E7: dyld4::Loader::applyFixupsGeneric(Diagnostics&, dyld4::RuntimeState&, dyld3::Array<void const*> const&, dyld3::Array<void const*> const&, bool, dyld3::Array<dyld4::Loader::MissingFlatLazySymbol> const&) const (in /usr/lib/dyld)
+==5358==    by 0x100028264: dyld4::JustInTimeLoader::applyFixups(Diagnostics&, dyld4::RuntimeState&, dyld4::DyldCacheDataConstLazyScopedWriter&, bool) const (in /usr/lib/dyld)
+==5358==    by 0x100015E3F: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c5358 is on thread 1's stack
+==5358==  168 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== 3 errors in context 14 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x100028FAF: invocation function for block in dyld4::JustInTimeLoader::forEachBindTarget(Diagnostics&, dyld4::RuntimeState&, void ( block_pointer)(unsigned int, unsigned int, dyld4::Loader::ResolvedSymbol const&), bool, void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&), void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004F14C: invocation function for block in dyld3::MachOAnalyzer::forEachBindTarget_Opcodes(Diagnostics&, bool, void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004E636: dyld3::MachOAnalyzer::forEachBind_OpcodesRegular(Diagnostics&, dyld3::MachOLoaded::LinkEditInfo const&, dyld3::MachOFile::SegmentInfo const*, void ( block_pointer)(char const*, dyld3::MachOLoaded::LinkEditInfo const&, dyld3::MachOFile::SegmentInfo const*, bool, bool, unsigned int, int, unsigned int, unsigned char, unsigned long long, unsigned char, char const*, bool, bool, unsigned long long, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004E0E2: dyld3::MachOAnalyzer::forEachBindUnified_Opcodes(Diagnostics&, bool, void ( block_pointer)(unsigned long long, dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(unsigned long long, dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004DD95: dyld3::MachOAnalyzer::forEachBindTarget_Opcodes(Diagnostics&, bool, void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000285CD: dyld4::JustInTimeLoader::forEachBindTarget(Diagnostics&, dyld4::RuntimeState&, void ( block_pointer)(unsigned int, unsigned int, dyld4::Loader::ResolvedSymbol const&), bool, void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&), void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100028218: dyld4::JustInTimeLoader::applyFixups(Diagnostics&, dyld4::RuntimeState&, dyld4::DyldCacheDataConstLazyScopedWriter&, bool) const (in /usr/lib/dyld)
+==5358==    by 0x100015E3F: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c4960 is on thread 1's stack
+==5358==  336 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== 3 errors in context 15 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x10004DD95: dyld3::MachOAnalyzer::forEachBindTarget_Opcodes(Diagnostics&, bool, void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000285CD: dyld4::JustInTimeLoader::forEachBindTarget(Diagnostics&, dyld4::RuntimeState&, void ( block_pointer)(unsigned int, unsigned int, dyld4::Loader::ResolvedSymbol const&), bool, void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&), void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100028218: dyld4::JustInTimeLoader::applyFixups(Diagnostics&, dyld4::RuntimeState&, dyld4::DyldCacheDataConstLazyScopedWriter&, bool) const (in /usr/lib/dyld)
+==5358==    by 0x100015E3F: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c5228 is on thread 1's stack
+==5358==  168 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== 4 errors in context 16 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c6b00 is on thread 1's stack
+==5358==  336 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== 6 errors in context 17 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x100038825: dyld4::APIs::runAllInitializersForMain() (in /usr/lib/dyld)
+==5358==    by 0x10001638C: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c6610 is on thread 1's stack
+==5358==  336 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== 8 errors in context 18 of 29:
+==5358== Invalid read of size 4
+==5358==    at 0x10003F49E: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff901256138 is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== 
+==5358== 8 errors in context 19 of 29:
+==5358== Invalid read of size 4
+==5358==    at 0x10003F42B: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff901256014 is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== 
+==5358== 8 errors in context 20 of 29:
+==5358== Invalid read of size 4
+==5358==    at 0x10003F41B: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff901256010 is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== 
+==5358== 8 errors in context 21 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x100028FAF: invocation function for block in dyld4::JustInTimeLoader::forEachBindTarget(Diagnostics&, dyld4::RuntimeState&, void ( block_pointer)(unsigned int, unsigned int, dyld4::Loader::ResolvedSymbol const&), bool, void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&), void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004F14C: invocation function for block in dyld3::MachOAnalyzer::forEachBindTarget_Opcodes(Diagnostics&, bool, void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004EB0B: dyld3::MachOAnalyzer::forEachBind_OpcodesLazy(Diagnostics&, dyld3::MachOLoaded::LinkEditInfo const&, dyld3::MachOFile::SegmentInfo const*, void ( block_pointer)(char const*, dyld3::MachOLoaded::LinkEditInfo const&, dyld3::MachOFile::SegmentInfo const*, bool, bool, unsigned int, int, unsigned int, unsigned char, unsigned long long, unsigned char, char const*, bool, bool, unsigned long long, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004E11D: dyld3::MachOAnalyzer::forEachBindUnified_Opcodes(Diagnostics&, bool, void ( block_pointer)(unsigned long long, dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(unsigned long long, dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x10004DD95: dyld3::MachOAnalyzer::forEachBindTarget_Opcodes(Diagnostics&, bool, void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&), void ( block_pointer)(dyld3::MachOAnalyzer::BindTargetInfo const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000285CD: dyld4::JustInTimeLoader::forEachBindTarget(Diagnostics&, dyld4::RuntimeState&, void ( block_pointer)(unsigned int, unsigned int, dyld4::Loader::ResolvedSymbol const&), bool, void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&), void ( block_pointer)(dyld4::Loader::ResolvedSymbol const&, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100028218: dyld4::JustInTimeLoader::applyFixups(Diagnostics&, dyld4::RuntimeState&, dyld4::DyldCacheDataConstLazyScopedWriter&, bool) const (in /usr/lib/dyld)
+==5358==    by 0x100015E3F: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c4990 is on thread 1's stack
+==5358==  336 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== 32 errors in context 22 of 29:
+==5358== Invalid read of size 8
+==5358==    at 0x10003F4E1: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff9012562d0 is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== 
+==5358== 32 errors in context 23 of 29:
+==5358== Invalid read of size 4
+==5358==    at 0x10003F4D8: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff9012562d8 is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== 
+==5358== 32 errors in context 24 of 29:
+==5358== Invalid read of size 4
+==5358==    at 0x10003F4D4: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff9012562dc is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== 
+==5358== 32 errors in context 25 of 29:
+==5358== Invalid read of size 8
+==5358==    at 0x10003F4D0: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff9012562b0 is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== 
+==5358== 32 errors in context 26 of 29:
+==5358== Invalid read of size 8
+==5358==    at 0x10003F4CC: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff9012562a8 is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== 
+==5358== 32 errors in context 27 of 29:
+==5358== Invalid read of size 8
+==5358==    at 0x10003F4C5: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100042BB6: dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff9012562b8 is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== 
+==5358== 44 errors in context 28 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100069B89: __chkstk_darwin_probe (in /usr/lib/dyld)
+==5358==    by 0x100015E3F: dyld4::prepare(dyld4::APIs&, dyld3::MachOAnalyzer const*) (in /usr/lib/dyld)
+==5358==    by 0x1000154E3: (below main) (in /usr/lib/dyld)
+==5358==  Address 0x1048c5760 is on thread 1's stack
+==5358==  4928 bytes below stack pointer
+==5358== 
+==5358== 
+==5358== 56 errors in context 29 of 29:
+==5358== Invalid read of size 1
+==5358==    at 0x100012A40: strncmp (in /usr/lib/dyld)
+==5358==    by 0x10003F412: DyldSharedCache::forEachRegion(void ( block_pointer)(void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000334A0: invocation function for block in dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x10003F5FA: DyldSharedCache::forEachCache(void ( block_pointer)(DyldSharedCache const*, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x1000333C4: dyld4::APIs::_dyld_is_memory_immutable(void const*, unsigned long) (in /usr/lib/dyld)
+==5358==    by 0x7FF80139D4D6: ??? (in /dev/ttys000)
+==5358==    by 0x7FF8013A1612: ??? (in /dev/ttys000)
+==5358==    by 0x7FF80C371856: ??? (in /dev/ttys000)
+==5358==    by 0x100024E4E: invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const (in /usr/lib/dyld)
+==5358==    by 0x10004BAAC: invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void ( block_pointer)(unsigned int), void const*) const (in /usr/lib/dyld)
+==5358==    by 0x100042E25: invocation function for block in dyld3::MachOFile::forEachSection(void ( block_pointer)(dyld3::MachOFile::SectionInfo const&, bool, bool&)) const (in /usr/lib/dyld)
+==5358==    by 0x100011DB2: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==5358==  Address 0x7ff901256000 is not stack'd, malloc'd or (recently) free'd
+==5358== 
+==5358== ERROR SUMMARY: 360 errors from 29 contexts (suppressed: 0 from 0)

@@ -1,0 +1,75 @@
+$date
+	Wed Nov  9 00:00:42 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module testRegistro $end
+$var wire 8 ! out [7:0] $end
+$var reg 1 " clock $end
+$var reg 8 # in [7:0] $end
+$var reg 1 $ we $end
+$scope module myreg $end
+$var wire 1 " clock $end
+$var wire 8 % in [7:0] $end
+$var wire 8 & out [7:0] $end
+$var wire 1 $ we $end
+$var reg 8 ' state [7:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 '
+b0 &
+b111 %
+0$
+b111 #
+0"
+b0 !
+$end
+#2
+1"
+#4
+0"
+#5
+1$
+#6
+b111 !
+b111 &
+b111 '
+1"
+#8
+0"
+#10
+1"
+#11
+b1100 #
+b1100 %
+#12
+0"
+#14
+b1100 !
+b1100 &
+b1100 '
+1"
+#16
+0"
+#17
+b101 #
+b101 %
+#18
+b101 !
+b101 &
+b101 '
+1"
+#20
+0"
+#22
+1"
+#24
+0"
+#25

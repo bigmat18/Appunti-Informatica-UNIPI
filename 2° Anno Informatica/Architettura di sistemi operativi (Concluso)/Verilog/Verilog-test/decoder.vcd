@@ -1,0 +1,41 @@
+$date
+	Tue Nov  8 23:21:40 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module testDecoder $end
+$var wire 5 ! out [4:0] $end
+$var reg 2 " in [1:0] $end
+$scope module dec $end
+$var wire 2 # in [1:0] $end
+$var wire 5 $ out [4:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bz1000 $
+b0 #
+b0 "
+bz1000 !
+$end
+#4
+bz0100 !
+bz0100 $
+b1 "
+b1 #
+#8
+bz0010 !
+bz0010 $
+b10 "
+b10 #
+#12
+bz0001 !
+bz0001 $
+b11 "
+b11 #
+#16

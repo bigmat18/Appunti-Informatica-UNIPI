@@ -1,0 +1,107 @@
+\newpage
+\section{Dischi rigidi}
+Alcuni tipi di storage device sono per esempio i dischi magnetici e le flash memory.
+
+\begin{definition}[Dischi magnetici]
+    I dischi magnetici è un tipo di archiviazione che raramente viene danneggiata. 
+    Grande capacità a basso costo. Accesso casuale a livello di blocco. 
+    Prestazioni lente per l'accesso casuale. Migliori prestazioni per l'accesso in streaming.
+\end{definition}
+
+\begin{definition}[Flash memory]
+    Archiviazione che raramente viene danneggiata. Buona capacità a costo intermedio (2 \(\times\) disco). 
+    Accesso casuale a livello di blocco. Buone prestazioni per le letture; peggio per le scritture casuali.
+\end{definition}
+
+\subsection{Dischi magnetici}
+I dischi magnetici hanno circa 1 micron di larghezza, lunghezza d'onda della luce è di circa 0.5 micron, 
+risoluzione dell'occhio umano: 50 micron, 100K su un tipico disco da 2,5 pollici. Separato da regioni 
+di guardia inutilizzate, riduce la probabilità che le tracce vicine vengano danneggiate durante le scritture 
+(ancora una piccola possibilità diversa da zero). \\\\
+La lunghezza della traccia varia a seconda del disco, all'esterno: più settori per traccia, maggiore larghezza di banda, il disco è organizzato in regioni di tracce 
+con lo stesso numero di settori/traccia, viene utilizzata solo la metà esterna del raggio. La maggior parte
+dell'area del disco nelle regioni esterne del disco
+
+\subsubsection{Settore}
+I settori contengono sofisticati codici di correzione degli errori, il magnete della testina del disco ha un campo più ampio della traccia, nasconde le corruzioni dovute alle scritture di tracce vicine
+\begin{itemize}
+    \item \textbf{Sector sparing}. Rimappa i settori danneggiati in modo trasparente ai settori di riserva sulla stessa superficie.
+    \item \textbf{Slip sparing}. Rimappa tutti i settori (quando c'è un settore danneggiato) per preservare il comportamento sequenziale.
+    \item \textbf{Track skewing}. Numeri di settore spostati da una traccia all'altra, per consentire il movimento della testina del disco per operazioni sequenziali.
+\end{itemize}
+
+\hspace{-15pt}A basso livello il controller accede ai singoli settori. La dimensione tipica del settore è di 256/512 byte. 
+Identificato da una tripla: \(<\)\#cilindro, \#faccia, \#settore\(>\).\\\\
+Al livello superiore, il driver del disco raggruppa un insieme di settori contigui in un blocco. La dimensione tipica del blocco è di 2/4/8 Kbyte, 
+identificata da un puntatore su uno spazio di indirizzi contiguo (da 0 a max-blocks).\\
+Dato un numero di sector \(b\), ed una tripla \(<c,f,s>\) abbiamo che.
+\[b = c(\text{\#faces} \cdot \text{\#sectors}) + f(\text{\#sectors}) + s\]
+\#faces sono il numero di facce in un disco mentre \#sectors sono il numero di settori per track. Di conseguenza a questa formula
+abbiamo che:
+\[c = b \:\: div \:\: (\text{\#faces} \cdot \text{\#sectors}) \hspace{18pt} f = (b \:\: div \:\: (\text{\#faces} \cdot \text{\#sectors}))div \:\: \text{\#sectors}\]
+\[s = (b \:\: div \:\: (\text{\#faces} \cdot \text{\#sectors}))mod \:\: \text{\#sectors}\]
+
+\begin{example}
+    Disco con 100 cilindri, 4 facce, 2000 settori per traccia. Un file utilizza i blocchi 94421, 94422, 94423. Qual è il \(<c,f,s>\) per ogni blocco?
+    Possiamo calcolare facendo:\\ \(c = 94421 \:\: div \:\: (4 \cdot 2000) = 1\) (rimangono 6421). \(f = 6421 \:\: div \:\: 2000 = 3\) (rimangono 421) quindi \(s = 421\).
+    Pertanto le triple sono: \(<11, 2, 421>, <11, 3, 422>, <11, 3, 423>\).
+\end{example}
+
+\subsubsection{Disk performance}
+Fra i puinti principali nel calcolo delle performance di un disco è la sua latenza. Per calcolare la disk latency:
+\[\text{Disk latency = Seek time + Rotation time + Transfer Time}\]
+
+\hspace{-15pt}In questa formula possiamo notare 3 componenti:
+\begin{itemize}
+    \item \textbf{Seek time}. Tempo per spostare il braccio del disco sulla traccia (1-20ms). Regolazione fine della posizione necessaria affinché la testina si "assesti". Tempo di cambio testina ~ tempo di cambio traccia (su dischi moderni).
+    \item \textbf{Rotation time}. Tempo di attesa per la rotazione del disco sotto la testina del disco Rotazione del disco: 4, 15 ms (a seconda del prezzo del disco).
+    \item \textbf{Transfer time}. Tempo di trasferimento dei dati su/fuori dal disco Velocità di trasferimento testina disco: 50-100 MB/s (5-10 usec/settore). Velocità di trasferimento host dipendente dal connettore I/O (USB, SATA, ...).
+\end{itemize}
+
+\begin{example}
+    Quanto ci vuole per completare 500 letture casuali del disco, in ordine FIFO? Ricerca: media 10,5 msec. Rotazione: media 4,15 msec. Trasferimento: 5-10 usec. 500 * (10,5 + 4,15 + 0,01)/1000 = 7,3 secondi.
+\end{example}
+
+\begin{example}
+    Quanto tempo occorre per completare 500 letture sequenziali del disco? Tempo di ricerca: 10,5 ms (per raggiungere il primo settore). Tempo di rotazione: 4,15 ms (per raggiungere il primo settore). Tempo di trasferimento: (traccia esterna) 500 settori * 512 byte / 128 MB/sec = 2 ms Totale: 10,5 + 4,15 + 2 = 16,7 ms. \\
+    Potrebbe essere necessaria una testina aggiuntiva o un interruttore di traccia (+1ms). Il buffer di traccia può consentire la lettura fuori servizio di alcuni settori dal disco (-2ms)
+\end{example}
+
+
+\begin{example}
+    Disco con 100 cilindri, 4 facce, 2000 settori per traccia. Un file usa i blocchi 94421, 94422, 94423 \((<11,3,421> <11,3,422> <11,3,423>)\). 
+    \\Un settore viene letto in 0,01 ms, il tempo di ricerca tra due tracce consecutive è di 0,01 ms e il tempo medio per raggiungere il settore desiderato è la metà del tempo di rotazione. 
+    \\Considerando che il braccio è al cilindro 22 e che il controller DMA ha abbastanza buffer, calcola il tempo per leggere i blocchi di file.(22-11)*0.01 + 20/2 + 3*0.01 = 10.14ms
+\end{example}
+
+\subsection{Dishi SSD}
+Un Solid StateDrive (SSD) è un dispositivo di archiviazione non volatile basato sulla tecnologia di memoria flash. Gli SSD sono più affidabili e più veloci dei dischi rigidi (HD) perché non hanno parti mobili e nessun tempo di ricerca, sli SSD usano comunemente una semplice pianificazione FCFS policy. 
+Consumano meno energia e sono più costosi per MB di dati. La capacità dell'HD è in genere maggiore. In alcuni sistemi, gli SSD vengono utilizzati come ulteriore livello di cache nella gerarchia della memoria.
+\\\\
+All'interno delle flash memory abbiamo che le scritture devono essere per "pulire" le celle; nessun aggiornamento in atto. Cancellazione di blocchi di grandi dimensioni richiesta prima della scrittura.
+Blocco di cancellazione fra 128 ed i 512 KB. Tempo di cancellazione: diversi millisecondi, scrittura/lettura pagina (2-4 KB) in circa 50-100 usec.
+
+\subsubsection{Flash translation layer}
+Per evitare il costo di una cancellazione per ogni scrittura, le pagine vengono cancellate in anticipo. Pagine pulite sempre disponibili per una nuova scrittura, questo significa che una scrittura non può essere indirizzata ad una pagina arbitraria in memoria, ma solo ad una pagina precedentemente cancellata, cosa succede se si riscrive un blocco di un file? La pagina che contiene il blocco non può da riscrivere subito...
+Deve essere prima cancellato ma con le pagine circostanti!
+Viene utilizzata una pagina pulita per applicare la scrittura, ma questa pagina è da qualche parte nel disco...
+La vecchia pagina va nella spazzatura per il riciclaggio. Come sapere dove sono le pagine del mio file?\\
+Il firmware del dispositivo flash associa la pagina logica \# a una posizione fisica: sposta le pagine live 
+secondo necessità per la cancellazione. Garbage collect blocco di cancellazione vuoto copiando le pagine 
+live in una nuova posizione, abbiamo dunque livellamento dell'usura. 
+Puoi scrivere ogni pagina fisica solo un numero limitato di volte: evita le pagine che non funzionano più. 
+Trasparente per l'utente del dispositivo.
+
+\subsubsection{File system flash}
+I file system sui dischi magnetici non hanno bisogno di dire al disco quali blocchi sono in uso: 
+quando un blocco non è più utilizzato viene contrassegnato come libero nella bitmap, il file system 
+lo riutilizza quando vuole. Quando questi FS sono stati utilizzati per la prima volta su unità flash, 
+le prestazioni sono diminuite drasticamente nel tempo.\\\\
+Il Flash Translation Layer si è dato da fare con la garbage collection: i blocchi live devono essere 
+rimappati in una nuova posizione, per compattare le pagine libere per poter procedere con la cancellazione dei blocchi. 
+Questo anche con una grande quantità di spazio libero, ad esempio, se FS sposta un file di grandi dimensioni da un 
+intervallo di blocchi a un altro, lo storage non sa che i vecchi blocchi possono andare nella spazzatura, a meno che FS 
+non lo dica!\\\\
+Comando TRIM: il file system indica al dispositivo quando le pagine non sono più in uso. Aiuta il livello di traduzione dei file a ottimizzare la raccolta dei rifiuti. Introdotto tra il 2009 e il 2011 nella maggior parte dei sistemi operativi.
+
+

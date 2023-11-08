@@ -1,9 +1,0 @@
-Gotham City; 2300000;   Bruce Wayne; James Gordon
-Minas Tirith; 220000; Denethor; Boromir; Faramir
-Metropolis; 7500000
-Duckburg; 316000
-The Capitol; 1096463; Coriolanus Snow; Cinna; Caesar Flickerman 
-Hill Valley; 45000; Marty McFly   ; Emmett Brown
-Star City; 3100000;  Oliver Queen;
-Central City; 2500000; Barry Allen; Iris West; Caitlin Snow; Francisco Ramon
-Zion; 250000; Morpheus; Trinity; ;Neo; Niobe 

@@ -1,0 +1,44 @@
+\section{L'evoluzione dei processori}
+
+I primi calcolatori nati durante la seconda guerra mondiale erano basati sulle valvole, strumenti che servivano per simulare le porte logiche. Questa tecnologia aveva due principali problemi, il primo era che si rompevano frequentemente, quindi era necessaria una figura che in maniera ricorrente le sostituisse, il secondo invece era che occupavano molto spazio date le loro dimensioni.
+\begin{definition}[Stored program]
+Lo stored program è un sistema di funzionamento dei pc inventato da John Von Neuman nel 1945, esso consisteva nel suddivisione i pc in una parte operativa, la CPU, ed una parte dove salvare i programmi. 
+\end{definition}
+
+\hspace{-15pt}Con questo sistema il programma può essere rappresentato in una forma idonea alla memorizzazione in memoria insieme ai dati, invece di dover riprogettare tutta la macchina per ogni nuovo programma. La prima implementazione fu nel 1952 con una memoria di solamente 40kb.
+
+\subsection{Rivoluzione dei transistor}
+La tecnologia dei transistor è stata inventata nel 1947. E' una tecnologia simile a quella dei valvole, infatti anche loro servono per creare le varie porte logie, però hanno il vantaggio di essere molto più piccoli. Il loro funzionamento è dato dal fatto che sono realizzati in silicio.
+
+\begin{definition}[Cicli di clock]
+Scandisce il tempo in cui un determinato bit all'interno del PC passa da avere il valore 0 ad il valore 1. Questo è un tempo standard.
+\end{definition}
+
+\subsection{Circuiti integrati}
+In seguito all'invenzione dei transistor un ulteriore evoluzione all'interno degli strumenti di calcolo è stata quella dei circuiti integrati, inizialmente infatti ogni transistor era appoggiato su un pezzo di silicio dedicato, grazie ai circuiti integrati abbiamo un grande numero di piccoli transistor su un unico pezzo di semiconduttore. Questo porta ad avere una serie di vantaggio:
+\begin{itemize}
+    \item Inanzi tutto a livello di prestazioni i processori sono più veloci.
+    \item SI riesce a ridurre in maniera considerevole le dimensioni.
+    \item Si abbattano anche i costi visto che il pezzo di silicone viene diviso in piccole aree dove in ciascuno viene replicato il circuito, in questo modo si può utilizzare una produzione i serie.
+\end{itemize}
+
+\subsection{Legge di Moore}
+\begin{definition}[Legge di Moore]
+Questa legge dice che i processori o gli strumenti calcolo raddoppiano la loro potenza circa ogni anno, e questo data la crescente capacità di ridurre di dimensione i circuiti integrati.
+\end{definition}
+
+\hspace{-15pt}Questa legge era validità fino a pochi decenni fa, quello che accade ora è che raddoppia il numero di transistor, questo però non sempre conduce ad un aumento di prestazioni. Oggi giorno infatti la frequenza a cui può arrivare un processore è bloccata dal fatto che non si può ridurre i cicli di clock, essi infatti portano ad un aumento del consumo di corrente e di conseguenza l'aumento di temperatura, essendo che attualmente i sistemi di raffreddamento sono limitati, anche le prestazioni si limato.\\\\
+Per ovviare a questo problema nei processori moderni lo spazio che si guadagna riducendo di dimensioni i circuiti integrati si sfrutta affiancare processori uguali, questo però porta ad un altro problema, la necessità di scrivere codi e concorrente, che è una tipologia di programmazione che richiede maggiori accortezze.
+
+\subsection{Livelli di astrazione}
+Un calcolatore può essere visto sotto vari livelli di astrazione, possiamo immaginarli come una lente di ingrandimento sopra un processore. Questi livelli sono:
+\begin{enumerate}
+    \item Applicazione
+    \item Sistema operativo
+    \item Architettura. Per esempio le architetture dei processori M86.
+    \item Micro-architettura. E' l'implementazione dell'architettura.
+    \item Componenti logici. Sono per esempio le porte logiche.
+    \item Dispositivi fisici. Sono quello con cui vengono construtie le porte logiche.
+\end{enumerate}
+
+\hspace{-15pt}Ogni livello fornisce al livello superiore un interfaccia per il livello superiore, quindi se cambia qualcosa nel livello inferiore ma che va a rispettare l'interfaccia, per il livello superiore non è necessaria nessuna modifica.

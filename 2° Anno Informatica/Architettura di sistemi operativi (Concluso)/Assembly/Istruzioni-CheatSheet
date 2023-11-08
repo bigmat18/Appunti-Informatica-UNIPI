@@ -1,0 +1,24 @@
+arm-linux-gnueabihf-gcc myProg.s myProg.c -static -o myExe //compila programma arm insieme a cazzi&mazzi.c/.s
+
+qemu-arm myProg //esegue programma arm
+
+DEBUGGARE: 
+
+arm-linux-gnueabihf-gcc myProg.s myProg.c -static -ggdb3 -o myExe //compila con debugger
+
+qemu-arm -g 12345 myProg & //esegue con debugger alla porta 12345 (passaggio 1)
+
+gdb-multiarch -q --nh -ex 'set architecture arm' -ex 'file myProg' -ex 'target remote localhost:12345' //esegue con debugger alla porta 12345 (passaggio 2)
+
+-------------------------------
+PASSAGGI gdb:
+
+(gdb) tui reg general //avvia robe
+
+(gdb) b myEtichetta //(es. loop, ecc.)
+
+(gdb) c //continue
+
+(gdb) s //scorri in giù (oppure n)
+
+(gdb) quit //esci (oppure exit)

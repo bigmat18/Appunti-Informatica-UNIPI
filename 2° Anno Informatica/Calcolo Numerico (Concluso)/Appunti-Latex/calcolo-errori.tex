@@ -1,0 +1,25 @@
+\newpage
+\section{Calcolo degli errori}
+Supponiamo di avere una funzione \(f: [a,b] \to \mathbb{R}\) e \(f \neq 0\), per andare a calcolare questa funzione come già visto usiamo un algoritmo
+che esprime tale valore come risutlato di una sequanza di operazioni aritmentiche. Questa rappresentazione come abbiamo già potuto
+verificare con esempi produce degli errori di approssimazione. Questi errori possono essere suddivisini in 3 tipologie.
+
+\begin{definition}[Errore inerente o inevitabile]
+    Si dice errore inerente o inevitabile generato nel calcolo di \(f(x) \neq 0\) la quantità:
+    \[\epsilon_{in} = \frac{f(\tilde{x}) - f(x)}{f(x)}\]
+\end{definition}
+
+\begin{definition}[Errore algoritmico]
+    Si dice errore algoritmico generato nel calcolo di \(f(x) \neq 0\) la quantità:
+    \[\epsilon_{alg} = \frac{g(\tilde{x}) - f(\tilde{x})}{f(\tilde{x})}\]
+\end{definition}
+
+\begin{definition}[Errore totale]
+    Si dice errore algoritmico totale nel calcolo di \(f(x) \neq 0\) mediante l'algoritmo specificato da g la quantità:
+    \[\epsilon_{tot} = \frac{g(\tilde{x}) - f(x)}{f(x)}\]
+\end{definition}
+
+\begin{observation}
+    Vediamo che se \(|\epsilon_{in}|\) è grande il problema si definisce \textbf{problema mal condizionato}. Mentre se
+    \(|\epsilon_{alg}\) è grande l'algoritmo si dice che \textbf{algoritmo è numericamente instabile}.
+\end{observation}

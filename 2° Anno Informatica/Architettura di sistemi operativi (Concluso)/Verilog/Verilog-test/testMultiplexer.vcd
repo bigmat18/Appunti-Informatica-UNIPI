@@ -1,0 +1,39 @@
+$date
+	Tue Nov  8 23:03:04 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module testMuliplexer $end
+$var wire 1 ! out $end
+$var reg 1 " in1 $end
+$var reg 1 # in2 $end
+$var reg 1 $ s $end
+$scope module mux $end
+$var wire 1 " in1 $end
+$var wire 1 # in2 $end
+$var wire 1 $ s $end
+$var wire 1 ! out $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0$
+0#
+0"
+0!
+$end
+#8
+1"
+#12
+1!
+1$
+#16
+0$
+1#
+0"
+#20

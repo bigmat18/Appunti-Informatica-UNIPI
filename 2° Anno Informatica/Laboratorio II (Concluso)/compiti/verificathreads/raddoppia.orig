@@ -1,0 +1,235 @@
+#include "xerrori.h"
+#define QUI __LINE__, __FILE__
+
+#define Buf1_size 10
+#define Buf2_size 15
+
+typedef struct
+{
+  FILE *file;
+  int *buffer;
+  int *index;
+  int *pindex;
+  pthread_mutex_t *mutexBuffer;
+  pthread_cond_t *empty;
+  pthread_cond_t *full;
+} dataT1;
+
+typedef struct
+{
+  int *bufferT1T2;
+  int *bufferT2T3;
+
+  int *indexT1T2;
+  int *indexT2T3;
+
+  int *pindex;
+  int *cindex;
+
+  pthread_mutex_t *mutexBufferT1T2;
+  pthread_cond_t *emptyT1T2;
+  pthread_cond_t *fullT1T2;
+
+  pthread_mutex_t *mutexBufferT2T3;
+  pthread_cond_t *emptyT2T3;
+  pthread_cond_t *fullT2T3;
+} dataT2;
+
+typedef struct
+{
+  FILE *file;
+  int *buffer;
+  int *index;
+  int *cindex;
+  pthread_mutex_t *mutexBuffer;
+  pthread_cond_t *empty;
+  pthread_cond_t *full;
+} dataT3;
+
+void *t1body(void *arg)
+{
+  dataT1 *data = (dataT1 *)arg;
+  int e, n;
+  do
+  {
+    e = fscanf(data->file, "%d", &n);
+    if (e != 1)
+      n = 0;
+
+    if (n > 0)
+    {
+      xpthread_mutex_lock(data->mutexBuffer, QUI);
+      while (*(data->index) == Buf1_size)
+      {
+        xpthread_cond_wait(data->empty, data->mutexBuffer, QUI);
+      }
+      data->buffer[*(data->pindex) % Buf1_size] = n;
+      *(data->index) += 1;
+      *(data->pindex) += 1;
+
+      xpthread_cond_signal(data->empty, QUI);
+      xpthread_mutex_unlock(data->mutexBuffer, QUI);
+    }
+  } while (e == 1);
+  pthread_exit(NULL);
+}
+
+void *t2body(void *arg)
+{
+  dataT2 *data = (dataT2 *)arg;
+  int n;
+  do
+  {
+    xpthread_mutex_lock(data->mutexBufferT1T2, QUI);
+    while (*(data->indexT1T2) == 0)
+    {
+      xpthread_cond_wait(data->emptyT1T2, data->mutexBufferT1T2, QUI);
+    }
+    n = data->bufferT1T2[*(data->cindex) % Buf1_size];
+    *(data->indexT1T2) -= 1;
+    *(data->cindex) += 1;
+
+    xpthread_cond_signal(data->fullT1T2, QUI);
+    xpthread_mutex_unlock(data->mutexBufferT1T2, QUI);
+
+    xpthread_mutex_lock(data->mutexBufferT2T3, QUI);
+    while (*(data->indexT2T3) == Buf2_size)
+    {
+      xpthread_cond_wait(data->emptyT2T3, data->mutexBufferT2T3, QUI);
+    }
+    data->bufferT2T3[*(data->pindex) % Buf2_size] = n * 2;
+    *(data->indexT2T3) += 1;
+    *(data->pindex) += 1;
+
+    xpthread_cond_signal(data->emptyT2T3, QUI);
+    xpthread_mutex_unlock(data->mutexBufferT2T3, QUI);
+
+  } while (n != 0);
+
+  pthread_exit(NULL);
+}
+
+void *t3body(void *arg)
+{
+  dataT3 *data = (dataT3 *)arg;
+  int n;
+  do
+  {
+    xpthread_mutex_lock(data->mutexBuffer, QUI);
+    while (*(data->index) == 0)
+    {
+      xpthread_cond_wait(data->empty, data->mutexBuffer, QUI);
+    }
+    n = data->buffer[*(data->cindex) % Buf2_size];
+    *(data->index) -= 1;
+    *(data->cindex) += 1;
+
+    xpthread_cond_signal(data->full, QUI);
+    xpthread_mutex_unlock(data->mutexBuffer, QUI);
+
+    if (n != 0)
+    {
+      fprintf(data->file, "%d\n", n);
+    }
+  } while (n != 0);
+
+  pthread_exit(NULL);
+}
+
+int main(int argc, char *argv[])
+{
+  if (argc != 3)
+  {
+    fprintf(stderr, "Uso\n\t%s infile outfile\n", argv[0]);
+    exit(1);
+  }
+
+  FILE *inFile = xfopen(argv[1], "rt", QUI);
+  if (inFile == NULL)
+    xtermina("Errore apertura file", QUI);
+
+  FILE *outFile = xfopen(argv[2], "wt", QUI);
+  if (outFile == NULL)
+    xtermina("Errore apertura file", QUI);
+
+  int bufferT1T2[Buf1_size];
+  int bufferT2T3[Buf2_size];
+
+  pthread_t t1, t2, t3;
+
+  pthread_mutex_t mutexBufferT1T2 = PTHREAD_MUTEX_INITIALIZER;
+  pthread_cond_t emptyT1T2 = PTHREAD_COND_INITIALIZER;
+  pthread_cond_t fullT1T2 = PTHREAD_COND_INITIALIZER;
+
+  pthread_mutex_t mutexBufferT2T3 = PTHREAD_MUTEX_INITIALIZER;
+  pthread_cond_t emptyT2T3 = PTHREAD_COND_INITIALIZER;
+  pthread_cond_t fullT2T3 = PTHREAD_COND_INITIALIZER;
+
+  int indexT1T2;
+  int indexT2T3;
+
+  int pindexT1T2;
+  int cindexT1T2;
+
+  int pindexT2T3;
+  int cindexT2T3;
+
+  dataT1 dataT1;
+  dataT1.file = inFile;
+  dataT1.buffer = bufferT1T2;
+  dataT1.empty = &emptyT1T2;
+  dataT1.full = &fullT1T2;
+  dataT1.index = &indexT1T2;
+  dataT1.pindex = &pindexT1T2;
+  dataT1.mutexBuffer = &mutexBufferT1T2;
+
+  xpthread_create(&t1, NULL, &t1body, &dataT1, QUI);
+
+  dataT2 dataT2;
+  dataT2.bufferT1T2 = bufferT1T2;
+  dataT2.bufferT2T3 = bufferT2T3;
+
+  dataT2.cindex = &cindexT1T2;
+  dataT2.pindex = &pindexT2T3;
+
+  dataT2.indexT1T2 = &indexT1T2;
+  dataT2.indexT2T3 = &indexT2T3;
+
+  dataT2.emptyT1T2 = &emptyT1T2;
+  dataT2.emptyT2T3 = &emptyT2T3;
+
+  dataT2.fullT1T2 = &fullT1T2;
+  dataT2.fullT2T3 = &fullT2T3;
+
+  dataT2.mutexBufferT1T2 = &mutexBufferT1T2;
+  dataT2.mutexBufferT2T3 = &mutexBufferT2T3;
+
+  xpthread_create(&t2, NULL, &t2body, &dataT2, QUI);
+
+  dataT3 dataT3;
+  dataT3.file = outFile;
+  dataT3.buffer = bufferT2T3;
+  dataT3.empty = &emptyT2T3;
+  dataT3.full = &fullT2T3;
+  dataT3.index = &indexT2T3;
+  dataT3.cindex = &cindexT2T3;
+  dataT3.mutexBuffer = &mutexBufferT2T3;
+
+  xpthread_create(&t3, NULL, &t3body, &dataT3, QUI);
+
+  xpthread_join(t1, NULL, QUI);
+  xpthread_join(t2, NULL, QUI);
+  xpthread_join(t3, NULL, QUI);
+
+  fclose(outFile);
+  fclose(inFile);
+  xpthread_mutex_destroy(&mutexBufferT1T2, QUI);
+  xpthread_mutex_destroy(&mutexBufferT2T3, QUI);
+
+  xpthread_cond_destroy(&fullT1T2, QUI);
+  xpthread_cond_destroy(&fullT2T3, QUI);
+  xpthread_cond_destroy(&emptyT1T2, QUI);
+  xpthread_cond_destroy(&emptyT2T3, QUI);
+
+  return 0;
+}

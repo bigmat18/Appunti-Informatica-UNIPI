@@ -1,0 +1,104 @@
+#! /usr/local/Cellar/icarus-verilog/11.0/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/local/Cellar/icarus-verilog/11.0/lib/ivl/system.vpi";
+:vpi_module "/usr/local/Cellar/icarus-verilog/11.0/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/local/Cellar/icarus-verilog/11.0/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/local/Cellar/icarus-verilog/11.0/lib/ivl/v2005_math.vpi";
+:vpi_module "/usr/local/Cellar/icarus-verilog/11.0/lib/ivl/va_math.vpi";
+S_0x7f9aedc04380 .scope module, "testDecoder" "testDecoder" 2 13;
+ .timescale 0 0;
+v0x7f9aedc154a0_0 .var "in", 1 0;
+v0x7f9aedc15530_0 .net "out", 4 0, L_0x7f9aedc16400;  1 drivers
+S_0x7f9aedc045a0 .scope module, "dec" "decoder" 2 17, 2 1 0, S_0x7f9aedc04380;
+ .timescale 0 0;
+    .port_info 0 /INPUT 2 "in";
+    .port_info 1 /OUTPUT 5 "out";
+L_0x7f9aedc15740 .functor AND 1, L_0x7f9aedc155c0, L_0x7f9aedc156a0, C4<1>, C4<1>;
+L_0x7f9aedc15a30 .functor NOT 1, L_0x7f9aedc15990, C4<0>, C4<0>, C4<0>;
+L_0x7f9aedc15ae0 .functor AND 1, L_0x7f9aedc15870, L_0x7f9aedc15a30, C4<1>, C4<1>;
+L_0x7f9aedc15c90 .functor NOT 1, L_0x7f9aedc15bf0, C4<0>, C4<0>, C4<0>;
+L_0x7f9aedc15e00 .functor AND 1, L_0x7f9aedc15c90, L_0x7f9aedc15d60, C4<1>, C4<1>;
+L_0x7f9aedc15910 .functor NOT 1, L_0x7f9aedc15f60, C4<0>, C4<0>, C4<0>;
+L_0x7f9aedc16220 .functor NOT 1, L_0x7f9aedc16180, C4<0>, C4<0>, C4<0>;
+L_0x7f9aedc16310 .functor AND 1, L_0x7f9aedc15910, L_0x7f9aedc16220, C4<1>, C4<1>;
+v0x7f9aedc044f0_0 .net *"_ivl_11", 0 0, L_0x7f9aedc15870;  1 drivers
+v0x7f9aedc14700_0 .net *"_ivl_13", 0 0, L_0x7f9aedc15990;  1 drivers
+v0x7f9aedc147a0_0 .net *"_ivl_14", 0 0, L_0x7f9aedc15a30;  1 drivers
+v0x7f9aedc14850_0 .net *"_ivl_17", 0 0, L_0x7f9aedc15ae0;  1 drivers
+v0x7f9aedc148f0_0 .net *"_ivl_21", 0 0, L_0x7f9aedc15bf0;  1 drivers
+v0x7f9aedc149e0_0 .net *"_ivl_22", 0 0, L_0x7f9aedc15c90;  1 drivers
+v0x7f9aedc14a90_0 .net *"_ivl_25", 0 0, L_0x7f9aedc15d60;  1 drivers
+v0x7f9aedc14b40_0 .net *"_ivl_27", 0 0, L_0x7f9aedc15e00;  1 drivers
+v0x7f9aedc14be0_0 .net *"_ivl_3", 0 0, L_0x7f9aedc155c0;  1 drivers
+v0x7f9aedc14cf0_0 .net *"_ivl_31", 0 0, L_0x7f9aedc15f60;  1 drivers
+v0x7f9aedc14da0_0 .net *"_ivl_32", 0 0, L_0x7f9aedc15910;  1 drivers
+v0x7f9aedc14e50_0 .net *"_ivl_35", 0 0, L_0x7f9aedc16180;  1 drivers
+v0x7f9aedc14f00_0 .net *"_ivl_36", 0 0, L_0x7f9aedc16220;  1 drivers
+v0x7f9aedc14fb0_0 .net *"_ivl_39", 0 0, L_0x7f9aedc16310;  1 drivers
+o0x7f9aedb322a8 .functor BUFZ 1, C4<z>; HiZ drive
+; Elide local net with no drivers, v0x7f9aedc15050_0 name=_ivl_42
+v0x7f9aedc15100_0 .net *"_ivl_5", 0 0, L_0x7f9aedc156a0;  1 drivers
+v0x7f9aedc151b0_0 .net *"_ivl_7", 0 0, L_0x7f9aedc15740;  1 drivers
+v0x7f9aedc15340_0 .net "in", 1 0, v0x7f9aedc154a0_0;  1 drivers
+v0x7f9aedc153d0_0 .net "out", 4 0, L_0x7f9aedc16400;  alias, 1 drivers
+L_0x7f9aedc155c0 .part v0x7f9aedc154a0_0, 1, 1;
+L_0x7f9aedc156a0 .part v0x7f9aedc154a0_0, 0, 1;
+L_0x7f9aedc15870 .part v0x7f9aedc154a0_0, 1, 1;
+L_0x7f9aedc15990 .part v0x7f9aedc154a0_0, 0, 1;
+L_0x7f9aedc15bf0 .part v0x7f9aedc154a0_0, 1, 1;
+L_0x7f9aedc15d60 .part v0x7f9aedc154a0_0, 0, 1;
+L_0x7f9aedc15f60 .part v0x7f9aedc154a0_0, 1, 1;
+L_0x7f9aedc16180 .part v0x7f9aedc154a0_0, 0, 1;
+LS_0x7f9aedc16400_0_0 .concat [ 1 1 1 1], L_0x7f9aedc15740, L_0x7f9aedc15ae0, L_0x7f9aedc15e00, L_0x7f9aedc16310;
+LS_0x7f9aedc16400_0_4 .concat [ 1 0 0 0], o0x7f9aedb322a8;
+L_0x7f9aedc16400 .concat [ 4 1 0 0], LS_0x7f9aedc16400_0_0, LS_0x7f9aedc16400_0_4;
+    .scope S_0x7f9aedc04380;
+T_0 ;
+    %vpi_call 2 19 "$dumpfile", "decoder.vcd" {0 0 0};
+    %vpi_call 2 20 "$dumpvars" {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %ix/load 4, 0, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0x7f9aedc154a0_0, 4, 1;
+    %pushi/vec4 0, 0, 1;
+    %ix/load 4, 1, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0x7f9aedc154a0_0, 4, 1;
+    %delay 4, 0;
+    %pushi/vec4 1, 0, 1;
+    %ix/load 4, 0, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0x7f9aedc154a0_0, 4, 1;
+    %pushi/vec4 0, 0, 1;
+    %ix/load 4, 1, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0x7f9aedc154a0_0, 4, 1;
+    %delay 4, 0;
+    %pushi/vec4 0, 0, 1;
+    %ix/load 4, 0, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0x7f9aedc154a0_0, 4, 1;
+    %pushi/vec4 1, 0, 1;
+    %ix/load 4, 1, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0x7f9aedc154a0_0, 4, 1;
+    %delay 4, 0;
+    %pushi/vec4 1, 0, 1;
+    %ix/load 4, 0, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0x7f9aedc154a0_0, 4, 1;
+    %pushi/vec4 1, 0, 1;
+    %ix/load 4, 1, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0x7f9aedc154a0_0, 4, 1;
+    %delay 4, 0;
+    %vpi_call 2 34 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "decoder.v";

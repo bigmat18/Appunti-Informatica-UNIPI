@@ -1,0 +1,15 @@
+
+(!a!bc) + !ab!c + !abc + a!bc 
+
+!a!bc + !ab + a!bc
+
+!ab + !bc
+
+
+   ab ab
+   00 01 11 10
+1  1)  1  0  (1)
+0  0   1   0   0
+
+!ab + c
+
