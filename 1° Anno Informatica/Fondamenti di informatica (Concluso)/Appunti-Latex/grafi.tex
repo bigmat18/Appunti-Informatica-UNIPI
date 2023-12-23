@@ -4,22 +4,23 @@
 \begin{definition}[Grafo orientato]
 Un grafo orientato è una relazione $E: V \leftrightarrow V$ su un insieme finito $V$. In un grafo $V$ è l'insieme di nodi o vertici, $E$ è l'insieme di archi o lati. Chiamiamo $G$ (o $G^1$, $G_1$, $G_2$) e scriviamo $G = (V,E)$
 \end{definition}
+ 
 
 \begin{example}\label{esempio-grafo-1}
     Qui di seguito un esempio di un grafo:
 \end{example}
+ 
+\hspace{-15pt}Dati i due insiemi $V$ e $E$:\\\\
+$V = \{0,1,2,3,4,5\}$ \\
+$E = \{(0,0), (0,1), (0,5), (1,3), (1,5), (2,1), (3,4), (3,5), (5,3), (5,4)\}$\\ \\
 \begin{wrapfigure}[4]{r}{5cm}
-    \vspace{-35pt}
+    \vspace{-100pt}
     \centering
     \includegraphics[width=3.7cm]{images/esempio-grafo.png}
     \vspace{-5pt}
     \caption{Grafo G}
     \label{fig:esempio-grafo}
 \end{wrapfigure}
-
-\hspace{-15pt}Dati i due insiemi $V$ e $E$:\\\\
-$V = \{0,1,2,3,4,5\}$ \\
-$E = \{(0,0), (0,1), (0,5), (1,3), (1,5), (2,1), (3,4), (3,5), (5,3), (5,4)\}$\\ \\
 Quello rappresentato nell'immagine \ref{fig:esempio-grafo} è un grafo orientato.\\
 In questo esempio $n = 6$ e $m = 10$ mentre l'arco $(0,0)$ è un cappio.
 
@@ -653,6 +654,7 @@ Nel caso di grafi fortemente orientati definiamo la funzione della distanza una 
 
 \newpage
 \subsection{Alberi}
+
 \begin{definition}[Albero, foglia]
     Un \textbf{albero} è un grafo non orientato connesso, aciclico e non vuoto (con almeno $1$ nodo).
     I nodi interni hanno quindi grado $>1$ mentre i nodi di grado $1$ sono detti \textbf{foglie}.
@@ -661,15 +663,13 @@ Nel caso di grafi fortemente orientati definiamo la funzione della distanza una 
 \begin{definition}[Foresta]
     Una \textbf{foresta} è un grafo non orientato, aciclico e non vuoto dove ogni componente connessa è un albero assestante.
 \end{definition}
-
-\begin{wrapfigure}[7]{r}{7cm}
-    \vspace{-23pt}
+\hspace{-15pt}Da queste definizioni possiamo dedurre alcune proprietà relative agli alberi.
+\begin{wrapfigure}[8]{r}{7cm}
     \centering
     \includegraphics[width=5cm]{images/es-albero.png}
     \vspace{-5pt}
     \caption{Esempio di albero}
 \end{wrapfigure}
-\hspace{-15pt}Da queste definizioni possiamo dedurre alcune proprietà relative agli alberi.
 \begin{itemize}
     \item Il numero di path possibili fra due nodi è sempre uno, perché se esistessero due path distinti la concatenazione di questi due path sarebbe un walk chiuso e quindi il grafo avrebbe cicli (ricorda la proposizioni \ref{proposizione-walk-2} che ci dice che dire walk chiuso o ciclo è analogo).
 \end{itemize}
@@ -678,6 +678,7 @@ Nel caso di grafi fortemente orientati definiamo la funzione della distanza una 
     \item Se andiamo a toglie un arco in un albero si andrà a creare una foresta con 2 alberi.
     \item Se invece andiamo ad aggiungere un arco quello che uscirà non sarà più un albero perché si creerà un ciclo.
 \end{itemize}
+
 
 \begin{proposition}
     Dato un albero G = (V,E) con $n = |V|$ nodi, valgono le seguenti proprietà:
@@ -689,6 +690,7 @@ Nel caso di grafi fortemente orientati definiamo la funzione della distanza una 
         \item Per ogni coppia di nodi distinti $x,y \in V$ tale che $xy \notin E$, l'aggiunta dell'arco xy crea un ciclo, cioè $G' = (V, E \cup {xy})$ è un ciclo.
     \end{enumerate}
 \end{proposition}
+
 
 \begin{demostration}
 Andiamo ora a dimostrare ogni punto della proposizione sopra.

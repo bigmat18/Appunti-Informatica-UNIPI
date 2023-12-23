@@ -143,7 +143,7 @@ Si rappresenta con $n$ o $\lvert A \rvert$ ed è il numero di elementi dell'insi
 \begin{figure}[h!]
 	\centering
     \includegraphics[width=5cm]{Unione.png}
-    \caption{$A \cup B = \{x \in U \mid x \in A \vee x \in B\}$}
+    \caption{$A \cup B = \{x \in U \mid x \in A \lor x \in B\}$}
     \label{fig:unione}
 \end{figure}
 
@@ -151,10 +151,10 @@ Si rappresenta con $n$ o $\lvert A \rvert$ ed è il numero di elementi dell'insi
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=5cm]{Intersezione.png}
-	\caption{$A \cup B = \{x \in U \mid x \in A \vee x \in B\}$}
+	\caption{$A \cap B = \{x \in U \mid x \in A \land x \in B\}$}
 	\label{fig:intesezione}
 \end{figure}
-
+\newpage
 \subsubsection{Differenza}
 \begin{figure}[h!]
 	\centering
@@ -319,6 +319,7 @@ Da qui il nostro obbiettivo è far valere per entrambi i casi che $y \in (A \cup
         \item Per questo caso possiamo vedere come, per la definizione di unione, aggiungendo qualsiasi cosa all'insieme A l'appartenenza di y rimarrà invariata. Quindi $y \in A \cup B$, $y \in A \cup C$.
         \item Da qui per la definizione di intersezione\footnote{\textit{($y \in W \cap Z, \iff y \in W \: e \: y \in Z$)}} $y \in (A \cup B) \cap (A \cup C)$. Caso dimostrato. $\blacksquare$
     \end{enumerate}
+    \newpage
     \item \textbf{Caso 1b:} $y \in (B \cap C)$
     \begin{enumerate}
         \item Siccome $x \in B \cap C$, per definizione di intersezione si ha che $x \in B$ e che $x \in C$.
