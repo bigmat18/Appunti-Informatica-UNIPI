@@ -1,0 +1,113 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+
+% ----  Useful packages % ---- 
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+% ----  Useful packages % ---- 
+
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\graphicspath{ {./images/} }
+
+% ---- Set page size and margins replace ------
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+% ---- Set page size and margins replace ------
+
+% ---- Definition of custum section ---- 
+\newtheorem{note}{Note}[subsection]
+\newtheorem{definition}{Definizione}[section]
+
+\theoremstyle{definition}
+\newtheorem{example}{Esempio}[section]
+
+% ------- OSSERVAZIONE ------
+\theoremstyle{definition}
+\newtheorem{observation}{Osservazione}[subsection]
+% ------- OSSERVAZIONE ------
+
+\theoremstyle{definition}
+\newtheorem{demostration}{Dimostrazione}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teorema}[section]
+% ---- Definition of custum section ---- 
+
+% ---- Footer and header ---- 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{A.A 2023-2024}
+\fancyhead[RE,LO]{Paradigmi di programmazione}
+\fancyfoot[RE,LO]{\rightmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\footrulewidth}{.5pt}
+% ---- Footer and header ---- 
+
+% ----  Language setting ---- 
+\usepackage[italian, english]{babel}
+% ----  Language setting ---- 
+
+\usepackage{listings}
+\usepackage{color}
+\definecolor{lightgray}{rgb}{1,1,1}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+	language=Java,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
+
+\usepackage{multicol}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+\usepackage{soul}
+
+\title{\textbf{Paradigmi di programmazione}}
+\author{Realizzato da: Ghirardini Filippo}
+\date{A.A 2023-2024}
+
+\begin{document}
+	\input{frontespizio}
+	\tableofcontents
+	
+	\begin{center}
+		\vspace{-20pt}
+		\rule{11cm}{.1pt} 
+	\end{center}
+	
+	\input{lambdacalcolo}
+	\input{tipi}
+\end{document}

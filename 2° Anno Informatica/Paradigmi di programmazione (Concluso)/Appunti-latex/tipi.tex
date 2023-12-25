@@ -1,0 +1,57 @@
+\newpage
+\section{Sistemi di tipi}
+\subsection{Perché?}
+Dato che nel lambda calcolo i programmi e i valori sono funzioni
+possiamo facilmente scrivere programmi che non sono corretti rispetto
+all’uso inteso dei valori. Ad esempio:
+\begin{example}[Errore tipi]
+	Nella seguente espressione si può applicare $0$ a \textit{False}, ottenendo quindi un risultato che però non ha alcun senso:
+	\begin{equation}
+		False \: 0 = (\lambda t.\lambda f.f)(\lambda z.\lambda s.z) \rightarrow \lambda f.f
+	\end{equation} 
+\end{example}
+\noindent Analogamente per una macchina tutto è un bit: istruzioni, dati e operazioni. 
+Un esempio più pratico è il seguente:
+\begin{example}
+	L'istruzione nel corpo dell'\textit{if} contiene un errore di tipo (stringa divisa per un intero). Se non avessimo il controllo dei tipi l'unico modo per scoprire l'errore sarebbe eseguire numerosi test per riuscire a coprire tutte le possibilità, fino ad entrare nel corpo dell'\textit{if}. Richiederebbe tempo e risorse e non ci garantisce neanche la certezza di aver provato tutti i casi possibili.
+	
+	\begin{lstlisting}
+			if (condizione_complicata) {
+				return "hello"/10;
+			}
+	\end{lstlisting}
+\end{example}
+Se in certi linguaggi di programmazione ci troveremmo davanti ad errori di esecuzione, in altri (come ad esempio JavaScript) otterremmo un errore nel risultato in quanto l'interprete proverebbe a fare un cast manuale. \\
+Concludendo, la mancanza di \textbf{type safety} aumenta il numero di bug, rendendo così un software meno funzionale e più vulnerabile.
+
+\subsection{Cosa sono i tipi?}
+I \textbf{sistemi di tipo} sono meccanismi che permettono di rilevare in anticipo errori di programmazione. 
+\begin{definition}[Tipo]
+	Il tipo è un \textbf{attributo} di un dato che descrive come il linguaggio di programmazione permetta di usare quel particolare dato.
+\end{definition}
+
+\noindent Un tipo serve quindi a limitare i valori che un'espressione può assumere, che operazioni possono essere effettuate sui dati e in che modo questi ultimi possono essere salvati.
+
+\begin{definition}[Sistema dei tipi]
+	Un sistema dei tipi è un metodo \textbf{sintattico}, \textbf{effettivo} per dimostrare
+	l'assenza di comportamenti anomali del programma \textbf{strutturando} le
+	operazioni del programma in base ai tipi di valori che calcolano.
+\end{definition}
+\noindent Analizziamo i tre aspetti:
+\begin{itemize}
+	\item \textit{Sintattico}:  l'analisi viene effettuata dal punto di vista sintattico
+	\item \textit{Effettivo}: si può definire un algoritmo che effettui questa analisi
+	\item \textit{Strutturale}: i tipi assegnati si ottengono in maniera \textbf{composizionale} dalle sottoespressioni.
+\end{itemize}
+
+\subsection{Come funziona?}
+Un sistema dei tipi associa dei tipi ai valori calcolati. Esaminando il flusso dei valori calcolati prova a dimostrare che non avvengano errori (di tipo, non in generale)facendo un controllo, che può avvenire in due modi:
+\begin{itemize}
+	\item \textit{Statico}: avviene in fase di compilazione, non degradando le prestazioni
+	\item  \textit{Dinamico}: avviene in fase di esecuzione e aumenta il tempo di esecuzione
+\end{itemize}
+
+\subsection{Come si progetta?}
+\subsubsection{Specifiche}
+Prendiamo come esempio il seguente linguaggio:
+\subsubsection{Dimostrazione}
