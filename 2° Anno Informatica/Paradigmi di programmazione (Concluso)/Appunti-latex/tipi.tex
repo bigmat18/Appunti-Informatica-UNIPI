@@ -1,3 +1,4 @@
+% !TeX spellcheck = it_IT
 \newpage
 \section{Sistemi di tipi}
 \subsection{Perché?}
@@ -52,6 +53,116 @@ Un sistema dei tipi associa dei tipi ai valori calcolati. Esaminando il flusso d
 \end{itemize}
 
 \subsection{Come si progetta?}
-\subsubsection{Specifiche}
-Prendiamo come esempio il seguente linguaggio:
-\subsubsection{Dimostrazione}
+\subsubsection{Specifiche del linguaggio}
+Prendiamo come esempio il seguente \textbf{linguaggio}:\\
+\begin{center}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{Espressioni} & \textbf{Valori} & \textbf{Valori numerici} & \textbf{Tipi} \\
+		\hline
+		E::= & V::= & NV::= & T::= \\
+		true & true & $0 \vert 1 \vert 2 \vert \ldots$ & Bool \\
+		false & false & & Nat \\
+		NV & NV & &\\
+		if \textit{E} then \textit{E} else \textit{E} & &  &\\
+		succ \textit{E} & & &\\
+		pred \textit{E} & & &\\
+		isZero \textit{E} & & &\\
+		\hline
+	\end{tabular}
+\end{center}
+\subsubsection{Regole di valutazione}
+Avremo le seguenti \textbf{regole di valutazione}:\\
+\begin{gather}
+		if \: true \: then \: E1 \: else \: E2 \rightarrow E1 \\
+		if \: false \: then \: E1 \: else \: E2 \rightarrow E2 \\
+		\frac{E \rightarrow E'}{if \: E \: then \: E1 \: else \: E2 \rightarrow if \: E'  \: then \: E1 \: else \: E2 \rightarrow E1} \label{eq:if_stepfw}
+\end{gather}
+\begin{equation}
+	\frac{E \rightarrow E'}{succ \: E \rightarrow succ \: E'} \qquad
+	\frac{m = n+1}{succ \: E \rightarrow succ \: E'}
+\end{equation}
+\begin{equation}
+	\frac{E \rightarrow E'}{pred \: E \rightarrow pred \: E'} \qquad
+	\frac{ n>0,\: m=n-1}{pred \: n \rightarrow m} \qquad
+	pred \: 0 \rightarrow 0
+\end{equation}
+\begin{equation}
+	\frac{E \rightarrow E'}{isZero \: E \rightarrow isZero \: E'} \qquad isZero \: 0 \rightarrow true \qquad \frac{n>0}{isZero \: n \rightarrow false}
+\end{equation}
+\subsubsection{Type checking}
+Il \textbf{controllo di tipo} definisce una relazione binaria $(E, T)$ che associa il tipo $T$ all'espressione $E$. Questo ha due caratteristiche principali:
+\begin{itemize}
+	\item Utilizza il \textit{metodo sintattico}
+	\item Le regole sono definite per \textit{induzione strutturale} sul programma 
+\end{itemize}
+Le regole sono le seguenti:
+\begin{equation}
+	true:Bool \qquad false:Bool \qquad n:Nat
+\end{equation}
+\begin{equation}
+	\frac{E:Nat}{succ \: E : Nat} \qquad \frac{E:Nat}{pred \: E : Nat} \qquad \frac{E:Nat}{isZero\: E : Bool}
+\end{equation}
+\begin{equation}\label{eq:type_if}
+	\frac{E:Bool, E1:T,E2:T}{if \: E \: then \: E1 \: else \: E2}
+\end{equation}
+\subsubsection{Composizionalità}
+I sistemi di tipo sono \textbf{imprecisi}: non definiscono esattamente quale tipo di valore sarà restituito da ogni programma, ma solo un'\textbf{approssimazione conservativa}.
+\begin{example}
+	La seguente espressione:
+	\begin{equation}
+		if \: E \: then \: 0 \: else \: false
+	\end{equation}
+	potrebbe restituire come risultato sia un \textit{Bool} che un \textit{Nat} a seconda del valore di \textit{E}. Il controllo dei tipi quindi non permetterà che possano esserci due risultati diversi, riducendo la precisione ma mantenendo la sicurezza.
+\end{example}
+Questo avviene proprio per garantire la \textbf{composizionalità}, infatti ad esempio la regola dell'equazione \ref{eq:type_if} necessita che $E1$ ed $E2$ abbiano lo stesso tipo.
+
+\subsection{Dimostrazione}
+La \textbf{correttezza} del sistema di tipo è espressa da due proprietà:
+\begin{itemize}
+	\item Progresso
+	\item Conservazione
+\end{itemize}
+
+\subsubsection{Progresso}
+\begin{definition}[Progresso]
+	Se $E:T$ allora $E$ è un valore oppure $E \rightarrow E'$ per una qualche espressione $E'$.
+\end{definition}
+In pratica, un'espressione ben tipata non si blocca a run-time. Può fare sempre un passo a meno che non sia un valore.
+\begin{proof}
+	Utilizziamo l'induzione sulla struttura di derivazione di $E:T$.\\
+	I \textit{casi base} sono i seguenti:
+	\begin{itemize}
+		\item $true:Bool$
+		\item $false:Bool$
+		\item $0 \vert 1 \vert 1 \vert \ldots : Nat$
+	\end{itemize}
+	I \textit{casi induttivi} sono tutti molto simili, vediamo quello per la formula \ref{eq:type_if}. \\
+	Per \textit{ipotesi induttiva} abbiamo due casi:
+	\begin{itemize}
+		\item $E1$ è un valore. In questo caso deve essere $true$ o $false$ e le regole della semantica fanno fare un \textbf{passo} del tipo $E \rightarrow E1$ o $E \rightarrow E2$
+		\item  Esiste $E4$ tale che $E1 \rightarrow E4$. In questo caso si applica la regola \ref{eq:if_stepfw} e si esegue un \textbf{passo}.
+	\end{itemize}
+\end{proof}
+
+\subsubsection{Conservazione}
+\begin{definition}[Conservazione]
+	Se $E:T$ e $E \rightarrow E'$ allora $E':T$.
+\end{definition}
+In pratica i tipi sono preservati dalle regole di esecuzione.
+\begin{proof}
+	Utilizziamo l'induzione come nella precedente dimostrazione.\\
+	I \textit{casi base} sono immediati: $true$, $false$ e $0 \vert 1 \vert 2 \vert \ldots$ sono valori e di conseguenza non fanno nessun passo. \\
+	Anche qui per i \textit{casi induttivi} vediamo quello per la formula \ref{eq:if_stepfw}. Per l'ipotesi induttiva abbiamo due casi:
+	\begin{itemize}
+		\item $E1$ è un valore: \begin{itemize}
+			\item $true$: in questo caso $E \rightarrow E2$ e sappiamo già per ipotesi induttiva che $E2:T$ (sappiamo che il passo ha successo)
+			\item $false$: in questo caso $E \rightarrow E3$ e $E3:T$
+		\end{itemize}
+		\item Esiste $E4$ tale che $E1 \rightarrow E4$. Questo implica:
+		\begin{equation*}
+			E = if \: E1 \: then \: E2 \: else \: E3 \rightarrow if \: E4 \: then \: E2 \: else \: E3
+		\end{equation*}
+		Dato che per ipotesi induttiva $E1:Bool$ abbiamo che $E4:Bool$ e, grazie alle derivazioni che valgono per ipotesi $E2:T$ e $E3:T$, possiamo derivare applicando la regola \ref{eq:type_if}.
+	\end{itemize}
+\end{proof}
