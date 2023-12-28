@@ -130,6 +130,7 @@ La \textbf{correttezza} del sistema di tipo è espressa da due proprietà:
 \end{definition}
 In pratica, un'espressione ben tipata non si blocca a run-time. Può fare sempre un passo a meno che non sia un valore.
 \begin{proof}
+	\label{proof_progresso}
 	Utilizziamo l'induzione sulla struttura di derivazione di $E:T$.\\
 	I \textit{casi base} sono i seguenti:
 	\begin{itemize}
@@ -151,6 +152,7 @@ In pratica, un'espressione ben tipata non si blocca a run-time. Può fare sempre
 \end{definition}
 In pratica i tipi sono preservati dalle regole di esecuzione.
 \begin{proof}
+	\label{proof_conservazione}
 	Utilizziamo l'induzione come nella precedente dimostrazione.\\
 	I \textit{casi base} sono immediati: $true$, $false$ e $0 \vert 1 \vert 2 \vert \ldots$ sono valori e di conseguenza non fanno nessun passo. \\
 	Anche qui per i \textit{casi induttivi} vediamo quello per la formula \ref{eq:if_stepfw}. Per l'ipotesi induttiva abbiamo due casi:
@@ -166,3 +168,203 @@ In pratica i tipi sono preservati dalle regole di esecuzione.
 		Dato che per ipotesi induttiva $E1:Bool$ abbiamo che $E4:Bool$ e, grazie alle derivazioni che valgono per ipotesi $E2:T$ e $E3:T$, possiamo derivare applicando la regola \ref{eq:type_if}.
 	\end{itemize}
 \end{proof}
+
+\newpage
+\subsection{Lambda calcolo tipato}
+Nel nostro caso descriveremo il lambda calcolo tipato con valori di tipo \textit{booleano} e \textit{funzione}.
+\subsubsection{Sintassi}
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Tipi} & \textbf{Linguaggio} & \textbf{Valori} \\
+		\hline
+		$\tau ::=$ & $e::=$ & $V::=$\\
+		\hline
+		$Bool$ & $x$& $fun \: x:\tau = e$\\
+		$\tau \rightarrow \tau$ \footnotemark & $fun \: x: \tau = e$& $true$\\
+		& $Apply(e,e)$ & $false$\\
+		& $true$ & \\
+		& $false$ & \\
+		& if $e$ then $e$ else $e$ & \\
+		\hline
+	\end{tabular}
+\end{center}
+\footnotetext{Nota bene: l'associazione avviene a destra. Quindi $Bool \rightarrow Bool \rightarrow Bool = Bool \rightarrow (Bool \rightarrow Bool)$ }
+
+\subsubsection{Semantica}
+Di seguito le regole della semantica del linguaggio:
+\begin{gather}
+	Apply(fun \: x:\tau = e_1,v) \rightarrow e_1 \{x:=v\} \label{eq_briduz}\\
+	\frac{e_1 \rightarrow e'}{Apply(e_1, e_2) \rightarrow Apply(e', e_2)} \\
+	 \frac{e2 \rightarrow e'}{Apply(v,e2) \rightarrow Apply(v, e')}
+\end{gather}
+A questi corrisponde la \textit{$\beta$-riduzione} con strategia call-by-value vista nel lambda calcolo.
+\begin{gather}
+	\frac{e_1 \rightarrow e_4}{if \: e_1 \: then \: e_2 \: else \: e_3 \rightarrow if \: e_4 \: then \: e_2 \: else \: e_3} \\
+	if \: true \: then \: e_2 \: else \: e_3 \rightarrow e_2 \\
+	if \: false \: then \: e_2 \: else \: e_3 \rightarrow e_3
+\end{gather}
+Queste regole invece sono per le espressioni condizionali.
+\subsubsection{Ambiente dei tipi}
+L'ambiente dei tipi ci serve per tenere conto delle associazioni variabile-tipo in modo da poter eseguire correttamente le regole di semantica. \\
+L'ambiente è una \textbf{funzione} di dominio finito e la indichiamo come:
+\begin{equation*}
+	\Gamma = x_1:\tau_1,x_2:\tau_2 \ldots x_k:\tau_k
+\end{equation*}
+Per ottenere il tipo $\tau_i$ dal valore $x_i$ si usa la notazione
+\begin{equation*}
+	\Gamma(i)=\tau_i
+\end{equation*}
+Per \textbf{estendere} l'ambiente aggiungendo associazioni  si usa la notazione
+\begin{equation*}
+	\Gamma,x:\tau
+\end{equation*}
+Per applicare l'ambiente nelle regole di semantica si usa la notazione
+\begin{equation*}
+	\Gamma \vdash e:\tau
+\end{equation*}
+Le regole sono applicate dal compilatore in fase di \textit{analisi statica}. L'ambiente dei tipi è chiamato \textbf{symbol table}.
+\newpage
+\subsubsection{Type checker}
+\begin{equation}
+	\Gamma \vdash true:Bool \qquad \Gamma \vdash false:Bool \qquad \frac{\Gamma(x) = \tau}{\Gamma \vdash x : \tau}
+\end{equation}
+\begin{equation}
+	\frac{\Gamma \vdash e:Bool \qquad \Gamma \vdash e_1 : \tau \qquad \Gamma \vdash e_2 : \tau}{\Gamma \vdash if \: e \: then \: e_1 \: else \: e_2 : \tau}
+\end{equation}
+Poi abbiamo il tipo delle funzioni, ovvero $\tau_1 \rightarrow \tau_2$, ovvero prende in ingresso un argomento di tipo $\tau_1$ e restituisce un risultato di tipo $\tau_2$.
+\begin{equation}
+	\frac{\Gamma,x:\tau_1 \vdash e:\tau_2}{\Gamma \vdash fun \: x:\tau_1 = e:\tau_1 \rightarrow \tau_2}
+\end{equation}
+In pratica, estendiamo l'ambiente con il tipo dell'argomento in ingresso (che è noto), e poi troviamo il tipo dell'espressione $e$ che sarà anche il tipo del risultato della funzione. Questa estensione "annulla" tutte le dichiarazioni precedenti della stessa funzione per questo scope.\\
+Infine per l'applicazione delle funzioni:
+\begin{equation}
+	\frac{\Gamma \vdash e_1 : \tau_1 \rightarrow \tau_2 \qquad \Gamma \vdash e_2: \tau_1}{\Gamma \vdash Apply(e_1,e_2):\tau_2}
+\end{equation}
+\subsubsection{Correttezza}
+\begin{proof}[Dimostrazione del progresso]
+	Utilizziamo l'induzione sulle derivazioni di tipo.\\
+	I casi base sono identici alla dimostrazione \ref{proof_progresso}.\\
+	Il caso delle variabili è banale.\\
+	Il caso dell'astrazione di funzione è immediato dato che le funzioni stesse sono valori.\\
+	Per il caso dell'applicazione di funzione
+	\begin{equation*}
+		e = Apply(e_1,e_2), \emptyset \vdash e_1:\tau_1 \rightarrow \tau_2, \emptyset \vdash \tau_1
+	\end{equation*}
+	Per \textit{ipotesi induttiva} abbiamo due casi:
+	\begin{itemize}
+		\item Le due espressioni possono fare un passo: applichiamo le regole di riduzione dell'applicazione e terminiamo
+		\item Le due espressioni sono entrambi valori: dovremo avere $e_1$ nella forma del tipo $fun \: x:\tau_1 = e':\tau_1 \rightarrow \tau_2$ e possiamo applicare la regola \ref{eq_briduz} 
+	\end{itemize}
+\end{proof}
+\begin{proof}[Dimostrazione della conservazione]
+	Si dimostra per induzione strutturale sulle regole di tipo. Anche qui il caso difficile è quello per l'applicazione
+	\begin{equation*}
+		e = Apply(e_1,e_2)
+	\end{equation*}
+	Quindi vale che:
+	\begin{gather*}
+		\Gamma \vdash e : \tau \\
+		\Gamma \vdash e_1 : \tau_1 \rightarrow \tau_2 \\
+		\Gamma \vdash e_2  : \tau_2 \\
+		\tau = \tau_2 \\
+		e \rightarrow e'
+	\end{gather*}
+	Dobbiamo dimostrare che:
+	\begin{equation*}
+		\Gamma \vdash e':\tau_2
+	\end{equation*}
+	La seconda affermazione comporta che
+	\begin{equation*}
+		e_1 = fun \: x : \tau_1 = e_3 \qquad \Gamma,x:\tau_1 \vdash e_3:\tau_2
+	\end{equation*}
+	che però non è ciò che  ci serve: noi vogliamo ottenere
+	\begin{equation*}
+		e' = e_3 \{x:=e_2\}
+	\end{equation*}
+	Dobbiamo in qualche modo eseguire la sostituzione, e per questo usiamo un lemma ad hoc:
+	\begin{lemma}[Substitution lemma]
+		I tipi sono preservati dall'operazione di sostituzione.
+		\begin{gather*}
+			\Gamma,x:\tau_1 \vdash e:\tau \\
+			\Gamma \vdash e_1:\tau_1 \\
+			\Gamma \vdash e\{x=e_1\}:\tau
+		\end{gather*}
+		Per dimostrarlo si usa l'induzione sulla derivazione del primo punto.
+	\end{lemma}
+\end{proof}
+\subsubsection{Estensioni}
+Cambiamo la sintassi del linguaggio per implementare le \textit{operazioni numeriche} e le \textit{dichiarazioni locali}:
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		$e ::=$ & Espressioni\\
+		\hline
+		$x$ & Variabili\\
+		$fun \: x:\tau = e$ & Funzioni\\
+		$Apply(e,e)$ & Applicazioni \\
+		$true$ & Costante true\\
+		$false$ & Costante false\\
+		$n$ & Costanti numeriche\\
+		$e \oplus e$ & Operazioni binarie \\
+		if $e$ then $e$ else $e$ & Condizionale\\
+		$let \: x = e_1 \: in \: e_2 : \tau_2$ & Dichiarazioni locali \\
+		\hline
+	\end{tabular}
+\end{center}
+Aggiungiamo le seguenti regole di valutazione:
+\begin{equation}
+	\frac{e_1 \rightarrow e'}{let \: x = e_1 \: in \: e_2 : \tau_2 \rightarrow let \: x = e' \: in \: e_2:\tau_2}
+\end{equation}
+\begin{equation}
+	let \: x = v \: in \: e_2:\tau_2 \rightarrow e_2 \{x=v\}:\tau_2
+\end{equation}
+E le seguenti regole di tipo:
+\begin{equation}
+	\Gamma \vdash n:Nat
+\end{equation}
+\begin{equation}
+	\Gamma \vdash e_1: \tau_1 \qquad \Gamma \vdash e_2:\tau_2 \qquad \frac{\oplus:\tau_1 \times \tau_2 \rightarrow \tau}{\Gamma \vdash e_1 \oplus e_2 : \tau}
+\end{equation}
+\begin{equation}
+	\frac{\Gamma \vdash e_1 : \tau_1 \qquad \Gamma,x:\tau_1 \vdash e_2:\tau_2}{let \: x = e_1 \: in \: e_2 : \tau_2}
+\end{equation}
+\subsubsection{Ricorsione}
+Nel lambda calcolo tipato non possiamo utilizzare il combinatore $\Omega$.\\ Dobbiamo quindi introdurre un generatore \textbf{aux} che, applicato ad una funzione \textit{iE} approssima il comportamento di una ipotetica funzione (ad esempio \textit{isEven}) fino a $n$. $iE \: k$ con $k \leq n$  restituisce il valore calcolato da $isEven \: k$. Allora $aux \: iE \: k$ restituisce  una migliore approssimazione di \textit{isEven} fino a $k+2$.
+\begin{lstlisting}
+	let aux = fun f:Nat -> Bool =
+		fun x:Nat=
+			if (isZero x) then true else
+			if (isZero(pred x)) then false else
+				f(pred(pred x))
+	aux: (Nat -> Bool) -> Nat -> Bool
+\end{lstlisting}
+Aggiungiamo al linguaggio un costrutto \textit{fix} tale che $isEven = fix \: aux$. Applicando \textit{fix} ad \textit{aux} si ottiene il limite delle approssimazioni, ovvero il \textbf{punto fisso}.\\
+Estendiamo la sintassi aggiungendo $fix \: e$, le seguenti regole di valutazione
+\begin{gather}
+	\frac{e \rightarrow e'}{fix \: e \rightarrow fix \: e'}\\
+	fix(fun \: f:\tau = e) \rightarrow e [f = (fix (fun \: f:\tau = e))]
+\end{gather}
+e le regole di tipo
+\begin{equation}
+	\frac{\Gamma \vdash e:\tau \rightarrow \tau}{\Gamma \vdash fix \: e: \tau}
+\end{equation}
+La versione semplificata della sintassi, che poi viene usata anche in Ocaml, è la seguente:
+\begin{lstlisting}
+	let rec x: <Type> = e in e'
+\end{lstlisting}
+che corrisponde a
+\begin{lstlisting}
+	let x = fix (fun x: <Type> = e) in e'
+\end{lstlisting}
+
+\begin{example}[Esempio ricorsione semplificata]
+	\begin{lstlisting}
+		let rec isEven: Nat -> Bool =
+			fun x:Nat =
+				if(isZero x) then true else
+				if (isZero (pred x)) then false
+				else isEven(pred (pred x))
+		in isEven 7;
+	\end{lstlisting}
+\end{example}
