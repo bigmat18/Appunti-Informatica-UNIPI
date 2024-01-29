@@ -1,0 +1,76 @@
+\newpage
+\section{Garbage collection}
+Il sistema che si occupa di ripulire la memoria quando degli oggetti/variabili non sono più utilizzati. Gestisce quindi l'heap della memoria, che è organizzata come segue:
+\begin{itemize}
+	\item \textit{Static area}: ha dimensione fissa e i suoi contenuti sono determinati ed allocati a compilazione
+	\item \textit{Run-time stack}: ha dimensione variabile e gestisce i sottoprogrammi
+	\item \textbf{Heap}: può avere dimensione fissa o variabile e gestisce gli oggetti e le strutture dati dinamiche
+\end{itemize}
+Evita di saturare la memoria, evita problemi alla deallocazione (memory leak, dandling problem) e risolve problemi di sicurezza (elimina dati potenzialmente sensibili rimasti in memoria).
+\subsection{Allocazione heap}
+Può avvenire in due modi:
+\begin{itemize}
+	\item Allocazione con blocchi di memoria \textbf{fissa} predifiniti organizzati come una lista. Questo porta a frammentazione quando poi avvengono de-allocazioni e nuovi allocazioni (non c'è una sequenza di blocchi contigua abbastanza grande). Esistono due tecniche:
+	\begin{itemize}
+		\item \textit{First fit}: si prende il primo blocco grande abbastanza. È più veloce ma spreca più memoria.
+		\item \textit{Best fit}: si prende il blocco di dimensione più piccola che sia grande abbastanza. Più lento ma più efficiente in termini di memoria.
+	\end{itemize}
+	\item Allocazione con blocchi di memoria di dimensione \textbf{variabile}: i blocchi vengono creati strada facendo a seconda della dimensione necessaria e uniti quando sono contigui e di nuovo liberi. Si può comunque presentare frammentazione.
+\end{itemize}
+\subsection{Frammentazione}
+Ne esistono di due tipi:
+\begin{itemize}
+	\item \textbf{Interna}: quando c'è memoria in eccesso nei blocchi che vengono allocati
+	\item \textbf{Esterna}: quando vengono lasciati blocchi di memoria non allocati tra blocchi allocati che sono troppo piccoli per essere utilizzati
+\end{itemize}
+\subsection{Algoritmi}
+Il garbage collector perfetto dovrebbe avere le seguenti caratteristiche:
+\begin{enumerate}
+	\item Nessun impatto visibile sulle performance
+	\item Opera su ogni tipo di programma e struttura dati (anche cicliche)
+	\item Individua il garbage in modo efficiente e veloce
+	\item Nessun overhead sulla gestione della memoria complessiva (caching e paginazione)
+	\item Gestione efficiente dell'heap (nessuna frammentazione)
+\end{enumerate}
+\subsubsection{Reference counting}
+Si tiene traccia del numero dei riferimenti ai blocchi allocati tramite un \textbf{contatore}. Viene inizializzato ad 1 e ad ogni copia del puntatore aumenta di 1 mentre ad ogni deallocazione decrementa. Quando arriva a 0 viene liberata la memoria.\\
+Il problema principale che si pone con questa tecnica è il \textbf{memory leak}: ovvero quando alcuni oggetti hanno riferimenti circolari e potrebbero rimanere isolati dal resto dei puntatori ma comunque allocati. Inoltre, essendo necessario spazio per i contatori, si ha un \textbf{overhead di memoria}.
+\subsubsection{Tracing}
+Sfrutta un \textbf{grafo} di raggiungibilità. Ogni tanto interrompono l'esecuzione del programma e verificano quali riferimenti sono ancora attivi e quali no. Si risolve il problema del \textit{memory leak} ma si presenta un \textbf{overhead di tempo}. Esistono due principali tecniche:
+\begin{definition}[mark-sweep]
+	Ogni cella prevede un \textbf{bit di marcatura}. Si interrompe periodicamente il programma e si scorre il grafo: parterndo dal \textit{root set} si marcano le celle live (marking), poi tutte le celle non marcate sono deallocate e vengono resettati i bit (sweep).
+	\begin{lstlisting}
+		// Mark
+		For each root v:
+			DFS(v)
+		
+		function DFS(x):
+			if x is a pointr into heap
+				if record x is not marked
+					mark x
+					for each field fi of record x
+						DFS(x.fi)
+		
+		// Sweep
+		p <- first address in heap
+		while p < last address in heap
+			if record p is marked
+				unmark p
+			else let f1 be the first field in p
+				p.f1 <- freelist
+				freelist <- p
+			p <- p + (size of record p)
+	\end{lstlisting}
+	Funziona sulle strutture circolari, non ha overhead di spazio ma necessita della sospensione dell'esecuzione e non interviene sul problema della frammentazione.
+\end{definition}
+\begin{definition}[Copy collection - Cheney algorithm]
+	Suddividiamo l'heap in due parti:
+	\begin{itemize}
+		\item \textbf{from-space}: viene utilizzato per allocare inizialmente
+		\item \textbf{to-space}
+	\end{itemize}
+	Ad ogni chiamata del garbage collector viene fatta una visita al grafo e tutti i riferimenti ancora attivi vengono spostati nell'altra area, che poi diventa quella attiva. Ciò che rimanene nella prima viene deallocato.\\
+	Il problema principale è l'overhead di memoria in quanto usa solo metà dell'heap. Migliora il problema della frammentazione perché copia in maniera allineata.
+\end{definition}
+\subsubsection{Generational GC}
+Si basa sull'idea \textit{"most cells that die, die young"}. Viene quindi fatta una classificazione in base alla lunghezza della vita. L'heap viene diviso in \textbf{generazioni}, dove le più "giovani" vengono visitate più frequentemente. Ad ogni iterazione se qualcosa è attivo viene spostato in una generazione successiva che viene visitata meno frequentemente. Su varie generazioni vengono utilizzati algoritmi diversi di quelli elencati precedentemente.

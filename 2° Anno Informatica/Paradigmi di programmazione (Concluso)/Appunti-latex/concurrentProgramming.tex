@@ -1,0 +1,148 @@
+\newpage
+\section{Programmazione concorrente}
+Un \textbf{programma concorrente} contiene due o più processi che lavorano assieme per eseguire una determinata applicazione. Ogniu sottoprocesso è un programma sequenziale e comunicano tra loro tramite \textbf{shared memory} o \textbf{message passing}.\\
+\begin{note}
+	In realtà la programmazione concorrente è solo un'\textbf{astrazione} in quanto non è detto che i processi siano davvero in esecuzione contemporanea.
+\end{note}
+Abbiamo due tipi di esecuzione non sequenziale:
+\begin{itemize}
+	\item \textbf{Preemptive multitasking}: i processi si alternano e sono in \textbf{interleaving}.
+	\item \textbf{Parallelismo}: ci sono più processori che eseguono più processi separatamente. Ognuno di questi può anche fare multitasking.
+\end{itemize}
+Entrambi sono accomunati dall'\textit{esecuzione non sequenziale} e dal fatto che ogni sottoprocesso ha idealmente un proprio \textit{program counter} che avanza autonomamente.\\
+Quando due o più processi provano ad accedere alla stessa cella di memoria, il sistema operativo gestisce la cosa facendoli lavorare uno alla volta, anche nel caso del parallelismo. Per questo alla fine si può considerare l'interleaving come astrazione generale.\\
+Per capire il risultato del sistema di transizioni di due programmi concorrenti è necessario analizzare il codice macchina e non quello ad alto livello, poiché è necessario lavorare su operazioni \textbf{atomiche}.
+\begin{example}[Analisi ad alto e basso livello]
+	Dato il seguente programma in pseudocodice
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			\multicolumn{2}{c}{integer n $\leftarrow$ 0 }\\
+			\hline
+			p & q \\
+			\hline
+			p1: n $\leftarrow$ n+1 & q1: n $\leftarrow$ n+1\\
+			\hline
+		\end{tabular}
+	\end{center}
+	avremo due possibili scenari di esecuzione entrambe con lo stesso risultato: $2$.
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\textbf{Processo p} & \textbf{Processo q} & \textbf{n} \\
+			\hline
+			\textbf{p1: n $\leftarrow$ n+1} & q1: n $\leftarrow$ n+1 & 0 \\
+			\hline
+			END & \textbf{q1: n $\leftarrow$ n+1} & 1 \\
+			\hline
+			END & END & 2 \\
+			\hline
+		\end{tabular}
+		\hspace{50px}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\textbf{Processo p} & \textbf{Processo q} & \textbf{n} \\
+			\hline
+			p1: n $\leftarrow$ n+1 & \textbf{q1: n $\leftarrow$ n+1} & 0 \\
+			\hline
+			\textbf{p1: n $\leftarrow$ n+1} & END & 1 \\
+			\hline
+			END & END & 2 \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\noindent Analizzando invece il codice a basso livello:
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			\multicolumn{2}{c}{integer n $\leftarrow$ 0 }\\
+			\hline
+			p & q \\
+			\hline
+			p1: load R1,n & q1: load R1,n \\
+			p2: add R1,0x1 & q2: add R1,0x1 \\
+			p3: store R1,n & q3: store R1,n \\
+			\hline
+		\end{tabular}
+	\end{center}
+	abbiamo molti più possibili scenari, come ad esempio il seguente in cui il risultato è 1:
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			\textbf{Processo p} & \textbf{Processo q} & \textbf{n} & \textbf{p.R1} & \textbf{q.R1} \\
+			\hline
+			\textbf{p1: load R1,n} & q1: load R1,n & 0 & ? & ? \\
+			\hline
+			p2: add R1,0x1 & \textbf{q1: load R1,n} & 0 & 0 & ? \\
+			\hline
+			\textbf{p2: add R1,0x1} & q2: add R1,0x1 & 0 & 0 & 0 \\
+			\hline
+			p3: store R1,n & \textbf{q2: add R1,0x1} & 0 & 1 & 0 \\
+			\hline
+			\textbf{p3: store R1,n} & q3: store R1,n & 0 & 1 & 1 \\
+			\hline
+			END & \textbf{q3: store R1,n} & 1 & 1 & 1 \\
+			\hline
+			END & END & 1 & 1 & 1 \\
+			\hline
+		\end{tabular}
+	\end{center}
+	Un modo per poter eseguire correttamente l'analisi anche su codice ad alto livello è quello di simulare manualmente il comportamento che avrebbe la macchina a basso livello oppure considerare la lettura come un'istruzione a se che richiede la sua elaborazione.
+\end{example}
+\subsection{Comunicazione tra processi}
+I processi possono interagire tra loro per scambiarsi i dati o per sincronizzarsi. Può avvenire in due modi.
+\subsubsection{Shared memory}
+I threads possono accedere alla stessa area di \textbf{memoria} e la usano (in scrittura e lettura) per comunicare o sincronizzarsi.
+\begin{example}[Busy waiting]
+	Questo è un modo inefficiente di sincronizzare i thread poiché il 2 perde tempo solamente per testare il valore.
+	\begin{lstlisting}
+		// Variabili globali (memoria condivisa)
+		int x = 0;
+		
+		// Thread 1
+		producer() {
+			int k = 6;
+			x = fattoriale(k);
+		}
+		
+		// Thread 2
+		consumer() {
+			while(x==0) sleep(10);
+			print(x);
+		}
+	\end{lstlisting}
+	Un'alternativa più efficiente è tramite servizi messi a disposizione dal \textbf{runtime del linguaggio}:
+	\begin{lstlisting}
+		// Thread 1
+		producer() {
+			int k = 6;
+			x = fattoriale(k);
+			wakeup();
+		}
+		
+		// Thread 2
+		consumer() {
+			if(x==0) sleep();
+			print(x);
+		}
+	\end{lstlisting}
+\end{example}
+
+\subsubsection{Message passing}
+I processi sono isolati tra di loro a livello di memoria ma possono inviarsi messaggi e sincronizzarsi tramite servizi di \textbf{inter-process communication} messi a disposizione dal sistema operativo.
+\begin{example}[IPC]
+	\begin{lstlisting}
+		// Processo 1
+		producer() {
+			int k=6;
+			int x=fattoriale(k);
+			send(x);
+		}
+		
+		// Processo 2
+		consumer() {
+			int y = receive();
+			print(y);
+		}
+	\end{lstlisting}
+\end{example}

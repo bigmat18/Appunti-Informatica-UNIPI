@@ -26,7 +26,7 @@ Per gli appunti di ogni materia è sia presente il codice sorgete in Latex sia i
 
 ### Libera scelta
 - **Computer grafica**: sono pressenti tutte le slide usate durante il corso sotto forma di unica dispensa, inoltre è presente il libro consigliato direttamente dal professo, oltre che ad esercizi. Consiglio per la preparazione di questo esame il sito LearnOpenGL (link: https://learnopengl.com). È inoltre presente una subrepo con il mio progetto pesonale di fine corso.
-- **Statistica**: *(non concluso)*
+- **Crittografia**: *(non concluso)*
 
 ## Indicazioni
 La dicitura (Non concluso) / (Concluso) accanto al nome di un esame sta ad indicare che le lezioni per quell'esame non sono state concluso dal proprietario della repository, quindi potrà ancora essere aggiunto materiale, oppure gli appunti non sono completi.
