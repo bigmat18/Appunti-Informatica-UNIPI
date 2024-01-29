@@ -7,45 +7,71 @@
 \usepackage{amsfonts}
 \usepackage{amsthm}
 \usepackage{amssymb}
+\usepackage{makecell}
 % ----  Useful packages % ---- 
 
 \usepackage{wrapfig}
 \usepackage{caption}
 \usepackage{subcaption}
-
-\graphicspath{ {./images/} }
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
 
 % ---- Set page size and margins replace ------
 \usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 % ---- Set page size and margins replace ------
 
-% ---- Definition of custum section ---- 
+% ------- NOTA ------
+\theoremstyle{remark}
 \newtheorem{note}{Note}[subsection]
-\newtheorem{definition}{Definizione}[section]
-
-\theoremstyle{definition}
-\newtheorem{example}{Esempio}[section]
+% ------- NOTA ------
 
 % ------- OSSERVAZIONE ------
 \theoremstyle{definition}
 \newtheorem{observation}{Osservazione}[subsection]
 % ------- OSSERVAZIONE ------
 
-\theoremstyle{definition}
-\newtheorem{demostration}{Dimostrazione}[section]
-
-\newtheorem{lemma}{Lemma}[subsubsection]
-
+% ------- DEFINIZIONE ------
 \theoremstyle{plain}
-\newtheorem{theorem}{Teorema}[section]
-% ---- Definition of custum section ---- 
+\newtheorem{definition}{Definizione}[subsection]
+% ------- DEFINIZIONE ------
+
+% ------- ESEMPIO ------
+\theoremstyle{definition}
+\newtheorem{example}{Esempio}[subsection]
+% ------- ESEMPIO ------
+
+% ------- DIMOSTRAZIONE ------
+\theoremstyle{definition}
+\newtheorem{demostration}{Dimotrazione}[subsection]
+% ------- DIMOSTRAZIONE ------
+
+% ------- TEOREMA ------
+\theoremstyle{definition}
+\newtheorem{theorem}{Teorema}[subsection]
+% ------- TEOREMA ------
+
+% ------- COROLLARIO ------
+\theoremstyle{plain}
+\newtheorem{corollaries}{Corollario}[theorem]
+% ------- COROLLARIO ------
+
+% ------- PROPOSIZIONE ------
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposizione}[subsection]
+% ------- PROPOSIZIONE ------
 
 % ---- Footer and header ---- 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[LE,RO]{A.A 2023-2024}
-\fancyhead[RE,LO]{Paradigmi di programmazione}
+\fancyhead[RE,LO]{Cloud Computing}
 \fancyfoot[RE,LO]{\rightmark}
 \fancyfoot[LE,RO]{\thepage}
 
@@ -59,16 +85,13 @@
 
 \usepackage{listings}
 \usepackage{color}
-\definecolor{lightgray}{rgb}{1,1,1}
-\definecolor{darkgray}{rgb}{.4,.4,.4}
-\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 
 \lstset{frame=tb,
-	language=Java,
+	language=C,
 	aboveskip=3mm,
 	belowskip=3mm,
 	showstringspaces=false,
@@ -84,28 +107,19 @@
 	tabsize=3
 }
 
-\usepackage{multicol}
-
-\usepackage{hyperref}
-\hypersetup{
-	colorlinks,
-	citecolor=black,
-	filecolor=black,
-	linkcolor=black,
-	urlcolor=black
-}
-
-\usepackage{soul}
-
-\title{\textbf{Paradigmi di programmazione}}
+\title{\textbf{Cloud Computing}}
 \author{Realizzato da: Ghirardini Filippo}
-\date{A.A 2023-2024}
+\date{A.A. 2023-2024}
 
 \begin{document}
 	\input{frontespizio}
-	\tableofcontents
 	
-	\input{lambdacalcolo}
-	\input{tipi}
-	\input{macchine_astratte}
+	\tableofcontents
+	\newpage
+	\maketitle
+	\begin{center}
+		\vspace{-20pt}
+		\rule{11cm}{.1pt} 
+	\end{center}
+	\input{introduction}
 \end{document}

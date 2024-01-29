@@ -1,0 +1,38 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Introduzione}
+
+\subsection{Service-based economy}
+L'economia basata sui servizi (\textit{Everything as a service}) si fonda sulla tendenza degli ultimi 30 anni di passare dai \textit{beni} ai \textit{servizi}.
+\begin{example}[Bicicletta]
+	Una signora compra una bicicletta dal venditore. Questa diventa di sua proprietà e si deve occupare della manutenzione. La bicicletta diventa un \textbf{servizio} (\textit{CicloPi}) e la signora paga per usare la bici che però non è più sua (e non deve più preoccuparsi di manutenzione e furto).
+\end{example}
+\noindent Esempi più vicini all'informatica sono il passaggio dai supporti fisici per la musica allo streaming o i dispositivi di memorizzazione passati ai Cloud Drive.
+\subsection{Service contracts}
+Quando usiamo un servizio non vogliamo sapere come viene implementato. L'unica cosa che ci interessa è cosa è specificato sul \textbf{contratto di utilizzo}. Nella maggior parte dei casi l'utente non lo legge.
+\subsubsection{Quality of Service}
+Ci sono più fornitori che ci danno lo stesso servizio ma con qualità del servizio diverse. Dobbiamo chiederci se il prezzo più basso vale la pena del sacrificio della qualità.
+\subsubsection{Service Level Agreement}
+Sono i contratti di servizio che includono anche il livello di \textbf{affidabilità di servizio}. In questa situazione abbiamo tre figure:
+\begin{itemize}
+	\item \textit{Programmatore}
+	\item \textit{Business expert}: colui che sa il livello di affidabilità in base al mercato
+	\item \textit{Legale}: colui che sa come scriverlo
+\end{itemize}
+\begin{example}[Google SLA]
+	Google Compute Engine fornisce un \textbf{Service Level Objective} (SLO) del $99.95\%$. In caso di non raggiungimento del SLO si viene rimborsati con del credito in percentuale a quanto si è distanti dal target.\\
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			\textbf{Montlhy Uptime Percentage} & \textbf{Rimborso} \\
+			\hline
+			$95.00\%-<99.95\%$ & $10\%$ \\
+			\hline
+			$90.00\%-<95.00\%$ & $25\%$ \\
+			\hline
+			$<90.00\%$ & $100\%$ \\
+			\hline
+		\end{tabular}
+	\end{center}
+	Se ad esempio l'1 e il 2 Aprile dalle 8am alle 5pm (orario di lavoro) non era disponibile il servizio, a quanto ammonta il rimborso in credito?
+\end{example}
