@@ -1,7 +1,7 @@
 % !TeX spellcheck = it_IT
 \newpage
 
-\section{Paradigmi}
+\section{Paradigmi di renderizzazione}
 Un \textbf{algoritmo di rendering} è una serie di passi che trasforma la descrizione digitale di una scena e di quattro parametri in un'\textbf{immagine raster}.\\
 \begin{figure}[h]
 	\includegraphics[scale=0.25]{rendering_algorithm.png}
@@ -47,7 +47,7 @@ Il vantaggio principale è che è sufficiente proiettare pochi vertici per raste
 			color p with it
 \end{lstlisting}
 \subsubsection{Primitive}
-Tutto ciò che so proiettare da 3 dimensioni a 2 e 
+Tutto ciò che so proiettare da 3 dimensioni a 2 e rasterizzare:
 \begin{itemize}
 	\item Punto
 	\item Segmento
@@ -63,3 +63,39 @@ Tutto ciò che so proiettare da 3 dimensioni a 2 e
 	\includegraphics[scale=0.25]{rasterization_pipeline.png}
 	\centering
 \end{figure}
+\subsubsection{Punto}
+\subsubsection{Linea}
+Conoscendo i due vertici trovare tutti i pixel che la coinvolgono. Utilizzando l'equazione della rette si applica il seguente codice:
+\begin{lstlisting}
+	RasterizeH(x0,y0,x1,y1){
+		m = (y1-y0)/(x1-x0)
+		x=x0;
+		y=y0;
+		do{
+			pixel(x,y)=0
+		}
+	}
+\end{lstlisting}
+\subsubsection{Triangoli}
+Dati i tre vertici, se i lati passano per il centro del pixel allora questo viene illuminato. Questo ci garantisce che non ci sia ambiguità in caso di triangoli adiacenti, poiché non "litigheranno" per lo stesso pixel.
+\subsubsection{Costi}
+È composto dal costo della trasformazione dei vertici e il costo di rasterizzare la primitiva p in proporzione alla sua dimensione sullo schermo:
+\begin{equation}
+	%TODO
+\end{equation}
+\subsection{Confronto}
+Ancora ad oggi il metodo della \textit{rasterizzazione} è il più popolare.\\
+I vantaggi del \textit{ray-tracing} sono i seguenti:
+\begin{itemize}
+	\item Algoritmo più semplice concettualmente
+	\item Ottimo per effetti grafici complessi di \textbf{alta qualità}
+\end{itemize}
+mentre quelli della \textit{rasterizzazione}:
+\begin{itemize}
+	\item Complessità più controllabile in quanto non serve tutta la scena in ogni momento della renderizzazione: ogni primitiva lavora per conto suo ed è quindi più facilmente parallelizzabile
+	\item Funziona meglio con i dati dinamici (oggetti che si muovono sulla scena)
+	\item Più \textbf{controllabile} e \textbf{veloce}
+\end{itemize}
+Uno dei motivi principali per cui ancora oggi la rasterizzazione è più popolare è per come affronta il problema dell'\textbf{Hidden Surface Removal}.
+\subsubsection{Combinazione}
+La soluzione vincente è quella di usare entrambi gli approcci: la \textbf{rasterizzazione} per disegnare gli oggetti della scena e il \textbf{ray-tracing} per elaborare luci ed ombre.
