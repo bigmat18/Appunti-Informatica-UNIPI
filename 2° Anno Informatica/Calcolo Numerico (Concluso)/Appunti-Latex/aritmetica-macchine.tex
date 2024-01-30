@@ -1,62 +1,74 @@
+% !TeX spellcheck = it_IT
 \section{Aritmetica di Macchina}
-Per una macchina la scrittura $(x + y) + z \neq x + (y + z)$. Vediamo dunque che ci sono alcuni punti focali da considerare
-per far si che una macchina funzioni correttamente:
+Per una macchina la scrittura $(x + y) + z$ è diverso da $x + (y + z)$. Vediamo dunque che ci sono alcuni punti focali da considerare per far si che una macchina funzioni correttamente:
 
 \begin{itemize}
-    \item Trovare uno standard per come memorizzare i numeri.
-    \item Trovare uno standard per come manipolare i numeri.
+    \item Trovare uno standard per come \textbf{memorizzare} i numeri.
+    \item Trovare uno standard per come \textbf{manipolare} i numeri.
 \end{itemize}
 
-\hspace{-15pt}Da questi due punti possiamo ricondurci ad un solo problema, come andare a rappresentare i numeri.
+\noindent Da questi due punti possiamo ricondurci ad un solo problema, come andare a \textbf{rappresentare} i numeri.
 
-\subsection{Teorema di rapresentazione}
+\subsection{Teorema di rappresentazione}
 \begin{theorem}
-    Dato $x \in \mathbb{R}, x \neq 0$ esistono e sono univocamente determinati.
+    Dato $x \in \mathbb{R}, x \neq 0$\footnote{Lo zero viene utilizzato dalla macchina per alcune operazioni come il confronto, quindi deve averlo ma lo rappresenta in un modo particolare} e una base di numerazione $B, B\in \mathbb{N}, B>1$ esistono e sono univocamente determinati:
     \begin{enumerate}
-        \item un intero $p \in \mathbb{Z}$ detto esponente della rappresentazione.
-        \item una successione di numeri naturiali $\{d_i\}_{i\geq 1}$ con $d_i \neq 0, 0 \leq d_i \leq B - 1$ e $d_i$
-        non definitvamente uguali a \(B - 1\), dette cire della rappresentazione; tali per cui si ha
-    \end{enumerate}
-    \begin{equation}
-        x = sign(x)B^p \sum_{i=1}^{+\infty}d_i B^{-1}.
-    \end{equation}
+        \item Un intero $p \in \mathbb{Z}$ detto \textbf{esponente} della rappresentazione
+        \item Una successione di numeri naturali $\{d_i\}_{i=1}^{+\infty}$ con $d_i \neq 0, 0 \leq d_i \leq B - 1$ e $d_i$
+        non definitivamente uguali a \(B - 1\), dette cifre della rappresentazione tali per cui $x$ si scrive in modo \textbf{unico} nella seguente forma:
+        \begin{equation}
+        	x = sign(x)B^p \sum_{i=1}^{+\infty}d_i B^{-1}.
+        \end{equation}
+        dove la sommatoria viene chiamata \textbf{mantissa}
+    \end{enumerate}   
 \end{theorem}
 
-\hspace{-15pt}Andiamo ora ad analizzare il significato di questo teorema. Esso descrive quella che viene chiamata rappresentazione
-in virgola mobile, in quanto l'esponente \(p\) on è determinato in modo da avere la parte intera nulla. Le cose da considerare
+\begin{example}[Esempio in base 10]
+	Poniamo come numero da rappresentare $0.1$ in base $10$ è
+	\begin{equation*}
+		0.1 = +10^0(0.1)
+	\end{equation*}
+\end{example}
+
+\noindent Andiamo ora ad analizzare il significato di questo teorema. Esso descrive quella che viene chiamata \textbf{rappresentazione
+in virgola mobile}, in quanto l'esponente \(p\) on è determinato in modo da avere la parte intera nulla. Le cose da considerare
 in questo teorema sono:
 \begin{itemize}
     \item La condizione \(d_i \neq 0\) e \(d_i\) non definitivamente uguale a \(B - 1\) sono introdotte per garantire
     l'unicità delle rappresentazioni. Ad esempio:
     \[B = 10 \text{ abbiamo } 1 = +10^1 (1 \cdot 10^{-1}) = +10^2 (0 \cdot 10^{-1} + 1 \cdot 10^{-1})\]
     Quindi due rappresentazioni diverse per lo stesso numero, però considerando le condizioni scritte sopra la seconda non risulta
-    accettabile perché la prima cifra è nulla.
-    \item Il caso \(x=0\) non ammette rapresentazione normalizzata. Questa casistica viene trattata dalla macchina in un modo
-    particolare, per questo abbiamo la condizione \(x\neq \).
-    \item Questa rapresentazione si estende anche all'insieme dei numeri complessi del tipo \(z = a + ib\), utilizzando una rapresentazione
+    accettabile perché la prima cifra è nulla.\\
+    Questa clausola ci garantisce anche l'unicità delle rappresentazioni nei numeri \textbf{periodici}:
+    \begin{equation*}
+    	0.\overline{9} = 10^0 (0.99\ldots9)
+    \end{equation*}
+    Non è ammissibile in quanto è definitivamente uguale a $B-1$.
+    \item Questa rappresentazione si estende anche all'insieme dei numeri complessi del tipo \(z = a + ib\), utilizzando una rappresentazione
     come coppie di numeri reali del tipo \((a,b)\).
 \end{itemize}
 
-Possiamo dedurre che visto che stiamo lavornano con registri di meoria di un calcolatore con memoria a numero finito, anche la quantità
-di cifre rapresentabili saranno a numero finito esso vinene chiamato \textbf{insieme dei numeri di macchina}.\\
+Possiamo dedurre che visto che stiamo lavorano con registri di memoria di un calcolatore con memoria a numero finito, anche la quantità
+di cifre rappresentabili saranno a numero finito esso viene chiamato \textbf{insieme dei numeri di macchina}.\\
 
-Dal teorema di rapresentazione in base di un numero reale può avvenire assegnando delle posizioni di meoria per il segno, 
+Dal teorema di rappresentazione in base di un numero reale può avvenire assegnando delle posizioni di memoria per il segno, 
 per l'esponente e per le cifre della rappresentazione.
 
-\begin{definition}[Insieme die numeri di macchina]
-    Si definisce l'insieme dei nuermi di macchina in rappresentazione floating point con t cifre, base B e range \(-m, M\) l'insieme dei numeri reali.
-    \[\mathbb{F}(B, t, m, M) = \{0\} \cup \{s \in \mathbb{R} \::\: x = sign(x) B^p \sum_{i=1}^{t} d_i B^{-1}, 0\leq d_i \leq B - 1, d_1 \neq 0, -m \leq p \leq M\}\]
+\begin{definition}[Insieme dei numeri di macchina]
+    Si definisce l'insieme dei numeri di macchina in rappresentazione floating point con t cifre, base B e range \(-m, M\) l'insieme dei numeri reali.
+    \[\mathbb{F}(B, t, m, M) = \{0\} \cup \{s \in \mathbb{R} : x = \pm B^p \sum_{i=1}^{t} d_i B^{-1}, d_1 \neq 0, -m \leq p \leq M\}\]
 \end{definition}
 
-\hspace{-15pt}Si osserva in questa definizione che:
+\noindent Si osserva in questa definizione che:
 \begin{itemize}
-    \item L'insieme \(\mathbb{F}\) ha cardinalità finita \(N = 2B^{t-1}(B-1)(M + m + 1) + 1\).
-    \item L'insieme dei numeri di macchina \(\mathbb{F}(B, t, m, M)\) è simmetrico rispetto all'origine.
-    \item Possiamo definire \(\Omega = B^M (B-1) \sum_{i=1}^{t} b^{-1}\) come il più grande numero macchina e \(\omega = B^{-m} B^{-1}\) come
-    invece il più piccolo.
-    \item Posto un \(x = B^P \sum_{i=1}^{t}d_i B^{-1}\) possiamo definire il suo successiovo numero di macchina come
-    \(y = B^p(\sum_{i=1}^{t-1}d_i B^{-1} + (d_t + 1)B^{-t})\). Da qui vediamo che la distanza \(y - x = B^p - t\) porta
-    i numeri ad essere non equispaziali fra di loro, quindi la distanza aumento con l'avicinarci a \(\Omega\)
+    \item L'insieme \(\mathbb{F}\) ha cardinalità \textbf{finita}: \(N = 2B^{t-1}(B-1)(M + m + 1) + 1\).
+    \item L'insieme dei numeri di macchina \(\mathbb{F}(B, t, m, M)\) è \textbf{simmetrico} rispetto all'origine.
+    \item Possiamo definire \(\Omega = B^M \sum_{i=1}^{t} (B-1)b^{-1}\) come il \textbf{più grande} numero macchina e \(\omega = +B^{-m} B^{-1}\) come
+    invece il \textbf{più piccolo} positivo.
+    \item Posto un \(x = B^P \sum_{i=1}^{t}d_i B^{-1}\) possiamo definire il suo \textbf{successivo} numero di macchina come \(y = B^p(\sum_{i=1}^{t-1}d_i B^{-1} + (d_t + 1)B^{-t})\). \\
+    Da qui vediamo che la distanza \(y - x = B^p - t\) porta
+    i numeri ad essere \textbf{non equidistanti} fra di loro, quindi la distanza aumenta con l'avvicinarci a \(\Omega\).\\
+    Questo ci fa comodo perché ci interessa l'\textbf{errore relativo}, quindi su numeri piccoli ci serve un errore piccolo mentre su numeri grandi posso fare errori grandi.
 \end{itemize}
 
 \begin{example}
@@ -65,10 +77,10 @@ per l'esponente e per le cifre della rappresentazione.
     Mentre si può scrivere la distanza fra questi due valori come \(y - x = B^p - t\).
 \end{example}
 
-\hspace{-15pt}E' stato fissato uno standard IEEE 754 fra gli anni 70/80, questo standard dice che, visto ci sono macchine che hanno metodi di rappresentazione
-diversi bisogna fissare un standard, esso appunto dice che \(B = 2\) ed i registri sono a 32 o 64 bit.\\\\
-Questa rapresentazione ha uno svantaggio che può sembrare minimo ma non lo è, lo 0 si rappresenta due volte con \(-0, +0\). Per ovviare
-a questo problema si è andato ad abbandonare questa rappresentazione in esponenti ma si rapprensentato i numeri nel seguente modo:
+\noindent E' stato fissato uno standard IEEE 754 negli anni 70/80 che dice che, visto ci sono macchine che hanno metodi di rappresentazione
+diversi, bisogna fissare un standard, ovvero \(B = 2\) con registri a 32 o 64 bit.\\\\
+Questa rappresentazione ha uno svantaggio che può sembrare minimo ma non lo è, lo 0 si rappresenta due volte con \(-0, +0\). Per ovviare
+a questo problema si è andato ad abbandonare questa rappresentazione in esponenti ma si rappresentato i numeri nel seguente modo:
 \(p_1 2^0 + p_1 2^1 + \dots + p_11 s^10 \) che rappresentano numeri da 0 a \(2^11 - 1\) quindi 2047 numeri, mentre lo 0 si può scrivere come:
 \begin{itemize}
     \item O tenendo tutti i valori a 0
@@ -76,16 +88,16 @@ a questo problema si è andato ad abbandonare questa rappresentazione in esponen
 \end{itemize}
 
 \hspace{-15pt}In entrambi i casi abbiamo un range di valori che va da \([-1022, 1024]\). A questo punto ho \(2^{P-1022}\) numeri che la 
-macchina rappresneta come \(\pm 2^{P - 1022}(0.1d_1 \dots d_{52})\).\\
+macchina rappresenta come \(\pm 2^{P - 1022}(0.1d_1 \dots d_{52})\).\\
 Impostando questo standard abbiamo \(\Omega = 2^{1024}(01 \dots 1)_2\) e \(\omega = 2^{-1022} (101)_2\).\\
 
 \begin{observation}
     Quando \(p=0\) abbiamo i numeri che si trovano nella porzione della retta dei numeri che è compresa fra \(-\omega\) \(\omega\)
-    e possiamo qui avere anche tuti 0 e quindi si introduce il caso dei numeri denormalizzati.
+    e possiamo qui avere anche tutti 0 e quindi si introduce il caso dei numeri denormalizzati.
 \end{observation}
 
-\hspace{-15pt}Se abbiamo l'esponante uguale a tutti 1, la convensione è che tutte le cifre della mantissa sono tutti uguali a 0/1
-questo numero indica il \(\pm \infty\) altrimenti sta a signifiare NaN (not a number). Questi valori ci permettono di gestire
+\hspace{-15pt}Se abbiamo l'esponente uguale a tutti 1, la convenzione è che tutte le cifre della mantissa sono tutti uguali a 0/1
+questo numero indica il \(\pm \infty\) altrimenti sta a significare NaN (not a number). Questi valori ci permettono di gestire
 forme indeterminate.
 
 \subsection{Errore di rappresentazione}
@@ -96,7 +108,7 @@ errori di rappresentazione detto anche \textbf{errore relativo di approssimazion
 \hspace{-15pt}Definiamo \(|\epsilon_x| = \big | \frac{\tilde{x} - x}{x}\big | \leq \frac{B^{P-t}}{| x|} \leq \frac{B^{P - t}}{B^{P - 1}} = B^{1 - t} = u\)
 la \(u\) è definita come \textbf{precisione di macchina}.\\
 
-\hspace{-15pt}Andiamo inoltre a definire le conidizioni di underflow e overflow. Dato un \(x \in \mathbb{R}, x \neq 0\) abbiamo che:
+\hspace{-15pt}Andiamo inoltre a definire le condizioni di underflow e overflow. Dato un \(x \in \mathbb{R}, x \neq 0\) abbiamo che:
 \begin{enumerate}
     \item Se \(|x| < \omega\) o \(|x| > \Omega\) overflow. In questo caso si va ad associare il \(+\infty\).
     \item Se invece \(\omega \leq |x| \leq \Omega\) abbiamo underflow. In questo caso allora prendiamo una \(x = B^p \sum_{i = 1}^{\infty}d_i B^{-1}
@@ -112,7 +124,7 @@ detto errore locale dell'operazione.
 
 \begin{example}
     Supponiamo di dover calcolare in macchina la funzione \(f(x) = \frac{x - 1}{x}\). In macchina questa funzione corrisponderebbe a
-    \(g(\tilde{x}) = (\tilde{x} \ominus 1) \oslash \tilde{x} \). Abbiamo quinidi:
+    \(g(\tilde{x}) = (\tilde{x} \ominus 1) \oslash \tilde{x} \). Abbiamo quindi:
     \[g(\tilde{x}) = \frac{(x (1 + \epsilon_x) - 1)(1 + \epsilon_1)}{x(1 + \epsilon_x)} \cdot (1 + \epsilon_1) = 
     \frac{(x (1 + \epsilon_x) - 1)(1 + \epsilon_1 + \epsilon_2)}{x(1 + \epsilon_x)} =
     \frac{(x (1 + \epsilon_x) - 1)(1 + \epsilon_1 + \epsilon_2 - \epsilon_x)}{x}\]
@@ -129,5 +141,5 @@ detto errore locale dell'operazione.
     \doteq \delta_2 - \frac{\delta_1}{x - 1} + \frac{\epsilon_x}{x-1}\]
     \[\frac{g_2(\tilde{x}) - f(x)}{f(x)} = \delta_2 - \frac{\delta_1}{x - 1} + \frac{\epsilon_x}{x-1}\]
     Questo è il risultato finale dove \(\delta_2 - \frac{\delta_1}{x - 1}\) viene definita come parte stabilità mentre \(\delta_2 - \frac{\delta_1}{x - 1}\) viene
-    chiamato condizionamento,il risulato finale viene definito invece numero stabile.
+    chiamato condizionamento,il risultato finale viene definito invece numero stabile.
 \end{example}
