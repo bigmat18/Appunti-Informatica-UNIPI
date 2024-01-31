@@ -1,0 +1,198 @@
+{
+  "main": {
+    "id": "22457f5221edb42e",
+    "type": "split",
+    "children": [
+      {
+        "id": "07489a5c5a856e96",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "24f7d4ee4b64959a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Statistica.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b2314291dfa7ce44",
+    "type": "split",
+    "children": [
+      {
+        "id": "cbcc30f9364f9263",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9791306ee13c7746",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "1e70628e7e06faf2",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "9adb806c0351a6b1",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "75962731b1f455cc",
+    "type": "split",
+    "children": [
+      {
+        "id": "79556d2415a0d181",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9c32818a3be6211f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Statistica.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "39e0daecea79d393",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Statistica.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "2d48fa506fb04a3d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "05f44bda8aefeea1",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Statistica.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "24f7d4ee4b64959a",
+  "lastOpenFiles": [
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/marchio_unipi_pant541.png",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/main.tex",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/main.pdf",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/introduction.tex",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/frontespizio.tex",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)",
+    "Ingegneria del Software (Concluso)/Esercitazioni/esercizzi-testing.pdf",
+    "Ingegneria del Software (Concluso)/Esercitazioni/FinoAQuiTuttoBene/Testo.pdf",
+    "Ingegneria del Software (Concluso)/Esercitazioni/FinoAQuiTuttoBene/Domande.pdf",
+    "Ingegneria del Software (Concluso)/Esercitazioni/Testo.pdf",
+    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 16.02.33.png",
+    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 16.01.18.png",
+    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.53.08.png",
+    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.47.44.png",
+    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.44.29.png",
+    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.42.53.png",
+    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.41.49.png",
+    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.41.31.png",
+    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.38.33.png",
+    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.34.51.png",
+    "Ingegneria del Software (Concluso)/Notes/Viste/Viste strutturale.md",
+    "Ingegneria del Software (Concluso)/Notes/Viste/Vista logistica.md",
+    "Ingegneria del Software (Concluso)/Notes/Viste/Vista comportamentale.md",
+    "Ingegneria del Software (Concluso)/Notes/Testing/Walkthrough.md",
+    "Ingegneria del Software (Concluso)/Notes/Testing/Metodi formali.md",
+    "Ingegneria del Software (Concluso)/Notes/Testing/L'oracolo e individuazione degli output attesi.md",
+    "Ingegneria del Software (Concluso)/Notes/Testing/Metodi black box.md",
+    "Ingegneria del Software (Concluso)/Notes/Testing/Ispection.md",
+    "Ingegneria del Software (Concluso)/Notes/Testing/Criteri white-box.md",
+    "Ingegneria del Software (Concluso)/Notes/Patterns/Strategy.md",
+    "Ingegneria del Software (Concluso)/Notes/Patterns/State.md",
+    "Ingegneria del Software (Concluso)/Notes/Patterns/Singleton.md",
+    "Ingegneria del Software (Concluso)/Notes/Patterns/Simple factory.md",
+    "Ingegneria del Software (Concluso)/Notes/Patterns/Pure fabrication.md",
+    "Ingegneria del Software (Concluso)/Notes/Patterns/Proxy.md",
+    "Ingegneria del Software (Concluso)/Notes/Patterns/Factory.md",
+    "Ingegneria del Software (Concluso)/Notes/Patterns/Factory method.md",
+    "Ingegneria del Software (Concluso)/Notes/Patterns/Decorator.md",
+    "Ingegneria del Software (Concluso)/Notes/Patterns/Adapter.md",
+    "Ingegneria del Software (Concluso)/Notes/Patterns/Abstract factory.md",
+    "Ingegneria del Software (Concluso)/Notes/UML Diagram/Diagrammi delle classi.md",
+    "Ingegneria del Software (Concluso)/Notes/UML Diagram/Diagrammi casi d'uso.md",
+    "Ingegneria del Software (Concluso)/Notes/UML Diagram/Diagramma sequenziale.md",
+    "Ingegneria del Software (Concluso)/Notes/UML Diagram/Diagramma di macchina a stati.md",
+    "Ingegneria del Software (Concluso)/Notes/UML Diagram/Diagramma delle attività.md"
+  ]
+}
