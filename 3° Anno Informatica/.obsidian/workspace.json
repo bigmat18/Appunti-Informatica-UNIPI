@@ -11,11 +11,9 @@
             "id": "24f7d4ee4b64959a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "Statistica.md",
-                "mode": "source",
-                "source": false
+                "file": "Reti e Laboratorio III (Non Concluso)/Reti notes/images/Screenshot 2024-01-28 at 18.51.37.png"
               }
             }
           }
@@ -85,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Statistica.md",
+                "file": "Reti e Laboratorio III (Non Concluso)/Reti notes/images/Screenshot 2024-01-28 at 18.51.37.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Statistica.md",
+                "file": "Reti e Laboratorio III (Non Concluso)/Reti notes/images/Screenshot 2024-01-28 at 18.51.37.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Statistica.md"
+                "file": "Reti e Laboratorio III (Non Concluso)/Reti notes/images/Screenshot 2024-01-28 at 18.51.37.png"
               }
             }
           }
@@ -146,8 +144,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "24f7d4ee4b64959a",
+  "active": "9791306ee13c7746",
   "lastOpenFiles": [
+    "Statistica.md",
     "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/marchio_unipi_pant541.png",
     "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/main.tex",
     "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/main.pdf",
@@ -168,7 +167,6 @@
     "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.41.49.png",
     "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.41.31.png",
     "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.38.33.png",
-    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.34.51.png",
     "Ingegneria del Software (Concluso)/Notes/Viste/Viste strutturale.md",
     "Ingegneria del Software (Concluso)/Notes/Viste/Vista logistica.md",
     "Ingegneria del Software (Concluso)/Notes/Viste/Vista comportamentale.md",
