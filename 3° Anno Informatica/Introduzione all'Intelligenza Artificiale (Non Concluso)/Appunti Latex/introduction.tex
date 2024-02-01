@@ -1,3 +1,97 @@
 % !TeX spellcheck = it_IT
 \newpage
 \section{Introduzione}
+\subsection{Obiettivi dell'IA}
+\subsubsection{Modellare}
+Modellare fedelmente l'essere umano:
+\begin{itemize}
+	\item \textbf{Agire umanamente}: Test di Turing\footnote{Ci sono due umani e una macchina. Tutti questi conversano tramite un computer. Se l'esaminatore non riesce a distinguere l'essere umano dalla macchina allora vince quest'ultima.}
+	\item \textbf{Pensare umanamente}: modelli cognitivi per descrivere il funzionamento della mente umana
+\end{itemize}
+\subsubsection{Risultati}
+Raggiungere i risultati ottimali:
+\begin{itemize}
+	\item Pensare razionalmente
+	\item Agenti razionali: percepiscono l'ambiente, operano autonomamente e si adattano. Fanno la cosa giusta agendo in modo da ottenere il miglior risultato calcolando come agire in modo efficace e sicuro in una varietà di situazioni nuove. Ha alcuni vantaggi:
+	\begin{enumerate}
+		\item Estendibilità e generalità
+		\item Misurabilità dei risultati rispetto all'obiettivo
+	\end{enumerate}
+	I limiti dipendono dai rischi, dall'etica e dalla complessità computazionale.
+\end{itemize}
+\subsection{Storia dell'IA}
+Nasce sin dall'antichità con il desiderio dei filosofi di sollevare l'uomo dalle fatiche del lavoro. Dal 1940 c'è un esplosione di popolarità che però si alterna tra periodi di crisi e di grandi avanzamenti.
+\begin{center}
+\begin{tikzpicture}
+	\draw (0,0) -- (15.5,0);
+	
+	\foreach \x in {1,3.5,9,15}
+	\draw (\x cm,-0.1) -- (\x cm,0.1);
+	
+	\draw (1,0) node[below=3pt] {1943} node[above=3pt] {\textbf{Reti neurali}};
+	\draw (3.5,0) node[below=3pt] {1947} node[above=3pt] {\textbf{Test di Turing}};
+	\draw (9,0) node[below=3pt] {1956} node[above=3pt] {\parbox{20em}{\centering \textbf{Conferenza di Darthmouth} \\ Coniato il termine IA \\ Basata sulla congettura che l'intelligenza possa essere descritta precisamente e simulata}};
+	\draw (15,0) node[below=3pt] {1957} node[above=3pt] {Ragionamento simbolico};
+	
+	\draw (15.5,0) -- (15.5,-3);
+	\draw (0,-3) -- (15.5,-3);
+	
+	\draw (15.4cm,-1.5) -- (15.6cm, -1.5);
+	
+	\draw (15.5,-1.5) node[left=3pt] {1959} node[right=3pt] {\parbox{3em}{\centering\textbf{Giochi} \\ Dama}};
+	
+	\foreach \x in {2,8,12,15}
+	\draw (\x cm,-3.1) -- (\x cm,-2.9);
+	
+	\draw (15,-3) node[above=3pt] {1962} node[below=3pt] {\parbox{8em}{\centering Unità neurali \\ con \textbf{apprendimento}}};
+	\draw (12,-3) node[above=3pt] {'60} node[below=3pt] {\textbf{\textbf{Micromondi}}};
+	\draw (8,-3) node[above=3pt] {1973} node[below=3pt] {\parbox{25em}{\centering \textbf{Rapporto di Lighthill} \\ Primo inverno IA\\ Manipolazione simbolica sintattica non adeguata \\  Limite di rappresentazione nelle singole unità neurali \\ Micromondi non scalari}};
+	\draw (2,-3) node[above=3pt] {'80} node[below=3pt] {\parbox{10em}{\centering\textbf{Sistemi esperti} \\ Fifth Generation computer programme \\ Investimenti industriali}};
+	
+	\draw (0,-3) -- (0,-7.5);
+	\draw [-{Latex[length=3mm, width=2mm]}](0,-7.5) -- (14,-7.5);
+	
+	\foreach \x in {3,10}
+	\draw (\x cm,-7.4) -- (\x cm,-7.6);
+	
+	\draw (3,-7.5) node[below=3pt] {'90} node[above=3pt] {\parbox{15em}{\centering \textbf{Nuovo inverno IA} \\ Non c'è acquisizione di coscienza \\ No gestione incertezza \\ No buon senso}};
+	\draw (10,-7.5) node[below=3pt] {2012} node[above=3pt] {\parbox{20em}{\centering \textbf{AI Revolution} \\ Machine learning \\ L'apprendimento diventa strategico}};
+\end{tikzpicture}
+\end{center}
+
+\begin{example}[Scacchi]
+	Un esempio propedeutico è quello dell'applicazione dell'IA al gioco degli scacchi, definita \textbf{IA debole}. Negli anni '60 c'erano principalmente due opinioni al riguardo:
+	\begin{itemize}
+		\item Newell e Simon sostenevano che in 10 anni le macchine sarebbero state campioni negli scacchi
+		\item Dreyfus sosteneva che una macchina non sarebbe mai stata in grado di giocare a scacchi
+	\end{itemize}
+	Nel 1997 la macchina Deep Blue sconfigge il campione mondiale di scacchi Kasparov. Viene naturale farsi alcune domande...
+	\begin{itemize}
+		\item Ha avuto \textbf{fortuna}?
+		\item Ha avuto un \textbf{vantaggio psicologico}? La macchina eseguiva le mosse immediatamente e Kasparov si sentiva come l'ultimo baluardo umano.
+		\item \textbf{Forza bruta}? La macchina calcolava 36 miliardi di posizioni ogni 3 minuti
+	\end{itemize}
+	Oggi l'Intelligenza Artificiale eccelle in tutti i giochi. L'ultimo a "cadere" è stato il Go nel 2016. Allo stesso tempo però il livello delle persone è aumentato giocando contro le macchine.
+\end{example}
+
+\begin{definition}[IA debole]
+	Al contrario dell’IA forte, non ha lo scopo di possedere abilità cognitive generali, ma piuttosto di essere in grado di	risolvere esattamente un singolo problema.
+\end{definition}
+
+\subsection{Reti neurali}
+Le reti neurali sono caratterizzate da:
+\begin{itemize}
+	\item \textbf{Flessibilità}: capacità di acquisizione automatica di conoscenza e di adattamento automatico a contesti diversi e dinamici
+	\item \textbf{Robustezza}: capacità di trattare incertezza e rumorosità del mondo reale
+	\item Rappresentazione appresa dai dati in forma \textbf{sub-simbolica}
+	\item Possibilità di usare più strati di reti neurali con diversi livelli di astrazione (\textbf{Deep Learning})
+\end{itemize}
+
+\subsubsection{Deep Learning}
+Abbinando alla capacità dei modelli di machine learning una grande quantità di dati e degli High Performance Computer, si è favorito molto il deep learning.\\
+Dal 2010 le reti neurali profonde hanno iniziato a diffondersi molto nelle grandi industrie, riscuotendo successo ad esempio:
+\begin{itemize}
+	\item \textbf{Computer vision}: ad esempio la classificazione del cancro della pelle
+	\item \textbf{Natural Language Processing}: ad esempio IBM Watson o Google DeepL
+\end{itemize}
+Questa tecnologia ha raggiunto prestazioni a livello di quelle umane.
