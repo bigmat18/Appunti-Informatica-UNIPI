@@ -1,12 +1,13 @@
+% !TeX spellcheck = it_IT
 \section{Memory Hierarchy}
 I principi fondamentali che andremo a vedere sono legati alle tecnologie con cui vengono costruite le memorie, la gerarchia delle varie tipologie di memorie, le memorie caches ed in fine come andare a misurare e migliorare le performance delle caches.
 
-\subsection{Memory Technologies}
-Partiamo dicendo che esistono varie tipologie di memorie, che possono essere distinte in primo luogo in \textbf{memorie volatili}, e \textbf{memorie non volatili}. Fra memorie volatili abbiamo:
+\subsection{Memory technologies}
+Partiamo dicendo che esistono varie tipologie di memorie, che possono essere distinte in primo luogo in \textbf{memorie volatili}, e \textbf{memorie non volatili}. Quelle volatili sono:
 \begin{wrapfigure}{r}{5cm}
-    \centering
-    \includegraphics[width=4cm]{images/memory-hierarcgy.png}
-    \caption{Gerarchia memoria}
+	\centering
+	\includegraphics[width=4cm]{images/memory-hierarcgy.png}
+	\caption{Gerarchia memoria}
 \end{wrapfigure}
 
 \begin{itemize}
@@ -15,23 +16,31 @@ Partiamo dicendo che esistono varie tipologie di memorie, che possono essere dis
     \item DRAM (Dynamic Random-Access Memory).
 \end{itemize}
 
-\hspace{-15pt}Fra le memorie non volatile invece ci sono:
+\noindent Fra le memorie non volatili invece ci sono:
 \begin{itemize}
     \item ROM
-    \item NVRAM
+    \item NVRAM \footnote{Memoria non volatile nel formato di un banco DRAM che può fornire accesso tramite byte-address.}
     \item Flash memory
     \item Magnetic disks
-    \item And others ...
 \end{itemize}
 
 \subsection{Cost vs Capacity vs Access Time}
-Un altro interessanto confronto da fare fra le memorie e relativo ai costi, le capacità ed il tempo di accesso per ciascuna.
-\begin{itemize}
-    \item \textbf{SRAM}. Access Time (ns): 0.5 - 1, Bandwidth (GB/s): 25+. Price (\$/GB): 5000. Used for registers and caches.
-    \item \textbf{DRAM}. Access Time (ns): 10 - 50, Bandwidth (GB/s): 10. Price (\$/GB): 7. Used for RAM.
-    \item \textbf{Flash memory}. Access Time (ns): 20.000 (20us), Bandwidth (GB/s): 0.5. Price (\$/GB): 0.40. Used for: SSD disk (secondary and virtual memory - non volatile).
-    \item \textbf{Magnetic disks}: Access Time (ns): 5.000.000 (5ms), Bandwidth (GB/s): 0.75. Price (\$/GB): 0.05. Used for: HDD disk (secondary/tertiary storage - non volatile).
-\end{itemize}
+Un altro confronto interessante da fare fra le memorie è relativamente ai costi, le capacità ed il tempo di accesso.
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|}
+	\hline
+	\textbf{Memoria} &\textbf{Access time (ns)} & Bandwidth (GB/s) & \textbf{Price(\$/GB)} & \textbf{Usage} \\
+	\hline
+	\textit{SRAM} & $0.5-1$ & $25+$ & $5000$ & Register and caches \\
+	\hline
+	\textit{DRAM} & $10-50$ & $10$ & $7$ & RAM \\
+	\hline
+	\textit{Flash} & $20.000$ & $0.5$ & $0.40$ & SSD disks \\
+	\hline
+	\textit{Magnetic} & $5.000.000$ & $0.75$ & $0.05$ & HDD Disk \\
+	\hline
+\end{tabular}
+\end{center}
 
 \hspace{-15pt}Da questa classificazione possiamo trarre alcune regole generali:
 \begin{itemize}
@@ -39,8 +48,9 @@ Un altro interessanto confronto da fare fra le memorie e relativo ai costi, le c
     \item Le memorie di piccole dimensioni sono più veloci ma anche più costose.
 \end{itemize}
 
-\hspace{-15pt}Da qui possiamo capire che nella selezione della memorie va trovato un compromesso fra i parametri visti precedentemente per andare ad avere memorie sufficientemente grandi per contenere i dati richiesti ma allo steso tempo sufficientemente veloci per evitare il \textbf{von Neumann Bottleneck}.
+\noindent Da qui possiamo capire che nella selezione della memorie va trovato un compromesso fra i parametri visti precedentemente per andare ad avere memorie sufficientemente grandi per contenere i dati richiesti ma allo steso tempo sufficientemente veloci per evitare il \textbf{von Neumann Bottleneck}.
 
+\newpage
 \subsection{Von Neumann architecture}
 \begin{wrapfigure}{r}{6.5cm}
     \vspace{-25pt}
@@ -48,8 +58,8 @@ Un altro interessanto confronto da fare fra le memorie e relativo ai costi, le c
     \includegraphics[width=6cm]{images/von-numan.png}
     \caption{Von-Neumann}
 \end{wrapfigure}
-Le perfomance dei computer sono limitate nella velocità della CPU dal trasferimento di dati fra le memorie esterne dall'unità di calcolo.\\
-Per andare a mitigare questo problema andiamo a inserire memorie più piccole vicino al processore, mentre più ci si allontana si avrà memorie di grosse ma anche più lente. Da qui vorremmo che il processore lavori alla velocità della memoria più vicina.\\\\
+Le performance dei computer sono limitate nella velocità della CPU dal trasferimento di dati fra le memorie esterne dall'unità di calcolo.\\
+Per mitigare questo problema inseriamo memorie più piccole e veloci vicino al processore, mentre più ci si allontana più si avranno memorie grosse e lente. In questo modo facciamo lavorare il processore alla velocità della memoria più vicina.\\\\
 
 \begin{wrapfigure}{l}{6.5cm}
     \vspace{-10pt}
@@ -57,20 +67,20 @@ Per andare a mitigare questo problema andiamo a inserire memorie più piccole vi
     \includegraphics[width=6cm]{images/von-newmann-bottleneck.png}
     \caption{Von-Neumann Bottleneck}
 \end{wrapfigure}
-L'obbiettivo è quindi di fornire l'illusione di avere una memoria grande quando al memoria più lontana e veloce quando la memoria più vicina.
-Per creare questa illusione andiamo a far risiedere i dati inizialmente nel livello più lontano e più capiente. Per far accedere il processore bisognerà a andare a spostare i dati. Un primo problema è che fra le memorie diverse i dati saranno salvati in indirizzi diversi, che quindi dovranno esser mappati.\\\\
-Un altro aspetto è che i trasferimenti di memoria possono non essere di una singola parola, un altro problema è che se un dato viene modificato in una memoria bisogna decidere come propagare le modifiche. Capiamo dunque che si sono un insieme di problemi per andare a implementare questa soluzione.
+L'obiettivo è quindi di fornire l'\textbf{illusione} di avere una memoria grande quanto la memoria più lontana e veloce quanto la memoria più vicina.
+Per farlo facciamo risiedere i dati inizialmente nel livello più lontano e più capiente. Per far accedere il processore bisognerà spostare i dati tra i vari livelli di gerarchia.\\
+Questo metodo presenta alcune problematiche: serve un meccanismo che, se un dato è già presente un certo livello, determini quello giusto e un meccanismo che permetta di rimpiazzare certi dati per poter fare spazio.\\
 
 
 \subsection{Terminologia}
-Introduciamo innanzitutto un po' di terminologia che ci servirà successivamente.
+Introduciamo ora un po' di terminologia che ci servirà successivamente.
 
 \begin{definition}[Hit e Miss]
-Se i dati richiesti dal processore compaiono in qualche blocco nel livello di memoria più vicino, si parla di hit. In caso contrario, la richiesta viene definita miss e si accede al livello di memoria successivo per recuperare il blocco contenente i dati richiesti.
+Se i dati richiesti dal processore compaiono in qualche blocco nel livello di memoria più vicino, si parla di \textbf{hit}. In caso contrario, si parla di \textbf{miss} e si accede al livello di memoria successivo per recuperare il blocco contenente i dati richiesti.
 \end{definition}
 
 \begin{definition}[Hit rate]
-    Il hit rate (frequenza di successi) è la frazione di accessi alla memoria rilevati nel livello superiore (ovvero, più vicino alla CPU), utilizzata come misura delle prestazioni della gerarchia.
+    L'hit rate (frequenza di successi) è la frazione di accessi alla memoria rilevati nel livello superiore (ovvero, più vicino alla CPU), utilizzata come misura delle prestazioni della gerarchia.
 \end{definition}
 
 \begin{definition}[Miss rate]
@@ -78,14 +88,17 @@ Se i dati richiesti dal processore compaiono in qualche blocco nel livello di me
 \end{definition}
 
 \begin{definition}[Miss penalty]
-    La miss penalty è il tempo necessario per sostituire un blocco nel livello n con il blocco corrispondente dal livello n-1.
+    La miss penalty è il tempo necessario per sostituire un blocco nel livello $n$ con il blocco corrispondente dal livello $n-1$.
 \end{definition}
 
 \begin{definition}[Miss time]
-    Il miss time è il tempo per ottenere l'elemento in caso di tempo di miss. miss time = penalità di miss + tempo di hit.
+    Il miss time è il tempo per ottenere l'elemento in caso di tempo di miss. 
+    \begin{equation*}
+    	\text{miss time} = \text{miss penalty} + \text{hit time}
+    \end{equation*}.
 \end{definition}
 
-Il miss rate ed il hit rate se li vogliamo calcolare lo si può fare con la seguenti formule:
+\noindent Il \textbf{miss rate} e l'\textbf{hit rate} si calcolano con le seguenti formule:
 \begin{equation}
     MR = \frac{\text{Number of misses}}{\text{Number of total memory access}} = 1 - HR
 \end{equation}
@@ -93,38 +106,78 @@ Il miss rate ed il hit rate se li vogliamo calcolare lo si può fare con la segu
     MR = \frac{\text{Number of hits}}{\text{Number of total memory access}} = 1 - MR
 \end{equation}
 
-Definiamo anche il AMAT (Average Memory Access Time)
+\subsubsection{AMAT}
+Definiamo l'Average Memory Access Time:
 \begin{equation}
-    AMAT = t_{M0} + MR_{M0} * (t_{M1} + MR_{M1} * (t_{M2} + MR_{M2} * (t_{M3} + \dots)))
+    AMAT = t_{M0} + MR_{M0} * (t_{M1} + MR_{M1} * (t_{M2} + MR_{M2} * (t_{M3} + \ldots)))
 \end{equation}
-$t_{M0}$ = hit time, $MR_{M0}$ = miss rate, $(t_{M1} + MR_{M1} * (t_{M2} + MR_{M2} * (t_{M3} + \dots))$ = miss penalty.
+$t_{M0}$ = hit time, $MR_{M0}$ = miss rate, $(t_{M1} + MR_{M1} * (t_{M2} + MR_{M2} * (t_{M3} + \ldots))$ = miss penalty.
 
 \begin{observation}
 Se l'hit rate è abbastanza alto, la gerarchia della memoria ha un tempo di accesso effettivo vicino a quello del livello più alto (e più veloce) e una dimensione uguale a quella del livello più basso (e più grande).
 \end{observation}
 
-\subsection{The locality principle}
-Il principio di località di riferimento (o locality principle) si riferisce al fenomeno nel quale un programma tende ad accedere alla stessa locazione di memoria per un determinato periodo. Possiamo osservare che, se il programma fa riferimento ad una locazione di memoria allora la stessa locazione di memoria verrà riutilizzerà a breve con alta probabilità. Inoltre, gli elementi "vicini" alla posizione di memoria appena raggiunta saranno presto referenziati con un'alta probabilità. \\
+\begin{example}
+	Consideriamo una memoria con una gerarchia su 3 livelli con i seguenti valori:
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\textbf{Livello} & \textbf{Miss rate} & \textbf{Hit time} \\
+			\hline
+			L1 & 5\% & $t_{L1}$ \\
+			L2 & 2\% & $t_{L2}$ \\
+			L3 & 100\% & $t_{L3}$ \\
+			\hline
+		\end{tabular}
+	\end{center}
+	Quindi il valore AMAT sarà:
+	\begin{equation*}
+		AMAT= t_{L1} + 0.05 * (t_{L2} + 0.02 * t_{L3}) = t_{L1} + 0.05 * t_{L2} + 0.001 * t_{L3}
+	\end{equation*}
+\end{example}
 
-Il principio di località è la forza trainante che rende la gerarchia della memoria funzionante. Esso infatti incrementa la probabilità di riutilizzare dei blocchi di dati che erano stati precedente mossi da un livello n ad un livello n-1, questo riduce il miss rate.
+\subsection{The locality principle}
+Il principio di località di riferimento (o locality principle) si riferisce al fenomeno per il quale un programma tende ad accedere alla stessa locazione di memoria per un determinato periodo.\\
+Possiamo osservare che, se il programma fa riferimento ad una locazione di memoria allora:
+\begin{itemize}
+	\item la stessa locazione di memoria verrà riutilizzerà a breve con alta probabilità
+	\item gli elementi "vicini" alla posizione di memoria appena raggiunta saranno presto referenziati con un'alta probabilità
+\end{itemize}
+
+Il principio di località è la forza trainante che rende la gerarchia della memoria funzionante. Esso infatti incrementa la probabilità di riutilizzare dei blocchi di dati che erano stati precedente mossi da un livello $n$ ad un livello $n-1$, riducendo il miss rate.\\ Il programmatore dovrà comunque fare attenzione ad implementare questo principio.
 
 \subsubsection{Locality characterization}
 Andiamo a distinguere due tipologie di località. 
 \begin{itemize}
-    \item \textbf{La località temporale} (o riuso di dati): i dati riferiti precedentemente probabilmente li riferirò nuovamente in un breve lasso di tempo. \\\\Esempio: consideriamo il seguente codice: for(int i=0; i<10; i++) $\{$s1 += i; s2 -= 1;$\}$\\
-    In questo caso le locazioni di memoria che contengono s1 ed s2 hanno località temporale.\\\\
-    Dunque se all'interno della gerarchia della memoria andiamo a tenere i dati più recenti, secondo il principio di località ci riaccenderò con la CPU nuovamente a breve termine.
-    \item \textbf{Località spaziale} dati vicini a quelli a cui sto riferendo saranno saranno probabilemete utilizzati a breve.
-    \\\\Esempio: consideriamo il seguente codice: for(int i=0; i<10; i++) $\{$func(A[i])$\}$\\
-    In questo caso le locazioni di memoria dell'array hanno località spaziale, visto che sono implementate in modo contiguo.\\\\
-    Dunque se all'interno della gerarchia della memoria andiamo a tenere i dati vicini a quelli in utilizzo, secondo il principio di località ci saranno grosse probabilità di accederci con la CPU.
+    \item \textbf{La località temporale} (o riuso di dati): i dati riferiti precedentemente probabilmente verranno riferiti nuovamente in un breve lasso di tempo.
+    \begin{example}[Località temporale]
+    Consideriamo il seguente codice:
+    \begin{lstlisting}
+    	for(int i=0; i<10; i++)
+    		s1 += i; s2 -= 1;
+    \end{lstlisting}
+    In questo caso le locazioni di memoria che contengono s1 ed s2 hanno località temporale.
+    \end{example}
+    Dunque se all'interno della gerarchia della memoria teniamo i dati più recenti, secondo il principio di località ci riaccederò nuovamente dopo poco tempo.
+    
+    \item \textbf{Località spaziale}: dati vicini a quelli a cui sto facendo riferimento saranno probabilmente utilizzati a breve.
+    \begin{example}[Località spaziale]
+    	Consideriamo il seguente codice:
+    	\begin{lstlisting}
+    		for(int i=0; i<10; i++)
+    			func(A[i]);
+    	\end{lstlisting}
+    	In questo caso le locazioni di memoria dell'array hanno località spaziale, visto che sono implementate in modo contiguo.
+    \end{example}
+    Dunque se all'interno della gerarchia della memoria teniamo i dati vicini a quelli in utilizzo, secondo il principio di località ci saranno grosse probabilità di accedervi con la CPU.
 \end{itemize}
 
 
 \subsection{Traferimiento dati}
-I dati si trasferiscono solamente attraverso due memorie adiacenti. Per ottimizzare il caricamento dei dati esso viene fatto come \textbf{blocchi} di granularità di dati. La dimensione dei blocchi può cambiare attraverso i livelli. Per la cache i blocchi vengono chiamati cache line o cache block (il loro valore tipico è 64 - 128 bytes). Per le RAM invece abbiamo pagine si segmenti, mentre per i dischi abbiamo blocchi di dischi.\\
+I dati si trasferiscono solamente attraverso due memorie adiacenti. Per ottimizzare il caricamento dei dati esso viene fatto come \textbf{blocchi} di dimensione granulare (parole) in modo da poter sfruttare la località spaziale. La dimensione dei blocchi può cambiare attraverso i livelli.\\
+Per la cache i blocchi vengono chiamati \textit{cache line} o \textit{cache block} (tipicamente 64-128 bytes, 8-16 parole). Per le RAM invece abbiamo \textit{pagine di segmenti}, mentre per i dischi abbiamo \textit{blocchi di dischi}.\\
 
-\hspace{-15pt}Consideriamo il seguente codice di C è il suo corrispettivo in assembly.
+\noindent Consideriamo il seguente codice in C e il suo corrispettivo in assembly.
 \begin{figure}[!h]
 \begin{minipage}[t]{0.45\linewidth}
 \centering
@@ -134,12 +187,12 @@ int i;
 for(int i=0; sum=0; i<N, i++){
     sum += A[i];
 }
-// One possible compilation ====>
 \end{lstlisting}
 \end{minipage}
 \hspace{.35cm}
 \begin{minipage}[t]{0.45\linewidth}
-\begin{lstlisting}
+\begin{lstlisting}[language={[x86masm]Assembler}]
+@ r0=&A, r1=&sum, r2=N, r3=i
 loop: cmp r3, r3
       beq end
       ldr r12, [r0, r3, lsl #2]
@@ -153,14 +206,14 @@ end: ...
 \end{minipage}
 \end{figure}
 
-In questo frammento di codice viene eseguito il loop N volte, e quindi ogni struttura viene richiesta N volte in maniera sequenziale, in questo caso sia la localizzazione temporale che spaziale viene utilizzata.\\
-'Sum' è ripetutamente letta e scritta, quindi utilizza la località temporale, 'A' è salvata come un insieme contiguo di celle di memoria, quindi utilizzerà la località spaziale.
-\newpage
+In questo frammento di codice il loop viene eseguito N volte, e quindi ogni struttura viene richiesta N volte in maniera sequenziale. In questo caso sia la localizzazione temporale che spaziale viene utilizzata.\\
+'Sum' è ripetutamente letta e scritta, quindi utilizza la località temporale, 'A' è salvata come un insieme contiguo di celle di memoria, quindi utilizza la località spaziale.
+
 \subsubsection{Cache Memories}
-La cache memory è la memoria più vicina al processore, solitamente sono le SRAM, ma alcune volte sono implementate anche come DRAM. Ad oggi tutte le architetture hanno alcuni livelli di cache integrati nel chip, essa può essere più o meno grande, ne può avere più di un livello.
+La cache memory è la memoria più vicina al processore, solitamente sono le SRAM, ma alcune volte sono implementate anche come DRAM. Ad oggi tutte le architetture hanno alcuni livelli di cache integrati nel chip, essa può essere più o meno grande e può avere più di un livello.
 
 \subsubsection{Gestione del movimento dei dati}
-Fra il primo livello di cache e i registri il trasferimento è gestione dal compilato. Il trasferimento fra caches e RAM viene invece gestito dalla microarchitettura. In fine la gestione dei trasferimenti fra RAM e storate viene fatta dal sistema operativo.
+Fra il primo livello di cache e i registri il trasferimento è gestito dal compilatore. Il trasferimento fra caches e RAM viene invece gestito dalla microarchitettura. Infine la gestione dei trasferimenti fra RAM e storage viene fatta dal sistema operativo.
 
 \begin{figure}[h!]
     \centering
@@ -178,18 +231,19 @@ Fra il primo livello di cache e i registri il trasferimento è gestione dal comp
     
 
 \subsection{Utilizzo della cache}
-L'organizzazione della cache avviene non a blocchi ma a line, ogni linea contiene blocchi di memoria (8-16 memory words). la prima volta che il processore richiede la memory ad una cache miss succede che il blocco contenente la parola si trasferisce dentro la cache. \\
+L'organizzazione della cache avviene non a blocchi ma a linee. Ogni linea contiene blocchi di memoria (8-16 memory words). La prima volta che il processore richiede la memory word avviene una \textbf{cache miss}. A quel punto il blocco contenente la parola viene trasferito dentro la cache.\\
 La richiesta successiva può essere di due tipologie:
 \begin{itemize}
     \item \textbf{Cache hit}: se il dato è presente nel blocco.
     \item \textbf{Cache miss}: se il dato non è presente dentro il blocco. In questo caso il blocco che contiene il dato viene trasferito dentro la cache line.
 \end{itemize}
 
-Vediamo ora l'effetto della cache sul AMAT. Innanzitutto l'utilizzo di grandi cache nella gerarchia delle memorie aiuta a ridurre il bottleneck di von Neumann. 
+Vediamo ora l'effetto della cache sull'AMAT. Innanzitutto l'utilizzo di grandi cache nella gerarchia delle memorie aiuta a ridurre il bottleneck di von Neumann. 
 \begin{example}
 Vediamo un esempio quantitativo stabilendo dei valori:\\
 $t_M = 50ns$ (main memory service time), $t_{L1} = 1ns$ (L1 hit time, cache hit service time). \\\\
-Abbiamo un Miss rate ($MR_{L1}$) è del $5\%$, senza cache AMAT = 50ms mentre con L1 cache $AMAT = t_{L1} + MR_{L1} * t_M = 1 + 0.05 * 50 = 3.5ns$
+Abbiamo un Miss rate ($MR_{L1}$) del $5\%$.\\
+Senza cache $AMAT = 50ns$ mentre con L1 cache $AMAT = t_{L1} + MR_{L1} * t_M = 1 + 0.05 * 50 = 3.5ns$
 \end{example}
 
 \subsection{Cache performance}
