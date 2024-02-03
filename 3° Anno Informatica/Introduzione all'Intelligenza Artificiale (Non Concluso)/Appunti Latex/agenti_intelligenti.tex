@@ -3,7 +3,11 @@
 \section{Agenti intelligenti}
 L'approccio moderno dell'IA (AIMA) è quello di costruire degli \textbf{agenti intelligenti}. La visione ad agenti offre n quadro di riferimento e una prospettiva più generale. È utile anche perché è \textbf{uniforme}.
 \begin{center}
+<<<<<<< HEAD
 	\includegraphics[scale=0.25]{images/agente.png}
+=======
+	\includegraphics[scale=0.25]{agente.png}
+>>>>>>> bce1ea70f19c32bbad14941d401a08b8dc8915cc
 \end{center}
 Noi ci concentreremo sul programma che sta al centro dell'agente e che consiste in un ciclo di percezione-azione.
 \subsection{Caratteristiche}
@@ -18,8 +22,13 @@ Le percezioni corrispondono agli \textbf{input} dai sensori. La \textbf{sequenza
 La scelta dell'azione è \emph{funzione} unicamente della sequenza percettiva ed è chiamata \textbf{funzione agente}.\\
 Il compito dell'IA è costruire il programma agente.
 \begin{center}
+<<<<<<< HEAD
 	\includegraphics[scale=0.2]{images/architettura_astratta.png}
 	\includegraphics[scale=0.2]{images/agente_finanziario.png}
+=======
+	\includegraphics[scale=0.2]{architettura_astratta.png}
+	\includegraphics[scale=0.2]{agente_finanziario.png}
+>>>>>>> bce1ea70f19c32bbad14941d401a08b8dc8915cc
 \end{center}
 %TODO Caption
 
@@ -58,7 +67,11 @@ Definire un problema per un agente significa innanzitutto caratterizzare l'ambie
 \end{itemize}
 
 \begin{center}
+<<<<<<< HEAD
 	\includegraphics[scale=0.3]{images/agente_ambiente.png}
+=======
+	\includegraphics[scale=0.3]{agente_ambiente.png}
+>>>>>>> bce1ea70f19c32bbad14941d401a08b8dc8915cc
 	%TODO Caption
 \end{center}
 
@@ -128,7 +141,11 @@ Ha una \textbf{dimensione ingestibile}, è difficile da costruire, non è autono
 \subsubsection{Agenti reattivi}
 L'agente agisce in base a quello che percepisce senza salvare nulla in memoria.
 \begin{center}
+<<<<<<< HEAD
 	\includegraphics[scale=0.25]{images/agenti_reattivi.png}
+=======
+	\includegraphics[scale=0.25]{agenti_reattivi.png}
+>>>>>>> bce1ea70f19c32bbad14941d401a08b8dc8915cc
 \end{center}
 \begin{lstlisting}
 	function Agente-Reattivo-Semplice (percezione)
@@ -144,7 +161,11 @@ L'agente agisce in base a quello che percepisce senza salvare nulla in memoria.
 \subsubsection{Agenti basati su modello}
 L'agente ha uno stato che mantiene la storia delle percezioni e influenza il modello del mondo.
 \begin{center}
+<<<<<<< HEAD
 	\includegraphics[scale=0.25]{images/agenti_modello.png}
+=======
+	\includegraphics[scale=0.25]{agenti_modello.png}
+>>>>>>> bce1ea70f19c32bbad14941d401a08b8dc8915cc
 \end{center}
 \begin{lstlisting}
 	function Agente-Basato-su-Modello (percezione)
@@ -162,20 +183,32 @@ L'agente ha uno stato che mantiene la storia delle percezioni e influenza il mod
 \subsubsection{Agenti con obiettivo}
 Fin'ora l'agente aveva un obiettivo predeterminato dal programma. In questo caso invece viene specificato anche il \textbf{goal} che influenza le azioni. Abbiamo quindi più \textbf{flessibilità} ma meno efficienza.
 \begin{center}
+<<<<<<< HEAD
 	\includegraphics[scale=0.25]{images/agenti_obiettivo.png}
+=======
+	\includegraphics[scale=0.25]{agenti_obiettivo.png}
+>>>>>>> bce1ea70f19c32bbad14941d401a08b8dc8915cc
 \end{center}
 
 \subsubsection{Agenti con valutazione di utilità}
 In questo caso ci sono \textbf{obiettivi alternativi} o più modi per raggiungerlo. L'agente deve quindi decidere verso dove muoversi e si rende necessaria una \textbf{funzione utilità} che associ ad un obiettivo un numero reale. La funzione terrà anche conto della probabilità di successo (\textbf{utilità attesa}).
 \begin{center}
+<<<<<<< HEAD
 	\includegraphics[scale=0.25]{images/agenti_utilita.png}
+=======
+	\includegraphics[scale=0.25]{agenti_utilita.png}
+>>>>>>> bce1ea70f19c32bbad14941d401a08b8dc8915cc
 \end{center}
 
 \subsubsection{Agenti che apprendono}
 Questo tipo di agente include la capacità di \textbf{apprendimento} che produce cambiamenti al programma e ne migliora le prestazioni, adattando i comportamenti.\\
 L'elemento \textbf{esecutivo} è il programma stesso, quello \textbf{critico} osserva e dà feedback ed infine c'è un generatore di problemi per suggerire nuove situazioni da esplorare.
 \begin{center}
+<<<<<<< HEAD
 	\includegraphics[scale=0.25]{images/agenti_apprendono.png}
+=======
+	\includegraphics[scale=0.25]{agenti_apprendono.png}
+>>>>>>> bce1ea70f19c32bbad14941d401a08b8dc8915cc
 \end{center}
 
 \subsubsection{Tipi di rappresentazione}
@@ -186,5 +219,9 @@ Gli stati e le transizioni possono essere rappresentati in tre modi:
 	\item \textbf{Strutturata}: con l'aggiunta delle relazioni
 \end{itemize}
 \begin{center}
+<<<<<<< HEAD
 	\includegraphics[scale=0.35]{images/rappresentazioni.png}
+=======
+	\includegraphics[scale=0.35]{rappresentazioni.png}
+>>>>>>> bce1ea70f19c32bbad14941d401a08b8dc8915cc
 \end{center}
