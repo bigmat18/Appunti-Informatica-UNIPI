@@ -7,6 +7,3 @@
 [submodule "Libera Scelta/Computer Grafica (Conclusa)/OpenGLBasic"]
 	path = Libera Scelta/Computer Grafica (Conclusa)/Progetto-CG
 	url = https://github.com/bigmat18/OpenGLBasic.git
-[submodule "3° Anno Informatica/Reti e Laboratorio III (Non Concluso)/Laboratorio3"]
-	path = 3° Anno Informatica/Reti e Laboratorio III (Non Concluso)/Laboratorio3
-	url = https://github.com/bigmat18/Laboratorio3.git
