@@ -65,7 +65,7 @@ Dobbiamo misurare le \textbf{prestazioni}: trova una soluzione? Quanto costa tro
 	\end{enumerate}
 	In questo esempio lo spazio degli stati coincide con la rete dei collegamenti tra le città.
 	\begin{center}
-		\includegraphics[scale=0.2]{bucarest_example.png}
+		\includegraphics[scale=0.2]{images/bucarest_example.png}
 	\end{center}
 \end{example}
 
@@ -76,7 +76,7 @@ Dobbiamo misurare le \textbf{prestazioni}: trova una soluzione? Quanto costa tro
 		\item \textbf{Stato iniziale}: una configurazione tra quelle possibili
 		\item \textbf{Obiettivo}: una configurazione del tipo
 		\begin{center}
-			\includegraphics[scale=0.2]{8_puzzle_win.png}
+			\includegraphics[scale=0.2]{images/8_puzzle_win.png}
 		\end{center}
 		\item \textbf{Azioni}: le mosse della casella vuota
 		\item \textbf{Costo cammino}: ogni passo costa 1
@@ -128,7 +128,7 @@ Dobbiamo misurare le \textbf{prestazioni}: trova una soluzione? Quanto costa tro
 	\end{itemize}
 	Lo spazio degli stati è quindi il seguente:
 	\begin{center}
-		\includegraphics[scale=0.3]{dimostrazione_teoremi.png}
+		\includegraphics[scale=0.3]{images/dimostrazione_teoremi.png}
 	\end{center}
 \end{example}
 
@@ -136,7 +136,7 @@ Dobbiamo misurare le \textbf{prestazioni}: trova una soluzione? Quanto costa tro
 La ricerca della soluzione consiste nella generazione di un \textbf{albero di ricerca} a partire dalle possibili sequenze di azioni che si sovrappone allo spazio degli stati.\\
 Ad esempio per il caso di Bucarest:
 \begin{center}
-	\includegraphics[scale=0.3]{bucarest_tree.png}
+	\includegraphics[scale=0.3]{images/bucarest_tree.png}
 \end{center}
 Espandiamo ogni nodo con i suoi possibili successori (frontiera).
 \begin{observation}
