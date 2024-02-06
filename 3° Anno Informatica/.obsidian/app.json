@@ -3,12 +3,5 @@
   "alwaysUpdateLinks": true,
   "showLineNumber": true,
   "vimMode": true,
-  "tabSize": 4,
-  "pdfExportSettings": {
-    "includeName": false,
-    "pageSize": "A4",
-    "landscape": true,
-    "margin": "2",
-    "downscalePercent": 100
-  }
+  "tabSize": 4
 }

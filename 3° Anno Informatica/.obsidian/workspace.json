@@ -4,18 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "4d7755ff9842e041",
+        "id": "07489a5c5a856e96",
         "type": "tabs",
         "children": [
           {
-            "id": "3d99faf0cf6cb447",
+            "id": "24f7d4ee4b64959a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "Notes/Basi di dati.md",
-                "mode": "source",
-                "source": false
+                "file": "Reti e Laboratorio III (Non Concluso)/Reti notes/images/Screenshot 2024-01-28 at 18.51.37.png"
               }
             }
           }
@@ -85,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Notes/Basi di dati.md",
+                "file": "Reti e Laboratorio III (Non Concluso)/Reti notes/images/Screenshot 2024-01-28 at 18.51.37.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Notes/Basi di dati.md",
+                "file": "Reti e Laboratorio III (Non Concluso)/Reti notes/images/Screenshot 2024-01-28 at 18.51.37.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/Basi di dati.md"
+                "file": "Reti e Laboratorio III (Non Concluso)/Reti notes/images/Screenshot 2024-01-28 at 18.51.37.png"
               }
             }
           }
@@ -146,24 +144,20 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "3d99faf0cf6cb447",
+  "active": "9791306ee13c7746",
   "lastOpenFiles": [
-    "Basi di dati.pdf",
-    "Notes/Introduzione basi di dati.md",
-    "Notes/Basi di dati.md",
-    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/main.pdf",
-    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/main.synctex(busy)",
-    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/pdflatex52025.fls",
-    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/pdflatex51990.fls",
-    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/pdflatex51986.fls",
-    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/main.synctex.gz",
-    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/main.toc",
-    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/main.out",
-    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/main.log",
-    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/main.fls",
-    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/marchio_unipi_pant541.png",
-    "Reti e Laboratorio III (Non Concluso)/Reti notes/images/Screenshot 2024-01-28 at 18.51.37.png",
     "Statistica.md",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/marchio_unipi_pant541.png",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/main.tex",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/main.pdf",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/introduction.tex",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/frontespizio.tex",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)",
+    "Ingegneria del Software (Concluso)/Esercitazioni/esercizzi-testing.pdf",
+    "Ingegneria del Software (Concluso)/Esercitazioni/FinoAQuiTuttoBene/Testo.pdf",
+    "Ingegneria del Software (Concluso)/Esercitazioni/FinoAQuiTuttoBene/Domande.pdf",
+    "Ingegneria del Software (Concluso)/Esercitazioni/Testo.pdf",
     "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 16.02.33.png",
     "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 16.01.18.png",
     "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.53.08.png",
@@ -172,6 +166,7 @@
     "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.42.53.png",
     "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.41.49.png",
     "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.41.31.png",
+    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.38.33.png",
     "Ingegneria del Software (Concluso)/Notes/Viste/Viste strutturale.md",
     "Ingegneria del Software (Concluso)/Notes/Viste/Vista logistica.md",
     "Ingegneria del Software (Concluso)/Notes/Viste/Vista comportamentale.md",
@@ -193,6 +188,9 @@
     "Ingegneria del Software (Concluso)/Notes/Patterns/Adapter.md",
     "Ingegneria del Software (Concluso)/Notes/Patterns/Abstract factory.md",
     "Ingegneria del Software (Concluso)/Notes/UML Diagram/Diagrammi delle classi.md",
-    "Ingegneria del Software (Concluso)/Notes/UML Diagram/Diagrammi casi d'uso.md"
+    "Ingegneria del Software (Concluso)/Notes/UML Diagram/Diagrammi casi d'uso.md",
+    "Ingegneria del Software (Concluso)/Notes/UML Diagram/Diagramma sequenziale.md",
+    "Ingegneria del Software (Concluso)/Notes/UML Diagram/Diagramma di macchina a stati.md",
+    "Ingegneria del Software (Concluso)/Notes/UML Diagram/Diagramma delle attività.md"
   ]
 }
