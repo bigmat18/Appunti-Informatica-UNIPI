@@ -1,0 +1,25 @@
+% !TeX spellcheck = it_IT
+\section{Assembler}
+\subsection{Numeri frazionari}
+Supponiamo di avere il numero $2.375_{10}$. Per convertirlo in base 2, prima convertiamo la parte intera ($2=10$) e poi la parte frazionaria:
+\begin{equation*}
+	\begin{split}
+		2.375_{10} = 10.011 \\
+		0.375 \cdot 2 = 0.75 \\
+		0.75 \cdot 2 = 1.5 \\
+		0.5 \cdot 2 = 1 \\
+	\end{split}
+\end{equation*}
+Per fare la conversione inversa:
+\begin{equation*}
+	10.011 = 1*2^1 + 1 * 2^{-2} + 1 * 2^{-3}=2+\frac{1}{4} + \frac{1}{8} = 2.375
+\end{equation*}
+\subsubsection{Virgola fissa}
+\subsubsection{Virgola mobile}
+Lo standard IEEE 754 divide i numeri in due categorie:
+\begin{itemize}
+	\item \textbf{Singola precisione}
+	\item \textbf{Doppia precisione}
+\end{itemize}
+
+\subsubsection{Estensioni Floating-Point}
