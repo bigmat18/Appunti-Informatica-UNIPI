@@ -4,6 +4,3 @@
 [submodule "2° Anno Informatica/Laboratorio II (Concluso)/Progetto-Laboratorio2"]
 	path = 2° Anno Informatica/Laboratorio II (Concluso)/Progetto-Laboratorio2
 	url = https://github.com/bigmat18/Progetto-Laboratorio2.git
-[submodule "Libera Scelta/Computer Grafica (Conclusa)/OpenGLBasic"]
-	path = Libera Scelta/Computer Grafica (Conclusa)/Progetto-CG
-	url = https://github.com/bigmat18/OpenGLBasic.git
