@@ -45,3 +45,67 @@ Per funzionare segue un approccio \textbf{olistico}, analizzando tutto il \textb
 \end{itemize}
 \subsection{Applicazioni green}
 Sfruttare i sistemi ICT per l'\textbf{ottimizzazione} di processi che sfruttano risorse limitate (e.g. combustibili fossili nel trasporto, energia elettrica nel riscaldamento, acqua potabile nell'irrigazione) è un aspetto importante del green computing.
+
+\section{Ebook reader}
+Entro il 2025 si prevede che gli e-reader rappresenteranno circa il $75\%$ del mercato totale, anche se allo stesso tempo il numero di libri cartacei prodotti e  venduti è in continuo aumento.
+
+\subsection{Ciclo di produzione}
+Vediamo il ciclo di vita di un libro tradizionale cartaceo
+\begin{center}
+	\includegraphics[scale=0.3]{books_lifecycle.png}
+\end{center}
+Le materie prime necessarie sono, per un libro a copertina morbida, $150-300$g di carta e $7.5$lt di acqua. Sono necessari $2$KWh  e la loro distribuzione (assumendo che non si usi la macchina per comprarlo) produce circa 10 volte quella della produzione. L'utilizzo è trascurabile dal punto di vista energetico in quanto al massimo serve una luce per leggere.
+\begin{center}
+	\includegraphics[scale=0.3]{ereader_lifecycle.png}
+\end{center}
+Per quanto riguarda invece gli e-book reader, sono necessari circa $15$Kg di materie prime (metalli rari, sabbia, etc...) e $300$lt di acqua (batterie, chip, oro dei circuiti). Sono necessari $100$KWh per la produzione e assumiamo i costi di distribuzione di un  \href{https://www.icao.int/environmental-protection/Carbonoffset/Pages/default.aspx}{\color{blue}volo Milano-Roma}.
+
+\subsection{Confronto}
+Considerando i dati precedenti:
+\begin{enumerate}
+	\item Quanti libri si producono con le materie prime necessarie per produrre un e-book reader?\\
+	\begin{equation*}
+		\frac{15Kg}{0.150Kg} = 100 \quad \frac{15Kg}{0.300Kg}=50
+	\end{equation*}
+	\item Quanti libri si producono con l'acqua necessaria per produrre un e-book reader?\\
+	\begin{equation*}
+		\frac{300lt}{7.5lt} = 40
+	\end{equation*}
+	\item Quanti libri si producono con l'energia necessaria per produrre un e-book reader?\\
+	\begin{equation*}
+		\frac{100KWh}{2KWh} = 50
+	\end{equation*}
+	\item Quanti libri serve produrre e trasportare per inquinare quanto per la produzione e il trasporto di un e-book reader?\\
+	\begin{equation*}
+		\begin{split}
+			&\text{Produzione e-book reader}=0.319\frac{g}{Kw/h} \cdot 100Kw/h = 31.9Kg \quad \text{Distribuzione e-book reader}=41.8 Kg \\
+			&\text{Totale e-book reader}=31.9Kg + 41.8Kg = 73.7 Kg \\
+			&\text{Produzione libro}=0.319 \frac{g}{Kw/h} \cdot 2Kw/h = 0.638Kg \quad  \text{Distribuzione libro}= 0.638Kg \cdot 10 = 6.380Kg\\
+			&\text{Totale libro}=6,380Kg + 0.638 Kg = 7.018Kg \\
+			& \text{\textbf{Libri per e-book reader}}=\frac{73.7Kg}{7.018Kg}=10.5
+		\end{split}
+	\end{equation*}
+	\item Qual'è la media dei valori delle risposte precedenti (quanti libri vale un e-book reader)?
+	\begin{equation*}
+		\frac{\frac{100+50}{2} + 40 + 50 + 10.5}{5} = 43.9
+	\end{equation*}
+	\item Quanti libri bisogna leggere all'anno per ammortizzare un e-book reader su 5 anni di vita media?
+	\begin{equation*}
+		\frac{43.9}{5} = 8.8
+	\end{equation*}
+\end{enumerate}
+
+\subsection{Salute}
+La produzione di libri ed e-book reader produce ossidi di azoto e zolfo %TODO FInisci
+
+\subsection{Dismissione}
+\begin{table}
+	\begin{tabular}{|c|c|}
+		\hline
+		Libro & E-book reader \\
+		\hline
+		La \textbf{decomposizione} può generare il doppio delle emissioni e degli impatti tossici sulle falde acquifere rispetto alla sua intera produzione & In caso di smaltimento illegale in uno dei paesi in via di sviluppo, i lavoratori (spesso bambini) saranno esposti all'impatto tossico di alcune sostanza smantellate. \\
+		Può essere prestato, regalato, donato ad una biblioteca oppure correttamente riciclato. & Se correttamente riciclato, molti materiali si potranno recuperare o smaltire correttamente.
+	\end{tabular}
+\end{table}
+%TODO Formatta decentemente
