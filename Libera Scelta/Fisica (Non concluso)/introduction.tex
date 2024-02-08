@@ -2,62 +2,150 @@
 Oggetto caratterizzato da una massa [kg] e da un vettore posizione [m] nello spazio 3D.
 Dimensioni trascurabili, forma irrilevante rispetto ai fenomeni di interesse.
 Vettore posizione come funzione del tempo t[s].
-$$\vec{r(t)} = (x(t), y(t), z(t)) = x(t)\overline{x} + y(t)\overline{z} + z(t)\overline{z}$$
+\begin{example}
+    Una molecola di ossigeno se sono interessato all'aereodinamica di una vettua. 
+    Un satellite attorno alla terra se ignoro le forze di marea.
+\end{example}
+\hspace{-15pt}Un vettore posizione è una funzione del tempo $t[s]$.
+$$\vec{r(t)} = (x(t), y(t), z(t)) = x(t)\hat{x} + y(t)\hat{z} + z(t)\hat{z}$$
 \begin{observation}
     I versori cartesiani sono costanti
 \end{observation}
 
-% \begin{definition}
-%     Si definisce come \textbf{legge oraria} la funzione $t \to \vec{r}(t)
-% \end{definition}
-
-\begin{definition}[Traiettoria]
-    Il lungo gemetrico di punti visitati dal punto materiale.
+\begin{definition}[Legge oraria]
+    Si definisce come legge oraria la funzione $t \to \vec{r}(t)$.
 \end{definition}
 
+\begin{definition}[Traiettoria]
+    Il lungo geometrico di punti visitati dal punto materiale.
+    $$\{\vec{r}(t)\:\: per \: t \in \mathbb{R}\}$$
+\end{definition}
+
+\begin{example}
+    $\vec{r}(t) = (v_0t, y_0, 0)$ e $v_0 = 3m/s, y_o = 5m$ 
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.8\textwidth]{images/ess-traiettoria.png}
+    \end{figure}
+\end{example}
+
 \subsection*{Vettore velocità}
-Derivata rispetto al tempo del vettore posizione e si indica come:
-$$\frac{d\vec{r}(t)}{dt}\text{ oppure }\dot{\vec{r}}(t)[m/s]$$
-\begin{note}
-    Nota che il secondo metodo è solo per le derivate rispetto al tempo.
-\end{note}
-
-% ...
-Il vettore è costante quindi facendo la derivata torna zero. 
-Con la velocità si calcolo lo spazio percorso ("integrale di linea").
-$L = ||\vec{r}(t_1) - \vec{r}(t_0)|| + ||\vec{r}(t_2)||$.
-
-La differenza fra le posizioni e la differenza dei tempi è il rapporto incrementale in caso gli intervalli siano sufficentemente
-piccoli, da qui si ottiene l'integrale.
+Derivata rispetto al tempo del vettore posizione e si indica come 
+$\frac{d\vec{r}(t)}{dt}\text{ oppure }\dot{\vec{r}}(t)[m/s]$
+\begin{equation}
+    \begin{split}
+    \dot{\vec{r}}(t) & = (\dot{x}(t), \dot{y}(t), \dot{z}(t)) \\
+     & = \frac{d}{dt}[x(t)\hat{x} + y(t)\hat{y} + z(t)\hat{z}] \\
+     & = \dot{x}(t)\hat{x} + \dot{y}(t)\hat{y} + \dot{z}(t)\hat{z}
+    \end{split}
+\end{equation}
+Per ricavare la forma esplicita uso le proprietà delle derivate (\textbf{linearità}, \textbf{Leibnitz})
+\begin{example}
+    $\vec{r}(t) = (v_0t, y_0, 0) = v_0t\hat{x} + y_0\hat{y}$ \:\:\:abbiamo che \:\:\:
+    $\dot{\vec{r}}(t) = (v_0, 0, 0) = v_0 \hat{x}$
+\end{example}
+\hspace{-15pt}Velocità e spazio percorso ("integrale di linea").\\
+\begin{wrapfigure}[3]{l}{5cm}
+    \centering
+    \includegraphics[width=5cm]{images/vettore-velocità.png}
+\end{wrapfigure}
+\begin{align*}
+    L & = ||\vec{r}(t_1) - \vec{r}(t_0)|| + ||\vec{r}(t_2) - \vec{r}(t_1)|| + ||\vec{r}(t_3) - \vec{r}(t_2)|| + \dots \\
+    & = \sum_i ||\vec{r}(t_{i+1} - \vec{r}(t_i)|| \:\: per\:\: |t_{i+1} - t_i| \text{"piccolo"} \\
+    & = \sum_i ||\frac{\vec{r}(t_{i+1}) - \vec{r}(t_i)}{t_{i+1} - t_i}|| (t_{i+1} - t_i) = \int_{t_{in}}^{t_{f_{in}}}||\dot{\vec{r}}(t)||\\
+\end{align*}
+\begin{example}
+    $\vec{r}(t) = (v_0t, y_0)\:\:\: \dot{\vec{r}}(t) = (v_0, 0)$\hspace{15pt}
+    $||\dot{\vec{r}}(t)|| = \sqrt{v_0^2 + 0^2} = |v_0|$ \:\:\: $L = |v_0| \cdot (t_{f_{in}} - t_{in})$\\
+    Il vettore è costante quindi facendo la derivata torna zero. Con la velocità si calcolo lo spazio percorso ("integrale di linea").
+    La differenza fra le posizioni e la differenza dei tempi è il rapporto incrementale in caso gli intervalli siano sufficentemente
+    piccoli, da qui si ottiene l'integrale.
+\end{example}
 
 \subsection{Vettore accelerazione}
-Derivata rispetto al tempo del vettore velocità e si indica con:
-$$\frac{d^2\vec{r}(t)}{dt} \text{ oppure } \ddot{\vec{r}}(t) [m/s^2]$$
-L'accelerazione è una quantità che ci serve perché l'equazione di newton è formulato con l'accelerazione.
+Derivata rispetto al tempo del vettore velocità e si indica con $\frac{d^2\vec{r}(t)}{dt} \text{ oppure } \ddot{\vec{r}}(t) [m/s^2]$
+\begin{equation}
+    \ddot{\vec{r}}(t) = (\ddot{x}(t), \ddot{y}(t), \ddot{z}(t))\:\: = \:\: \ddot{x}(t)\hat{x} + \ddot{y}(t)\hat{y} + \ddot{z}(t)\hat{z}
+\end{equation}
+\begin{example}
+    $\vec{r}(t)= (\frac{1}{2}a_0t^2, v_0t, 0)$ \hspace{10pt} $\dot{\vec{r}}(t) = (a_0t, v_0, 0)$ \hspace{10pt} $\dot{\vec{r}}(t) = (a_0, 0, 0)$
+\end{example}
+\hspace{-15pt}Serve perché l'equazione "del moto" di Newton che determinata la legge oraria è formulata in termini di accelerazione.
 
 \subsection{Vettore quantità di moto}
 Il prodotto di massa [kg] e velocità [m/s]
 $$\vec{p}(t) = m \cdot \dot{\vec{r}}(t) = (m\dot{x}(t), m\dot{y}(t), m\dot{x}(t)) = m\dot{\vec{x}}(t)x + m\dot{\vec{y}}(t)y + m \dot{\vec{z}}(t)z$$
+\begin{example}
+    Prendiamo un punto di massa 2kg e velocità 3m/s lungo $\hat{x}$.\\
+    $p_x(t) = 2 \cdot 3 kg\cdot m/s = 6 kg \cdot m/s$ \hspace{15pt} $p_y(t) = p_z(t) = 0$.
+\end{example}
+\hspace{-15pt}Serve per generalizzare l'equazione di Newton e per trattare sistemi di piu punti materiali.
 
 \subsection{Vettore momento angolare rispetto a un polo P}
-ricorda che $\overline{x} \times \overline{x} = 0$ e $\overline{y} \times \overline{x} = -\overline{z}$
-Il momento angolare dice quanta inerzia ad un oggetto in una rotazione su se stesso (descrizione moolto sommaria).
+$$\vec{L}_p(t) = m(\vec{r}(t) - \vec{r}_p) \times \dot{\vec{r}}(t)$$
+Dove $\vec{r}_p$ è il vettore posizione di p, mentre $\dot{\vec{r}}(t)$ è il prodotto vettoriale.
+\begin{example}
+    $\vec{r}_p = (l_0, 0, 0)$ \hspace{15pt} $\vec{r}(t) = (v_0t, y_0, 0)$\\
+    $\vec{L}_p = m[(v_0t - l_0)\hat{x} + y_0\hat{y}] \times (v_0\hat{x}) \:\: = \:\: m(v_0t - l_0)v_0 \hat{x} \times \hat{x} + my_0v_0\hat{y}\times \hat{x} 
+    \:\: = \:\: my_0v_0(-\hat{z}) = (0,0, -my_0v_0)$\\
+    Ricorda che $\hat{x} \times \hat{x} = 0$ e $\hat{y} \times \hat{x} = -\hat{z}$
+\end{example}
+\hspace{-15pt}Il momento angolare dice quanta inerzia ha un oggetto in una rotazione (descrizione sommaria).\\
+Il polo P è parte della definizione. È una scelta! Il risultato dipende dal polo.
+Serve per formulare l'equazione del moto di sistemi di punti materiali e corpi rigidi.
 
 \subsection{Coordinate polari}
 Un metodo per rapprensentare delle cordinate x, y andando a misurare prima la distanza dall'origine e poi si va a vedere
 quanto vale l'angolo fra questo segmento dall'asse x, utilizzando seno e coseno.
+\begin{wrapfigure}[7]{l}{2cm}
+    \centering
+    \includegraphics[width=5.5cm]{images/coordinate-polari.png}
+\end{wrapfigure}
+\begin{align*}
+    \begin{cases}
+        x(t) = r(t) \cdot \cos(\Theta(t))\\
+        y(t) = r(t) \cdot \sin(\Theta(t)) 
+    \end{cases}
+\end{align*}
+\begin{align*}
+    \begin{cases}
+        r(t) = \sqrt{x(t)^2 + y(t)^2} \geq 0\\
+        tg(\Theta(t)) = y(t) / x(t) 
+    \end{cases}
+\end{align*}
+\\
+\begin{example} Esempi di rappresentazione di coordinate in coordinate polari.\\
+    $x = 0, y = l_0 > 0 \:\: \Rightarrow \:\: r = l_0, \Theta = \pi/2$\\
+    $x = 0, y = -l_0 < 0 \:\: \Rightarrow \:\: r = l_0, \Theta = -\pi/2$\\
+    $x = l_0, y = l_0 > 0 \:\: \Rightarrow \:\: r = \sqrt{2}l_0, \Theta = \pi/4$\\
+\end{example}
 
 \subsection{Versori polari (2D)}
-Definisco un versore $\overline{r}(t)$ che punta verso il punto materiale e un versore $\overline{\Theta}(t)$ ortogonale.
-Si espreime facilmente in coordinte polari.
-non c'è legame fra $\Theta$ e $\overline{\Theta}$ è solo una convenzione.
+Definisco un versore $\hat{r}(t)$ che punta verso il punto materiale e un versore $\hat{\Theta}(t)$ ortogonale.
+Si esprime facilmente in coordinte polari.
+$$\vec{r}(t) = (x(t), y(t)) = (r(t)\cos \Theta(t), r(t)\sin\Theta(t)) \:\: = \:\: r(t)(\cos\Theta(t)\hat{x} + \sin\Theta(t)\hat{y})$$
+Ma $||\vec{r}(t)|| = |r(t)| = r(t)$ allora definisco $\hat{r}(t) = \vec{r}(t)/ ||\vec{r}(t)|| = \cos \Theta(t)\hat{x} + \sin\Theta(t)\hat{y}$\\\\
+Trovo facilmente che un versore ortogonale è:
+$$\hat{\Theta(t)} = -\sin\Theta(t)\hat{x} + \cos\Theta(t)\hat{y} \:\:\:\text{infatti} \:\:\: \hat{r}\cdot \hat{\Theta} = c \cdot (-s) + s \cdot c = 0$$
+\begin{note}
+    Non c'è legame fra $\Theta$ e $\hat{\Theta}$ è solo una convenzione.
+\end{note}
+\hspace{-15pt}Le trasformazioni inverse invece si fanno come segue (verifico per sostituzione):
+$$\hat{y} = \cos\Theta(t)\hat{r} - \sin\Theta(t)\hat{\Theta} \hspace{20pt} \hat{y} = \sin\Theta(t)\hat{r} + \cos\Theta(t)\hat{\Theta}$$
+Possono quindi scrivere ogni vettore nella forma $\vec{a} = a_r\hat{r} + a_{\Theta}\hat{\Theta}$ con le componenti polari $a_r, a_{\Theta}$.
+Per evitare ambiguità non scriviamo $(a_r, a_{\Theta})$ e riserviamo la notazione alle componenti cartesiane.\\\\
+A differenza dei versori cartesiani quelli polari dipendono dal tempo per costruzioni.
+$$\dot{\hat{r}}(t) = \frac{d}{dt}[\cos\Theta(t) \hat{x} + \sin\Theta(t)\hat{y}] \:\: = \:\: -\sin\Theta(t) \cdot \dot{\Theta}(t)\hat{x} + \cos\Theta(t) \cdot \dot{\Theta}(t)\hat{y}$$
+Dove $\cos\Theta(t) \cdot \dot{\Theta}(t)$ si applica la derivata della somma, Leibnitz, funzione composta.
+$$= \dot{\Theta}(t)\cdot \hat{\Theta}(t) \:\:\:\:(\text{confronto l'espressione di} \hat{\Theta}(t))$$
+Similmente $\dot{\hat{\Theta}}(t)= - \dot{\Theta}\hat{r}(t)$.
+
 
 \subsection*{Vettori posizione, velocità, accelerazione}
-$$\vec{r}(t) = r(t)\overline{r}(t)$$
-Dove abbiamo che:
-\begin{itemize}
-    \item $\vec{r}(t)$ è il vettore.
-    \item $r(t)$ è una coordinata polare.
-    \item $\hat{t}(t)$ è il versore polare.
-\end{itemize}
+$$\vec{r}(t) = r(t)\hat{r}(t)$$
+Dove abbiamo che $\vec{r}(t)$ è il vettore, $r(t)$ è una coordinata polare, $\hat{t}(t)$ è il versore polare.
+$$\dot{\vec{r}}(r) = \dot{r}(t)\hat{r}(t) + r(t)\dot{\Theta}(t)\hat{\Theta}(t)$$
+Dove la parte $\dot{\vec{r}}(r)$ è la velocità radiale.
+$$\ddot{\vec{r}}(t) = [\ddot{r}(t) - r(t)\dot{\Theta}(t)^2] \hat{r} + [r(t) \ddot{\Theta}(t) + 2\dot{r}(t)\dot{\Theta}(t)]\hat{\Theta}$$
+Nel quale abbiamo che la parte $r(t)\dot{\Theta}(t)^2$ si chiama \textbf{velocità centripeta}, mentre $2\dot{r}(t)\dot{\Theta}(t)$ si dice \textbf{accelerazione di Coriolis}.
 
