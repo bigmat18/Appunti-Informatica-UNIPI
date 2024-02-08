@@ -284,84 +284,146 @@ Come si vede da questo esempio, migliorare la velocità del processore o la sua 
 \subsubsection{Multi-level cache}
 Per ovviare a questo problema vengono utilizzate cache su più livelli, dove quelle dei livelli inferiori vengono interrogate in caso di cache miss ed evitano quindi un accesso alla memoria principale (che si rende necessario solo se non si trova il dato neanche sull'ultimo livello).
 \begin{example}[Multi-level cache]
-	content...
+	%TODO Da aggiungere
 \end{example}
 
+\begin{example}
+	Considera una piccola cache con $4$ blocchi, $b=1$. Trova il numero di miss per una cache direct-ampped per la seguente sequenza ordinata di indirizzi di blocco: 0, 8, 0, 6, 8.
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|c|c|}
+			\hline
+			Block address & Cache block \\
+			\hline
+			0 & $0 \% 4=0$ \\
+			6 & $6\% 4 = 2$\\
+			8 & $8\%4=0$\\
+			\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			\multirowcell{2}{Address} & \multirowcell{2}{Hit or miss} & \multicolumn{4}{c}{Contents after reference} \\
+			\hline
+			%TODO Sistema e aggiungi gli altri esempi
+			\hline
+		\end{tabular}
+	\end{table}
+\end{example}
 
 \subsection{Gestione delle scritture}
-Dobbiamo definire quelle che sono le \textbf{write hits}, se l'istruzione di stroe scribe il dato soltanto dentro la cache, dopo la cache
-è la memoria potrebbeero avere differenti valori (quindi abbiamo un inconsistenza).\\
-Abbiamo poi \textbf{write miss}. 
+Distinguiamo le scritture in due casi:
 \begin{itemize}
-	\item Chiediamoci se possiamo recuperare il blocco dalla memoria alla cache e poi andiamo a sovrascivere la parola mancante?
-	La risposta è si e questa policy si chiama \textbf{write-allocate}.
-	Il blocco viene caricato nella cache seguito da un hit di scrittura (utilizzato principalmente nella politica Write-Back).
-	\item Poi chiediamoci anche se dovremmo scrivere la parola direttamente al livello di memoria successivo? 
-	Questa politica è chiamata \textbf{no-write-allocate}, il blocco non viene caricato nella cache (utilizzato principalmente nella politica Write-Through)
+	\item \textbf{Write hits} quando c'è lo stesso TAG: se il dato viene scritto solo nella cache, allora la memoria e la cache sono inconsistenti
+	\item \textbf{Write miss} quando abbiamo tag diversi
 \end{itemize}
 
 \subsubsection{Write-Through}
-Gli hit di scrittura aggiornano sempre sia la cache che il successivo livello di memoria.
+Questa tecnica prevede che gli hit di scrittura aggiornino sempre sia la cache che il successivo livello di memoria.
 \begin{itemize}
-	\item \textbf{Pro}: Soluzione semplice, facile da implementare. I dati sono sempre coerenti tra i due livelli di memoria.
-	\item \textbf{Contro}: La velocità di scrittura dipende dalla velocità di scrittura del livello di memoria inferiore. Maggiore traffico di memoria, per ogni singola scrittura potrebbero esserci più scritture in ogni livello di memoria.
+	\item \textbf{Pro}: soluzione \textbf{semplice}, facile da implementare. I dati sono sempre coerenti tra i due livelli di memoria.
+	\item \textbf{Contro}: la \textbf{velocità} di scrittura dipende dalla velocità di scrittura del livello di memoria inferiore. Maggiore \textbf{traffico di memoria}, per ogni singola scrittura potrebbero esserci più scritture in ogni livello di memoria.
 \end{itemize}
 
 \subsubsection{Write-Back}
-I colpi di scrittura aggiornano solo la cache, quindi il blocco modificato viene scritto nel livello di memoria inferiore quando viene sostituito. 
+Gli hit di scrittura aggiornano solo la cache, quindi il blocco modificato viene scritto nel livello di memoria inferiore quando viene sostituito. 
 \begin{itemize}
-	\item \textbf{Pro}: la velocità delle scritture è quella della cache: minore traffico di memoria rispetto a Write-Through, le successive scritture sullo stesso blocco di cache non producono traffico con il livello di memoria inferiore più costoso.
+	\item \textbf{Pro}: la \textbf{velocità} delle scritture è quella della cache: minore traffico di memoria rispetto a Write-Through, le successive scritture sullo stesso blocco di cache non producono traffico con il livello di memoria inferiore più costoso.
 	\item \textbf{Contro}: 
-	Abbiamo bisogno di tenere traccia dei blocchi modificati (bit sporchi). Più complesso da implementare rispetto al Write-Through. La sostituzione della riga della cache è più costosa.
+	Abbiamo bisogno di tenere traccia dei blocchi modificati (bit sporchi). Più \textbf{complesso} da implementare rispetto al Write-Through. La sostituzione della riga della cache è più costosa.
 \end{itemize}
-Il write-back può migliorare le prestazioni specialmente quando la CPU genera istruzioni di memorizzazione più velocemente di quanto la memoria principale può gestire, tuttavia, il costo delle scritture nella cache è maggiore se si verifica un errore di scrittura, dobbiamo prima riscrivere il blocco in memoria (se il dirty bit è 1). 
+
+\begin{example}
+	Supponiamo che una cache abbia un blocco di 4 parole. Quanti accessi alla memoria principale sono necessari in base alle due politiche di accesso per il seguente codice?
+	\begin{lstlisting}[language={[x86masm]Assembler}]
+		MOV R5, #0
+		STR R1, [R5]
+		STR R2, [R5, #12]
+		STR R3, [R5, #8]
+		STR R4, [R5, #4]
+	\end{lstlisting}
+	Tutte e 4 le istruzioni scrivono sullo stesso blocco di cache. Con la tecnica \textbf{write-through}, ogni istruzione scrive nella memoria principale e richiede quindi 4 scritture. Con la tecnica write-back serve solamente un accesso alla memoria principale per pulire il blocco.
+\end{example}
+
+Il \textbf{write-back} può migliorare le prestazioni specialmente quando la CPU genera istruzioni di memorizzazione più velocemente di quanto la memoria principale può gestire, tuttavia, il costo delle scritture nella cache è maggiore se si verifica un errore di scrittura, dobbiamo prima riscrivere il blocco in memoria (se il dirty bit è 1). 
 Ciò richiede almeno due cicli anche per un hit di scrittura: un ciclo per verificare un hit seguito da un ciclo per eseguire effettivamente la scrittura. In alternativa, possiamo usare un buffer di scrittura per trattenere temporaneamente i dati da scrivere mentre il blocco della cache è controllato per un colpo. 
 Il processore esegue la ricerca nella cache e inserisce i dati nel buffer di scrittura durante il normale ciclo di accesso alla cache. Supponendo un riscontro nella cache, i nuovi dati vengono scritti dal buffer di scrittura nella cache al successivo ciclo di accesso alla cache inutilizzato (pipelining degli accessi).
 
 \subsubsection{Ottimizzare le scritture}
 Poiché la scrittura nella memoria off-chip è costosa, gli archivi di memoria sono bufferizzati, un \textbf{buffer di scrittura} viene utilizzato per conservare i dati in attesa di essere scritti nella memoria.
-L'esecuzione continua immediatamente dopo la scrittura dei dati nella cache e nel buffer di scrittura, la memoria memorizza nella memoria principale viene eseguita in parallelo con il calcolo della CPU, 
-la CPU va in stallo solo se il buffer di scrittura è pieno, quindi la larghezza di banda richiesta dalla memoria principale è un fattore critico, in particolare per il modello di cache Writhe-Through!
+L'esecuzione continua immediatamente dopo la scrittura dei dati nella cache e nel buffer di scrittura, i salvataggi nella nella memoria principale vengono eseguiti in parallelo con il calcolo della CPU. 
+La CPU va in stallo solo se il buffer di scrittura è pieno, quindi la larghezza di banda richiesta dalla memoria principale è un fattore critico, in particolare per il modello di cache Writhe-Through.
 
 \subsection{Cache replacement}
 In una direct mapped cache, il blocco richiesto può andare esattamente in una posizione, quindi non abbiamo scelta: 
 se il blocco da sostituire è stato modificato e la politica di scrittura è Write-Back, dobbiamo aggiornare la memoria di livello inferiore. 
-Cache associativa, possiamo scegliere dove posizionare il blocco richiesto: 
+Con la cache associativa, possiamo scegliere dove posizionare il blocco richiesto: 
 \begin{itemize}
-	\item Fully associative cache, tutti i blocchi sono candidati per la sostituzione.
-	\item N-way set-associative cache, dobbiamo scegliere tra gli Nblocchi nel set selezionato.
+	\item \textbf{Fully associative} cache, tutti i blocchi sono candidati per la sostituzione.
+	\item \textbf{N-way set-associative} cache, dobbiamo scegliere tra gli Nblocchi nel set selezionato.
 \end{itemize}
+
+%TODO Ti sei perso
 
 \subsubsection{Cache replacement policy}
-Per decidere quali blocchi andare a rimpiazzare si possono applicare delle policy di rimpiazzamento, alcune di queste sono:
+Per decidere quali blocchi rimpiazzare dobbiamo distinguere per i tipi di cache:
 \begin{itemize}
-	\item Lo schema più utilizzato è \textbf{Least Recent Used (LRU)}. Considera la località temporale, il blocco sostituito è quello che è rimasto inutilizzato per il tempo più lungo. 
-	Per una cache set-associativa a 2 vie, può essere implementato con 1 bit (usare bit --U), per un 4 vie è ancora fattibile con 2 bit, per più di 4 vie diventa abbastanza complicato (pseudo-LRU).
-	\item Per le cache altamente associative, una politica \textbf{Random} offre all'incirca le stesse prestazioni di LRU.
+	\item \textbf{Direct mapped}: se il blocco da rimpiazzare è stato modificato e usiamo una policy di \textbf{write-back} dobbiamo aggiornare la memoria di livello più basso
+	\item \textbf{Associative cache}:
+	\begin{itemize}
+		\item  \emph{Fully associative}: tutti i blocchi sono candidati per essere sostituiti
+		\item \emph{N-way set-associative}: dobbiamo scegliere tra gli $N$ blocchi nel set selezionato
+	\end{itemize}
 \end{itemize}
-
-\begin{example}
-	Considera una piccola cache con 4 blocchi, b=1. Trova il numero di errori per una cache a mappatura diretta per la seguente sequenza ordinata di indirizzi di blocco 0, 8, 0, 6, 8.
-\end{example}
+Lo schema più utilizzato è \textbf{Least Recent Used (LRU)}. Sfrutta la località temporale: il blocco sostituito è quello che è rimasto inutilizzato per il tempo più lungo. 
+Per una cache set-associativa a 2 vie, può essere implementato con 1 bit (usare bit --U), per un 4 vie è ancora fattibile con 2 bit, per più di 4 vie diventa abbastanza complicato (pseudo-LRU).
+Per le cache altamente associative, una politica \textbf{Random} offre all'incirca le stesse prestazioni di LRU.
 
 \subsection{Designing the Memory System}
-La penalità di errore può essere ridotta aumentando la larghezza di banda del bus tra DRAM e cache. Ci sono tre possibili organizzazioni:
+La miss penalty può essere ridotta aumentando la larghezza di banda del bus tra DRAM e cache. Ci sono tre possibili organizzazioni:
 \begin{itemize}
 	\item \textbf{Semplice}: una parola alla volta viene letta dalla memoria.
 	\item \textbf{Ampia memoria}: N parole alla volta vengono lette dalla memoria.
 	\item \textbf{Interleaved}: K banchi di memoria indipendenti in grado di servire K richieste contemporaneamente.
 \end{itemize}
-Consideriamo il tempo di trasferimento del blocco della cache per l'organizzazione della memoria Simplevs Interleaved.
+Consideriamo il tempo di trasferimento del blocco della cache per l'organizzazione della memoria Simple contro quella Interleaved.\\
+Il caso \textbf{semplice} è il seguente:
+\begin{center}
+	\includegraphics[scale=0.2]{cache_block_transfer.png}
+\end{center}
+Sapendo che il memory time e il cache time sono rispettivamente $t_M$ e $t_{cache}$, la larghezza di banda della memoria sarà $B_M = \frac{1}{t_M}$ e $b=1$. Il memory access time è
+\begin{equation*}
+	t_a=2 \cdot t_{trf} + 2 \cdot t_{cache} + t_M
+\end{equation*}
+Se la cache line contiene più di un blocco, il suo costo di trasferimento in caso di cache miss sarà
+\begin{equation*}
+	t_{miss}=2 \cdot t_{trf} + 2 \cdot t_{cache} + b \cdot t_M \approx b \cdot t_M
+\end{equation*}
+
+\begin{example}
+	Se consideriamo $b=8$, $t_M =80$, $t_{cache}=1$ e $t_{trf}=6$ cicli di clock, allora il costo del cache miss sarà molto alto, circa $>650$ cicli di clock.
+\end{example}
+Invece per quanto riguarda il caso \textbf{interleaved}:
+\begin{center}
+	\includegraphics[scale=0.2]{cache_block_transfer_interleaved.png}
+\end{center}
+aumentiamo la larghezza di banda di un fattore del numero di moduli $m$
+\begin{equation*}
+	B_M = \frac{m}{t_M}
+\end{equation*}
+avendo quindi un costo di
+\begin{equation*}
+	t_{miss}=2 \cdot t_{trf} + (\sim 1 + 1) \cdot t_{cache} + \frac{b}{m} \cdot t_M \cdot t_M
+\end{equation*}
+che, se poniamo $b=m$, diventa $t_{miss} \approx t_M$.
 
 \subsection{Problemi cache}
-La memorizzazione nella cache è essenziale per ridurre il collo di bottiglia di von Neuman e ottenere prestazioni ragionevoli sui sistemi moderni•Tuttavia, la memorizzazione nella cache introduce alcuni problemi nei sistemi multiprocessore/multicore. 
-Problema di coerenza della cache, salsa condivisione degrado delle prestazioni nei multiprocessori coerenti con la cache, due variabili non correlate sono collocate nello stesso blocco della cache e accesso in modalità lettura/scrittura da thread diversi!
+La memorizzazione nella cache è essenziale per ridurre il collo di bottiglia di von Neuman e ottenere prestazioni ragionevoli sui sistemi moderni. Tuttavia, la memorizzazione nella cache introduce alcuni problemi nei sistemi multiprocessore/multicore.\\ 
+Problema di \textbf{coerenza} della cache e \textbf{falsa condivisione} (due variabili non correlate sono collocate nello stesso blocco della cache e accesso in modalità lettura/scrittura da thread diversi).
 
 \subsubsection{Problemi di corerenza}
-Supponiamo un'architettura SMP: SMP: Symmetric Multiprocessors, caching di dati privati e condivisi, i dati core privati vengono memorizzati nella cache in L1, riducendo così l'AMAT e le comunicazioni di memoria off-chip. 
-Quando i dati condivisi vengono memorizzati nella cache, i valori condivisi può essere replicato in più core cache private. Questo riduce anche la contesa di memoria! Cosa succede se i dati condivisi vengono scritti? 
-La memorizzazione nella cache dei dati condivisi introduce un nuovo problema: \textbf{la coerenza della cache}.
-
-\subsubsection{Write invalidate protocol}
-Il protocollo di invalidazione della scrittura invalida le copie dei dati presenti in altre cache durante un'operazione di scrittura. 
-Una semplice implementazione utilizza un protocollo bus di snooping per garantire che il processore acquisisca l'accesso esclusivo a un blocco di cache prima che scriva in esso.
+Supponiamo un'architettura SMP (Symmetric Multiprocessors), ovvero con caching di dati privati e condivisi. I dati core privati vengono memorizzati nella cache in L1, riducendo così l'AMAT e le comunicazioni di memoria off-chip. 
+Quando i dati condivisi vengono memorizzati nella cache, i valori condivisi possono essere replicati in più core cache private, riducendo anche la contesa di memoria. Cosa succede se i dati condivisi vengono scritti? \\
+Viene introdotto un nuovo livello dell'architettura che forza a mantenere la consistenza dei dati per linee diverse di cache. Uno dei protocolli più semplici è il \textbf{write invalidate}, che consiste nell'invalidare tutte le altre linee di cache non aggiornate tramite un bus di tipo \emph{snoopy}. Esistono anche protocolli di aggiornamento ma sono più complicati.
