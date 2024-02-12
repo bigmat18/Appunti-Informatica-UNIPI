@@ -1,9 +1,9 @@
-PWD /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)
+PWD /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex
 INPUT /usr/local/texlive/2022/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.tex
-OUTPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.log
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.tex
+OUTPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.log
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls
@@ -878,10 +878,10 @@ INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.de
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.aux
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.aux
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.aux
-OUTPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.aux
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.aux
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.aux
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.aux
+OUTPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.aux
 INPUT /usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -952,30 +952,30 @@ INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/gettitlestring/gettitlestri
 INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.out
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.out
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.out
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.out
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.out
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.out
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.out
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.out
-OUTPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.pdf
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.out
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.out
-OUTPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.out
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/frontespizio.tex
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/frontespizio.tex
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/frontespizio.tex
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/frontespizio.tex
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/frontespizio.tex
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/frontespizio.tex
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/frontespizio.tex
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/marchio_unipi_pant541.png
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/marchio_unipi_pant541.png
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/marchio_unipi_pant541.png
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/marchio_unipi_pant541.png
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/marchio_unipi_pant541.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.out
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.out
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.out
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.out
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.out
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.out
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.out
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.out
+OUTPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.pdf
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.out
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.out
+OUTPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.out
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/frontespizio.tex
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/frontespizio.tex
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/frontespizio.tex
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/frontespizio.tex
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/frontespizio.tex
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/frontespizio.tex
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/frontespizio.tex
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/marchio_unipi_pant541.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/marchio_unipi_pant541.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/marchio_unipi_pant541.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/marchio_unipi_pant541.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/marchio_unipi_pant541.png
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
@@ -985,9 +985,9 @@ INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.toc
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.toc
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.toc
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.toc
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.toc
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.toc
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
@@ -1005,44 +1005,76 @@ INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
-OUTPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.toc
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/introduction.tex
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/introduction.tex
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/introduction.tex
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/introduction.tex
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/introduction.tex
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/introduction.tex
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/introduction.tex
+OUTPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.toc
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/introduction.tex
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/introduction.tex
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/introduction.tex
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/introduction.tex
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/introduction.tex
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/introduction.tex
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/introduction.tex
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/images/ess-traiettoria.png
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/images/ess-traiettoria.png
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/images/ess-traiettoria.png
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/images/ess-traiettoria.png
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/images/ess-traiettoria.png
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/images/vettore-velocità.png
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/images/vettore-velocità.png
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/images/vettore-velocità.png
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/images/vettore-velocità.png
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/images/vettore-velocità.png
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/images/coordinate-polari.png
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/images/coordinate-polari.png
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/images/coordinate-polari.png
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/images/coordinate-polari.png
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/images/coordinate-polari.png
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.aux
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.out
-INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/main.out
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/ess-traiettoria.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/ess-traiettoria.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/ess-traiettoria.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/ess-traiettoria.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/ess-traiettoria.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/vettore-velocità.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/vettore-velocità.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/vettore-velocità.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/vettore-velocità.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/vettore-velocità.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/coordinate-polari.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/coordinate-polari.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/coordinate-polari.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/coordinate-polari.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/coordinate-polari.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/forze.tex
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/forze.tex
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/forze.tex
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/forze.tex
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/forze.tex
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/forze.tex
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/forze.tex
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.aux
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.out
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.out
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
