@@ -141,9 +141,70 @@ Espandiamo ogni nodo con i suoi possibili successori (frontiera).
 \begin{observation}
 	Si noti che un nodo dell'albero è diverso da uno stato. Infatti possono esitere nodi dell'albero di ricerca con lo stesso stato (si può tornare indietro).
 \end{observation}
+\hspace{-15pt}La generazzione di un albero di ricera sovrapposto allo spazio degli stati:
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{images/generazione-albero-ricerca.png}
+	\caption{generazione di un albero di ricerca}
+\end{figure}
+\begin{lstlisting}
+	function Ricerca-Albero (problema)
+		returns soluzione oppure fallimento
+		Inizializza la frontiera con stato iniziale del problema
+		loop do
+			if la frontiera e vuota then return fallimento
+			Scegli* un nodo foglia da espandere e rimuovilo dalla frontiera
+			if il nodo contiene uno stato obiettivo
+				then return la soluzione corrispondente
+			Espandi il nodo e aggiungi i successori alla frontiera 
+\end{lstlisting}
+Un nodo n in un albero di ricera è una struttura dati con quattro componenti:
+\begin{enumerate}
+	\item Uno stato: n.stato
+	\item Il nodo padre: n.padre
+	\item L'azione effettuata per generarlo: n.azione
+	\item Il costo del cammino dal nodo iniziale al nodo: n.costo-cammino indicato come $g(n)$.\\
+	(=padre.costo-cammino + costo-passo ultimo)
+\end{enumerate}
+Abbiamo poi la struttura dati per la \textbf{frontiera} che è una lista dei nodi in attesa di essere
+espandi (le foglie dell'albero di ricerca). La frontiere è implementata come una coda con operazioni:
+\begin{itemize}
+	\item Vuoto?(coda) = controlla se la coda è vuota
+	\item POP(coda) = estrae il primo elemento.
+	\item Inserisci(elemento, coda) = inserisce un elemento nella coda.
+	\item Diversi tipi di coda hanno diverse funzioni di inserimento e implementano strategie diverse.
+	\begin{itemize}
+		\item \textbf{FIFO} - First in Firt out $\Longrightarrow$ usato nella \textbf{BF (Breadth-first)}.\\
+		Viene estratto l’elemento più vecchio (in attesa da più tempo); in nuovi nodi sono aggiunti alla fine.
+		\item \textbf{LIFO} - Last in Firt Out $\Longrightarrow$ usato nella \textbf{DF (deptht-first)}.\\
+		Viene estratto il più recentemente inserito; i nuovi nodi sono inseriti all’inizio (pila).
+		\item \textbf{Coda con priorità} $\Longrightarrow$ usato nella \textbf{UC}, ed altri successivi.\\
+		Viene estratto quello con priorità più alta in base a una funzione di ordinamento; dopo l’inserimento dei nuovi nodi si riordina.
+	\end{itemize}
+\end{itemize}
 
+\section{Stategia ricerca non informative}
+Ora andremo a vedere diverse \textbf{strategie non informative}: Ricerca in ampiezza (BF), Ricerca in profondità (DF)
+Ricerca in profondità limitata (DL), Ricerca con approfondimento iterativo (ID), Ricerca di costo uniforme (UC).
+Successivamente le metteremo a confronto con strategie di \textbf{ricerca euristica (o informativa)} che fanno uso di informazio riguardo alla distanza
+stimata della soluzione.\\\\
+La valutazione di una strategia verrà fatta andando a seguire i seguenti paramentri:
+\begin{itemize}
+	\item \textbf{Completezza}: se la soluzione esiste viene trovata.
+	\item \textbf{Ottimalità (ammissibilità)}: trovare la soluzione migliore con costo minore (per il costo del cammino soluzione).
+	\item \textbf{Complessità in tempo}: tempo richiesto per trovare la soluzione (per il costo della ricerca)
+	\item \textbf{Complessità in spazio}: memoria richiesta (per il costo della ricerca).
+\end{itemize}
+
+\newpage
 \subsection{Ricerca in ampiezza (BF)}
-O come esplorare il grafo dello spazio degli stati a livelli progressivi di stessa profondità.
+O come esplorare il grafo dello spazio degli stati a livelli progressivi di stessa profondità. Viene inoltre
+implementata con una coda che inserisce alla fine (FIFO).
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{images/ricerca-ampiezza.png}
+	\caption{Ricerca in ampiezza}
+\end{figure}
 \begin{lstlisting}
 	function Ricerca-Ampiezza (problema)
 		return soluzione oppure fallimento
@@ -180,38 +241,38 @@ Una versione aggiornata dove evitiamo di espandere (nodi con) stati già esplora
 Abbiamo aggiunto \textbf{esplorati = insieme vuoto} e \textbf{if figlio.Stato non è in esplorati e non è in frontiera then} 
 per gestire gli stati ripetuti.\\\\
 Ora sempre lo stesso codice in uno script python:
-\begin{lstlisting}
+\begin{python}
 	def breadth_first_search(problem): # """Ricerca-grafo in ampiezza"""
 		explored = [] # insieme degli stati gia visitati (implementato come una lista)
 		node = Node(problem.initial_state) # il costo del cammino e inizializzato nel
 		costruttore del nodo
 		if problem.goal_test(node.state):
 			return node.solution(explored_set = explored)
-		frontier = FIFOQueue() # la frontiera e' una coda FIFO
+		frontier = FIFOQueue() # la frontiera e una coda FIFO
 		frontier.insert(node)
-		while not frontier.isempty(): # seleziona il nodo per l'espansione
+		while not frontier.isempty(): # seleziona il nodo per l espansione
 			node = frontier.pop()
-			explored.append(node.state) # inserisce il nodo nell'insieme dei nodi esplorati
+			explored.append(node.state) # inserisce il nodo nell insieme dei nodi esplorati
 			for action in problem.actions(node.state):
 				child_node = node.child_node(problem,action)
 				if (child_node.state not in explored) and (not frontier.contains_state(child_node.state)):
 					if problem.goal_test(child_node.state):
 						return child_node.solution(explored_set = explored)
-				# se lo stato non e' uno stato obiettivo allora inserisci il nodo nella frontiera
+				# se lo stato non e uno stato obiettivo allora inserisci il nodo nella frontiera
 				frontier.insert(child_node)
 		return None # in questo caso ritorna con fallimento
-\end{lstlisting}
+\end{python}
 
-\subsubsection*{Analisi complessità spazio-temporale (BF)}
+\subsubsection{Analisi complessità spazio-temporale (BF)}
 Inanzitutto assumiamo che:
 \begin{itemize}
 	\item \textbf{b} = fatto di ramificazione (\textbf{b}ranching)
 	\item \textbf{d} = profondità del nodo obiettivo piu superficiale (\textbf{d}epth) 
 	\item \textbf{m} = lunghezza massima dei cammini nello spazio degli stati (\textbf{m}ax)
 \end{itemize}
-La strategia ottimale è se gli operatori hanno tutti lo stesso costo k cioè $g(n) = k \cdot depth(n)$ dove $g(n)$ è il costo del 
-cammino per arrivare a n.\\
-\textbf{La complessità nel tempo} (nodi generati):
+La \textbf{strategia ottimale} è se gli operatori hanno tutti lo stesso costo k cioè $g(n) = k \cdot depth(n)$ dove $g(n)$ è il costo del 
+cammino per arrivare a n.\\\\
+La \textbf{complessità nel tempo} (nodi generati):
 $$T(b, d) = 1 + b + b^2 + \dots + b^d \to O(b?d) \:\: \text{b figli per ogni nodo}$$
 \begin{note}
 	Riflettere che il numero nodi cresce exp., non assumiamo di conoscere già il
@@ -219,30 +280,41 @@ $$T(b, d) = 1 + b + b^2 + \dots + b^d \to O(b?d) \:\: \text{b figli per ogni nod
 	AI (pensate a quelli generati per le configurazioni dei giochi, con rappresentazione
 	implicita dello spazio stati, non esplicitamente/staticamente in spazi enormi).
 \end{note}
-\textbf{Complessità nello spazio} (nodi in memoria): $O(b^d)$
+\hspace{-15pt}La \textbf{complessità nello spazio} (nodi in memoria): $O(b^d)$
 
 \begin{example}
 	b=10, 1 milione nodi al sec generati; 1 nodo occupa 1000 byte
-	% TODO aggiungi immagine tempo e memoria per questo esempio.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.65\textwidth]{images/esempio-ricerca-ampiezza.png}
+	\end{figure}
 \end{example}
 
 \subsection{Ricerca in profondità (DF)}
-Viene implementata da una coda che mette i succerrosi in testa alla lista (LIFO, pila o stack). Notare
-come cancelli rami completamente esplorati ma tenga tutti i fratelli del path corrente: memoria solo $b \times m$
-
-\subsubsection*{Analisi}
-\textbf{Versione su albero}.\\\\
-Se $m \to$ lungehzza massima dei cammini nello spazio degli stati e $b \to$ fattore di diramazione.
-\textbf{Abbiamo che tempo}: $O(b^m)$ [che può essere $> O(b^d)$].
-\textbf{Occupazione memoria}: $bm$ [frontiera sul cammino].
-
-% TODO Finisci la slide
-\textbf{Versione su grafo}
-In caso di DF con visita grafo si perderebbe i vantaggi di memoria. la memoria torna da
+\begin{wrapfigure}[13]{l}{6.5cm}
+	\centering
+	\includegraphics[width=6cm]{images/ricerca-profondità.png}
+\end{wrapfigure}
+Viene implementata da una coda che mette i succerrosi in testa alla lista (LIFO, pila o stack). L'algoritmo è
+generale e può essere usato sia con alberi che con grafi. Notare
+come cancelli rami completamente esplorati ma tenga tutti i fratelli del path corrente: memoria solo $b \times m$\\\\
+\textbf{Analisi - Versione su albero}.\\
+Se $m \to$ lungehzza massima dei cammini nello spazio degli stati e $b \to$ fattore di diramazione.\\
+\textbf{Abbiamo che tempo}: $O(b^m)$ [che può essere $> O(b^d)$].\\
+\textbf{Occupazione memoria}: $bm$ [frontiera sul cammino].\\\\\\\\\\
+\textbf{Analisi - Versione su grafo}\\
+In caso di DF con visita grafo si perderebbe i \textbf{vantaggi di memoria}: la memoria torna da
 $bm$ a tutti i possibili stati (potenzialmente, caso pessimo, esponenziale come BF*) (per mantenere la lista
 dei visitati/esplorati), ma così DF diviene \textbf{completa} in spazi degli stati finiti (tutti 
-i nodi verranno espansi nel caso pessimo).
+i nodi verranno espansi nel caso pessimo).\\
+In ogni caso resta non completa in spazi infiniti. È possibile controllare anche solo i nuovi nodi 
+rispetto al \underline{cammino radice-nodo} corrente senza aggravio di memoria (evitando però così i 
+cicli in spazi finiti ma non i cammini ridondanti).
 
+\subsubsection{DF ricorsiva}
+Ancora più efficiente in occupazione di memoria perché mantiene solo il cammino corrente (solo m nodi nel caso pessimo).
+Realizzata da un algoritmo ricorsivo “con backtracking” che non necessita di tenere in memoria b nodi per ogni livello, ma salva lo stato su uno stack a cui torna in caso di fallimento 
+per fare altri tentativi (generando i nodi fratelli al momento del backtracking).
 \begin{lstlisting}
 	function Ricerca-DF-A (problema)
 		returns soluzione oppure fallimento
@@ -258,8 +330,7 @@ i nodi verranno espansi nel caso pessimo).
 			if risultato != fallimento then return risultato
 		return fallimento
 \end{lstlisting}
-Versione scritta in python:
-\begin{lstlisting}
+\begin{python}
 	def recursive_depth_first_search(problem, node):
 		"""Ricerca in profondita' ricorsiva """
 		# controlla se lo stato del nodo e' uno stato obiettivo
@@ -272,30 +343,78 @@ Versione scritta in python:
 			if result is not None:
 				return result
 		return None #con fallimento
-\end{lstlisting}
+\end{python}
+
+\subsubsection{Ricerca in profonditò limitata}
+Si va in profondità fino ad un certo livello predefinito $l$. È una soluzione definibile
+\textbf{completa} per problemi in cui si conosce un limite superiore per la profondità della soluzione 
+(e.s Route-finding limitata dal numero di città - 1). È però completa se $d < l$ ($d$ profondità nodo obbiettivo
+superficiale). Questa soluzione non è ottimale.\\
+\textbf{Complessità tempo}: $O(b^l)$\\
+\textbf{Complessità spazio}: $O(bl)$\\
 
 \subsection{Approfondimento iterativo (ID)}
 Si prova DF (DL) con limite di profondità 0, poi 1, poi 2, poi 3 ... fino
 a trovare la soluzione.
-% TODO inserire immagine
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{images/approfondimento-iterativo.png}
+\end{figure}
 
-Miglior comprosmesso tra BF e DF.
+\hspace{-15pt}Miglior compromesso tra BF e DF.
 $$BF: b + b^2 + \dots + b^{d-1} + b^d \:\:\: con b=10 e d=5$$
 $$10 + 100 + 1000 + 10.000 + 100.000 = 111.110$$
 ID: i nodi dell'ultimo livello generati una volta, quelli del penultimo 2, quelli
 del terzultimo 3 ... quelli del primo d volte.
 $$ID: (d)b + (d-1)b^2 + \dots + 3b^{d-2} + 2b^{d-1} + 1b^d$$
 $$= 50 + 400 + 3000 + 20.000 + 100.000 = 123.450$$
-\textbf{Complessita tempo}: $O(b^d)$ (se esiste soluzione)
-\textbf{Spazio}: $O(bd)$ (se esiste soluzione) versus $O(b^d)$ della BF.
+\textbf{Complessita tempo}: $O(b^d)$ (se esiste soluzione)\\
+\textbf{Spazio}: $O(bd)$ (se esiste soluzione) versus $O(b^d)$ della BF.\\\\
+Ergo: Vantaggi della BF (completo, ottimale se costo fisso oper. K),
+con tempi analoghi ma costo memoria analogo a quello di DF.
+
+\subsection{Direzione della ricerca}
+Un problema ortogonale alla strateiga è la direzione della ricerca:
+\begin{itemize}
+	\item Ricerca \textbf{in avanti} o \textbf{guidata dai dati}: si esplora lo spazio di ricerca dallo stato iniziale allo stato obiettivo.
+	\item Ricerca \textbf{all'indietro} o \textbf{guidata dall'obbiettivo}: si esplora lo spazio di ricerca a partire da uno stato goal e riconducendosi a sotto-goal fino a trovare uno stato iniziale. 
+\end{itemize}
+A questo punto bisogna capire quale direzione scegliere?\\
+Conviene procedere nella direzione in cui il fattore di diramazione è minore.
+\begin{itemize}
+	\item Si preferisce ricerca all'indietro quando, e.g l'obbiettivo è chiaramente definito (e.g theorem proving) o si possono formulare una seire limitata di ipotesi.
+	\item Si preferisce ricerca in avanti quando e.g gli obbiettivi possibili sono molti (design).
+\end{itemize}
+\subsubsection{Ricerca bidirezioanle}
+Si procede nelle dure direzioni fino ad incontrarsi.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.65\textwidth]{images/ricerca-bidirezionale.png}
+\end{figure}
+
+\hspace{-15pt}\textbf{Complessità tempo}: $O(b^{d/2})$ (assumendo test intersezione in tempo costante, es. hash table).\\
+\textbf{Complessità spazio}: $O(b^{d/2})$ (almeno tutti i nodi una direzione in memoria, es usando BF).
+\begin{note}
+	Non sempre applicabile, es. predecessori non definiti, troppi stati obiettivo, ...
+\end{note}
 
 \subsection{Ridondanze}
 Su spazi di stati a grafo si possono generare piu volte gli stesso nodi 
 (o meglio nodi con stesso stato) nella ricerca, \textbf{anche in assenza di cicli}
-(cammini ridondanti).\\\\
-Se vediamo per esempio il caso di ridondance nelle griglie spesso si vanno a visitare stati
-già visitati questa operazione fa compiere lavoro inutile. Come evitarlo?\\\\
-Ricordare gli stati già visitati occupa spazio (es. lista \textbf{esplorati} in visita a grafo) ma ci consente di evitare di visitarli di nuovo.
+(cammini ridondanti).
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.65\textwidth]{images/ridondanze.png}
+\end{figure}
+
+\hspace{-15pt}Se vediamo per esempio il caso di ridondance nelle griglie spesso si vanno a visitare stati
+già visitati questa operazione fa compiere lavoro inutile. Come evitarlo?
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.65\textwidth]{images/ridondanza-griglia.png}
+\end{figure}
+
+\hspace{-15pt}Ricordare gli stati già visitati occupa spazio (es. lista \textbf{esplorati} in visita a grafo) ma ci consente di evitare di visitarli di nuovo.
 Gli algoritmi che dimenticano la propria storia sono desinati a ripeterlo!
 Abbiamo tre soluzioni, in ordine crescente di costo e di efficacia:
 \begin{itemize}
@@ -333,7 +452,7 @@ Codice di ricerca UC su albero:
 			if problema.TestObiettivo(nodo.Stato) then return Soluzione(nodo)
 			for each azione in problema.Azioni(nodo.Stato) do
 				figlio = Nodo-Figlio(problema, nodo, azione)
-				frontiera = Inserisci(figlio, frontiera) /* in coda con priorita
+				frontiera = Inserisci(figlio, frontiera) /* in coda con priorita */
 	end
 \end{lstlisting}
 Codice di ricerca UC su grafo:
@@ -352,17 +471,52 @@ Codice di ricerca UC su grafo:
 			for each azione in problema.Azioni(nodo.Stato) do
 				figlio = Nodo-Figlio(problema, nodo, azione)
 				if figlio.Stato non e in esplorati e non e in frontiera then
-					frontiera = Inserisci(figlio, frontiera) /* in coda con priorita
+					frontiera = Inserisci(figlio, frontiera) /* in coda con priorita */
 				else if figlio.Stato e in frontiera con Costo-cammino piu alto then // costo cammino piu alto g
 					sostituisci quel nodo frontiera con figlio
 \end{lstlisting}
+Codice in python della ricerca:
+\begin{python}
+	def uniform_cost_search(problem): """Ricerca-grafo UC"""
+		explored = [] # insieme (implementato come una lista) degli stati gia' visitati
+		node = Node(problem.initial_state) # il costo del cammino e' inizializzato nel costruttore del nodo
+		frontier = PriorityQueue(f = lambda x:x.path_cost) # la frontiera e' una coda coda con priorita'
+		#lambda serve a definire una funzione anonima a runtime
+		frontier.insert(node)
+		while not frontier.isempty():
+			# seleziona il nodo node = frontier.pop() # estrae il nodo con costo minore, per l'espansione
+			if problem.goal_test(node.state):
+				return node.solution(explored_set = explored)
+			else: # se non lo e' inserisci lo stato nell'insieme degli esplorati
+			explored.append(node.state)
+				for action in problem.actions(node.state):
+			child_node = node.child_node(problem, action)
+			if (child_node.state not in explored) and (not frontier.contains_state(child_node.state)):
+				frontier.insert(child_node)
+			elif frontier.contains_state(child_node.state) and 
+				 (frontier.get_node(frontier.index_state(child_node.state)).path_cost > child_node.path_cost):
+				frontier.remove(frontier.index_state(child_node.state))
+				frontier.insert(child_node)
+		return None # in questo caso ritorna con fallimento
+\end{python}
 
 \subsubsection{Analisi}
-Ottimalità e completezza garantite purchè il costo degli archi sia maggiore di $\epsilon > 0$.
+\textbf{Ottimalità} e \textbf{completezza} garantite purchè il costo degli archi sia maggiore di $\epsilon > 0$.
 Appunto $C^*$ come il costo della soluzione ottima, $\lfloor C^*/\epsilon \rfloor$ è il numero 
 di mosse nel caso peggiore, arrotondato per difetto (e.g. attratto ad andare versio tante bassa)\\\\
 \textbf{Complessità}: $O(b^{1+\lfloor C^*/\epsilon}\rfloor)$
 \begin{note}
 	Quando ogni azione ha lo stesso costo UC somiglia a BF ma complessità $O(b^{1+d})$
 \end{note}
-Causa esame ed arresto posticipato, solo dopo aver espando frontiera, oltre la profondità del goal.
+\hspace{-15pt}Causa esame ed arresto posticipato, solo dopo aver espando frontiera, oltre la profondità del goal.
+
+\subsection{Confronto strategie}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{images/contronto-delle-strategie.png}
+\end{figure}
+
+\hspace{-15pt}(*) se gli operatori/archi hanno tutti lo stesso costo.\\
+$(^)$ per costi degli archi $\geq \epsilon > 0$.\\
+(+)per problemi per cui si conosce un limite alla profondità della soluzione (se $l>d$).\\
+(£)usando UC (o BF).

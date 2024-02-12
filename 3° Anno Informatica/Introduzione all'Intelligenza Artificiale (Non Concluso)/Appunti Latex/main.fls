@@ -420,6 +420,38 @@ INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libr
 INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/pythonhighlight/pythonhighlight.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/pythonhighlight/pythonhighlight.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/pythonhighlight/pythonhighlight.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/pythonhighlight/pythonhighlight.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/pythonhighlight/pythonhighlight.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/pythonhighlight/pythonhighlight.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/pythonhighlight/pythonhighlight.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/pythonhighlight/pythonhighlight.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/pythonhighlight/pythonhighlight.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/pythonhighlight/pythonhighlight.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/pythonhighlight/pythonhighlight.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/xcolor/xcolor.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/wrapfig/wrapfig.sty
@@ -805,25 +837,6 @@ INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/graphics/keyval.sty
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/graphics/color.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -1073,6 +1086,58 @@ INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introd
 INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/bucarest_tree.png
 INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/bucarest_tree.png
 INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/bucarest_tree.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/generazione-albero-ricerca.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/generazione-albero-ricerca.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/generazione-albero-ricerca.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/generazione-albero-ricerca.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/generazione-albero-ricerca.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ricerca-ampiezza.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ricerca-ampiezza.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ricerca-ampiezza.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ricerca-ampiezza.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ricerca-ampiezza.png
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsltt10.tfm
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/esempio-ricerca-ampiezza.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/esempio-ricerca-ampiezza.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/esempio-ricerca-ampiezza.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/esempio-ricerca-ampiezza.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/esempio-ricerca-ampiezza.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ricerca-profondità.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ricerca-profondità.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ricerca-profondità.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ricerca-profondità.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ricerca-profondità.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/approfondimento-iterativo.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/approfondimento-iterativo.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/approfondimento-iterativo.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/approfondimento-iterativo.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/approfondimento-iterativo.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ricerca-bidirezionale.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ricerca-bidirezionale.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ricerca-bidirezionale.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ricerca-bidirezionale.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ricerca-bidirezionale.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ridondanze.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ridondanze.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ridondanze.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ridondanze.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ridondanze.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ridondanza-griglia.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ridondanza-griglia.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ridondanza-griglia.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ridondanza-griglia.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/ridondanza-griglia.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/contronto-delle-strategie.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/contronto-delle-strategie.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/contronto-delle-strategie.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/contronto-delle-strategie.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/images/contronto-delle-strategie.png
 INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/main.aux
 INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/main.out
 INPUT /Users/matteogiu/Desktop/Università/Materiale/3° Anno Informatica/Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/main.out
@@ -1088,9 +1153,11 @@ INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pf
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsltt10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb
