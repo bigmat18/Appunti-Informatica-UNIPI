@@ -50,19 +50,20 @@ Considerando i dati precedenti:
 \end{enumerate}
 
 \subsubsection{Salute}
-La produzione di libri ed e-book reader produce ossidi di azoto e zolfo %TODO FInisci
+La produzione di libri ed e-book reader produce ossidi di azoto e zolfo che entrano in profondità nei polmoni, peggiorando l'asma, causando la tosse cronica e aumentando il rischio di morte prematura. Un e-book reader produce $70$ volte questi prodotti rispetto che ad un libro cartaceo.
 
 \subsubsection{Dismissione}
-\begin{table}
+\begin{table}[h]
 	\begin{tabular}{|c|c|}
 		\hline
 		Libro & E-book reader \\
 		\hline
-		La \textbf{decomposizione} può generare il doppio delle emissioni e degli impatti tossici sulle falde acquifere rispetto alla sua intera produzione & In caso di smaltimento illegale in uno dei paesi in via di sviluppo, i lavoratori (spesso bambini) saranno esposti all'impatto tossico di alcune sostanza smantellate. \\
-		Può essere prestato, regalato, donato ad una biblioteca oppure correttamente riciclato. & Se correttamente riciclato, molti materiali si potranno recuperare o smaltire correttamente.
+		\multirowcell{2}{La \textbf{decomposizione} può generare il doppio \\delle emissioni e degli impatti tossici sulle \\ falde acquifere rispetto alla sua intera produzione} & \multirowcell{2}{In caso di \textbf{smaltimento illegale} in uno \\ dei paesi in via di sviluppo, i lavoratori\\ (spesso bambini) saranno esposti all'impatto\\ tossico di alcune sostanze smantellate. }\\
+		\hline
+		\multirowcell{2}{Può essere prestato, regalato, donato \\ad una biblioteca oppure correttamente riciclato. }& \multirowcell{2}{Se correttamente riciclato, molti materiali \\si potranno recuperare o smaltire correttamente.}\\
+		\hline
 	\end{tabular}
 \end{table}
-%TODO Formatta decentemente
 
 \subsection{Blockchain}
 Bitcoin nasce nel 2008 come prima tecnologia basata sulla blockchain.
@@ -103,6 +104,10 @@ Possiamo suddividere le categorie dei minatori in:
 	\item \textbf{Medi}, il $19\%$ del totale, con un consumo tra $0.1MW$ e $1MW$ per $9PH/s$
 	\item \textbf{Grandi}, il $66\%$ del totale, con un consumo maggiore di $1MW$ per oltre $9PH/s$
 \end{itemize}
+I minatori si dividono in \textbf{pool} dove condividono il potere di calcolo:
+\begin{center}
+	\includegraphics[scale=0.3]{bitcoin_pools.png}
+\end{center}
 
 \subsubsection{Analisi}
 Consideriamo che al 2019 il consumo dell'hardware più efficiente era di $1.4 \cdot 10^{-5} Wh/GH$ e che per raffreddarlo veniva utilizzato il $5\%$ del consumo. Il numero di hash eseguiti in un'ora a novembre del 2019 era di $3.56 \cdot 10^{11} TH$. La localizzazione geografica dei minatori era:
@@ -132,9 +137,13 @@ Considerando queste informazioni
 \end{enumerate}
 
 \subsubsection{Oggi}
-Nella primavera del 2021 alcuni stati come la Cina proibiscono il mining di Bitcoin e questo ha aumentato l'intensità del mining del $43\%$ rispetto al 2019.
-%TODO Inserisci grafici
-%TODO Inserisci dati sulla carbon footprint	
+Nella primavera del 2021 alcuni stati come la Cina proibiscono il mining di Bitcoin e questo ha aumentato l'intensità del mining del $43\%$ rispetto al 2019. Si noti che al momento la Cabon Footprint del Bitcoin è di $77.42$ Mega Tonnellate di $CO_2$ ogni anno. In pratica una transazione con Bitcoin equivale a $1,000,000$ transazioni VISA.
+\begin{center}
+	\includegraphics[scale=0.5]{bitcoin-energy-consumpti.png}
+\end{center}
+\begin{center}
+	\includegraphics[scale=0.5]{bitcoin-energy-consumption_country.png}
+\end{center}
 
 Ad oggi esiste il \textbf{Crypto Climate Accord} che ha come obiettivo quello di contribuire a raggiungere gli Accordi di Parigi tramite l'utilizzo di energie rinnovabili entro il 2030.
 
