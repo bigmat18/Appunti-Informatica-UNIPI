@@ -229,7 +229,7 @@ Data una capacità $C$, dobbiamo decidere la dimensione del blocco $b$, il numer
 Le tipologie di cache miss sono le seguenti:
 \begin{itemize}
 	\item \textbf{Compulsory miss}: causato dal primo acceso al blocco che non è mai stato in cache.
-	\item \textbf{Capacity miss}: causato dalla cache che non contiene tutti i blocchi necessari.
+	\item \textbf{Capacity miss}: causato dalla cache che non contiene tutti i blocchi necessari al programma per essere eseguito (working set).
 	\item \textbf{Conflict miss} solo per la mappatura diretta e per i set associativi
 \end{itemize}
 A questo punto, visti i vari strumenti della cache e le tipologie di miss possiamo vedere come ridurre i cache miss tramite l'utilizzo di alcune tecniche:
@@ -284,33 +284,51 @@ Come si vede da questo esempio, migliorare la velocità del processore o la sua 
 \subsubsection{Multi-level cache}
 Per ovviare a questo problema vengono utilizzate cache su più livelli, dove quelle dei livelli inferiori vengono interrogate in caso di cache miss ed evitano quindi un accesso alla memoria principale (che si rende necessario solo se non si trova il dato neanche sull'ultimo livello).
 \begin{example}[Multi-level cache]
-	%TODO Da aggiungere
+	Assumiamo i seguenti valori di service time
+	\begin{equation*}
+		t_M = 50ns \quad t_{L1}=1ns \quad t_{L2}=6ns \quad t_{L3}=10ns
+	\end{equation*}
+	e con dei miss rate rispettivamente del $10\%$, $1.5\%$ e $0.4\%$ rispettivamente per L1, L2 e L3. I valori dell'AMAT saranno:
+	\begin{itemize}
+		\item Senza cache: $AMAT = 50ns$
+		\item L1: $AMAT=1+0.1*50=5ns$
+		\item L1 e L2: $AMAT=1+0.1 \cdot (6+0.15\cdot50)=1.675ns$
+		\item L1, L2 e L3: $AMAT=1+0.1\cdot (6+0.015 \cdot (10+0.004\cdot50))=1.6153ns$
+	\end{itemize}
 \end{example}
+In un processore che sfrutta una cache su più livelli, il $CPI_{Stall}$ si calcola come segue:
+\begin{equation}
+	\begin{split}
+		CPI_{Stall}=MissRate_{L1} \cdot MissPenalty_{L1} + GlobalMissRate_{L2} \cdot MissPenalty_{L2} \\
+		+ GlobalMissRate_{L3} \cdot MissPenalty_{L3} + \ldots 
+	\end{split}
+\end{equation}
+dove
+\begin{equation*}
+	\begin{split}
+		&GlobalMissRate_{LN}=MissRate_{L1} \cdot MissRate_{L2} \cdot \ldots \cdot MissRate_{LN}\\
+		&MissPenalty_{LN} = HitTime_{LN+1}
+	\end{split}
+\end{equation*}
 
-\begin{example}
-	Considera una piccola cache con $4$ blocchi, $b=1$. Trova il numero di miss per una cache direct-ampped per la seguente sequenza ordinata di indirizzi di blocco: 0, 8, 0, 6, 8.
-	\begin{table}[h]
-		\centering
-		\begin{tabular}{|c|c|}
-			\hline
-			Block address & Cache block \\
-			\hline
-			0 & $0 \% 4=0$ \\
-			6 & $6\% 4 = 2$\\
-			8 & $8\%4=0$\\
-			\hline
-		\end{tabular}
-	\end{table}
-	\begin{table}[h]
-		\centering
-		\begin{tabular}{|c|c|c|c|c|c|}
-			\hline
-			\multirowcell{2}{Address} & \multirowcell{2}{Hit or miss} & \multicolumn{4}{c}{Contents after reference} \\
-			\hline
-			%TODO Sistema e aggiungi gli altri esempi
-			\hline
-		\end{tabular}
-	\end{table}
+\begin{example}[Multi-level cache CPI]
+	Supponiamo di avere un sistema con una cache a 2 livelli con:
+	\begin{equation*}
+		MissRate_{L1}=2\% \quad MissRate_{L2}=20\%
+	\end{equation*}
+	e con un \emph{access time} per L2 di 20 cicli e di 200 cicli per la memoria principale. Calcoliamo il $CPI_{Stall}$ come segue:
+	\begin{equation*}
+		GlobalMissRate_{L2}=MissRate_{L1} \cdot MissRate_{L2} = 0.02 \cdot 0.2 = 0.04 = 4\%
+	\end{equation*}
+	Un miss nella cache L1 può essere soddisfatto o dalla cache L2 o dalla memoria principale. La miss penalty è 20 se abbiamo un hit in L2 o 200 nell'altro caso. Quindi:
+	\begin{equation*}
+		\begin{split}
+			& MissPenalty = 20 + 0.2 \cdot 200 = 60cycles\\
+			& CPI_{Stall} = MissRate_{L1} \cdot MissPenalty = 0.02 \cdot 24 = 1.2cycles \\
+			& \textbf{oppure} \\
+			& CPI_{Stall} = 0.02 \cdot 20 + (0.02 \cdot 0.2) \cdot 200 = 1.2cycles
+		\end{split}
+	\end{equation*}
 \end{example}
 
 \subsection{Gestione delle scritture}
@@ -356,17 +374,6 @@ Poiché la scrittura nella memoria off-chip è costosa, gli archivi di memoria s
 L'esecuzione continua immediatamente dopo la scrittura dei dati nella cache e nel buffer di scrittura, i salvataggi nella nella memoria principale vengono eseguiti in parallelo con il calcolo della CPU. 
 La CPU va in stallo solo se il buffer di scrittura è pieno, quindi la larghezza di banda richiesta dalla memoria principale è un fattore critico, in particolare per il modello di cache Writhe-Through.
 
-\subsection{Cache replacement}
-In una direct mapped cache, il blocco richiesto può andare esattamente in una posizione, quindi non abbiamo scelta: 
-se il blocco da sostituire è stato modificato e la politica di scrittura è Write-Back, dobbiamo aggiornare la memoria di livello inferiore. 
-Con la cache associativa, possiamo scegliere dove posizionare il blocco richiesto: 
-\begin{itemize}
-	\item \textbf{Fully associative} cache, tutti i blocchi sono candidati per la sostituzione.
-	\item \textbf{N-way set-associative} cache, dobbiamo scegliere tra gli Nblocchi nel set selezionato.
-\end{itemize}
-
-%TODO Ti sei perso
-
 \subsubsection{Cache replacement policy}
 Per decidere quali blocchi rimpiazzare dobbiamo distinguere per i tipi di cache:
 \begin{itemize}
@@ -377,9 +384,90 @@ Per decidere quali blocchi rimpiazzare dobbiamo distinguere per i tipi di cache:
 		\item \emph{N-way set-associative}: dobbiamo scegliere tra gli $N$ blocchi nel set selezionato
 	\end{itemize}
 \end{itemize}
-Lo schema più utilizzato è \textbf{Least Recent Used (LRU)}. Sfrutta la località temporale: il blocco sostituito è quello che è rimasto inutilizzato per il tempo più lungo. 
+Lo schema più utilizzato è \textbf{Least Recent Used (LRU)} \label{lru}. Sfrutta la località temporale: il blocco sostituito è quello che è rimasto inutilizzato per il tempo più lungo. 
 Per una cache set-associativa a 2 vie, può essere implementato con 1 bit (usare bit --U), per un 4 vie è ancora fattibile con 2 bit, per più di 4 vie diventa abbastanza complicato (pseudo-LRU).
 Per le cache altamente associative, una politica \textbf{Random} offre all'incirca le stesse prestazioni di LRU.
+
+\begin{example}[Direct mapped]
+	Considera una piccola cache con $4$ blocchi, $b=1$. Trova il numero di miss per una cache \textbf{direct-mapped} per la seguente sequenza ordinata di indirizzi di blocco: 0, 8, 0, 6, 8.
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|c|c|}
+			\hline
+			Block address & Cache block \\
+			\hline
+			0 & $0 \% 4=0$ \\
+			6 & $6\% 4 = 2$\\
+			8 & $8\%4=0$\\
+			\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			\multirow{2}{*}{Address} & \multirow{2}{*}{Hit or miss} & \multicolumn{4}{c|}{Contents after reference} \\
+			& & 0 & 1 & 2 & 3 \\
+			\hline
+			0 & miss & Memory[0] & & &\\
+			8 & miss & Memory[8] & & &\\
+			0 & miss & Memory[0] & & &\\
+			6 & miss & Memory[0] & &Memory[6] &\\
+			8 & miss & Memory[8] & &Memory[6] &\\
+			\hline
+		\end{tabular}
+	\end{table}
+\end{example}
+
+\begin{example}[2-way set-associative]
+	Considera una piccola cache con $4$ blocchi, $b=1$. Trova il numero di miss per una cache 2-way \textbf{set-associative} per la seguente sequenza ordinata di indirizzi di blocco: 0, 8, 0, 6, 8 assumendo la \textbf{\hyperref[lru]{LRU}} replacement policy.
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|c|c|}
+			\hline
+			Block address & Cache block \\
+			\hline
+			0 & $0 \% 2=0$ \\
+			6 & $6\% 2= 2$\\
+			8 & $8\%2=0$\\
+			\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[!h]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			\multirow{2}{*}{Address} & \multirow{2}{*}{Hit or miss} & \multicolumn{4}{c|}{Contents after reference} \\
+			& & 0 & 1 & 2 & 3 \\
+			\hline
+			0 & miss & Memory[0] & & &\\
+			8 & miss & Memory[0] & Memory[8] & &\\
+			0 & hit & Memory[0] & Memory[8]& &\\
+			6 & miss & Memory[0] & Memory[6]&&\\
+			8 & miss & Memory[8] & Memory[6]& &\\
+			\hline
+		\end{tabular}
+	\end{table}
+\end{example}
+
+\begin{example}[Fully-associative]
+	Considera una piccola cache con $4$ blocchi, $b=1$. Trova il numero di miss per una cache \textbf{fully-associative} per la seguente sequenza ordinata di indirizzi di blocco: 0, 8, 0, 6, 8.
+	\begin{table}[!h]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			\multirow{2}{*}{Address} & \multirow{2}{*}{Hit or miss} & \multicolumn{4}{c|}{Contents after reference} \\
+			& & 0 & 1 & 2 & 3 \\
+			\hline
+			0 & miss & Memory[0] & & &\\
+			8 & miss & Memory[0] & Memory[8] & &\\
+			0 & hit & Memory[0] & Memory[8]& &\\
+			6 & miss & Memory[0] & Memory[8]&Memory[6]&\\
+			8 & hit & Memory[0] & Memory[8]&Memory[6] &\\
+			\hline
+		\end{tabular}
+	\end{table}
+\end{example}
 
 \subsection{Designing the Memory System}
 La miss penalty può essere ridotta aumentando la larghezza di banda del bus tra DRAM e cache. Ci sono tre possibili organizzazioni:
