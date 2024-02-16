@@ -432,6 +432,32 @@ memoria torna da bm a tutti gli stati, ma diviene una ricerca
 completa (per spazi finiti). Ma in molti casi gli stati crescono exp.
 (gioco otto, scacchi, \dots)
 
+\begin{note}
+	Ricorda che in una ricerca su un grafo:
+	\begin{itemize}
+		\item Si mantiene una lista dei nodi (stati) visitati/esplorati (anche detta \textbf{lista chiusa}) \footnote{Ed. IV AIMA: introduce il termine di insieme di stati “raggiunti”
+		che include sia (gli stati del)la frontiera che la lista degli esplorati}
+		\item Prima di espandere un nodo si controlla se lo stato era stato già incontrato prima o è gia nella fronitera.
+		\item Se questo succede, il nodo appena trovato non viene espanso.
+		\item Ottimale solo se abbiamo la garanzia che il costo del nuovo cammino sia maggiore o uguale (cioò che il nuovo cammino non conviene)
+	\end{itemize}
+\end{note}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.85\textwidth]{images/ricerca-grafo-romania.png}
+\end{figure}
+\hspace{-15pt}La ricerca su grafo esplora ino stato al piu una volta. Una proprietà è che:
+la \textbf{frontiera} separa i nodi \underline{esplorati} da quelli \underline{non-esplorati} (ogni cammino dallo
+stato iniziale a inesplorati deve attraversare uno stato della frontiera).\\\\
+Generalizzazione della ricerca in ampiezza (costi diversi tra passi): si sceglie il
+nodo di costo minore sulla frontiera (si intende il costo g(n) del cammino), si
+espande sui contorni di \textbf{uguale (o meglio uniforme) costo (e.g. in km)} invece
+che sui contorni di uguale profondità (BF).
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{images/ricerca-costo-uniforme.png}
+\end{figure}
+
 \subsection{Ricerca di costo uniforme (UC)}
 Generalizzazione della ricerca in ampiezza (costi diversi tra passi): si sceglie il
 nodo di costo minore sulla frontiera (si intende il costo $g(n)$ del cammino), si espande sui 
@@ -517,6 +543,6 @@ di mosse nel caso peggiore, arrotondato per difetto (e.g. attratto ad andare ver
 \end{figure}
 
 \hspace{-15pt}(*) se gli operatori/archi hanno tutti lo stesso costo.\\
-$(^)$ per costi degli archi $\geq \epsilon > 0$.\\
+$(\wedge)$ per costi degli archi $\geq \epsilon \textgreater 0$.\\
 (+)per problemi per cui si conosce un limite alla profondità della soluzione (se $l>d$).\\
 (£)usando UC (o BF).
