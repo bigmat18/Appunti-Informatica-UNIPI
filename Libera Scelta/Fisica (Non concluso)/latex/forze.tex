@@ -116,4 +116,80 @@ $$\vec{r}(t) = r(t)\hat{r}\hspace{15pt}\hat{r} = \cos(\Theta(t))\hat{x} + \sin(\
 $$\ddot{\vec{r}} (t) = [\ddot{r(t)} - r(t)\dot{\Theta}(t)^2]\hat{r} + [r(t)\ddot{\Theta}(t) + 2\dot{r}\dot{\Theta}(t)]\hat{\Theta}$$
 Dalla legge oraria ho: $\dot(t) = 0, \ddot{r}(t) = 0, \dot{\Theta} = \Omega, \ddot{\Theta}(t) = 0 \Rightarrow$ in questo caso $\ddot{\vec{r}}(t) = -R\Omega^2\hat{r}$.\\
 La risultate $\vec{F}$ delle forze deve essere tale che $m\ddot{\vec{r}}(t) = \vec{F} \Rightarrow -mR\Omega^2\hat{r} = \vec{F} \Rightarrow \vec{F} = -mR\Omega\vec{r}$.\\
-La forza è costante e sempre diretta verso lo stesso punto (\textbf{forza centrale} o  \textbf{forza centripeda}). Ottengo $\vec{F}$ solo per questa legge oraria.
+La forza è costante e sempre diretta verso lo stesso punto (\textbf{forza centrale} o  \textbf{forza centripeda}). Ottengo $\vec{F}$ solo per questa legge oraria.\\\\
+Integrazione numeria delle equazioni del moto.
+
+\subsection{Discretizzare la varibile temporale}
+Calcolo al "primo ordine" ("metodo di eulero"), ci sono anche molti altri agloritmi come per esempio Runge-Kutta, la scelta
+dipende dal problema.
+$$t \to t_0, t_1, \dots, t_n \hspace{15pt} t_{i+1} - t_i = \Delta t \hspace{15pt}\vec{r}(t_i) = \vec{r}_i$$
+$$\frac{d\vec{r}(t)}{dt}|_{t=t_i} \simeq \frac{\vec{r}_{i+1} - \vec{r}_i}{\Delta t} \hspace{20pt}\frac{d^2\vec{r}(t)}{dt}|_{t = t_i} \simeq \frac{\frac{\vec{r}_{i+1} - \vec{r}_i}{\delta t} - \frac{\vec{r}_i - \vec{r}_{i-1}}{\Delta t}}{\Delta t} = \frac{\vec{r}_{i+1} - 2 \vec{r}_i - \vec{r}_{i-1}}{\Delta t^2}$$
+L'equazione di Newton diventa:
+$$\vec{v}_i = \vec{v}_{i-1} + \Delta t \vec{F}_{i-1} / n \hspace{20pt}\vec{r}_i = \vec{r}_{i-1} + \Delta t \vec{v}_i$$
+Servono 2 condizioni al bordo $\vec{F}_i$ può dipendere da $t_i, \vec{r}_i, \vec{v}_i$
+
+\newpage
+\section{Reazioni vincolari}
+Estendiamo il modello del "punto materiale" all'interazione di corpi estesi in moto tralatorio
+$\Delta \vec{r}_i = \Delta \vec{r}_2$ per ogni punto posso studiare una qualsiasi $\vec{r}(t)$
+\begin{itemize}
+    \item La \textbf{traslazione} può avvenire su una traiettoria curva, parleremo di \textbf{rotazione} più avanti.
+    \item Consideriamo il \textbf{contatto} tra punti materiali, corpi estesi, superfici.
+\end{itemize}
+Le forze di contatto ("reazioni vincolari") non sempre hanno una espressione esplicita e vengono determinate imponendo dei vincoli alle 
+equazioni del moto, ad esempio che un punto segua una data traiettora.
+\begin{example}
+    $x(t) \equiv x_0$ %Aggiungi immagine
+\end{example}
+\hspace{-15pt}La "terza legge di Newton" ("azione e reazione") stabilisce che $\vec{F}_{B\to A} = -\vec{G}_{A \to B}$
+\begin{example}
+    Massa su una bilancia in presenza di forza peso.
+    $$m\ddot{\vec{r}}(t) = -mg\hat{z} + \vec{F}$$
+    In questo caso il \textbf{Vincolo} è: $\dot{\vec{r}}(t) = 0 \Rightarrow \vec{F} = +mg\hat{z}$. La bilancia misura $||-\vec{F}|| = mg$ (che noi chiamiamo comunemente peso).
+\end{example}
+\begin{example}
+    Massa su bilancia in ascesore accelerato.
+    $$m\ddot{\vec{r}}(t) = -mg\hat{z} + \vec{F}$$
+    Ciò che cambia ora è il suo \textbf{Vincolo} visto che si sta accelerando vesto l'alto: $\ddot{\vec{r}}(t) \equiv a \cdot \hat{z} \Rightarrow \vec{F}= m(a+g)\hat{z}$. La bilancia misura $||-\vec{F}|| = m(a+g)$.
+    La bilancia allora misura una forza peso maggiore in un ascensore (stiamo usando l'equazione "al contrario").
+\end{example}
+\begin{note}
+    Un punto materiale si "solleva", si "distacca" da una superfice quando la reazione vincolare va a zero.
+\end{note}
+\hspace{-15pt}Scomponiamo la reazione vincolare nella direzione
+\begin{itemize}
+    \item ortogonale: "reazione normale" $\vec{N}$".
+    \item parallelo: "forza di \textbf{attrito}" $\vec{F}_a$
+\end{itemize}
+ad una superficie. Con una superfisce \textbf{liscia} abbiamo $\vec{F}_a = 0$, non c'è
+movimento relativo al punto di contatto. \textbf{Attrito statico}, $\vec{F}_a$ da determinare con vincoli. Condizione: $||\vec{F}_a|| \leq \mu_s ||\vec{N}||$.\\
+Differenza di velocità $\vec{v}$ al punto di contatto. \textbf{Attrito dinamico}, $\vec{F}_a = -\mu_a ||\vec{N}||\frac{\vec{v}}{||\vec{v}||}$, $\mu_s, \mu_d$: coeff. di attrito, numeri primi.
+$-\frac{\vec{v}}{||\vec{v}||}$ diretto in versione opposta alla velocità.
+
+\begin{example}
+    Massa su un piano inclinato liscio e fisso.
+    $$\hat{x}' = \cos\alpha \cdot \hat{x} - \sin\alpha \cdot \hat{z} \hspace{20pt}\hat{z}' = \sin\alpha \cdot \hat{x} + \cos\alpha \cdot \hat{z} \hspace{15pt} m\ddot{\vec{r}}(t) = -mg\hat{z} + \vec{N}$$
+    Proietto lungo $\hat{z}'$: \hspace{15pt} $m\ddot{z}'(t) = -mg\cos\alpha + N$\\
+    Proietto lungo $\hat{x}'$: \hspace{15pt} $m\ddot{x}'(t) = +mg\sin\alpha$\\
+    Vincolo: $z'(t) = \cos t \hspace{10pt} \ddot{z}'(t) = 0 \Rightarrow N = mg\cos\alpha \hspace{10pt} \ddot{x}'(t) = g \cdot \sin\alpha$\\
+    Visto che $\sin\alpha < 1$ quindi l'accelerazione lungo il piano è $< g$.
+\end{example}
+
+\begin{example}
+    Massa ferma su piano inclinato scabro.
+    $$m\ddot{z}'(t) = -mg\cos\alpha + N \hspace{20pt} m\ddot{x}'(t) = +mg\sin\alpha - F_{a}$$
+    La scelta fra $-F_{a}$ o $+F_a$ è indifferente, l'unica cosa che cambia è nel risultato poi sarà diverso il segno di $F_a$, la coorenza da tenere è riguardante il disegno, se si disegna
+    in una determinata direzione, si cerca di mettere il segno uguale.\\
+    Vincolo: $z'(t) = \cos t \Rightarrow \ddot{z}'(t) = 0 \Rightarrow N = mg\cos\alpha$.\\
+    Vincolo: $x'(t) = \cos t \Rightarrow \ddot{x}'(t) = 0 \Rightarrow F_a = mg\sin\alpha$\\
+    Qual'è il massimo valore di $\alpha$?\\
+    $||\vec{F}_a|| \leq \mu_s ||\vec{N}|| \Rightarrow mg\sin\alpha \leq \mu_s \cdot mg \cos\alpha \hspace{15pt} tg\alpha \leq \mu_s \hspace{10pt} \alpha \leq \arctan(\mu_s)$
+\end{example}
+
+\begin{example}
+    Massa scviola su piano inclinato scabro.
+    $$m\ddot{z}'(t) = -mg\cos\alpha + N \hspace{20pt} m\ddot{x}'(t) = +mg\sin\alpha - F_{a}$$
+    Vincolo: $z'(t) = \cos t \Rightarrow \ddot{z}'(t) = 0 \Rightarrow N = mg\cos\alpha$\\
+    Forza di attrito dinamico: $F_a = \mu_{\alpha}N \Rightarrow m\ddot{x}'(t) = mg\sin\alpha - \mu_{\alpha} \cdot mg\cos\alpha$\\
+    $\ddot{x}'(t) = g(\sin g - \mu_{\alpha} \cdot \cos \alpha)$. Accelerazione costante, minore che senza attrito.
+\end{example}
