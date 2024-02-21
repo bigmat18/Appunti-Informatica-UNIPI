@@ -1,7 +1,8 @@
+% !TeX spellcheck = it_IT
 \newpage
 \section{Input output}
 Quando andiamo a parlare dei sistemi di input output le cose principale da considerare sono i 
-disponsitivi di I/O i device controller, i buses, la gestione dell'I/O ed i device drivers.
+dispositivi di I/O i device controller, i buses, la gestione dell'I/O ed i device drivers.
 
 \begin{figure}[!h]
     \centering
@@ -20,7 +21,7 @@ Consideriamo copi che l'aumento di velocià uguale a: \[\frac{T_{exe} \text{befo
 Proposto da Gene Amdahl nel 1967. Si occupa della potenziale velocità massima raggiungibile da un programma parallelo quando si aumenta il numero di processori da 1 a N.
 Può essere applicato a qualsiasi processo di ottimizzazione. 
 Si consideri un programma in cui solo la frazione f può essere ottimizzata (ad esempio, parallelizzata utilizzando N processori), mentre la frazione (1-f) rimane inalterata (ad esempio, è intrinsecamente sequenziale).
-\[\text{Speedup} = \frac{\text{Tempo di esecuzione proma del miglioramento}}{\text{Tempo di esecuzione dopo il migliormaneto}} = \frac{T(1- f) + Tf}{T(1 - f) + \frac{Tf}{N}} = \frac{1}{(1 - f) + \frac{f}{N}}\]
+\[\text{Speedup} = \frac{\text{Tempo di esecuzione prima del miglioramento}}{\text{Tempo di esecuzione dopo il miglioramento}} = \frac{T(1- f) + Tf}{T(1 - f) + \frac{Tf}{N}} = \frac{1}{(1 - f) + \frac{f}{N}}\]
 
 \begin{observation}
     L'accelerazione è vincolata dalla frazione sequenziale (1-f), cioè dalla parte del processo che non posso (o non sono in grado) di valorizzare!
@@ -71,7 +72,7 @@ utilizzato anche per indicare una raccolta condivisa di linee con più dispositi
 \\\\Un bus è un mezzo di trasmissione condiviso, solo un dispositivo alla volta può trasmettere con successo. Il bus di sistema collega i principali componenti (processore, memoria, bus I/O), centinaia di linee separate, linee classificate in tre gruppi: dati, indirizzo, controllo.
 \newpage
 
-\hspace{-15pt}Alcuni tipi di bus sono:
+\noindent Alcuni tipi di bus sono:
 \begin{itemize}
     \item \textbf{System bus} Collega processore e memoria, I/O interfacciato con adattatori: breve, pochi tocchi e quindi più veloce e larghezza di banda elevata, inoltre non è standard (ovvero specifico del sistema).
     \item \textbf{I/O bus} Connette dispositivi I/O, nessuna connessione diretta con processore e memoria: più tempo, più tocchi è uguale a più lentezza e larghezza di banda inferiore. E' uno standard di settore (ad es. ATA/SCSI).
@@ -79,88 +80,69 @@ utilizzato anche per indicare una raccolta condivisa di linee con più dispositi
 \end{itemize}
 
 \subsubsection{Bus design}
-Il design di un bus si basa su soddisfare gli obbiettivi di avere un alta performance, standardizzazione e bassi costi. Per esempio 
+Il design di un bus si basa sul principio di soddisfare gli obbiettivi di avere un alta \textbf{performance}, \textbf{standardizzazione} e bassi costi. Per esempio 
 il bus di sistema enfatizza le prestazioni, l'I/O e i bus backplain enfatizzano i costi e la standardizzazione.\\
-Uno dei problemi principali di progettazioni da affrontare è il seguente: 
+I punti cruciali nel design di un bus sono:
 \begin{itemize}
-    \item I cavi sono condivisi o separati? La risposta è che i bus più ampi (ovvero, una maggiore larghezza di banda) sono più costosi e più suscettibili allo skew.
-    \item Come viene acquisito e rilasciato il controllo del bus? La riposta è tramite due metodologie \textbf{Atomic transactions} che permette una bassa utilizzazione ed una bassa complessita, e le \textbf{Split-transactions}
-    dove le richieste/risposte possono essere intervallate; ciò significa un utilizzo più elevato ma un design più complesso (ad es. ID per identificare richieste diverse).
-    \item Il bus ha è cloccato (ha un tempo di clock)? Per rispondere al problema del clock bisogna introdurre due opzioni possibili.
+    \item I cavi sono \textbf{condivisi} o separati? I bus più ampi (maggiore larghezza di banda) sono più costosi e più suscettibili allo \emph{skew}.
+    \item Come viene acquisito e rilasciato il \textbf{controllo} del bus? Tramite due metodologie:
     \begin{itemize}
-        \item \underline{\textbf{Sincrono}}. Tutti i dispositivi collegati al bus condividono lo stesso bus clock. Gli eventi si verificano all'estremità del segnale di clock. Un protocollo possibile è che al ciclo \(X\) l'unità di I/O scrive una richiesta READ sul bus; al ciclo \(X + \Delta\) l'unità può leggere i dati dal bus.
-        \(\Delta\) è il tempo massimo per scrivere i dati sul bus da parte di un'unità collegata.\\
-        Potenziale abbiamo il problema di skew dell'orologio e questa soluzione è limitata a bus brevi (ad esempio, bus di sistema).
-        \item \underline{\textbf{Asincrono}}. Il bus non ha il clock. Nessun disallineamento dell'orologio, si occupa di dispositivi con velocità diverse: può essere più lungo, quindi più lento. \\
-        Richiede protocolli di handshaking. Inoltre il protocollo possibilo funzione nel seguente modo (3 linee di controllo, 1 linea dati in cui i dati e l'indirizzo sono multiplexati): UIO1 scrive una richiesta READ (WRITE) ReadReq (WriteReq) nella linea di controllo e 
-        l'indirizzo nella linea dati, UIO2 legge il indirizzo e scrive un ACK nella linea di controllo a UIO13. UIO2 scrive i dati sul bus e scrive la riga DataReadycontrol per notificare UIO14. UIO1 legge i dati e invia un ACK nella linea di controllo a UIO2.
+    	\item  \emph{Atomic transactions}: fornisce una bassa utilizzazione ma anche una bassa complessità
+    	\item \emph{Split-transactions}: le richieste/risposte possono essere intervallate; ciò significa che fornisce un utilizzo più elevato ma al costo di una complessità maggiore
     \end{itemize}
-    \item Come si devide chi prende un bus per trasferire dati? Le comunicazioni bus devono essere gestite da un protocollo di comunicazione. Ne possiamo vedere due:
+    \item I bus sono \textbf{sincronizzati}?
     \begin{itemize}
-        \item \underline{\textbf{Bus master}}. Il concetto dietro questo protocolle è che, un unità che può avviare una richiesta di bus. Esso ha una configurazione più semplice: un solo master mentre di solito i bus hanno più master.
-        \item \underline{\textbf{Arbitration}}. Il concetto invece di questo protocolle è che si va ha scegliere un master tra più richieste cercando di implementare la priorità e l'equità (prevenendo la fame). Solo un master alla volta (tutti gli altri ascoltano il bus). Il ruolo dell'arbitro è gestire le richieste del bus e assegnare le sovvenzioni considerando le priorità e l'equità.\\\\
-        Per andare ad implementale questo sistema possiamo usare un metodo \textbf{centralizzato}, dove un dispositivo dedicato (Arbiter) raccoglie le richieste e poi decide (potenziale problema di collo di bottiglia). Si può usare un metodo ri raccolta Daisy-chain, non equo, oppure con linee di richiesta/risposta indipendenti (ampiamente utilizzate).
-        \\\\Oppure possiamo usare un metodo \textbf{distribuito} dove ogni dispositivo vede le richieste contemporaneamente e partecipa alla selezione del master successivo (più complesso da realizzare e necessita di molte linee di controllo).
+        \item \emph{Sincrono}. Tutti i dispositivi collegati al bus condividono lo stesso bus clock. Gli eventi si verificano all'estremità del segnale di clock. Un protocollo possibile è che al ciclo \(X\) l'unità di I/O scrive una richiesta READ sul bus; al ciclo \(X + \Delta\) l'unità può leggere i dati dal bus.
+        \(\Delta\) è il tempo massimo per scrivere i dati sul bus da parte di un'unità collegata. Potenzialmente c'è il problema di skew dell'orologio. Viene principalmente utilizzata nei bus brevi (e.g. bus di sistema).
+        \item \emph{Asincrono}. Il bus non ha il clock. Nessun disallineamento dell'orologio, si occupa di dispositivi con velocità diverse: può essere più lungo, quindi più lento. Richiede protocolli di \textbf{handshaking}. Un possibile protocollo (3 linee di controllo, 1 linea dati in cui i dati e l'indirizzo sono multiplexati):
+        \begin{enumerate}
+        	\item UIO1 scrive una richiesta READ (WRITE) ReadReq (WriteReq) nella linea di controllo e l'indirizzo nella linea dati
+        	\item UIO2 legge il indirizzo e scrive un ACK nella linea di controllo a UIO13
+        	\item UIO2 scrive i dati sul bus e scrive la riga DataReadycontrol per notificare UIO14
+        	\item UIO1 legge i dati e invia un ACK nella linea di controllo a UIO2
+        \end{enumerate}
+    \end{itemize}
+    \item Come si decide chi prende un bus per trasferire dati (\textbf{arbitraggio})? Le comunicazioni bus devono essere gestite da un protocollo di comunicazione. I due concetti principali sono:
+    \begin{itemize}
+        \item \textbf{Bus master}: un'unità che può far partire una richiesta ad un bus. La configurazione più semplice prevede solo un master ma di solito ce ne sono molteplici.
+        \item \textbf{Arbitration}: il master viene scelto tra più richieste cercando di implementare la priorità e l'equità (prevenendo la starvation). C'è solo un master alla volta (tutti gli altri ascoltano il bus). Il ruolo dell'arbitro è gestire le richieste del bus e assegnare le sovvenzioni considerando le priorità e l'equità.Esistono due modi per implementare l'arbitro:
+        \begin{itemize}
+        	\item \textbf{Centralizzato}: un dispositivo dedicato (Arbiter) raccoglie le richieste e poi decide (potenziale problema di collo di bottiglia). Si può usare il metodo \emph{Daisy Chain}, non equo in quanto i dispositivi ad alta priorità intercettano quelli a bassa priorità. Un altro metodo è tramite linee di \emph{richiesta/risposta} indipendenti.
+        	\item \textbf{Distribuito}: ogni dispositivo vede le richieste contemporaneamente e partecipa alla selezione del master successivo. Più complesso da realizzare e necessita di molte linee di controllo.
+        \end{itemize}
     \end{itemize}
 \end{itemize}
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=8.5cm]{images/daily-chain-arbitrain.png}
-    \caption{Daily chain arbitrain}
+    \caption{Daily chain arbiter}
 \end{figure}
 
-\subsection{Gestione dell I/O}
-Quando andiamo a parlare di gestione dei dispositivi di input output ci chiedimao come la CPU da i comandi 
-hai dispositivi di I/O? Come la CPU sa quando i dispositivi di I/O completando le operazioni? Come fanno i 
-disponsitivi di I/O ad eseguire il data transfers?\\\\
-Partiamo dal rispondere alla prima domanda. Inanzitutto soltato il sistema operativo può mandare comandi hai dispositiv
-di I/O ed i programmatori per mandare comandi all'I/O deve utilizzare delle chiamate di sistema. Da qui possiamo avere
-due opzioni per mandare comandi hia device di I/O:
-\begin{itemize}
-    \item I/O istruzioni: istruzioni ISA che indirizzano i registri dei dispositivi I/O. Sono delle istruzioni di privilegio disponibile soltato in kernel mode.
-    \item Memory-mapped I/O: una porzione degli indirizzi fisici rispervata all'I/O.
-\end{itemize}
-
-\subsection{Memory-mapped I/O}
+\subsection{Gestione dell'I/O}
+\subsubsection{Invio dei comandi ai dispositivi}
+Solamente il sistema operativo può mandare comandi ai dispositivi di I/O ed il programmatore deve quindi utilizzare delle chiamate di sistema. Abbiamo due opzioni:
 \begin{wrapfigure}{r}{5cm}
-    \vspace{-30pt}
-    \centering
-    \includegraphics[width=4.5cm]{images/memory-mapped-io.png}
+	\vspace{20px}
+	\centering
+	\includegraphics[width=4.5cm]{images/memory-mapped-io.png}
+	\caption{Memory-mapped}
 \end{wrapfigure}
-I registri interni dei dispositivi sono mappati su locazioni di memoria principali (a indirizzi fisici riservati). 
-I comandi di I/O sono lettura/scrittura di memoria standard. Le operazioni in quelle posizioni vengono reindirizzate ai controller del dispositivo dalla MMU. 
-Gli accessi in modalità utente alle aree mappate in memoria generano eccezioni di violazione della memoria.
-
-\subsection{Programmed I/O}
-Per andare invece ora a rispondere alla seconda domanda che era stata posta. Come la CPU sa quando i dispositivi di I/O completando le operazioni?
-Introduciamo due concetti che possano risolvere questo probelma.
 \begin{itemize}
-    \item Programmed I/O: la cpu gestisce direttamente le operazioni e gli status di I/O.
-    \item Interrupt-driven I/O: Un interrupt è un evento asincrono proveniente da un dispositivo (ad es. modulo I/O, timer, controller DMA). A volte le eccezioni sono anche c
-    hiamate interruzioni (o comprendono interruzioni). In generale, le eccezioni sono eventi sincroni che interrompono l'esecuzione del programma (ad esempio, overflow aritmetico, istruzione non definita).
+    \item \textbf{Istruzioni} I/O: istruzioni ISA che indirizzano i registri del dispositivo I/O. Sono delle istruzioni privilegiate disponibili solamente in kernel mode (e.g. Intel IA-32).
+    \item \textbf{Memory-mapped} I/O: una porzione degli indirizzi fisici è riservata all'I/O. I registri interni dei dispositivi sono mappati su locazioni della memoria principale (a \emph{indirizzi fisici riservati}). I comandi di I/O sono quindi letture/scritture di memoria standard. Le operazioni in quelle posizioni vengono \emph{reindirizzate} ai controller del dispositivo dalla MMU. Gli accessi in modalità utente alle aree mappate in memoria generano \emph{eccezioni} di violazione della memoria.
 \end{itemize}
 
-\hspace{-15pt}Nel caso specifico del programmed I/O come scritto sopra la CPU ha un diretto controllo sopra l'I/O, quindi 
-gestisce lo stato di rilevamento, i comandi di lettura e scrittura ed il trasferimento dei dati. Con questo sistema i ll dispositivo I/O ha un ruolo passivo e 
-la CPU attende che il modulo I/O completi le operazioni (polling). \\\\
-Nel pulling il processore interroga il registro di stato del dispositivo I/O. Esso ha come pro una facile implmentazione
-mentre come contro una perdita di cicli del processore perchè la CPU è molto più veloce che i dispositivi di I/O. La cpu deve leggere lo sato dei registri
-molte volte solo per scoprire che il dispositivo non ha completato l'operazione.
-
-\subsection{Interrupt-driven I/O}
-Il problema principale visto nel programmed I/O è la perdita di tempo per l'alta velocità della CPU, come alternativa al polling
-si introduce quello che viene chiamato interrupts.
+\subsubsection{Ottenere lo stato dell'I/O}
+Come fa la CPU a sapere quando i dispositivi di I/O hanno completato le operazioni?
+Introduciamo due concetti:
 \begin{itemize}
-    \item La CPU invia comandi a un dispositivo e continua a svolgere altre attività. 
-    \item Il dispositivo I/O genera un interrupt quando lo stato cambia, cioè i dati sono pronti.
-    \item Gli interrupt di I/O sono asincroni.
-    \item I/O interrupts sono prioritari, dove in particolare i dispositivi I/O con larghezza di banda elevata hanno una priorità maggiore rispetto a quelli con larghezza di banda ridotta.
-\end{itemize} 
-
-\hspace{-15pt}Dal punto di vista della CPU viene inviato un comando I/O (ad esempio, un carico mappato in memoria), nel fra tempo viene fatto altro lavoro, viene poi controllato l'interrupt alla fine del ciclo fetch-execute
-e se l'iterrupt viene ricevuto salva il contesto corrente (ovvero i registri, non necessariamente tutti) e passa al livello privilegiato (ovvero PL1 su processore ARM), sulla base dell'ID dell'interrupt e della priorità dell'interrupt, il gestore dell'interrupt associato è pronto per essere eseguito, \footnote{I passaggi precedenti sono atomici dal punto di vista del sistema operativo!} 
-esegui poi il gestore (ovvero, il sistema operativo gestisce l'interrupt) e ripristina il contesto per l'esecuzione dell'istruzione successiva: \footnote{il ripristino è un'operazione atomica per il sistema operativo! }
+    \item \textbf{Programmed} I/O: la CPU gestisce direttamente le operazioni (read write, transfer) e gli status di I/O. Il dispositivo è quindi \emph{passivo}. La CPU è detta in uno stato di \textbf{polling}, ovvero periodicamente controlla lo stato del dispositivo. È semplice da implementare ma spreca molti cicli di clock.
+    \item \textbf{Interrupt-driven} I/O: un interrupt è un evento asincrono proveniente da un dispositivo (e.g. modulo I/O, timer, controller DMA). È un'alternativa al polling. La CPU invia dei comandi ad un dispositivo e nel frattempo fa qualcos'altro. Al termine di ogni ciclo fetch-decode-execute, controlla se sono arrivati interrupt. In caso positivo salva lo stato corrente (passando in privileged-mode), esegue il programma, e poi ripristina il contesto.
+\end{itemize}
+\begin{note}[Eccezioni]
+	A volte le \textbf{eccezioni} sono anche chiamate interruzioni (o comprendono interruzioni). In generale, le eccezioni sono eventi \textbf{sincroni} che interrompono l'esecuzione del programma (e.g. overflow aritmetico, istruzione non definita).
+\end{note}
 
 \begin{figure}[h!]
     \centering
