@@ -161,3 +161,96 @@ Per la frontiera, volendo evitare stati ripetuti, resta 'if' finale di UC:
     if figlio.Stato e in frontiera con Costo-cammino piu alto then
         sostituisci quel nodo frontiera con figlio 
 \end{lstlisting}
+Andiamo ora a verificare l'ottimalità di $A^*$ supponendo di avere il teorema, con $h$ consistente.
+\begin{enumerate}
+    \item Se $h(n)$ è consistente i valori di $f(n)$ lungo un cammino sono non decrescenti:
+    $$\text{se } h(n) \leq c(n, a, n') + h(n') \hspace{10pt} \Rightarrow \text{(def. consistenza sommando g(n))}\hspace{10pt} g(n) + h(n) \leq g(n) + c(n, a, n') + h(n')$$
+    ma siccome abbiamo $g(n) + c(n, a, n') = g(n')$ allora
+    $$g(n) + h(n) \leq g(n') + h(n') \Rightarrow f(n) \leq f(n') \Rightarrow f \text{ monotona}$$
+    \item Ogni volta che $A^*$ seleziona un nodo (n) per l'espansione, il cammino ottimo a tale nodo è stato trovato: 
+    se così non fosse, ci sarebbe un altro nodo m ella frontiera sul cammino ottimo (a n, ancora da trovare con un cammino ottimo), con $f(m)$
+    minore (per la monotonia e n successore di m); ma ciò non è possibile perché tale nodo sarebbe già stato espanso (si espande prima un nodo con f minore).
+    \item Quando seleziona nodo goal è cammino ottimo $[h=0, f=C^*]$.
+\end{enumerate}
+% TODO: AGGIUNGI IMMAGINI
+Quindi, detto questo, perché $A^*$ è vantaggioso?
+\begin{itemize}
+    \item $A^*$ espande tutti i nodi con $f(n) < C^*$ ($C^*$ = costo ottimo)
+    \item $A^*$ espande alcuni nodi con $f(n) = C^*$.
+    \item \textbf{$A^*$ non espande alcun nodo con $f(n) > C^*$}
+\end{itemize}
+Quindi alcuni nodi (e suoi sottoalberi) non verranno considerati per l’ espansione (ma restiamo ottimali):
+pruning (h opportuna, più alta possibile tra le ammissibili, fa tagliare molto).\\\\
+% TODO: AGGIUNGI IMMAGINE
+Più f è aderente a stima ottimale, più taglio! Ovali più stretti. Cercheremo quindi una h il più alta possibile tra le ammissibili
+Se molto bassa molti (sino a tutti i) nodi restano minore di $C^* \to$ espando tutti (a cerchi).
+Il pruning sotto-alberi è il punto focale: non li abbiamo già in memoria e evitiamo di generarli (decisivo per i problemi di AI a spazio stati esponenziali.\\\\
+In riassunto L’algoritmo è quello degli schemi usati per UC, Usando f = g+h per la coda con priorità, ove h e g soddisfano quanto allo slide 9 [A], 
+ove h è una funzione euristica ammissibile $[A^*]$, e considerando le condizioni dette per ottenere l’ottimalità su grafi.
+\begin{itemize}
+    \item $A^*$ è \textbf{completo}: discende dalla completezza di A ($A^*$ è un algoritmo A particolare).
+    \item $A^*$ con euristica monotona è \textbf{ottimale}.
+    \item $A^*$ è \textbf{ottimamente efficiente}: a parità di euristica nessn altro algoritmo espande meno nodi (senza rinunciare a ottimalità)
+\end{itemize}
+I problemi principali sono la scelta dell'euristica e  ancora l'occupazione di memoria che nel caso
+pessimo resta esponenziale come visto per gli altri algoritmi di ricerca con stesso schema, causa frontiera.
+
+\subsection{Sotto-casi speciali: US e Greedy Best First}
+Ci sono due casi particolai dell'algoritmo A:
+\begin{enumerate}
+    \item Se $h(n) = 0$ $[f(n) = g(n)]$ si ha Uniform Cost (UC), ossia $g$ non basta (si può migliorare).
+    \item Se $g(n) = 0$ $[f(n) = h(n)]$ si ha Greedy Best Fist, ossia $h$ non basta (già visto all'inizio).
+\end{enumerate}
+\subsubsection{UC vs $A^*$}
+%Da copiare
+
+\subsection{Costruire le euristiche di $A^*$}
+Partiamo dalle valutazione di funzioni euristiche. A parità di ammissibilità, una euristica può essere più
+efficiente di un’altra nel trovare il cammino soluzione migliore (visitare meno nodi). Questo dipende da quanto
+informata è l'euristia (dal \textbf{grado di informazione posseduto}) 
+\begin{itemize}
+    \item $h(n) = 0$ minimo di informazione (BF o UC)
+    \item $h^*(n)$ massimo di infomrazione (oracolo)
+\end{itemize}
+In generale, per le euristiche ammissibili:
+$$0 \leq h(n) \leq h^*(n)$$
+\begin{theorem}
+    Se $h_1 \leq h_2$, i nodi espansi\footnote{Ricorda che $A^*$ espande tutti i nodi con $f(n) = g(n) + h(n) < C^*$, e sono meno per $h$ maggiore (h maggiore fa andare più nodi oltre $C^*$).} da $A^*$ con $h_2$ sono un sottoinsieme di quelli espandi da $A^*$ con $h_1$.
+\end{theorem}
+Se $h_1 \leq h_2$, $A^*$ con $h_2$ è almeno efficiente quanto $A^*$ con $h_1$.
+Un’euristica più informata (accurata) riduce lo spazio di ricerca (è più efficiente), ma è tipicamente più costosa da calcolare (e.g. un caso estremo ?)
+\begin{example}
+    Due euristiche ammissibili per il gioco dell'8 potrebbero essere le seguenti:
+    \begin{itemize}
+        \item $h_1$: conta il numero di caselle fuori posto
+        \item $h_2$: somma delle distanze \textbf{Manhattan} (orizzonatle/verticale) delle caselle fuori posto dalla posizione finale.
+    \end{itemize}
+    $h_2$ è più informata di $h_1$, infatti $\forall n \:\:.\:\: h_1(n) \leq h_2(n)$, quindi si dice che $h_2$ \textbf{domina} $h_1$ (utile per confrontte tra ammissibili)
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.65\textwidth]{images/euristica-gioco-8.png}
+    \end{figure}
+\end{example}
+\begin{definition}
+    La somma delle distanze Manghattan si definisce come:
+    $$h((x,y)) = MD((x,y), (x_g, y_g)) = |x - x_g| + |y - y_g|$$
+\end{definition}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.60\textwidth]{images/costo-ricerva-vs-costo-euristica.png}
+    \caption{Costo ricerca vs costo euristico}
+\end{figure}
+Ora capiamo come valutare gli algoritmi di ricerca euristica. Introfuciamo
+il \textbf{fattore di diramazione effettivo} $b^*$, N: numero di nodi generati, d: profondità della soluzione.
+$b^*$ è il fattore di diramazione di un albero uniforme con $N+1$ nodi, solizione dell'equazione:
+$$N + 1 = b^* + (b^*)^2 + \dots + (b^*)^d$$
+Sperimentalmente una buona euristica ha un $b^*$ abbastanza vicino a 1 (<1.5)
+\begin{example}
+    Ricodando l'esempio dal gioco dell'otto:
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.60\textwidth]{images/gioco-otto-misura-euristiche.png}
+    \end{figure}
+    Sono riportati: Nodi generati e fattore di diramazione effettivo ($b^*$, verde)
+    I dati sono mediati, per ogni d, su 100 istanze del problema [AIMA].
+\end{example}

@@ -1,0 +1,134 @@
+\newpage
+\section{Agenti basati su coscenza}
+Abbiamo già visto agenti con stato e con obiettivo in mondi osservabili con stati atomici e azioni descrivibili
+in maniera semplice, mettendo enfasi sul processo di ricerca.\\\\
+Ora andremo ad parlare di come migliorare le \textbf{capacità di ragionamento} degli agenti,
+dotandoli di rappresentazioni di mondi complessi e astratti, non descrivibili semplicemente.
+Agenti \textbf{basati su conoscenza}, dotati di una KB (\textbf{Knowledge Base}) con conoscenza espressa in maniera esplicita e dichiarativa.
+\subsection{Introduzione}
+La maggior parte dei problemi di I.A. sono “knowledge intensive”. Il mondo è tipicamente complesso: ci serve una rappresentazione
+parziale e incompleta (un’astrazione) del mondo funzionale agli scopi dell’agente. Per ambienti parzialmente osservabili e complessi ci servono
+linguaggi di rappresentazione della conoscenza più espressivi e capacità inferenziali. La conoscenza può essere codificata a mano ma anche estratta dai
+testi o appresa dall’esperienza o estratta/elicitata dagli esperti.\\\\
+La KB racchiude tutta la conoscenza necessaria a decidere l’azione da compiere in forma \textbf{dichiarativa}.
+Un agente basato su conoscenza può essere costruito dicendogli (TELL) ciò che deve sapere. SI inizia con una base di conoscneza vuota
+si aggiungono progressivamente formule alla base di conoscneza, una alla volta.\\\\
+L’alternativa (approccio procedurale) è scrivere un programma che implementa il processo decisionale, una
+volta per tutte. Un agente KB è più flessibile: più semplice acquisire conoscenza incrementalmente e modificare il
+comportamento con l’esperienza.
+\begin{example}
+    Il mondo del Wumpus. Il mondo del Wumpus è una caverna fatta di stanze connesse tra di loro da
+    passaggi. Il wumpus è una bestia puzzolente che mangia chiunque entri nella stanza in
+    cui si trova. Il wumpus può essere ucciso dall’agente, che ha solo una freccia a disposizione.
+    \begin{itemize}
+        \item Ci sono stanze con dei pozzi: se l’agente entra in una di queste stanze cade nel pozzo e muore. Il Wumpus non muore nel pozzo.
+        \item In una delle stanze si trova l’oro e l’obiettivo dell’agente è di trovare l’oro e tornare a casa con l’oro, sano e salvo.
+        \item L’agente non conosce l’ambiente, né la sua locazione. Solo all’inizio sa dove si trova (in [1,1]).
+    \end{itemize}
+    Abbiamo poi delle misure di prestazioni:
+    \begin{itemize}
+        \item +1000 se trova l'oro, trona in [1,1] ed esce.
+        \item -1000 se muore.
+        \item -1 per ogni azione.
+        \item -10 se usa la freccia.
+    \end{itemize}
+    L'\textbf{ambiente} è strutturato in una griglia 4 x 4 di stanze, circondata da pareti di delimitazione.
+    L’agente comincia sempre dalla posizione [1,1], rivolto verso est (dx) ([1,1] è safe).
+    Le posizioni dell’oro e del Wumpus sono scelte casualmente tra tutti I riquadri tranne quello iniziale.
+    Tutti I riquadri (tranne quello iniziale) hanno una probabilita’ 0.2 di contenere un pozzo.\\\\
+    Le \textbf{azioni} disponibili sono: avanti, a destra di 90°, a sinistra di 90°, afferra un oggetto, scaglia la freccia (solo una), esce.
+    Le cose che vengono \textbf{percepite} (sesori) sono:
+    \begin{itemize}
+        \item fetore nelle caselle adiacenti al Wumpus.
+        \item brezza nelle caselle adiacenti ai pozzi.
+        \item Luccichio nelle caselle con l'oro.
+        \item Bump se sbatte in un muto
+        \item Urlo se il wumpus viene ucciso.
+        \item L'agente NON percepisce la sua locaizone.
+    \end{itemize}
+\end{example}
+
+\subsection{Agenti basati sulla conoscenza}
+Un agente basato su conoscenza mantiene una \textbf{base di conoscenza} (KB): un insieme di \textbf{enunciati} (formule) espressi in un
+linguaggio di rappresentazione. Interagisce con la KB mediante una interfaccia funzionale Tell-Ask:
+\begin{itemize}
+    \item Tell: per aggiungere nuovi enunciati a KB.
+    \item Ask: per interrogare la KB.
+    \item Retract: per eliminare enunciati.
+\end{itemize}
+Gli enunciati nella KB rappresentano le \textbf{opinioni/credenze dell’agente}. Le risposte $\alpha$ devono
+essere tali che $\alpha$ \textbf{discende necessariamente} dalla KB.\\\\
+Il problema: data una base di conoscenza KB, contenente una rappresentazione dei fatti che si
+\textbf{ritengono veri}, come dedurre che un certo fatto a è vero di conseguenza?
+$$KB |= \alpha \hspace{15pt}\text{conseguenza logica}$$
+\begin{lstlisting}
+    //Prende in input una percezione e restituisce un azione
+    function Agente-KB (percezione) returns un azione
+        //Mantiene in memoria una base di conoscenza KB che puo contenere una conoscenza iniziale.
+        persistent: KB, una base di conoscenza
+        t, un contatore, inizialmente a 0, che indica il tempo
+
+        // Comunica la percezione all KB
+        TELL(KB, Costruisci-Formula-Percezione(percezione, t ))
+
+        // Chiede alla KB quale azioni deve compiere
+        azione <- ASK(KB, Costruisci-Query-Azione( t ))
+
+        // Comunica alla KB che l azione e stata compiuta al tempo t
+        TELL(KB, Costruisci-Formula-Azione(azione, t ))
+        t <- t + 1
+        return azione
+\end{lstlisting}
+Base di conoscenza vs base di dati:
+\begin{itemize}
+    \item \textbf{base di dati}: solo fatti specifici, solo recupero (retrieval).
+    \item \textbf{Base di conoscenza}: una rappresentazione esplicita, parziale e compatta, in un linguagio simbolico, che contiene:
+    fatti di timpo specifico (casella [1,1] ok, c'è un posso in [3,1]), fatti di tipo generale, o regole (c'è brezza nella caselle adiacenti ai pozzi).
+\end{itemize}
+Qullo che caratterizza una KB è la capacità inferenziale, derivare nuovi fatti da quelli memorizzati esplicitamente (es. c'è un pozzo in [3,1] il wumpus è in [1,3]).\\
+Sfortunatamente pià il linguaggio è \textbf{espressivo}, meno \textbf{efficiente} è il meccanismo inferenziale. § Il problema ‘fondamentale’ in R.C. è trovare il giusto
+compromesso tra: \textbf{espressività} del linguaggio di rappresentazione, \textbf{complessità} del meccanismo inferenziale.\\
+Questi due obiettivi sono in contrasto e si tratta di mediare tra queste due esisgenze.
+
+\subsection{Logica}
+Le basi di conoscenza sono costituite da enunciati (formule). Le formule sono espresse secondo le regole della sintassi,
+che specifica quali di esse sono “ben formate”. La semantica di una formula esprime il “significato” della
+formula. Un modello e’ una configurazione dei valori di verità che si possono assegnare alle variabili convolte in una formula.\\\\
+Un formalismo per la rappresentazione della conoscneza ha tre componenti:
+\begin{enumerate}
+    \item Una \textbf{sintassi}: un linguaggio composto da un vocabolario e regole per la formazione delle frasi (enuciati, formule).
+    \item Una \textbf{semantica}: stabilisce una corrisondenza tra gli enunciati e i fatti del mondo; se un agente ha un enunciato $\alpha$ nella KB, crede ch eil fatto corrispondente sia vero nel mondo.
+    \item Un \textbf{meccanismo inferenziale} (codificato o meno tramite regole di inferenza come nella logica) che ci consente di inferire nuovi fatti.
+\end{enumerate}
+
+\newpage
+\section{Calcolo proposizionale}
+\subsection{Logica Proposizionale}
+\begin{definition}[Sintassi]
+    La sintassi definisce quali sono le frasi leggittime (ben formate) del linguaggio.
+    \begin{equation*}
+        \begin{split}
+            formula & \longrightarrow formulaAtomica \:\: | \:\: formula complessa \\
+            formulaAtomica & \longrightarrow True \:\: | \:\: False \:\: | \:\: simbolo \\
+            simbolo & \longrightarrow P \:\: | \:\: Q \:\: | \:\: R \:\:| \:\: \dots\\
+            formulaComplessa & \longrightarrow \lnot formula \text{ not (negazione)}\\
+            & | \:\: (formula \land formula) \text{ and (congiuzione )}\\
+            & | \:\: (formula \lor formula) \text{ or (disgiunzione)}\\
+            & | \:\: (formula \Rightarrow formula) \text{ implicazione}\\
+            & | \:\: (formula \Leftrightarrow formula) \text{ se e solo se}\\
+        \end{split}
+    \end{equation*}
+\end{definition}
+
+\begin{example}
+    $((A \land B) \Rightarrow C)$.
+    Possiamo oettere le parentesi assumendo questa precedenza tra gli operatori:
+    $$\lnot \:\: > \:\: \land \:\: > \:\: \lor \:\: > \:\: \Rightarrow, \Leftrightarrow$$
+    $\lnot P \land Q \lor R \Rightarrow S$ è la stessa cosa di $(((\lnot P) \lor (Q \land R)) \Rightarrow)$. Per esempio
+    dal mondo del Wumpus $P_{1,1}$ c'è il posso in $[1,1]$, $W_{2,3}$ il wumpus è in $[2,3]$.
+\end{example}
+
+\begin{definition}[Semantica]
+    La semantica specifica le regole usate per determinare il valore di verità di una formula nei confronti di un particolare modello.
+\end{definition}
+\hspace{-15pt}Nella logica proposizionale, un modello specifica il valore di verità (True o False) di ogni simbolo proposizionale.
