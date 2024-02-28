@@ -6,7 +6,7 @@ Vettore posizione come funzione del tempo t[s].
     Una molecola di ossigeno se sono interessato all'aereodinamica di una vettua. 
     Un satellite attorno alla terra se ignoro le forze di marea.
 \end{example}
-\hspace{-15pt}Un vettore posizione è una funzione del tempo $t[s]$.
+\hspace{-15pt}\textbf{Un vettore posizione} è una funzione del tempo $t[s]$.
 $$\vec{r(t)} = (x(t), y(t), z(t)) = x(t)\hat{x} + y(t)\hat{z} + z(t)\hat{z}$$
 \begin{observation}
     I versori cartesiani sono costanti
@@ -29,6 +29,16 @@ $$\vec{r(t)} = (x(t), y(t), z(t)) = x(t)\hat{x} + y(t)\hat{z} + z(t)\hat{z}$$
     \end{figure}
 \end{example}
 
+\begin{definition}
+    La \textbf{velocità istantanea} è la derivata della posizione rispetto al tempo.
+    $$v = \lim_{\Delta t \to 0}\frac{\Delta s}{\Delta t} = \frac{ds}{dt}$$
+\end{definition}
+
+\begin{definition}
+    La \textbf{velocità media} è definita come il rapporto tra lo spostamento e l'intervallo di tempo necessario per effettuarlo.
+    $$v_m = \frac{\Delta s}{\Delta t}$$
+\end{definition}
+\hspace{-15pt}In parole povere è una grandezza che ci dice con quale rapidità cambia la posizione di un punto rispetto al tempo nell'instante $t$.
 \subsection*{Vettore velocità}
 Derivata rispetto al tempo del vettore posizione e si indica come 
 $\frac{d\vec{r}(t)}{dt}\text{ oppure }\dot{\vec{r}}(t)[m/s]$
@@ -127,6 +137,10 @@ $$\vec{r}(t) = (x(t), y(t)) = (r(t)\cos \Theta(t), r(t)\sin\Theta(t)) \:\: = \:\
 Ma $||\vec{r}(t)|| = |r(t)| = r(t)$ allora definisco $\hat{r}(t) = \vec{r}(t)/ ||\vec{r}(t)|| = \cos \Theta(t)\hat{x} + \sin\Theta(t)\hat{y}$\\\\
 Trovo facilmente che un versore ortogonale è:
 $$\hat{\Theta(t)} = -\sin\Theta(t)\hat{x} + \cos\Theta(t)\hat{y} \:\:\:\text{infatti} \:\:\: \hat{r}\cdot \hat{\Theta} = c \cdot (-s) + s \cdot c = 0$$
+\begin{wrapfigure}[7]{r}{6cm}
+    \centering
+    \includegraphics[width=5.5cm]{images/trasformazioni-inverse.png}
+\end{wrapfigure}
 \begin{note}
     Non c'è legame fra $\Theta$ e $\hat{\Theta}$ è solo una convenzione.
 \end{note}

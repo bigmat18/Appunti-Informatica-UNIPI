@@ -71,11 +71,23 @@ $g \equiv 9,8 m/s^2$, dipende da $M_T$, variazioni locali.
     $$
     $$t - t_0 = x(t) \: / \: (v_0\cos\Theta) \hspace{10pt} z = v_0\sin\Theta x\: / \: (v_0 \cos\Theta) - \frac{1}{2}g x^2 \: / \: (v_0\cos\Theta)^2 \hspace{10pt} z=v_0 tg\Theta - x^2 \frac{g}{2v_0^2}\frac{1}{\cos^2\Theta}$$
     \begin{observation}
-        % Finisci
+        $\frac{1}{\cos^2\Theta} = \frac{\sin^2\Theta + \cos^2\Theta}{\cos^2\Theta} = 1 + tg^2\Theta$\\
+        $z = x tg\Theta - x^2 \frac{g}{v_0^2}(1 + tg^2 \Theta)$ (Parabola)
     \end{observation}
+    \hspace{-15pt}Punto di atterraggio: sistema con $z = 0$, $x = 0$ (banale) \hspace{10pt} $x = \frac{2v^2_0}{g}tg\Theta / (1 + tg^2 \Theta)$
 \end{example}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{images/esempio-proiettile.png}
+    \caption*{Esempio proiettile}
+\end{figure}
 
 \subsection{Forza elastica $\vec{F} = -k (||\vec{r} - \vec{r}_v|| - l_0)\frac{\vec{r}-\vec{r}_v}{||\vec{r}-\vec{r}_v||}$}
+\begin{wrapfigure}[6]{r}{4cm}
+    \vspace{-15pt}
+    \centering
+    \includegraphics[width=5cm]{images/forza-elastica.png}
+\end{wrapfigure}
 Chiamata anche \textbf{legge di hooke}. $k$ è la costante elastica espressa in $[N/m]$ del materiale. $l_0 [m]$ lunghezza a riposo della "molla", 
 dipende dal vettore posizione $\vec{r}$ ("posizionale"). Altro estremoi / vincolo $\vec{r}_v$.
 $-\frac{\vec{r}-\vec{r}_v}{||\vec{r}-\vec{r}_v||}$ è il versone parallelo alla molla, cioò la distanza fra il punto di destinazione ed il vincolo.
@@ -109,6 +121,19 @@ che si oppone linearmente ad una velocità.
     $$u(t) = v_0 e^{-t/\tau} \:\:\: \text{ovver} \:\:\: \dot{x}(t) = v_0 e^{-t/\tau}$$
     rallentamento esponenziale.
 \end{example}
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/proiettile-gel-balistico-1.png}
+        \caption*{Situazione proiettile}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/proiettile-gel-balitstico-2.png}
+        \caption*{Soluzione completa gel}
+    \end{subfigure}
+\end{figure}
 
 \subsection{Data la legge oraria, trovare la forza}
 $r(t) = R, \Theta(t) = \Omega t$ \textbf{moto circolare uniforme}
@@ -138,16 +163,35 @@ $\Delta \vec{r}_i = \Delta \vec{r}_2$ per ogni punto posso studiare una qualsias
 \end{itemize}
 Le forze di contatto ("reazioni vincolari") non sempre hanno una espressione esplicita e vengono determinate imponendo dei vincoli alle 
 equazioni del moto, ad esempio che un punto segua una data traiettora.
-\begin{example}
+\begin{figure}[h!]
+    \vspace{-10pt}
+    \centering
+    \begin{subfigure}[b]{0.25\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/reazioni-vincolari-intro-1.png}
+        \caption*{Traslazione punto materilae}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.25\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/reazioni-vincolari-intro-2.png}
+        \caption*{Rettilineo curvo}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/reazioni-vincolari-intro-3.png}
+        \caption*{Contatto fra corpi}
+    \end{subfigure}
+\end{figure}
+\begin{example} \label{es-rez-vin-1}
     $x(t) \equiv x_0$ %Aggiungi immagine
 \end{example}
 \hspace{-15pt}La "terza legge di Newton" ("azione e reazione") stabilisce che $\vec{F}_{B\to A} = -\vec{G}_{A \to B}$
-\begin{example}
+\begin{example} \label{es-rez-vin-2}
     Massa su una bilancia in presenza di forza peso.
     $$m\ddot{\vec{r}}(t) = -mg\hat{z} + \vec{F}$$
     In questo caso il \textbf{Vincolo} è: $\dot{\vec{r}}(t) = 0 \Rightarrow \vec{F} = +mg\hat{z}$. La bilancia misura $||-\vec{F}|| = mg$ (che noi chiamiamo comunemente peso).
 \end{example}
-\begin{example}
+\begin{example} \label{es-rez-vin-3}
     Massa su bilancia in ascesore accelerato.
     $$m\ddot{\vec{r}}(t) = -mg\hat{z} + \vec{F}$$
     Ciò che cambia ora è il suo \textbf{Vincolo} visto che si sta accelerando vesto l'alto: $\ddot{\vec{r}}(t) \equiv a \cdot \hat{z} \Rightarrow \vec{F}= m(a+g)\hat{z}$. La bilancia misura $||-\vec{F}|| = m(a+g)$.
@@ -156,6 +200,25 @@ equazioni del moto, ad esempio che un punto segua una data traiettora.
 \begin{note}
     Un punto materiale si "solleva", si "distacca" da una superfice quando la reazione vincolare va a zero.
 \end{note}
+\begin{figure}[h!]
+    \vspace{-10pt}
+    \centering
+    \begin{subfigure}[b]{0.33\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/esempio-reazioni-vincolari-1.png}
+        \caption*{Esempio \ref{es-rez-vin-1}}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.33\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/esempio-reazioni-vincolari-2.png}
+        \caption*{Esempio \ref{es-rez-vin-2}}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.25\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/esempio-reazioni-vincolari-3.png}
+        \caption*{Esempio \ref{es-rez-vin-3}}
+    \end{subfigure}
+\end{figure}
 \hspace{-15pt}Scomponiamo la reazione vincolare nella direzione
 \begin{itemize}
     \item ortogonale: "reazione normale" $\vec{N}$".
@@ -169,6 +232,12 @@ $-\frac{\vec{v}}{||\vec{v}||}$ diretto in versione opposta alla velocità.
 \begin{example}
     Massa su un piano inclinato liscio e fisso.
     $$\hat{x}' = \cos\alpha \cdot \hat{x} - \sin\alpha \cdot \hat{z} \hspace{20pt}\hat{z}' = \sin\alpha \cdot \hat{x} + \cos\alpha \cdot \hat{z} \hspace{15pt} m\ddot{\vec{r}}(t) = -mg\hat{z} + \vec{N}$$
+    \begin{wrapfigure}[6]{r}{4cm}
+        \vspace{-15pt}
+        \centering
+        \includegraphics[width=5cm]{images/esempio-reazione-vincolare-4.png}
+    \end{wrapfigure}
+    
     Proietto lungo $\hat{z}'$: \hspace{15pt} $m\ddot{z}'(t) = -mg\cos\alpha + N$\\
     Proietto lungo $\hat{x}'$: \hspace{15pt} $m\ddot{x}'(t) = +mg\sin\alpha$\\
     Vincolo: $z'(t) = \cos t \hspace{10pt} \ddot{z}'(t) = 0 \Rightarrow N = mg\cos\alpha \hspace{10pt} \ddot{x}'(t) = g \cdot \sin\alpha$\\

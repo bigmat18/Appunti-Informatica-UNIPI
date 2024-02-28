@@ -1019,6 +1019,7 @@ INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non c
 INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/ess-traiettoria.png
 INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/ess-traiettoria.png
 INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/ess-traiettoria.png
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbxti10.tfm
 INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/vettore-velocità.png
 INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/vettore-velocità.png
 INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/vettore-velocità.png
@@ -1029,6 +1030,11 @@ INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non c
 INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/coordinate-polari.png
 INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/coordinate-polari.png
 INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/coordinate-polari.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/trasformazioni-inverse.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/trasformazioni-inverse.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/trasformazioni-inverse.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/trasformazioni-inverse.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/trasformazioni-inverse.png
 INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/forze.tex
 INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/forze.tex
 INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/forze.tex
@@ -1053,9 +1059,65 @@ INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-proiettile.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-proiettile.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-proiettile.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-proiettile.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-proiettile.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/forza-elastica.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/forza-elastica.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/forza-elastica.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/forza-elastica.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/forza-elastica.png
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/proiettile-gel-balistico-1.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/proiettile-gel-balistico-1.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/proiettile-gel-balistico-1.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/proiettile-gel-balistico-1.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/proiettile-gel-balistico-1.png
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/proiettile-gel-balitstico-2.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/proiettile-gel-balitstico-2.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/proiettile-gel-balitstico-2.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/proiettile-gel-balitstico-2.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/proiettile-gel-balitstico-2.png
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/reazioni-vincolari-intro-1.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/reazioni-vincolari-intro-1.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/reazioni-vincolari-intro-1.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/reazioni-vincolari-intro-1.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/reazioni-vincolari-intro-1.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/reazioni-vincolari-intro-2.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/reazioni-vincolari-intro-2.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/reazioni-vincolari-intro-2.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/reazioni-vincolari-intro-2.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/reazioni-vincolari-intro-2.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/reazioni-vincolari-intro-3.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/reazioni-vincolari-intro-3.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/reazioni-vincolari-intro-3.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/reazioni-vincolari-intro-3.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/reazioni-vincolari-intro-3.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazioni-vincolari-1.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazioni-vincolari-1.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazioni-vincolari-1.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazioni-vincolari-1.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazioni-vincolari-1.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazioni-vincolari-2.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazioni-vincolari-2.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazioni-vincolari-2.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazioni-vincolari-2.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazioni-vincolari-2.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazioni-vincolari-3.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazioni-vincolari-3.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazioni-vincolari-3.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazioni-vincolari-3.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazioni-vincolari-3.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazione-vincolare-4.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazione-vincolare-4.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazione-vincolare-4.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazione-vincolare-4.png
+INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazione-vincolare-4.png
 INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/energia-cinetica.tex
 INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/energia-cinetica.tex
 INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/energia-cinetica.tex
@@ -1079,6 +1141,7 @@ INPUT /Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non c
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
@@ -1092,6 +1155,7 @@ INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pf
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
