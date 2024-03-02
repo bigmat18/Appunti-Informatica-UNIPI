@@ -210,17 +210,17 @@ equazioni del moto, ad esempio che un punto segua una data traiettora.
 \begin{figure}[h!]
     \vspace{-10pt}
     \centering
-    \begin{subfigure}[b]{0.33\textwidth}
+    \begin{subfigure}[b]{0.25\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/esempio-reazioni-vincolari-1.png}
         \caption*{Esempio \ref{es-rez-vin-1}}
     \end{subfigure}
-    \begin{subfigure}[b]{0.33\textwidth}
+    \begin{subfigure}[b]{0.25\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/esempio-reazioni-vincolari-2.png}
         \caption*{Esempio \ref{es-rez-vin-2}}
     \end{subfigure}
-    \begin{subfigure}[b]{0.25\textwidth}
+    \begin{subfigure}[b]{0.2\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/esempio-reazioni-vincolari-3.png}
         \caption*{Esempio \ref{es-rez-vin-3}}
@@ -231,41 +231,70 @@ equazioni del moto, ad esempio che un punto segua una data traiettora.
     \item ortogonale: "reazione normale" $\vec{N}$".
     \item parallelo: "forza di \textbf{attrito}" $\vec{F}_a$
 \end{itemize}
+\newpage
+\begin{wrapfigure}[6]{r}{4cm}
+    \centering
+    \includegraphics[width=2.7cm]{images/scomposizione-reazione-vincolare.png}
+\end{wrapfigure}
 ad una superficie. Con una superfisce \textbf{liscia} abbiamo $\vec{F}_a = 0$, non c'è
-movimento relativo al punto di contatto. \textbf{Attrito statico}, $\vec{F}_a$ da determinare con vincoli. Condizione: $||\vec{F}_a|| \leq \mu_s ||\vec{N}||$.\\
-Differenza di velocità $\vec{v}$ al punto di contatto. \textbf{Attrito dinamico}, $\vec{F}_a = -\mu_a ||\vec{N}||\frac{\vec{v}}{||\vec{v}||}$, $\mu_s, \mu_d$: coeff. di attrito, numeri primi.
+movimento relativo al punto di contatto.
+\textbf{Attrito statico}, $\vec{F}_a$ da determinare con vincoli. Condizione: $$||\vec{F}_a|| \leq \mu_s ||\vec{N}||$$
+Differenza di velocità $\vec{v}$ al punto di contatto. \textbf{Attrito dinamico}:
+$$\vec{F}_a = -\mu_a ||\vec{N}||\frac{\vec{v}}{||\vec{v}||}$$
+$\mu_s, \mu_d$: coeff. di attrito, numeri primi.
 $-\frac{\vec{v}}{||\vec{v}||}$ diretto in versione opposta alla velocità.
 
-\begin{example}
+\begin{example}\label{es-rez-vin-4}
     Massa su un piano inclinato liscio e fisso.
     $$\hat{x}' = \cos\alpha \cdot \hat{x} - \sin\alpha \cdot \hat{z} \hspace{20pt}\hat{z}' = \sin\alpha \cdot \hat{x} + \cos\alpha \cdot \hat{z} \hspace{15pt} m\ddot{\vec{r}}(t) = -mg\hat{z} + \vec{N}$$
-    \begin{wrapfigure}[6]{r}{4cm}
-        \vspace{-15pt}
-        \centering
-        \includegraphics[width=5cm]{images/esempio-reazione-vincolare-4.png}
-    \end{wrapfigure}
-    
-    \hspace{-15pt}Proietto lungo $\hat{z}'$: \hspace{15pt} $m\ddot{z}'(t) = -mg\cos\alpha + N$\\
-    Proietto lungo $\hat{x}'$: \hspace{15pt} $m\ddot{x}'(t) = +mg\sin\alpha$\\
-    Vincolo: $z'(t) = \cos t \hspace{10pt} \ddot{z}'(t) = 0 \Rightarrow N = mg\cos\alpha \hspace{10pt} \ddot{x}'(t) = g \cdot \sin\alpha$\\
+    \begin{itemize}
+        \item Proietto lungo $\hat{z}'$: \hspace{15pt} $m\ddot{z}'(t) = -mg\cos\alpha + N$
+        \item Proietto lungo $\hat{x}'$: \hspace{15pt} $m\ddot{x}'(t) = +mg\sin\alpha$.
+    \end{itemize}
+    Vincolo: $z'(t) = \cos t \hspace{10pt} \ddot{z}'(t) = 0\:\:\: \Rightarrow\:\:\: N = mg\cos\alpha \hspace{20pt} \ddot{x}'(t) = g \cdot \sin\alpha$\\
     Visto che $\sin\alpha < 1$ quindi l'accelerazione lungo il piano è $< g$.
 \end{example}
 
-\begin{example}
+\begin{example}\label{es-rez-vin-5}
     Massa ferma su piano inclinato scabro.
     $$m\ddot{z}'(t) = -mg\cos\alpha + N \hspace{20pt} m\ddot{x}'(t) = +mg\sin\alpha - F_{a}$$
     La scelta fra $-F_{a}$ o $+F_a$ è indifferente, l'unica cosa che cambia è nel risultato poi sarà diverso il segno di $F_a$, la coorenza da tenere è riguardante il disegno, se si disegna
-    in una determinata direzione, si cerca di mettere il segno uguale.\\
-    Vincolo: $z'(t) = \cos t \Rightarrow \ddot{z}'(t) = 0 \Rightarrow N = mg\cos\alpha$.\\
-    Vincolo: $x'(t) = \cos t \Rightarrow \ddot{x}'(t) = 0 \Rightarrow F_a = mg\sin\alpha$\\
-    Qual'è il massimo valore di $\alpha$?\\
-    $||\vec{F}_a|| \leq \mu_s ||\vec{N}|| \Rightarrow mg\sin\alpha \leq \mu_s \cdot mg \cos\alpha \hspace{15pt} tg\alpha \leq \mu_s \hspace{10pt} \alpha \leq \arctan(\mu_s)$
+    in una determinata direzione, si cerca di mettere il segno uguale.
+    \begin{itemize}
+        \item Vincolo: $z'(t) = \cos t \:\:\:\Rightarrow\:\:\: \ddot{z}'(t) = 0 \:\:\:\Rightarrow\:\:\: N = mg\cos\alpha$.
+        \item Vincolo: $x'(t) = \cos t \:\:\:\Rightarrow\:\:\: \ddot{x}'(t) = 0 \:\:\:\Rightarrow\:\:\: F_a = mg\sin\alpha$
+    \end{itemize}
+    Qual'è il massimo valore di $\alpha$?
+    $$||\vec{F}_a|| \leq \mu_s ||\vec{N}|| \:\:\:\Rightarrow\:\:\: mg\sin\alpha \leq \mu_s \cdot mg \cos\alpha \hspace{15pt} \tan\alpha \leq \mu_s \hspace{10pt} \alpha \leq \arctan\mu_s$$
 \end{example}
 
-\begin{example}
+\begin{example}\label{es-rez-vin-6}
     Massa scviola su piano inclinato scabro.
     $$m\ddot{z}'(t) = -mg\cos\alpha + N \hspace{20pt} m\ddot{x}'(t) = +mg\sin\alpha - F_{a}$$
-    Vincolo: $z'(t) = \cos t \Rightarrow \ddot{z}'(t) = 0 \Rightarrow N = mg\cos\alpha$\\
-    Forza di attrito dinamico: $F_a = \mu_{\alpha}N \Rightarrow m\ddot{x}'(t) = mg\sin\alpha - \mu_{\alpha} \cdot mg\cos\alpha$\\
-    $\ddot{x}'(t) = g(\sin g - \mu_{\alpha} \cdot \cos \alpha)$. Accelerazione costante, minore che senza attrito.
+    Vincolo: $z'(t) = \cos t \:\:\:\Rightarrow\:\:\: \ddot{z}'(t) = 0 \:\:\:\Rightarrow\:\:\: N = mg\cos\alpha$\\
+    Forza di attrito dinamico: 
+    $$F_a = \mu_{\alpha}N \:\:\:\Rightarrow\:\:\: m\ddot{x}'(t) = mg\sin\alpha - \mu_{\alpha} \cdot mg\cos\alpha \hspace{15pt} \ddot{x}'(t) = g(\sin g - \mu_{\alpha} \cdot \cos \alpha)$$
+    Accelerazione costante, minore che senza attrito.
 \end{example}
+
+\begin{figure}[h!]
+    \vspace{-10pt}
+    \centering
+    \begin{subfigure}[b]{0.25\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/esempio-reazioni-vincolari-4.png}
+        \caption*{Esempio \ref{es-rez-vin-4}}
+    \end{subfigure}
+    \hspace{20pt}
+    \begin{subfigure}[b]{0.25\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/esempio-reazioni-vincolari-5.png}
+        \caption*{Esempio \ref{es-rez-vin-5}}
+    \end{subfigure}
+    \hspace{20pt}
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/esempio-reazioni-vincolari-6.png}
+        \caption*{Esempio \ref{es-rez-vin-6}}
+    \end{subfigure}
+\end{figure}
