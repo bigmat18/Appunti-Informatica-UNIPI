@@ -14,7 +14,10 @@ $$\vec{r(t)} = (x(t), y(t), z(t)) = x(t)\hat{x} + y(t)\hat{z} + z(t)\hat{z}$$
 
 \begin{definition}[Legge oraria]
     Si definisce come legge oraria la funzione $t \mapsto \vec{r}(t)$.
+    $$s(t) = s_0 + v_0 \cdot t + \frac{1}{2}at^2$$
 \end{definition}
+\hspace{-15pt}Dove $s(t)$ rappresenta la posizione dell'oggetto al tempo t,  $s_0$ è la posizione iniziale dell'oggetto al tempo
+$t=0$, $v_0$ è la velocità iniziale dell'oggetto, $a$ è l'accelerazione dell'oggetto, $t$ è il tempo trascorso.
 
 \begin{definition}[Traiettoria]
     Il luogo geometrico di punti visitati dal punto materiale.
@@ -81,6 +84,10 @@ Derivata rispetto al tempo del vettore velocità e si indica con $\frac{d^2\vec{
     $\vec{r}(t)= (\frac{1}{2}a_0t^2, v_0t, 0)$ \hspace{10pt} $\dot{\vec{r}}(t) = (a_0t, v_0, 0)$ \hspace{10pt} $\dot{\vec{r}}(t) = (a_0, 0, 0)$
 \end{example}
 \hspace{-15pt}Serve perché l'equazione "del moto" di Newton che determinata la legge oraria è formulata in termini di accelerazione.
+\begin{definition}
+    L'\textbf{accelerazione media} è il rapporto di variazione di velocità e l'intervallo di tempo in cui avvine tale variazione
+    $$a_m = \frac{\Delta v}{\Delta t}$$
+\end{definition}
 
 \subsection{Vettore quantità di moto}
 Il prodotto di massa [kg] e velocità [m/s]
@@ -93,7 +100,7 @@ $$\vec{p}(t) = m \cdot \dot{\vec{r}}(t) = (m\dot{x}(t), m\dot{y}(t), m\dot{x}(t)
 
 \subsection{Vettore momento angolare rispetto a un polo P}
 $$\vec{L}_p(t) = m(\vec{r}(t) - \vec{r}_p) \times \dot{\vec{r}}(t)$$
-Dove $\vec{r}_p$ è il vettore posizione di p, mentre $\dot{\vec{r}}(t)$ è il prodotto vettoriale.
+Dove $\vec{r}_p$ è il vettore posizione di p, mentre con $\dot{\vec{r}}(t)$ si fa il prodotto vettoriale.
 \begin{example}
     $\vec{r}_p = (l_0, 0, 0)$ \hspace{15pt} $\vec{r}(t) = (v_0t, y_0, 0)$\\
     $\vec{L}_p = m[(v_0t - l_0)\hat{x} + y_0\hat{y}] \times (v_0\hat{x}) \:\: = \:\: m(v_0t - l_0)v_0 \hat{x} \times \hat{x} + my_0v_0\hat{y}\times \hat{x} 
@@ -124,6 +131,11 @@ quanto vale l'angolo fra questo segmento dall'asse x, utilizzando seno e coseno.
     \end{cases}
 \end{align*}
 \\
+\begin{note}
+    Attenzione, notare la la $tg$ in $tg\Theta(t)$ si mette se si prende la funzione inversa, in caso contrario, per calcolare la 
+    $\Theta(t)$ bisogna fare:
+    $$\Theta(t) = \frac{y(t)}{x(t)} \cdot tan^{-1}$$
+\end{note}
 \begin{example} Esempi di rappresentazione di coordinate in coordinate polari.\\
     $x = 0, y = l_0 > 0 \:\: \Rightarrow \:\: r = l_0, \Theta = \pi/2$\\
     $x = 0, y = -l_0 < 0 \:\: \Rightarrow \:\: r = l_0, \Theta = -\pi/2$\\
@@ -136,7 +148,7 @@ Si esprime facilmente in coordinte polari.
 $$\vec{r}(t) = (x(t), y(t)) = (r(t)\cos \Theta(t), r(t)\sin\Theta(t)) \:\: = \:\: r(t)(\cos\Theta(t)\hat{x} + \sin\Theta(t)\hat{y})$$
 Ma $||\vec{r}(t)|| = |r(t)| = r(t)$ allora definisco $\hat{r}(t) = \vec{r}(t)/ ||\vec{r}(t)|| = \cos \Theta(t)\hat{x} + \sin\Theta(t)\hat{y}$\\\\
 Trovo facilmente che un versore ortogonale è:
-$$\hat{\Theta(t)} = -\sin\Theta(t)\hat{x} + \cos\Theta(t)\hat{y} \:\:\:\text{infatti} \:\:\: \hat{r}\cdot \hat{\Theta} = c \cdot (-s) + s \cdot c = 0$$
+$$\hat{\Theta}(t) = -\sin\Theta(t)\hat{x} + \cos\Theta(t)\hat{y} \:\:\:\text{infatti} \:\:\: \hat{r}\cdot \hat{\Theta} = c \cdot (-s) + s \cdot c = 0$$
 \begin{wrapfigure}[7]{r}{6cm}
     \centering
     \includegraphics[width=5.5cm]{images/trasformazioni-inverse.png}
@@ -157,9 +169,21 @@ Similmente $\dot{\hat{\Theta}}(t)= - \dot{\Theta}\hat{r}(t)$.
 
 \subsection*{Vettori posizione, velocità, accelerazione}
 $$\vec{r}(t) = r(t)\hat{r}(t)$$
-Dove abbiamo che $\vec{r}(t)$ è il vettore, $r(t)$ è una coordinata polare, $\hat{t}(t)$ è il versore polare.
+Dove abbiamo che $\vec{r}(t)$ è il vettore, $r(t)$ è una coordinata polare, $\hat{r}(t)$ è il versore polare.
 $$\dot{\vec{r}}(r) = \dot{r}(t)\hat{r}(t) + r(t)\dot{\Theta}(t)\hat{\Theta}(t)$$
 Dove la parte $\dot{\vec{r}}(r)$ è la velocità radiale.
 $$\ddot{\vec{r}}(t) = [\ddot{r}(t) - r(t)\dot{\Theta}(t)^2] \hat{r} + [r(t) \ddot{\Theta}(t) + 2\dot{r}(t)\dot{\Theta}(t)]\hat{\Theta}$$
-Nel quale abbiamo che la parte $r(t)\dot{\Theta}(t)^2$ si chiama \textbf{velocità centripeta}, mentre $2\dot{r}(t)\dot{\Theta}(t)$ si dice \textbf{accelerazione di Coriolis}.
-
+Nel quale abbiamo che la parte $r(t)\dot{\Theta}(t)^2$ si chiama \textbf{accelerazione centripeta}, mentre $2\dot{r}(t)\dot{\Theta}(t)$ si dice \textbf{accelerazione di Coriolis}.
+\\\\
+\begin{note}
+    Una piccola nota di calcolo goniometrico che può servire nella risoluzione di problemi con cordinate polari e versori.
+    $$
+    \cos\Big(\tan^{-1}\Big(\frac{b}{ax}\Big)\Big) = \frac{ax}{\sqrt{a^2 x^2 + b^2}} \:\: con\:\: (a, b, x > 0)
+    $$
+    $$
+    \sin\Big(\tan^{-1}\Big(\frac{b}{ax}\Big)\Big) = \frac{b}{\sqrt{a^2 x^2 + b^2}} \:\: con\:\: (a, b, x > 0)
+    $$
+    Sappiamo che l'identità fondamentale della tangente inversa è $\tan^{-1}(x) = \Theta \Rightarrow x = \tan(\Theta)$ e sapiamo anche che $\tan(\Theta) = \frac{\sin \Theta}{\Theta}$.
+    Questa cosa si ricava immaginando un triangolo rettangolo con un angolo di $\Theta$ e i lati $b$ e $ax$. Quindi, il senso ed il coseno di $\Theta$ sono
+    come scritti sopra.
+\end{note}

@@ -15,23 +15,25 @@ cioè il moto ha velocità costante (\textbf{rettilineo uniforme}). Questo è in
 Questa cosa collega la proprierà di simmetria degli oggetti alla traslazione dello spazio.
 
 \subsection{Forza costante $\vec{F} = F_0\hat{x}$}
-$$\vec{r}(t) = x(t)\hat{x} + y(t)\hat{y} + z(t)\hat{z} \hspace{15pt}\ddot(\vec{r})(t) = \ddot{x}(t)\hat{x} + \ddot{y}(t)\hat{y} + \ddot{z}(t)\hat{z}$$
+$$\vec{r}(t) = x(t)\hat{x} + y(t)\hat{y} + z(t)\hat{z} \hspace{15pt}\ddot{\vec{r}}(t) = \ddot{x}(t)\hat{x} + \ddot{y}(t)\hat{y} + \ddot{z}(t)\hat{z}$$
 $$m\ddot{\vec{r}}(t) = F_0 \hat{x} \Rightarrow 
 \begin{cases}
     m\ddot{x}(t) = F_0\\
     m\ddot{y}(t) = 0\\
-    m\ddot{t}(t) = 0 
+    m\ddot{y}(t) = 0 
 \end{cases}
 $$
-Protietto su una base per ottenere 3 equazioni scalari. Mi servono $2 \times 3 = 6$ \textbf{condizioni al bordo} per risolvere.
-Ad esempio codnizioni iniziali:
+Proietto su una base per ottenere 3 equazioni scalari. Mi servono $2 \times 3 = 6$ \textbf{condizioni al bordo} per risolvere.
+Ad esempio condizioni iniziali:
 $$\vec{r}(0) = \vec{r_0} = (x_0, y_0, z_0) \hspace{15pt} \dot{\vec{r}}(0) = \vec{v}_0 = (v_{0x}, v_{0y}, v_{0z})$$
 $$\Rightarrow 
 \begin{cases}
-    x(t) = v_0 + v_{0x}t + \frac{1}{2}\frac{F_0}{m}t^2\\
-    y(t) = y_0 + v_{0y}t
+    x(t) = x_0 + v_{0x}t + \frac{1}{2}\frac{F_0}{m}t^2\\
+    y(t) = y_0 + v_{0y}t \\
     z(t) = z_0 + v_{0z}t
 \end{cases}
+\Rightarrow \:\:\text{caso generale}\:\:
+r(t) = r_0 + v_0t + \frac{1}{2}\frac{F_0}{m}t^2
 $$
 Con $t$ che rappresenta il \textbf{moto uniformamente accelerato}
 
@@ -39,16 +41,17 @@ Con $t$ che rappresenta il \textbf{moto uniformamente accelerato}
 Usata per esempio in prossimità della superficie terreste. Con $m$ massa del punto materiale dell'oggetto in cui si applica, mentre $\hat{z}$ ortogonale alla superficie. 
 $g \equiv 9,8 m/s^2$, dipende da $M_T$, variazioni locali.
 \begin{example}
-    Grave che case da altezza $h$.
-    $$m\ddot{\vec{r}}(r) = -mg\hat{z} \hspace{15pt} \text{con}\hspace{15pt} \vec{r}(t_0) = h \cdot \hat{z},, \dot{\vec{r}}(t_0) = 0 \text{(oggetto parte da fermo)}$$
+    Grave che cade da altezza $h$.
+    $$m\ddot{\vec{r}}(r) = -mg\hat{z} \hspace{15pt} \text{con}\hspace{15pt} \vec{r}(t_0) = h \cdot \hat{z}, \dot{\vec{r}}(t_0) = 0 \text{(oggetto parte da fermo)}$$
     Proietto $m\ddot{z}(t)= -mg$ \hspace{10pt} $\dot{z}(t) = -g(t - t_0)$ \hspace{10pt} $z(t) = h - \frac{1}{2}g(t - t_0)^2$\\
     Si sostituisce le costanti della soluzione per verificare che siano verificate le condizioni ai bordi.
 \end{example}
 
 \begin{example}
     Problema del proiettile.
-    $$m\ddot{\vec{r}}(t) = -mh\hat{z} \text{(equazione del moto)}\:\:\: \text{con}\vec{r}(t_0) = 0$$
+    $$m\ddot{\vec{r}}(t) = -mg\hat{z} \:\:\text{(equazione del moto)}\:\:\: \text{con} \:\:\vec{r}(t_0) = 0$$
     $$\text{e}\:\: \dot{\vec{r}}(t_0) = v_0 \cdot \cos\Theta\hat{x} + v_0 \cdot \sin\Theta\hat{z} \hspace{10pt}\text{ovver}\hspace{10pt}\vec{v}_0 = v_0(\cos\Theta, \sin\Theta) \:\: ||\vec{v}_0|| = v_0$$
+    Qui andiamo a considerare quindi una certa velocità $v_0$ con un angolo $\Theta$, e andiamo a definire la vecolità $\vec{v}_0$.
     Proiezione lungo $\hat{y}$ banale: $\ddot{y}(t) \equiv 0, y(t) \equiv 0$
     $$
     \begin{cases}
@@ -58,7 +61,7 @@ $g \equiv 9,8 m/s^2$, dipende da $M_T$, variazioni locali.
     $$
     $$
     \begin{cases}
-        \ddot{z}(t) = -g & \hspace{20pt} \dot{t} = v_0 \sin\Theta - g(t - t_0)\\
+        \ddot{z}(t) = -g & \hspace{20pt} \dot{z} = v_0 \sin\Theta - g(t - t_0)\\
         \dot{z}(t_0) = v_0 \sin\Theta & \hspace{20pt} z(t) = v_0\sin\Theta(t - t_0) - \frac{1}{2}g (t - t_0)^2
     \end{cases}
     $$
@@ -71,8 +74,7 @@ $g \equiv 9,8 m/s^2$, dipende da $M_T$, variazioni locali.
     $$
     $$t - t_0 = x(t) \: / \: (v_0\cos\Theta) \hspace{10pt} z = v_0\sin\Theta x\: / \: (v_0 \cos\Theta) - \frac{1}{2}g x^2 \: / \: (v_0\cos\Theta)^2 \hspace{10pt} z=v_0 tg\Theta - x^2 \frac{g}{2v_0^2}\frac{1}{\cos^2\Theta}$$
     \begin{observation}
-        $\frac{1}{\cos^2\Theta} = \frac{\sin^2\Theta + \cos^2\Theta}{\cos^2\Theta} = 1 + tg^2\Theta$\\
-        $z = x tg\Theta - x^2 \frac{g}{v_0^2}(1 + tg^2 \Theta)$ (Parabola)
+        $\frac{1}{\cos^2\Theta} = \frac{\sin^2\Theta + \cos^2\Theta}{\cos^2\Theta} = 1 + tg^2\Theta \hspace{15pt} z = x tg\Theta - x^2 \frac{g}{v_0^2}(1 + tg^2 \Theta)$ (Parabola)
     \end{observation}
     \hspace{-15pt}Punto di atterraggio: sistema con $z = 0$, $x = 0$ (banale) \hspace{10pt} $x = \frac{2v^2_0}{g}tg\Theta / (1 + tg^2 \Theta)$
 \end{example}
@@ -83,38 +85,43 @@ $g \equiv 9,8 m/s^2$, dipende da $M_T$, variazioni locali.
 \end{figure}
 
 \subsection{Forza elastica $\vec{F} = -k (||\vec{r} - \vec{r}_v|| - l_0)\frac{\vec{r}-\vec{r}_v}{||\vec{r}-\vec{r}_v||}$}
-\begin{wrapfigure}[6]{r}{4cm}
+\begin{wrapfigure}[7]{r}{4cm}
     \vspace{-15pt}
     \centering
     \includegraphics[width=5cm]{images/forza-elastica.png}
 \end{wrapfigure}
 Chiamata anche \textbf{legge di hooke}. $k$ è la costante elastica espressa in $[N/m]$ del materiale. $l_0 [m]$ lunghezza a riposo della "molla", 
-dipende dal vettore posizione $\vec{r}$ ("posizionale"). Altro estremoi / vincolo $\vec{r}_v$.
-$-\frac{\vec{r}-\vec{r}_v}{||\vec{r}-\vec{r}_v||}$ è il versone parallelo alla molla, cioò la distanza fra il punto di destinazione ed il vincolo.
-La forza elastica è tanto piu intensa quanto è estesa la molla, e questa relazione fondamentale è lineare.
+dipende dal vettore posizione $\vec{r}$ ("posizionale").\\\\
+$-\frac{\vec{r}-\vec{r}_v}{||\vec{r}-\vec{r}_v||}$ è il versone parallelo alla molla, cioò la distanza fra il punto di destinazione ed il vincolo, si usa perché c consente
+di calcolare la forza elstica $F$ nella direzione esatta della deformazione, anziché utilizzare solo la magnitudo della deformazione ($(||\vec{r} - \vec{r}_v|| - l_0)$).
+\\\\La forza elastica è tanto piu intensa quanto è estesa la molla, e questa relazione fondamentale è lineare. Una versione
+più classica della legge di hooke è:
+$$\vec{F} = kx$$
 \begin{example}
     Oscillatore unidimensionale $\vec{r}_v = 0$.
-    $$\vec{r}(t) = x(t)\vec{x}, x(t)\geq 0$$
+    $$\vec{r}(t) = x(t)\vec{x}, \:\:\:x(t)\geq 0$$
     $$\vec{F}= -k(|x-0| - l_0)\frac{x - 0}{|x - 0|}\hat{x} \hspace{10pt} = \hspace{10pt} -k(|x| - l_0)\frac{x}{|x|}\hat{x} \Rightarrow F_x = -k(x-l_0)$$
     $$m\ddot{x}(t) = -k[x(t) - l_0]$$
     Soluzione generale (verifico per sostituzione)
-    $$x(t) = l_0 + A \cdot \cos(\Omega t) + B \cdot \sin(\Omega t) \:\:\:\: \text{con} \Omega \equiv \sqrt{k/m}$$
-    $$\Omega[rad/s] \text{la \textbf{frequenza angolare}} \hspace{15pt} \Omega/2\pi [\frac{1}{s} = Hz] \text{è la \textbf{frequenza}} \hspace{15pt} T = 2\pi/\Omega [s] \text{è il \textbf{periodo}, infatti } \Omega \cdot T = 2\pi$$ 
+    $$x(t) = l_0 + A \cdot \cos(\Omega t) + B \cdot \sin(\Omega t) \hspace{15pt} \Omega \equiv \sqrt{k/m}$$
+    $$\dot{x}(t) = -\Omega A \sin(\Omega t) + B \Omega \cos(\Omega t)$$
+    $$\Omega[rad/s] \text{la \textbf{frequenza angolare}} \hspace{10pt} \Omega/2\pi [\frac{1}{s} = Hz] \text{è la \textbf{frequenza}} \hspace{10pt} T = 2\pi/\Omega [s] \text{è il \textbf{periodo}, infatti } \Omega \cdot T = 2\pi$$ 
     Trovo $A$ e $B$ imponendo che la soluzione rispetti le condizoni al bordo, es: $x(0) = x_0, \dot{x}(0) = 0$. 
     Dalla soluzione generale ho 
-    %aggiungi testo sopra freccia
-    $$\dot{x}(t) = -\Omega A \sin(\Omega t) + B \Omega \cos(\Omega t) \Rightarrow 0 = -\Omega A \sin(\Omega \cdot 0) + B \Omega \cos(\Omega \cdot 0) \Rightarrow 0 = 0 + B\Omega \Rightarrow B = 0$$
-    $$x(t) = l_0 + A \cdot \cos(\Omega t) \Rightarrow x_0 = l_0 + A \cdot \cos(\Omega \cdot 0) \Rightarrow x_0 = l_0 + A$$
+    \begin{align*}
+        & \dot{x}(t) = -\Omega A \sin(\Omega t) + B \Omega \cos(\Omega t) \:\: \xrightarrow{b.} \:\: 0 = -\Omega A \sin(\Omega \cdot 0) + B \Omega \cos(\Omega \cdot 0) \:\:\rightarrow\:\: 0 = 0 + B\Omega \Rightarrow B = 0\\
+        & x(t) = l_0 + A \cdot \cos(\Omega t) \:\:\xrightarrow{a.}\:\: x_0 = l_0 + A \cdot \cos(\Omega \cdot 0) \:\:\rightarrow\:\: x_0 = l_0 + A
+    \end{align*}
     La soluzione completa è quindi
     $$x(t) = l_0 + (x_0 - l_0) \cos(\Omega t)$$
 \end{example}
 
 \subsection{Forza di attrito viscoso $\vec{F} = -\gamma\dot{\vec{r}}(t)$}
-Modello approssimato per le basse velocità. Abbiamo che $-\gamma [N/(m/s)]$ è costante. Il meno è dato perché è una forza
+Modello approssimato per le basse velocità. Abbiamo che $-\gamma [N/(m/s)]$ è la costante del materiale viscoso. Il meno è dato perché è una forza
 che si oppone linearmente ad una velocità.
 \begin{example}
     Proiettile in gel balistico.
-    $$m\ddot{x}(t) = \gamma t \dot{x}(t) \:\: con \:\: \dot(0) = v_0$$
+    $$m\ddot{x}(t) = \gamma t \dot{x}(t) \:\: con \:\: \dot{x}(0) = v_0$$
     Pongo poi $u(t) \equiv \dot{x}(t) \Rightarrow \dot{u} t = -\frac{1}{\tau}u(t)$ con $u(0) = v_0$ e $\frac{1}{\tau} = \frac{\gamma}{m}[\frac{1}{s}]$\\
     Soluzione generale $u(t) = A e^{-t/\tau} \Rightarrow v_0 = A \cdot e^0 \Rightarrow v_0 = A$.\\
     Quindi la soluzione completa è
@@ -139,7 +146,7 @@ che si oppone linearmente ad una velocità.
 $r(t) = R, \Theta(t) = \Omega t$ \textbf{moto circolare uniforme}
 $$\vec{r}(t) = r(t)\hat{r}\hspace{15pt}\hat{r} = \cos(\Theta(t))\hat{x} + \sin(\Theta(t))\hat{t}$$
 $$\ddot{\vec{r}} (t) = [\ddot{r(t)} - r(t)\dot{\Theta}(t)^2]\hat{r} + [r(t)\ddot{\Theta}(t) + 2\dot{r}\dot{\Theta}(t)]\hat{\Theta}$$
-Dalla legge oraria ho: $\dot(t) = 0, \ddot{r}(t) = 0, \dot{\Theta} = \Omega, \ddot{\Theta}(t) = 0 \Rightarrow$ in questo caso $\ddot{\vec{r}}(t) = -R\Omega^2\hat{r}$.\\
+Dalla legge oraria ho: $\dot{x}(t) = 0, \ddot{r}(t) = 0, \dot{\Theta} = \Omega, \ddot{\Theta}(t) = 0 \Rightarrow$ in questo caso $\ddot{\vec{r}}(t) = -R\Omega^2\hat{r}$.\\
 La risultate $\vec{F}$ delle forze deve essere tale che $m\ddot{\vec{r}}(t) = \vec{F} \Rightarrow -mR\Omega^2\hat{r} = \vec{F} \Rightarrow \vec{F} = -mR\Omega\vec{r}$.\\
 La forza è costante e sempre diretta verso lo stesso punto (\textbf{forza centrale} o  \textbf{forza centripeda}). Ottengo $\vec{F}$ solo per questa legge oraria.\\\\
 Integrazione numeria delle equazioni del moto.
@@ -238,7 +245,7 @@ $-\frac{\vec{v}}{||\vec{v}||}$ diretto in versione opposta alla velocità.
         \includegraphics[width=5cm]{images/esempio-reazione-vincolare-4.png}
     \end{wrapfigure}
     
-    Proietto lungo $\hat{z}'$: \hspace{15pt} $m\ddot{z}'(t) = -mg\cos\alpha + N$\\
+    \hspace{-15pt}Proietto lungo $\hat{z}'$: \hspace{15pt} $m\ddot{z}'(t) = -mg\cos\alpha + N$\\
     Proietto lungo $\hat{x}'$: \hspace{15pt} $m\ddot{x}'(t) = +mg\sin\alpha$\\
     Vincolo: $z'(t) = \cos t \hspace{10pt} \ddot{z}'(t) = 0 \Rightarrow N = mg\cos\alpha \hspace{10pt} \ddot{x}'(t) = g \cdot \sin\alpha$\\
     Visto che $\sin\alpha < 1$ quindi l'accelerazione lungo il piano è $< g$.

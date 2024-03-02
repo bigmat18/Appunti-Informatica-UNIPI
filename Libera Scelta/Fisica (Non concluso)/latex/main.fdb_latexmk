@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1709139289 "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.tex" "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.pdf" "main" 1709139292
+["pdflatex"] 1709387155 "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.tex" "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.pdf" "main" 1709387157
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/energia-cinetica.tex" 1709121113 7486 d3f8fb9325d264f05b2f421155556216 ""
-  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/forze.tex" 1709121328 16077 d05b07cb669e9dd72487f4873b3a30f8 ""
+  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/forze.tex" 1709387154 16717 2ac86f5ba03324e6dcc488eca1fe4a6c ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/frontespizio.tex" 1707307972 950 9c0c55054848a5ca8647f9f31a3e27a4 ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/coordinate-polari.png" 1707398576 19618 1bf539d6992a91be0b1060542ceae598 ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-proiettile.png" 1709119006 21281 cd9e2b46964466819d8446a6c31dd1b5 ""
@@ -20,11 +20,11 @@
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/regioni-permesse-profilo-potenziale.png" 1708966049 95456 ffbdb2a0044222c3bcf2ba7f2f4de37f ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/trasformazioni-inverse.png" 1709118908 47632 afeb91ffc058a8a8a7e4eba895ff4ae1 ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/vettore-velocità.png" 1707311439 22249 27df351bfa5b99aefdda3b8e710feef6 ""
-  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/introduction.tex" 1709139289 9185 eb1ce655c80fb0ff59ab3bd7fad3fe48 ""
-  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.aux" 1709139292 3261 f15406e72f677e29294edebd3b74b8dc "pdflatex"
-  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.out" 1709139292 3042 c561550bd44dce31b596eac934f43c75 "pdflatex"
-  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.tex" 1709121161 2945 072d0b10b69e382be4ff8cb59f133a81 ""
-  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.toc" 1709139292 1647 7857b1a941814331c14839dd535ade7e "pdflatex"
+  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/introduction.tex" 1709308470 10704 4ee27fbea2721cfa82f78a02ec0b9b99 ""
+  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.aux" 1709387157 3265 7cb4967cb024fe37827de4cb9a249e80 "pdflatex"
+  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.out" 1709387157 3042 c561550bd44dce31b596eac934f43c75 "pdflatex"
+  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.tex" 1709307613 2945 072d0b10b69e382be4ff8cb59f133a81 ""
+  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.toc" 1709387157 1648 d5b5ac7c874060fb22bd9f4cb786b9d0 "pdflatex"
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/marchio_unipi_pant541.png" 1707307972 176739 066b5d4463adf1c48940d465b736a16e ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
