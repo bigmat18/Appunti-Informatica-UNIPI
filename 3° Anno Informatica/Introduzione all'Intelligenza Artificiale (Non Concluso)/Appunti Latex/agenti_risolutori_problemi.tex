@@ -31,11 +31,12 @@ Un problema può essere definito formalmente mediante 5 componenti:
 \begin{enumerate}
 	\item \textbf{Stato iniziale}
 	\item \textbf{Azioni} possibili
-	\item \textbf{Modello di transizione}: $ris: stato \times azione \to stato$, uno stato \emph{successore} $ris(s,a)=s'$
-	\item \textbf{Test obiettivo} per capire tramite un insieme di stati obiettivo se il goal è raggiunto $test: stato \to \{true,false\}$
+	\item \textbf{Modello di transizione}: $$risultato: stato \times azione \to stato \hspace{15pt} Risultato(s,a)=s' (\text{uno stato \textbf{successore}})$$
+	\item \textbf{Test obiettivo} per capire tramite un insieme di stati obiettivo se il goal è raggiunto $$test: stato \to \{true,false\}$$
 	\item \textbf{Costo del cammino}: composto dalla somma dei costi delle azioni, dove un passo ha costo $c(s,a,s')$. Un passo non ha mai costo negativo.
 \end{enumerate}
-I punti 1, 2 e 3 definiscono implicitamente lo \textbf{spazio degli stati}. Definirlo esplicitamente può essere molto costoso.
+I punti 1, 2 e 3 definiscono implicitamente lo \textbf{spazio degli stati}. Definirlo esplicitamente può essere molto costoso, come
+in quasi tutti i problemi di IA, questo sarà rilevante nel seguito, come vedremo nelle prossime lezioni
 
 \subsection{Algoritmo di ricerca}
 Gli algoritmi di ricerca prendono in input un problema e restituiscono un \textbf{cammino soluzione}.\\
@@ -182,7 +183,7 @@ espandi (le foglie dell'albero di ricerca). La frontiere è implementata come un
 		Viene estratto quello con priorità più alta in base a una funzione di ordinamento; dopo l’inserimento dei nuovi nodi si riordina.
 	\end{itemize}
 \end{itemize}
-
+\newpage
 \section{Stategia ricerca non informative}
 Ora andremo a vedere diverse \textbf{strategie non informative}: Ricerca in ampiezza (BF), Ricerca in profondità (DF)
 Ricerca in profondità limitata (DL), Ricerca con approfondimento iterativo (ID), Ricerca di costo uniforme (UC).
@@ -196,7 +197,6 @@ La valutazione di una strategia verrà fatta andando a seguire i seguenti parame
 	\item \textbf{Complessità in spazio}: memoria richiesta (per il costo della ricerca).
 \end{itemize}
 
-\newpage
 \subsection{Ricerca in ampiezza (BF)}
 O come esplorare il grafo dello spazio degli stati a livelli progressivi di stessa profondità. Viene inoltre
 implementata con una coda che inserisce alla fine (FIFO).
@@ -231,7 +231,7 @@ Una versione aggiornata dove evitiamo di espandere (nodi con) stati già esplora
 		frontiera = una coda FIFO con nodo come unico elemento
 		esplorati = indieme vuoto //aggiunto per gestire gli stati ripetuti
 		loop do
-			if(Vuota?(frontiera)) then return fallimento
+			if(Vuota(frontiera)) then return fallimento
 			nodo = POP(frontiera) // aggiungi nodo.Stato a esplorati
 			for each azione in problema.Azioni(nodo.Stato) do
 				figlio = Nodo-Figlio(problema, nodo, azione) [costruttore: vedi AIMA]
@@ -244,8 +244,7 @@ Ora sempre lo stesso codice in uno script python:
 \begin{python}
 	def breadth_first_search(problem): # """Ricerca-grafo in ampiezza"""
 		explored = [] # insieme degli stati gia visitati (implementato come una lista)
-		node = Node(problem.initial_state) # il costo del cammino e inizializzato nel
-		costruttore del nodo
+		node = Node(problem.initial_state) # il costo del cammino e inizializzato nel costruttore del nodo
 		if problem.goal_test(node.state):
 			return node.solution(explored_set = explored)
 		frontier = FIFOQueue() # la frontiera e una coda FIFO
@@ -258,8 +257,8 @@ Ora sempre lo stesso codice in uno script python:
 				if (child_node.state not in explored) and (not frontier.contains_state(child_node.state)):
 					if problem.goal_test(child_node.state):
 						return child_node.solution(explored_set = explored)
-				# se lo stato non e uno stato obiettivo allora inserisci il nodo nella frontiera
-				frontier.insert(child_node)
+					# se lo stato non e uno stato obiettivo allora inserisci il nodo nella frontiera
+					frontier.insert(child_node)
 		return None # in questo caso ritorna con fallimento
 \end{python}
 
@@ -273,7 +272,7 @@ Inanzitutto assumiamo che:
 La \textbf{strategia ottimale} è se gli operatori hanno tutti lo stesso costo k cioè $g(n) = k \cdot depth(n)$ dove $g(n)$ è il costo del 
 cammino per arrivare a n.\\\\
 La \textbf{complessità nel tempo} (nodi generati):
-$$T(b, d) = 1 + b + b^2 + \dots + b^d \to O(b?d) \:\: \text{b figli per ogni nodo}$$
+$$T(b, d) = 1 + b + b^2 + \dots + b^d \to O(b^d) \:\: \text{b figli per ogni nodo}$$
 \begin{note}
 	Riflettere che il numero nodi cresce exp., non assumiamo di conoscere già il
 	grafo ne una notazione di linearità nel numero nodi . Questo è tipico dei problemi in
@@ -349,9 +348,11 @@ per fare altri tentativi (generando i nodi fratelli al momento del backtracking)
 Si va in profondità fino ad un certo livello predefinito $l$. È una soluzione definibile
 \textbf{completa} per problemi in cui si conosce un limite superiore per la profondità della soluzione 
 (e.s Route-finding limitata dal numero di città - 1). È però completa se $d < l$ ($d$ profondità nodo obbiettivo
-superficiale). Questa soluzione non è ottimale.\\
-\textbf{Complessità tempo}: $O(b^l)$\\
-\textbf{Complessità spazio}: $O(bl)$\\
+superficiale). Questa soluzione non è ottimale.
+\begin{itemize}
+	\item \textbf{Complessità tempo}: $O(b^l)$
+	\item \textbf{Complessità spazio}: $O(bl)$
+\end{itemize}
 
 \subsection{Approfondimento iterativo (ID)}
 Si prova DF (DL) con limite di profondità 0, poi 1, poi 2, poi 3 ... fino
@@ -362,7 +363,7 @@ a trovare la soluzione.
 \end{figure}
 
 \hspace{-15pt}Miglior compromesso tra BF e DF.
-$$BF: b + b^2 + \dots + b^{d-1} + b^d \:\:\: con b=10 e d=5$$
+$$BF: b + b^2 + \dots + b^{d-1} + b^d \:\:\: con\:\: b=10\:\: e\:\: d=5$$
 $$10 + 100 + 1000 + 10.000 + 100.000 = 111.110$$
 ID: i nodi dell'ultimo livello generati una volta, quelli del penultimo 2, quelli
 del terzultimo 3 ... quelli del primo d volte.
@@ -446,7 +447,7 @@ completa (per spazi finiti). Ma in molti casi gli stati crescono exp.
 	\centering
 	\includegraphics[width=0.85\textwidth]{images/ricerca-grafo-romania.png}
 \end{figure}
-\hspace{-15pt}La ricerca su grafo esplora ino stato al piu una volta. Una proprietà è che:
+\hspace{-15pt}La ricerca su grafo esplora uno stato al piu una volta. Una proprietà è che:
 la \textbf{frontiera} separa i nodi \underline{esplorati} da quelli \underline{non-esplorati} (ogni cammino dallo
 stato iniziale a inesplorati deve attraversare uno stato della frontiera).\\\\
 Generalizzazione della ricerca in ampiezza (costi diversi tra passi): si sceglie il
@@ -513,16 +514,17 @@ Codice in python della ricerca:
 			# seleziona il nodo node = frontier.pop() # estrae il nodo con costo minore, per l'espansione
 			if problem.goal_test(node.state):
 				return node.solution(explored_set = explored)
-			else: # se non lo e' inserisci lo stato nell'insieme degli esplorati
-			explored.append(node.state)
+			else: 
+				# se non lo e' inserisci lo stato nell'insieme degli esplorati
+				explored.append(node.state)
 				for action in problem.actions(node.state):
-			child_node = node.child_node(problem, action)
-			if (child_node.state not in explored) and (not frontier.contains_state(child_node.state)):
-				frontier.insert(child_node)
-			elif frontier.contains_state(child_node.state) and 
-				 (frontier.get_node(frontier.index_state(child_node.state)).path_cost > child_node.path_cost):
-				frontier.remove(frontier.index_state(child_node.state))
-				frontier.insert(child_node)
+					child_node = node.child_node(problem, action)
+					if (child_node.state not in explored) and (not frontier.contains_state(child_node.state)):
+						frontier.insert(child_node)
+					elif frontier.contains_state(child_node.state) and 
+						(frontier.get_node(frontier.index_state(child_node.state)).path_cost > child_node.path_cost):
+						frontier.remove(frontier.index_state(child_node.state))
+						frontier.insert(child_node)
 		return None # in questo caso ritorna con fallimento
 \end{python}
 

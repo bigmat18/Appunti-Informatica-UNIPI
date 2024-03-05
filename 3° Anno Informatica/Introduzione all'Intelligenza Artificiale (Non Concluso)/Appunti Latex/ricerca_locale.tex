@@ -51,7 +51,7 @@ Se non ci sono stati successori migliori l’algoritmo termina con fallimento.
 \begin{note}
     Si prosegue solo se il vicino (più alto) è migliore dello stato corrente $\to$ se tutti i vicini sono peggiori o uguali si ferma.
 \end{note}
-\hspace{-15pt}Non c'è frontiera a cui ritornare, si tiene 1 solo stato. Il tempo si calcolo come numero di cicli variabile in base al punto di partenza.
+Non c'è frontiera a cui ritornare, si tiene 1 solo stato. Il tempo si calcolo come numero di cicli variabile in base al punto di partenza.
 Il codice in python è il seguente:
 \begin{python}
     def hill_climbing(problem): """ Ricerca locale - Hill-climbing."""
@@ -59,15 +59,16 @@ Il codice in python è il seguente:
         while True:
             neighbors = [current.child_node(problem, action) for action in
                         problem.actions(current.state)]
-        if not neighbors: # se current non ha successori esci e restituisci current
-            break
+            if not neighbors: 
+                # se current non ha successori esci e restituisci current
+                break
 
-        # scegli il vicino con valore piu' alto (sulla funzione problem.value)
-        neighbor = (sorted(neighbors,key = lambda x:problem.value(x), reverse = True))[0]
-        if problem.value(neighbor) <= problem.value(current):
-            break
-        else:
-            current = neighbor # (altrimenti, se vicino e migliore, continua)
+            # scegli il vicino con valore piu' alto (sulla funzione problem.value)
+            neighbor = (sorted(neighbors,key = lambda x:problem.value(x), reverse = True))[0]
+            if problem.value(neighbor) <= problem.value(current):
+                break
+            else:
+                current = neighbor # (altrimenti, se vicino e migliore, continua)
         return current
 \end{python}
 \begin{example}
@@ -84,6 +85,7 @@ Il codice in python è il seguente:
             \includegraphics[width=\textwidth]{images/8-regine-esempio-negativo.png}
         \end{subfigure}
     \end{figure}
+    \newpage
     Vediamo poi nella seconda figura un esempio negativo con minimo locale. Settiamo $h=1$, tutti gli stati successori non migliorano la situazione. 
     Per le 8 regine Hill-climbing si blocca l'$86\%$ delle volte, ma in media solo 4 passi per la soluzione e 3 quando si blocca, su $8^8 = 16.8$ milioni di stati. 
 \end{example}
@@ -103,7 +105,7 @@ Alcuni problemi con Hill-climbing ci sono se la f è da ottimizzare, infatti in 
 
 \hspace{-15pt}Alcuni miglioramenti che si possono apportare solo i seguenti:
 \begin{enumerate}
-    \item Consentire (un numero limitato di) mosse laterali (ossia ci si ferma per < nell’alg. invece che per $\leq \to$ continua anche a parità di h). L’algoritmo sulle 8 regine ha successo nel $94\%$, ma impiega in media 21 passi.
+    \item Consentire (un numero limitato di) mosse laterali (ossia ci si ferma per $<$ nell’alg. invece che per $\leq \to$ continua anche a parità di h). L’algoritmo sulle 8 regine ha successo nel $94\%$, ma impiega in media 21 passi.
     \item Hill-climbing stocastico: si sceglie a caso tra le mosse in salita (magari tenendo conto della pendenza). Converge più lentamente ma a volte trova soluzioni migliori.
     \item Hill-climbing con prima scelta. Può generare le mosse a caso, uno alla volta, fino a trovarne una migliore dello stato corrente (si prende solo il primo che migliora). Come la stocastica ma utile quando i successori sono molti (e.g. migliaia o ben oltre), evitando una scelta tra tutti.
     \item Hill-Climbing con riavvio casuale (random restart): ripartire da un punto scelto a caso. Se la probabilità di successo è p saranno necessarie in
@@ -119,10 +121,10 @@ energia/stocasticità iniziale) e raffreddati gradualmente consentendo di crista
 In questo algoritmo ad ogni passo si sceglie un successore $n'$ a caso:
 \begin{itemize}
     \item se migliora lo stato corrente viene espanso.
-    \item se no (caso in cui $\Delta E = f(n') - f(n) \leq 0$) quel nodo viene scelto con probabilità $p = e^{\Delta E/T} [0 \leq p \leq 1]$ [Si genera un numero casuale tra 0 e 1: se questo è < p il successore
+    \item se no (caso in cui $\Delta E = f(n') - f(n) \leq 0$) quel nodo viene scelto con probabilità $$p = e^{\Delta E/T} [0 \leq p \leq 1]$$ [Si genera un numero casuale tra 0 e 1: se questo è $<$ p il successore
     viene scelto, altrimenti no].
 \end{itemize}
-Ossia: p è inversamente proporzionale al peggioramento Infatti se la mossa peggiora molto, $\Delta E$ alto neg., la p si abbassa. 
+Ossia: p è inversamente proporzionale al peggioramento, infatti se la mossa peggiora molto, $\Delta E$ alto neg., la p si abbassa. 
 T (temperatura) decresce col progredire dell’algoritmo (quindi anche p) secondo un piano definito. Col progredire rende improbabili le mosse peggiorative.\\\\
 Per quanto riguarda l'analisi della tempra simulata, La probabilità p di una mossa in discesa diminuisce col tempo e l’algoritmo si comporta sempre di più come Hill Climbing.
 Se T viene decrementato abbastanza lentamente con prob. tendentente ad 1 si raggiunge la soluzione ottimale. Analogia col processo di tempra dei metalli
@@ -158,10 +160,11 @@ La popolazione ottenuta dovrebbe essere migliore. La cosa si ripete fino ad otte
         \centering
         \includegraphics[width=0.8\textwidth]{images/esempio-algo-genetici.png}
     \end{figure}
+
     Per ogni coppia (scelta con probabilità(blu) proporzionale alla fitness(rosso)) viene scelto un punto di crossing over(verde) e vengono generati due figli scambiandosi pezzi (del DNA)
-    Viene infine effettuata una mutazione(rosa) casuale che dà luogo alla prossima generazione
-    La fitness progressivamente tenderà a favorire generazioni migliori. Emula i meccanismi genetici ma anche l’evoluzione della specie.
-    La nascita di un figlio aviene come
+    Viene infine effettuata una mutazione(rosa) casuale che dà luogo alla prossima generazione,
+    la fitness progressivamente tenderà a favorire generazioni migliori. Emula i meccanismi genetici ma anche l’evoluzione della specie.
+    La nascita di un figlio aviene come:\\
     \begin{figure}[h!]
         \centering
         \includegraphics[width=0.75\textwidth]{images/nascita-figlio.png}
@@ -181,9 +184,9 @@ Prendiamo ad esemio movimenti in spazio 3D, con posizione data da $x = (x_1, x_2
 approcci precedenti, in realtà molti strumenti matematici per spazi continui, che portano ad approcci anche molto efficienti...\\\\
 Se la f è continua e differenziabile, e.g. quadratica rispetto a x (vettore). Il minimo o massimo si può cercare utilizzando il \textbf{gradiente}, che restituisce la
 direzione di massima pendenza nel punto. Data f obiettivo su 3D
-$$\nabla f = \Big ( \frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, \frac{\partial f}{\partial x_3})$$
-Nell Hill climbing iterativo: $x_{new} = x + \eta\nabla f(n)$
-Dove il '+' per salive (maximization), il '-' per scendere (minimization), la $\eta$ indica lo step size (e.g constante positiva <1)
+$$\nabla f = \Big ( \frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, \frac{\partial f}{\partial x_3} \Big)$$
+Nell Hill climbing iterativo: $$x_{new} = x + \eta\nabla f(n)$$
+Dove il '+' per salive (maximization), il '-' per scendere (minimization), la $\eta$ indica lo step size (e.g constante positiva $<$1)
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.65\textwidth]{images/spazi-continui-gradiant.png}
@@ -194,7 +197,8 @@ Quantifica direzione e spostamento, senza cercarlo tra gli infiniti possibili su
 \end{note}
 \begin{example}
     Discesa verso il minimo. $f(x) = x^2 \hspace{10pt} f'(x) = 2x$\\
-    Discesa di gradiente verso il minimo. $x_{new} = x - \eta \nabla f(x) \to \:\:(1-d) \:\: \to x_{new} = x - \eta f'(x)$.\\
+    Discesa di gradiente verso il minimo. 
+    $$x_{new} = x - \eta \nabla f(x) \to \:\:(1-d) \:\: \to x_{new} = x - \eta f'(x)$$
     Mettiamoci in $x=2$, la derivata vale $2 \times 2=4$, mi devo spostare di $-\eta f'(x) = -\eta4$, quindi ad esempio $(\eta = 0.2)$ ottengo $-\eta f'(x) = -0.2 \times 4 = -0.8$ andando a sinistra al punto $x_{new} = 2 - 0.8 = 1.2$ avvicinandomi quindi al minimo.
 \end{example}
 
@@ -209,17 +213,18 @@ Negli ambienti più realistiti gli agenti risolutori di problemi “classici” 
 In un ambiente parzialmente osservabile e non deterministico le \textbf{percezioni} sono importanti: restringono gli stati possibili, informano sull’effetto dell’azione.
 Più che un piano l'agente può elaborare una "strategia", che tiene conto delle diverse eventualità: un \textbf{piano con contigenza}.
 \begin{example}
-    L'aspirapolvere con assunzioni diverse. L'spirapolvere imprevedibile: ci sono piùstatipossibili risulato dell'azione.
+    L'aspirapolvere con assunzioni diverse. \\
+    L'spirapolvere imprevedibile: ci sono più stati possibili risulato dell'azione.
     \begin{itemize}
         \item Comportamento: Se aspira in una stanza sporca, la pulisce maa talvolta pulisce anche una stanza adiacente. Se aspira in una stanza pulita, a volte rilascia sporco.
         \item Variazioni necessarei al modello: Il modello di transizione restituisce un \textbf{insieme di stati}: l'agente non sa in quale si troverà. Il piano di \textbf{contingenza} sarà un piano condizionale e magari con cicli.
     \end{itemize}
     \begin{figure}[h!]
         \centering
-        \includegraphics[width=0.4\textwidth]{images/esempio-aspirapolvere.png}
+        \includegraphics[width=0.34\textwidth]{images/esempio-aspirapolvere.png}
     \end{figure}
-
-    \hspace{-15pt}Abbiamo che Risultati(aspira, 1) = $\{5, 7\}$. Il piano possibile potrebbe essere:
+    \newpage
+    Abbiamo che Risultati(aspira, 1) = $\{5, 7\}$. Il piano possibile potrebbe essere:
     \begin{lstlisting}
         Aspira, if stato = 5 
             then [Destra, Aspira]
