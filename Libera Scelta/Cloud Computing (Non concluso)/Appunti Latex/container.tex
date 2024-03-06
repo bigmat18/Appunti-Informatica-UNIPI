@@ -1,0 +1,29 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Container}
+I container sono un metodo per creare la virtualizzazione e l'isolamento delle risorse in maniera più semplice.\\
+La struttura è simile a quella della virtualizzazione, dove al posto dell'hypervisor abbiamo un \textbf{container manager}. La differenza principale è, però, che tutti i container operano sopra ad un unico OS, permettendo di risparmiare molte risorse sia in termini di performance che di spazio.
+
+\subsection{Storia}
+\begin{itemize}
+	\item UNIX \textbf{chroot} permetteva isolamento dal filesystem
+	\item FreeBSD \textbf{jail} estese l'isolamento di chroot ai processi
+	\item Google inizia a sviluppare i \textbf{CGroups} per il kernel di Linux
+	\item I \textbf{Linux Container} forniscono una soluzione completa
+	\item \textbf{Docker} aggiunge il concetto di immagini portabili e grafica semplice da utilizzare
+\end{itemize}
+
+\subsection{Docker}
+Docker è una piattaforma che permette di sviluppare ed eseguire applicazioni in un ambiente isolato sfruttando i container.\\
+I componenti software sono gestiti come \textbf{immagini} in sola lettura su cui vengono creati ed eseguiti i \textbf{container}. In aggiunta possono essere montati dei \textbf{volumi} per garantire la persistenza dei dati.
+
+\subsubsection{Images}
+Sono in sola lettura e vengono salvate in un \textbf{docker registry}, pubblico o privato, strutturati in repositories che contengono ognuna ogni versione di un determinato software.
+
+\subsubsection{Swarm mode}
+Docker prevede la \textbf{swarm mode} per gestire un gruppo di container (swarm). I \textbf{nodi} possono essere:
+\begin{itemize}
+	\item \emph{Managers}, che delegano le task ai workers
+	\item \emph{Workers}, che eseguono le task a loro assegnate
+\end{itemize}
+L'utente può definire lo stato desiderato dei vari servizi dell'applicazione. Ogni nodo avrà un DNS name univoco. Swarm si occuperà di fare \emph{load balancing} e di mantenere la coerenza degli stati secondo quello desiderato.
