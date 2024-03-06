@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1709413485 "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.tex" "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.pdf" "main" 1709413487
-  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/energia-cinetica.tex" 1709121113 7486 d3f8fb9325d264f05b2f421155556216 ""
-  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/forze.tex" 1709413484 17723 1791c4e100fbac68a7c4bd0d9206c59a ""
-  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/frontespizio.tex" 1707307972 950 9c0c55054848a5ca8647f9f31a3e27a4 ""
+["pdflatex"] 1709719128 "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.tex" "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.pdf" "main" 1709719131
+  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/energia-cinetica.tex" 1709681266 7818 bf85114775e376b25030dc37891c8f23 ""
+  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/forze.tex" 1709413510 17723 1791c4e100fbac68a7c4bd0d9206c59a ""
+  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/frontespizio.tex" 1709719127 915 07c0c6cb7564fc1f2ffb8b1cb69bff12 ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/coordinate-polari.png" 1707398576 19618 1bf539d6992a91be0b1060542ceae598 ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-proiettile.png" 1709119006 21281 cd9e2b46964466819d8446a6c31dd1b5 ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazioni-vincolari-1.png" 1709120417 19054 fd4011e1c04275f680f1bb3aea4d2e27 ""
@@ -24,10 +24,10 @@
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/trasformazioni-inverse.png" 1709118908 47632 afeb91ffc058a8a8a7e4eba895ff4ae1 ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/vettore-velocità.png" 1707311439 22249 27df351bfa5b99aefdda3b8e710feef6 ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/introduction.tex" 1709308470 10704 4ee27fbea2721cfa82f78a02ec0b9b99 ""
-  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.aux" 1709413487 3433 c71c12101051df56279c492773d0b0bd "pdflatex"
-  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.out" 1709413487 3042 c561550bd44dce31b596eac934f43c75 "pdflatex"
+  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.aux" 1709719130 3433 c71c12101051df56279c492773d0b0bd "pdflatex"
+  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.out" 1709719130 3042 c561550bd44dce31b596eac934f43c75 "pdflatex"
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.tex" 1709307613 2945 072d0b10b69e382be4ff8cb59f133a81 ""
-  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.toc" 1709413487 1648 d5b5ac7c874060fb22bd9f4cb786b9d0 "pdflatex"
+  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.toc" 1709719130 1648 d5b5ac7c874060fb22bd9f4cb786b9d0 "pdflatex"
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/marchio_unipi_pant541.png" 1707307972 176739 066b5d4463adf1c48940d465b736a16e ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
