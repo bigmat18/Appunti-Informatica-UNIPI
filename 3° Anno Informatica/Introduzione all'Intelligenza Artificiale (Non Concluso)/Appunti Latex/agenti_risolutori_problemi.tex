@@ -196,3 +196,160 @@ Il seguente è invece quello della \textbf{ricerca su grafo}:
 		frontiera = Inserisci(figlio, frontiera) /* in coda
 	end
 \end{lstlisting}
+
+\noindent Analizziamone la complessità partendo dalle seguenti assunzioni:
+\begin{itemize}
+	\item Fattore di \textbf{branching} $b$: numero massimo di successori
+	\item \textbf{Depth} del nodo obiettivo più superficiale
+	\item Lunghezza \textbf{massima} dei cammini nello spazio degli stati
+\end{itemize}
+La strategia è ottimale se tutti gli operatori hanno lo stesso costo $k$, ovvero se $g(n)=k \cdot depth(n)$, dove $g(n)$ è il costo del cammino per arrivare ad $n$.\\
+La complessità nel \emph{tempo} (nodi generati) sarà 
+\begin{equation*}
+	T(b,d)=1+b+b^2+\ldots+b^d \longrightarrow O(b^d)
+\end{equation*}
+mentre in \emph{spazio} (nodi in memoria):
+\begin{equation*}
+	O(b^d)
+\end{equation*}
+È chiaro che l'algoritmo scali male, sopratutto per quanto riguarda lo spazio.
+
+\subsubsection{Depth first}
+In questo algoritmo si parte da un nodo e si scende nel primo figlio, procedendo appunto in profondità. Arrivati alle foglie si torna indietro ai figli precedentemente non visitati. In memoria tengo solamente  i fratelli del path corrente ed elimino i rami già esplorati.\\  Possono esserci tre versioni possibili:
+\begin{itemize}
+	\item \textbf{Albero}: data $m$ la lunghezza massima dei cammini nello spazio degli stati e $b$ il fattore di diramazione, la \textbf{complessità} in \emph{tempo} è $O(b^m)$ (può essere maggiore di $O(b^d)$) mentre in \emph{spazio} è $b \cdot m$.
+	Rispetto al Breadth First, non è né completo né ottimale, ma ci garantisce un notevole risparmio in memoria
+	\item \textbf{Grafo}: la memoria corrisponde a tutti i possibili stati, diventando quindi completo nello spazio finito (non in quello infinito)
+	\item \textbf{Ricorsiva}: ancora più efficiente per la memoria perché mantiene solo il cammino corrente ($O(m)$). Viene realizzata con un algoritmo di \emph{backtracing} che salva lo stato su uno stack a cui torna in caso di fallimento.
+\end{itemize}
+\newpage
+\begin{lstlisting}
+	function Ricerca-DF-A (problema)
+		returns soluzione oppure fallimento
+		return Ricerca-DF-ricorsiva(CreaNodo(problema.Stato-iniziale), problema)
+	
+	function Ricerca-DF-ricorsiva(nodo, problema)
+		returns soluzione oppure fallimento
+		if problema.TestObiettivo(nodo.Stato) then return Soluzione(nodo)
+		else
+		for each azione in problema.Azioni(nodo.Stato) do
+			figlio = Nodo-Figlio(problema, nodo, azione)
+			risultato = Ricerca-DF-ricorsiva(figlio, problema)
+			if risultato != fallimento then return risultato
+		return fallimento
+\end{lstlisting}
+\subsubsection{Depth Limited}
+La ricerca in profondità limitata arriva fino ad un dato livello $l$. È completa solo se si conosce il limite superiore $d$ per la profondità della soluzione e $d<l$. Non è ottimale e ha complessità in tempo $O(b^l)$ e in spazio $O(b \cdot l)$
+\subsubsection{Iterative Depth}
+Questo approccio prevede di provare l'algoritmo depth limited con limite di profondità $l=0, 1, \ldots$ fino a trovare la soluzione. È il miglior compromesso tra breadth first e depth first:
+\begin{itemize}
+	\item Complessità in \textbf{tempo} $O(b^d)$ se ammette soluzione
+	\item Complessità in \textbf{spazio} $O(b \cdot d)$ se ammette soluzione
+\end{itemize}
+Quindi ha la \emph{completezza} e l'\emph{ottimalità} del breadth first e la complessità in \emph{spazio} della depth first.
+\subsubsection{Uniform Cost}
+Partendo da una ricerca in ampiezza, la generalizziamo: si sceglie il nodo di costo minore sulla frontiera e si espande sui contorni di costo uguale.
+\begin{center}
+	\includegraphics[scale=0.4]{uc.png}
+\end{center}
+\newpage
+Codice per la ricerca su albero:
+\begin{lstlisting}
+	function Ricerca-UC-A (problema)
+			returns soluzione oppure fallimento
+			nodo = un nodo con stato il problema.stato-iniziale e costo-di-cammino=0
+			frontiera = una coda con priorita con nodo come unico elemento
+		loop do
+			if Vuota?(frontiera) then return fallimento
+			nodo = POP(frontiera)
+			if problema.TestObiettivo(nodo.Stato) then return Soluzione(nodo)
+			for each azione in problema.Azioni(nodo.Stato) do
+				figlio = Nodo-Figlio(problema, nodo, azione)
+				frontiera = Inserisci(figlio, frontiera) /* in coda con priorita*/
+	end
+\end{lstlisting}
+Codice per la ricerca su grafo:
+\begin{lstlisting}
+	function Ricerca-UC-G (problema)
+			returns soluzione oppure fallimento
+			nodo = un nodo con stato il problema.stato-iniziale e costo-di-cammino=0
+			frontiera = una coda con priorita con nodo come unico elemento
+			esplorati = insieme vuoto
+		loop do
+			if Vuota?(frontiera) then return fallimento
+			nodo = POP(frontiera);
+			if problema.TestObiettivo(nodo.Stato) then return Soluzione(nodo)
+			aggiungi nodo.Stato a esplorati
+			for each azione in problema.Azioni(nodo.Stato) do
+				figlio = Nodo-Figlio(problema, nodo, azione)
+				if figlio.Stato non in esplorati e non in frontiera then
+					frontiera = Inserisci(figlio, frontiera) /* in coda con priorita
+				else if figlio.Stato in frontiera con Costo-cammino piu alto then
+					sostituisci quel nodo frontiera con figlio */
+	end
+\end{lstlisting}
+Questo algoritmo è \textbf{ottimo} e \textbf{completo} purché il costo degli archi sia $\epsilon > 0$. Assunto $C^*$ come costo della soluzione ottima, $\lfloor \frac{C^*}{\epsilon}\rfloor$ è il numero di mosse nel caso peggiore. La complessità è quindi $O(b^{1+\lfloor \frac{C^*}{\epsilon}\rfloor})$.
+\begin{note}
+	Quando ogni azione ha lo stesso costo, la complessità si avvicina a quella della breadth first: $O(b^{1+d})$.
+\end{note}
+\subsection{Direzione}
+Un problema importante è quello della \textbf{direzione} della ricerca, che può essere:
+\begin{itemize}
+	\item In \textbf{avanti} o guidata da \emph{dati}: si esplora lo spazio di ricerca dallo stato iniziale all'obiettivo
+	\item All'\textbf{indietro} o guidata dall'\emph{obiettivo}: si esplora lo spazio di ricerca partendo da uno stato goal e riconducendosi ad un sotto-goal fino a trovare uno stato iniziale
+\end{itemize}
+Per scegliere la direzione bisogna tenere in conto di quale ha il \textbf{fattore di diramazione} minore.  Si preferisce la ricerca all'\emph{indietro} quando l'obiettivo è ben definito (e.g. theorem proving) mentre quella in \emph{avanti} quando ci sono molteplici obiettivi (e.g. design).\\
+\subsubsection{Ricerca bidirezionale}
+Nella ricerca bidirezionale si procede in entrambe le direzioni fino ad incontrarsi. La \textbf{complessità} è:
+\begin{itemize}
+	\item \emph{Tempo}: $O(\sqrt{b^d})$ assumendo che il test dell'intersezione delle due direzioni sia costante
+	\item \emph{Spazio}: $O(\sqrt{b^d})$, poiché almeno tutti i nodi di una direzione saranno in memoria
+\end{itemize}
+Si noti che non sempre è applicabile, come nel caso in cui i predecessori non siano definiti o ci siano troppi stati obiettivo.
+
+\subsection{Problematiche}
+\subsubsection{Cicli}
+I cammini ciclici rendono gli alberi di ricerca \emph{infiniti} anche quando lo spazio degli stati è finito.
+\begin{center}
+	\includegraphics[scale=0.4]{cicli.png}
+\end{center}
+\subsubsection{Ridondanze}
+Su spazi di stati a grafo si possono generare più volte nodi con lo stesso stato nella ricerca, anche in assenza di cicli.
+\begin{center}
+	\includegraphics[scale=0.4]{ridondanze.png}
+\end{center}
+Visitare questi stati è lavoro inutile. Per evitarlo serve \textbf{ricordare} gli stati già visitati, occupando ovviamente più spazio. Tre possibili soluzioni sono:
+\begin{enumerate}
+	\item Non tornare nel nodo \textbf{genitore}, eliminandolo dai successori (non evita i cammini ridondanti)
+	\item Per evitare i \textbf{cammini ciclici} si controlla che  i successori non siano antenati del nodo corrente
+	\item Non generare nodi con \textbf{stati già esplorati}: ogni nodo visitato deve essere salvato in memoria
+\end{enumerate}
+Il costo può essere alto, ad esempio nella depth first la complessità in spazio torna ad essere pari a tutti gli stati.\\
+La \textbf{ricerca} sul grafo avverrà quindi come segue:
+\begin{enumerate}
+	\item Mantiene una lista di stati esplorati (lista chiusa)
+	\item Prima di espandere un nodo si controlla se era già stato incontrato o se è già nella frontiera
+	\item In quel caso, non viene espanso
+\end{enumerate}
+Questa tecnica è ottimale solo se abbiamo la garanzia che il costo del nuovo cammino sia maggiore o uguale, ovvero non convenga.
+\subsection{Confronto}
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		\textbf{Confronto} & \textbf{BF} & \textbf{UC} & \textbf{DF} & \textbf{DL} & \textbf{ID} & \textbf{BDir}\\
+		\hline
+		Completa & Si & Si(*) & No & Si(**) & Si & Si(***)\\
+		Tempo &$O(b^d)$ &$O(b^{1+\lfloor \frac{C^*}{\epsilon}\rfloor})$ & $O(b^m)$ & $O(b^l)$ & $O(b^d)$ & $O(\sqrt{b^d})$ \\
+		Spazio &$O(b^d)$ &$O(b^{1+\lfloor \frac{C^*}{\epsilon}\rfloor})$ & $O(b\cdot m)$ & $O(b\cdot l)$ & $O(b\cdot d)$ & $O(\sqrt{b^d})$\\
+		Ottimale & Si(****) & Si(*)& No & No & Si(****)& Si(***)\\
+		\hline
+	\end{tabular}
+\end{table}
+Legenda:
+\begin{itemize}
+	\item  \textbf{*}: se $\text{costo archi} \geq \epsilon \geq 0$
+	\item \textbf{**}:  se si conosce il limite alla profondità della soluzione ($l>d$)
+	\item \textbf{***}: se si utilizza UC o BF
+	\item \textbf{****}: se gli archi hanno tutti lo stesso costo
+\end{itemize}
