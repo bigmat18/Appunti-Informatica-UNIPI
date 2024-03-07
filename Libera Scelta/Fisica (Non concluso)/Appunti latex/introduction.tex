@@ -1,0 +1,63 @@
+\section{Punto materiale}
+Oggetto caratterizzato da una massa [kg] e da un vettore posizione [m] nello spazio 3D.
+Dimensioni trascurabili, forma irrilevante rispetto ai fenomeni di interesse.
+Vettore posizione come funzione del tempo t[s].
+$$\vec{r(t)} = (x(t), y(t), z(t)) = x(t)\overline{x} + y(t)\overline{z} + z(t)\overline{z}$$
+\begin{observation}
+    I versori cartesiani sono costanti
+\end{observation}
+
+% \begin{definition}
+%     Si definisce come \textbf{legge oraria} la funzione $t \to \vec{r}(t)
+% \end{definition}
+
+\begin{definition}[Traiettoria]
+    Il lungo gemetrico di punti visitati dal punto materiale.
+\end{definition}
+
+\subsection*{Vettore velocità}
+Derivata rispetto al tempo del vettore posizione e si indica come:
+$$\frac{d\vec{r}(t)}{dt}\text{ oppure }\dot{\vec{r}}(t)[m/s]$$
+\begin{note}
+    Nota che il secondo metodo è solo per le derivate rispetto al tempo.
+\end{note}
+
+% ...
+Il vettore è costante quindi facendo la derivata torna zero. 
+Con la velocità si calcolo lo spazio percorso ("integrale di linea").
+$L = ||\vec{r}(t_1) - \vec{r}(t_0)|| + ||\vec{r}(t_2)||$.
+
+La differenza fra le posizioni e la differenza dei tempi è il rapporto incrementale in caso gli intervalli siano sufficentemente
+piccoli, da qui si ottiene l'integrale.
+
+\subsection{Vettore accelerazione}
+Derivata rispetto al tempo del vettore velocità e si indica con:
+$$\frac{d^2\vec{r}(t)}{dt} \text{ oppure } \ddot{\vec{r}}(t) [m/s^2]$$
+L'accelerazione è una quantità che ci serve perché l'equazione di newton è formulato con l'accelerazione.
+
+\subsection{Vettore quantità di moto}
+Il prodotto di massa [kg] e velocità [m/s]
+$$\vec{p}(t) = m \cdot \dot{\vec{r}}(t) = (m\dot{x}(t), m\dot{y}(t), m\dot{x}(t)) = m\dot{\vec{x}}(t)x + m\dot{\vec{y}}(t)y + m \dot{\vec{z}}(t)z$$
+
+\subsection{Vettore momento angolare rispetto a un polo P}
+ricorda che $\overline{x} \times \overline{x} = 0$ e $\overline{y} \times \overline{x} = -\overline{z}$
+Il momento angolare dice quanta inerzia ad un oggetto in una rotazione su se stesso (descrizione moolto sommaria).
+
+\subsection{Coordinate polari}
+Un metodo per rapprensentare delle cordinate x, y andando a misurare prima la distanza dall'origine e poi si va a vedere
+quanto vale l'angolo fra questo segmento dall'asse x, utilizzando seno e coseno.
+
+\subsection{Versori polari (2D)}
+Definisco un versore $\overline{r}(t)$ che punta verso il punto materiale e un versore $\overline{\Theta}(t)$ ortogonale.
+Si espreime facilmente in coordinte polari.
+non c'è legame fra $\Theta$ e $\overline{\Theta}$ è solo una convenzione.
+
+\subsection*{Vettori posizione, velocità, accelerazione}
+$$\vec{r}(t) = r(t)\overline{r}(t)$$
+Dove abbiamo che:
+\begin{itemize}
+    \item $\vec{r}(t)$ è il vettore.
+    \item $r(t)$ è una coordinata polare.
+    \item $\hat{t}(t)$ è il versore polare.
+\end{itemize}
+
