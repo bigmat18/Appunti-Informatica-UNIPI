@@ -1,0 +1,79 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Matrici}
+%TODO recuper
+
+\subsection{Norme vettoriali}
+Sono uno strumento che ci permette di definire una distanza tra due vettori.
+\begin{definition}[Norma vettoriale]
+	È una funzione del tipo $f:\mathbb{R}^n \to \mathbb{R}$ che deve soddisfare tre proprietà:
+	\begin{enumerate}
+		\item $f(x)\geq 0 \wedge f(x)=0 \Leftrightarrow x=0$
+		\item $f(\alpha x)=\lvert \alpha \rvert f(x) \quad \forall \alpha \in \mathbb{R} \quad \forall x \in \mathbb{R}^n$
+		\item \textbf{Disuguaglianza triangolare}: $f(x+y)\leq f(x)+f(y) \quad \forall x,y \in \mathbb{R}^n$
+	\end{enumerate}
+	e la indichiamo come
+	\begin{equation*}
+		f(x) = \lVert x \rVert
+	\end{equation*}
+\end{definition}
+
+Detto questo possiamo definire una distanza come:
+\begin{equation}
+	dist(x,y)=\lVert  x-y \rVert
+\end{equation}
+Le tre proprietà ci danno alcune informazioni sulla distanza:
+\begin{enumerate}
+	\item La distanza deve essere non negativa e valere $0$ solo se i due vettori coincidono 
+	\item La distanza tra $x$ e $y$ deve essere uguale a quella tra $y$ e $x$
+	\item $\lVert x-y \rVert = \lVert(x-a)+(a-y)\rVert \leq \lVert x-a \rVert + \lVert a-y \rVert$
+\end{enumerate}
+
+\begin{definition}[Distanza euclidea - Norma 2]
+	\begin{equation}
+		f(x) = \sqrt{x_1 ^ 2 + x_2 ^ 2 + \ldots + x_n ^ 2} > \lVert  x \rVert_2
+	\end{equation}
+\end{definition}
+\begin{definition}[Norma infinito]
+	\begin{equation}
+		f(x)=max\lvert x_1 \rvert = \lVert x \rVert_{\infty}
+	\end{equation}
+\end{definition}
+\begin{definition}[Norma 1]
+	\begin{equation}
+		f(x)=\sum_{i=1}^{n}\lvert x_i \rvert = \lVert x\rVert_1
+	\end{equation}
+\end{definition}
+
+\begin{example}
+	Prendiamo due vettori
+	\begin{equation*}
+		\begin{Bmatrix}
+			1 \\
+			1
+		\end{Bmatrix} \quad
+		\begin{Bmatrix}
+			2 \\
+			-2
+		\end{Bmatrix}
+	\end{equation*}
+	e calcoliamo le varie norme:
+	\begin{equation*}
+		\lVert x \rVert_2 = \sqrt{2} \quad \lVert x \rVert_\infty = 1 \quad \lVert x \rVert_1 = 2
+	\end{equation*}
+	%TODO Finisci
+\end{example}
+
+\begin{definition}[Norma matriciale]
+		È una funzione del tipo $f:\mathbb{R}^{n\times n} \to \mathbb{R}$ che deve soddisfare tre proprietà:
+	\begin{enumerate}
+		\item $f(A)\geq 0 \wedge f(A)=0 \Leftrightarrow A=0$
+		\item $f(\alpha A)=\lvert \alpha \rvert f(x) \quad \forall \alpha \in \mathbb{R} \quad \forall A \in \mathbb{R}^{n\times n}$
+		\item \textbf{Disuguaglianza triangolare}: $f(A+B)\leq f(A)+f(B) \quad \forall A,B \in \mathbb{R}^{n\times n}$
+		\item $f(A\cdot B) \leq f(A) f(B)$
+	\end{enumerate}
+	e la indichiamo come
+	\begin{equation*}
+		f(A) = \lVert A \rVert
+	\end{equation*}
+\end{definition}

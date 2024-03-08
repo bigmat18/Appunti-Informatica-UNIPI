@@ -1,0 +1,269 @@
+% !TeX spellcheck = it_IT
+\section{Metodi iterativi}
+Una classe di metodi che permette di risolvere sistemi lineari è quella dei metodi iterativi. L'idea è di costruire una successione di vettori partendo dalla matrice che convergano alla soluzione del sistema lineare.
+\begin{equation*}
+	\{X_k\}_{k\in \mathbb{N}}
+\end{equation*}
+\begin{observation}
+	Non potendo generare infiniti termini, ad un certo punto ci sarà bisogno di fermarsi quando si pensa di essere sufficientemente vicini alla soluzione.
+\end{observation}
+Diciamo che
+\begin{equation}
+	\lim_{k\to +\infty}x_k \Leftrightarrow \lim_{k\to +\infty} \lvert\lvert x_k - x\rvert\rvert_{\infty} = 0
+\end{equation}
+\noindent Questo è vero perché:
+\begin{equation*}
+	\forall j = 1, \ldots, n \quad 0 \leq \lvert x^{(k)}_j - x_j \rvert \leq \lvert\lvert x^{(k)} - x\rvert\rvert_{\infty}
+\end{equation*}
+
+Abbiamo una matrice invertibile $A$. Supponiamo di scomporre la matrice come:
+\begin{equation}
+	A=M-N
+\end{equation}
+con l'assunzione che anche $M$ sia invertibile ($det(M)=0$). A questo punto possiamo dire che:
+\begin{equation*}
+	Ax=b \Leftrightarrow (M-N)x = b\Leftrightarrow Mx=Nx+b \Leftrightarrow x=M^{-1}Nx + M{-1}b \Leftrightarrow x=Px+q
+\end{equation*}
+Dovendo trovare la soluzione di $x=Px+q$, possiamo scegliere un vettore iniziale $x_0 \in \mathbb{R}^n$ e costruirci la successione di vettori
+\begin{equation}
+	\label{equation:succ}
+	x_{k+1}=Px_k + q
+\end{equation}
+Se questa successione converge ho trovato la soluzione del sistema lineare.
+\begin{observation}
+	Nell'implementazione pratica non userò mai l'equazione \ref{equation:succ} ma invece
+	\begin{equation}
+		Mx_{k+1}=Nx_k + b
+	\end{equation}
+\end{observation}
+
+\begin{example}
+	Prendiamo
+	\begin{equation*}
+		\begin{bmatrix}
+			2 & 1 \\
+			1 & 2
+		\end{bmatrix} \quad
+		b = \begin{bmatrix}
+			0 \\ 0
+		\end{bmatrix} \quad
+		Ax=b \Leftrightarrow x=\begin{bmatrix}
+			0 \\ 0
+		\end{bmatrix}
+	\end{equation*}
+	Partiamo definendo le due matrici per la scomposizione:
+	\begin{equation*}
+		M=\begin{bmatrix}
+			2 & 0 \\ 0 & 2
+		\end{bmatrix} \quad
+		N = \begin{bmatrix}
+			0 & -1 \\ -1 & 0
+		\end{bmatrix}
+	\end{equation*}
+	e calcolando la matrice $P$
+	\begin{equation*}
+		P = M^{-1}N = \begin{bmatrix}
+			\frac{1}{2} & 0 \\ 0 & \frac{1}{2}
+		\end{bmatrix}\begin{bmatrix}
+		0 & -1 \\ -1 & 0
+		\end{bmatrix} = \begin{bmatrix}
+		0 & -\frac{1}{2} \\ -\frac{1}{2} & 0
+		\end{bmatrix}
+	\end{equation*}
+	e il vettore $q$
+	%TODO
+	Iniziamo il metodo iterativo:
+	\begin{equation*}
+		\begin{split}
+			& x^{k+1} = Px^{(k)} = \begin{bmatrix}
+				0 & -\frac{1}{2} \\ -\frac{1}{2} & 0
+			\end{bmatrix} x^{(k)} \\
+			& x^{(1)} =  \begin{bmatrix}
+				0 & -\frac{1}{2} \\ -\frac{1}{2} & 0
+			\end{bmatrix} \begin{bmatrix}
+			x \\ y
+			\end{bmatrix} = \begin{bmatrix}
+			-\frac{1}{2} y \\ -\frac{1}{2} x
+			\end{bmatrix} \\
+			& x^{(2)} =  \begin{bmatrix}
+				0 & -\frac{1}{2} \\ -\frac{1}{2} & 0
+			\end{bmatrix} \begin{bmatrix}
+				-\frac{1}{2}y \\ -\frac{1}{2}x
+			\end{bmatrix} = \begin{bmatrix}
+				\frac{1}{4} x \\ \frac{1}{4} y
+			\end{bmatrix}
+		\end{split}
+	\end{equation*}
+	e notiamo che la successione tende a 
+	\begin{equation*}
+		\begin{bmatrix}
+			0 \\ 0
+		\end{bmatrix}
+	\end{equation*}
+	Se prendiamo invece
+	\begin{equation*}
+		M=\begin{bmatrix}
+			0 & 1 \\ 1 & 0
+		\end{bmatrix} \quad
+		N = \begin{bmatrix}
+			-2 & 0 \\ 0 & -2
+		\end{bmatrix}
+	\end{equation*} con
+	\begin{equation*}
+		P = M^{-1}N = \begin{bmatrix}
+			0 & 1 \\ 1 &0
+		\end{bmatrix}\begin{bmatrix}
+			-2 & 0 \\ 0 & -2
+		\end{bmatrix} = \begin{bmatrix}
+			0 &-2 & -2 & 0
+		\end{bmatrix}
+	\end{equation*}
+	abbiamo che la successione \textbf{diverge}.
+\end{example}
+\begin{definition}
+	Un metodo iterativo è convergente se
+	\begin{equation}
+		\forall x^{(0)} \in \mathbb{R}^n \quad x_k \to x
+	\end{equation}
+	Ovvero se per ogni vettore di partenza scelto, il metodo converge.
+\end{definition}
+
+\begin{theorem}
+	Dato $x^{(k+1)} = Px^{(k)}+q$, se
+	\begin{equation}
+		\exists \lvert\lvert\cdot\rvert\rvert \text{ tc } \lvert\lvert P \rvert\rvert <1
+	\end{equation}
+	allora il metodo è convergente.
+\end{theorem}
+
+\begin{example}
+	Data una matrice
+	\begin{equation*}
+		A = \begin{bmatrix}
+			3 & -1 & \\ 
+			-1 & \ddots & \ddots \\
+			 & \ddots & \ddots & -1\\
+			 & & -1 & 3
+		\end{bmatrix}
+	\end{equation*}
+	definiamo le matrici per la scomposizione
+	\begin{equation*}
+		M = \begin{bmatrix}
+			3 \\
+			& \ddots \\
+			& & 3
+		\end{bmatrix} \quad
+		N = \begin{bmatrix}
+			0 & 1 \\
+			1 & \ddots & \ddots \\
+			& \ddots & \ddots & 1 \\
+			& & 1 &0
+		\end{bmatrix}
+	\end{equation*}
+	Per capire se il metodo è convergente dobbiamo calcolare la norma infinito di $P$:
+	\begin{equation*}
+		M^{-1} N = \begin{bmatrix}
+			0 & \frac{1}{3} \\
+			\frac{1}{3} & \ddots & \ddots \\
+			& \ddots & \ddots & \frac{1}{3}\\
+			& & \frac{1}{3} & 0
+		\end{bmatrix} \quad
+		\lvert\lvert P \rvert\rvert_{\infty}= \frac{1}{3} + \frac{1}{3} = \frac{2}{3} < 1
+	\end{equation*}
+	Il problema di questo metodo iterativo è che ha complessità $O(n)$ per ogni iterazione e non è quindi competitivo con l'eliminazione Gaussiana.
+\end{example}
+
+\begin{example}
+	Data una matrice
+	\begin{equation*}
+		A = \begin{bmatrix}
+			T & I & \\ 
+			-I & \ddots & \ddots \\
+			& \ddots & \ddots & I\\
+			& & -I & T
+		\end{bmatrix} \quad
+		T = \begin{bmatrix}
+			5 & -1 & \\ 
+			-1 & \ddots & \ddots \\
+			& \ddots & \ddots & -1\\
+			& & -1 & 5
+		\end{bmatrix}
+	\end{equation*}
+	In questo caso i metodi iterativi sono vantaggiosi poiché anche se la matrice è predominante diagonale (e quindi permette Gauss senza problemi), a causa dell'effetto del fill-in lo rende sconveniente.
+\end{example}
+
+\begin{example}
+	Data una matrice
+	\begin{equation*}
+		A = \begin{bmatrix}
+			n & -1 & \ldots & -1\\ 
+			-1 & \ddots & \ddots & \vdots \\
+			\vdots & \ddots & \ddots & -1\\
+			-1 & \ldots & -1 & n
+		\end{bmatrix}
+	\end{equation*}
+	calcoliamo $P$
+	\begin{equation*}
+		N = \begin{bmatrix}
+			0 & 1 & \ldots & 1\\ 
+			1 & \ddots & \ddots & \vdots \\
+			\vdots & \ddots & \ddots & 1\\
+			1 & \ldots & 1 & 0
+		\end{bmatrix} \quad
+		P = \begin{bmatrix}
+			0 & \frac{1}{n} & \ldots & \frac{1}{n}\\ 
+			\frac{1}{n} & \ddots & \ddots & \vdots \\
+			\vdots & \ddots & \ddots & \frac{1}{n}\\
+			\frac{1}{n} & \ldots & \frac{1}{n} & 0
+		\end{bmatrix}
+	\end{equation*}
+	La sua norma vale
+	\begin{equation*}
+		\lvert\lvert P \rvert\rvert_{\infty} = \frac{n-1}{n}
+	\end{equation*} e quindi converge.
+\end{example}
+
+\begin{note}
+	Se la norma vale $1$ non posso dire nulla sulla convergenza.
+\end{note}
+
+\begin{theorem}
+	\begin{equation}
+		x^{(k+1)} = Px^{(k)}+q \text{ è convergente } \Leftrightarrow \phi(P)<1
+	\end{equation}
+\end{theorem}
+
+\begin{example}
+		Data una matrice
+	\begin{equation*}
+		A = \begin{bmatrix}
+			1 & & & \alpha\\ 
+			-1 & \ddots &  & \\
+			& \ddots & \ddots &\\
+			& & -1 & 1
+		\end{bmatrix}
+	\end{equation*}
+	troviamo le matrici per la scomposizione
+	\begin{equation*}
+		M=I \quad
+		N = \begin{bmatrix}
+			0 & &  & -\alpha\\ 
+			1& \ddots & &\\
+			 & \ddots & \ddots &\\
+			&& 1 & 0
+		\end{bmatrix}
+	\end{equation*}
+	Per quali $\alpha$ il metodo è convergente? \\
+	Troviamo la fattorizzazione LU della matrice per il calcolo del determinante e otteniamo così il polinomio caratteristico:
+	\begin{equation*}
+		x^n + \alpha
+	\end{equation*}
+	Dobbiamo poi trovare il modulo degli autovalori per poterli confrontare:
+	\begin{equation*}
+		\begin{split}
+			x^n=-\alpha \\
+			\lvert\lambda\rvert^n = \lvert -\alpha \rvert \Rightarrow \lvert \lambda \rvert = \sqrt[n]{\lvert \alpha \rvert} \\
+			\sqrt[n]{\lvert \alpha \rvert} < 1 \Leftrightarrow \lvert \alpha \rvert < 1
+		\end{split}
+	\end{equation*}
+\end{example}

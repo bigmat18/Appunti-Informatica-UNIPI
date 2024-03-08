@@ -1,0 +1,72 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Condizionamento}
+Studiare il condizionamento di un problema in forma $Ax=b$ significa chiedersi di quanto cambia la soluzione perturbando di poco $A$ e $B$.
+\subsection{Metodi diretti}
+Dato un sistema lineare $Ax=b$ le soluzioni possono essere trovate tramite
+\begin{equation*}
+	x_i = f_i(a_{11}, \ldots, a_{1n}, b1, \ldots, b_n) \quad i:1\ldots n
+\end{equation*}
+Si può partire studiando la forma di $A$ per cercare dei sistemi risolvibili facilmente.
+\subsubsection{Matrice diagonale}
+Il primo caso è quando $A$ è una matrice \textbf{diagonale}:
+\begin{equation*}
+	a_{ij}=0 \Longleftarrow i \neq j 
+\end{equation*}
+Il determinante di una matrice diagonale è $det(A)=\prod_{i=1}^{n} a_i$ e il determinante è diverso da $0$ solo se tutti gli elementi della diagonale lo sono.
+Possiamo riscrivere la matrice in un sistema di equazioni lineari:
+\begin{equation*}
+	Ax=b \Leftrightarrow \left\{ \begin{array}{lr}
+		a_1x_1 = b_1 \Leftrightarrow x1 = \frac{b1}{a1}\\
+		\vdots\\
+		a_nx_n = b_n \Leftrightarrow x_n=\frac{b_n}{a_n}
+	\end{array} \right.
+\end{equation*}
+Questo sistema lo risolviamo in $O(n)$. Dato però che ridurre una matrice normale in una diagonale è un processo complesso, non conviene farlo.
+\subsubsection{Matrice triangolare}
+Una matrice è \textbf{triangolare inferiore} quando $a_{ij}=0$ per $j>i$, mentre è \textbf{triangolare superiore} quando $a_{ij}=0$ per $i>j$.\\
+Per calcolare il determinante di una matrice triangolare superiore con Laplace facciamo:
+\begin{equation*}
+	A=\begin{bmatrix}
+		a_{11} & 0 & \cdots & 0 \\
+		\vdots & \ddots & 0 & \vdots \\
+		\vdots & \ddots& \ddots & 0\\
+		a_{n1} & \cdots &\cdots & a_{nn}
+	\end{bmatrix}
+\end{equation*}
+Per risolvere $Ax=b$ con una matrice triangolare, vediamo che il sistema associato ci porta ad avere prima un equazione con tutte le incognite fino all'ultima con una sola incognita. È intuitivo che per calcolarne la soluzione è sufficiente partire dall'ultima ed eseguire una \textbf{sostituzione all'indietro}.
+\begin{lstlisting}[language=Matlab]
+	function[x]=backward_substitution(a,b)
+		n=length(b);
+		x = zeros(n,1);
+		for k=n:-1:1
+			s=0;
+			for j=k+1:n
+				s=s+a(k,j)*x(j);
+			end
+			x(k)=(b(k)-s)/a(k,k);
+		end
+\end{lstlisting}
+Dato che l'operazione moltiplicativa in macchina richiede leggermente più lunga di quella della somma, è sufficiente considerare le prime per calcolare la complessità di questo programma.\\ La complessità al caso pessimo è quindi $\frac{n \cdot (n+1)}{2} = O(n^2) = \frac{n^2}{2}+O(n)$.
+\begin{example}[Matrice bidiagonale superiore]
+	Supponiamo di avere la seguente matrice bidiagonale superiore:
+	\begin{equation*}
+		A=\begin{bmatrix}
+			a_{11} & a_{12} & 0 & 0\\
+			0 & \ddots & \ddots & 0 \\
+			0 & 0 & \ddots & a_{n-1 n} \\
+			0 & 0 & 0 & a_{nn}
+		\end{bmatrix}  = 
+		\begin{bmatrix}
+			a_1 & b_1 & 0 & 0\\
+			0 & \ddots & \ddots & 0\\
+			0 & 0 & \ddots & b_{n-1}\\
+			0 & 0 & 0 & a_n
+		\end{bmatrix}
+	\end{equation*}
+	In questo caso il codice si può cambiare sostituendo il secondo ciclo con l'operazione
+	\begin{lstlisting}[language=Matlab]
+		s=a(k,k+1)*x(k+1);
+	\end{lstlisting}
+	e la complessità diventa $O(n)$.
+\end{example}
