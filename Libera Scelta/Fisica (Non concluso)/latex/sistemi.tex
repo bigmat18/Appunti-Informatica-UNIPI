@@ -1,0 +1,46 @@
+\newpage
+\section{Sistemi di punti matariali}
+Consideriamo un insieme ("sistema") di punti materiali. Deduciamo delle equazioni del moto e leggi di conservazione 
+come conseguenza delle leggi di Newton.
+\begin{itemize}
+    \item Sistemi di punti molto molto numerosi possono dare origine a fenomeni emergenti (es. sistemi biologici) \textbf{"More is different"}
+    \item Concetti utili sono introdotti da teorie non riduzionistiche.
+\end{itemize}
+Punti $\{\vec{r}_{\alpha}\}^N_{\alpha=1}$ con masse $\{m_{\alpha}\}^N_{\alpha = 1}$ etc. Risultate delle forze su ogni punto $\{\vec{F}_{\alpha}\}^N_{\alpha = 1}$.
+Quantità definite per il sistema:
+\begin{itemize}
+    \item \textbf{Massa} $$M = \sum_{\alpha = 1}^{N}m_{\alpha}$$
+    \item \textbf{Vettore quantià di moto} $$\vec{P}(t) = \sum_{\alpha = 1}^{N} \vec{P}_{\alpha}(t)$$
+    \item \textbf{Vettore momento angolare rispetto ad un polo P} $$\vec{L}_p(t) = \sum_{\alpha = 1}^{N}\vec{L}_{p, \alpha}(t) \:\:\: \text{stesso P per ogni }\alpha$$
+    \item \textbf{Energia cinetica} %finisci
+    \item \textbf{Energia meccanica} %finisci
+\end{itemize}
+Nel caso di sistemi estrmamente numerosi (es. atomi di gas, elettroni in un metallo, granelli di sabbia in una duna), può convenire
+considerare il sistema \textbf{continuo}.
+\begin{itemize}
+    \item $n(\vec{r})$: numero di punti in un volumetto $V$ attorno a $\vec{r}$, diviso per $V$ $[n] = m^{-3}$
+    \item $g(\vec{r})$: massa in un volumetto V attorno a $\vec{r}$ diviso per V (\textbf{"densità"}) $[g] = kg \cdot m^{-3}$
+\end{itemize}
+\begin{observation}
+    Il risultato non deve dipendere dal valore preciso di V, ma l'ordine di grandezza dipende dal problema (es. densità della terra...?)
+\end{observation}
+\begin{definition}
+    Definisco \textbf{centro di massa} del sistema di punti di materiali il punto gemotrico 
+    $$\vec{r}_{CM} = \frac{1}{M}\sum_{\alpha = 1}^{N} m_{\alpha}\vec{r}_{\alpha}(t)$$
+\end{definition}
+\begin{example}
+    $\vec{r}_1(t) = v_0 t \hat{x} + y_0 \hat{y} \:\:\: m_1 = m \hspace{10pt} \vec{r}_2(t) = -2v_0 t \hat{x} + 2y_0 \hat{y} \:\:\: m_2 = 3m$
+    $$\vec{r}_{CM} = \frac{1}{m + 3m}[(mv_0t - 6mv_0t)\hat{x} + (my_0 + 6my_0)\hat{y}] = \frac{1}{4m}[-5mv_0t\hat{x} + 7my_0 \hat{y}] = -\frac{5}{4} v_0t\hat{x} + \frac{7}{4}y_0\hat{y}$$
+\end{example}
+\begin{observation}
+    Il CM non è un punto fisico, può trovare fuori dalla regione spaziale occupata dal sistema.
+\end{observation}
+Posso indicare ogni punto materiale con la posizione relativa al CM:
+$$\vec{r}_{\alpha}'(t) = \vec{r}_{\alpha} - \vec{r}_{CM}(t)$$
+Osservo che 
+$$\sum_{N}^{\alpha = 1}m_{\alpha}\vec{r}'_{\alpha}(t) = \sum_{\alpha = 1}^{N}[n_{\alpha}\vec{r}_{\alpha}(t) - m_{\alpha}\vec{r}_{CM}(t)] = M\vec{r}_{CM}(t) - (\sum_{\alpha = 1}^{N}m_{\alpha})\vec{r}_{CM}(t) = 0$$
+Esprimo il vettore quantità di moto:
+$$\vec{p}(t) = \sum_{\alpha = 1}^{N}\dot{\vec{r}}_{\alpha}(t) = \sum_{\alpha = 1}^{N}m_{\alpha}[\dot{\vec{r}}_{CM} + \dot{\vec{r}}'_{\alpha}(t)]
+= \Big(\sum_{\alpha = 1}^{N}m_{\alpha}\Big)\dot{\vec{r}}_{CM}(t) = \frac{d}{dt} \Big(\sum_{\alpha=1}^{N}m_{\alpha}\vec{r}_{\alpha}'(t)\Big) = M\dot{\vec{r}}_{CM}(t)
+$$
+ma non è un punto materiale.
