@@ -1,0 +1,445 @@
+% !TeX spellcheck = it_IT
+\section{Thread}
+Ci garantiscono di avere più unità di calcolo a disposizione all'interno del nostro programma. Non si pone più il problema della comunicazione, in quanto è tutto in comune, ma anzi adesso bisogna evitare che i dati si diano fastidio.\\
+\href{https://man7.org/linux/man-pages/man7/pthreads.7.html}{Link alla pagina del manuale per pthreads.}\\
+Esistono due tipologie di thread:
+\begin{itemize}
+	\item \textbf{Joinable}: ci si aspetta che il thread principale esegua una join
+	\item \textbf{Detached}: sono pensati per essere lanciati e ignorati dal thread principale. Quando terminano non rimangono \emph{zombie}
+\end{itemize}
+
+\begin{example}[Conta primi]
+	\label{example:threads_prime}
+	\begin{lstlisting}[language=C]
+		#include "xerrori.h"
+		// Prototipi
+		bool primo(int n);
+		
+		// Struct che uso per passare argomenti ai thread
+		typedef struct {
+			int start;            // intervallo dove cercare i primo 
+			int end;              // parametri di input
+			int somma_parziale;   // parametro di output
+		} dati;
+		
+		// Funzione passata a pthred_create
+		void *tbody(void *v) {
+			dati *d = (dati *) v;
+			int primi = 0;
+			// Cerco i primi nell'intervallo assegnato
+			for(int j=d->start;j<d->end;j++) {
+				if(primo(j)) primi++; 
+				usleep(1);
+			}
+			fprintf(stderr, "Il thread che partiva da %d ha terminato\n", d->start);
+			d->somma_parziale = primi;
+			pthread_exit(NULL);
+		}
+		
+		int main(int argc,char *argv[])
+		{
+			if(argc!=3) {
+				fprintf(stderr,"Uso\n\t%s m num_threads\n", argv[0]);
+				exit(1);
+			}
+			// conversione input
+			int m= atoi(argv[1]);
+			if(m<1) termina("limite primi non valido");
+			int p= atoi(argv[2]);
+			if(p<=0) termina("numero di thread non valido");
+			
+			// creazione thread ausiliari
+			pthread_t t[p];   // Array di p indentificatori di thread 
+			dati d[p];        // Array di p struct che passero ai p thread
+			int somma = 0;        // Variabile dove accumulo il numero di primi
+			for(int i=0; i<p; i++) {
+				int n = m/p;  // Quanti numeri verifica ogni thread + o - 
+				d[i].start = n*i; // Inizio range thread i
+				d[i].end = (i==p-1) ? m : n*(i+1);
+				xpthread_create(&t[i], NULL, &tbody, &d[i],__LINE__, __FILE__); 
+			}
+			// Attendo che i thread abbiano finito
+			for(int i=0;i<p;i++) {
+				xpthread_join(t[i],NULL,__LINE__, __FILE__);
+				somma += d[i].somma_parziale;
+			}
+			// Restituisce il risultato 
+			printf("Numero primi tra 1 e %d (escluso): %d\n",m,somma);
+			return 0;
+		}
+	\end{lstlisting}
+\end{example}
+
+\subsection{Creazione}
+La funzione utilizzata \emph{xpthreads} è un'estensione di \emph{pthreads} con la gestione degli errori, e prende in input i seguenti parametri:
+\begin{enumerate}
+	\item L'\textbf{indirizzo} nel quale verrà scritto un identificatore per il thread
+	\item Eventuali \textbf{caratteristiche speciali} (non ci serve nel corso)
+	\item La \textbf{funzione} che contiene il codice eseguito dal thread
+	\item  Ciò che viene dato come \textbf{argomento} alla funzione passata come terzo argomento. Essendo \emph{void} andrà fatto un \textbf{casting} con le conseguenti precauzioni
+\end{enumerate}
+Nell'esempio \ref{example:threads_prime}, non abbiamo rischi di \textbf{condivisione} di valori in quanto ogni thread ha solo accesso alla funzione che gli passiamo e con essa i parametri ed eventuali variabili globali (che non andrebbero mai utilizzate).
+
+\subsection{Chiusura}
+Per la terminazione di un thread si può chiamare
+\begin{lstlisting}[language=C]
+	pthread_exit(NULL);
+\end{lstlisting}
+o alternativamente
+\begin{lstlisting}[language=C]
+	return(NULL);
+\end{lstlisting}
+È possibile restituire alla funzione principale dei dati ma per il nostro tipo di utilizzo gestiremo lo scambio di informazioni tramite passaggi di indirizzo, senza ritornare nulla.
+
+\subsection{Attesa}
+Per attendere la terminazione di un thread si utilizza
+\begin{lstlisting}[language=C]
+	xpthread_join(t[i],NULL,__LINE__,__FILE__);
+\end{lstlisting}
+che prende in input l'identificatore del thread in questione. Il secondo parametro serve eventualmente per recuperare ciò che mi viene restituito (noi quindi non lo utilizziamo).
+
+\subsection{Errore}
+La gestione degli errori è implementata dal professore come segue
+\begin{lstlisting}[language=C]
+	#define Buflen 100
+	void xperror(int en, char *msg) {
+		char buf[Buflen];
+		
+		char *errmsg = strerror_r(en, buf, Buflen);
+		if(msg!=NULL)
+		fprintf(stderr,"%s: %s\n",msg, errmsg);
+		else
+		fprintf(stderr,"%s\n",errmsg);
+	}
+	
+	int xpthread_create(pthread_t *thread, const pthread_attr_t *attr,
+	void *(*start_routine) (void *), void *arg, int linea, char *file) {
+		int e = pthread_create(thread, attr, start_routine, arg);
+		if (e!=0) {
+			xperror(e, "Errore pthread_create");
+			fprintf(stderr,"== %d == Linea: %d, File: %s\n",getpid(),linea,file);
+			pthread_exit(NULL);
+		}
+		return e;                       
+	}
+	
+	int xpthread_join(pthread_t thread, void **retval, int linea, char *file) {
+		int e = pthread_join(thread, retval);
+		if (e!=0) {
+			xperror(e, "Errore pthread_join");
+			fprintf(stderr,"== %d == Linea: %d, File: %s\n",getpid(),linea,file);
+			pthread_exit(NULL);
+		}
+		return e;
+	}
+\end{lstlisting}
+Dato che i thread condividono le variabili globali, non possiamo sfruttare \emph{errno} come con le altre funzioni. Viene quindi utilizzato il valore di ritorno della \emph{create} e della \emph{join}.
+
+\begin{note}
+	Alcuni comandi aggiuntivi:
+	\begin{lstlisting}[language=C]
+		gettid(); // Restituisce l'ID del thread
+	\end{lstlisting}
+\end{note}
+
+\subsection{Implementazione}
+\begin{example}[Tabella numeri primi]
+	\label{example:primetable}
+	\begin{lstlisting}[language=C]
+		#include "xerrori.h"
+		#define QUI __LINE__, __FILE__
+		
+		//Prototipi
+		bool primo(int n);
+		
+		// struct che uso per passare argomenti ai thread
+		typedef struct {
+			int start;            // intervallo dove cercare i primo 
+			int end;              // parametri di input
+			int somma_parziale;   // parametro di output
+			int *tabella;         // tabella dei numeri primi da riempire
+			int *pmessi;          // puntatore a indice in tabella
+			pthread_mutex_t *pmutex; // mutex condiviso
+		} dati;
+		
+		// funzione passata a pthred_create
+		void *tbody(void *v) {
+			dati *d = (dati *) v;
+			int primi = 0;
+			// cerco i primi nell'intervallo assegnato
+			for(int j=d->start;j<d->end;j++)
+			if(primo(j)) {
+				primi++;
+				xpthread_mutex_lock(d->pmutex,QUI);
+				d->tabella[*(d->pmessi)] = j;
+				*(d->pmessi) += 1;
+				xpthread_mutex_unlock(d->pmutex,QUI);
+			}
+			fprintf(stderr, "Il thread che partiva da %d ha terminato\n", d->start);
+			d->somma_parziale = primi;
+			pthread_exit(NULL);
+		}
+		
+		int main(int argc,char *argv[])
+		{
+			if(argc!=3) {
+				fprintf(stderr,"Uso\n\t%s m num_threads\n", argv[0]);
+				exit(1);
+			}
+			// conversione input
+			int m= atoi(argv[1]);
+			if(m<1) termina("limite primi non valido");
+			int p= atoi(argv[2]);
+			if(p<=0) termina("numero di thread non valido");
+			
+			// definizione mutex
+			pthread_mutex_t mtabella;
+			xpthread_mutex_init(&mtabella,NULL,QUI);
+			// creazione thread ausiliari
+			pthread_t t[p];   // array di p indentificatori di thread 
+			dati d[p];        // array di p struct che passero allle p thread
+			int somma = 0;        // variabile dove accumulo il numero di primi
+			int *tabella = malloc(m*sizeof(int));
+			if(tabella==NULL) xtermina("Allocazione fallita", __LINE__, __FILE__);
+			int messi = 0;
+			for(int i=0; i<p; i++) {
+				int n = m/p;  // quanti numeri verifica ogni figlio + o - 
+				d[i].start = n*i; // inizio range figlio i
+				d[i].end = (i==p-1) ? m : n*(i+1);
+				d[i].tabella = tabella;
+				d[i].pmessi = &messi;
+				d[i].pmutex = &mtabella;
+				xpthread_create(&t[i], NULL, &tbody, &d[i],__LINE__, __FILE__); 
+			}
+			// attendo che i thread abbiano finito
+			for(int i=0;i<p;i++) {
+				xpthread_join(t[i],NULL,__LINE__, __FILE__);
+				somma += d[i].somma_parziale;
+			}
+			xpthread_mutex_destroy(&mtabella,QUI);
+			// stampa tabella
+			for(int i=0;i<messi;i++)  printf("%8d",tabella[i]);
+			printf("\nPrimi in tabella: %d\n",messi);
+			// restituisce il numero di primi
+			printf("Numero primi tra 1 e %d (escluso): %d\n",m,somma);
+			return 0;
+		}
+	\end{lstlisting}
+\end{example}
+
+\begin{note}
+	Il tipo di dato da noi definito, avrà anche il numero di primi inseriti. Questo deve necessariamente essere un puntatore poiché deve essere condiviso tra tutti i thread e altrimenti ce ne sarebbe uno diverso per ognuno.
+\end{note}
+\subsubsection{Mutex}
+Per garantire l'accesso da parte di più thread ad un'unica risorsa in memoria è necessario usare i \textbf{mutex} (andrebbero bene anche i semafori). In questo modo permettiamo l'accesso \emph{esclusivo} ad un solo thread alla volta.\\
+Un mutex può avere due stati: \textbf{locked} e \textbf{unlocked}. Quando un thread ha bisogno della risorsa associata, lo blocca, accede alla risorsa e poi lo sblocca. Se un altro thread nel frattempo prova ad accedere rimane in attesa che si sblocchi il mutex.\\
+La \textbf{creazione} del mutex avviene come segue:
+\begin{lstlisting}[language=C]
+	pthread_mutex_t mutex;
+	xpthread_mutex_init(&mutex,NULL,__LINE__,__FILE__);
+\end{lstlisting}
+Anche qui il secondo parametro serve per specificare eventuali caratteristiche che deve avere il mutex. Le \textbf{operazioni} su di esso si fanno come segue:
+\begin{lstlisting}[language=C]
+	xpthread_mutex_lock(mutex,__LINE__,__FILE__);
+	xpthread_mutex_unlock(mutex,__LINE__,__FILE__);
+	xpthread_mutex_destroy(&mutex,__LINE__,__FILE__);
+\end{lstlisting}
+
+\begin{note}
+	\label{note:mutex_efficiency}
+	È importante sbloccare il \emph{mutex} il prima possibile per evitare attese inutili e garantire l'efficienza del codice.
+\end{note}
+
+\subsubsection{Semafori}
+Abbiamo un compito complesso da eseguire, che consiste in una serie di \emph{task} ognuno suddiviso in due parti A e B. Prima di eseguire la parte B devo necessariamente aver eseguito la parte A ma mentre eseguo la B posso iniziare ad eseguire il task successivo.
+\begin{center}
+	\includegraphics[scale=0.3]{prod_cons.png}
+\end{center}
+Tutte le parti A del task verranno eseguite dal thread 1 (\textbf{produttore}) e tutte le B dal 2 (\textbf{consumatore}). Di conseguenza se ogni parte richiede $1u$ di tempo, con questo schema serviranno $5u$.\\
+Si rende necessario un modo di condividere le informazioni tra i due thread, ovvero condividere i risultati della parte A. Il secondo thread di contro deve rimanere in attesa finché non gli arrivano i risultati da poter elaborare nella parte B.\\
+Per fare ciò si usano i \textbf{semafori}, in modo che il secondo thread rimanga in \textbf{wait} in attesa dei dati, e appena il primo ha finito di lavorare mette i dati nel buffer comune e fa una \textbf{post} che sblocca il secondo.\\
+Questo meccanismo è utile anche considerando che non tutte le parti dei task siano effettivamente di durata uguale. In questa casistica quando il primo thread si porta avanti e arriva a calcolare il terzo task , deve mettersi in attesa per evitare di sovrascrivere il terzo risultato sopra al secondo che non è ancora stato elaborato.
+\begin{center}
+	\includegraphics[scale=0.3]{prod_cons_2.png}
+\end{center}
+\begin{example}
+	Esempio di esecuzione di 8 task con le varie fasi:
+	\begin{table}[!h]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+			\hline
+			\textbf{\#Task} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} \\
+			\hline
+			Inizio calcolo & 0 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
+			Tempo prod & 2 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+			Fine calcolo prod & 2 & 3 & 4 & 5 & 6 & 7  &8  &9 \\
+			Scrittura buffer & 2 & 3 & 4 & 5 & 6 & 7  &8  &9 \\
+			Lettura cons & 2 & 3 & 4 & 5 & 6 & 7  &8  &9 \\
+			Tempo cons& 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+			Fine totale & 3 & 4 & 5 & 6 & 7  &8  &9 & 10 \\
+			\hline
+		\end{tabular}
+	\end{table}
+	Se cambiamo i tempi necessari al produttore e al consumatore:
+	\label{example:prodcons}
+	\begin{table}[!h]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+			\hline
+			\textbf{\#Task} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} \\
+			\hline
+			Inizio calcolo & 0 & 1 & 2 & 6 & 11 &16 & 21 & 26\\
+			Tempo prod & 1 & 1 & 1 & 1 & 5 & 5 & 5 & 5 \\
+			Fine calcolo prod & 1 & 2& 3 & 7 & 16 & 21  &26  &31 \\
+			Scrittura buffer & 1 & 2 & 6 & 11 & 16 & 21  &26  &31 \\
+			Lettura cons & 1 & 6 & 11 & 16 & 21 & 22  &26  &31 \\
+			Tempo cons& 5 & 5 & 5 & 5 & 1 & 1 & 1 & 1 \\
+			Fine totale & 6 & 11 & 16 & 21 & 22  &23  &27 & 32 \\
+			\hline
+		\end{tabular}
+	\end{table}
+	In questo caso abbiamo delle inefficienze in quanto produttore e consumatore devono aspettarsi a vicenda avendo tempistiche di lavoro diverse.
+\end{example}
+Per risolvere il problema descritto nell'esempio \ref{example:prodcons} è possibile aumentare la \textbf{grandezza del buffer}, permettendo di accumulare più di un singolo risultato della parte A alla volta e riducendo quindi i tempi.\\
+Per implementare la soluzione usiamo due semafori:
+\begin{itemize}
+	\item \textbf{sem\_free\_slots}, inizializzato a $b$, indica il numero di slot dove il produttore può scrivere
+	\item \textbf{sem\_data\_items}, inizializzato a $0$, indica il numero di oggetti scritti dal produttore che il consumatore deve elaborare
+\end{itemize}
+Se il produttore deve scrivere qualcosa effettua
+\begin{lstlisting}[language=C]
+	sem_wait(sem_free_slots);
+\end{lstlisting}
+e dopo aver aspettato effettua la scrittura del dato e poi
+\begin{lstlisting}[language=C]
+	sem_post(sem_data_items);
+\end{lstlisting}
+Quando invece il consumatore vuole un nuovo dato effettua
+\begin{lstlisting}[language=C]
+	sem_wait(sem_data_items);
+\end{lstlisting}
+che aspetta che ci sia un dato disponibile e mantiene aggiornato il numero di oggetti sul buffer. Legge poi il dato ed esegue
+\begin{lstlisting}[language=C]
+	sem_post(sem_free_slots);
+\end{lstlisting}
+che mantiene aggiornato il numero di slot liberi.\\
+Dopo ogni operazione è mantenuto l'invariante:
+\begin{equation*}
+	sem\_free\_slots + sem\_data\_items = b
+\end{equation*}
+Per gestire le posizioni libere occupate nel buffer usiamo un indice $p$ per la prossima posizione dove scriverà il produttore e un indice $c$ per la prossima posizione dove legge il consumatore.\\
+Grazie all'uso dei semafori abbiamo che:
+\begin{equation*}
+	c \leq p \leq c+b
+\end{equation*}
+Quando $c=p$, sem\_data\_items vale $0$ e $c$ non può avanzare oltre, quando invece $p=c+b$, sem\_free\_slots è $0$ e $p$ non può avanzare oltre. In questo modo facciamo finta di avere un buffer infinito ma accediamo alle posizioni $c\%b$ e $p\%b$ che sono tra $0$ e $b-1$.
+\begin{example}
+	Modifichiamo l'esempio \ref{example:threads_prime} implementando un buffer e dei semafori.
+	\label{example:semafori}
+	\begin{lstlisting}[language=C]
+		#define Buf_size 10
+		
+		// Struct contenente i parametri di input e output di ogni thread 
+		typedef struct {
+			int quanti;   // output
+			long somma;   // output
+			int *buffer; 
+			int *pcindex;
+			sem_t *sem_free_slots;
+			sem_t *sem_data_items;  
+		} dati;
+		
+		// Funzione eseguita dai thread consumer
+		void *tbody(void *arg)
+		{  
+			dati *a = (dati *)arg; 
+			a->quanti = 0;
+			a->somma = 0;
+			int n;
+			fprintf(stderr,"Consumatore %d partito\n",gettid());
+			do {
+				xsem_wait(a->sem_data_items,__LINE__,__FILE__);
+				n = a->buffer[*(a->pcindex) % Buf_size];
+				*(a->pcindex) +=1;
+				xsem_post(a->sem_free_slots,__LINE__,__FILE__);
+				if(n>0 && primo(n)) {
+					a->quanti++;
+					a->somma += n;
+				}
+			} while(n!= -1);
+			fprintf(stderr,"Consumatore %d sta per terminare\n",gettid());
+			pthread_exit(NULL); 
+		}     
+		
+		int main(int argc, char *argv[])
+		{
+			// Leggi input
+			if(argc!=2) {
+				printf("Uso\n\t%s file\n", argv[0]);
+				exit(1);
+			}
+			// Numero di thread ausiliari 
+			int p = 1;
+			assert(p>0);
+			int tot_primi = 0;
+			long tot_somma = 0;
+			int e,n,cindex=0;    
+			// Threads related
+			int buffer[Buf_size];
+			int pindex=0;
+			// pthread_mutex_t mu = PTHREAD_MUTEX_INITIALIZER;
+			pthread_t t[p];
+			dati a[p];
+			sem_t sem_free_slots, sem_data_items;
+			xsem_init(&sem_free_slots,0,Buf_size,__LINE__,__FILE__);
+			xsem_init(&sem_data_items,0,0,__LINE__,__FILE__);
+			for(int i=0;i<p;i++) {
+				// Faccio partire il thread i
+				a[i].buffer = buffer;
+				a[i].pcindex = &cindex;
+				a[i].sem_data_items = &sem_data_items;
+				a[i].sem_free_slots = &sem_free_slots;
+				xpthread_create(&t[i],NULL,tbody,a+i,__LINE__,__FILE__);
+			}
+			fputs("Thread ausiliari creati\n",stderr);
+			FILE *f = fopen(argv[1],"r");
+			if(f==NULL) {perror("Errore apertura file"); return 1;}
+			while(true) {
+				e = fscanf(f,"%d", &n);
+				if(e!=1) break; // Se il valore letto correttamente e==1
+				assert(n>0);    // I valori del file devono essere positivi
+				xsem_wait(&sem_free_slots,__LINE__,__FILE__);
+				buffer[pindex++ % Buf_size]= n;
+				xsem_post(&sem_data_items,__LINE__,__FILE__);
+			}
+			fputs("Dati del file scritti nel buffer\n",stderr);
+			if(fclose(f)!=0) xtermina("Errore chiusura input file",__LINE__,__FILE__);
+			// Terminazione threads
+			for(int i=0;i<p;i++) {
+				xsem_wait(&sem_free_slots,__LINE__,__FILE__);
+				buffer[pindex++ % Buf_size]= -1;
+				xsem_post(&sem_data_items,__LINE__,__FILE__);
+			}
+			fputs("Valori di terminazione scritti nel buffer\n",stderr);
+			// Join dei thread e calcolo risultato
+			for(int i=0;i<p;i++) {
+				xpthread_join(t[i],NULL,__LINE__,__FILE__);
+				tot_primi += a[i].quanti;
+				tot_somma += a[i].somma;
+			}
+			xsem_destroy(&sem_data_items,__LINE__,__FILE__);
+			xsem_destroy(&sem_free_slots,__LINE__,__FILE__);
+			// pthread_mutex_destroy(&mu);
+			printf("Trovati %d primi con somma %ld\n",tot_primi,tot_somma);
+			return 0;
+		}
+	\end{lstlisting}
+\end{example}
+\begin{note}
+	Come visto in \ref{note:mutex_efficiency} è importante dare il via libera agli altri thread tramite una \emph{post} del semaforo il prima possibile per garantire l'efficienza del codice.
+\end{note}
+Il problema di questo metodo è la \textbf{terminazione}. La strategia più semplice per segnalare al consumatore che il lavoro è finito è quello di passare un valore \emph{dummy} concordato in precedenza. Ad esempio nel caso \ref{example:semafori} abbiamo usato $-1$.
+
+\begin{observation}
+	Se invece di utilizzare un buffer di tipo circolare utilizzassi una pila, non sarebbe garantito l'ordine di elaborazione dei dati prodotti dei dati dal consumatore, che potrebbe trovarsi come primo dato il \emph{dummy} e terminare subito.
+\end{observation}
