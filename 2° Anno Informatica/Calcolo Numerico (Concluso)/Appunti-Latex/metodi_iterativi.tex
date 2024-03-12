@@ -1,4 +1,5 @@
 % !TeX spellcheck = it_IT
+\newpage
 \section{Metodi iterativi}
 Una classe di metodi che permette di risolvere sistemi lineari è quella dei metodi iterativi. L'idea è di costruire una successione di vettori partendo dalla matrice che convergano alla soluzione del sistema lineare.
 \begin{equation*}
@@ -37,6 +38,7 @@ Se questa successione converge ho trovato la soluzione del sistema lineare.
 	\end{equation}
 \end{observation}
 
+\subsection{Convergenza}
 \begin{example}
 	Prendiamo
 	\begin{equation*}
@@ -265,5 +267,200 @@ Se questa successione converge ho trovato la soluzione del sistema lineare.
 			\lvert\lambda\rvert^n = \lvert -\alpha \rvert \Rightarrow \lvert \lambda \rvert = \sqrt[n]{\lvert \alpha \rvert} \\
 			\sqrt[n]{\lvert \alpha \rvert} < 1 \Leftrightarrow \lvert \alpha \rvert < 1
 		\end{split}
+	\end{equation*}
+\end{example}
+
+\subsection{Metodo di Jacobi}
+In questa tecnica prendiamo $M$ come la matrice diagonale principale:
+\begin{equation*}
+	M=diag(A) \quad A=\begin{bmatrix}
+		a_{11} & \ldots & a_{1n} \\
+		\vdots & & \\
+		a_{n1} & \ldots & a_{nn}
+	\end{bmatrix} \quad
+	M = \begin{bmatrix}
+		a_{11} \\
+		& \ddots \\
+		& & a_{nn}
+	\end{bmatrix}
+\end{equation*}
+Chiaramente questo metodo è applicabile sono quando la diagonale non contiene zeri, in quanto altrimenti non sarebbe invertibile.\\
+Possiamo ottenere la matrice $N$ facendo $M-A$:
+\begin{equation*}
+	N=\begin{bmatrix}
+		0 & -a_{12} & \ldots & \ldots & -a_{1n} \\
+		-a_{21} & \ddots & \ddots && \vdots \\
+		\vdots & \ddots & \ddots & \ddots & \vdots \\
+		\vdots & & \ddots & \ddots & -a_{n-1 n}\\
+		-a_{n1} & & &-a_{n n-1} & 0 
+	\end{bmatrix}
+\end{equation*}
+e il vettore al tempo $k$:
+\begin{equation}
+	x_e^{(k+1)} = \frac{1}{a_{ll}} \begin{bmatrix}\\
+		b_l - \sum_{j=1, j\neq l}^n a_{lj}x_j^{(k)}\\
+		\\
+	\end{bmatrix} \quad l=1, \ldots, n
+\end{equation}
+che avrà complessità $O(nnz(A))$ essendo molto parallelizzabile.
+
+\subsection{Metodo di Gauss-Seidel}
+Gauss ragiona sul fatto che ad ogni iterazione avrò calcolato tutte le componenti precedenti fino a $l-1$ al tempo $k+1$. Riscrive quindi l'iterazione di Jacobi nella seguente forma:
+\begin{equation}
+	x_e^{(k+1)} = \frac{1}{a_{ll}} \begin{bmatrix}\\
+		b_e-\sum_{j=1}^{l-1}a_{lj}x_j^{(k+1)}-\sum_{j=l+1}^{n}a_{ej}x_j^{(k)}\\\\
+	\end{bmatrix}
+\end{equation}
+La differenza è che questo metodo, rispetto a quello di Jacobi, perde il parallelismo ma converge più velocemente.
+
+\begin{theorem}
+	Se $A$ è predominante diagonale, allora:
+	\begin{itemize}
+		\item I metodi di Jacobi e Gauss-Seidel sono applicabili
+		\item I metodi di Jacobi e Gauss-Seidel sono convergenti
+	\end{itemize}
+\end{theorem}
+\begin{demostration}
+	Dimostriamo i due punti del teorema:
+	\begin{itemize}
+		\item Il primo punto è semplice in quanto se la matrice è predominante diagonale per forza di cose avremo almeno un valore diverso da $0$ (perché vale la disuguaglianza stretta)
+		\item Per dimostrare che sono convergenti vogliamo mostrare che:
+		\begin{equation*}
+			A \text{predominante diagonale }\Rightarrow \phi(J), \phi(GS) <1 \Rightarrow \text{Convergente} 
+		\end{equation*}
+		Stiamo usando il fatto che il raggio spettrale sia \textbf{sufficiente} a garantire la convergenza.
+		\begin{equation*}
+			\begin{split}
+				det(\lambda I-P)\\ &= det(\lambda I - M^{-1}N) \\&=det(\lambda M^{-1}M - M^{-1}N)\\ & =det(M^{-1}(\lambda M -N)) \\&=det(M^{-1}) \cdot det(\lambda M - N) \\
+				det(\lambda I -P ) = 0 \Leftrightarrow det(\lambda M - N) = 0
+			\end{split}
+		\end{equation*}
+		Quindi se $\lambda$ è autovalore di $P$ allora
+		\begin{equation}
+			\label{equation:absurd_dem_jacobi}
+			det(\lambda M -N)=0
+		\end{equation}
+		Assumiamo che esista un autovalore $\lambda$ di $P$ con $\lvert \lambda \rvert \geq 1$:
+		\begin{equation*}
+			\lambda M - N = \lambda \begin{bmatrix}
+				a_{11}\\
+				& \ddots \\
+				& & a_{nn}
+			\end{bmatrix} - \begin{bmatrix}
+			0 & a_{12} & \ldots & . \\
+			& \ddots & \ddots & \vdots \\
+			& & \ddots & \vdots \\
+			& & & 0
+			
+			\end{bmatrix} = 
+			\begin{bmatrix}
+				\lambda a_{11} & a_{12} & \ldots & a_{1n} \\
+				& \ddots & \ddots  & \vdots \\
+				&  & \ddots & \vdots \\
+				& & & \lambda a_{nn}
+				
+			\end{bmatrix}
+		\end{equation*}
+		dimostriamo ora che la matrice è predominante diagonale
+		\begin{equation*}
+			\lvert \lambda_{ll} \rvert > \sum_{j=1, j\neq l}^{n} \lvert a_{lj} \rvert \quad \lvert \lambda \lvert \lvert a_{ll} \rvert \geq \lvert a_{ll} \rvert > \sum_{j=1, j \neq l}^{n} \lvert a_{lj} \rvert
+		\end{equation*}
+		ma se è predominante diagonale allora la matrice è per forza invertibile e il determinante non è 0. Quindi abbiamo dimostrato per assurdo che l'uguaglianza \ref{equation:absurd_dem_jacobi} non è vera.
+	\end{itemize}
+\end{demostration}
+
+\subsection{Criteri di arresto}
+Un criterio tipico di arresto per capire quando fermare le nostre iterazioni è:
+\begin{equation}
+	\label{equation:tolleranza}
+	\lvert \lvert x_{k+1} - x_n \rvert \rvert \leq \text{tolleranza}
+\end{equation}
+che in codice diventa:
+\begin{lstlisting}
+	while(err > tol AND iterazoni <= it_max)
+		calcola x_new partendo da x_old
+		voluto err = ||x_new - x_old ||
+		x_old = x_new
+		iterazioni = iterazioni +1
+	end
+\end{lstlisting}
+Per capire quando fermarsi possiamo mettere in relazione la differenza al punto \ref{equation:tolleranza} con la soluzione come segue:
+\begin{equation*}
+	\begin{split}
+		x_{k+1}-x_k = \\
+		& = x_{k+1}-x+x-x_k \\
+		& = Px_k+1-Px-q+x-x_k \\
+		& =P(x_k-x)+x-x_k \\
+		&= (P-I)(x_k-x)
+	\end{split}
+\end{equation*}
+dove la matrice $P-I$ è invertibile dato che, quando sottraiamo l'identità, gli autovalori sono quelli della prima matrice meno $1$ e quindi per avere autovalori uguali a $0$ dovremmo avere che un autovalore di $P$ è $1$, ma è impossibile perché dato che è convergente abbiamo che il loro valore assoluto è $<1$. Ottengo quindi:
+\begin{equation}
+	\lvert\lvert x_k - x \rvert\rvert \leq \lvert\lvert (P-I)^{-1}\rvert\rvert \cdot \lvert\lvert x_{k+1}-x_{k}\rvert\rvert
+\end{equation}
+
+\begin{example}
+	Data la seguente matrice
+	\begin{equation*}
+		\begin{bmatrix}
+			1 & \ldots & \ldots&x\\
+			& \ddots & & \vdots \\
+			& & \ddots & x\\
+			x & \ldots& \ldots& 1
+		\end{bmatrix}
+	\end{equation*}
+	possiamo dire che è predominante diagonale se $\lvert x \rvert < 1$.\\\\
+	Per quali valori di $x$ il metodo di Gauss-Seidel converge? Bisogna guardare il raggio spettrale. La matrice di iterazione per il metodo GS sarà fatta:
+	\begin{equation*}
+		GS=\begin{bmatrix}
+			1 & \\
+			& \ddots \\
+			& & \ddots \\
+			x & \ldots & x & 1
+		\end{bmatrix}^{-1}\begin{bmatrix}
+		& & & & -x \\
+		& & & & \vdots \\
+		& & &&  -x \\
+		& & && 0
+		\end{bmatrix} = \begin{bmatrix}
+		0 & \ldots & 0 & y_1 \\
+		\vdots & & \vdots & \vdots \\
+		\vdots & & \vdots & \vdots \\
+		0 & \ldots & 0 & y_n
+		\end{bmatrix}
+	\end{equation*}
+	Dobbiamo quindi risolvere:
+	\begin{equation*}
+		\begin{bmatrix}
+			-x \\ \vdots \\ -x \\0
+		\end{bmatrix}=My \quad
+		\begin{bmatrix}
+			1 & \\
+			& \ddots \\
+			& & \ddots \\
+			x & \ldots & x & 1
+		\end{bmatrix}\begin{bmatrix}
+		y_1 \\ \vdots \\ \vdots \\ y_n
+		\end{bmatrix} = 
+		\begin{bmatrix}
+		-x \\ \vdots \\ -x \\0
+		\end{bmatrix}
+	\end{equation*}
+	\begin{equation*}
+		\begin{split}
+			& y_n = -x \\
+			&y_2=-x \\
+			& \ldots \\
+			& y_{n+1}=-x \\
+			& x\cdot y_1+x\cdot y_2+\ldots + x\cdot y_{n-1}+y_n = 0
+		\end{split}
+	\end{equation*}
+	quindi abbiamo che il raggio spettrale vale
+	\begin{equation*}
+		\phi(GS) = (n-1)x^2
+	\end{equation*}
+	che deve essere minore di 1:
+	\begin{equation*}
+		(n-1)x^2 <1 \Leftrightarrow x^2<\frac{1}{n-1} \Leftrightarrow - \frac{1}{\sqrt{n-1}} < x < \frac{1}{n-1}
 	\end{equation*}
 \end{example}
