@@ -1,0 +1,27 @@
+\newpage
+\section{Green coding}
+\subsection{Strutture dati}
+Le strutture dati forniscono un modo per organizzare e processare le informazioni. Una struttura \textbf{CRUD} consente di fare quattro operazioni:
+\begin{itemize}
+	\item \textit{Create}: aggiunta di un elemento
+	\item \textit{Read}: lettura di un elemento
+	\item \textit{Update}: aggiornamento di un valore
+	\item \textit{Delete}: eliminazione di un dato
+\end{itemize}
+In particolare Java fornisce strutture dati come \textit{List}, \textit{Set} e \textit{Map}. Noi utilizzeremo le prime due. Queste hanno diverse implementazioni con diverse complessità:
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{Struttura} & \textit{Create} & \textit{Read} & \textit{Update} & \textit{Delete} \\
+		\hline
+		ArrayList & $O(1)$ & $O(1)$ & $O(N)$ & $O(N)$ \\
+		LinkedList & $O(N)$ & $O(N)$ & $O(N)$ & $O(N)$\\
+		HashSet & $O(1)$ & $O(1)$ & $O(1)$ & $O(1)$\\
+		TreeSet & $O(\log N)$ & $O(\log N)$ & $O(\log N)$ & $O(\log N)$\\
+		\hline
+	\end{tabular}
+\end{table}
+\begin{note}
+	La differenza tra \textit{lista} e \textit{dizionario} è che la prima può contenere duplicati mentre il secondo no.
+\end{note}
