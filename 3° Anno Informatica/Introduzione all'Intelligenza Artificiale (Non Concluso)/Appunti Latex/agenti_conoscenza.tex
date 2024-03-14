@@ -91,8 +91,8 @@ Un formalismo per la rappresentazione della conoscenza si compone di:
 \end{center}
 Facendo il paragone con l'agente, le formule sono le sue configuraziini fisiche e il ragionamento è il processo di costruzione di nuove configurazioni a partire dalle vecchie. Il ragionamento logico deve assicurare che le nuove configurazioni siano effettive conseguenze sul mondo causate dalle vecchie configurazioni.
 
-\subsection{Logica proposizionale}
-\subsubsection{Sintassi}
+\section{Logica proposizionale}
+\subsection{Sintassi}
 La sintassi è la seguente, rappresentata in BNF:
 \begin{equation}
 	\begin{split}
@@ -107,7 +107,7 @@ La sintassi è la seguente, rappresentata in BNF:
 	\end{split}
 \end{equation}
 
-\subsubsection{Semantica}
+\subsection{Semantica}
 La logica proposizionale segue una semantica \textbf{composizionale}, dove il significato di una frase è determinato dal significato dei suoi componenti a partire dai \textit{simboli proposizionali}. Di seguito la ravola di verità:
 \begin{table}[h!]
 	\centering
@@ -123,7 +123,7 @@ La logica proposizionale segue una semantica \textbf{composizionale}, dove il si
 	\end{tabular}
 \end{table}
 
-\subsubsection{Conseguenza logica}
+\subsection{Conseguenza logica}
 \begin{definition}[Conseguenza logica]
 	Una formula $\alpha$ è una conseguenza logica di un insieme di formule KB se e solo se in ogni modello di KB, anche $\alpha$ è vera ($KB \models \alpha$).
 \end{definition}
@@ -168,5 +168,188 @@ Un modo per determinare la conseguenza logica è quello di enumere i \textit{mod
 			KB_1 \models \neg P_{1,2}\\
 			KB_1 \models P_{2,2}\lor P_{3,1}
 		\end{gather*}
-		e sono quelle in cui i pozzi sono in $[3,1]$ oppure in $[2,2]$ oppure in entrambi.
+		e sono quelle in cui i pozzi sono in $[3,1]$ oppure in $[2,2]$ oppure in entrambi.i
 \end{example}
+
+\subsubsection{SAT}
+Un altro approccio alla dimostrazione della conseguenza logica si basa su tre principi:
+\begin{itemize}
+	\item \textbf{Equivalenza logica}: due formule $\alpha$ e $\beta$sono equivalenti se sono vere nello stesso insieme di modelli
+	\begin{equation}
+		\alpha \equiv \beta \Leftrightarrow \alpha \models \beta\land\beta\models\alpha
+	\end{equation}
+	Alcune leggi fondamentali per l'equivalenza sono:
+	\begin{itemize}
+		\item \textit{Commutatività}: $(\alpha\land\beta)\equiv(\beta\land\alpha)\quad(\alpha\lor\beta)\equiv(\beta\lor\alpha)$
+		\item \textit{Associatività}: $((\alpha\land\beta)\land\gamma)\equiv(\alpha\land(\beta\land\gamma))\quad((\alpha\lor\beta)\lor\gamma)\equiv(\alpha\lor(\beta\lor\gamma))$
+		\item \textit{Eliminazione della doppia negazione}: $\neg(\neg\alpha)$
+		\item \textit{Contrapposizione}: $(\alpha\Rightarrow\beta)\equiv(\neg\beta\Rightarrow\neg\alpha)$
+		\item \textit{Eliminazione dell'implicazione}: $(\alpha\Rightarrow\beta)\equiv(\neg\alpha\lor\beta)$
+		\item \textit{Eliminazione del bicondizionale}: $(\alpha\Leftrightarrow\beta)\equiv((\alpha\Rightarrow\beta)\land(\beta\Rightarrow\alpha))$
+		\item \textit{De Morgan}: $\neg(\alpha \land\beta)\equiv(\neg\alpha\lor\neg\beta)\quad\neg(\alpha \lor\beta)\equiv(\neg\alpha\land\neg\beta)$
+		\item \textit{Distributività}: $(\alpha\land(\beta\lor\gamma))\equiv((\alpha\land\beta)\lor(\alpha\land\gamma)\quad(\alpha\lor(\beta\land\gamma))\equiv((\alpha\lor\beta)\land(\alpha\lor\gamma))$
+	\end{itemize}
+	\item \textbf{Validità}: una formula $\alpha$ è valida se e solo se è vera in tutte le sue interpretazioni. In quel caso sono anche dette \textbf{tatutologie}.
+	\begin{theorem}[Teorema di deduzione e refutazione]
+		Date due formule $\alpha$ e $\beta$, allora $\alpha \models\beta \Leftrightarrow (\alpha\Rightarrow\beta)$. Possiamo riscriverlo, usando le leggi appena elencate, anche come $\alpha\models\beta \Leftrightarrow (\alpha \land \neg\beta)$, che ci permette di fare la dimostrazione per \textbf{assurdo}.
+	\end{theorem}
+	\item \textbf{Soddisfacibilità}: una formula $\alpha$ è soddisfacibile se e solo se esiste una interpretazione in cui $\alpha$ è vera (ovvero se esiste un modello di $\alpha$). La determinazione della soddisfacibilità è il problema \textbf{SAT}.
+\end{itemize}
+Si noti che \textit{validità} e \textit{soddisfacibilità} sono connesse:
+\begin{itemize}
+	\item $\alpha$ è valida se e solo se $\neg\alpha$ è insoddisfacibile
+	\item $\alpha$ è soddisfacibvile se e solo se $\neg\alpha$ non è valida
+\end{itemize}
+\begin{definition}[Forma a clausole]
+	La forma a clausole è la \textbf{forma normale congiuntiva} (CNF), ovvero una congiunzione di disgiunzioni di letterali (un simbolo o la sua negazione). È sempre possibile ottenerla con trasformazioni che preservano l'equivalenza logica.
+\end{definition}
+Per eseguire una trasformazione in forma a clausole bisogna seguire i seguenti passi:
+\begin{enumerate}
+	\item Eliminazione del $\Leftrightarrow$
+	\item Eliminazione del $\Rightarrow$
+	\item Portare le negazioni all'interno tramite De Morgan
+	\item Distribuire $\lor$ su $\land$
+\end{enumerate}
+
+\begin{example}
+	Partendo dall'esempio \ref{example:wumpus_world}, trasformiamo $B_{1,1} \Leftrightarrow (P_{1,2}\lor P_{2,1})$:
+	\begin{enumerate}
+		\item $(B_{1,1} \Rightarrow (P_{1,2} \lor P_{2,1})) \land ((P_{1,2} \lor P_{2,1}) \Rightarrow B_{1,1})$
+		\item $(\neg B_{1,1} \lor (P_{1,2} \lor P_{2,1})) \land (\neg(P_{1,2} \lor P_{2,1}) \lor B_{1,1})$
+		\item $(\neg B_{1,1} \lor (P_{1,2} \lor P_{2,1})) \land ((\neg P_{1,2} \land \neg P_{2,1}) \lor B_{1,1})$
+		\item $(\neg B_{1,1} \lor P_{1,2} \lor P_{2,1}) \land (\neg(P_{1,2} \lor B_{1,1}) \land (\neg P_{2,1} \lor B_{1,1})$
+	\end{enumerate}
+	che possiamo riscrivere come
+	\begin{equation*}
+		\{\neg B_{1,1}, P_{1,2}, P_{2,1}\}\{\neg P_{1,2}, B_{1,1,}\}\{\neg P_{2,1}, B_{1,1}\}
+	\end{equation*}
+\end{example}
+
+\newpage
+\subsection{Algoritmi}
+Di seguito alcuni algoritmi per determinare se è vera una conseguenza logica a partire da una KB.
+\subsubsection{TV-Consegue}
+Questo algoritmo enumera tutte le possibili interpretazioni di KB, e per ciascuna interpretazione se soddisfa la KB controlla che soddisfi anche $\alpha$. Basta trovare una singola interpretazione che soddisfa la KB ma non $\alpha$ per determinare una risposta negativa. Avremo quindi, dati $k$ simboli, $2^k$ possibili interpretazioni.
+\label{alg:tv_consegue}
+\begin{lstlisting}
+	function TV-Consegue?(KB, a) // Restituisce true oppure false
+		inputs: KB, la base di conoscenza, una formula della logica proposizionale
+			a, la query, una formula della logica proposizionale
+	simboli = una lista dei simboli proposizionali contenuti in KB e a
+	return TV-Verifica-Tutto(KB, a, simboli, { })
+	
+	function TV-Verifica-Tutto(KB, a, simboli, modello) // Restituisce true oppure false
+		if Vuoto?(simboli) then
+			if PL-Vero?(KB, modello) then return PL-Vero?(a, modello)
+			else return true // Quando KB false, restituisce sempre true
+		else do
+			P = Primo(simboli); resto = Resto(simboli)
+			return TV-Verifica-Tutto(KB, a, resto, modello = {P = true})
+					  and
+					  TV-Verifica-Tutto(KB, a, resto, modello = {P = false})
+\end{lstlisting}
+
+\begin{example}
+	Supponiamo di voler verificare la seguente conseguenza logica:
+	\begin{equation*}
+		(\neg a\lor b)\land(a \lor c) \models (b \lor c)
+	\end{equation*}
+	Ci costruiamo la tabella di verità:
+	\begin{table}[!h]
+		\centering
+		\begin{tabular}{|ccc|cc|}
+			\hline
+			$a$&$b$&$c$&$\neg a \lor b$ & $a \lor c$ \\
+			\hline
+			T & T & T & T & T\\
+			T & T& F & T & T \\
+			T & F &T&F&T\\
+			T&F&F&F&T\\
+			F&T&T&T&T\\
+			F&T&F&T&F\\
+			F&F&T&T&T\\
+			F&F&F&T&F\\
+			\hline
+		\end{tabular}
+	\end{table}
+	Per poi selezionare solo le righe in cui la KB è vera e verificare se la nostra formula è sempre vera:
+	\begin{table}[!h]
+		\centering
+		\begin{tabular}{|ccc|cc|c|}
+			\hline
+			$a$&$b$&$c$&$\neg a \lor b$ & $a \lor c$ & $b\lor c$\\
+			\hline
+			T & T & T & T & T & T\\
+			T & T& F & T & T & T\\
+			F&T&T&T&T & T\\
+			F&F&T&T&T&T\\
+			\hline
+		\end{tabular}
+	\end{table}
+	Quindi la risposta è sì.\\
+	Applicando l'algoritmo \ref{alg:tv_consegue} abbiamo la seguente esecuzione:
+	\begin{lstlisting}
+		TV-VERIFICA-TUTTO(KB, formula, [a, b, c], { })
+			TV-VERIFICA-TUTTO(KB, formula, [b, c], {a=T})
+				TV-VERIFICA-TUTTO(KB, formula, [c], {a=T, b=T})
+					TV-VERIFICA-TUTTO(KB, formula, [ ], {a=T, b=T, c=T}) // OK
+					TV-VERIFICA-TUTTO(KB, formula, [ ], {a=T, b=T, c=F}) // OK
+				TV-VERIFICA-TUTTO(KB, formula, [c], {a=T, b=F})
+					TV-VERIFICA-TUTTO(KB, formula, [ ], {a=T, b=F, c=T}) // OK
+					TV-VERIFICA-TUTTO(KB, formula, [ ], {a=T, b=F, c=F}) // OK
+			TV-VERIFICA-TUTTO(KB, formula, [b, c], [a=F])
+			etc...
+	\end{lstlisting}
+\end{example}
+\subsubsection{DPLL}
+Questo algoritmo parte da una KB in forma a clausole e prende in input una formula in CNF ed enumera ricorsivamente in profondità tutte le possibili interpretazioni alla ricerca di un modello. Per avere un miglioramento sull'algoritmo \ref{alg:tv_consegue} applico tre clausole:
+\begin{itemize}
+	\item \textbf{Terminazione anticipata}: si può decidere sulla verità di una clausola anche con interpretazioni parziali, ovvero quando ho degli \textit{OR} basta che un simbolo sia vero mentre quando ho degli \textit{AND} basta che unpo sia falso per rendere falsa l'intera interpretazione
+	\item \textbf{Euristica dei simboli puri}: un simbolo puro è un simbolo che appare con lo stesso segno in tutte le clausole (trascurando eventualmente quelle già rese vere). Possono poi essere assegnati a True se il letterale è positivo o a False se è negativo
+	\item \textbf{Euristica delle clausole unitarie}: una clausola in cui è rimasto un solo letterale non assegnato
+\end{itemize}
+
+\begin{lstlisting}
+	function DPLL-Soddisfacibile?(s) returns true oppure false
+			inputs: s, una formula della logica proposizionale
+		clausole = insieme di clausole nella rappresentazione CNF di s
+		simboli = una lista di tutti i simboli proposizionali in s
+		return DPLL(clausole, simboli, { })
+	
+	function DPLL(clausole, simboli, modello) returns true oppure false
+		if ogni clausola in clausole vera in modello then return true
+		if qualche clausola in clausole falsa in modello then return false
+		P, valore = Trova-Simbolo-Puro(simboli, clausole, modello)
+		if P diverso da null then return DPLL(clausole, simboli - P, modello = {P = valore})
+		P, valore = Trova-Clausola-Unitaria(clausole, modello)
+		if P diverso da null then return DPLL(clausole, simboli-P, modello = {P = valore})
+		P = Primo(simboli); resto = Resto(simboli)
+		return	DPLL(clausole, resto, modello = {P = true})
+					 or
+					 DPLL(clausole, resto, modello = {P = false})
+\end{lstlisting}
+
+\begin{example}
+	Supponiamo di voler verificare la seguente conseguenza logica:
+	\begin{equation*}
+		\{\neg B_{1,1}, P_{1,2}, P_{2,1}\}\{\neg P_{1,2}, B_{1,1}\}\{\neg P_{2,1}, B_{1,1}\}\{\neg B_{1,1}\} \models \{\neg P_{1,2}\}
+	\end{equation*}
+	Aggiungiamo alla KB la clausola $\{P_{1,2}\}$ e verifichiamo con SAT se l'insieme è insoddisfacibile:
+	\begin{enumerate}
+		\item La clausola $\{P_{1,2}\}$ è unitaria, quindi $P_{1,2}=True$. Di conseguenza $\{\neg B_{1,1}, P_{1,2}, P_{2,1}\}$ e $\{P_{1,2}\}$ sono soddisfatte e rimaniamo con
+		\begin{equation*}
+			\{\neg P_{1,2}, B_{1,1}\}\{\neg P_{2,1}, B_{1,1}\}\{\neg B_{1,1}\}
+		\end{equation*}
+		\item $P_{2,1}$ è un simbolo puro ed essendo negativo sarà uguale a False, quindi la clausola $\{\neg P_{2,1}, B_{1,1}\}$ è soddisfatta e rimaniamo con
+		\begin{equation*}
+			\{\neg P_{1,2}, B_{1,1}\}\{\neg B_{1,1}\}
+		\end{equation*}
+	\end{enumerate}
+	Dato che non esistono modelli possiamo dire che $\neg P_{1,2}$ è conseguenza logica della KB
+\end{example}
+Questo algoritmo è \textbf{completo} e \textbf{termina sempre}. Alcuni miglioramenti sono:
+\begin{itemize}
+	\item Se possibile scomporre in sotto problemi indipendenti (quando non hanno simboli in comune)
+	\item Ordinare le variabili per frequenza di comparizione
+	\item Backtracing intelligente
+\end{itemize}
