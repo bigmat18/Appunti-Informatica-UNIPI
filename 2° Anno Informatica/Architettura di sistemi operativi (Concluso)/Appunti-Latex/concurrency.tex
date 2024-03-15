@@ -139,3 +139,208 @@ Il cambio di contesto può generare \textbf{overhead} a causa di:
 		\item MMU invalidations
 	\end{itemize}
 \end{itemize}
+
+\subsection{Cooperazione}
+Distinguiamo due modelli di cooperazione:
+\begin{itemize}
+	\item \textbf{Global enviroment}: processi e thread possono condividere i dati tramite memoria condivisa
+	\begin{center}
+		\includegraphics[scale=0.19]{global_enviroment.png}
+		\includegraphics[scale=0.2]{segment_sharing.png}
+	\end{center}
+	\item \textbf{Local enviroment}: processi e thread non hanno memoria condivisa e condividono quindi i dati tramite messaggi
+	\begin{center}
+		\includegraphics[scale=0.3]{local_enviroment.png}
+	\end{center}
+\end{itemize}
+
+\subsection{Sincronizzazione}
+Quando i thread lavorano contemporaneamente su memoria condivisa, il comportamento del programma non può essere determinato in anticipo in quanto la schedule è non deterministica.
+\begin{observation}[Reordering]
+	I compilatori riordinano le istruzioni per migliorare l'efficienza del codice. Lo stesso vale per la CPU che cerca di fare \textbf{write buffering}. Per evitare problemi si possono dare istruzioni speciali al compilatore perché eviti di fare qualunque operazione prima che quella critica sia conclusa.
+\end{observation}
+
+\begin{definition}[Race condition]
+	La corsa critica è quando il risultato di un programma concorrente dipende dall'ordine delle operazioni tra i thread, ammettendo che almeno una di queste sia una \textbf{write}.
+\end{definition}
+\begin{definition}[Mutual exclusion]
+	Si parla di mutua esclusione quando alcune operazioni in una \textbf{critical section} possono essere eseguite solamente da un thread alla volta.
+\end{definition}
+\begin{definition}[Lock]
+	È un meccanismo di sincronizzazione che permette di garantire la mutua esclusione.
+\end{definition}
+
+\begin{definition}[Correctness]
+	La proprietà di \textbf{correttezza} si compone di:
+	\begin{itemize}
+		\item \textbf{Liveliness}: garantisce che prima o poi il programma completi il lavoro
+		\item \textbf{Safety}: garantisce che il programma non entri mai in un bad state
+	\end{itemize}
+\end{definition}
+
+\subsubsection{Lock}
+Il meccanismo di \textbf{lock} prevede due operazioni:
+\begin{itemize}
+	\item \textit{acquire}: aspetta finché il lock non è libero e poi lo acquisisce
+	\item \textit{release}: libera il lock permettendo a chiunque fosse in attesa di acquisirlo
+\end{itemize}
+Sotto, la lock è un contatore booleano e una coda.\\
+La \textit{correttezza} è garantita in quanto al massimo c'è una persona che lo detiene alla volta (\textit{safety}) e se nessuno lo detiene (o se qualcuno lo libera) è ottenuto da qualcuno (\textit{liveliness}).\\
+È fondamentale assicurarsi di aver acquisito il lock prima di accedere alla memoria condivisa e rilasciarlo appena finito.
+
+\begin{example}[Lock with malloc]
+	Una possibile implementazione della \textbf{lock} con \textit{malloc} e \textit{free}.
+	\begin{lstlisting}[language=C]
+		char *malloc (n) {
+			heaplock.acquire();
+			p = allocate memory
+			heaplock.release();
+			return p;
+		}
+		
+		void free(char *p) {
+			heaplock.acquire();
+			put p back on free list
+			heaplock.release();
+		}
+	\end{lstlisting}
+\end{example}
+
+\begin{example}
+	Un'altra possibile implementazione della \textbf{lock}.
+	\begin{lstlisting}[language=C]
+		tryget() {
+			item = NULL;
+			lock.acquire();
+			if (nelem>0) {
+				item = buf[front];
+				front = (front++)%size;
+				nelem--;
+			}
+			lock.release();
+			return item;
+		}
+		
+		tryput(item) {
+			r=false;
+			lock.acquire();
+			if (nelem < size) {
+				buf[last] = item;
+				last = (last ++)%size;
+				nelem ++; r=true;
+			}
+			lock.release();
+			return r;
+		}
+	\end{lstlisting}
+\end{example}
+
+\begin{example}[Uniprocessor e multiprocessor]
+	Implementazione della lock su sistema \textbf{single core}.
+	\begin{lstlisting}[language=C]
+		LockAcquire() {
+			disableInterrupts ();
+			if (value == BUSY) {
+				waiting.add(myTCB);
+				suspend(); // Sospende il thread corrente, ovvero invoca lo scheduler per fare il content switch, seleziona un altro TCB e abilita gli interrupt
+			} else {
+				value = BUSY;
+			}
+			enableInterrupts ();
+		}
+		
+		LockRelease() {
+			disableInterrupts ();
+			if (!waiting.Empty()){
+				thTCB = waiting.Remove();
+				readyList.Append(thTCB);
+			} else {
+				value = FREE;
+			}
+			enableInterrupts ();
+		}
+	\end{lstlisting}
+	Su un sistema \textbf{multi core}, disabilitare gli \textit{interrupt} non è sufficiente. Si rendono quindi necessarie istruzioni \textbf{Read-Modify-Write} (RNW) .
+\end{example}
+
+\subsubsection{Condition variables}
+Permettono di effettuare la sincronizzazione senza l'attesa attiva, sfruttando i mutex e variabili di condizione. Prevede tre azioni \textbf{atomiche}:
+\begin{itemize}
+	\item \textit{wait}: rilascia automaticamente il lock e rinuncia al processore fino a nuovo segnale
+	\item \textit{signal}: sveglia un singolo thread in attesa, se ce ne sono
+	\item \textit{broadcast}: sveglia tutti i thread in attesa, se ce ne sono
+\end{itemize}
+
+\begin{example}[Produttore e consumatore]
+	Il problema prevede un \textbf{buffer condiviso} in cui uno o più produttori caricano messaggi. I consumatori estraggono uno alla volta i messaggi per consumarli.\\
+	È necessario che un messaggio sia consumato una ed una sola volta.
+	\begin{lstlisting}[language=C]
+		get() {
+			// Lock
+			lock.acquire();
+			// Se non ci sono elementi nel buffer, eseguo una wait aspettando che arrivi qualcosa
+			while (nelem == 0)
+				empty.wait(&lock);
+			// Consumo il dato
+			item = buf[front];
+			front = (front++) % size;
+			nelem--;
+			// Avviso che ho consumato un elemento
+			full.signal();
+			// Unlock
+			lock.release();
+			return item;
+		}
+		
+		put(item) {
+			// Lock
+			lock.acquire();
+			// Se il buffer e' 	pieno, eseguo una wait aspettando che venga consumato qualcosa
+			while (nelem == size)
+				full.wait(&lock);
+			// Produco il dato
+			buf[last] = item;
+			last = (last ++) % size;
+			nelem ++;
+			// Avviso che e' stato prodotto un elemento
+			empty.signal();
+			// Unlock
+			lock.release();
+		}
+	\end{lstlisting}
+	In questo codice abbiamo tre variabili di condizione: \textit{lock}, \textit{empty}, \textit{full}. È fondamentale \underline{seguire il pattern} \underline{descritto nell'esempio}.
+\end{example}
+Quando un thread viene svegliato da una \textit{wait}, potrebbe non partire subito in quanto qualche altro thread potrebbe acquisire prima il lock. È quindi necessario, soprattutto quando il risveglio avviene tramite \textit{broadcast}, usare un ciclo che rimanga in attesa del risveglio:
+\begin{lstlisting}[language=C]
+	while (needToWait())
+		condition.Wait(lock);
+\end{lstlisting}
+Dalla documentazione ufficiale di Java: \\
+\textit{When waiting upon a Condition, a “\textbf{spurious wakeup}” is permitted to occur, in general, as a concession to the underlying platform semantics. This has little practical impact on most application programs as a Condition should always be waited upon in a loop, testing the state predicate that is being waited for.}
+
+\subsubsection{Semantica Hoare}
+La semantica Hoare prevede che la \textit{signal} svegli un thread e gli passi la lock, senza lasciarla. Nasce con l'idea di usare un concetto \textbf{FIFO} per evitare che i thread si scavalchino a vicenda.\\
+Il problema principale è che non c'è più l'esclusività di essere nella sezione critica e ci potrebbero essere cambiamenti di stato non previsti.
+\subsubsection{Semantica Mesa}
+La semantica Mesa prevede che la \textit{signal} mette chi era in attesa in una lista \textbf{ready} e questo poi deve prendere la lock (che può anche essergli "rubata" da qualcun'altro). È più facile da implementare della semantica \textit{Hoare} e c'è un meccanismo per implementare la politica \textbf{FIFO}. Una possibile implementazione è la seguente:
+\begin{lstlisting}[language=C]
+	get() {
+		lock.acquire();
+		if (!nextGet.empty() ||
+		nelem == 0 ) {
+			self = createCondition();
+			nextGet.Append(self);
+			do self.wait(lock);
+			while (nelem == 0);
+			nextGet.Remove(self);
+			destroyCondition(self);
+		}
+		item = buf[front];
+		front= (front++) % size;
+		nelem--;
+		if (!nextPut.empty())
+		nextPut.first()->signal();
+		lock.release();
+		return item;
+	}
+\end{lstlisting}
