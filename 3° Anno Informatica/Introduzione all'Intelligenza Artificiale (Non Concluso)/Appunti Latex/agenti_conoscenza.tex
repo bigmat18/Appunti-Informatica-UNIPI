@@ -1,3 +1,4 @@
+% !TeX spellcheck = it_IT
 \newpage
 \section{Agenti basati su conoscenza}
 C'è bisogno di rappresentare la conoscenza in maniera parziale e incompleta (gli ambienti sono parzialmente osservabili). Ci servono quindi dei linguaggi più espressivi e con \textbf{capacità inferenziali}.\\
@@ -136,6 +137,7 @@ Indichiamo con $M(KB)$ i modelli dell'insieme di formule in KB e con $M(\alpha)$
 Un modo per determinare la conseguenza logica è quello di enumere i \textit{modelli} e mostrare che la formula $\alpha$ vale in tutti quelli in cui è vera la KB.
 
 \begin{example}[Wumpus World]
+	\label{example:wumpus_world_model_checking}
 	Partendo dall'esempio \ref{example:wumpus_world} abbiamo che la KB iniziale, $KB_0$, è costituita dalle regole descritte nella definizione dell'esercizio:
 		\begin{gather*}
 			\neg W_{1,1} \quad \neg P_{1,1} \\
@@ -225,6 +227,59 @@ Per eseguire una trasformazione in forma a clausole bisogna seguire i seguenti p
 	\end{equation*}
 \end{example}
 
+\subsubsection{Deduzione}
+Un altro modo per dimostrare la conseguenza logica è utilizzare un \textbf{sistema di deduzione}, che denotiamo come $KB \vdash A$. La deduzione avviene specificando delle \textbf{regole di inferenza} con le seguenti caratteristiche:
+\begin{itemize}
+	\item Devono derivare \textbf{solo} formule che sono conseguenza logica
+	\item Devono derivare \textbf{tutte} le formule che sono conseguenza logica
+\end{itemize}
+\begin{definition}[Correttezza]
+	Tutto ciò che è derivabile è conseguenza logica, le regole preservano la verità.
+	\begin{equation}
+		KB \vdash \alpha \Rightarrow KB \models \alpha
+	\end{equation}
+\end{definition}
+\begin{definition}[Completezza]
+	Tutto ciò che è conseguenza logica è ottenibile tramite il sistema di deduzione.
+	\begin{equation}
+		KB \models \alpha \Rightarrow KB \vdash \alpha
+	\end{equation}
+\end{definition}
+Alcune regole di inferenza sono:
+\begin{gather}
+	\frac{\alpha \Rightarrow \beta, \quad \alpha}{\beta} \quad\quad\text{Modu ponens}\\
+	\frac{\alpha \land \beta}{\alpha} \quad\quad\text{Eliminazione dell\'AND}\\
+	\frac{\alpha \Leftrightarrow \beta}{(\alpha \Rightarrow \beta) \land (\beta \Rightarrow \alpha)} \quad\quad\text{Introduzione della doppia implicazione}\\
+	\frac{(\alpha \Rightarrow \beta) \land (\beta \Rightarrow \alpha)}{\alpha \Leftrightarrow \beta} \quad\quad\text{Eliminazione della doppia implicazione}
+\end{gather}
+
+\begin{example}[Wumpus]
+	Partendo dalle stesse assunzioni fatte nell'esempio \ref{example:wumpus_world_model_checking}, voglio chiedermi se posso dimostrare con le regole di inferenza che non c'è un pozzo in $[1,1]$, ovvero $\neg P_{1,2}$.
+	\begin{align*}
+		R_6: (B_{1,1} \Rightarrow (P_{1,2} \lor P_{2,1})) \land ((P_{1,2} \lor P_{2,1}) \Rightarrow B_{1,1}) && (R_2, \Leftrightarrow E) \\
+		R_7: (P_{1,2} \lor P_{2,1}) \Rightarrow B_{1,1} && (R_6,\land E)\\
+		R_8: \neg B_{1,1} \Rightarrow \neg (P_{1,2} \lor P_{2,1}) && (R_7, \text{contrapposizione}) \\
+		R_9: \neg(P_{1,2} \lor P_{2,1}) && (R_4, R_8, \text{Modus ponens}) \\
+		R_{10}: \neg P_{1,2} \land \neg P_{2,1} && (R_9, \text{De Morgan})\\
+		R_{11}: \neg P_{1,2} && (R_10, \land E)
+	\end{align*}
+\end{example}
+\noindent Anche la deduzione può quindi essere visto come problema di ricerca, dove vanno definite:
+\begin{itemize}
+	\item \textbf{Direzione} della ricerca: nella dimostrazione di teoremi conviene procedere all'\textit{indietro}
+	\item \textbf{Strategia} della ricerca:
+	\begin{itemize}
+		\item \textit{Completezza}: le regole della deduzione naturale sono un un insieme completo, se lo è anche l'algoritmo siamo a posto
+		\item \textit{Efficienza}: è un problema decidibile ma NP-Completo
+	\end{itemize}
+\end{itemize}
+In generale per risolvere una proposizione meno regole abbiamo e meglio è, senza però rinunciare alla completezza.\\
+Dati $l$ e $m$ letterali positivi o negativi e $l_i$ e $m_j$ di segno opposto, la regola di risoluzione possiamo scriverla in generale come:
+\begin{equation}
+	\frac{\{l_1, \ldots, l_i, \ldots, l_k\}\{m_1, \ldots, m_j, \ldots, m_n\}}{\{l_1, \ldots, l_{i-1}, l_{i+1}, \ldots, l_k\}\{m_1, \ldots, m_{j-1}, m_{j+1}, \ldots, m_n\}}
+\end{equation}
+da cui poi possiamo costruirci un \textbf{grafo di risoluzione}.
+
 \newpage
 \subsection{Algoritmi}
 Di seguito alcuni algoritmi per determinare se è vera una conseguenza logica a partire da una KB.
@@ -302,6 +357,7 @@ Questo algoritmo enumera tutte le possibili interpretazioni di KB, e per ciascun
 	\end{lstlisting}
 \end{example}
 \subsubsection{DPLL}
+\label{alg:dpll}
 Questo algoritmo parte da una KB in forma a clausole e prende in input una formula in CNF ed enumera ricorsivamente in profondità tutte le possibili interpretazioni alla ricerca di un modello. Per avere un miglioramento sull'algoritmo \ref{alg:tv_consegue} applico tre clausole:
 \begin{itemize}
 	\item \textbf{Terminazione anticipata}: si può decidere sulla verità di una clausola anche con interpretazioni parziali, ovvero quando ho degli \textit{OR} basta che un simbolo sia vero mentre quando ho degli \textit{AND} basta che unpo sia falso per rendere falsa l'intera interpretazione
@@ -347,9 +403,83 @@ Questo algoritmo parte da una KB in forma a clausole e prende in input una formu
 	\end{enumerate}
 	Dato che non esistono modelli possiamo dire che $\neg P_{1,2}$ è conseguenza logica della KB
 \end{example}
-Questo algoritmo è \textbf{completo} e \textbf{termina sempre}. Alcuni miglioramenti sono:
+\noindent Questo algoritmo è \textbf{completo} e \textbf{termina sempre}. Alcuni miglioramenti sono:
 \begin{itemize}
 	\item Se possibile scomporre in sotto problemi indipendenti (quando non hanno simboli in comune)
 	\item Ordinare le variabili per frequenza di comparizione
 	\item Backtracing intelligente
 \end{itemize}
+
+\subsubsection{WalkSAT}
+\label{alg:walksat}
+Definiamo la formulazione di un problema SAT in ambito locale:
+\begin{itemize}
+	\item \textbf{Stati}: sono le interpretazioni, assegnamenti completi
+	\item \textbf{Obiettivo}: un assegnamento che soddisfa tutte le clausole (\textit{modello})
+\end{itemize}
+Si parte da un assegnamento \textit{casuale} e ad ogni passo si cambia il valore di un simbolo proposizionale (\textbf{flip}). La valutazione di uno stato avviene controllando il numero di clausole soddisfatte.
+
+Ad ogni passo viene scelta a caso una clausola non soddisfatta e individua un simbolo da modificare, scegliendo con probabilità $p$ tra:
+\begin{itemize}
+	\item \textbf{Random walk}: il simbolo è scelto a caso
+	\item \textbf{Ottimizzazione}: viene scelto il simbolo che rende più clausole soddisfatte
+\end{itemize}
+Dopo un certo numero di flip predefinito, l'algoritmo si arrende.
+\begin{lstlisting}
+	function WalkSAT(clausole, p, max_flips) returns un modello o fallimento
+		modello = assegnamento casuale di valori di verita ai simboli in clausole
+		
+		for i = 1 to max_flips do
+			if modello soddisfa clausole then return modello
+			clausola = una clausola, falsa in modello, scelta casualmente nell'insieme clausole
+			if Random(0, 1) =< p then inverti il valore in modello di un simbolo scelto
+			casualmente in clausola
+			else inverti il valore di verita del simbolo in clausole che massimizza il numero
+			di clausole soddisfatte
+			
+		return fallimento
+\end{lstlisting}
+
+\begin{example}[WalkSAT]
+	L'obiettivo è quello di massimizzare il numero di clausole soddisfatte tra le seguenti:
+	\begin{equation*}
+		\{\neg B_{1,1}, P_{1,2}, P_{2,1}\}\{\neg P_{1,2}, B_{1,1}\}\{\neg P_{2,1}, B_{1,1}\}\{\neg B_{1,1}\}
+	\end{equation*}
+	Un esempio di esecuzione dell'algoritmo è il seguente:
+	\begin{enumerate}
+		\item Configurazione di \textit{partenza}: $[B_{1,1}=F,P_{1,2}=T,P_{2,1}=T]$
+		\item \textit{Random walk}: la prima e la quarta clausola sono soddisfatte, scelgo seconda e faccio un flip a caso di $B_{1,1}$ ottenendo $[B_{1,1}=T,P_{1,2}=T,P_{2,1}=T]$
+		\item L'unica non soddisfatta è la quarta, posso solo fare un flip di $B_{1,1}$ ottenendo $[B_{1,1}=F,P_{1,2}=T,P_{2,1}=T]$
+		\item \textit{Random walk}: la prima e la quarta clausola sono soddisfatte, scelgo la seconda e faccio un flip a caso di $P_{1,2}$ ottenendo $[B_{1,1}=F,P_{1,2}=F,P_{2,1}=T]$
+		\item \textit{Ottimizzazione}: l'unica non soddisfatta è la terza, faccio un flip di $P_{2,1}$ ottenendo $[B_{1,1}=F,P_{1,2}=F,P_{2,1}=F]$
+	\end{enumerate}
+\end{example}
+
+Se il limite $max_flips = \infty$ e l'insieme di clausole è soddisfacibile, prima o poi termina, ma  se non lo è non terminerà mai. Non possiamo quindi usarlo per verificare l'insoddisfacibilità.
+
+\subsubsection{Confronto}
+Se un problema è \textbf{sotto-vincolato} (ha molte soluzioni) è più probabile che \textit{WalkSAT} trovi una soluzione in tempi brevi.
+\begin{example}[3-SAT]
+	Dato il seguente problema 3-SAT, ovvero con clausole di 3 letterali:
+	\begin{equation*}
+		\{\neg D, \neg B, C\} \{B, \neg A, \neg C\} \{\neg C, \neg B, E\} \{E, \neg D, B\} \{B, E, \neg C\}
+	\end{equation*}
+	Abbiamo $32$ possibili interpretazioni con $16$ possibili soluzioni. Questo sarebbe facile da risolvere con \textit{Walk-SAT}.
+\end{example}
+\noindent È importante nel capire il livello di difficoltà di un problema SAT il rapporto tra numero di \textbf{clausole} e numero di \textbf{simboli}
+\begin{equation}
+	\frac{m}{n}
+\end{equation}
+Infatti, più è grande il rapporto e più vincolato è il problema.
+\begin{example}
+	Supponiamo di avere $n=50$ simboli e di avere $m$ clausole che variano.
+	\begin{center}
+		\includegraphics[scale=0.2]{prob_sodd.png}
+	\end{center}
+	Su 100 problemi generati a caso vediamo che $4.3$ è la soglia oltre la quale un problema diventa difficile da risolvere.
+\end{example}
+\noindent Vediamo il \textbf{confronto} tra l'algoritmo \hyperref[alg:dpll]{DPLL} e \hyperref[alg:walksat]{WalkSAT}:
+\begin{center}
+	\includegraphics[scale=0.3]{dpll_vs_walksat.png}
+\end{center}
+Notiamo che i problemi vicini alla \textit{soglia di soddisfacibilità} sono molto più difficili da risolvere rispetto a quelli più lontani. Inoltre vediamo che quando un problema è poco vincolato i due algoritmi performano allo stesso modo mentre intorno alla soglia \textit{WalkSAT} è nettamente migliore.
