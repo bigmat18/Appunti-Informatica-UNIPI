@@ -1,3 +1,4 @@
+% !TeX spellcheck = it_IT
 \newpage
 \section{Green coding}
 \subsection{Strutture dati}
@@ -25,3 +26,7 @@ In particolare Java fornisce strutture dati come \textit{List}, \textit{Set} e \
 \begin{note}
 	La differenza tra \textit{lista} e \textit{dizionario} è che la prima può contenere duplicati mentre il secondo no.
 \end{note}
+
+\subsection{Analisi}
+Le strutture di tipo \textit{List} sono meno efficienti di quelle \textit{Set}, però possono contenere duplicati. Se si prevede un mix bilanciato di operazioni \textit{ArrayList} è migliore di \textit{LinkedList} tranne per la modifica e l'eliminazione. Alla fine la struttura più efficiente è teoricamente \textit{HashSet}, ma ad esempio se è necessario tenere gli elementi ordinati conviene \textit{TreeSet}.\\
+È quindi fondamentale scegliere una struttura dati coerente con il caso di utilizzo.
