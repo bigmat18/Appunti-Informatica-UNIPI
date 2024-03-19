@@ -92,6 +92,20 @@ Analizziamo ora i modelli di servizio, prendendo come esempio la pizza:
 	\item \textbf{PaaS}: fornisce l'intera piattaforma come servizio (VM, OS, servizi, SDKs) e gestisce l'infrastruttura, l'OS e l'abilitazione del software. Il cliente è responsabile dell'installazione e la gestione delle applicazioni. Nel nostro caso sarebbe una pizza d'asporto.
 	\item \textbf{SaaS}: fornisce software a richiesta, disponibile tramite API. Viene gestita l'infrastruttura, l'OS e l'applicazione, quindi il cliente non è responsabile di nulla. Nel nostro caso sarebbe la pizzeria.
 \end{itemize}
+Vediamo il confronto in quanto a successo \textit{revenue} e \textit{market share}:
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{Tipo} & \textbf{1H22 Rev} & \textbf{1H23 Rev} & \textbf{1H22 Msh} & \textbf{1H23 Msh}\\
+		\hline
+		IaaS & 55.1 BUSD & 64.4 BUSD & $20.8\%$ & $20.4 \%$\\
+		PaaS & 44.5 BUSD & 56.8 BUSD & $16.8 \%$ & $18.0 \%$\\
+		SaaS SW & 121.9 BUSD  & 141.2 BUSD & $46.0\%$ & $44.7 \%$\\
+		SaaS HW & 43.3 BUSD & 53.2 BUSD & $16.4\%$ & $16.9\%$\\
+		\hline
+	\end{tabular}
+\end{table}
 
 \subsubsection{Deployments models}
 La scelta del deployment model può essere \textbf{pubblico}, \textbf{privato} o \textbf{ibrido}. Il modello privato garantisce un maggiore controllo sui dati mentre quello pubblico una maggiore scalabilità. La versione ibrida divide i dati tra pubblico e privato in base alle esigenze di sicurezza e scalabilità.
