@@ -304,6 +304,56 @@ e il vettore al tempo $k$:
 \end{equation}
 che avrà complessità $O(nnz(A))$ essendo molto parallelizzabile.
 
+\begin{example}
+	Data la matrice
+	\begin{equation*}
+		A=\begin{bmatrix}
+			1 & & &-\alpha \\
+			& \ddots && \vdots\\
+			& & \ddots & -\alpha\\
+			-\beta & & & 1
+		\end{bmatrix}
+	\end{equation*}
+	la sua matrice $J$ è
+	\begin{equation*}
+		J = \begin{bmatrix}
+			 & & &\alpha \\
+			&  && \vdots\\
+			& &  & \alpha\\
+			\beta & \ldots& \beta& 0
+		\end{bmatrix}
+	\end{equation*}
+	Utilizziamo la fattorizzazione LU per calcolare il polinomio caratteristico:
+	\begin{equation*}
+		det(\lambda I - J) = det \begin{bmatrix}
+			\lambda & & &-\alpha \\
+			&  \ddots&& \vdots\\
+			& &  \ddots& -\alpha\\
+			-\beta & \ldots& 0& \lambda
+		\end{bmatrix} = \begin{bmatrix}
+		& & & \\
+		&  I&& 0\\
+		& &  & \\
+		-\frac{\beta}{\lambda}&0 &0  & 1
+		\end{bmatrix} \begin{bmatrix}
+		\lambda& & & -\alpha\\
+		&  \ddots&& \vdots\\
+		& &  \lambda& -\alpha\\
+		&&  & u
+		\end{bmatrix}
+	\end{equation*}
+	dove $u = \lambda - \frac{\alpha\beta}{\lambda}$ e il raggio spettrale vale
+	\begin{equation*}
+		\phi(J)< 1 \Leftrightarrow \sqrt{\lvert \alpha \beta \rvert} < 1
+	\end{equation*}
+	Dimostrare che per i valori per cui Jacobi è convergente, la matrice è invertibile.\\
+	Sappiamo che $A$ non è invertibile se e solo se:
+	\begin{equation*}
+		\exists x \neq 0 \vert Ax=0 \Leftrightarrow (M-N)x=0 \Leftrightarrow Mx=Nx \Leftrightarrow x=M^{-1}Nx \Leftrightarrow x=Px
+	\end{equation*}
+	Questo ci fa capire che che possiamo scriverlo come $Px=\lambda x$e che il metodo quindi non è convergente in quanto ha autovalore $\lambda$con autovettore $x$. Quindi se è convergente allora è invertibile.
+\end{example}
+
 \subsection{Metodo di Gauss-Seidel}
 Gauss ragiona sul fatto che ad ogni iterazione avrò calcolato tutte le componenti precedenti fino a $l-1$ al tempo $k+1$. Riscrive quindi l'iterazione di Jacobi nella seguente forma:
 \begin{equation}
