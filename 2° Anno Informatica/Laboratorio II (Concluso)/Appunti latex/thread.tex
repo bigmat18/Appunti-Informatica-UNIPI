@@ -443,3 +443,163 @@ Il problema di questo metodo è la \textbf{terminazione}. La strategia più semp
 \begin{observation}
 	Se invece di utilizzare un buffer di tipo circolare utilizzassi una pila, non sarebbe garantito l'ordine di elaborazione dei dati prodotti dei dati dal consumatore, che potrebbe trovarsi come primo dato il \emph{dummy} e terminare subito.
 \end{observation}
+
+\subsubsection{Condition variables}
+Ci permette di utilizzare condizioni per fermare il thread personalizzate.
+\begin{example}
+	Supponiamo di avere diversi thread che eseguono diverse operazioni, ognuna con una necessità di memoria diversa. Il sistema ha a disposizione $100MB$ da dividere tra di loro. Si rende quindi necessario un controllore centrale che gestisca la cessione della memoria ai vari thread.\\
+	Se ad esempio un primo thread richiede $20MB$, i disponibili diventano $80MB$. Quando poi un altro thread ne richiede ad esempio $90MB$, il controllore deve metterlo in attesa finché non ne sono disponibili di nuovo a sufficienza.
+	\begin{lstlisting}
+		fprintf(stderr,"%2d Assegnati: %3d. Rimanenti: %4d\n\n", gettid()%100,
+		memoria_disponibile >= quante_ne_serve
+	\end{lstlisting}
+\end{example}
+La comodità rispetto ai semafori è che in questi l'unico test possibile è verificare che il suo valore sia $\geq 0$ mentre in questo caso non siamo vincolati.\\
+Una possibile implementazione è la seguente:
+\begin{lstlisting}[language=C]
+	// Struct che tiene traccia della memoria disponibile e 
+	// contiene le variabili cond/mutex per regolarne l'utilizzo
+	typedef struct {
+		pthread_cond_t  *cv; // Condition variable
+		pthread_mutex_t *mu; // Mutex
+		int MB;       // Memoria attualmente disponibile
+	} heap;
+	
+	// Simula allocazione con spazio limitato
+	void richiedi(heap *h, int n) {
+		// E' necessario che anche il ciclo while sia sotto lock del mutex
+		xpthread_mutex_lock(h->mu,QUI);
+		while(n>h->MB) {
+			// In automatico viene rilasciato il mutex prima di addormentarsi
+			xpthread_cond_wait(h->cv,h->mu,QUI);
+			// Al risveglio del thread viene riacquisito il mutex (se ce ne sono diversi in attesa, il piu veloce lo prende, gli altri attendono)
+		}
+		h->MB -= n;
+		xpthread_mutex_unlock(h->mu,QUI);
+	}
+	
+	// Deallocazione
+	void libera(heap *h, int n) {
+		xpthread_mutex_lock(h->mu,QUI);
+		h->MB += n;
+		// Sveglia tutti i thread avvisando che ci sono risorse disponibili
+		xpthread_cond_broadcast(h->cv,QUI);
+		xpthread_mutex_unlock(h->mu,QUI); 
+	}
+	
+	// Codice thread tipo 1, chiede 10,20,...,50
+	void *tipo1(void *v) {
+		heap *h = (heap *) v;
+		for(int i=1;i<=5;i++) {
+			int m = 10*i;
+			richiedi(h,m);
+			sleep(1);
+			libera(h,m);
+		}
+		return NULL;
+	}
+	
+	// Codice thread tipo 2, chiede 15,25,...,55
+	void *tipo2(void *v) {
+		heap *h = (heap *) v;
+		for(int i=1;i<=5;i++) {
+			int m = 10*i+5;
+			richiedi(h,m);
+			sleep(1);
+			libera(h,m);
+		}
+		return NULL;
+	}
+	
+	int main(int argc, char *argv[])
+	{		
+		// Inizializza heap 
+		pthread_cond_t c = PTHREAD_COND_INITIALIZER;
+		pthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;
+		heap h;
+		h.cv = &c; h.mu = &m;
+		h.MB = mem;
+		
+		// Esegue i thread
+		pthread_t t[nt];
+		// Esegue un thread tipo1
+		xpthread_create(&t[0],NULL,&tipo1,&h,QUI);
+		for(int i=1;i<nt;i++)
+		// Esegue nt-1 thread di tipo 2
+			xpthread_create(&t[i],NULL,&tipo2,&h,QUI);
+		
+		// Attende terminazione thread e termina
+		for(int i=0;i<nt;i++)
+			xpthread_join(t[i],NULL,QUI);
+		xpthread_cond_destroy(&c,QUI);
+		xpthread_mutex_destroy(&m,QUI);
+		
+		return 0;
+	}
+\end{lstlisting}
+
+\begin{example}
+	Un esempio di implementazione di una soluzione al problema dei \textbf{produttori e consumatori} usando le variabili condivise è la seguente:
+	\begin{lstlisting}[language=C]
+		typedef struct {
+			int readers;
+			bool writing;
+			pthread_cond_t cond;   // Condition variable
+			pthread_mutex_t mutex; // Mutex associato alla condition variable
+		} rw;
+		
+		// Inizializza rw, ne scrittori ne lettori 
+		void rw_init(rw *z)
+		{
+			z->readers = 0;
+			z->writing = false;
+			xpthread_cond_init(&z->cond,NULL,QUI);
+			xpthread_mutex_init(&z->mutex,NULL,QUI);
+		}
+		
+		// Inizio uso da parte di un reader
+		void read_lock(rw *z)
+		{
+			pthread_mutex_lock(&z->mutex);
+			while(z->writing==true)
+			pthread_cond_wait(&z->cond, &z->mutex);   // attende fine scrittura
+			z->readers++;
+			pthread_mutex_unlock(&z->mutex);
+		}
+		
+		// Fine uso da parte di un reader
+		void read_unlock(rw *z)
+		{
+			assert(z->readers>0);  // Ci deve essere almeno un reader (me stesso)
+			assert(!z->writing);   // Non ci devono essere writer 
+			pthread_mutex_lock(&z->mutex);
+			z->readers--;                  // Cambio di stato       
+			if(z->readers==0) 
+			// A differenza della broadcast, la signal sveglia solamente uno dei thread in attesa
+			pthread_cond_signal(&z->cond); 
+			pthread_mutex_unlock(&z->mutex);
+		}
+		
+		// Inizio uso da parte di writer  
+		void write_lock(rw *z)
+		{
+			pthread_mutex_lock(&z->mutex);
+			while(z->writing || z->readers>0)
+			// Attende fine scrittura o lettura
+			pthread_cond_wait(&z->cond, &z->mutex);   
+			z->writing = true;
+			pthread_mutex_unlock(&z->mutex);
+		}
+		
+		// Fine uso da parte di un writer
+		void write_unlock(rw *z)
+		{
+			assert(z->writing);
+			pthread_mutex_lock(&z->mutex);
+			z->writing=false;               // Cambio stato
+			// Segnala a tutti quelli in attesa 
+			pthread_cond_broadcast(&z->cond);  
+			pthread_mutex_unlock(&z->mutex);
+		}
+	\end{lstlisting}
+\end{example}
