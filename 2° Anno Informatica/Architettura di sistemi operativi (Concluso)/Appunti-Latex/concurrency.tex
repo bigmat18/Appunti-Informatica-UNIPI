@@ -272,6 +272,7 @@ Permettono di effettuare la sincronizzazione senza l'attesa attiva, sfruttando i
 \end{itemize}
 
 \begin{example}[Produttore e consumatore]
+	\label{example:prodcons}
 	Il problema prevede un \textbf{buffer condiviso} in cui uno o più produttori caricano messaggi. I consumatori estraggono uno alla volta i messaggi per consumarli.\\
 	È necessario che un messaggio sia consumato una ed una sola volta.
 	\begin{lstlisting}[language=C]
@@ -344,3 +345,352 @@ La semantica Mesa prevede che la \textit{signal} mette chi era in attesa in una 
 		return item;
 	}
 \end{lstlisting}
+
+%TODO Mancano le lezioni 05a e 05b
+
+\subsubsection{Banker's Algorithm}
+L'algoritmo del banchiere prevede che siano definite in anticipo le massime risorse necessarie e che queste vengano allocate strada facendo, controllando però prima che non causino \textbf{deadlock}.
+
+\begin{definition}[Safe state]
+	Per ogni possibile sequenza di richieste future è possibile garantire tutte le eventuali richieste. Potrebbe implicare dell'attesa anche quando sono disponibili tutte le risorse necessarie.
+\end{definition}
+
+\begin{definition}[Unsafe state]
+	Una sequenza di richieste di risorse che potrebbe portare ad un \textbf{deadlock}.
+\end{definition}
+
+\begin{definition}[Doomed state]
+	Tutte le possibili richieste portano al \textbf{deadlock}.
+\end{definition}
+
+L'algoritmo del banchiere fornisce la risorsa richiesta solo se può essere garantita in un \textit{safe state}.
+\begin{note}
+	La somma delle risorse necessarie ai thread correnti può essere maggiore delle risorse disponibili totali, purché ci sia un modo per tutti i thread di non finire in deadlock.
+\end{note}
+I passi effettuati dall'algoritmo sono:
+\begin{enumerate}
+	\item Ogni processo dichiara di quante risorse ha bisogno
+	\item Ad una richiesta di un determinato processo $P$ il banchiere verifica se la concessione della risorsa mantenga un \textit{safe state}. Per farlo:
+	\begin{itemize}
+		\item Considera lo stato $S$ che si otterrebbe concedendo la risorsa
+		\item Per ogni processo calcola le risorse ancora necessarie $R$
+		\item Esegue un ordinamento dei processi in base a $R$
+		\item Esegue l'algoritmo
+		\item Se tutti gli algoritmi sono marcati, procede
+	\end{itemize}
+	\item Se lo stato $S$ è \textit{safe} allora la richiesta è concessa, altrimenti $P$ deve aspettare che ci siano sufficienti risorse
+\end{enumerate}
+
+\begin{lstlisting}
+	// Initially each process Pj is not marked
+	while (exists non marked processes) {
+		if (exists a non-marked Pj that satisfies Ej<=D) {
+			mark Pj;
+			D = D + Aj ;
+		} else ends while, the state is not safe;
+	}
+	success: the initial state is safe
+\end{lstlisting}
+
+\begin{example}
+	Un sistema con 4 processi $P_1$, $P_2$, $P_3$ e $P_4$ ha risorse del tipo $R_1$, $R_2$, $R_3$ e $R_4$ rispettivamente con molteplicità $[4,5,5,5]$. Le esigenze dei processi:
+	\begin{table}[!h]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			& \textbf{$R_1$} & \textbf{$R_2$} & \textbf{$R_3$} & \textbf{$R_4$} \\
+			\hline
+			\textbf{$P_1$} & $2$ & $3$ & $1$ & $1$ \\
+			\hline
+			\textbf{$P_2$} & $2$ & $1$ & $1$ & $2$ \\
+			\hline
+			\textbf{$P_3$} & $0$ & $1$ & $0$ & $2$ \\
+			\hline
+			\textbf{$P_4$} & $0$ & $2$ & $5$ & $2$ \\
+			\hline
+		\end{tabular}
+	\end{table}\\
+	Inizialmente l'assegnazione delle risorse e le loro esigenze rimanenti sono le seguenti:
+	\begin{table}[!h]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			& \textbf{$R_1$} & \textbf{$R_2$} & \textbf{$R_3$} & \textbf{$R_4$} \\
+			\hline
+			\textbf{$P_1$} & $2$ & $1$ & $1$ & $1$ \\
+			\hline
+			\textbf{$P_2$} & $2$ & $0$ & $1$ & $2$ \\
+			\hline
+			\textbf{$P_3$} & $0$ & $1$ & $0$ & $0$ \\
+			\hline
+			\textbf{$P_4$} & $0$ & $2$ & $2$ & $2$ \\
+			\hline
+		\end{tabular}\quad
+		\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		& \textbf{$R_1$} & \textbf{$R_2$} & \textbf{$R_3$} & \textbf{$R_4$} \\
+		\hline
+		\textbf{$P_1$} & $0$ & $2$ & $0$ & $0$ \\
+		\hline
+		\textbf{$P_2$} & $0$ & $1$ & $0$ & $0$ \\
+		\hline
+		\textbf{$P_3$} & $0$ & $0$ & $0$ & $2$ \\
+		\hline
+		\textbf{$P_4$} & $0$ & $0$ & $3$ & $0$ \\
+		\hline
+		\end{tabular}
+	\end{table}\\
+	Procedo poi simulando di assegnare ai vari processi le risorse di cui hanno bisogno in base a quelle disponibili e verifico di rimanere in un \textit{safe state}. Ad esempio assegnando $R_2$ a $P_2$:
+	\begin{table}[!h]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			& \textbf{$R_1$} & \textbf{$R_2$} & \textbf{$R_3$} & \textbf{$R_4$} \\
+			\hline
+			\textbf{$P_1$} & $2$ & $1$ & $1$ & $1$ \\
+			\hline
+			\textbf{$P_2$} & - & - & - & - \\
+			\hline
+			\textbf{$P_3$} & $0$ & $1$ & $0$ & $0$ \\
+			\hline
+			\textbf{$P_4$} & $0$ & $2$ & $2$ & $2$ \\
+			\hline
+		\end{tabular}\quad
+		\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		& \textbf{$R_1$} & \textbf{$R_2$} & \textbf{$R_3$} & \textbf{$R_4$} \\
+		\hline
+		\textbf{$P_1$} & $0$ & $2$ & $0$ & $0$ \\
+		\hline
+		\textbf{$P_2$} & - & - & - & - \\
+		\hline
+		\textbf{$P_3$} & $0$ & $0$ & $0$ & $2$ \\
+		\hline
+		\textbf{$P_4$} & $0$ & $0$ & $3$ & $0$ \\
+		\hline
+		\end{tabular}
+	\end{table}
+\end{example}
+
+\subsubsection{Esempi}
+\begin{example}[Filosofi a cena]
+	\label{example:philosophers}
+	$N$ filosofi si ritrovano a cena in un ristorante cinese occupando un tavolo circolare, apparecchiando con un piatto per ogni filosofo e un bastoncino posto fra ogni coppia di piatti adiacenti.
+	\begin{center}
+		\includegraphics[scale=0.3]{filosofi_cena.png}
+	\end{center}
+	Per mangiare, ogni filosofo deve avere a disposizione i due bastoncini che si trovano 
+	rispettivamente alla sua sinistra e alla sua destra, entrando così in competizione con i due filosofi ai lati. Il filosofo che non riesce ad ottenere entrambi i bastoncini, rimane in attesa.\\
+	Ogni filosofo alterna periodi in cui medita a periodi in cui vuole mangiare: quando decide di mangiare richiede i bastoncini ed eventualmente attende. Dopo aver mangiato torna a pensare rilasciando entrambi i bastoncini. \\
+	Il problema può essere risolto associando una variabile di \textbf{lock} ad ogni bastoncino e organizzando queste variabili in un vettore. 
+	\begin{lstlisting}[language=C]
+		while (true) {
+			penso(); // Il filosofo pensa
+			// Il filosofo di indice i decide di mangiare 
+			lockBastoncino[i].Acquire(); // Acquisisce il bastoncino di destra 
+			// Il filosofo si sospende se non puo acquisire il bastoncino alla sua sinistra
+			lockBastoncino[(i+ 1) mod N].Acquire(); 
+			mangia(); // Il filosofo di indice i mangia 
+			// Rilascia i bastoncini
+			lockBastoncino[(i+ 1) mod N].Release();
+			lockBastoncino[i].Release();
+		}
+	\end{lstlisting}
+	Chiaramente questo primo algoritmo porta allo \textbf{stallo} poiché ogni filosofo prova a prendere il bastoncino alla sua destra e rimane quindi poi in attesa per quella di sinistra, che non sarà mai libera.\\
+
+	Per evitare lo stallo abbiamo tre possibili soluzioni:
+	\begin{itemize}
+		\item Eseguiamo un ordinamento ragionato per l'acquisizione delle risorse, in questo caso asimmetrico. I filosofi di indice pari prendono prima la bacchetta di indice $i+1$ e quelli di indice dispari il contrario.
+		\begin{lstlisting}[language=C]
+			while (true) {
+				penso(); 
+				if (i % 2) { // filosofo con indice dispari
+					// Prima acquisisce la bacchetta di sinistra e poi quella di destra 
+					lockBastoncino[i].Acquire(); lockBastoncino[(i+ 1) mod N].Acquire();
+					mangia(); // Il filosofo di indice i mangia 
+					lockBastoncino[(i+ 1) mod N].Release(); lockBastoncino[i].Release(); 
+				} else { // filosofo con indice pari
+					// Prima acquisisce la bacchetta di destra e poi quella di sinistra
+					lockBastoncino[(i+ 1) mod N].Acquire(); lockBastoncino[i].Acquire();
+					mangia(); // Il filosofo di indice i mangia 
+					lockBastoncino[i].Release(); lockBastoncino[(i+ 1) mod N].Release(); 
+				}
+			}
+		\end{lstlisting}
+		Questo codice è \textit{asimmetrico}, cosa che potrebbe causarci problemi. Ad esempio con $4$ filosofi solo uno riuscirebbe a mangiare.
+		\item Un processo prende le risorse di cui ha bisogno solo se riesce a prenderle tutte assieme, altrimenti rimane in attesa che un altro gliele passi. \begin{lstlisting}[language=C]
+			while (true) {
+				penso(); // Il filosofo pensa
+				// Il filosofo di indice i decide di mangiare 
+				PrendiBastoncini(&lockBastoncino[i], &lockBastoncino[[(i+ 1) mod N); 
+				mangia(); // Il filosofo di indice i mangia 
+				RilasciaBastoncini(&lockBastoncino[i], &lockBastoncino[[(i+ 1) mod N); 
+			}
+			PrendiBasoncini(lock1, lock2) { 
+				while(true) { 
+					lock1.Acquire(); 
+					if (lock2.tryAcquire()) return; // Successo
+					lock1.Release(); // Rilascio il bastoncino
+					swap(lock1, lock2); // Provo nell'ordine contrario
+				}
+			} 
+			RilasciaBastoncini(lock1, lock2) {
+				lock1.Release();
+				lock2.Release(); 
+			}
+		\end{lstlisting}
+		Questa è una soluzione che evita il \textit{deadlock} ma potrebbe causare \textbf{starvation}, che è comunque meglio. Per migliorarla si potrebbe implementare dell'ordinamento casuale per aumentare l'entropia.
+		\item Si tiene conto dello stato dei processi concorrenti e si agisce di conseguenza. Lo stato è rappresentato da un vettore che per ogni singolo filosofo tiene conto se \textit{HaFame}, \textit{Mangia} o \textit{Pensa}. Per gestire la concorrenza viene usato un \textit{mutex}.
+		\begin{lstlisting}[language=C]
+			while (true) {
+				penso(); // il filosofo pensa
+				// Il filosofo di indice i decide di mangiare 
+				PrendiBastoncini(i); 
+				mangia(); // Il filosofo di indice i mangia 
+				RilasciaBastoncini(i); 
+			}
+			
+			prendiBastoncini(i) { // Metodo del monitor
+				// Il filosofo di indice i ha deciso di di mangiare
+				mutex.Acquire();
+				stato[i]= HaFame;
+				while (stato[(i- 1) mod N] == Mangia) || (stato[(i+ 1) mod N] == Mangia ) {
+					attesaFilosofo[i].wait(&mutex); // Devo attendere che siano liberi entrambi
+				}
+				stato[i]= Mangia; // Ha ottenuto entrambi i bastoncini
+				mutex.Release();
+			}
+			
+			rilasciaBastoncini(i) { // Metodo del monitor
+				mutex.Acquire();
+				stato[i]=Pensa; 
+				if (stato[(i - 1) mod N]== HaFame) && (stato[(i - 2) mod N] != Mangia) {
+					// Riattiva il filosofo (i-1) mod N se puo ottenere entrambi i bastoncini
+					stato[(i - 1) mod N = Mangia; 
+					attesaFilosofo[(i- 1) mod N].signal();
+				}
+				if (stato[(i + 1) mod N]== HaFame) && (stato[(i + 2) mod N] != Mangia) {
+					// Riattiva il filosofo (i+1) mod N se puo ottenere entrambi i bastoncini
+					stato[(i + 1) mod N = Mangia;
+					attesaFilosofo[(i + 1) mod N].signal();
+				}
+				mutex.Release();
+			}
+		\end{lstlisting}
+	\end{itemize}
+\end{example}
+
+\begin{example}[Lettori e scrittori]
+	La differenza principale dal problema descritto nell'esempio \ref{example:prodcons} è che nella sezione critica possano trovarcisi più thread alla volta. La struttura base dell'implementazione è la seguente:
+	\begin{lstlisting}[language=C]
+		// Lettore
+		while (true) {
+			startRead();
+			// Accede in lettura alla struttura condivisa
+			doneRead();
+			// Usa i dati letti
+		}
+		
+		// Scrittore
+		while (true) {
+			// Prepara dati da scrivere
+			startWrite();
+			// Accede in scrittura alla struttura condivisa
+			doneWrite();
+		}
+	\end{lstlisting}
+	Vediamo alcune soluzioni:
+	\begin{enumerate}
+		\item Quando la struttura dati non è usata da nessun thread, il primo che ne fa richiesta accede. Se invece la richiesta avviene mentre è utilizzata da uno \textit{scrittore} allora il thread in questione viene messo in attesa. Se è utilizzata da un \textit{lettore}, un altro \textit{lettore} può accedere ma uno \textit{scrittore} viene messo in attesa (potrebbe anche finire in \textit{starvation}).\\
+		Quando uno \textit{scrittore} rilascia la struttura dati tutti i \textit{lettori} ottengono l'accesso, se non ce ne sono allora il primo \textit{scrittore} lo ottiene\\
+		Quando è il \textit{lettore} a rilasciare la struttura dati, se non è rimasto nessun altro \textit{lettore} allora il primo \textit{scrittore} ottiene l'accesso.
+		\begin{lstlisting}[language=C]
+			// Lettore
+			startRead();
+			mutex.Acquire();
+			waitingReaders++;
+			while (activeWriters > 0 ) {
+				readGo.Wait(&mutex);
+			}
+			waitingReaders --;
+			activeReaders++;
+			mutex.Release();
+			// Lettura
+			doneRead()
+			mutex.Acquire();
+			activeReaders--;
+			if (activeReaders ==0 && 
+			waitingWriters > 0) {
+				writeGo.Signal();
+			}
+			mutex.Release()
+			
+			// Scrittore
+			startWrite();
+			waitingWriters++;
+			while (activeWriters > 0 || activeReaders > 0) {
+				writeGo.Wait(&mutex);
+			} 
+			waitingWriters--;
+			activeWriters++;
+			mutex.Release();
+			// Scrive
+			doneWrite();
+			mutex.Acquire();
+			activeWriters--;
+			if(waitingReaders>0)
+				readGo.Broadcast();
+			else
+				writeGo.Signal();
+			mutex.Release();
+		\end{lstlisting}
+		\item Una variante della prima soluzione prevede che il \textit{lettore} che entra nella sezione critica si sospende se ci sono \textit{scrittori} in attesa. Lo scrittore quando rilascia la struttura dati sveglia un altro scrittore se disponibile altrimenti un lettore (rischio di \textbf{starvation} per i lettori).
+		\item La soluzione \textbf{fair} prevede che:
+		\begin{itemize}
+			\item Se un lettore richiede l’accesso ma vi è almeno uno scrittore in attesa di accedere, il lettore richiedente viene sospeso, evitando l’attesa indefinita per gli scrittori
+			\item L’ultimo dei lettori che rilascia la struttura dati fa entrare l’eventuale 
+			scrittore in attesa
+			\item Quando uno scrittore rilascia la struttura dati, fa entrare il prossimo 
+			in attesa, indipendentemente che sia lettore o scrittore
+			\item Il lettore in attesa sbloccato dallo scrittore sblocca a suo volta 
+			l’ingresso all’eventuale altro lettore in attesa dopo di lui
+		\end{itemize}
+		\begin{lstlisting}[language=C]
+			// Lettore
+			startRead();
+			ordering.Acquire();
+			mutex.Acquire();
+			while (activeWriters > 0 ) {
+				Go.Wait(&mutex);
+			}
+			activeReaders++;
+			mutex.Release();
+			ordering.Release();
+			// Lettura
+			doneRead()
+			mutex.Acquire();
+			activeReaders--;
+			if (activeReaders ==0) {
+				Go.Signal();
+			}
+			mutex.Release()
+			
+			// Scrittore
+			startWrite();
+			ordering.Acquire();
+			mutex.Acquire();
+			while (activeWriters > 0 || activeReaders > 0) {
+				Go.Wait(&mutex);
+			} 
+			activeWriters++;
+			mutex.Release();
+			ordering.Release();
+			// Scrive
+			doneWrite();
+			mutex.Acquire();
+			activeWriters--;
+			Go.Signal();
+			mutex.Release();
+		\end{lstlisting}
+	\end{enumerate}
+\end{example}
