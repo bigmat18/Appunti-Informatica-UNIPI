@@ -149,3 +149,101 @@ A partire da una funzione complessa, mi riconduco a funzioni più semplici e ved
 		& \alpha \in [-3,-2]
 	\end{align*}
 \end{example}
+\newpage
+\subsection{Metodo di bisezione}
+Vogliamo risolvere un'equazione $f(x)=0 \quad f:[a,b]\to \mathbb{R}$ che assumiamo essere \textit{continua} ($f \in C^0([a,b])$). Supponiamo poi che $f(a)f(b) < 0$, quindi la funzione assume valori discordi agli estremi. Questo implica, grazie al teorema di esistenza degli zeri, che $\exists \alpha \in [a,b] \:\vert f(\alpha)=0$, ovvero che esiste almeno un punto di intersezione con l'asse delle x.\\
+Assumiamo che esista unico il punto di intersezione:
+\begin{equation*}
+	\exists ! \alpha \in [a,b] \:\vert\: f(x)=0
+\end{equation*}
+In questa situazione possiamo costruire diverse successioni che convergono ad $\alpha$ tramite il metodo di bisezione.
+\begin{lstlisting}[language=MatLAB]
+	a0 = a; b0=b; ya=f(a); yb=f(b);
+	for k=1 : inf
+		Ck = (a[k-1] + b[k-1])/2; % Calcolo il punto di mezzo dell'intervallo
+		y = f(Ck);
+		if(y * ya <= 0)
+			ak = a[k-1]; bk=Ck; yb=y; % Qui la funzione e' discorde, mi sposto su questo intervallo
+		else
+			ak=Ck; bk=b[k-1]; ya=y; % Qui e' concorde, mi sposto sull'altro intervallo
+		end
+	end
+\end{lstlisting}
+Praticamente prendo il punto medio e controllo quale parte della funzione è concorde o discorde e mi sposto di conseguenza.
+\begin{observation}
+	Possiamo fare le seguenti osservazioni:
+	\begin{enumerate}
+		\item $a_k \leq b_k \quad \forall k$
+		\item $\alpha \in [a_k, b_k] \quad \forall k$
+		\item $b_k - a_k = \frac{b_{k-1}-a_{k-1}}{2} = \ldots = \frac{b_0 - a_0}{2^k}$
+	\end{enumerate}
+	che implicano:
+	\begin{align*}
+		& 0 \leq \lvert \alpha - a_k \rvert \leq b_k - a_k = \frac{b_0 - a_0}{2^k}\\
+		& 0 \leq \lvert \alpha - b_k \rvert \leq b_k - a_k = \frac{b_0 - a_0}{2^k}\\
+		& 0 \leq \lvert C_k  - \alpha \rvert \leq b_{k-1} - a_{k-1}\leq= \frac{b_0 - a_0}{2^k}
+	\end{align*}
+	e portando $k$ all'infinito, $a_k$, $b_k$ e $C_k$ tendono tutti ad $\alpha$.
+\end{observation}
+
+\begin{example}
+	Supponiamo di voler risolvere
+	\begin{equation*}
+		f(x)=x-\cos x = 0
+	\end{equation*}
+	\newpage
+	Proviamo prima con la \textbf{tecnica della separazione}:
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[grid=both,
+				xmax=3,ymax=3,
+				axis lines=middle,
+				restrict x to domain=-5:5,
+				restrict y to domain=-5:5,
+				samples=100,
+				enlargelimits]
+				\addplot[green, ultra thick]  {cos(deg(x))};
+				\addplot [blue, ultra thick] {x};
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
+	Osservando  attentamente notiamo che
+	\begin{equation*}
+		\exists ! \alpha \in [0,1]
+	\end{equation*}
+	poiché fuori da questo intervallo la funzione $x$ assume valori maggiori di $1$ o minori di $-1$ che non sono valori che può assumere la funzione $cos(x)$.\\
+	Per poter usare il \textbf{metodo della bisezione} devo verificare che $f(x)$ sia continua e la sua monotonia.\\
+	Come estremi per il metodo possiamo porre $[a,b]=[0,1]$.
+	\begin{equation*}
+		\lvert C_k - \alpha \rvert \leq \frac{b_0 - a_0}{2^k} \leq \epsilon
+	\end{equation*}
+	Posso a priori decidere la distanza dal mio numero finale facendo $\log_2 \frac{1}{\epsilon}$ passi.
+\end{example}
+
+\subsubsection{Approssimazione della radice}
+Supponiamo di voler risolvere
+\begin{equation*}
+	x^2-2=0
+\end{equation*}
+Sappiamo che le soluzioni sono $x=\pm \sqrt{2}$ e che il grafico è:
+\begin{center}
+	\begin{tikzpicture}
+		\begin{axis}[grid=both,
+			xmax=3,ymax=3,
+			axis lines=middle,
+			restrict x to domain=-5:5,
+			restrict y to domain=-5:5,
+			samples=100,
+			enlargelimits]
+			\addplot[green, ultra thick]  {x^2-2};
+		\end{axis}
+	\end{tikzpicture}
+\end{center}
+Il calcolatore non sa come calcolare $\sqrt{2}$, il modo migliore per farglielo fare è approssimare questa funzione con il metodo di bisezione nell'intervallo $[0,2]$.
+
+\subsubsection{Svantaggi}
+Questo metodo ha fondamentalmente due svantaggi:
+\begin{itemize}
+	\item Ha difficoltà ad essere esteso ai numeri \textbf{complessi}, ma per il nostro corso non ci riguarda
+	\item Il \textbf{costo computazionale} è molto influenzato dal numero di valutazioni della funzioni che faccio e, dato che non conosco precisamente quali calcoli dovrà fare, potrebbe essere un problema. Nel metodo di bisezioni faccio una valutazione per passo e il numero di passi potrebbe essere elevato.
+\end{itemize} 
