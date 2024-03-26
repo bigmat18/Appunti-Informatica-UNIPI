@@ -52,6 +52,7 @@ Stiamo considerando equazioni del tipo $f(x)=0$ dove la funzione $f$ non è line
 \subsection{Tecnica della separazione}
 A partire da una funzione complessa, mi riconduco a funzioni più semplici e vedo dove si intercettano.
 \begin{example}
+	\label{example:non_linear_eq}
 	Supponiamo di avere
 	\begin{equation*}
 		x \log x -1 = 0 \Leftrightarrow x \log x = 1 \Leftrightarrow \log x = \frac{1}{x}
@@ -247,3 +248,224 @@ Questo metodo ha fondamentalmente due svantaggi:
 	\item Ha difficoltà ad essere esteso ai numeri \textbf{complessi}, ma per il nostro corso non ci riguarda
 	\item Il \textbf{costo computazionale} è molto influenzato dal numero di valutazioni della funzioni che faccio e, dato che non conosco precisamente quali calcoli dovrà fare, potrebbe essere un problema. Nel metodo di bisezioni faccio una valutazione per passo e il numero di passi potrebbe essere elevato.
 \end{itemize} 
+
+\subsection{Metodo del punto fisso}
+Questo metodo prevede di riscrivere il nostro problema come:
+\begin{equation*}
+	f(x) \Longleftrightarrow x = g(x)
+\end{equation*}
+\begin{example}
+	Alcuni esempi:
+	\begin{align*}
+		&f(x)=0 \Longleftrightarrow x = x-f(x) \quad g(x) = x-f(x)\\
+		& f(x)=0 \Longleftrightarrow x=x-\frac{f(x)}{h(x)} \quad g(x)=x-\frac{f(x)}{h(x)}
+	\end{align*}
+\end{example}
+Poi si genera una successione da un punto iniziale:
+\begin{equation*}
+	\begin{cases}
+		x_0 \in \mathbb{R} \\
+		x_{\alpha +1} = g(x_\alpha)
+	\end{cases}
+\end{equation*}
+
+\begin{example}
+	\label{example:fixed_point}
+	Partiamo dalla seguente equazione:
+	\begin{equation*}
+		x - \sqrt{x} = 0 \quad x \geq 0
+	\end{equation*}
+	Che posso riscrivere come:
+	\begin{equation*}
+		x = \sqrt{x} \Longleftrightarrow x^2 = x \Longleftrightarrow x = 0 \lor x=1
+	\end{equation*}
+	Notiamo come abbiamo ad esempio due possibili modi per scrivere l'equazione:
+	\begin{align*}
+		& x- \sqrt{x} = 0 \Longleftrightarrow x = \sqrt{x} \quad g_1(x)= \sqrt{x} \\
+		& x- \sqrt{x} = 0 \Longleftrightarrow x^2 = x \quad g_2(x)=x^2
+	\end{align*}
+	Vediamo la successione generata da $g_1(x)$:
+	\begin{equation*}
+		\begin{cases}
+			x_0 \in \mathbb{R}^+ \\
+			x_{\alpha +1} = g_1(x_\alpha) = \sqrt{x_\alpha}
+		\end{cases}
+	\end{equation*}
+	Che graficamente è
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[grid=both,
+				xmax=2,ymax=2,
+				axis lines=middle,
+				restrict x to domain=0:2,
+				restrict y to domain=0:2,
+				samples=100,
+				enlargelimits]
+				\addplot[green, ultra thick]  {sqrt(x)};
+				\addplot[blue, ultra thick]  {x};
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
+	Con questa iterazione, se faccio i vari calcoli, da qualunque punto iniziale io scelga finirò alla soluzione $1$ (intersezione di $x$ e $\sqrt{x}$).\\
+	Se scelgo invece la successione generata da $g_2(x)$, ottengo l'effetto contrario e trovo solo la soluzione $0$ quando parto da $0 < x_0 < 1 \lor -1 < x_0 < 0$, altrimenti la successione diverge a $+\infty$ per $x_0>1 \lor x_0 < -1$.
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[grid=both,
+				xmax=2,ymax=2,
+				axis lines=middle,
+				restrict x to domain=-2:3,
+				restrict y to domain=-1:3,
+				samples=100,
+				enlargelimits]
+				\addplot[green, ultra thick]  {x^2};
+				\addplot[blue, ultra thick]  {x};
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+
+\begin{theorem}[Teorema del punto fisso]
+	Sia $g \in C^1([a,b])$, $\alpha \in (a,b)$ e $g(\alpha) = \alpha$ un \textbf{punto fisso}.\\
+	\textit{Ipotesi}: se $\exists \rho >0 \:\vert\: \forall x \in [\alpha - \rho \alpha + \rho]=I_\alpha \geq [a,b]$ si ha che $\lvert g(x) \rvert < 1$.\\
+	\textit{Tesi}: allora $\forall x_0 \in I_\alpha$ la successione generata dal metodo $x_{k+1} = g(x_k)$ soddisfa le seguenti proprietà:
+	\begin{itemize}
+		\item $x_= \in I_\alpha \quad \forall k$
+		\item $x_k \to \alpha$
+	\end{itemize}
+\end{theorem}
+
+\begin{observation}
+	È importante nel precedente teorema che l'intervallo $[a,b]$ sia centrato per garantire che da qualunque punto si inizi si riduca la distanza dal punto fisso senza però uscire dall'intervallo.
+\end{observation}
+
+\begin{demostration}
+	Sappiamo che se $g(x)$ è continua allora anche $\lvert g'(x) \rvert$ è continua. Per il \textbf{teorema di Weirstrass} sappiamo che una funzione continua su un intervallo limitato ammette \textit{massimo}, nel nostro caso $\lambda < 1$. \\
+	Dimostriamo per induzione che $x_0 \in I_\alpha \Rightarrow \lvert x_k -\alpha \rvert \leq \lambda^k \rho \quad \forall k \geq 0$:
+	\begin{itemize}
+		\item \textit{Passo base}: per $k=0$ abbiamo che: 
+		\begin{equation*}
+			\lvert x_0 - \alpha \rvert \leq \lambda^0 \rho = \alpha
+		\end{equation*}
+		che è vero per le ipotesi: $x_0 \in I_\alpha$.
+		\item \textit{Passo induttivo}: posso scrivere:
+		\begin{equation*}
+			\lvert x_{k+1} - \alpha \rvert = \lvert g(x_k) - g(\alpha) \rvert = \lvert g'(\psi k)(x_k - \alpha) \rvert = \lvert g'(\psi k) \rvert  \lvert x_k - \alpha \rvert \leq \lambda \lambda^k \rho = \lambda ^ {k+1} \rho
+		\end{equation*}
+	\end{itemize}
+\end{demostration}
+
+\begin{example}
+	Partiamo dalla funzione dell'esempio \ref{example:fixed_point}, in particolare da $g_1$:
+	\begin{equation*}
+		g'_1(x) = \frac{1}{2 \sqrt{x}} \Longrightarrow \lvert g'_1(x) \rvert = \lvert \frac{1}{2} \frac{1}{\sqrt{x}} \rvert = \frac{1}{2 \sqrt{x}}
+	\end{equation*}
+	Vediamo dove il suo modulo è minore di $1$:
+	\begin{equation*}
+		\frac{1}{2 \sqrt{x}} < 1 \Leftrightarrow 2 \sqrt{x} > 1 \Leftrightarrow \sqrt{x} > \frac{1}{2} \Leftrightarrow x> \frac{1}{4}
+	\end{equation*}
+	Quindi comunque si scelga un intervallo centrato in $1$ tale che $x>\frac{1}{4}$ (al massimo potrò avere $[\frac{1}{4}, \frac{5}{4}]$) allora la successione converge.\\
+	Vediamo la funzione $g_2$:
+	\begin{equation*}
+		g'_2(x) = 2x \Longrightarrow \lvert g'_2(x) \rvert = \lvert 2x \rvert = 2 \lvert x \rvert
+	\end{equation*}
+	Vediamo dove il suo modulo è minore di $1$:
+	\begin{equation*}
+		2 \lvert x \rvert < 1 \Leftrightarrow \lvert x \rvert < \frac{1}{2}
+	\end{equation*}
+	Quindi comunque si scelga un intervallo centrato in $0$ tale che $x$ è compreso tra $-\frac{1}{2}$ e $\frac{1}{2}$, allora la successione converge.
+\end{example}
+
+\begin{theorem}
+	Prendiamo $g \in C^1([a,b]) \quad g(\alpha)=\alpha \quad \alpha \in (a,b)$. \\
+	Se $\lvert g'(\alpha) \rvert < 1$, prendiamo $h(x) = \lvert g'(x) \rvert -1$ quindi:
+	\begin{equation*}
+		h(\alpha) = \lvert g'(\alpha) \rvert -1 < 0 \Rightarrow \exists [\alpha-\rho, \alpha + \rho] = I_\alpha \:\vert\: \forall x \in I_\alpha \quad h(x)<0 \Leftrightarrow \lvert g'(x) \rvert <1
+	\end{equation*}
+	Quindi posso dire che $\alpha$ è \textbf{punto attrattivo} (se parto vicino ad $\alpha$ convergo su di esso, esiste un intorno e c'è convergenza locale). Altrimenti è \textbf{punto repulsivo}. Se è uguale, allora è \textbf{neutrale}.
+\end{theorem}
+
+\begin{example}
+	Prendiamo la funzione
+	\begin{equation*}
+		f(x) = e^{-x} - x = 0
+	\end{equation*}
+	\begin{enumerate}
+		\item Utilizziamo il metodo di separazione grafica per determinare che esiste unica la soluzione:
+		\begin{equation*}
+			e^{-x} - x = 0 \Leftrightarrow e^{-x} = x
+		\end{equation*}
+		\begin{center}
+			\begin{tikzpicture}
+				\begin{axis}[grid=both,
+					xmax=2,ymax=2,
+					axis lines=middle,
+					restrict x to domain=-2:3,
+					restrict y to domain=-1:3,
+					samples=100,
+					enlargelimits]
+					\addplot[green, ultra thick]  {e^(-x)};
+					\addplot[blue, ultra thick]  {x};
+				\end{axis}
+			\end{tikzpicture}
+		\end{center}
+		E ho trovato un intervallo di separazione $\alpha \in [0, 1]$.
+		\item Consideriamo il metodo iterativo
+		\begin{equation*}
+			x_{k+1} = e^{-x_k} \quad k \geq 0
+		\end{equation*}
+		\begin{itemize}
+			\item Dire se l'intervallo è localmente convergente. Sappiamo che 
+			\begin{equation*}
+				g'(x)=-e^{-x} \Rightarrow \lvert g'(x) \rvert = e^{-x}
+			\end{equation*}
+			quindi
+			\begin{equation*}
+				e^{-x} < 1 \Leftrightarrow -x < 0 \Leftrightarrow x >0
+			\end{equation*}
+			e posso dire che $\lvert g'(\alpha)  \rvert< 1$ e quindi il metodo è \textbf{localmente convergente}.
+			\item Si dica come scegliere un punto iniziale a partire dal quale il metodo converge. Per localizzare $\alpha$, utilizzo il metodo di bisezione:
+			\begin{equation*}
+				x=\frac{1}{2} \Rightarrow g(\frac{1}{2}) = \frac{1}{\sqrt{e}} > \frac{1}{2}
+			\end{equation*}
+			Quindi posso scegliere $1$ perché ho abbastanza spazio dall'altro lato per centrare l'intervallo in $\alpha$.
+		\end{itemize}
+	\end{enumerate}
+\end{example}
+\newpage
+\begin{example}
+	Prendiamo la funzione dell'esempio \ref{example:non_linear_eq} e vediamo che
+	\begin{equation*}
+		\alpha \in [1,2]
+	\end{equation*}
+	Consideriamo due metodi iterativi:
+	\begin{itemize}
+		\item
+		\begin{equation*}
+			x_{k+1} = \frac{1}{\ln {x_k}} \quad k \geq 0
+		\end{equation*}
+		\item 
+		\begin{equation*}
+			x_{k+1} = e^{\frac{1}{x_k}} \quad k \geq 0
+		\end{equation*}
+	\end{itemize}
+	Verifichiamo le derivate:
+	\begin{itemize}
+		\item 
+		\begin{equation*}
+			g'(x) = \frac{- \frac{1}{x}}{\ln ^ 2 {x}} \Rightarrow \lvert \frac{- \frac{1}{x}}{\ln ^ 2 {x}} \rvert  = \frac{1}{x \ln^2 x}
+		\end{equation*}
+		La valuto in $\alpha$ tenendo a mente che è punto fisso ($\alpha = \frac{1}{\alpha}$):
+		\begin{equation*}
+			\lvert g'(\alpha)= \frac{1}{\alpha \ln ^2 \alpha} = \frac{\alpha^2}{\alpha} = \alpha > 1
+		\end{equation*}
+		E quindi per questo metodo è un \textbf{punto repulsivo}.
+		\item \begin{equation*}
+			g'(x) = e^\frac{1}{x}(-\frac{1}{x^2})
+		\end{equation*}
+		La valuto in $\alpha$:
+		\begin{equation*}
+			\lvert g'(\alpha)= e^\frac{1}{\alpha}(-\frac{1}{\alpha^2}) = \frac{1}{\alpha} < 1
+		\end{equation*}
+		E quindi per questo metodo è un \textbf{punto attrattivo}.
+	\end{itemize}
+\end{example}
