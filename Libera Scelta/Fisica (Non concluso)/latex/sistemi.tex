@@ -25,7 +25,7 @@ considerare il sistema \textbf{continuo}.
     Il risultato non deve dipendere dal valore preciso di V, ma l'ordine di grandezza dipende dal problema (es. densità della terra...?)
 \end{observation}
 \begin{definition}
-    Definisco \textbf{centro di massa} del sistema di punti di materiali il punto gemotrico 
+    Definisco \textbf{centro di massa} del sistema di punti di materiali il punto geometrico 
     $$\vec{r}_{CM} = \frac{1}{M}\sum_{\alpha = 1}^{N} m_{\alpha}\vec{r}_{\alpha}(t)$$
 \end{definition}
 \begin{example}
@@ -42,5 +42,81 @@ $$\sum_{N}^{\alpha = 1}m_{\alpha}\vec{r}'_{\alpha}(t) = \sum_{\alpha = 1}^{N}[n_
 Esprimo il vettore quantità di moto:
 $$\vec{p}(t) = \sum_{\alpha = 1}^{N}\dot{\vec{r}}_{\alpha}(t) = \sum_{\alpha = 1}^{N}m_{\alpha}[\dot{\vec{r}}_{CM} + \dot{\vec{r}}'_{\alpha}(t)]
 = \Big(\sum_{\alpha = 1}^{N}m_{\alpha}\Big)\dot{\vec{r}}_{CM}(t) = \frac{d}{dt} \Big(\sum_{\alpha=1}^{N}m_{\alpha}\vec{r}_{\alpha}'(t)\Big) = M\dot{\vec{r}}_{CM}(t)
-$$
-ma non è un punto materiale.
+$$ 
+ma non è un punto materiale. \\
+Esprimo il vettore momento angolare rispetto a P:
+\begin{equation*}
+    \begin{split}
+        \vec{L}_p(t) & = \sum_{\alpha=1}^{N}m_{\alpha}(\vec{r}_{\alpha} - \vec{r}_p(t)) \times \dot{\vec{r}}_{\alpha}(t) = \sum_{\alpha=1}^{N} m_{\alpha}(\vec{r}_{CM}(t) + \vec{r}'_{\alpha}(t) - \vec{r}_p(t)) \times (\dot{\vec{r}}_{CM} + \dot{\vec{r}}_{\alpha}'(t))\\
+                     & = \sum_{\alpha=1}^{N}m_{\alpha}\big\{(\vec{r}_{CM}(t) - \vec{r}_p(t))\times \dot{\vec{r}}_{CM}(t) + \vec{r}_{\alpha}'\times \dot{\vec{r}}_{\alpha}'(t) + (\vec{r}_{CM}(t) - \vec{r}_p(t)) \times \dot{\vec{r}}_{\alpha}'(t) + \vec{r}_{\alpha}'(t) \times \dot{\vec{r}}_{CM}(t) \big\}\\
+                     & = \bigg(\sum_{\alpha=1}^{N}m_{\alpha}(\vec{r}_{CM}(t) - \vec{r}_p(t)) \times \dot{\vec{r}}_{CM}(t) + \sum_{\alpha=1}^{N}m_{\alpha}\vec{r}_{\alpha}' \times \dot{\vec{r}}_{\alpha}'(t)\bigg) + (\vec{r}_{CM}(t) - \vec{r}_p(t)) \times \frac{d}{dt}(\sum_{\alpha=1}^{N} m_{\alpha} \vec{r}_{\alpha}'(t))\\
+                     & + (\sum_{\alpha=1}^{N} m_{\alpha}\vec{r}_{\alpha}'(t)) \times \dot{\vec{r}}_{CM}(t) = M(\vec{r}_{CM}(t) - \vec{r}_p(t)) \times \dot{\vec{r}}_{CM}(t) + \sum_{\alpha=1}^{N}m_{\alpha}\vec{r}_{\alpha}'(t) \times \dot{\vec{r}}_{\alpha}'(t)
+    \end{split}
+\end{equation*}
+$M(\vec{r}_{CM}(t) - \vec{r}_p(t)) \times \dot{\vec{r}}_{CM}(t)$ del CM. $\sum_{\alpha=1}^{N}m_{\alpha}\vec{r}_{\alpha}'(t) \times \dot{\vec{r}}_{\alpha}'(t)$ rispetto al CM. Ma non è un punto materiale.\\
+Esprimo l'energia cinetica:
+\begin{equation*}
+    \begin{split}
+        K & = \sum_{\alpha=1}^{N}\frac{1}{2}m_{\alpha}||\dot{\vec{r}}_{\alpha}(t)||^2 = \sum_{\alpha=1}^{N}\frac{1}{2}m_{\alpha}(\dot{\vec{r}}_{CM}(t) + \dot{\vec{r}}_{\alpha}'(t)) \cdot (\dot{\vec{r}}_{CM}(t) + \dot{\vec{r}}_{\alpha}'(t))\\
+          & = \sum_{\alpha=1}^{N}\frac{1}{2}m_{\alpha}[||\dot{\vec{r}}_{CM}(t)||^2 + ||\dot{\vec{r}}_{\alpha}'(t)|| + 2\dot{\vec{r}}_{\alpha}'(t) \cdot \dot{\vec{r}}_{CM}(t)] = \frac{1}{2}(\sum_{\alpha=1}^{N}m_{\alpha}) ||\dot{\vec{r}}_{CM}||^2 \\
+          & + \sum_{\alpha=1}^{N}\frac{1}{2}m_{\alpha}||\dot{\vec{r}}_{\alpha}(t)||^2 + 2(\sum_{\alpha=1}^{N}m_{\alpha}\dot{\vec{r}}_{\alpha}'(t)) \cdot \dot{\vec{r}}_{CM}(t) = \frac{1}{2}M ||\dot{\vec{r}}_{CM}(t)||^2 + \sum_{\alpha=1}^{N}\frac{1}{2}m_{\alpha}||\dot{\vec{r}}_{\alpha}'(t)||^2
+    \end{split}
+\end{equation*}
+$\frac{1}{2}M ||\dot{\vec{r}}_{CM}(t)||^2$ dal CM e $\sum_{\alpha=1}^{N}\frac{1}{2}m_{\alpha}||\dot{\vec{r}}_{\alpha}'(t)||^2$ è rispetto al CM. Ma non è un punto materiale.
+
+\subsection{Forze interne}
+Chiamiamo \textbf{forze interne} quelle esercitate su un punto materiale su resto del sistema e \textbf{forze esterne} le altre. Ogni
+risultante diventa:
+$$\vec{F}_{\alpha}(t) = \sum_{\beta=1}^{N} \vec{F}_{\alpha\beta}(t) + \vec{F}_{\alpha}^{E}(t)$$
+\begin{observation}
+    Per la terza legge di Newton $\vec{F}_{\alpha\beta}(t) = -\vec{F}_{\beta\alpha}(t)$
+\end{observation}
+\hspace{-15pt}Definisco \textbf{vettore momento di una forza applicata in $\vec{r}(t)$ rispetto al polo p} la quantità:
+$$\vec{M}_p(t) = (\vec{r}(t) - \vec{r}_p) \times \vec{F}(t) \hspace{15pt}[\vec{M}_p] = N \cdot m \text{ (non si usa J)}$$
+\begin{observation}
+    Il momento totale delle forze interne è nullo.
+    \begin{equation*}
+        \begin{split}
+            \sum_{\alpha=1}^{N} & = (\vec{r}_{\alpha}(t) - \vec{r}_p(t)) \times \sum_{\beta=1}^{N}\vec{F}_{\alpha\beta}(t) = \sum_{\alpha=1}^{N} \sum_{\beta=1}^{N} (\vec{r}_{\alpha}(t) - \vec{r}_p(t)) \times \vec{F}_{\alpha\beta}(t)\\
+                                & = \frac{1}{2}\sum_{\alpha=1}^{N}\sum_{\beta=1}^{N} \text{ (dummy indices) }[(\vec{r}_{\alpha}(t) - \vec{r}_p(t)) \times \vec{F}_{\alpha\beta}(t) + (\vec{r}_{\beta}(t) - \vec{r}_p(t)) \times \vec{F}_{\beta\alpha}(t)]\\
+                                & = \frac{1}{2}\sum_{\alpha=1}^{N}\sum_{\beta=1}^{N}[(\vec{r}_{\alpha}(t) - \vec{r}_p(t)) \times \vec{F}_{\alpha\beta}(t) - (\vec{r}_{\beta}(t) - \vec{r}_p(t)) \times \vec{F}_{\alpha\beta}(t) \text{ (per la terza legge) }]\\
+                                & = \frac{1}{2}\sum_{\alpha=1}^{N}\sum_{\beta=1}^{N}[(\vec{r}_{\alpha}(t) - \vec{r}_{\beta}(t)) \times \vec{F}_{\alpha\beta}(t)] = 0
+        \end{split}
+    \end{equation*}
+    Per la simmetria $\vec{F}_{\alpha\beta}(t)$ deve essere parallela al vettore che congiunge $\vec{r}_{\alpha}(t)$ con $\vec{r}_{\beta}(t)$ quindi il prodotto vettoriale è nullo.
+\end{observation}
+\hspace{-15pt}Le equazioni del moto per la \textbf{quantità di moto}:
+$$\dot{\vec{p}}(t) = \sum_{\alpha=1}^{N} m_{\alpha}\ddot{\vec{r}}_{\alpha}(t) = \sum_{\alpha=1}^{N}[\sum_{\beta=1}^{N}\vec{F}_{\alpha\beta}(t) + \vec{F}_{\alpha}^E(t)]$$
+$$M\ddot{\vec{r}}_{CM}(t) = \frac{1}{2}\sum_{\alpha=1}^{N}\sum_{\beta=1}^{N}[\vec{F}_{\alpha\beta}(t) + \vec{F}_{\beta\alpha}(t)] + \sum_{\alpha=1}^{N}\vec{F}_{\alpha}^E(t)$$
+Abbiamo che $\sum_{\alpha=1}^{N}\sum_{\beta=1}^{N}$ è il dummy indices, mentre $[\vec{F}_{\alpha\beta}(t) + \vec{F}_{\beta\alpha}(t)] = 0$ come visto sopra, quindi la \textbf{prima equazione cardinale} diventa:
+$$M\ddot{\vec{r}}_{CM}(t) = \sum_{\alpha=1}^{N}\vec{F}_{\alpha}^E(t)$$
+
+\begin{example}
+    $x_{CM}(t) = (m_1 x_1(t) + m_2x_2(t))/(m_1 + m_2) \hspace{15pt} (m_1 + m_2)\ddot{x}_{CM}(t) = F - F_{a1} + F_{a2}$ 
+    Sommo tutte le forze applicate al sistema ($F - F_{a1} + F_{a2}$).
+\end{example}
+
+\begin{example}
+    $\dot{x}_2(t_0) = v_0 \hspace{10pt} \dot{x}_1(t_0) = 0 \hspace{10pt} \dot{c}_{CM} = m_2\dot{x}_2(t_0)/(m_1 + m_2)$\\
+    $(m_1 + m_2)\ddot{x}_{CM}(t) = 0 \Rightarrow \dot{x}_{CM}(t) = \dot{x}_{CM}(t_0)$\\
+    Le due masse oscillano ma il CM compie un moto rettilineo uniforme.
+\end{example}
+
+\subsection{Equazione del moto per il momento angolare}
+\begin{equation*}
+    \begin{split}
+        \dot{\vec{L}}_p(t) & = \sum_{\alpha=1}^{N}m_{\alpha}[(\dot{\vec{r}}_{\alpha}(t) - \dot{\vec{r}}_p(t)) \times \dot{\vec{r}}_{\alpha}(t) + (\vec{r}_{\alpha}(t) - \vec{r}_p(t)) \times \ddot{\vec{r}}_{\alpha}(t)]\\
+                           & = -\dot{\vec{r}}_p(t) \times (\sum_{\alpha=1}^{N}m_{\alpha}\dot{\vec{r}}_{\alpha}(t)) + \sum_{\alpha=1}^{N}(\vec{r}_{\alpha}(t) - \vec{r}_p(t)) \times (m_{\alpha}\ddot{\vec{r}_{\alpha}}(t))\\
+                           & = -\dot{\vec{r}}_p(t) \times \vec{p}(t) + \sum_{\alpha=1}^{N} (\vec{r}_{\alpha} - \vec{r}_p(t)) \times \vec{F}_{\alpha}(t)
+    \end{split}
+\end{equation*}
+Siccome il momento totale delle forze interne è nullo abbiamo che:
+$$\dot{\vec{L}}_p(t) = \sum_{\alpha=1}^{N}(\vec{r}_{\alpha}(t) - \vec{r}_p(t)) \times \vec{F}_{\alpha}^E(t) - \dot{\vec{r}}_p(t) \times \vec{P}(t)$$
+$$\dot{\vec{L}}_p(t) = \vec{M}_p^E(t) - \dot{\vec{r}}_p(t) \times \vec{P}(t) \text{ Seconda equazione cardinale }$$
+\begin{example}
+    Esempio del \textbf{campo centrale}. $\vec{F}(\vec{r}) = -\frac{k}{||\vec{r}||}\cdot \hat{r} \hspace{15pt} polo: 0$
+    $$\vec{L}_0(t) = m(\vec{r}(t) - \vec{r}_0) \times \dot{\vec{r}}(t) = mr(t) \hat{r} \times (\hat{r}(t) \hat{r} + r(t)\dot{\Theta}(t)\hat{\Theta}) = mr(t)^2\dot{\Theta}(t)\hat{z}$$
+    $\dot{\vec{L}}_0(t) = (\vec{r}(t) - \vec{r}_0) \times \vec{F} = r(t)\hat{r} \times (-\frac{k}{||\vec{r}||}\hat{r}) = 0$\\
+    Il momento angolare è costante (\textbf{"conservativo"}) $\Rightarrow r(t)^2 \dot{\Theta}(t) = L_0(t_0) \hspace{15pt} \dot{\Theta}(t) = L_0(t_0)/r(t)^2$. Questo vuol dire che la \textbf{la velocità
+    angolare aumenta quando $r(t)$ decresce}
+\end{example}
