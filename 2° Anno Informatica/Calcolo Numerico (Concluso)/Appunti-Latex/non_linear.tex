@@ -72,6 +72,20 @@ A partire da una funzione complessa, mi riconduco a funzioni più semplici e ved
 			\end{axis}
 		\end{tikzpicture}
 	\end{center}
+	La studiamo:
+	\begin{itemize}
+		\item \textit{Dominio}: $f \in C^\infty(\mathbb{R}^+)$
+		\item \textit{Limiti}:
+		\begin{itemize}
+			\item $\lim_{x\to 0^+} f(x) = -1$
+			\item $\lim_{x\to +\infty} f(x) = +\infty$
+		\end{itemize}
+		\item Derivate:
+		\begin{itemize}
+			\item $f'(x)=\log x + 1 \geq 0 \Leftrightarrow \log x \geq -1 \Leftrightarrow x \geq \frac{1}{e}$
+			\item $f''(x)=\frac{1}{x}>0 \quad \forall x \in \mathbb{R}^+$
+		\end{itemize}
+	\end{itemize}
 \end{example}
 
 \begin{example}
@@ -456,7 +470,7 @@ Poi si genera una successione da un punto iniziale:
 		\end{equation*}
 		La valuto in $\alpha$ tenendo a mente che è punto fisso ($\alpha = \frac{1}{\alpha}$):
 		\begin{equation*}
-			\lvert g'(\alpha)= \frac{1}{\alpha \ln ^2 \alpha} = \frac{\alpha^2}{\alpha} = \alpha > 1
+			\lvert g'(\alpha)\rvert = \frac{1}{\alpha \ln ^2 \alpha} = \frac{\alpha^2}{\alpha} = \alpha > 1
 		\end{equation*}
 		E quindi per questo metodo è un \textbf{punto repulsivo}.
 		\item \begin{equation*}
@@ -464,8 +478,170 @@ Poi si genera una successione da un punto iniziale:
 		\end{equation*}
 		La valuto in $\alpha$:
 		\begin{equation*}
-			\lvert g'(\alpha)= e^\frac{1}{\alpha}(-\frac{1}{\alpha^2}) = \frac{1}{\alpha} < 1
+			\lvert g'(\alpha) \rvert = e^\frac{1}{\alpha}(-\frac{1}{\alpha^2}) = \frac{1}{\alpha} < 1
 		\end{equation*}
 		E quindi per questo metodo è un \textbf{punto attrattivo}.
 	\end{itemize}
+\end{example}
+
+\subsection{Metodo delle tangenti}
+In questo metodo (anche chiamato \textit{di Newton}) si utilizza la \textbf{tangente} per approssimare il punto, in quanto è una buona approssimazione locale, e poi si interseca questa con l'asse delle $x$.\\
+Partiamo da un punto:
+\begin{equation*}
+	P=(x_0,f(x_0))
+\end{equation*}
+di cui posso scrivere la retta tangente come:
+\begin{equation*}
+	y-f(x_0)=f'(x_0)(x-x_0)
+\end{equation*}
+\begin{note}
+	La funzione per questo metodo deve essere non solo continua ma anche \textbf{derivabile}. Per ottenere quindi maggiore precisione dobbiamo porre più restrizioni sulla funzione:
+	\begin{equation*}
+		f \in C^1([a,b])
+	\end{equation*}
+\end{note}
+\noindent Intersechiamo la tangente con l'asse delle $x$:
+\begin{equation*}
+	\begin{cases}
+		y-f(x_0)=f'(x_0)(x-x_0) \\
+		y=0
+	\end{cases} \to 
+	x_1-x_0 = -\frac{f(x_0)}{f'(x_0)} \Rightarrow x_1 = x_0 -\frac{f(x_0)}{f'(x_0)}
+\end{equation*}
+\begin{note}
+	Diventa quindi necessario aggiungere la seguente restrizione:
+	\begin{equation*}
+		f'(\alpha) \neq 0
+	\end{equation*}
+\end{note}
+
+\subsubsection{Convergenza locale}
+Il metodo delle tangenti può essere visto come un metodo di iterazione funzionale in cui:
+\begin{equation*}
+	x_{k+1}=g(x_k) \quad g(x)=x-\frac{f(x)}{f'(x)}
+\end{equation*}
+Verifichiamo che sia \textbf{localmente convergente}:
+\begin{align*}
+	& g'(x)=1 - \frac{f'(x) \cdot f'(x) - f''(x) \cdot f(x)}{(f'(x))^2} = \frac{f''(x) \cdot f(x)}{(f'(x))^2} \\
+	& \lvert g'(\alpha) \rvert = \lvert  \frac{f''(\alpha) \cdot f(\alpha)}{(f'(\alpha))^2} \rvert = 0 < 1
+\end{align*}
+\begin{note}
+	Questo ci porta ad aggiungere un'altra restrizione alla funzione, ovvero che sia derivabile due volte.
+	\begin{equation*}
+		f \in C^2([a,b])
+	\end{equation*}
+\end{note}
+
+\begin{example}
+	Data la funzione
+	\begin{equation*}
+		f(x)=x^2
+	\end{equation*}
+	che si noti non rispettare $f'(\alpha)\neq 0$. \\
+	Scriviamo il metodo delle tangenti:
+	\begin{equation*}
+		x_{k+1}=x_k - \frac{x_k^2}{2x_k}=x_k-\frac{1}{2}x_k=\frac{1}{2}x_k
+	\end{equation*}
+	e quindi
+	\begin{equation*}
+		x_k=\bigg(\frac{1}{2}\bigg)^k x_0
+	\end{equation*}
+	Vediamo quindi che può convergere anche se non viene rispettata quella clausola. Noi comunque la manteniamo per semplificarci i calcoli.
+\end{example}
+
+\subsubsection{Convergenza lineare}
+Supponiamo di avere una successione che converge ad $\alpha$:
+\begin{equation*}
+	x_k \to \alpha \quad x_n \neq \alpha \forall n
+\end{equation*}
+Vediamo che converge linearmente se:
+\begin{equation*}
+	\lim_{n \to \infty} \lvert \frac{x_{k+1}-\alpha}{x_{n}-\alpha}\rvert = l \quad 0 < l < 1
+\end{equation*}
+Questo significa che ad ogni passo l'errore si riduce di un fattore $l$.\\
+Se assumiamo $l=\frac{1}{2}$ vediamo che, data una tolleranza $\epsilon$, il numero di passi è:
+\begin{equation*}
+	\bigg(\frac{1}{2}\bigg)^n \leq \epsilon \Leftrightarrow n \log \frac{1}{2} \leq \log \epsilon \Leftrightarrow -n \leq \log \epsilon \Leftrightarrow n \geq \log \frac{1}{\epsilon}
+\end{equation*}
+
+\subsubsection{Convergenza quadratica}
+Una successione converge almeno quadraticamente se
+\begin{equation*}
+	\lim_{n \to \infty} \frac{\lvert x_{k+1}-\alpha \rvert}{\lvert x_{n}-\alpha \rvert ^2} = l \in \mathbb{R}
+\end{equation*}
+Se assumiamo $l=1$ , data una tolleranza $\epsilon$, il numero di passi da fare è:
+\begin{equation*}
+	\bigg(\frac{1}{2}\bigg)^{2^n} \leq \epsilon \Leftrightarrow -2^n \leq \log \epsilon \Leftrightarrow 2^n \geq \log \frac{1}{\epsilon} \Leftrightarrow n \geq \log \log \frac{1}{\epsilon}
+\end{equation*}
+Quindi con un metodo che converge quadraticamente, anche nel caso in cui abbiamo un fattore di riduzione peggiore rispetto che ad un metodo lineare, abbiamo un numero comunque ridotto di passi da eseguire. 
+\begin{demostration}[Convergenza quadratica del metodo delle tangenti]
+	\begin{align*}
+		& 0=f(\alpha)=f(x_n)+f'(x_n)(\alpha-x_n)+f''(\psi_n)(x_n-\alpha)^2 \quad \psi_n \in [x_n,\alpha] \\
+		& -\frac{f(x_n)}{f'(x_n)} = (\alpha - x_n) + \frac{f''(\psi_n)(x_n-\alpha)^2}{2f'(x_n)} \\
+		& = \alpha + \frac{f''(\psi_n)(x_n-\alpha)^2}{2f'(x_n)} \\
+		& \bigg\lvert \frac{x_{n+1}-\alpha}{(x_n-\alpha)^2}\bigg\rvert = \bigg\lvert \frac{f''(\psi_n)}{2f'(\psi_n)}\bigg\rvert \to \frac{\lvert f'(\alpha)\rvert}{\lvert 2 f'(\alpha)\rvert}=l\in \mathbb{R}
+	\end{align*}
+\end{demostration}
+
+\begin{example}
+	Data la funzione:
+	\begin{equation*}
+		e^x+x+2=0
+	\end{equation*}
+	Se studiamo la funzione vediamo:
+	\begin{itemize}
+		\item \textit{Dominio}: $f \in C^\infty(\mathbb{R})$
+		\item \textit{Limiti}:
+		\begin{itemize}
+			\item $\lim_{x \to + \infty}f(x) = + \infty$
+			\item $\lim_{x \to - \infty}f(x) = - \infty$
+		\end{itemize}
+		\item \textit{Derivate}:
+		\begin{itemize}
+			\item $f'(x) = e^x+1 \geq 0 \quad \forall x \in \mathbb{R}$
+			\item $f''(x) = e^x \geq 0 \quad \forall x \in \mathbb{R}$
+		\end{itemize}
+	\end{itemize}
+		\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[grid=both,
+				xmax=10,ymax=10,
+				axis lines=middle,
+				restrict x to domain=-20:20,
+				restrict y to domain=-20:20,
+				samples=100,
+				enlargelimits]
+				\addplot[green, ultra thick]  {e^x+x+2};
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
+	Possiamo dire che:
+	\begin{equation*}
+		\exists ! \alpha \in \mathbb{R} \:\vert\: f(\alpha)=0 \quad f \in C^2(\mathbb{R}) \quad f'(\alpha)\neq 0
+	\end{equation*}
+	e che quindi questo metodo è \textbf{localmente convergente}.
+\end{example}
+
+\begin{example}
+	Data la funzione:
+	\begin{equation*}
+		xa-1=0 \quad a \in \mathbb{R} \quad a \neq 0
+	\end{equation*}
+	Possiamo facilmente vedere che
+	\begin{equation*}
+		x=\frac{1}{a}
+	\end{equation*}
+	Con un metodo lineare converge in un passo. Proviamo però a vederla come:
+	\begin{equation*}
+		a=\frac{1}{x} \Leftrightarrow \frac{1}{x}-a=0
+	\end{equation*}
+	e applichiamo il metodo delle tangenti:
+	\begin{equation*}
+		x_{k+1}=x_k + \frac{\big(\frac{1}{x_k} - a\big)}{\frac{1}{x_k^2}} = x_k + x_k^2 \cdot \bigg(\frac{1}{x_k} - a\bigg) = 2x_k-ax_k^2
+	\end{equation*}
+	Che ha bisogno di un numero di passi maggiore. Però non fa divisioni ma solamente prodotti e addizioni. Questo nei primi calcolatori che avevano solo addizioni, sottrazioni e moltiplicazioni, era il metodo che veniva utilizzato per approssimare le divisioni.
+\end{example}
+
+\begin{example}
+	Data la funzione dell'esercizio \ref{example:non_linear_eq}. Vediamo che se partiamo con il metodo delle tangenti da $\frac{1}{e}$, la successione diverge. Se invece si sceglie un valore di partenza tra $0$ e $\frac{1}{e}$, la successione passa dall'aritmetica reale a quella complessa dato che la macchina gestisce anche i logaritmi di numeri negativi.
 \end{example}
