@@ -44,13 +44,38 @@ Il modello di EnerJ è:
 	\item \textbf{Sicuro}: il programmatore fa la distinzione tra dati precisi e non, eventualmente forzandolo tramite \textit{endorsement} espliciti
 	\item \textbf{Generale}: unifica memoria, calcolo ed operazioni approssimate
 \end{itemize}
+Tutto questo in un approccio \textbf{"tutto o nulla"} in quanto la precisazione non ha sfumature.
 
 \subsubsection{Annotazioni}
 Di default un tipo è \textbf{preciso} e si può quindi omettere
 \begin{lstlisting}[language=Java]
 	@Precise
 \end{lstlisting}
-È illegale assegnare una variabile approssimata ad una precisa. Ciò previene un flusso diretto da dati che possono essere approssimati a dati che devono essere precisi.
+È illegale assegnare una variabile approssimata ad una precisa. Ciò previene un flusso diretto da dati che possono essere approssimati a dati che devono essere precisi.\\
+L'unico caso in cui è possibile è tramite \textbf{endorsement}, ovvero un'operazione specificata dal programmatore che \textit{certifica} che questa non produrrà errori sulla parte definita \textit{precisa} nel codice:
+\begin{lstlisting}[language=Java]
+	@Approx int a = ...;
+	int p;
+	p = endorse(a);
+\end{lstlisting}
+
+\subsubsection{Operazioni}
+Per ciascun operatore classico esistono due versioni:
+\begin{itemize}
+	\item Una che prende i valori \textbf{precisi} e restituisce un valore preciso
+	\item Una che prende valori \textbf{approssimati} e restituisce un valore approssimato
+\end{itemize}
+Questo viene fatto tramite l'\textbf{overloading} di Java e permette di ridurre l'energia utilizzata.
+
+\subsubsection{Condizioni}
+Per evitare che valori approssimati condizionino valori precisi, EnerJ proibisce l'uso di questi nelle guardie di \textit{if} e \textit{while}, eventualmente dando la possibilità al programmatore di fare un \textit{endorsement}.
+
+\subsubsection{Oggetti}
+Gli oggetti possono estendere la classe \textbf{Approximable}. I tipi al suo interno poi potranno sfruttare l'annotazione
+\begin{lstlisting}[language=Java]
+	@Context
+\end{lstlisting}
+per dipendere dal qualificatore scelto per l'istanza della classe.
 
 \subsubsection{Sintassi}
 La sintassi di EnerJ è la seguente:
@@ -177,4 +202,13 @@ e le seguenti regole:
 Si rendono quindi necessarie tecniche per la riduzione del consumo hardware:
 \begin{itemize}
 	\item \textbf{Voltaggio adattivo}: da \textit{high-power} a \textit{low-power} a seconda del tipo, ottenendo fino al $30\%$ di riduzione del consumo con l'$1\%$ di errore in più
+	\item Riduzione della \textbf{mantissa}: nelle operazioni \textit{floating point} passare da 24 a 8 bit può ridurre il consumo del $78\%$
+	\item Riduzione della \textbf{frequenza di aggiornamento della DRAM}: la riduzione di $1Hz$ porta ad un risparmio del $20\%$ con un errore aggiuntivo di  $10^{-5}$
+	\item Riduzione del \textbf{voltaggio della SRAM} (cache e registri): la riduzione dell'$80\%$ aumenta la probabilità di fallimento a $10^{-6}$
 \end{itemize}
+\begin{center}
+	\includegraphics[scale=0.4]{enerj_hardware_model.png}
+\end{center}
+
+\subsubsection{Esperimenti}
+Gli autori di EnerJ lo hanno testato su diversi programmi (con una percentuale di annotazioni fatte tra il $4\%$ e il $34\%$) ottenendo una riduzione del consumo dal $10\%$ al $50\%$ sopratutto nel passaggio dal programma base ad un approccio di annotazione \textit{mild}, con un aumento di un errore in questo caso sotto al $10\%$ e a volte anche prossimo allo $0\%$.
