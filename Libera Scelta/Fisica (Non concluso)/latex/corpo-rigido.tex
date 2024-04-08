@@ -74,4 +74,95 @@ La parte $\sum_{\alpha=1}^{N}m_{\alpha}(x_{\alpha}'^2 + y_{\alpha}'^2)$ è detta
     $$I_z = \sum_{\alpha=1}^{N}m_{\alpha}(x_{\alpha}'^2 + y_{\alpha}'^2) = \int dm(x'^2 + y'^2) = \int dx' \int dy' \int_{0}^{h}dz' \cdot \rho(x'^2 + y'^2)$$
     Cambio di variabili nell'integrale per avere estremi più semplici: $x' = r \cdot \cos\Theta, y' = r \cdot \sin\Theta, dx' \cdot dy' = dr \cdot d\Theta \cdot r$
     $$= \int_{0}^{R}dr' \int_{0}^{2\pi}d\Theta' \cdot r'\int_{0}^{n}\cdot \rho \cdot r'^2 = \rho \cdot 2\pi \cdot h \cdot \frac{R^4}{4} = M\frac{1}{\pi R^2 h} \cdot 2\pi \cdot h \cdot \frac{R^4}{4} = \frac{1}{2}MR^2$$
+    Posso calcolare il momento di inerzia assiale usando un punto solidale al C.R. diverso dal CM.
+    \begin{equation*}
+        \begin{split}
+            I_p & = \sum_{\alpha=1}^{N}m_{\alpha}||\vec{r}_{\alpha} - \vec{r}_p(t)||^2 = \sum_{\alpha=1}^{N} m_{\alpha} ||\vec{r}_{\alpha}(t) - \underline{\vec{r}_{CM}(t) + \vec{r}_{CM}(t)} - \vec{r}_p(r)||^2\\
+                & = \sum_{\alpha=1}^{N} m_{\alpha}\{||\vec{r}_{\alpha}(t) - \underline{\vec{r}_{CM}(t)}||^2 + ||\underline{\vec{r}_{CM}(t)} - \vec{r}_p(t)||^2 + 2[\vec{r}_{\alpha}(t) - \underline{\vec{r}_{\alpha}(t)}] \cdot [\underline{\vec{r}_{CM(t)} - \vec{r}_p(t)}]\}\\
+                & = I_{CM} + M \cdot ||\underline{\vec{r}_{CM}(t)} - \vec{r}_p(t)||^2 + 2\underline{\{\sum_{\alpha=1}^{N}m_{\alpha}[\vec{r}_{\alpha}(t) - \vec{r}_{CM}(t)]\} \text{ (= 0) }} \cdot [\underline{\vec{r}_{CM}(t)} - \vec{r}_p(t)] \Rightarrow I_p = I_{CM} + M||\vec{r}_p||^2
+        \end{split}
+    \end{equation*}
+    \underline{Teorema degli assi paralleli (Hyuhens - Steuiner)}
 \end{example}
+
+\begin{example}
+    Cilindro con foto parallelo all'asse. Considero due cilindri fittizi di densità uguale al cilindro 1. Il 2 
+    occupa lo spazio del foro, il 3 come 1 ma senza foto.
+    $$            
+    I_1^{(3)} = I_1^{(1)} + I_1^{(2)} \text{ (per additività del momento di interzia) } = I_1^{(1)} + I_1^{(2)} + M^{(2)} \cdot d^2\\
+    $$
+    \begin{equation*}
+        \begin{split}
+            I_1^{(1)} & = I_1^{(3)} - I_2^{2} - M^{(2)} d^2 = \frac{1}{2}(\rho v^{(3)})R^2 - \frac{1}{2}(\rho v^{(2)})R_2^2 - (\rho v^{(2)})d^2\\
+                      & = \frac{1}{2}\rho h \pi((R^4) - R_2^4 - R_2^2 d^2) \:\:\:\:\underline{(g=\frac{M}{\pi R^2h})} \:\:\:\:= \frac{1}{2}MR^2[1 - \frac{R_2^4}{R^2} - \frac{R_2^2d^2}{R^4}] < \frac{1}{2}MR^2
+        \end{split}
+    \end{equation*} 
+\end{example}
+\hspace{-15pt}Equazioni cardinali per il corpo rigido:
+$$
+I. \:\: \ddot{M}\vec{r}_{CM}(t) = \sum_{i}\vec{F}_i(e)(t)
+$$
+Non importa il punto di applicazione delle forte \textbf{esterne} $\vec{F}_i^{(E)}(t)$
+$$
+II. \:\: \frac{d}{dt}[I_z\omega(t)\hat{z} + M[\vec{r}_{CM} - \vec{r}_p(t)] \times \dot{\vec{r}}_{CM}] = \sum_{i}[\vec{r}_i(t) - \vec{r}_p(t)] \times \vec{F}_i^{(E)}(t) - M\dot{\vec{r}}_p  \times \dot{\vec{r}}_{CM} 
+$$
+La parte $I_z\omega(t)\hat{z}$ è una forma semplificata valida solo per il modo nel piano $\hat{x}, \hat{y}$. Essenziale il punto di applicazione delle forze.
+Polo $\vec{r}_p$ arbitrario, scelgo quello che semplifica.
+
+\begin{example}
+    Cilindro vincolato e forza costante. \\
+    Scelto come polo il CM. $\vec{F} = - F\hat{x} \:\:\: \vec{N}= N \hat{x} \:\:\: \vec{\omega} = \dot{\Theta}\hat{z}$.\\
+    Abbiamo che $N = F$ e nessuna info su $\Theta$. I vincoli sono: $\vec{r}_{CM}(t) \equiv 0 \Rightarrow \ddot{\vec{r}}_{CM}(t) = 0$
+    \begin{itemize}
+        \item $I. \:\: M\ddot{\vec{r}}_{CM} = \vec{F} + \vec{N} = (N - F)\hat{x}$
+        \item $II. \:\: \frac{d}{dt}[I_z\omega(t)\hat{z} + M[\vec{r}_{CM}(t) - \vec{r}_p(t)] \times \dot{\vec{r}}_{CM}] = \sum_{i}[\vec{r}_i(t) - \vec{r}_p(t)] \times \vec{F}_i^(E)(t) - M\dot{\vec{r}}_p \times \dot{\vec{r}}_{CM}$
+    \end{itemize}
+    $$I_z\dot{\omega}(r)\hat{z} = (\vec{r}_i - \vec{r}_{CM}) \times \vec{F} + (\vec{r}_{CM} - \vec{r}_{CM}) \times \vec{N} = R\hat{y} \times (-F\hat{x}) + 0 = RF\hat{z} \Rightarrow I_z\ddot{\Theta}(t) = RF \hspace{10pt}\ddot{\Theta} = \frac{2F}{MR} \text{ costante}$$
+\end{example}
+
+\subsection{Condizione del "puro rotolamento"}
+Il punto $\vec{r}_1$ del corpo rigido a contatto con la superficie al tempo $t_1$ è fermo. Al tempo 
+$t_2$ un altro punto $\vec{r}_2$ del corpo rigido è a contatto con la superfice. Il punto geometrico $\vec{r}_C(t)$ di contatto 
+\textbf{non è solidale} e il suo moto non è determinato dal vettore $\vec{w}(t)$
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\textwidth]{images/puro-rotolamento.png}
+\end{figure}
+\begin{example}
+    Cilindro trainato su piano scabro.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.50\textwidth]{images/cilindro-trainato-piano-scabro.png}
+    \end{figure}
+    \begin{itemize}
+        \item $I. \:\: O = M\ddot{y}_{CM}(t) = -Mg + N \Rightarrow N = mg \hspace{15pt} M\underline{\ddot{x}_{CM}} = F - F_a$
+        \item $II. \:\: I_z\underline{\dot{\omega}(t)}\hat{z} = (\vec{r}_{CM} - \vec{r}_{CM}) \times \vec{F} + (\vec{r}_{CM} - \vec{r}_CM) \times (\vec{F}_a + \vec{N}) = 0 + (-R\hat{y}) \times (-F_a\hat{x} + N\hat{y}) = -RF_a\hat{z}$
+    \end{itemize}
+    \underline{Abbiamo 3 incognite}.
+\end{example}
+\hspace{-15pt}Vincolo del puro rotolamento
+$$0 = \dot{\vec{r}}_{CM}(t) + \vec{\omega} \times [\vec{r}_c(t) - \vec{r}_{CM}(t)]$$
+Ma quando il punto $\vec{r}_1$ è a contatto $\vec{r}_1(t) = \vec{r}_C(t) \Rightarrow 0 = \dot{\vec{r}}_{CM}(t) + \vec{\omega} \times [\vec{r}_C(t) - \vec{r}_{CM}(t)]$ 
+$$ = \dot{x}_{CM}(t)\hat{x} + \dot{\Theta}(t)\hat{z} \times (-R\hat{y}) = \dot{x}_{CM}(t)\hat{x} + R \dot{\Theta}(t)\hat{x} \Rightarrow \underline{\dot{x}_{CM}(t) = -R\dot{\Theta}(t)} \Rightarrow \ddot{x}_{CM}(t) = -R\ddot{\Theta}(t)$$
+Sostituisco nelle equazioni cardinali
+$$
+\begin{cases}
+    -MR\ddot{\Theta} = F - F_a\\
+    \frac{1}{2}MR^2 \ddot{\Theta} = -RF_a
+\end{cases}
+\:\:\:
+\begin{cases}
+    F_a = -\frac{1}{2}MR\ddot{\Theta}\\
+    -MR\ddot{\Theta} = F + \frac{1}{2}MR\ddot{\Theta}
+\end{cases}
+\begin{cases}
+    \ddot{\Theta} = -\frac{2}{3}\frac{F}{MR}\\
+    F_a = \frac{1}{3}F
+\end{cases}
+$$
+Minimo $\mu_s$ per mantenere puro rotolamento?
+$|F_a| \leq \mu_S|N| \hspace{15pt} \mu_S \geq \frac{F/3}{Mg} = \mu_s,min$
+
+\subsection{Energia del corpo rigido}
+$$K(t) = \frac{1}{2}M||\dot{\vec{r}}_{CM}(t)||^2 + \sum_{\alpha=1}^{N}\frac{1}{2}m_{\alpha}||\dot{\vec{r}}_{\alpha}'(t)||^2$$
+Con $\frac{1}{2}M||\dot{\vec{r}}_{CM}(t)||^2$ dal CM e $\sum_{\alpha=1}^{N}\frac{1}{2}m_{\alpha}||\dot{\vec{r}}_{\alpha}'(t)||^2$ rispetto al CM $\equiv K_{CM}(t)$
