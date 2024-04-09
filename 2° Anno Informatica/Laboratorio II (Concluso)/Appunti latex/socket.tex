@@ -1,0 +1,93 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Socket}
+Permettono la comunicazione tra due processi su macchine diverse. Funzionano in maniera analoga alle \textit{pipe}, quindi deve essere chiaro il \textbf{formato} con il quale vengono inviati i dati.\\
+La complicazione principale delle socket è che il mezzo di trasmissione (\textbf{internet}) non è sempre disponibile e la connessione potrebbe cadere. Inoltre, a differenza delle pipe, il server interagisce con più client.
+
+\subsection{Implementazione}
+Nel corso verrà utilizzato Python perché più veloce da scrivere e comunque molto simile ai comandi in C. La differenza principale tra i due linguaggi sta nel server, che però a livello concettuale non è complesso (solo lungo).
+\subsubsection{Server}
+Una possibile implementazione di un \textbf{echo-server} in Python è la seguente:
+\begin{lstlisting}[language=Python]
+	import socket
+	
+	# Specifica da dove accettare le connessioni
+	HOST = "127.0.0.1"  # Standard loopback interface address (localhost)
+	PORT = 65432  # Port to listen on (non-privileged ports are > 1023)
+	
+	# Creazione del server socket
+	with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+		s.bind((HOST, PORT)) # Accetta connessioni da HOST in riferimento alla porta PORT
+		s.listen() # In ascolto
+		while True:
+			# In attesa di una connessione
+			conn, addr = s.accept()
+			# Lavoro con la connessione appena ricevuta 
+			with conn:
+				while True:
+					data = conn.recv(64) # Leggo fino a 64 bytes
+					# Se ricevo 0 bytes, termino la connessione
+					if not data:
+						break
+					conn.sendall(data) # Altrimenti rispedisco i dati indietro
+\end{lstlisting}
+
+\subsubsection{Client}
+Una possibile implementazione di un \textbf{echo-client} in Python è la seguente:
+\begin{lstlisting}[language=Python]
+	import sys,socket
+	
+	# Valori verso cui connettersi 
+	HOST = "127.0.0.1" # Server hostname or IP address
+	PORT = 65432 # Port used by the server
+
+	# Creazione del socket per la connesssione al server
+	with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+		# Mi connetto
+		s.connect((host, port))
+		while True:
+			n = int(input("Quanti byte? "))
+			if n<=0:
+				break
+			# Invio stringa di n a e attendo la risposta   
+			msg = "a"*n
+			s.sendall(msg.encode())
+			data = s.recv(64)
+			if len(data)==0:
+				break
+		# Comunico al server di chiudere la connessione
+		# SHUT_RDWR indica che terminiamo sia lettura che scrittura     
+		s.shutdown(socket.SHUT_RDWR)
+\end{lstlisting}
+
+\begin{observation}[Client multipli]
+	Cosa succede se un altro client prova a connettersi mentre c'è già una connessione attiva?\\
+	Il server stabilisce la connessione ma non risponde ad entrambi, solo ad uno, l'altro rimarrà in attesa.
+\end{observation}
+\begin{observation}[Violazione del protocollo]
+	Cosa succede se ignoro le specifiche che mi sono dato sul formato dei dati?\\
+	Si perde la sincronizzazione. Per garantirla si può ad esempio precedere i dati con la lunghezza del pacchetto.
+\end{observation}
+\begin{observation}[Codifica]
+	In Python possiamo codificare una stringa tramite la seguente istruzione:
+	\begin{lstlisting}[language=Python]
+		s = "hello world"
+		s.encode()
+	\end{lstlisting}
+	Di default utilizza la codifica \textit{UTF-8} che per i caratteri standard usa un byte mentre per quelli più complessi (e.g. €) ne usa di più. \\
+	Per quanto riguarda i numeri posso scegliere il tipo di codifica tra \textit{big-endian} (!) o \textit{little-endian}:
+	\begin{lstlisting}[language=Python]
+		encoded = struct.pack("i", 33) # Little endian
+		struct.pack("!i", 33) # Big endian
+	\end{lstlisting}
+	E poi per decodificarlo:
+	\begin{lstlisting}[language=Python]
+		struct.unpack("i", encoded)
+	\end{lstlisting}
+\end{observation}
+\subsection{Client multipli}
+Per gestire più client contemporaneamente, esistono due tipi di implementazione:
+\begin{itemize}
+	\item Il singolo server alterna la connessione tra i vari client
+	\item Quando arriva un client, crea un \textbf{thread} dedicato a quella connessione
+\end{itemize}
