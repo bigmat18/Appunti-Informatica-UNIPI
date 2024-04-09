@@ -584,6 +584,7 @@ Quindi con un metodo che converge quadraticamente, anche nel caso in cui abbiamo
 \end{demostration}
 
 \begin{example}
+	\label{example:conv_quad}
 	Data la funzione:
 	\begin{equation*}
 		e^x+x+2=0
@@ -602,7 +603,7 @@ Quindi con un metodo che converge quadraticamente, anche nel caso in cui abbiamo
 			\item $f''(x) = e^x \geq 0 \quad \forall x \in \mathbb{R}$
 		\end{itemize}
 	\end{itemize}
-		\begin{center}
+	\begin{center}
 		\begin{tikzpicture}
 			\begin{axis}[grid=both,
 				xmax=10,ymax=10,
@@ -644,4 +645,189 @@ Quindi con un metodo che converge quadraticamente, anche nel caso in cui abbiamo
 
 \begin{example}
 	Data la funzione dell'esercizio \ref{example:non_linear_eq}. Vediamo che se partiamo con il metodo delle tangenti da $\frac{1}{e}$, la successione diverge. Se invece si sceglie un valore di partenza tra $0$ e $\frac{1}{e}$, la successione passa dall'aritmetica reale a quella complessa dato che la macchina gestisce anche i logaritmi di numeri negativi.
+\end{example}
+
+\subsubsection{Convergenza globale}
+\begin{theorem}[Teorema di convergenza in largo]
+	Sia:
+	\begin{equation*}
+		f \in C^2([ab]) \quad f(\alpha)=0, \alpha \in (a,b)
+	\end{equation*}
+	Se $\exists \delta > 0$ tale che $\forall x \in (\alpha, \alpha + \delta] \subseteq (a,b)$ si ha:
+	\begin{enumerate}
+		\item $f'(x) \neq 0$
+		\item $f(x)f''(x)>0$
+	\end{enumerate}
+	Allora $\forall x_0 \in (\alpha, \alpha + \delta]$ la successione generata dal metodo della tangente con punto iniziale $x_0$ converge ad $\alpha$.
+\end{theorem}
+\begin{demostration}
+	Partiamo dalla funzione dell'esempio \ref{example:conv_quad}. Possiamo dire che
+	\begin{equation*}
+		\exists ! \alpha\in \mathbb{R} \: \text{t.c.} \: f(\alpha)=0
+	\end{equation*}
+	Se prendiamo $x_0 > \alpha$, il teorema può essere applicato senza problemi, e abbiamo quindi la convergenza. Se invece $x_0 < \alpha$, il secondo punto del teorema non è rispettato. Possiamo però dimostrare che è sufficiente un passo del metodo delle tangenti per garantirla:
+	\begin{align*}
+		& x_1 - \alpha > 0 \\
+		& x_1 > \alpha \\
+		& x_1 - \alpha = g(x_0) - g(\alpha) = g'(\psi)(x_0 - \alpha) = \\
+		& = \frac{f(\psi)-f''(\psi)}{(f'(\psi))^2} \cdot (x_0 - \alpha) \\
+		& \frac{f(\psi)-f''(\psi)}{(f'(\psi))^2} < 0 \quad\quad (x_0 - \alpha) < 0
+	\end{align*}
+\end{demostration}
+
+\begin{example}
+	Partiamo dalla funzione:
+	\begin{equation*}
+		f(x)=x^2-4\sin x = 0 \Leftrightarrow x^2 = 4 \sin x
+	\end{equation*}
+	Dal grafico possiamo dedurre che:
+	\begin{itemize}
+		\item $0$ è soluzione
+		\item $\exists ! \alpha > 0$ tale che $f(\alpha)=0 \land \alpha \in [\frac{\pi}{2},\pi]$
+	\end{itemize}
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[grid=both,
+				xmax=4,ymax=8,
+				axis lines=middle,
+				restrict x to domain=-10:10,
+				restrict y to domain=-10:10,
+				samples=100,
+				enlargelimits]
+				\addplot[green, ultra thick]  {x^2};
+				\addplot[blue, ultra thick]  {4*sin(deg(x))};
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
+	Applichiamo ora il teorema per la convergenza globale per cercare un intervallo da cui partire per il metodo della tangente.
+	\begin{align*}
+		& f'(x) = 2x-4\cos x \\
+		& f''(x)=2+4 \sin x
+	\end{align*}
+	L'intervallo che verifica le due ipotesi del teorema è:
+	\begin{equation*}
+		[0, \pi]
+	\end{equation*}
+\end{example}
+
+\begin{example}
+	Partiamo dalla seguente funzione:
+	\begin{equation*}
+		f(x)=\log x +3x - 5 = 0
+	\end{equation*}
+	\begin{itemize}
+		\item \textbf{Condizioni di esistenza}: $x>0 \quad f \in C^\infty(\mathbb{R}^+)$
+		\item \textbf{Limiti}:
+		\begin{itemize}
+			\item $\lim_{x\to 0^+} f(x) = - \infty$
+			\item $\lim_{x \to +\infty} f(x) = + \infty$
+		\end{itemize}
+		\item \textbf{Derivate}:
+		\begin{itemize}
+			\item $f'(x)=\frac{1}{x} + 3 > 0 \quad \forall x \in \mathbb{R^+}$
+			\item $f''(x)=-\frac{1}{x}<0 \quad \forall x \in \mathbb{R}^+$
+		\end{itemize}
+	\end{itemize}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[grid=both,
+				xmax=4,ymax=5,
+				axis lines=middle,
+				restrict x to domain=0:10,
+				restrict y to domain=-10:10,
+				samples=100,
+				enlargelimits]
+				\addplot[green, ultra thick]  {ln(x)+3*x-5};
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
+	
+	\begin{enumerate}
+		\item Dire se il metodo delle tangenti è localmente convergente. \\
+		Dal grafico vediamo che
+		\begin{equation*}
+			\exists ! \alpha \in \mathbb{R}^+ \: \text{ tale che }\: f(\alpha)=0 \quad \alpha \in [1,2]
+		\end{equation*}
+		e quindi:
+		\begin{equation*}
+			f \in C^2(\mathbb{R}^+) \land f'(\alpha)\neq 0 \Longrightarrow \text{Il metodo converge}
+		\end{equation*}
+		\item Il metodo delle tangenti converge per i seguenti valori?
+		\begin{itemize}
+			\item $x_0 = 1$: si perché è nell'intervallo $[1, \alpha]$
+			\item $x_0 = 2$: applichiamo un passo del metodo
+			\begin{equation*}
+				x_1 = 2 - \frac{\log 2 + 1}{\frac{7}{2}} = 2 - \frac{2(\log 2 + 1)^2}{7} = \frac{2(7-\log 2 - 1)}{7} = \frac{2}{7} (6-\log 2) > 0
+			\end{equation*}
+			e vediamo che anche qui converge
+		\end{itemize}
+	\end{enumerate}
+\end{example}
+
+\begin{example}
+	Partiamo dalla funzione
+	\begin{equation*}
+		f(x)=a_0+a_1x+a_2x^2+a_3x^3=0 \quad a_3 > 0
+	\end{equation*}
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[grid=both,
+				xmax=2,ymax=5,
+				axis lines=middle,
+				restrict x to domain=-5:5,
+				restrict y to domain=-5:5,
+				samples=100,
+				enlargelimits]
+				\addplot[green, ultra thick]  {-4+x+9*x^2+4*x^3};
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
+	La derivata prima sarà:
+	\begin{equation*}
+		f'(x)=a_1+2a_2x+3a_3x^2
+	\end{equation*}
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[grid=both,
+				xmax=2,ymax=5,
+				axis lines=middle,
+				restrict x to domain=-5:5,
+				restrict y to domain=-5:5,
+				samples=100,
+				enlargelimits]
+				\addplot[green, ultra thick]  {1+9*x+4*x^2};
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
+	\newpage
+	Mentre la derivata seconda:
+	\begin{equation*}
+		f''(x)=2a_2+6a_3x
+	\end{equation*}
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[grid=both,
+				xmax=2,ymax=5,
+				axis lines=middle,
+				restrict x to domain=-5:5,
+				restrict y to domain=-5:5,
+				samples=100,
+				enlargelimits]
+				\addplot[green, ultra thick]  {9+4*x};
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
+	I tre punti soluzione della funzione avranno tutti convergenza locale. Quella del punto centrale sarà però più complessa da trovare perché si rischia uno stallo e si cerca quindi di evitare di calcolarle con il metodo delle tangenti.
+\end{example}
+
+\begin{example}
+	Partiamo dall'\textbf{equazione secolare}:
+	\begin{equation*}
+		f(x)=1-\sum_{k=1}^{1000}\frac{1}{x-k}
+	\end{equation*}
+	\begin{enumerate}
+		\item Determinare il numero di soluzioni reali di questa equazione
+		\item Pensare ad un metodo per l'approssimazione di queste funzioni
+	\end{enumerate}
 \end{example}
