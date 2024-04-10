@@ -126,3 +126,103 @@ $h_2$ impone meno vincoli rispetto a $h_1$ e quindi classifica più istanze x co
     Esempi binari $l_i: l_1 \geq (l_1 \land l_2),$ $l_1$ versus $l_2$, non comparabili. La relazione $\geq$ impone un 
     ordine di partizione (p.o.) sullo spazio di ipotesi $H$ che viene utilizzato da molti metodi di concept leargning. Possiamo approfittare di questo p.o. organizzare in modo efficiente la ricerca in H
 \end{example}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/struttura-su-H.png}
+\end{figure}
+
+\subsection{Algoritmo Find-S}
+Sfrutta l'ordine parziale m.g.t per cercare in modo efficiente $h$ (senza fare un enumerazione esplicita per ogni $h \in H$).
+\begin{definition}
+    Definiamo l'Algoritmo con i seguenti passaggi:
+    \begin{enumerate}
+        \item Inizializzo $h$ con l'ipotesi più specifica in H.
+        \item Per ogni instanza di training $x$ \textbf{positiva}
+        \begin{lstlisting}
+        for each attribute a_i in h
+            if a_i in h e soddisfatto da X
+                non fare nulla
+            else
+                sostituisci a_i in h dal successivo vincolo piu generale, cioe
+                soddisfatto da x [es. rimuovi da h i letterali non soddisfacenti x]
+        \end{lstlisting}
+        \item In output ritorna un ipotesi $h$.
+    \end{enumerate}
+\end{definition}
+Ricerca su spazio di ipotesi fatto dall'algoritmo Find-S:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\textwidth]{images/ricerca-con-find-s.png}
+\end{figure}
+
+\hspace{-15pt}Alcune proprietà importnati dell'algoritmo find-S sono:
+\begin{itemize}
+    \item Lo spazio di ipotesi deve essere descritto da congiunzioni di attributi (forte limitazione)
+    \item Find-S produttà l'iposeti più specifica fra quelle di H che sia anche coerente con gli esempi di training \textbf{positivi}.
+    \item L'ipotesi di output $h$ sarà coerente con gli esempi negativi, a condizione che il terget conecpt sia contenuto in H. (perché $c \geq h$)
+\end{itemize}
+Mentre invece alcuni dei problemi relativi al Find-S sono i seguenti:
+\begin{itemize}
+    \item Non si può dire se l'apprendimento è convergente verso un concept target, nel senso
+    che non è in grafo di determinare se ha trovato l'unica ipotesi coerente con gli esempi di training.
+    \item Non è possibile stabilire quando i dati di training sono incosistenti, poiché ignora gli esemi di training negativo: nessuna tolleranza al rumore!
+\end{itemize}
+Perché preferire l’ipotesi più specifica? Cosa succede se ci sono più ipotesi massimamente specifiche?
+
+\subsection{Algoritmo List-Then eliminate}
+Per parlare di questo algoritmo bisogna prima parlare del \textbf{version spaces}. L'idea chiave è che: l'output
+è un descrizione dell'insieme di tutte le $h$ consistenti con D. Possiamo fare questo senza enumerare tutti loro:
+$$Consistent(h, D) := \forall <x, c(x)> \in D\:\: h(x) = c(x)$$
+\begin{definition}
+    Il \textbf{version space}, $VS_{H,D}$ che rispetta lo spazio di ipotesi $H$, e l'insieme di training D, 
+    è un sottoinsieme delle ipotesi di H consistenti con tutti gli esempi di traning:
+    $$VS_{H,D} = \{h \in H \:\:|\:\: Consistent(h, D)\}$$
+\end{definition}
+\hspace{-15pt}L'algoritmo ora si definisce con i seguenti punti:
+\begin{enumerate}
+    \item Dato un VersionSpace $\to$ una lista contenente ogni ipotesi in H.
+    \item Per ogni esempio di training $<x, c(x)>$ si rimiove dal VersionSpace ogni ipotesi
+    che è inconsistente con l'esempio di training, $h(x) \neq c(x)$
+    \item L'output è una lista di ipotesi in VersionSpace.
+\end{enumerate}
+Una miglior rappresentazione per il Version space (by G e S):
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\textwidth]{images/miglior-rapresentazione-version-space.png}
+\end{figure}
+\begin{definition}
+    Ci sono vari modi per rappresentare il version space:
+    \begin{itemize}
+        \item Il \textbf{confine generale}, G, dello spazio delle versioni $VS_{H,D}$ è l'insieme di 
+        membri generali massimi. (per H consistente con D).
+        \item Il \textbf{confine specifico}, S, dello spazio delle versioni $VS_{H,D}$ è l'insieme di
+        membri generali massimi (per H consistente con D)
+        \item \textbf{Teorema}: ogni membro della spazio di versione si trova fra questi confini.
+    \end{itemize}
+\end{definition}
+$$VS_{H,D} = \{h \in H \:|\: (\exists \: s \in S) \:\: (\exists \: g \in G) \:\:(g \geq h \geq s)\}$$
+dove $x \geq y$ vuol dire che $x$ è più o uguale generale rispetto a $y$
+
+\subsection{Algoritmo candidate elimination}
+In questo algoritmo abbiamo che:
+\begin{itemize}
+    \item $G \to$ ipotesi massimali generali in $H$
+    \item $S \to$ ipotesi massimali specifiche in $H$
+\end{itemize}
+For eatch esempio di training $d = <x, c(x)$.
+\begin{itemize}
+    \item if d è un esempio \textbf{positivo} allora rimuovi da G qualsiasi ipotesi che sia incoerente con d (def di VS).\\
+    for each ipotesi $s \in S$ che non è consistente con d [\textbf{generalizzare S}]
+    \begin{itemize}
+        \item Rimuovere s da S.
+        \item Aggiungere ad S tutti le generalizzazioni minime h di s tale che: h consistente con d ed un qualche membri di G è più generale rispetto ad h.
+        \item Rimuovere da S ogni ipotesi che è più generale rispetto ad altre ipotesi in S.
+    \end{itemize}
+    \item if d è un esempio \textbf{negtivo} allora rimuovere da S ogni ipotesi che è inconsistente con d.\\
+    for eatch ipotesi $g \in G$ che non è consistente con d [specilizzazione G]
+    \begin{itemize}
+        \item rimuovere g da G.
+        \item Aggiungere a G tutte le specializzazioni minime h di g tali che: h sia consistente con d e cia sia qualche membro di S che è più specifico rispetto a h.
+        \item Rimuovere da G ogni ipoesi che è meno generale rispetto ad altre ipotesi in G.
+    \end{itemize}
+\end{itemize}
