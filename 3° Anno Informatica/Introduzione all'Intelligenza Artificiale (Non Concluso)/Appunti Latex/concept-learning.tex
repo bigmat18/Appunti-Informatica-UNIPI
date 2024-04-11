@@ -226,3 +226,92 @@ For eatch esempio di training $d = <x, c(x)$.
         \item Rimuovere da G ogni ipoesi che è meno generale rispetto ad altre ipotesi in G.
     \end{itemize}
 \end{itemize}
+\begin{example}
+    Esempio dell'algoritmo Candidate Elimination.
+    \begin{figure}[h!]
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/es-candidate-elimination-1.png}
+        \end{subfigure}
+        \hspace{10pt}
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/es-candidate-elimination-2.png}
+        \end{subfigure}
+    \end{figure}
+\end{example}
+La classificazione di nuovi dati si può fare nel seguente modo.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/classification-new-data.png}
+\end{figure}
+
+\subsection{Bias induttivo ed il suo ruolo}
+Il nostro spazio di ipotesi non è capace di rappresentare un semplice concetto target di 
+disgiunzione come il seguenti: $(Sky=Sunny) \lor (Sky=Cloudy)$. La candidate elimination sarebbe:
+$$x_1 = <Sunny, Warm, Normal, Strong, <Cool, Change> + $$
+$$x_2 = <Cloudy, Warm, Normal, Storng, Cool, Change> +$$
+$S: \{<?, Warm, Normal, Strong, Cool, Change> \}$
+$$x_3 = <Rainy, Warm, Normal, Strong, Cool, Change> -$$
+$S: \{\}$\\\\
+\textbf{Bias}: Assumiamo che lo spazio di ipotesi H contenga il concetto target c. In altre parole
+che c sia descritto da con congiuzione (operatore AND) o da un letterale.
+
+\subsubsection{Unbiased learning}
+L'idea dietro al unbiased learning è la seguente: scegliere H che esprime ogni concetto che può
+essere insegnato, ciò significa che H è l'insieme di tutti i possibili sottoinsiemi di X: il power set P(X).
+\begin{example}
+    $|H| = 96, |P(X)| = 2^{96} \sim 10^{28}$ concetti distinti.
+\end{example}
+\hspace{-15pt}H = disgiunzione, congiunzione, negazione. Ess. $<Sunny, Warm, Normal, ?, ?, ?> v <?, ?, ?, ?, ?, Change>$.
+H contiene sicuramente il concetto target. A questo punto capiamo come generalizzare.\\\\
+Che cosa sono S e G in questo caso?\\
+Assumiamo esempi positivi $(x_1, x_2, x_3)$ ed esempi negativi $(x_4, x_5)$
+$$S: \{(x_1 \lor x_2 \lor x_3)\} \hspace{15pt} G: \{\lnot (x_4 \lor x_5)\}$$
+Gli unici esempi che sono classificati in modo non ambiguo sono gli esempi di training stessi (H può rappresentrli). In altre parole
+per apprengere il concetto target si dovrebbe presentare ogni singola instanza in X come esempio di training.
+\begin{proposition}
+    Una \textbf{proprietà} importante è che un unbiased learner non è in grado di generalizzare
+\end{proposition}
+\begin{demostration}
+    Ogni instanza non osservata verrà classificata positiva per precisamente metà delle ipotesi nel VS e negativa nell'altrà metà (rejecion).
+    Infatti: $\forall h$ consistenti con $x_i$ (test), $\exists h'$ identico ad h eccetto per il fatto che $h'(x_i) <> h(x_i)$, $h\in VS \Rightarrow h' \in VS$ (ci sono identici in D, l'insieme TR).
+\end{demostration}
+\hspace{-15pt}Un entità che apprendet e che non fa ipotesi preliminari riguardo all'identità del concetto target non ha basi
+razionali per classificare ogni instanza invisibile. (Restrizione, preferenza) Bias non vengono solo assunti per l'efficienza, 
+essi servono anche per la generalizzazione, tuttovia, non ci dice ancora (quantifica) quale sia la soluzione migliore generalizzanta.
+\begin{example}
+    \textbf{Esempio trivial} (TR = Training set, TS = Test set)
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.5\textwidth]{images/trivial-esempio.png}
+    \end{figure}
+\end{example}
+\hspace{-15pt}Problema: caratterizzare i bias per i diversi approcci di apprendimento.
+\subsubsection{Bias induttivo}
+Consideriamo le seguenti cose:
+\begin{itemize}
+    \item Un algoritmo di concept leargning L.
+    \item Instance X, concetto target c.
+    \item Esempi di trining $D_c = \{<x, c(x)>\}$
+    \item Sia $L(x_i, D_c)$ a denotare l'assegnamento di classificazione all'instanza $x_i$ da L dopo il training con $D_c$.
+\end{itemize}
+\begin{definition}
+    Il bias intduttivo di L è ogni insieme minimo di affermazioni \textbf{B} tali che per ogni concetto target c e corrispettivi dati di training $D_c$
+    $$(\forall x_i \in X)[B \land D_c \land x_i] |- \:\: L(x_i, D_c)$$
+    Dove $A |- B$ vuol dire che A implica logicamente B (segue deduttivamente da)
+\end{definition}
+\newpage
+Sistema induttivo e \textbf{equivalente} sistema deduttivo.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\textwidth]{images/inductive-system.png}
+\end{figure}
+Visto questo, vediamo 3 apprendimento con il bias diversi:
+\begin{itemize}
+    \item \textbf{Rote learner} (lookup table): memorizzare esempi, classificare x se e solo se esso matcha con un precedente esempio osservabile. No bias induttivo $\to$ no generalizzazione.
+    \item \textbf{Version space candidate elimination algorithm}. Bias: lo spazio di ipotesi contiene il concetto target $|H| = 973$ versus $10^{28}$
+    \item \textbf{Find-S}: Bias: Lo spazio delle ipotesi contiene il concetto target e tutto il resto delle istanze sono istanze negative a meno che non sia implicato il contrario
+    dalle sue altre conoscenze (viste come esempi positivi). In altre parole: abbiamo una bias linguistico dovuto all'AND sul
+    letterali più il bias di ricerca dovuto alla preferenza della ipotesi più specifica.
+\end{itemize}
