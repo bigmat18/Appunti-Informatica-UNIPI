@@ -166,3 +166,127 @@ $|F_a| \leq \mu_S|N| \hspace{15pt} \mu_S \geq \frac{F/3}{Mg} = \mu_s,min$
 \subsection{Energia del corpo rigido}
 $$K(t) = \frac{1}{2}M||\dot{\vec{r}}_{CM}(t)||^2 + \sum_{\alpha=1}^{N}\frac{1}{2}m_{\alpha}||\dot{\vec{r}}_{\alpha}'(t)||^2$$
 Con $\frac{1}{2}M||\dot{\vec{r}}_{CM}(t)||^2$ dal CM e $\sum_{\alpha=1}^{N}\frac{1}{2}m_{\alpha}||\dot{\vec{r}}_{\alpha}'(t)||^2$ rispetto al CM $\equiv K_{CM}(t)$
+\begin{equation*}
+    \begin{split}
+        K_{CM}(t) & = \sum_{\alpha=1}^{N}\frac{1}{2}m_{\alpha}[\dot{\vec{r}}_{\alpha}(t) - \dot{\vec{r}}(t)] \cdot [\dot{\vec{r}}_{\alpha}(t) - \dot{\vec{r}}_{CM}(t)] = \sum_{\alpha=1}^{N}\frac{1}{2}m_{\alpha}\vec{w}(t) \times [\vec{r}_{\alpha}(t) - \vec{r}_{CM}(t)] \cdot \vec{w}(t) \times [\vec{r}_{\alpha} - \vec{r}_{CM}(t)] \\
+                  & = \sum_{\alpha=1}^{N}\frac{1}{2} m_{\alpha}\{||\vec{w}(t)||^2 \cdot ||\vec{r}_{\alpha}'(t)||^2 - ||\vec{w}(t) \cdot \vec{r}_{\alpha}'(t)||^2\}\\
+                  & = \frac{1}{2}
+                  \begin{bmatrix}
+                    w_{x'}(t) \\ w_{y'}(t) \\ w_{z'}(t)
+                  \end{bmatrix}^T
+                  \sum_{\alpha=1}^{N}m_{\alpha}
+                  \begin{bmatrix}
+                    y_{\alpha}'^2 + x_{\alpha}'^2 & -x_{\alpha}'y_{\alpha}' & -x_{\alpha}'z_{\alpha}'\\
+                    -y_{\alpha}'x_{\alpha}' & x_{\alpha}'^2 + z_{\alpha}'^2 & -y_{\alpha}'z_{\alpha}'\\
+                    -z_{\alpha}'x_{\alpha}' & -z_{\alpha}'y_{\alpha}' & x_{\alpha}'^2 + y_{\alpha}'^2
+                  \end{bmatrix}
+                  \begin{bmatrix}
+                    w_{x'}(t) \\ w_{y'}(t) \\ w_{z'}(t)
+                  \end{bmatrix}
+    \end{split}
+\end{equation*}
+Per motivi planari: $K(t) = \frac{1}{2}I_zw(t)^2$
+
+\subsection{Lavoro forza peso sul corpo rigido}
+Consideriamo un piccolo spostamento in un tempo $dt$.
+\begin{equation*}
+    \begin{split}
+        dL & = \sum_{\alpha=1}^{N} \vec{F}_{\alpha}(t) \cdot \vec{r}_{\alpha}(t) = \text{ (teorema fondamentale sul C.R.) } = \sum_{\alpha=1}^{N}m_{\alpha}\vec{g}[d\vec{r}_{CM}(t) + \vec{w}(t) \times [\vec{r}_{\alpha}(t) - \vec{r}_{CM}(t)]dt] \\
+           & = M\vec{g} \cdot d\vec{r}_{CM}(t) + \text{ (identità vettoriale) } \vec{w}(t) \times \sum_{\alpha=1}^{N}m_{\alpha} \vec{g} \cdot [\vec{r}_{\alpha} - \vec{r}_{CM}(t)]dt\\
+           & = M\vec{g} \cdot d\vec{r}_{CM} + \vec{w}(t) \times \vec{g} \cdot [\sum_{\alpha=1}^{N}m_{\alpha}\vec{r}_{\alpha}(t) - M\vec{r}_{CM}(t)]dt
+    \end{split}
+\end{equation*}
+Il lavoro (e quindi il potenziale) è lo stesso che per un punto materiale di massa M e posizione $\vec{r}_{CM}$
+\begin{example}
+    velocità acquisita da un cilindro che rotola lungo un piano inclinato scabro.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.6\textwidth]{images/ess-cilidro-rotola-piano-scabro.png}
+    \end{figure}
+    \begin{itemize}
+        \item Energia potenziale: $u(t_1) = Mgh \hspace{10pt} u(t_2) = 0$
+        \item Energia cinetica: $k(t_2) = 0 \hspace{10pt} k(t_2) = \frac{1}{2}Mv_{CM}^2 + \frac{1}{2}\cdot \frac{1}{2}MR^2 \dot{\Theta}^2$
+        \item Puro rotolamento: $\dot{\Theta}^2 = v_{CM}^2 / R^2 = \frac{3}{4}Mv_{CM}^2$
+        \item Teorema delle forze vive: $\frac{3}{4}Mv_{CM}^2 = Mgh \Rightarrow v_{CM} = \sqrt{\frac{4gh}{3}}$\\
+        \textbf{La forza di attrito statico non fa lavoro perché il punto del corpo al quale si applica è fermo}
+    \end{itemize}
+\end{example}
+Un punto geometrico $\vec{r}_v(t)$ si dice \textbf{centro istantaneo di rotolazione} per un corpo rigido se, al tempo t, vale
+$$\dot{\vec{r}}_1(t) = \vec{w}(t) \times [\vec{r}_1(t) - \vec{r}_v(t)]$$
+per tutti i punti $\vec{r}_1$ del corpo rigido.
+\begin{observation}
+    Se $\vec{r}_2$ solidale al corpo rigido e $\dot{\vec{r}}_2(t) = 0$, allora dal teorema fondamentale $\vec{r}_2(t)$ 
+    è centro ist. rot. al tempo $t$.
+\end{observation}
+\hspace{-15pt}Nel moto di puro rotolamento, il punto di contatto $\vec{r}_c(t)$ è centro instantaneo di rotolamento. Velocità di vari punti al tempo t.
+$$\vec{r}_n(t) = \vec{r}_c(t) + h\hat{y} \:\:\:\text{ con }\:\:\: \vec{r}_c(t) = \vec{r}_{CM}(t) - R\hat{y}$$
+$$\dot{\vec{r}}(t) = \vec{w}(t) \times [\vec{r}_h(t) - \vec{r}_c(t)] = w\hat{z} \times h\hat{y} = -wh\hat{x} \text{ (aumenta con h)}$$
+$$\dot{\vec{r}}_{CM}(t) = \dot{\vec{r}}_{R}(t) = -wR\hat{x} \hspace{20pt} \dot{\vec{r}}_{2R}(t) = -w2R\hat{x}$$
+$$\vec{r}_{\pm}(t) = \vec{r}_{CM}(t) \pm R\hat{x} = \vec{r}_c(t) + R\hat{y} \pm R\hat{x} \hspace{10pt}\dot{\vec{r}}_{\pm}(t) = \vec{w}(t) \times [\vec{r}_{\pm}(t) - \vec{r}_C(t)] = w\hat{z} \times [R\hat{y} \pm R\hat{x}] = -wR\hat{x}\pm wR\hat{y}$$
+Esprimo il vettore momento angolare se il polo è centro instantaneo di rotazione, alternativa a KonigI.
+$$\vec{L}_v(t) = \sum_{\alpha} m_{\alpha}[\vec{r}_{\alpha} - \vec{r}_v(t)] \times \dot{\vec{r}}_{\alpha}(t) = \sum_{\alpha}m_{\alpha}[\vec{r}_{\alpha}(t) - \vec{r}_v(t)] \times \vec{w}(t) \times [\vec{r}_{\alpha} - \vec{r}_v(t)]$$
+$$\text{Sono moti planari:}
+\begin{cases}
+    \vec{w}(t) = w(t) \hat{z}\\
+    \vec{r}_{\alpha}(t) - \vec{r}_v(t) = x_{\alpha}'(t)\hat{x} + y_{\alpha}'\hat{y}
+\end{cases}
+= \sum_{\alpha}m_{\alpha}(x_{\alpha}'(t)^2 + y_{\alpha}'(t)^2) \cdot w(t) = I_v(t)w(t)$$\\
+Momento di inerzia assiale rispetto al centro ist. rot. Utile sopratutto se $I_v$ costante nel tempo.\\\\
+Esprimo l'energia cinetica se esiste il centro di ist. rot, alternativa a Konig II.
+$$K(t) = \sum_{\alpha}\frac{1}{2}m_{\alpha}||\dot{\vec{r}}_{\alpha}||^2 = \sum_{\alpha}\frac{1}{2}m_{\alpha}||\vec{w}(t) \times [\vec{r}_{\alpha}(t) - \vec{r}_v(t)]||^2$$
+Solo moti planari:
+$$= \sum_{\alpha}\frac{1}{2}m_{\alpha}(x_{\alpha}'(t)^2 + y_{\alpha}'(t))^2 w(t)^2 = \frac{1}{2}I_v(t)w(t)^2$$
+Utilizzando il teorema di \textbf{Huygens-Steiner} ritrovo le espressioni Konin I e II.
+\begin{example}
+    Cilindro in moto di puro rotolamento.
+    \begin{equation*}
+        \begin{split}
+            \vec{L}_c(t) & = m[\vec{r}_{CM}(t) - \vec{r}_c(t)] \times \dot{\vec{r}}_{CM}(t) + I_{CM}\dot{\Theta}(t)\hat{z} \hspace{15pt}\text{ (Konig I)}\\
+                         & = mR\hat{y} \times (-\dot{\Theta}(t)R \hat{x}) + I_{CM}\dot{\Theta}(t)\hat{z} \hspace{15pt}\text{ (puro rotolamento)}\\
+                         & = mR^2\dot{\Theta}(t)\hat{z} + \frac{1}{2}MR^2\dot{\Theta}(t)\hat{z} = \frac{3}{2}mR^2\dot{\Theta}(t)\hat{z}
+        \end{split}
+    \end{equation*}
+    \begin{equation*}
+        \begin{split}
+            \vec{L}_c(t) & = I_c\dot{\Theta}\hat{z} \hspace{15pt}\text{(centro istantaneo rotazione)}\\
+                         & = (I_{CM} + mR^2) \dot{\Theta}(t)\hat{z} \hspace{15pt} (Huygens-Steiner)\\
+                         & = (\frac{1}{2}mR^2 + mR^2)\dot{\Theta}(t)\hat{z} = \frac{3}{2}mR^2\dot{\Theta}(t)\hat{z}
+        \end{split}
+    \end{equation*}
+    $$K(t) = \frac{1}{2}m\dot{x}_{CM}(t)^2 + \frac{1}{2}I_{CM}\dot{\Theta}(t)^2 \:\:\text{ (Koning II) }\:\: = \frac{1}{2}m[R\dot{\Theta}(t)]^2 + \frac{1}{2} \cdot \frac{1}{2}mR^2\dot{\Theta}(t)^2 = \frac{3}{4}mR^2\dot{\Theta}(t)^2$$
+    $$K(t) = \frac{1}{2}I_v\dot{\Theta}(t)^2 \:\:\text{ (centro ist. rot.) }\:\: = \frac{1}{2}(\frac{1}{2}mR^2 + mR^2)\dot{\Theta}(t)^2 = \frac{3}{4}mR^2\dot{\Theta}(t)^2$$
+\end{example}
+
+\subsection{Momento risultate della forza peso su un sistema}
+\begin{equation*}
+    \begin{split}
+        \vec{M}_0 & = \sum_{\alpha}[\vec{r}_{\alpha} - \vec{r}_0] \times \vec{F}_{\alpha} = \sum_{\alpha}[\vec{r}_{\alpha} - \vec{r}_0] \times (m_{\alpha}\vec{g}) = (\sum_{\alpha}m_{\alpha}\vec{r}_{\alpha}) \times \vec{g} - (\sum_{\alpha}m_{\alpha})\vec{r}_0 \times \vec{g}\\
+                  & = M\vec{r}_{CM} \times \vec{g} - M\vec{r}_0 \times \vec{g} \:\:\:\:\:(\underline{\vec{r}_{CM} \equiv \frac{1}{M}\sum_{\alpha}m_{\alpha}\vec{r}_{\alpha}}) \:\:\:\:\: = [\vec{r}_{CM} - \vec{r}_0] \times (M\vec{g}) 
+    \end{split}
+\end{equation*}
+Il momento risultate è lo stesso che per un punto materiale di massa M e posizione $\vec{r}_{CM}$.
+\begin{example}
+    Pendolo "fisico". Sbarretta omogenea di lunghezza L, massa M, sezione trascurabile. Centro (istantaneo) di rotazione nel vincolo.
+    Coordinate polari $\hat{r} = -\cos\Theta\hat{y} + \sin\Theta\hat{x}$. 
+    $$I_v = \sum_{\alpha}dm_{\alpha} \cdot r_{\alpha}^2 \simeq  \int_{0}^{L}dr \cdot \lambda \cdot r^2 = \lambda \frac{L^3}{3} = \frac{1}{3}ML^2$$
+    usando $\lambda \equiv M/L$ densità per unità di lunghezza
+    $$r_{CM} = \frac{1}{M}\sum_{\alpha}dm_{\alpha} \simeq \frac{1}{M} \int_{0}^{L} dr \cdot \lambda r = \frac{1}{M}\lambda \frac{L^2}{2} = \frac{1}{M}M \frac{L}{2} = \frac{L}{2}$$
+    Velocità del CM
+    $$\dot{\vec{r}}_{CM}(t) = \vec{w}(t) \times [\vec{r}_{CM}(t) - \vec{r}_v(t)] = \dot{\Theta}\hat{z} \times \frac{L}{2}\hat{z} = \dot{\Theta}(t) \frac{L}{2}\hat{\Theta}$$
+    II equazione cardinale rispetto al vincolo.
+    $$\vec{L}_v(t) = I_v\dot{\Theta}(t)\hat{z}\:\:\: \Rightarrow \:\:\: \dot{\vec{L}}_v(t) = I_v\ddot{\Theta}(t)\hat{z}$$
+    \begin{equation*}
+        \begin{split}
+            \vec{M}_v(t) & = (\vec{r}_v - \vec{r}_v) \times \vec{N} \:\:\text{ (reazione vincolare: nel polo)}\:\: + (\vec{r}_{CM}(t) - \vec{r}_v) \times (M\vec{g}) \:\:\text{ forza prso : nel CM}\:\:\\
+                         & = \frac{L}{2}\hat{r} \times (-Mg\hat{y}) = -\frac{MLg}{2}(-\cos\Theta(t)\hat{y} + \sin\Theta(t)\hat{x}) \times \hat{y} = -\frac{MLg}{2}\sin\Theta(t)\hat{z}
+        \end{split}
+    \end{equation*}
+    $$\dot{\vec{L}}_v(t) = \vec{M}_v(t) - M\dot{\vec{r}}_v(t) \times \dot{\vec{r}}_{CM}(T) \:\:\text{ ma }\:\: \dot{\vec{r}}_v(t) \equiv 0 \hspace{15pt} \Rightarrow \hspace{15pt}\frac{1}{3}ML^2\ddot{\Theta}(t) = -\frac{MLg}{2}\sin\Theta(t)$$
+    $$\ddot{\Theta}(t) = -\frac{3}{2}\frac{g}{L} \sin\Theta(t) \Rightarrow \Theta(t) = \cos(t)$$
+    Massimo Valore di $\Theta(t)$ se $\dot{\Theta}(t_1) = w_1$ per $\Theta(t_1) = 0$
+\end{example}
+\hspace{-15pt}\textbf{Energia meccanica si conserva perché le forze che fanno lavoro sono conservatie}.\\
+$L_n = 0$ perché $\vec{N}$ applicata ad un punto del corpo che è fermo (in $\vec{r}_v$).
+$$E(t) = \frac{1}{2}I_v\dot{\Theta}(t)^2 - Mg\frac{L}{2}\cos\Theta(t) \hspace{15pt} E(t_1) = \frac{1}{2}I_v w_1^2 - Mg \frac{L}{2} \hspace{15pt} E(t_{max}) = -Mg\frac{L}{2}\cos\Theta_{max}$$
+Nel $E(t_max)$ no contributo cinetico $\dot{\Theta}(t_max) = 0$
+$$AE = L_{NC} \Rightarrow E(t_{max}) = E(t_1) \hspace{15pt}-Mg\frac{L}{2}\cos\Theta_{max} = \frac{1}{2}\frac{1}{3}ML^2 w_1^2 - Mg\frac{L}{2} \hspace{15pt} \Theta_{max} = \arccos[1 - \frac{1}{3}\frac{L}{g}w_1^2]$$

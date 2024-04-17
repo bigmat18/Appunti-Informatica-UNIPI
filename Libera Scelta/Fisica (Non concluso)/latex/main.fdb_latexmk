@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1713197442 "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.tex" "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.pdf" "main" 1713197445
-  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/corpo-rigido.tex" 1712592909 11690 e0d2a0e3fbb032325f701fc87e3e6370 ""
+["pdflatex"] 1713376138 "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.tex" "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.pdf" "main" 1713376140
+  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/corpo-rigido.tex" 1713376137 21784 8faf80c1a347bbcd76b787b580053201 ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/energia-cinetica.tex" 1709681266 7818 bf85114775e376b25030dc37891c8f23 ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/forze.tex" 1709413510 17723 1791c4e100fbac68a7c4bd0d9206c59a ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/frontespizio.tex" 1709719127 915 07c0c6cb7564fc1f2ffb8b1cb69bff12 ""
@@ -13,6 +13,7 @@
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazioni-vincolari-4.png" 1709121273 28487 ef410d7b317de83f66601456d9fdd253 ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazioni-vincolari-5.png" 1709391069 12901 c0d26532437aeedbe4e130dbccf9f15b ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/esempio-reazioni-vincolari-6.png" 1709391132 13042 fbdcf604998ace707ed78d83c7243159 ""
+  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/ess-cilidro-rotola-piano-scabro.png" 1713365173 24996 e73643120216c88fd8eedc47af9d6a67 ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/ess-traiettoria.png" 1707310210 33632 6a16dbbd9d62db4142bdbd9e4a187856 ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/forza-elastica.png" 1709119502 21830 782d5d7acfddfef601ab14e34c756cfb ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/geo-3d.png" 1712241838 47872 7a99582e7ae3f8639a8a46c2e5ae02df ""
@@ -29,10 +30,10 @@
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/trasformazioni-inverse.png" 1709118908 47632 afeb91ffc058a8a8a7e4eba895ff4ae1 ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/images/vettore-velocità.png" 1707311439 22249 27df351bfa5b99aefdda3b8e710feef6 ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/introduction.tex" 1709308470 10704 4ee27fbea2721cfa82f78a02ec0b9b99 ""
-  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.aux" 1713197444 4776 18d476a76d67f406eb5aa309244d0927 "pdflatex"
-  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.out" 1713197444 5150 2e03798cbb964919e2b4d099e5144943 "pdflatex"
+  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.aux" 1713376140 5074 52657404eb38e50f47b80254b60ef783 "pdflatex"
+  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.out" 1713376140 5712 63ff106022bc20cda5a668b872e646a4 "pdflatex"
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.tex" 1713191008 3010 48c0e5fd11abb660d618a5c223832848 ""
-  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.toc" 1713197444 2581 2a785b6df399668dda2b947bf93ee04f "pdflatex"
+  "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/main.toc" 1713376140 2797 1c35e98e55b24451238876b23d8f80c2 "pdflatex"
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/marchio_unipi_pant541.png" 1707307972 176739 066b5d4463adf1c48940d465b736a16e ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/sistemi.tex" 1712236718 10607 9fd12b60238deef592c463397f734bd6 ""
   "/Users/matteogiu/Desktop/Università/Materiale/Libera Scelta/Fisica (Non concluso)/latex/urti.tex" 1713197442 5647 00619b432715f3b4005592e346dae69d ""
