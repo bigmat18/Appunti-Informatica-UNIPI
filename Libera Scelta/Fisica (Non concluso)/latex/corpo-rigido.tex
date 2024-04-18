@@ -4,12 +4,17 @@ Descriviamo un corpo rigido come un sistema di punti materiali, le distanze tra
 i quali sono constati nel tempo. Punti: 
 $$\{\vec{r}_{\alpha=1}^N\} \hspace{15pt} \{m_{\alpha}\}_{\alpha=1}^N \hspace{15pt} d_{\alpha\beta} = ||\vec{r}_{\alpha}(t) - \vec{r}_{\beta}(t)|| = const$$
 Le leggi orarie $\vec{r}_{\alpha}(t)$ dei punti del sistema sono vincolate da questa condizione. Detto ciò invece di 3N coordinate indipendenti
-ne bastano 6: $\vec{r}_{CM}(3)$ e 3 angoloi. Per il moto planare: $\vec{r}_{CM}(2)$ e 1 angolo.\\\\
-Un punto geometrico determinato solo dalle posizioni $\vec{r}_{\alpha}$, come il centro di massa, ha pure distanze constante da tutti gli $\vec{r}_{\alpha}$, quindi $||\vec{r}_{CM} - \vec{r}_{\alpha}(t)|| = const$.
+ne bastano 6: $\vec{r}_{CM}(3)$ e 3 angoloi. Per il moto planare: $\vec{r}_{CM}(2)$ e 1 angolo.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.2\textwidth]{images/corpo-rigido.png}
+\end{figure}
+
+\hspace{-15pt}Un punto geometrico determinato solo dalle posizioni $\vec{r}_{\alpha}$, come il centro di massa, ha pure distanze constante da tutti gli $\vec{r}_{\alpha}$, quindi $||\vec{r}_{CM} - \vec{r}_{\alpha}(t)|| = const$.
 Si dice che tale punto è \textbf{solidale} al corpo rigido.\\\\
 Due punti $\vec{r}_1(t), \vec{r}_2(t)$ solidali al C.R. definiscono un \textbf{vettore solidale} $\vec{r}_2(t) - \vec{r}_1(t)$. Conviene introdurre
 un sistema di \textbf{assi solidali}, $\hat{x}', \hat{y}', \hat{z}'$ in cui le coordinate dei vettori solidali sono costanti.\\\\
-In Geometrica planare (quella che usiano in questo corso):
+In Geometrica planare (quella che usiamo in questo corso):
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.65\textwidth]{images/geo-planare.png}
@@ -69,7 +74,7 @@ La parte $\sum_{\alpha=1}^{N}m_{\alpha}(x_{\alpha}'^2 + y_{\alpha}'^2)$ è detta
 \begin{example}
     $I_{CM} = m_1|x_1'|^2 + m_2|x_2'|^2$ (ricordare che per la definizone $m_1x_1' + m_2x_2' = 0$)
 \end{example}
-\begin{example}
+\begin{example}\label{ess-momento-angolare-corpo-rigido-1}
     Momento di inerzia assiale di un cilindro. $V= \pi R^2\cdot h \hspace{10pt}$ densità $\rho = M/V$
     $$I_z = \sum_{\alpha=1}^{N}m_{\alpha}(x_{\alpha}'^2 + y_{\alpha}'^2) = \int dm(x'^2 + y'^2) = \int dx' \int dy' \int_{0}^{h}dz' \cdot \rho(x'^2 + y'^2)$$
     Cambio di variabili nell'integrale per avere estremi più semplici: $x' = r \cdot \cos\Theta, y' = r \cdot \sin\Theta, dx' \cdot dy' = dr \cdot d\Theta \cdot r$
@@ -85,7 +90,7 @@ La parte $\sum_{\alpha=1}^{N}m_{\alpha}(x_{\alpha}'^2 + y_{\alpha}'^2)$ è detta
     \underline{Teorema degli assi paralleli (Hyuhens - Steuiner)}
 \end{example}
 
-\begin{example}
+\begin{example}\label{ess-momento-angolare-corpo-rigido-2}
     Cilindro con foto parallelo all'asse. Considero due cilindri fittizi di densità uguale al cilindro 1. Il 2 
     occupa lo spazio del foro, il 3 come 1 ma senza foto.
     $$            
@@ -109,7 +114,7 @@ $$
 La parte $I_z\omega(t)\hat{z}$ è una forma semplificata valida solo per il modo nel piano $\hat{x}, \hat{y}$. Essenziale il punto di applicazione delle forze.
 Polo $\vec{r}_p$ arbitrario, scelgo quello che semplifica.
 
-\begin{example}
+\begin{example}\label{ess-momento-angolare-corpo-rigido-3}
     Cilindro vincolato e forza costante. \\
     Scelto come polo il CM. $\vec{F} = - F\hat{x} \:\:\: \vec{N}= N \hat{x} \:\:\: \vec{\omega} = \dot{\Theta}\hat{z}$.\\
     Abbiamo che $N = F$ e nessuna info su $\Theta$. I vincoli sono: $\vec{r}_{CM}(t) \equiv 0 \Rightarrow \ddot{\vec{r}}_{CM}(t) = 0$
@@ -119,6 +124,24 @@ Polo $\vec{r}_p$ arbitrario, scelgo quello che semplifica.
     \end{itemize}
     $$I_z\dot{\omega}(r)\hat{z} = (\vec{r}_i - \vec{r}_{CM}) \times \vec{F} + (\vec{r}_{CM} - \vec{r}_{CM}) \times \vec{N} = R\hat{y} \times (-F\hat{x}) + 0 = RF\hat{z} \Rightarrow I_z\ddot{\Theta}(t) = RF \hspace{10pt}\ddot{\Theta} = \frac{2F}{MR} \text{ costante}$$
 \end{example}
+
+\begin{figure}[h!]
+    \begin{subfigure}{0.39\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/ess-momento-angolare-corpo-rigido-1.png}
+        \caption*{Esempio \ref{ess-momento-angolare-corpo-rigido-1}}
+    \end{subfigure}
+    \begin{subfigure}{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/ess-momento-angolare-corpo-rigido-2.png}
+        \caption*{Esempio \ref{ess-momento-angolare-corpo-rigido-2}}
+    \end{subfigure}
+    \begin{subfigure}{0.39\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/ess-momento-angolare-corpo-rigido-3.png}
+        \caption*{Esempio \ref{ess-momento-angolare-corpo-rigido-3}}
+    \end{subfigure}
+\end{figure}
 
 \subsection{Condizione del "puro rotolamento"}
 Il punto $\vec{r}_1$ del corpo rigido a contatto con la superficie al tempo $t_1$ è fermo. Al tempo 
@@ -211,7 +234,7 @@ Il lavoro (e quindi il potenziale) è lo stesso che per un punto materiale di ma
         \textbf{La forza di attrito statico non fa lavoro perché il punto del corpo al quale si applica è fermo}
     \end{itemize}
 \end{example}
-Un punto geometrico $\vec{r}_v(t)$ si dice \textbf{centro istantaneo di rotolazione} per un corpo rigido se, al tempo t, vale
+\hspace{-15pt}Un punto geometrico $\vec{r}_v(t)$ si dice \textbf{centro istantaneo di rotolazione} per un corpo rigido se, al tempo t, vale
 $$\dot{\vec{r}}_1(t) = \vec{w}(t) \times [\vec{r}_1(t) - \vec{r}_v(t)]$$
 per tutti i punti $\vec{r}_1$ del corpo rigido.
 \begin{observation}
@@ -223,6 +246,10 @@ $$\vec{r}_n(t) = \vec{r}_c(t) + h\hat{y} \:\:\:\text{ con }\:\:\: \vec{r}_c(t) =
 $$\dot{\vec{r}}(t) = \vec{w}(t) \times [\vec{r}_h(t) - \vec{r}_c(t)] = w\hat{z} \times h\hat{y} = -wh\hat{x} \text{ (aumenta con h)}$$
 $$\dot{\vec{r}}_{CM}(t) = \dot{\vec{r}}_{R}(t) = -wR\hat{x} \hspace{20pt} \dot{\vec{r}}_{2R}(t) = -w2R\hat{x}$$
 $$\vec{r}_{\pm}(t) = \vec{r}_{CM}(t) \pm R\hat{x} = \vec{r}_c(t) + R\hat{y} \pm R\hat{x} \hspace{10pt}\dot{\vec{r}}_{\pm}(t) = \vec{w}(t) \times [\vec{r}_{\pm}(t) - \vec{r}_C(t)] = w\hat{z} \times [R\hat{y} \pm R\hat{x}] = -wR\hat{x}\pm wR\hat{y}$$
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{images/moto-puro-rotolamento.png}
+\end{figure}
 Esprimo il vettore momento angolare se il polo è centro instantaneo di rotazione, alternativa a KonigI.
 $$\vec{L}_v(t) = \sum_{\alpha} m_{\alpha}[\vec{r}_{\alpha} - \vec{r}_v(t)] \times \dot{\vec{r}}_{\alpha}(t) = \sum_{\alpha}m_{\alpha}[\vec{r}_{\alpha}(t) - \vec{r}_v(t)] \times \vec{w}(t) \times [\vec{r}_{\alpha} - \vec{r}_v(t)]$$
 $$\text{Sono moti planari:}
@@ -284,6 +311,18 @@ Il momento risultate è lo stesso che per un punto materiale di massa M e posizi
     $$\dot{\vec{L}}_v(t) = \vec{M}_v(t) - M\dot{\vec{r}}_v(t) \times \dot{\vec{r}}_{CM}(T) \:\:\text{ ma }\:\: \dot{\vec{r}}_v(t) \equiv 0 \hspace{15pt} \Rightarrow \hspace{15pt}\frac{1}{3}ML^2\ddot{\Theta}(t) = -\frac{MLg}{2}\sin\Theta(t)$$
     $$\ddot{\Theta}(t) = -\frac{3}{2}\frac{g}{L} \sin\Theta(t) \Rightarrow \Theta(t) = \cos(t)$$
     Massimo Valore di $\Theta(t)$ se $\dot{\Theta}(t_1) = w_1$ per $\Theta(t_1) = 0$
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}{.20\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/ess-pendolo-1.png}
+        \end{subfigure}
+        \hspace{30pt}
+        \begin{subfigure}{.20\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/ess-pendolo-2.png}
+        \end{subfigure}
+    \end{figure}
 \end{example}
 \hspace{-15pt}\textbf{Energia meccanica si conserva perché le forze che fanno lavoro sono conservatie}.\\
 $L_n = 0$ perché $\vec{N}$ applicata ad un punto del corpo che è fermo (in $\vec{r}_v$).
