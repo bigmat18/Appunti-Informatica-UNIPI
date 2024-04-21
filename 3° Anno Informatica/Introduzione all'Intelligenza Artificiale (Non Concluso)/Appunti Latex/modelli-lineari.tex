@@ -125,3 +125,116 @@ $$\Delta w_0 = -\frac{\partial E(w)}{\partial w_0} = 2(y- h_w(x)) \hspace{15pt} 
 In conclusione possiamo dire che l'approccio del Gradiant descent è semplice ed efficacie per ricerca locale e approcci alla soluzione LMS, inoltre
 ci permette di cercare in uno spazio infinito di ipotesi, può essere facilmente applicato sempre per $H$ contuno e perdite differenziabili non solo ai modelli lineari
 (ess. reti neurali e deep learning models). A livello di efficienza molti miglioramenti sono possibili come il Newton's method, Conjugate Gradiant.
+
+\subsection{Estensioni a $l$ dati}
+\begin{definition}
+    Possiamo riassumente per $l$ patterns $(x_p, y_p)$ nel seguente modo.
+    $$\Delta w_0 = - \frac{\partial E(w)}{\partial w_0} = 2 \sum_{p=1}^{l}(y_p - h_w(x_p)) \hspace{15pt} \Delta w_1 = -\frac{\partial E(w)}{\partial w_1} = 2 \sum_{p=1}^{l}(y_p - h_w(x_p)) \cdot x_p$$
+    Dove $x_p$ è un p-esmo input, $y_p$ l'output per $p$, $w$ una coppia libera, $l$ numero di esempi.
+\end{definition}
+\hspace{-15pt}Possiamo aggiornare $w$ dopo (ripetendo) una fase di dati di training $l$ $\to$ \textbf{algoritmo di batch} (blu). Oppure
+possiamo aggiornare $w$ dopo ogni pattern $p \to$ \textbf{on-line algorithm} (discesa del gradiente stocastico) (purple and green), questo caso 
+potrebbe essere più veloce, ma necessitare di step più piccoli.
+
+\subsection{Estendere a vettori di input}
+Questo è una caso standard, usare da 2 finoa centinaia di variabili/features di input  $x = [x_1, x_2, \cdots, x_n]$, il \textbf{pattern} di input
+è un vettore.
+\begin{example}
+    Degli esempi potrebbero essere calcolare lo stato di una scacchiera in un gioco di dama per num. di pezzi bianchi/neri/re/catturati
+    nel turno successivo: 6 variabili. $w$ peso che viene dalle "fetures sul tavolo".
+\end{example}
+\hspace{-15pt}Facciamo un piccolo riassunto della notazione per i dati. Prendiamo una $X$ matrice $l, x, n$ dove $l$ sono le righe
+mentreh $n$ le colonne (feuteres, variabili, attributi), $p = 1, \cdots, l$ e $i = 1, \cdots n$. Abbiamo spesso bisogno di omettere alcuni
+indici quando il contesto è chiaro, ad es:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/resume-data-notation.png}
+\end{figure}
+\begin{itemize}
+    \item Ogni riga, $x$ generica (vettore in grassetto), un raw nella tabella: (input) esempio, pattern, instance, sample, ..., input vector, ...
+    \item $x_i$ o $x_j$ (scalari): componenti $i$ o $j$ (dato un pattern, omettendo p).
+    \item $x_p$ (o $x_i$) (vettor in grassetto) il p-esimo (o i-esimo) raw nella tabella = pattern $p$ (o i)
+    \item $x_p,i$ (scalare) anche come ($x_p$): componente $i$ nel pattern $p$ (o usamo $x_p,j$ per il componente j, ecc.)
+    \item Per il target sono solitamente usiamo solo $y_p$ con $p=1, \cdots l$ (lo stesso per $d$ o $t$)
+\end{itemize}
+Per la notazione di input multidimensionali andiamo ad assumere una colonna vettere per $x$ e $w$ (in grassetto). Numero 
+del dato $l$, dimensione del vettore di input $n$, $y_p$ (targets) e $p = 1, \cdots, l$
+$$w^t x + w_0 = w_0 + w_1 x_1 + w_2 x_2 + \cdots w_n x_n = w_0 + \sum_{i=1}^{n} w_i x_i$$
+\begin{note}
+    Notare che spesso, come prima, la notazione di trasposta $T$ in $w^T$ è omessa.
+\end{note}
+\hspace{-15pt}$w_0$ è l'intercetta, la soglia, il bias, l'offset.. Spesso è conveninente per includere la constante $x_0 = 1$ 
+in modo che possiamo scriverlo come:
+$$w^T x = x^T w (inner product) \hspace{15pt}x^T = [1, x_1, x_2, \cdots, x_n] \hspace{15pt} w^t = [w_0, w_1, w_2, \cdots, w_n]$$
+\begin{note}
+    Notare che $w$ è un parametro (libero) continuo "pesi".
+\end{note}
+\newpage
+\hspace{-15pt}In una vista geometrica avremmo quello che si chiama \textbf{iperpiano}. Per 2 variabili avremmo:
+$$x^T w = w^T x = w_0 + w_1 x_1 + w_2 x_2 \hspace{20pt} \text{(n dim)} w^t = [w_0, w_1, w_2, \cdots, w_n]$$
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.2\textwidth]{images/hyperplane.png}
+\end{figure}
+Quindi possiamo definirlo come:
+$$h(x_p) = x_p^T w = \sum_{i=0}^{n}x_{p,i} w_i$$
+Possimao sintetizzare il caso con input di dimensione n, e l patterns nel seguenti modo:
+\begin{itemize}
+    \item \textbf{Given} un insieme di $l$ esempi di trainign $x_p, y_p$
+    \item \textbf{Find} il peso del vettore $w$ che minimizzi la perdita attesa dei dati di training.
+\end{itemize}
+$$E(w) = \sum_{p=1}^{l}(y_p - x_p^T w)^2 = ||y - Xw||^2$$
+Dove $x_p$ è il p-esimo input del vettore, $y_p$ è l'outpu per p, $w$ è la coppia libera, $l$ il numero
+di esempi e $n$ la dimensione dell'input.
+
+\subsection{Algoritmo iterativo di discesa del gradiante}
+\begin{definition}
+    Definiamo ora \textbf{l'algoritmo iterativo di discesa del gradiante}
+    $$\Delta w_i = -\frac{\partial E(w)}{\partial w_i} = \sum_{p=1}^{l}(y_p - h_w(x_p)) \cdot x_{p,i} = w\sum_{p=1}^{l}(y_p - x_p^T w)x_{p,i}$$
+    Abbiamo che il 2 è una costante che può essere ignorata nello sviluppo dell'algorimo, mentre $x_{p,i}$ è il componente $i$ del pattern $p$
+\end{definition}
+\hspace{-15pt}Questo è una estensione vettoriale al gradiente molto semplice nel quale ogni x, ha il suo $w_i$ ed il suo $\Delta w_i$ (come il singolo x prima).
+Il vettore di gradianti per una dimensione n sarebbe il seguente:
+$$
+\Delta w = -\frac{\partial E(w)}{\partial w} = 
+\begin{bmatrix}
+    -\frac{\partial E(w)}{\partial w_1}\\
+    -\frac{\partial E(w)}{\partial w_2}\\
+    -\frac{\partial E(w)}{\partial w_i}\\
+    \cdots\\
+    -\frac{\partial E(w)}{\partial w_n}
+\end{bmatrix}
+= 
+\begin{bmatrix}
+    \Delta w_1\\
+    \Delta w_2\\
+    \Delta w_i\\
+    \cdots \\
+    \Delta w_n
+\end{bmatrix}
+$$
+Possiamo lavorare in uno spazio a più luci senza la necessità di visualizzarlo. PS $w_0$ viene omesso sopra, puoi includerlo facilmente.\\\\
+Per riassumenre possiamo spiegare l'algorimo in dei semplici passaggi:
+\begin{enumerate}
+    \item Iniziare con un vettore dei pesi $w_initial$ (piccolo), fissando un $\eta$ ($0 < \eta < 1$).
+    \item Calcolare $\Delta w =$ -"gradiante di $E(w)$" = $-\frac{\partial E(w)}{\partial w}$ (o per ogni $w_j$)
+    \item Calcolare $w_new = w + \eta \cdot \Delta w$ (o per ogni $w_j$) 
+    \item Ritornare al 2 e ripetere finché non si converge o $E(w)$ è "sufficetemente piccolo"
+\end{enumerate}
+$\Delta w/l$ least mean square:
+\begin{itemize}
+    \item Batch versions ($\Delta w$ dopo ogni "epoch" dei dati "l")
+    \item Stochatic/on-line version: aggiornare w per ogni pattern p (da $\Delta_p w = x_p (y_p - x_p^T w)$ senza aspettare la somma totale su $l$)
+    \item $\eta$ = learning rate: seed/stabilty trade-off: può essere (gradualemnte) decrementato a zero (garantendo convergenza, 
+    evitando oscillazioni intorno al min.)
+\end{itemize}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/learning-curve-examples.png}
+\end{figure}
+\begin{definition}
+    Queste sono le \textbf{curve di apprendimento}: Mostrano come si verifica l'errore diminuisce attraverso il gradiente iterazioni di discesa.
+\end{definition}
+\hspace{-15pt}I vantaggi dei modelli linari sono che se funzionano bene sono un modello fantasti: molto semplice,
+tutte le informazioni dei dati sono in $w$, facili da inteprestare, dati "rumorosi" sono accettati, Fenomeni lineari: un sogno per la scienza: ideale per realizzare un fenomeno “naturale”.
+legge.
