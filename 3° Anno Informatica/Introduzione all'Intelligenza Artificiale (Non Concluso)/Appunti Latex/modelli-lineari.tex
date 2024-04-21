@@ -191,9 +191,9 @@ di esempi e $n$ la dimensione dell'input.
 \begin{definition}
     Definiamo ora \textbf{l'algoritmo iterativo di discesa del gradiante}
     $$\Delta w_i = -\frac{\partial E(w)}{\partial w_i} = \sum_{p=1}^{l}(y_p - h_w(x_p)) \cdot x_{p,i} = w\sum_{p=1}^{l}(y_p - x_p^T w)x_{p,i}$$
-    Abbiamo che il 2 è una costante che può essere ignorata nello sviluppo dell'algorimo, mentre $x_{p,i}$ è il componente $i$ del pattern $p$
+    Abbiamo che il 2 è una costante che può essere ignorata nello sviluppo dell'algoritmo, mentre $x_{p,i}$ è il componente $i$ del pattern $p$
 \end{definition}
-\hspace{-15pt}Questo è una estensione vettoriale al gradiente molto semplice nel quale ogni x, ha il suo $w_i$ ed il suo $\Delta w_i$ (come il singolo x prima).
+\hspace{-15pt}Questo è una estensione vettoriale al gradiente molto semplice nel quale ogni x, ha il suo $w_i$ e il suo $\Delta w_i$ (come il singolo x prima).
 Il vettore di gradianti per una dimensione n sarebbe il seguente:
 $$
 \Delta w = -\frac{\partial E(w)}{\partial w} = 
@@ -225,7 +225,7 @@ $\Delta w/l$ least mean square:
 \begin{itemize}
     \item Batch versions ($\Delta w$ dopo ogni "epoch" dei dati "l")
     \item Stochatic/on-line version: aggiornare w per ogni pattern p (da $\Delta_p w = x_p (y_p - x_p^T w)$ senza aspettare la somma totale su $l$)
-    \item $\eta$ = learning rate: seed/stabilty trade-off: può essere (gradualemnte) decrementato a zero (garantendo convergenza, 
+    \item $\eta$ = learning rate: seed/stabilty trade-off: può essere (gradualmente) decrementato a zero (garantendo convergenza, 
     evitando oscillazioni intorno al min.)
 \end{itemize}
 \begin{figure}[h!]
@@ -235,6 +235,94 @@ $\Delta w/l$ least mean square:
 \begin{definition}
     Queste sono le \textbf{curve di apprendimento}: Mostrano come si verifica l'errore diminuisce attraverso il gradiente iterazioni di discesa.
 \end{definition}
-\hspace{-15pt}I vantaggi dei modelli linari sono che se funzionano bene sono un modello fantasti: molto semplice,
-tutte le informazioni dei dati sono in $w$, facili da inteprestare, dati "rumorosi" sono accettati, Fenomeni lineari: un sogno per la scienza: ideale per realizzare un fenomeno “naturale”.
+I vantaggi dei modelli lineari sono che se funzionano bene sono un modello fantastici: molto semplice,
+tutte le informazioni dei dati sono in $w$, facili da interpretare, dati "rumorosi" sono accettati, Fenomeni lineari: un sogno per la scienza: ideale per realizzare un fenomeno “naturale”.
 legge.
+
+\subsection{Limitazioni}
+Una delle limitazioni dei modelli lineari sono le tasks di regressione per problemi non lineari.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{images/regression-task-non-linear-problems.png}
+\end{figure}
+
+\hspace{-15pt}Proviamo ora a muoverci verso delle relazioni non-lineari. Notare che in $h_w(x) = w_1 x + w_0$ o $h_w(x) = w^T \cdot x$ 
+come modelli statistici parametrici: "\textbf{lineare}" non si riferisce a questa linea rette, piuttosto al modo in cui
+si verificano i coefficienti di regressione $w$ nell'equazione di regressione.\\\\
+Possiamo quindi utilizzare anche input trasformati, come ad esempio $x, x^2, x^3, x^4, \cdots$ con una relazione \textbf{non lineare} input e outpout, 
+gestiamo la macchina di learning (Least Square solution) sviluppandola nel seguente modo:
+$$h_w(x) = w_0 + w_1 x + w_2 x^2 + \cdots + w_Mx^M = \sum_{j=0}^{M}w_j x^j$$
+Detta \textbf{polynomial regression}.
+\newpage
+\begin{example}
+    Facciamo un esempio non-lineare.
+\end{example}
+\begin{wrapfigure}[10]{r}{0.4\textwidth}
+    \vspace{-25pt}
+    \centering
+    \includegraphics[width=0.2\textwidth]{images/esempio-non-lineare.png}
+\end{wrapfigure}
+Il risultato dell'adattamento di una funzione quadratica (in blu) $M=2$, passante un insieme di punti dati (in rosso). \\\\
+Nei minimi quadrati lineari la dunzione non deve essere lineare in argomento (varibili di input) ma solo nei parametri ($w$) che sono
+determinati per dare il best fit.
+
+\subsection{Linear basis expansion}
+Una generalizazzione (che mostriamo per la regressione) è la \textbf{LBE} o \textbf{linear basis expansion}, che definiamo come
+$$h_w(x) = \sum_{k=0}^{K}w_k\phi_k(x)$$
+L'argomento di input è un vettore con variabili aggiuntive, le quali sono trasformazioni di $x$ secondo una funzione $\phi$ ($\phi_k: R^n \to R$).
+\begin{example}
+    Alcuni eesempi sono:
+    \begin{itemize}
+        \item Rappresentazione polinomiale $x: \phi(x) = x_j^2$ o $\phi(x) = x_jx_i$ ...
+        \item Trasformazione non lineare di un singolo input $\phi(x) = \log(x_k), \phi(x) = root(x)$, ...
+        \item Trasformazione non lineare di input multipli: $\phi(x) = ||x||$
+        \item Splines, ...
+    \end{itemize}
+\end{example}
+\hspace{-15pt}Il numero di paramentri $K>n$. Il modello è lineare nei paramentri (anche in $\phi$, non in $x$): possiamo usare lo stesso
+algorimo di learning di prima.
+
+\begin{example}
+    [1-dim $x$] \hspace{15pt} $\phi_j(x) = x^j$.
+    $$h(x) = w_0 + w_1x + w_2x^2 + \dots + w_Mx^M = \sum_{j=0}^{M}w_jx^j$$
+    1-dim regressione polinomiale ($K=M$). Per il numero di termini nel polinomio con D dim. input vedremo più avanti.\\\\
+    O "qualsiasi altro" $\phi(x) = \phi([x_1, x_2, x_3])$
+    $$h(x) = w_1x_1 + w_2 x_2 + w_3 \log(x_2) + w_4\log(x_3) + w_5(x_2x_3) + w_0$$
+\end{example}
+\hspace{-15pt}Vediamo ora le criticità (sia positive che negative) del basis expansion, per poi arrivare 
+ai così detti approcci "\textbf{dizionari}".
+\begin{itemize}
+    \item \textbf{PROS}: È più espressivo: può modellare in modo più complicato
+    relazioni (rispetto a quelle lineari).
+    \item \textbf{CONS}: Con un'ampia base di funzioni, abbiamo bisogno di metodi per
+    controllare la complessità del modello.
+\end{itemize}
+$$h_w(x) = w_0 + w_1x + w_2x^2 + \dots + w_Mx^M = \sum_{j=0}^{M}w_jx^j$$
+\newpage
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{.3\textwidth}
+        \includegraphics[width=\textwidth]{images/1st-order-polynomial.png}
+        \caption{1st order polynomial}
+    \end{subfigure}
+    \begin{subfigure}{.3\textwidth}
+        \includegraphics[width=\textwidth]{images/3st-order-polynomial.png}
+        \caption{3st order polynomial}
+    \end{subfigure}
+    \begin{subfigure}{.3\textwidth}
+        \includegraphics[width=\textwidth]{images/9st-order-polynomial.png}
+        \caption{9st order polynomial}
+    \end{subfigure}
+\end{figure}
+
+\hspace{-15pt}Notiamo che l'ultimo caso è molto più flessibile, ma potrebbe essere eccessivo. $E(w) = 0$ nei dati di training, diventa
+un modello tropp complesso, scarsa rappresentazione della funzione vera (verde) (a causa del sovradattamento).\\\\
+Capiamo dunque che il tradeoff della complessità è che:
+\begin{itemize}
+    \item Un modello troppo semplice: non fitta i dati in modo corretto \textbf{underfitting}
+    \item Un modello troppo complesso: Altamente sensibile alle leggere perturbazioni dei dati \textbf{overfitting}
+\end{itemize}
+Vuoi scegliere la regolarizzazione per bilanciare i due casi attraverso il controllo della complessità del modello (intesa come flessibilità).
+Considerando che la complessità non è dovuta al costo computazionale ma a misura della flessibilità del modello per adattarsi ai dati.
+
+\subsection{Regularization}
