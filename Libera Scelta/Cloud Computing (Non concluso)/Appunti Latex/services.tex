@@ -39,4 +39,22 @@ Il design deve seguire i seguenti passaggi:
 	\item Testing
 \end{enumerate}
 \subsubsection{Riepilogo}
-L'architettura REST è \textbf{semplice} (utilizza standard famosi e infrastruttura già presente), \textbf{leggera} (sia per i protocolli utilizzati che per i messaggi) e \textbf{scalabile}. Di contro però i client possono richiedere troppi o troppi pochi dati, possono fare un numero limitato di richieste e le convenzioni per la nomenclatura sono inconsistenti.
+L'architettura REST è \textbf{semplice} (utilizza standard famosi e infrastruttura già presente), \textbf{leggera} (sia per i protocolli utilizzati che per i messaggi) e \textbf{scalabile}. Di contro però i client possono richiedere \textbf{troppi o troppi pochi dati}, possono fare un \textbf{numero limitato di richieste} e le convenzioni per la \textbf{nomenclatura} sono inconsistenti.
+
+\subsection{OpenAPI}
+L'iniziativa OpenAPI (ideata dalla Linux Fundation Collaborative Project) ha come obiettivo quello di creare uno standard neutro ed indipendente di API di tipo REST. Formalmente chiamata \textbf{Swagger}, si basa su una descrizione in JSON degli endpoint HTTP, come vengono usati e la struttura dei loro parametri in input e output.\\
+In questo modo l'applicazione può richiedere le specifiche della API per poi fare le richieste nel formato corretto.
+
+\subsection{Microservizi}
+I microservizi nascono per due motivi principali:
+\begin{itemize}
+	\item Diminuire il \textbf{tempo} necessario ad aggiungere funzionalità o aggiornamenti (si riduce il tempo di build)
+	\item Aumentare la \textbf{scalabilità}
+\end{itemize}
+In particolare, l'applicazione viene vista come insieme di servizi, ognuno in esecuzione sul proprio container \textbf{indipendente} che comunica con gli altri tramite meccanismi leggeri di comunicazione. Questo garantisce che la gestione dei dati sia \textbf{decentralizzata} e che l'applicazione sia \textbf{scalabile} orizzontalmente. Garantisce infine una buona \textbf{tolleranza ai guasti}.\\
+A livello di team, generalmente ce n'è uno per servizio che si occupa dell'intero lifecycle, dallo sviluppo al deploy.\\
+I due lati negativi principali sono:
+\begin{itemize}
+	\item \textbf{Overhead di comunicazione}: dato che tutti i servizi devono comunicare tra di loro, ci sarà un grosso traffico
+	\item \textbf{Complessità} del sistema
+\end{itemize}
