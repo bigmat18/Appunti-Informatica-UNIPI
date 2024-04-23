@@ -76,6 +76,8 @@
 \fancyfoot[RE,LO]{\rightmark}
 \fancyfoot[LE,RO]{\thepage}
 
+\usepackage{xcolor}
+
 \renewcommand{\headrulewidth}{.5pt}
 \renewcommand{\footrulewidth}{.5pt}
 % ---- Footer and header ---- 
@@ -108,6 +110,15 @@
 	tabsize=3
 }
 
+\lstdefinestyle{yaml}{
+	keywords=[1]{apiVersion,kind,metadata,name,annotations,spec,rules,paths,backend,http,path,serviceName,servicePort,port,protocol,ports,selector,app,type,labels,replicas,template,image,containerPort,containers,matchLabels},
+	keywordstyle={[1]\color{pink}},
+	string=[s]{"}{"},
+	stringstyle=\color{cyan},
+	comment=[l]{\#},
+	commentstyle=\color{green}
+}
+
 \title{\textbf{Cloud Computing}}
 \author{Realizzato da: Ghirardini Filippo}
 \date{A.A. 2023-2024}
@@ -128,4 +139,5 @@
 	\input{paas}
 	\input{business_models}
 	\input{services}
+	\input{kubernetes}
 \end{document}
