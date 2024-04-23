@@ -17,4 +17,25 @@ Gli \textbf{svantaggi} invece:
 \end{itemize}
 \subsection{Heroku}
 Heroku è una piattaforma cloud basata sulla gestione di un sistema di container, con data services integrati e un ampio ecosistema, per sviluppare ed eseguire app moderne.\\
-Gli utenti usano \textit{container} chiamati \textbf{dynos} per lanciare ed eventualmente scalare le loro applicazioni. Questi sono container linux virtualizzati ed isolati progettati per eseguire codice 
+Gli utenti usano \textit{container} chiamati \textbf{dynos} per lanciare ed eventualmente scalare le loro applicazioni. Questi sono container linux virtualizzati ed isolati progettati per eseguire codice. Ne esistono di diversi tipi (e costi) a seconda delle necessità per l'applicazione.
+\subsubsection{Deployment}
+Per fare il deploy di un'applicazione, Heroku necessita di:
+\begin{itemize}
+	\item Il \textbf{codice sorgente}
+	\item Una lista di \textbf{dipendenze}
+	\item Un \textbf{procfile}, ovvero un file contenente l'elenco dei comandi necessari a far partire il codice
+\end{itemize}
+Il sistema, una volta ricevuti questi parametri, ottiene i linguaggi e le dipendenze necessarie e produce uno \textbf{slug}, che poi verrà inviato ad un \textit{dyno}.
+\subsubsection{Runtime}
+Quando l'applicazione viene fatta partire, Heroku crea un numero di \textit{dyno} in base al carico previsto, ognuno caricato con la stessa configurazione fornita dall'utente.
+\subsubsection{Add-ons}
+Esistono più di 150 servizi di terze parti che forniscono add-ons per le applicazioni che hanno funzionalità di molti tipi diversi, tra cui monitoraggio, data store e logging.\\
+Questo porta al fenomeno del \hyperref[vendor_lockin]{vendor lock in}, in quanto gli add-on potrebbero non essere disponibili al di fuori di Heroku e potrebbe quindi essere necessario riscrivere il codice per quella funzionalità.
+
+\subsection{Altri fornitori}
+Altri esempi di PaaS sono:
+\begin{itemize}
+	\item Microsoft Azure
+	\item Open shift
+	\item Google Firebase
+\end{itemize}
