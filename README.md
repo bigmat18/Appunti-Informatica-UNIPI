@@ -9,34 +9,34 @@ Per gli appunti di ogni materia è presente sia il codice sorgete in Latex, sia 
 
 ### 1° anno
 
-- **Fondamenti di informatica**🟢: gli appunti scritti non sono completi di tutto il corso, ma sono comunque stati usati per l'esame visto che contengono alcuni spiegazioni. C'è inoltre la dispensa e del materiale per esercitarsi.
-- **Analisi matematica**🟢: appunti completi ed esercizi esami passati, consiglio anche qui per esercitasi la piattaforma [SAI Evo](https://evo.di.unipi.it).
-- **Programazione ed algoritmi**🟢: appunti completi e slide sulla parte di programazione dinamica.
-- **Laboratorio I**🔴: nessun appunto, solo il libro. Per esercitarsi consiglio la piattaforma [SAI Evo](https://evo.di.unipi.it).
-- **Algebra lineare**🟡: appunti incompleti, sono poi presenti esercizi molto utili, ed il libro.
+- **Fondamenti di informatica** 🟢: gli [appunti](1° Anno Informatica/Fondamenti di informatica (Concluso)/Appunti-Latex/main.pdf) scritti non sono completi di tutto il corso, ma sono comunque stati usati per l'esame visto che contengono alcuni spiegazioni. C'è inoltre la dispensa e del materiale per esercitarsi.
+- **Analisi matematica** 🟢: [appunti](1° Anno Informatica/Analisi Matematica (Concluso)/Appunti-Latex/main.pdf) completi ed esercizi esami passati, consiglio anche qui per esercitasi la piattaforma [SAI Evo](https://evo.di.unipi.it).
+- **Programazione ed algoritmi** 🟢: [appunti](1° Anno Informatica/Programmazione ed Algoritmica (Concluso)/Appunti-Latex/main.pdf) completi e slide sulla parte di programazione dinamica.
+- **Laboratorio I** 🔴: nessun appunto, solo il libro. Per esercitarsi consiglio la piattaforma [SAI Evo](https://evo.di.unipi.it).
+- **Algebra lineare** 🟡: [appunti](1° Anno Informatica/Algebra lineare (Conclusa)/Appunti-latex/main.pdf) incompleti, sono poi presenti esercizi molto utili, ed il libro.
 
 ### 2° anno
 
-- **Paradigmi di programmazione**🟢: appunti completi tranne per la parte di lambda calcolo, per la quale ci sono le dispese molto chiare. In più testi di esami passati con soluzioni.
-- **Ricerca operativa** *(non concluso)*🔴: presenti le dispense.
-- **Laboratorio II**🟡: presenti appunti incompleti, alcuni esercizi fatti e i parziali. È inoltre presente una subrepo con il progetto dell'anno 22/23.
-- **Architettura e sistemi operativi** *(non concluso)*🟡: appunti incompleti. Presente libro di architettura e quello di sistemi operativi. Sono poi inclusi esercizi per tutte le parti del corso.
-- **Statistica**🔴: presenti le dispense. Inoltre ci sono alcuni appunti scritti durante le lezioni.
-- **Calcolo numerico** *(non concluso)*🟡: appunti quasi completi. Inoltre ci sono le dispense e alcuni esercizi.
+- **Paradigmi di programmazione** 🟢: appunti completi tranne per la parte di lambda calcolo, per la quale ci sono le dispese molto chiare. In più testi di esami passati con soluzioni.
+- **Ricerca operativa** (non concluso) 🔴: presenti le dispense.
+- **Laboratorio II** 🟡: presenti appunti incompleti, alcuni esercizi fatti e i parziali. È inoltre presente una subrepo con il progetto dell'anno 22/23.
+- **Architettura e sistemi operativi** (non concluso) 🟡: appunti incompleti. Presente libro di architettura e quello di sistemi operativi. Sono poi inclusi esercizi per tutte le parti del corso.
+- **Statistica** 🔴: presenti le dispense. Inoltre ci sono alcuni appunti scritti durante le lezioni.
+- **Calcolo numerico** (non concluso) 🟡: appunti quasi completi. Inoltre ci sono le dispense e alcuni esercizi.
 
 ### 3° anno
 
-- **Basi di dati**🔴: non inziato.
-- **Reti e laboratorio III**🔴: non iniziato.
-- **Ingegneria del software**🔴: non iniziato.
-- **Introduzione all'intelligenza artificiale***(non concluso)*🟡: appunti incompleti.
+- **Basi di dati** 🔴: non inziato.
+- **Reti e laboratorio III** 🔴: non iniziato.
+- **Ingegneria del software** 🔴: non iniziato.
+- **Introduzione all'intelligenza artificiale** (non concluso) 🟡: appunti incompleti.
 
 ### Libera scelta
 
-- **Computer grafica** *(non concluso)*🟡: sono pressenti tutte le slide usate durante il corso sotto forma di unica dispensa, inoltre è presente il libro consigliato direttamente dal professo, oltre che ad esercizi. Consiglio per la preparazione di questo esame il sito [LearnOpenGL](https://learnopengl.com). È inoltre presente una subrepo con il mio progetto pesonale di fine corso e degli appunti in latex incompleti.
-- **Cloud Computing**🟢: appunti completi
-- **Green Computing** *(non concluso)*🟡: appunti incompleti
-- **Career Labs**🟢: alcuni appunti di qualche career lab
+- **Computer grafica** (non concluso) 🟡: sono pressenti tutte le slide usate durante il corso sotto forma di unica dispensa, inoltre è presente il libro consigliato direttamente dal professo, oltre che ad esercizi. Consiglio per la preparazione di questo esame il sito [LearnOpenGL](https://learnopengl.com). È inoltre presente una subrepo con il mio progetto pesonale di fine corso e degli appunti in latex incompleti.
+- **Cloud Computing** 🟢: appunti completi
+- **Green Computing** (non concluso) 🟡: appunti incompleti
+- **Career Labs** 🟢: alcuni appunti di qualche career lab
 
 ## Indicazioni
 
