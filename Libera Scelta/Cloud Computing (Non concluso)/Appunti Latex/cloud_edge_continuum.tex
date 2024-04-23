@@ -1,0 +1,32 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Cloud Edge Continuum}
+Con l'aumentare dei dispositivi IoT nella nostra società (e.g. smart cities, power plants, AI), cresce anche la domanda per la potenza di calcolo. \\
+Ognuno di questi dispositivi raccoglie dei dati con dei sensori, li processa e poi esegue delle azioni. È proprio la fase di \textbf{lavorazione} dei dati che sta diventando sempre più critica.
+\subsection{Implementazioni tradizionali}
+\subsubsection{Edge Computing}
+I dati vengono processati ai "confini" della rete, garantendo una \textbf{latenza} molto bassa ma limitando di molto la quantità di dati che possono essere processati ed immagazzinati.
+\subsubsection{IoT \& Cloud}
+I dati vengono inviati e processati nel Cloud, garantendo \textbf{risorse pressoché illimitate} ma aumentando di molto la latenza e causando un overhead in essa. 
+\subsection{Cloud Edge Continuum}
+Questa implementazione è un ibrido tra le due precedentemente descritte con l'obiettivo di avere il meglio di entrambe: \textbf{latenza bassa}, \textbf{connettività} e \textbf{potenza di calcolo}.\\
+Per farlo le applicazioni devono essere: \textbf{containerizzate} e basate su \textbf{microservizi}.
+\subsubsection{Posizionamento}
+Ogni \textbf{applicazione} ha diverse caratteristiche, tra cui:
+\begin{itemize}
+	\item Requisiti \textit{hardware}
+	\item Requisiti \textit{software}
+	\item \textit{QoS}
+	\item \textit{Data awareness}
+	\item \textit{Sicurezza e affidabilità}
+\end{itemize}
+mentre l'infrastruttura è \textbf{eterogenea}, \textbf{grande} e \textbf{dinamica}.\\
+È necessario capire dove posizionare ogni servizio dell'applicazione, se nell'access point, nel cabinet, nel datacenter o nel cloud. Esistono tre approcci alla soluzione del problema:
+\begin{itemize}
+	\item \textbf{Machine learning}: prima o poi prenderà una scelta, non per forza corretta. L'infrastruttura è dinamica e difficile da spiegare.
+	\item \textbf{Mixed Integer Linear Programming}: trova soluzioni sempre ottimali ma difficile da leggere e da programmare quando sono presenti dati non numerici. Inoltre è lenta da avviare.
+	\item \textbf{Ragionamento dichiarativo}: si definiscono i requisiti di un determinato servizio. Il motore di inferenza cerca poi tutte le possibili soluzioni. È facile da leggere e da spiegare.
+\end{itemize}
+
+\subsection{Gestione}
+Nel mondo di oggi le cose sono in continuo cambiamento. È importante \textbf{monitorare} continuamente le applicazioni e le infrastrutture in modo da avere un ragionamento continuo che permetta di intervenire velocemente.
