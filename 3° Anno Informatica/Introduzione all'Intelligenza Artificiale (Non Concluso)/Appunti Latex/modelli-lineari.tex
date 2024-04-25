@@ -386,7 +386,7 @@ $\phi$ (in uno strato computazionale nascoso) dipende. In altri modelli il calco
 è realizzato implicitamente attravero le funzioni del kernel e controllando la complessità del modello. Per esempio SVM.
 
 \subsection{Classification}
-Andiamo a risulare i modelli lineari, infatti gli stessi modelli possono essere usati per la \textbf{classificazione}, ci sono delle categorie target per esempio $0/1$ o $-1/+1$. In questo caso usiamo
+Andiamo a ri-usare i modelli lineari, infatti gli stessi modelli possono essere usati per la \textbf{classificazione}, ci sono delle categorie target per esempio $0/1$ o $-1/+1$. In questo caso usiamo
 un iperpiano ($wx$) assumento valori negativi o positivi. Sfruttiamo tali modelli per decidere se un punto x appartiene alla zona positiva o nogtiva 
 dell'iperpiano (per classificarlo). Quindi vogliamo impostare $w$ (nel learning) per ottenere una buona precisione di classificazione.\\\\
 Per per notazione di un input multidimensionale è come spiegato prima quindi, assumiamo una colonna vettore per $x$ e $w$, numero di dati $l$, dimensione
@@ -411,3 +411,87 @@ $x=(x_1, x_2) \in R^2, f(x) = 0/1$ (o $-1/+1$)
     \centering
     \includegraphics[width=0.5\textwidth]{images/classification-by-linear-dec-boundary.png}
 \end{figure}
+Notiamo che, dato una bias $w_0$, nella LTU diciamo che $h(x) = w^T x + w_0 \geq 0$ che è equivalente nel dire $h(x) = w^T x \geq -w_0$ con $-w_0$ abbiamo il valore "soglia".\\\\
+Le due forme identificato la stessa zona positiva della classificazione, la seconda in particolare enfatizza il ruolo del bias come un valore soglia per "attivare" il +1 output del classifier.
+\begin{example}
+    Trovare h tale che dato $(x_1, x_2)$ retorni $0/-1$ per terremoti e $+1$ per una esplosione nucleare. Vediamo che l'algoritmo di learning trova questo confine di decisione:
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.6\textwidth]{images/esempio-classification.png}
+    \end{figure}
+    Dati sismici: $x_1$ magnitudo dell'onda corporea, $x_2$ magnitudo delle onde superficiali terremoti (bianco), esplosioni nucleari (nero).
+\end{example}
+\begin{example}
+    Un altro esempio è quello dello spam. Trovare $h(mail) +1 $ per spam, e $-1$ per non-spam. Le carateristiche sono che $\phi(mail) = parole [0/1]$ o $frasi$ ("free money") $[0/1]$ o lunghezza [intero].
+    Per esempio $\phi_k(x) = conain(word_k)$. Il peso $w$ contributo delle caratteristiche di input per la previsione, per esempio peso positivo per "denaro gratutito", negativo per ".edu". $x^Tw$ è la combinazione dei pesi.
+    $h_w(x)$ fornisce la soglia per decidere se spam o non spam.
+    $$h_w(x) = sign(\sum_{k}w_k \phi_k(x)) \:\:\:\: > 0 \to +1 = Spam$$  
+\end{example}
+\hspace{-15pt}Vediamo ora $\Delta w $ come correzione degli errori, regola di apprendimento.
+$$\Delta w_i = \sum_{p=1}^{l}(y_p - x_p^T w) \cdot x_{p,i}$$
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/delta-w-correzione-errore.png}
+\end{figure}
+Se classificato erroneamente (Perché il bersaglio è +1) $\to$ (1-(-???)) $\to$ delta positivo elevato per $w_1$ e $w_3$ $\to$ verranno aumenti
+proporzionalmente (con età) a il delta, quindi valore positivo in questo caso (errore regola di correzione). Per esempio la parte rossa in figura.
+
+\subsection{Learning algorithm}
+Come per la regressione si possono applicare anche l'espansione in base lineare e Tikhonov, notare che (algoritmo di apprendimento) converte asintoticamente al MinLS e non
+necessariamente al numero minimo di errori di classificazione. $[(\#ML)]$ se $w$ non vengono modificati per ottenere output corretti $(h_w(x_p) = d_p)$ otteniamo la rgola di aggiornamento per per \textbf{percettrone}
+\begin{example}
+    Vediamo l'esempio della congiunzone. Possiamo andarla a rappresentare tramite un modello lineare per esempio:
+    $$h(x) = 
+    \begin{cases}
+        1 & if wx + w_0 \geq 0\\
+        0 & otherwise
+    \end{cases}
+    $$
+    La \textbf{congiunzione} avviene nel seguente modo: \\
+    \begin{minipage}{.5\linewidth}
+        4 var $x_1 \land x_w \land x_4 \Leftrightarrow y$
+        \begin{itemize}
+            \item $1x_1 + 1 x_2 + 0 x_3 + 1 x_4 > 2$
+            \item $1x_1 + 1 x_2 + 0 x_3 + 1 x_4 \geq 2.5$
+        \end{itemize}
+        2 var: $x_1 \land x_2 \Leftrightarrow y$
+        \begin{itemize}
+            \item $1 x_1 + 1 x_2 > 1$
+            \item $1 x_1 + 1 x_2 \geq 1.5$
+        \end{itemize}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{.5\linewidth}
+        \centering
+        \includegraphics[width=0.7\linewidth]{images/esempio-congiunzione.png}
+    \end{minipage}
+\end{example}
+\hspace{-15pt}In geometrica due insiemi di punti in un grafico bidimensionale sono \textbf{linearmente separabili} quando gli insiemi
+di punti possono essere completamente separati da un'unica linea.
+\begin{definition}
+    In generale due gruppi sono detti \textbf{linearmente separabili} in uno spazio n-dimensionale se possono essere separati da un iperpiano di dimensione (n-1).
+\end{definition}
+\hspace{-15pt}Il confine decisionale lineare può fornire solo soluzioni esatte per insiemi di punti linearmente separabili.
+\begin{example}
+    Esempi di limiti decisionali non lineari. Ricordiamo che anche l'\textbf{espansione in base lineare} e la \textbf{regolaizzazione di Tikhonov} può anche essere applicato.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.7\textwidth]{images/esempio-non-linear-decision-boundary.png}
+    \end{figure}
+\end{example}
+\hspace{-15pt}Ci sono anche altri modelli lineare per la classificazione:
+\begin{itemize}
+    \item Analisi discriminate lineare (anche mutliclasse)
+    \item Regressione ligica. Nel quale $P(y|x)$ parte dalla modellazione della densità di classe come densità nota. Soglia leggera (continua, differenziabile) con una funzione logica.
+    \item Reti neurali (NN) e SVM menzionate in precedenta: \textbf{modelli flessibili} includono l'approssimazione non lineare per entrambe le regressioni e classificazioni. [\#ML].
+    \begin{itemize}
+        \item Le NN utilizzano molte unità (simili a LTU) all'interno di diversi strati
+        \item Apprendimento della rappresentazione delle funzionalità in ogni livello (concetto di deep learning)
+        \item Approccio di discesa del gradiente per l'apprendimento.
+    \end{itemize}
+\end{itemize}
+In conclusione i modelli linari sono degli aprocci di base ben fondati sia per la regressione che per la classificazione.
+Sono un modo molto compatto per rappresentare la conoscenza, ma con un forte presupporto sulla relazione tra i dati. \\\\
+Un algoritmo iterativo correzione degli errori (LMS) che esegue la ricerca in spazi di ipotesi continui (questa è òa base per molti altri approcci ML).\\\\
+Una visione dei limiti degli approcci lineari e delle necessità di modelli ML più \textbf{flessibili} e relativi problemi sono un'estensione del modello lineare per compiti non lineari e 
+un'introduzione al \textbf{controllo della complessità (regolaizzazione)}.
