@@ -326,3 +326,88 @@ Vuoi scegliere la regolarizzazione per bilanciare i due casi attraverso il contr
 Considerando che la complessità non è dovuta al costo computazionale ma a misura della flessibilità del modello per adattarsi ai dati.
 
 \subsection{Regularization}
+Con la \textbf{regularization} possiamo controllare l'overfitting andando a pensalizzare la complessità delle funzioni con valori dei pesi grandi ($w$) (per ess.
+verso il coefficiente restrigimento) o il numero dei parametri liberi ($w$ non uguale a zero). Tutto questo mentre si va a mantenere la flessibilità dello spazio
+delle ipotesi.\\\\
+\textbf{Occam (Ockham) razor}: "La spiegazione più semplice è più probabilmente quella corretta" o "Preferiscono l’ipotesi più semplice che si adatta ai dati".\\\\
+Questo concetto fondamentale nel ML verrò ritrovato e lo "razzionalizzeremo" alla fine.
+
+\begin{definition}
+    Ridge regression o \textbf{tikhonov regularization}. La possinilità di aggiungere limitazioni alla somma di valori di $|w_j|$ favorendo modelli "scarsi" ess. con 
+    meno termini dovuti ai pesi $w_j = 0$ (o vicino allo 0) (questo vuol dire modelli meno complessi).
+    $$Loss(h_w) = \sum_{p=1}^{l}(y_p - h_w(x_p))^2 + \lambda||w||^2 \hspace{15pt} ||w||^2 = \sum_{i}w_i^2$$
+    Termine di errorid dei dati + termine di regolarizzazione/penalità.
+\end{definition}
+\hspace{-15pt}Abbiamo che $\lambda$ è chiamato coefficiente di regolarizzazione (un parametro costante o un iperparamentro). L'effetto che abbiamo 
+da questa regolarizzazione è il \textbf{decadimento del peso} (praticamente si aggiunge $2\lambda w$ al gradiante della peridita).
+$$w_{new} = w + \eta \cdot \Delta w - w \lambda w$$
+Per esempio con gradiante uguale a zero, esso decrementa il valore di ogni $w$ con una frazione della vecchia $w$.\\\\
+Applicabilità generale (non sono per i polinomi): esempio possiamo controllare la complessità del modello salmente usando $\lambda$, senza conoscere
+M come per i polinomi, o anche quando la complessità del modello non è conosciuta. \\
+Notiamo il bilanciamento (compromesso) tra i due termini.Il termine relativo ai dati di errore di piccole dimensioni (minimizzare solo l'errore di addestramento) non
+è sufficente per noi, vogliamo ance controllare la complessità del modello per contrallare l'\textbf{overfitting}, quindi introduciamo il secondo termine della minimizzazione.
+Dall'altro canto possiamo eccedere perché troppo peso al secodo termine (alto valore $\lambda$) potra a focalizzare solo la minimizzazione (o principalemnte) sulla regolarizzazione,
+quindi anche l'errore dei dati (primo termine) potrebbe aumetare molto, ovverso passare all'\textbf{underfitting}. Il compromesso è regolato dal valore di $\lambda$. 
+\\\\Vediamo ora l'esempio fatto prima con un polinomio di nono grado applicaddo un $\lambda$
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{.3\textwidth}
+        \includegraphics[width=\textwidth]{images/9-order-polynomial-with-lambda1.png}
+        \caption{$\lambda = 0$}
+    \end{subfigure}
+    \begin{subfigure}{.3\textwidth}
+        \includegraphics[width=\textwidth]{images/9-order-polynomial-with-lambda2.png}
+        \caption{$\ln\lambda = -18$}
+    \end{subfigure}
+    \begin{subfigure}{.3\textwidth}
+        \includegraphics[width=\textwidth]{images/9-order-polynomial-with-lambda3.png}
+        \caption{$\ln\lambda = 0 \Rightarrow \lambda = 1$}
+    \end{subfigure}
+\end{figure}
+\begin{figure}[h!]
+        \centering
+    \begin{subfigure}{.42\textwidth}
+        \includegraphics[width=\textwidth]{images/regularization.png}
+        \caption{$\lambda$ basso = overfiting, $\lambda$ alto = underfitting}
+    \end{subfigure}
+    \begin{subfigure}{.42\textwidth}
+        \includegraphics[width=\textwidth]{images/coefficente-polinomiale.png}
+        \caption{Tabella coefficienti polinomiali}
+    \end{subfigure}
+\end{figure}
+\subsubsection{Limitazioni di una funzione a base fissa}
+Avente funzioni di base lungo ciascuno spazio di input di dimensioni n richeide un nunmero combinatorio di funzioni, 
+esempio, un polinomio generale di ordine 3 usa tutte le combinazioni delle variabili di input dovute per produrre 
+$x_1, x_2, x_2, x_3, \dots, x_1x_2,x_3$ etc $\to n^3$ (approssimazione al crescere di $n$).\\\\
+I dati diventano sparsi in questo alto volume, quindi l'allomanre dei dati necessari per supportare il risultato
+spesso cresce esponenzialmente con la dimensione. $\phi$ viene fissata prima di osservare i dati di allenamento. \\\\
+In altri modelli, vedremo come possiamo farla franca con meno funzioni di base, andando a sceglierre questi usando i dati di training:
+$\phi$ (in uno strato computazionale nascoso) dipende. In altri modelli il calcolo di inslusione (trasformazione dell'input)
+è realizzato implicitamente attravero le funzioni del kernel e controllando la complessità del modello. Per esempio SVM.
+
+\subsection{Classification}
+Andiamo a risulare i modelli lineari, infatti gli stessi modelli possono essere usati per la \textbf{classificazione}, ci sono delle categorie target per esempio $0/1$ o $-1/+1$. In questo caso usiamo
+un iperpiano ($wx$) assumento valori negativi o positivi. Sfruttiamo tali modelli per decidere se un punto x appartiene alla zona positiva o nogtiva 
+dell'iperpiano (per classificarlo). Quindi vogliamo impostare $w$ (nel learning) per ottenere una buona precisione di classificazione.\\\\
+Per per notazione di un input multidimensionale è come spiegato prima quindi, assumiamo una colonna vettore per $x$ e $w$, numero di dati $l$, dimensione
+del vettore di input $n$, $y_p$ che è $d_p$ o $t_p$ (targets 0/1 o -1/+1 è la cosa nuova).
+$$w^Tx + w_0 = w_0 + w_1x_1 + w_2 x_2 + \cdots + w_n x_n$$
+Con $w_0$ che è un intercept, threshold, bias, offset ... Genericamente è convenzione includere la constante $x_0 = 1$ così si può riscrivere il tutto come
+$$w^T x = x^T w \hspace{15pt} x^T = [1, x_1, x_2, \dots, x_n] \hspace{15pt} w^T = [w_0, w_1, w_2, \dots, w_n]$$ 
+Vediamo ora la vista geometrica dell'iperpiano. Visto che $w^T x$ definisce un iperpiano abbiamo che
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.45\textwidth]{images/iperpiano.png}
+\end{figure}
+
+\hspace{-15pt}Da questo possiamo anche vedere la vista geometrica della classificazione.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.45\textwidth]{images/geometric-classification.png}
+\end{figure}
+La classificazione può essere vista come un allocazione dello spazio di input nella regione di decisioni (es. 0/1). 2-dim spazioe di instance
+$x=(x_1, x_2) \in R^2, f(x) = 0/1$ (o $-1/+1$) 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/classification-by-linear-dec-boundary.png}
+\end{figure}
