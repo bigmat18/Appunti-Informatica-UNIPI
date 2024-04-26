@@ -9,11 +9,11 @@ Per gli appunti di ogni materia è presente sia il codice sorgete in Latex, sia 
 
 ### 1° anno
 
-- **Fondamenti di informatica** 🟢: gli [appunti](1° Anno Informatica/Fondamenti di informatica (Concluso)/Appunti-Latex/main.pdf) scritti non sono completi di tutto il corso, ma sono comunque stati usati per l'esame visto che contengono alcuni spiegazioni. C'è inoltre la dispensa e del materiale per esercitarsi.
-- **Analisi matematica** 🟢: [appunti](1° Anno Informatica/Analisi Matematica (Concluso)/Appunti-Latex/main.pdf) completi ed esercizi esami passati, consiglio anche qui per esercitasi la piattaforma [SAI Evo](https://evo.di.unipi.it).
-- **Programazione ed algoritmi** 🟢: [appunti](1° Anno Informatica/Programmazione ed Algoritmica (Concluso)/Appunti-Latex/main.pdf) completi e slide sulla parte di programazione dinamica.
+- **Fondamenti di informatica** 🟢: gli [appunti](<1° Anno Informatica/Fondamenti di informatica (Concluso)/Appunti-Latex/main.pdf>) non sono completi ma sono comunque stati usati per l'esame. C'è inoltre la dispensa e del materiale per esercitarsi.
+- **Analisi matematica** 🟢: [appunti](<1° Anno Informatica/Analisi Matematica (Concluso)/Appunti-Latex/main.pdf>) completi ed esercizi esami passati, consiglio anche qui per esercitasi la piattaforma [SAI Evo](https://evo.di.unipi.it).
+- **Programazione ed algoritmi** 🟢: [appunti](<1° Anno Informatica/Programmazione ed Algoritmica (Concluso)/Appunti-Latex/main.pdf>) completi e slide sulla parte di programazione dinamica.
 - **Laboratorio I** 🔴: nessun appunto, solo il libro. Per esercitarsi consiglio la piattaforma [SAI Evo](https://evo.di.unipi.it).
-- **Algebra lineare** 🟡: [appunti](1° Anno Informatica/Algebra lineare (Conclusa)/Appunti-latex/main.pdf) incompleti, sono poi presenti esercizi molto utili, ed il libro.
+- **Algebra lineare** 🟡: [appunti](<1° Anno Informatica/Algebra lineare (Conclusa)/Appunti-latex/main.pdf>) incompleti, sono poi presenti esercizi molto utili, ed il libro.
 
 ### 2° anno
 
