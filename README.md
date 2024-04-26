@@ -42,9 +42,9 @@ Per maggior leggibilità:
 
 ### Libera scelta
 
-- **Computer grafica** (non concluso) 🟡: sono presenti tutte le [slide](<Libera Scelta/Computer Grafica (Non concluso)/Slide.pdf>) usate durante il corso sotto forma di unica dispensa, inoltre è presente il [libro](<Libera Scelta/Computer Grafica (Non concluso)/dispense_2023.pdf>) consigliato direttamente dal professore, oltre che ad [esercizi](<Libera Scelta/Computer Grafica (Non concluso)/Esercizi>). Consiglio per la preparazione di questo esame il sito [LearnOpenGL](https://learnopengl.com). Sono presenti degli [appunti](<Libera Scelta/Computer Grafica (Non concluso)/Appunti latex/main.pdf>) in latex incompleti.
+- **Computer grafica** (Non concluso) 🟡: sono presenti tutte le [slide](<Libera Scelta/Computer Grafica (Non concluso)/Slide.pdf>) usate durante il corso sotto forma di unica dispensa, inoltre è presente il [libro](<Libera Scelta/Computer Grafica (Non concluso)/dispense_2023.pdf>) consigliato direttamente dal professore, oltre che ad [esercizi](<Libera Scelta/Computer Grafica (Non concluso)/Esercizi>). Consiglio per la preparazione di questo esame il sito [LearnOpenGL](https://learnopengl.com). Sono presenti degli [appunti](<Libera Scelta/Computer Grafica (Non concluso)/Appunti latex/main.pdf>) in latex incompleti.
 - **Cloud Computing** 🟢: [appunti](<Libera Scelta/Cloud Computing (Concluso)/Appunti Latex/main.pdf>) completi
-- **Green Computing** 🟢: [appunti](<Libera Scelta/Green Computing (Non concluso)/Appunti Latex/main.pdf>) completi
+- **Green Computing** 🟢: [appunti](<Libera Scelta/Green Computing (Concluso)/Appunti Latex/main.pdf>) completi
 - **Career Labs** 🟢: alcuni [appunti](<Libera Scelta/Career Labs>) di qualche career lab
 
 ## Contribuzione
