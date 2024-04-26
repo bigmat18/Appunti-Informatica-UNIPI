@@ -5,12 +5,21 @@
 Questa repository contiene appunti scritti durante i corsi della laurea triennale di informatica presso l'università di Pisa (LM-31). Inoltre è presente per ogni corso un insieme di materiale, esercizi e dispense forniti duranti le lezioni, utili per preparare i vari esami.
 Per gli appunti di ogni materia è presente sia il codice sorgete in Latex, sia il pdf che può essere scaricato e consultato per corsi futuri.
 
-## Syllabus
+## Indicazioni
+
+La dicitura (Non concluso) / (Concluso) accanto al nome di un esame indica che le lezioni per quell'esame non sono state concluse dal proprietario degli appunti, quindi potrà ancora essere aggiunto materiale.
+Per maggior leggibilità:
+
+- 🟢: indica che gli appunti sono completi e che sono presenti esercizi e materiale aggiuntivo
+- 🟡: indica che gli appunti sono incompleti, ma sono presenti esercizi e materiale aggiuntivo
+- 🔴: indica che non sono presenti appunti, ma solo dispense e materiale aggiuntivo
+
+## Indice
 
 ### 1° anno
 
-- **Fondamenti di informatica** 🟢: gli [appunti](<1° Anno Informatica/Fondamenti di informatica (Concluso)/Appunti-Latex/main.pdf>) non sono completi ma sono comunque stati usati per l'esame. C'è inoltre la dispensa e del materiale per esercitarsi.
-- **Analisi matematica** 🟢: [appunti](<1° Anno Informatica/Analisi Matematica (Concluso)/Appunti-Latex/main.pdf>) completi ed esercizi esami passati, consiglio anche qui per esercitasi la piattaforma [SAI Evo](https://evo.di.unipi.it).
+- **Fondamenti di informatica** 🟢: gli [appunti](<1° Anno Informatica/Fondamenti di informatica (Concluso)/Appunti-Latex/main.pdf>) non sono completi ma sono comunque stati usati per l'esame. C'è inoltre la [dispensa](<1° Anno Informatica/Fondamenti di informatica (Concluso)/Fondamenti di informatica.pdf>), un [formulario](<1° Anno Informatica/Fondamenti di informatica (Concluso)/Insiemi Relazioni e Logica - Formulario.pdf>) e del [materiale per esercitarsi](<1° Anno Informatica/Fondamenti di informatica (Concluso)/Esercizi>).
+- **Analisi matematica** 🟢: [appunti](<1° Anno Informatica/Analisi Matematica (Concluso)/Appunti-Latex/main.pdf>) completi ed [esami passati](<1° Anno Informatica/Analisi Matematica (Concluso)/Esercizi>), consiglio per esercitasi la piattaforma [SAI Evo](https://evo.di.unipi.it).
 - **Programazione ed algoritmi** 🟢: [appunti](<1° Anno Informatica/Programmazione ed Algoritmica (Concluso)/Appunti-Latex/main.pdf>) completi e slide sulla parte di programazione dinamica.
 - **Laboratorio I** 🔴: nessun appunto, solo il libro. Per esercitarsi consiglio la piattaforma [SAI Evo](https://evo.di.unipi.it).
 - **Algebra lineare** 🟡: [appunti](<1° Anno Informatica/Algebra lineare (Conclusa)/Appunti-latex/main.pdf>) incompleti, sono poi presenti esercizi molto utili, ed il libro.
@@ -33,20 +42,11 @@ Per gli appunti di ogni materia è presente sia il codice sorgete in Latex, sia 
 
 ### Libera scelta
 
-- **Computer grafica** (non concluso) 🟡: sono pressenti tutte le slide usate durante il corso sotto forma di unica dispensa, inoltre è presente il libro consigliato direttamente dal professo, oltre che ad esercizi. Consiglio per la preparazione di questo esame il sito [LearnOpenGL](https://learnopengl.com). È inoltre presente una subrepo con il mio progetto pesonale di fine corso e degli appunti in latex incompleti.
-- **Cloud Computing** 🟢: appunti completi
-- **Green Computing** (non concluso) 🟡: appunti incompleti
-- **Career Labs** 🟢: alcuni appunti di qualche career lab
-
-## Indicazioni
-
-La dicitura (Non concluso) / (Concluso) accanto al nome di un esame indica che le lezioni per quell'esame non sono state concluse dal proprietario degli appunti, quindi potrà ancora essere aggiunto materiale.
-Per maggior leggibilità:
-
-- 🟢: indica che gli appunti sono completi e che sono presenti esercizi e materiale aggiuntivo
-- 🟡: indica che gli appunti sono incompleti, ma sono presenti esercizi e materiale aggiuntivo
-- 🔴: indica che non sono presenti appunti, ma solo dispense e materiale aggiuntivo
+- **Computer grafica** (non concluso) 🟡: sono presenti tutte le [slide](<Libera Scelta/Computer Grafica (Non concluso)/Slide.pdf>) usate durante il corso sotto forma di unica dispensa, inoltre è presente il [libro](<Libera Scelta/Computer Grafica (Non concluso)/dispense_2023.pdf>) consigliato direttamente dal professore, oltre che ad [esercizi](<Libera Scelta/Computer Grafica (Non concluso)/Esercizi>). Consiglio per la preparazione di questo esame il sito [LearnOpenGL](https://learnopengl.com). Sono presenti degli [appunti](<Libera Scelta/Computer Grafica (Non concluso)/Appunti latex/main.pdf>) in latex incompleti.
+- **Cloud Computing** 🟢: [appunti](<Libera Scelta/Cloud Computing (Concluso)/Appunti Latex/main.pdf>) completi
+- **Green Computing** 🟢: [appunti](<Libera Scelta/Green Computing (Non concluso)/Appunti Latex/main.pdf>) completi
+- **Career Labs** 🟢: alcuni [appunti](<Libera Scelta/Career Labs>) di qualche career lab
 
 ## Contribuzione
 
-In caso si voglia contribuire con del proprio materiale a questa repository è possibile contattare il creatore su telegram al nome Matteo Giuntoni o mandando una mail a mat.giu2002@gmail.com. Sia in caso di risposta o meno sono comunque ben accette push request col materiale aggiuntivo.
+In caso si voglia contribuire con del proprio materiale a questa repository è possibile contattare il creatore su Telegram al nome Matteo Giuntoni o mandando una mail a mat.giu2002@gmail.com. Sia in caso di risposta o meno sono comunque ben accette push request col materiale aggiuntivo.
