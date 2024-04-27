@@ -19,6 +19,7 @@ Data la funzione euristica del costo dell'obiettivo
 \end{center}
 uno stato ha una posizione sulla superficie e un'altezza che corrisponde al valore della valutazione della funzione obiettivo. Un algoritmo provoca movimento sulla superficie e l'obiettivo è raggiungere un punto in particolare (e.g. massimo locale).
 \subsection{Hill climbing}
+\label{alg:hill_climbing}
 Sfrutta un principio di ricerca locale greedy dove vengono generati i successori e vengono valutati. Viene scelto un nodo che migliora lo stato attuale e scartati gli altri:
 \begin{itemize}
 	\item \textbf{Salita rapida} (o discesa): viene scelto il migliore
