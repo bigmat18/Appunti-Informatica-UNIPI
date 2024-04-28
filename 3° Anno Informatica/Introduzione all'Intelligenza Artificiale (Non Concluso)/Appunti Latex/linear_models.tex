@@ -250,4 +250,120 @@ Da questa nuova formula troviamo la nuova regola di apprendimento.
 \end{observation}
 
 \subsection{Classification}
+Riutilizzeremo lo stesso modello della regressione ma adesso invece dei numeri reali avremo classe positiva e negativa (sempre rappresentati da numeri). In questo caso $wx$ rappresenterà un iperpiano che ci divide lo spazio tra le due classi.
 
+\begin{example}[Iperpiano]
+	Ad esempio, nel caso di due variabili
+	\begin{equation*}
+		\mathbf{w}^T\mathbf{x} = w_1x_1 + w_2x_2 + w_0
+	\end{equation*}
+	avremo un iperpiano di questo tipo:
+	\begin{center}
+		\includegraphics[scale=0.2]{iperpiano.png}
+	\end{center}
+	Dove la linea blu di intersezione (\textbf{treshold}) determina la divisione tra la classe positiva e quella negativa.
+\end{example}
+
+\begin{definition}[Decision boundary]
+	Si definisce come l'insieme dei punti in cui vale:
+	\begin{equation}
+		\mathbf{w}^T\mathbf{x} = w_1x_1 + w_2x_2 + w_0 = 0
+	\end{equation}
+\end{definition}
+
+\noindent Per effettuare poi la vera e propria classificazione, in base all'output range poniamo:
+\begin{itemize}
+	\item Range $[0,1]$:
+	\begin{equation}
+		h(\mathbf{x}) = \begin{cases}
+			1 & \mathbf{w}^T\mathbf{x} \geq 0 \\
+			0 & altrimenti
+		\end{cases}
+	\end{equation}
+	\item Range $[-1,+1]$:
+	\begin{align}
+		& h(\mathbf{x}) = sign(\mathbf{w}^T\mathbf{x} + w_0) \\
+		& h(\mathbf{x}_p) = sign(\mathbf{x}_p^T\mathbf{w}) = sign\bigg(\sum_{i=0}^{n} x_{p,i}w_i\bigg)
+	\end{align}
+\end{itemize}
+\begin{center}
+	\includegraphics[scale=0.2]{treshold_func.png}
+\end{center}
+
+\begin{observation}
+	Si noti che, dato il valore di bias $w_0$, dire
+	\begin{equation*}
+		h(\mathbf{x}) = \mathbf{w}^T\mathbf{x} + w_0 \geq 0
+	\end{equation*}
+	è equivalente a dire
+	\begin{equation*}
+		h(\mathbf{x}) = \mathbf{w}^T\mathbf{x} \geq - w_0
+	\end{equation*}
+	E quindi il \textbf{valore di treshold} è $-w_0$.
+\end{observation}
+
+\begin{example}[Spam]
+	Tornando all'esempio \ref{example:email_spam}, dobbiamo trovare una funzione $h$ che restituisca $+1$ se la mail è spam o $-1$ altrimenti.\\
+	Dato un insieme di feature della mail composto da parole, frasi e lunghezze, definiamo una trasformazione $\phi_k (\mathbf{x})=contain(word_k)$. In questo caso il vettore $\mathbf{w}$ contiene i pesi di quanto una certa parola o frase sia indicativa di spam.\\
+	La funzione sarà quindi:
+	\begin{equation*}
+		h_w(\mathbf{x})=sign\bigg(\sum_k w_k\phi_k(\mathbf{x})\bigg)
+	\end{equation*}
+	che se è positiva indicherà che una mail è spam.
+\end{example}
+\subsubsection{Gradient descent}
+Anche nella classificazione usiamo un algoritmo di discesa graduale. Partendo da un insieme $l$ di training examples, vogliamo trovare il vettore $\mathbf{w}$ che minimizzi la somma dei quadrati (per la media è sempre sufficiente dividere per $l$). Vogliamo quindi minimizzare:
+\begin{equation}
+	E(\mathbf{w}) = \sum_{p=1}^{l}(y_p-\mathbf{x}_p^T\mathbf{w})^2 = \lvert\lvert \mathbf{y} - \mathbf{Xw}\rvert\rvert^2
+\end{equation}
+In pratica significa fare in modo che se $y_p$ vale $1$, $\mathbf{x}_p^T\mathbf{w}$ deve tendere il più possibile a $1$, altrimenti se vale $0$ o $-1$ deve tendere anch'esso a $0$ o $-1$.
+
+\begin{observation}
+	A differenza della regressione, nella classificazione non usiamo la forma $h(\mathbf{x})$ perché dobbiamo mantenere la differenziabilità e in questo caso invece $h(\mathbf{x})=sign(\mathbf{w}^T\mathbf{x} + w_0)$. 
+\end{observation}
+
+La regola di apprendimento sarà quindi:
+\begin{equation}
+	\Delta w_i = -\frac{\delta E(\mathbf{w})}{\delta w_i} = \sum_{p=1}^{l}(y_p - \mathbf{x}_p^T \mathbf{w}) \cdot x_{p,i} \quad\quad i=0,\ldots,n
+\end{equation}
+
+\begin{example}
+	Supponiamo di avere un classificatore con $w_0=0$ e i seguenti valori di input e di $\mathbf{w}$:
+	\begin{center}
+		\includegraphics[scale=0.2]{ex_class_1.png}
+	\end{center}
+	Calcoliamo il prodotto scalare $\mathbf{x}\cdot \mathbf{w} = -0.4$ e, dato che ha segno negativo, lo classifichiamo di conseguenza. Il risultato però doveva essere positivo. Allora, calcoliamo 
+	\begin{align*}
+		& \Delta w_1 = (1 - (-0.4)) \cdot 1 = 1.4 \\
+		& \Delta w_2 = (1 - 0.5) \cdot 0 = 0 \\
+		& \Delta w_3 = (1 - (-0.4)) \cdot 1 = 1.4 \\
+	\end{align*}
+	e correggiamo i pesi in proporzione a questi valori per un certo $\eta$. Otteniamo:
+	\begin{center}
+		\includegraphics[scale=0.2]{ex_class_2.png}
+	\end{center}
+	che classifica correttamente.
+\end{example}
+\newpage
+\begin{definition}[Linearmente separabile]
+	Due insiemi di punti in un grafico bidimensionale si dice linearmente separabile quando questi possono essere completamente separati da una singola linea. In generale si applica a spazi n-dimensionali dove la separazione avviene con iperpiani.
+	\begin{center}
+		\includegraphics[scale=0.3]{linearly_sep.png}
+	\end{center}
+\end{definition}
+\begin{note}
+	Il decision boundary può dare soluzioni esatte solo per insiemi di punti linearmente separabili.
+\end{note}
+Si può applicare la Linear Basis Expansion e la regolarizzazione di Tikhonov anche alla classificazione con gli stessi concetti e regole.
+\begin{center}
+	\begin{minipage}{0.48\linewidth}
+		\centering
+		\includegraphics[scale=0.3]{classification_LBE.png}
+		\captionof{figure}{Linear Basis Expansion}
+	\end{minipage}
+	\begin{minipage}{0.48\linewidth}
+		\centering
+		\includegraphics[scale=0.3]{classification_reg.png}
+		\captionof{figure}{Regularization}
+	\end{minipage}
+\end{center}
