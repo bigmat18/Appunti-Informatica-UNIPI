@@ -140,7 +140,7 @@ Sfrutta l'ordine parziale m.g.t per cercare in modo efficiente $h$ (senza fare u
         \item Per ogni instanza di training $x$ \textbf{positiva}
         \begin{lstlisting}
         for each attribute a_i in h
-            if a_i in h e soddisfatto da X
+            if a_i in h e soddisfatto da x
                 non fare nulla
             else
                 sostituisci a_i in h dal successivo vincolo piu generale, cioe
@@ -164,7 +164,7 @@ Ricerca su spazio di ipotesi fatto dall'algoritmo Find-S:
 Mentre invece alcuni dei problemi relativi al Find-S sono i seguenti:
 \begin{itemize}
     \item Non si può dire se l'apprendimento è convergente verso un concept target, nel senso
-    che non è in grafo di determinare se ha trovato l'unica ipotesi coerente con gli esempi di training.
+    che non è in grado di determinare se ha trovato l'unica ipotesi coerente con gli esempi di training.
     \item Non è possibile stabilire quando i dati di training sono incosistenti, poiché ignora gli esemi di training negativo: nessuna tolleranza al rumore!
 \end{itemize}
 Perché preferire l’ipotesi più specifica? Cosa succede se ci sono più ipotesi massimamente specifiche?
@@ -190,26 +190,26 @@ Una miglior rappresentazione per il Version space (by G e S):
     \centering
     \includegraphics[width=0.65\textwidth]{images/miglior-rapresentazione-version-space.png}
 \end{figure}
+
+\subsection{Algoritmo candidate elimination}
 \begin{definition}
     Ci sono vari modi per rappresentare il version space:
     \begin{itemize}
         \item Il \textbf{confine generale}, G, dello spazio delle versioni $VS_{H,D}$ è l'insieme di 
         membri generali massimi. (per H consistente con D).
         \item Il \textbf{confine specifico}, S, dello spazio delle versioni $VS_{H,D}$ è l'insieme di
-        membri generali massimi (per H consistente con D)
+        membri specifici massimi (per H consistente con D)
         \item \textbf{Teorema}: ogni membro della spazio di versione si trova fra questi confini.
     \end{itemize}
 \end{definition}
 $$VS_{H,D} = \{h \in H \:|\: (\exists \: s \in S) \:\: (\exists \: g \in G) \:\:(g \geq h \geq s)\}$$
 dove $x \geq y$ vuol dire che $x$ è più o uguale generale rispetto a $y$
-
-\subsection{Algoritmo candidate elimination}
 In questo algoritmo abbiamo che:
 \begin{itemize}
     \item $G \to$ ipotesi massimali generali in $H$
     \item $S \to$ ipotesi massimali specifiche in $H$
 \end{itemize}
-For eatch esempio di training $d = <x, c(x)$.
+For eatch esempio di training $d = <x, c(x)>$.
 \begin{itemize}
     \item if d è un esempio \textbf{positivo} allora rimuovi da G qualsiasi ipotesi che sia incoerente con d (def di VS).\\
     for each ipotesi $s \in S$ che non è consistente con d [\textbf{generalizzare S}]
@@ -263,16 +263,16 @@ essere insegnato, ciò significa che H è l'insieme di tutti i possibili sottoin
 \begin{example}
     $|H| = 96, |P(X)| = 2^{96} \sim 10^{28}$ concetti distinti.
 \end{example}
-\hspace{-15pt}H = disgiunzione, congiunzione, negazione. Ess. $<Sunny, Warm, Normal, ?, ?, ?> v <?, ?, ?, ?, ?, Change>$.
+\hspace{-15pt}H = disgiunzione, congiunzione, negazione. Ess. $<Sunny, Warm, Normal, ?, ?, ?> \lor <?, ?, ?, ?, ?, Change>$.
 H contiene sicuramente il concetto target. A questo punto capiamo come generalizzare.\\\\
 Che cosa sono S e G in questo caso?\\
 Assumiamo esempi positivi $(x_1, x_2, x_3)$ ed esempi negativi $(x_4, x_5)$
 $$S: \{(x_1 \lor x_2 \lor x_3)\} \hspace{15pt} G: \{\lnot (x_4 \lor x_5)\}$$
 Gli unici esempi che sono classificati in modo non ambiguo sono gli esempi di training stessi (H può rappresentrli). In altre parole
 per apprengere il concetto target si dovrebbe presentare ogni singola instanza in X come esempio di training.
-\begin{proposition}
-    Una \textbf{proprietà} importante è che un unbiased learner non è in grado di generalizzare
-\end{proposition}
+\begin{definition}
+    Un proprietà importante è che un \textbf{unbiased learner non è in grado di generalizzare}.
+\end{definition}
 \begin{demostration}
     Ogni instanza non osservata verrà classificata positiva per precisamente metà delle ipotesi nel VS e negativa nell'altrà metà (rejecion).
     Infatti: $\forall h$ consistenti con $x_i$ (test), $\exists h'$ identico ad h eccetto per il fatto che $h'(x_i) <> h(x_i)$, $h\in VS \Rightarrow h' \in VS$ (ci sono identici in D, l'insieme TR).
@@ -298,8 +298,8 @@ Consideriamo le seguenti cose:
 \end{itemize}
 \begin{definition}
     Il bias intduttivo di L è ogni insieme minimo di affermazioni \textbf{B} tali che per ogni concetto target c e corrispettivi dati di training $D_c$
-    $$(\forall x_i \in X)[B \land D_c \land x_i] |- \:\: L(x_i, D_c)$$
-    Dove $A |- B$ vuol dire che A implica logicamente B (segue deduttivamente da)
+    $$(\forall x_i \in X)[B \land D_c \land x_i] \vdash L(x_i, D_c)$$
+    Dove $A \vdash B$ vuol dire che A implica logicamente B (segue deduttivamente da)
 \end{definition}
 \newpage
 Sistema induttivo e \textbf{equivalente} sistema deduttivo.

@@ -26,8 +26,8 @@ Il caso univariante, semplice regressione linieare: iniziamo con 1 valore di inp
 \end{definition}
 Si cerca di avere un adattamento dei dati secondo una “linea retta”. Trovare $h$ (modello lineare) che 
 meglio si adattano ai dati (da gli insieme di dati osservati dei valori $x$ e $y$). Assumiamo che la variabile data (y) è (linearmente) 
-associata ad un'altra viarialbe (x) o più variabili, da $y = w_1x + w_0 + noise$, dove $w$ è il free par e $noise$ è
-un errore misurato al target (con una distribuzione normale). Andiamo a costruire un modello (trovare il valore $w$) per predirre/stimare il prezzo ($y$) dei punti
+associata ad un'altra viarialbe (x) o più variabili, da $y = w_1x + w_0 + noise$, dove \textbf{$w$ è il free pair} e \textbf{$noise$ è
+un errore misurato al target} (con una distribuzione normale). Andiamo a costruire un modello (trovare il valore $w$) per predirre/stimare il prezzo ($y$) dei punti
 per altri (osservabile) valori $x$ (prediction).
 \begin{figure}[h!]
     \centering
@@ -53,14 +53,14 @@ il ML moderno ed è alla abse dei metodi evoluti in the field. Definiamo qui una
         \item \textbf{Trovare} $h_w(x)$ nella forma $w_1 x + w_0$ (quindi i valori di $w$) che minimizzano la perdita attesa dei dati di training.
     \end{itemize}
     Per la perdita usiamo la radice dell'errore.\\
-    Da qui il \textbf{least (mean) square} si tratta di trovare la $w$ che minimizzi la somma residua delle ragdici [$argmin_w Error(w) in L_2$]
-    $$Loss(h_w) = E(w) = \sum_{p=1}^{l} (y_p - h_w(x_p))^2 = \sum_{p=1}^{l}(y_p - (w_1 x_p + w_0))^2$$
-    Dove $x_p$ è $p-th$ input/pattern/esample, $y_p$ l'output per $p$, $w$ free par., $l$ numero degli esempi.
+    Da qui il \textbf{least (mean) square} si tratta di trovare la $w$ che minimizzi la somma residua delle ragdici [$argmin_w$ $Error(w) \in L_2$]
+    $$Loss(h_w) = \hspace{10pt}E(w) = \sum_{p=1}^{l} (y_p - h_w(x_p))^2 \hspace{10pt}=\hspace{10pt} \sum_{p=1}^{l}(y_p - (w_1 x_p + w_0))^2$$
+    Dove $x_p$ è $p$-th input/pattern/esample, $y_p$ l'output per $p$, $w$ free par., $l$ numero degli esempi.
 \end{definition}
 \hspace{-15pt}Perché usare LMS per adattarsi ai dati con $h$? Il \underline{least (mean) square} trova $w$ per minimizzare la \textbf{somma di radici residua} [$argmin_w Error(w) \in L_2$]:
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/lms.png}
+    \includegraphics[width=0.7\textwidth]{images/lms.png}
 \end{figure}
 
 \hspace{-15pt}Il metodo dei minimi quadrati è un approccio standard alla soluzione approssimata di sistemi sovradeterminati, cioè insiemi di equazioni
@@ -73,8 +73,7 @@ Funzione di perdita convessa $\Rightarrow$ abbiamo la seguente soluzione (senza 
 $$w_1 = \frac{\sum x_p y_p - \frac{1}{l}\sum x_p \sum y_p}{\sum x_p^2 - \frac{1}{l} (\sum x_p^2)} = \frac{Conv[x, y]}{Var[x]}, \hspace{10pt} w_0 = \overline{y} - w_1 \overline{x} \hspace{20pt} \overline{y} = \frac{1}{l}\sum_{p \to 1} t_p  \hspace{7pt} \overline{x} = \frac{1}{l}\sum_{p\to 1}x_p$$
 Calcolare il gradiante per 1 (ciascuno, omettendo quindi $p$ per $x$) pattern p. 
 $$\frac{\partial E}{\partial w_i} = \frac{\partial (y - h_w(x))^2}{\partial w_i} = 2(y - h_w(x))\frac{\partial (y - h_w(h))}{\partial w_i} = 2(y - h_w(x))\frac{\partial (y - (w_1 x + w_0))}{\partial w_i}$$
-
-\subsection{Summarizing}
+Facendo una sintesi della LMS abbiamo che:
 \begin{itemize}
     \item \textbf{Given} un insieme di $l$ esempi di training ($x_p, y_p$) ed una funzione di perdita.
     \item \textbf{Find} il valore del peso $w$ per costruire $h_w(x)$ espresso come $y/out = w_1 x + w_0$ (minimizzare la perdita attesa dei dati di training)
@@ -95,30 +94,30 @@ Errore delle superfici per il linear model con 2 pesi. Parabolico per $E(w) = E(
 \hspace{-15pt}Spazio ipotetico con 2 parametri $w_0, w_1$. Il gradiente di $E(w)$ è il nostro "compasso" per trovare il minimo.\\\\
 La derivazione precedente suggerisce la linea per costruire un \textbf{algoritmo iterativo} basato su $\frac{\partial E(w)}{\partial w_i}$
 \begin{definition}
-    \textbf{Gradiente} = direzione salita, possiamo muoverci verso il minimo con un gradiente in discesa ($\Delta w =$ gradiente di $E(w)$)
+    \textbf{Gradiente} = direzione salita, possiamo muoverci verso il minimo con un gradiente in discesa ($\Delta w =$ -gradiente di $E(w)$)
 \end{definition}
 \begin{definition}
     \textbf{ricerca locale} inizia con vettore di pesi iniziali. Esso viene modificato iterativamente per diminuire
     fino a minimizzare la funzione di errore (discesa più ripida).
-    $$w_new = w + \eta \cdot \Delta w$$
+    $$w_{new} = w + \eta \cdot \Delta w$$
     Dove $\eta$ è una constante (step size) chiamata \textbf{learning rate}
 \end{definition}
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.5\textwidth]{images/gradieant-descent.png}
 \end{figure}
-Le motivazioni intuitive del gradiant descent sono che dalla formulazione, $w_new = w + \eta \cdot \Delta w$ possiamo ottenere:
+Le motivazioni intuitive del gradiant descent sono che dalla formulazione, $w_{new} = w + \eta \cdot \Delta w$ possiamo ottenere:
 $$\Delta w_0 = -\frac{\partial E(w)}{\partial w_0} = 2(y- h_w(x)) \hspace{15pt} \Delta w_1 = -\frac{\partial E(w)}{\partial w_i} = 2(y - h_w(x)) \cdot x$$
 \begin{definition}
     Questa è una "error correction rule" chiamata \textbf{delta rule} che cambia la proporzione $w$ con l'errore (target-output):
     \begin{itemize}
         \item (target y - output) = err  = 0 $\to$ nessuna correzione 
-        \item output > target $\to$ (y - h) < 0 (output troppo alto)
+        \item output $>$ target $\to$ (y - h) $<$ 0 (output troppo alto)
         \begin{itemize}
             \item Se $\Delta w_0$ negativo $\to$ si riduce $w_0$ e 
             \item if (input $x > 0$) $\Delta w_1$ negativo $\to$ si ricude $w_q$ else si aumenta $w_1$
         \end{itemize}
-        \item output < target $\to$ $(y - h) > 0$ (output è troppo lento)
+        \item output $<$ target $\to$ $(y - h) > 0$ (output è troppo lento)
     \end{itemize} 
 \end{definition}
 \hspace{-15pt}In questo modo andiamo a migliorare l'apprendimento dai precedenti errori.\\\\
@@ -132,11 +131,13 @@ ci permette di cercare in uno spazio infinito di ipotesi, può essere facilmente
     $$\Delta w_0 = - \frac{\partial E(w)}{\partial w_0} = 2 \sum_{p=1}^{l}(y_p - h_w(x_p)) \hspace{15pt} \Delta w_1 = -\frac{\partial E(w)}{\partial w_1} = 2 \sum_{p=1}^{l}(y_p - h_w(x_p)) \cdot x_p$$
     Dove $x_p$ è un p-esmo input, $y_p$ l'output per $p$, $w$ una coppia libera, $l$ numero di esempi.
 \end{definition}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{images/for-l-patters.png}
+\end{figure}
 \hspace{-15pt}Possiamo aggiornare $w$ dopo (ripetendo) una fase di dati di training $l$ $\to$ \textbf{algoritmo di batch} (blu). Oppure
 possiamo aggiornare $w$ dopo ogni pattern $p \to$ \textbf{on-line algorithm} (discesa del gradiente stocastico) (purple and green), questo caso 
-potrebbe essere più veloce, ma necessitare di step più piccoli.
-
-\subsection{Estendere a vettori di input}
+potrebbe essere più veloce, ma necessitare di step più piccoli.\\\\
 Questo è una caso standard, usare da 2 finoa centinaia di variabili/features di input  $x = [x_1, x_2, \cdots, x_n]$, il \textbf{pattern} di input
 è un vettore.
 \begin{example}
@@ -169,7 +170,7 @@ $$w^T x = x^T w (inner product) \hspace{15pt}x^T = [1, x_1, x_2, \cdots, x_n] \h
 \begin{note}
     Notare che $w$ è un parametro (libero) continuo "pesi".
 \end{note}
-\newpage
+
 \hspace{-15pt}In una vista geometrica avremmo quello che si chiama \textbf{iperpiano}. Per 2 variabili avremmo:
 $$x^T w = w^T x = w_0 + w_1 x_1 + w_2 x_2 \hspace{20pt} \text{(n dim)} w^t = [w_0, w_1, w_2, \cdots, w_n]$$
 \begin{figure}[h!]
@@ -190,7 +191,7 @@ di esempi e $n$ la dimensione dell'input.
 \subsection{Algoritmo iterativo di discesa del gradiante}
 \begin{definition}
     Definiamo ora \textbf{l'algoritmo iterativo di discesa del gradiante}
-    $$\Delta w_i = -\frac{\partial E(w)}{\partial w_i} = \sum_{p=1}^{l}(y_p - h_w(x_p)) \cdot x_{p,i} = w\sum_{p=1}^{l}(y_p - x_p^T w)x_{p,i}$$
+    $$\Delta w_i = -\frac{\partial E(w)}{\partial w_i} = 2\sum_{p=1}^{l}(y_p - h_w(x_p)) \cdot x_{p,i} = 2\sum_{p=1}^{l}(y_p - x_p^T w)x_{p,i}$$
     Abbiamo che il 2 è una costante che può essere ignorata nello sviluppo dell'algoritmo, mentre $x_{p,i}$ è il componente $i$ del pattern $p$
 \end{definition}
 \hspace{-15pt}Questo è una estensione vettoriale al gradiente molto semplice nel quale ogni x, ha il suo $w_i$ e il suo $\Delta w_i$ (come il singolo x prima).
@@ -216,9 +217,9 @@ $$
 Possiamo lavorare in uno spazio a più luci senza la necessità di visualizzarlo. PS $w_0$ viene omesso sopra, puoi includerlo facilmente.\\\\
 Per riassumenre possiamo spiegare l'algorimo in dei semplici passaggi:
 \begin{enumerate}
-    \item Iniziare con un vettore dei pesi $w_initial$ (piccolo), fissando un $\eta$ ($0 < \eta < 1$).
+    \item Iniziare con un vettore dei pesi $w_{initial}$ (piccolo), fissando un $\eta$ ($0 < \eta < 1$).
     \item Calcolare $\Delta w =$ -"gradiante di $E(w)$" = $-\frac{\partial E(w)}{\partial w}$ (o per ogni $w_j$)
-    \item Calcolare $w_new = w + \eta \cdot \Delta w$ (o per ogni $w_j$) 
+    \item Calcolare $w_{new} = w + \eta \cdot \Delta w$ (o per ogni $w_j$) 
     \item Ritornare al 2 e ripetere finché non si converge o $E(w)$ è "sufficetemente piccolo"
 \end{enumerate}
 $\Delta w/l$ least mean square:
@@ -253,7 +254,7 @@ Possiamo quindi utilizzare anche input trasformati, come ad esempio $x, x^2, x^3
 gestiamo la macchina di learning (Least Square solution) sviluppandola nel seguente modo:
 $$h_w(x) = w_0 + w_1 x + w_2 x^2 + \cdots + w_Mx^M = \sum_{j=0}^{M}w_j x^j$$
 Detta \textbf{polynomial regression}.
-\newpage
+
 \begin{example}
     Facciamo un esempio non-lineare.
 \end{example}
@@ -333,19 +334,19 @@ delle ipotesi.\\\\
 Questo concetto fondamentale nel ML verrò ritrovato e lo "razzionalizzeremo" alla fine.
 
 \begin{definition}
-    Ridge regression o \textbf{tikhonov regularization}. La possinilità di aggiungere limitazioni alla somma di valori di $|w_j|$ favorendo modelli "scarsi" ess. con 
+    Ridge regression o \textbf{tikhonov regularization}. La possinilità di aggiungere limitazioni alla somma di valori di $|w_j|$ favorendo modelli "sparsi" ess. con 
     meno termini dovuti ai pesi $w_j = 0$ (o vicino allo 0) (questo vuol dire modelli meno complessi).
-    $$Loss(h_w) = \sum_{p=1}^{l}(y_p - h_w(x_p))^2 + \lambda||w||^2 \hspace{15pt} ||w||^2 = \sum_{i}w_i^2$$
+    $$Loss(h_w) = \sum_{p=1}^{l}(y_p - h_w(x_p))^2 + \lambda||w||^2 \hspace{25pt} ||w||^2 = \sum_{i}w_i^2$$
     Termine di errorid dei dati + termine di regolarizzazione/penalità.
 \end{definition}
 \hspace{-15pt}Abbiamo che $\lambda$ è chiamato coefficiente di regolarizzazione (un parametro costante o un iperparamentro). L'effetto che abbiamo 
 da questa regolarizzazione è il \textbf{decadimento del peso} (praticamente si aggiunge $2\lambda w$ al gradiante della peridita).
-$$w_{new} = w + \eta \cdot \Delta w - w \lambda w$$
+$$w_{new} = w + \eta \cdot \Delta w - 2 \lambda w$$
 Per esempio con gradiante uguale a zero, esso decrementa il valore di ogni $w$ con una frazione della vecchia $w$.\\\\
 Applicabilità generale (non sono per i polinomi): esempio possiamo controllare la complessità del modello salmente usando $\lambda$, senza conoscere
 M come per i polinomi, o anche quando la complessità del modello non è conosciuta. \\
 Notiamo il bilanciamento (compromesso) tra i due termini.Il termine relativo ai dati di errore di piccole dimensioni (minimizzare solo l'errore di addestramento) non
-è sufficente per noi, vogliamo ance controllare la complessità del modello per contrallare l'\textbf{overfitting}, quindi introduciamo il secondo termine della minimizzazione.
+è sufficente per noi, vogliamo ance controllare la complessità del modello per contrallare l'\textbf{overfitting}, quindi introduciamo il secondo termine della minimizzazione.\\\\
 Dall'altro canto possiamo eccedere perché troppo peso al secodo termine (alto valore $\lambda$) potra a focalizzare solo la minimizzazione (o principalemnte) sulla regolarizzazione,
 quindi anche l'errore dei dati (primo termine) potrebbe aumetare molto, ovverso passare all'\textbf{underfitting}. Il compromesso è regolato dal valore di $\lambda$. 
 \\\\Vediamo ora l'esempio fatto prima con un polinomio di nono grado applicaddo un $\lambda$
@@ -397,19 +398,19 @@ $$w^T x = x^T w \hspace{15pt} x^T = [1, x_1, x_2, \dots, x_n] \hspace{15pt} w^T 
 Vediamo ora la vista geometrica dell'iperpiano. Visto che $w^T x$ definisce un iperpiano abbiamo che
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.45\textwidth]{images/iperpiano.png}
+    \includegraphics[width=0.6\textwidth]{images/iperpiano.png}
 \end{figure}
 
 \hspace{-15pt}Da questo possiamo anche vedere la vista geometrica della classificazione.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.45\textwidth]{images/geometric-classification.png}
+    \includegraphics[width=0.6\textwidth]{images/geometric-classification.png}
 \end{figure}
 La classificazione può essere vista come un allocazione dello spazio di input nella regione di decisioni (es. 0/1). 2-dim spazioe di instance
 $x=(x_1, x_2) \in R^2, f(x) = 0/1$ (o $-1/+1$) 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/classification-by-linear-dec-boundary.png}
+    \includegraphics[width=0.6\textwidth]{images/classification-by-linear-dec-boundary.png}
 \end{figure}
 Notiamo che, dato una bias $w_0$, nella LTU diciamo che $h(x) = w^T x + w_0 \geq 0$ che è equivalente nel dire $h(x) = w^T x \geq -w_0$ con $-w_0$ abbiamo il valore "soglia".\\\\
 Le due forme identificato la stessa zona positiva della classificazione, la seconda in particolare enfatizza il ruolo del bias come un valore soglia per "attivare" il +1 output del classifier.
@@ -443,7 +444,7 @@ necessariamente al numero minimo di errori di classificazione. $[(\#ML)]$ se $w$
     Vediamo l'esempio della congiunzone. Possiamo andarla a rappresentare tramite un modello lineare per esempio:
     $$h(x) = 
     \begin{cases}
-        1 & if wx + w_0 \geq 0\\
+        1 & if\:\: wx + w_0 \geq 0\\
         0 & otherwise
     \end{cases}
     $$

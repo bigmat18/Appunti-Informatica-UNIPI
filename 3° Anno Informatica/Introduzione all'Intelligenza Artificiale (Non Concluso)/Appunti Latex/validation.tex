@@ -9,14 +9,14 @@
     Definiamo come \textbf{valutazione del modello} quando dopo aver scelto uno modello finale, si va a stimare/valutare il proprio
     errore/rischio di previsione (generalizzazione errore) su nuovi dati di test (misura della qualità/prestazione del modello scelto alla fine).
 \end{definition}
-\hspace{-15pt}Una regola molto importate è quello di mantenere la separazione tra gli obiettivi e utilizzare set di dati separati in ogni fase.\\
+\subsection{Hold out}
+Una regola molto importate è quello di mantenere la separazione tra gli obiettivi e utilizzare set di dati separati in ogni fase.\\
 Se la dimensione del set di dati è sufficiente, per esempio $50\%$ TR, $25\%$ VL, $25\%$ set disgiunti.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.4\textwidth]{images/validation-hold-out.png}
 \end{figure}
-\vspace{-15pt}
-\subsection{Hold out}
+\vspace{-5pt}
 Vediamo ora quello che chiamiamo \textbf{hold out}:
 \begin{itemize}
     \item \textbf{TR}: training set è usato per adattarsi [\textbf{training}]
@@ -56,7 +56,7 @@ Vediamo i vari passi di semplice meta algoritmo:
 \begin{example}
     Vediamo per esempio la ricerca su una griglia con 2 iper-parametri.\\
     Trovare il valore degli iperparametri (ovvero i parametri che non sono direttamente appresi, che non vengono modificati dalla formazione). Il miglior
-    iperparametro di ricerca può essere un <<FOR>> su una griglia di valori candidati. Per ogni modello di training $h_{w, \lambda}$ calcolare i risultati (accuracy) sul VL impostato. 
+    iperparametro di ricerca può essere un $<<FOR>>$ su una griglia di valori candidati. Per ogni modello di training $h_{w, \lambda}$ calcolare i risultati (accuracy) sul VL impostato. 
     Quindi prendi quello con l'errore minimo o la precisione massima.
     \begin{figure}[h!]
         \centering
@@ -74,7 +74,7 @@ Vediamo i vari passi di semplice meta algoritmo:
     Abbiamo che il valore perdetto $99\%$ non è una buona stima dell'errore di test (quello corretta è $50\%$)
     \begin{enumerate}
         \item Errore stimato su training o validation per model selection NON è utile per stima del rischio! Dati di TR o VL non vanno usati per scopi di test.
-        \item Usare tutto il data set per feature/model selection lede la correttezza della stima (risultati biased - <<Feature Selection bias>>). Test se è stato usato implicitamente dall'inizio.
+        \item Usare tutto il data set per feature/model selection lede la correttezza della stima (risultati biased - $<<$Feature Selection bias$>>$). Test se è stato usato implicitamente dall'inizio.
         Test deve essere separato prima, prima di qualsiasi model selection o design del modello (incluso selezione di features)
     \end{enumerate}
     Un test set esterno fornisce invece la stima corretta del $50\%$ (random coin result). È la \underline{correttezza della stima} che è in giudizio, non la possibilità di risolvere la task.
@@ -155,9 +155,7 @@ Vediamo un tipico comportameto nell'apprendimento.
         \includegraphics[width=\textwidth]{images/behavior-in-learning-7.png}
     \end{subfigure}
 \end{figure}
-
-\newpage
-\section{SLT}
+\subsection{SLT}
 Andiamo ora a mettere tutto insieme: la capacità di generalizzazione (misurata come rischio o errore del test) di un modello rispetto all'errore di
 formazione o rispetto alle zone di overfitting e underfitting. Poi mettiamo anche insieme il ruolo della complessità del modello, ed il ruolo del numero di dati.
 Quello che otteniamo è la \textbf{Teoria di apprendimento statistico} (STL) che è una teoria generale relativa questi argomenti.

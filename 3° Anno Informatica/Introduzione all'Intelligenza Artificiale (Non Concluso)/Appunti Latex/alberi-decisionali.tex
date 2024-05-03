@@ -80,7 +80,7 @@ Se abbiamo tutti i +1 o tutti i -1 allora abbiamo 0 entropia cioè "no informazi
 Il guadagno di informazioni è la riduzione prevista dell'entropia causata partizionando gli esempi su un attributo. 
 \begin{definition}
     Definiamo la \textbf{Riduzione attesa dell’entropia conoscendo A}
-    $$Gain(S, A) = Entrpy(S) - \sum_{v \in Values(A)}\frac{|Sv|}{S}Entropy(Sv)$$
+    $$Gain(S, A) = Entrpy(S) - \sum_{v \in Values(A)}\frac{|Sv|}{|S|}Entropy(Sv)$$
     Dove $values(A)$ sono i possibili valori per A, mentre $Sv$ è un sottoinsieme di esempi di S per i quali A ha valore v (somma di pesi)
 \end{definition}
 \hspace{-15pt}Maggiore è il guadagno di informazione, più efficace è l'attributo classificazione dei dati di addrestramento (maggiore variazione nell'omogeneità dei distribuzione delle classi nei sottoinsiemi, massima separazione delle classi).
@@ -93,7 +93,7 @@ Lo scopo è quello di separare gli esempi in base al target, trovare l'attributo
     \centering
     \includegraphics[width=0.6\textwidth]{images/esempio-select-best-attribute.png}
 \end{figure}
-
+\\
 \begin{minipage}{0.65\linewidth}
     Il guadagno di informazioni favorisce attributi con molti valori possibili. Consideriamo l'attributo "Date" nell'esempio "PlayTennis".\\\\
     "Date" ha il massimo guadagno di informazioni. Ogni giorno corrisponde ad un sottoinsieme differente che è puro: $[1+, 0-]$ o $[0+, 1-] \to 0$ entropia. 
@@ -116,7 +116,7 @@ Lo scopo è quello di separare gli esempi in base al target, trovare l'attributo
 SplitInInformation misura l'entropia di S rispetto ai valori di A, Più i dati sono distribuiti uniformamente, più sono alti.\\\\
 Il GainRation penalizza gli attributi che dividono gli esempi in molte piccole classi come per Date.
 Sia $|S| = n$ la divisione degli esempi di date in $n$ sottoinsiemi.
-$$SplitInInformation(S, Date) = -[(1(n/\log_2 1/n)) + \dots + (1/2 \log_2 1/n)] = -\log_2 1/n = \log_2$$
+$$SplitInInformation(S, Date) = -[(1/n \:\log_2 1/n)) + \dots + (1/2 \log_2 1/n)] = -\log_2 1/n = \log_2n$$
 Il quale è $> 1$ per $n > 2$ quindi riduciamo il GainRatio.\\
 Confronto con un A che divide i dati in due classi pari (con $(n/2)/n = 1/2$):
 $$SplitInInformation(S, A) = -[(1/2 \log_2 1/2) + (1/2\log_2 1/2)] = -[-1/2 - 1/2] = 1 \to \text{ no reduction }$$
@@ -151,12 +151,12 @@ Parliamo ora degli \textbf{bias induttivi} nell'apprendimento per i decision-tre
     DT non sono limitare alla rappresentazione tutte le possibili funzioni, la restizione non riguarda lo spazio delle ipotesi, ma la strategia di ricerca.
 \end{note}
 \begin{definition}
-    Defieniamo le preferenze o \textbf{bias di ricerca} (dovuete alla strategia di ricerca). ID3 ricerca uno spazio completo di ipotesi, la trategia
-    di ricreca è incompleta.
+    Definiamo le preferenze o \textbf{search biad} (dovute alla strategia di ricerca). \\\\
+    ID3 ricerca uno spazio completo di ipotesi, la strategia di ricerca è incompleta.
 \end{definition}
 \begin{definition}
-    Definiamo le restrizione o \textbf{language bias} (a causa dell'insieme di ipotesi esprimibile o consideto). Candidati all'eleminazione ricercati in uno spazio di ipotesi
-    incompleto, la strategia di ricea è completa (tutte le ipotesi consistenti, nel version space)
+    Definiamo le restrizione o \textbf{language bias} (a causa dell'insieme di ipotesi esprimibile o consideto).\\\\
+    Visto nel candidate-elimination dove sono ricercati in uno spazio di ipotesi incompleto, la strategia di ricerca è completa (tutte le ipotesi consistenti, nel version space)
 \end{definition}
 Perché il search bias viene preferito rispetto al language bias? Nel ML tipicamente si usano aprocci \textbf{flessibili} (capacità universale dei modelli) senza
 escludere a priori la funzione bersaglio sconosciuta. Ovviamente la flessibilità può portare a problemi di overfitting.\\\\
