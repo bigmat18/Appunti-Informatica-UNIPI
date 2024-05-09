@@ -1,0 +1,615 @@
+\section{Formulario}
+\subsection{Statistica descrittiva}
+\subsubsection{Indici statistici}
+\begin{definition}[Media campionaria]
+	\begin{equation}
+		\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i
+	\end{equation}
+\end{definition}
+\begin{definition}[Mediana]
+	È il dato $x_i$ tale che metà degli altri valori è minore o uguale a $x_i$ e l'altra metà maggiore o uguale. Se $n$ è pari si prende la media aritmetica dei due valori centrali.
+\end{definition}
+\begin{definition}[Varianza campionaria]
+	\begin{equation}
+		var(x)=\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2
+	\end{equation}
+\end{definition}
+\begin{definition}[Deviazione standard o scarto quadratico medio]
+	\begin{equation}
+		\sigma(x)=\sqrt{var(x)}
+	\end{equation}
+\end{definition}
+\begin{proposition}
+	\begin{equation}
+		\frac{\# \{x_i : \lvert x_i - \bar{x} \rvert > d\}}{n-1} \leq \frac{var(x)}{d^2}
+	\end{equation}
+\end{proposition}
+\begin{definition}[Sample skewness o misura campionaria di asimmetria]
+	\begin{equation}
+		b=\frac{1}{\sigma^3}\cdot \frac{1}{n} \sum_{i=1}^{n}(x_i - \bar{x})^3
+	\end{equation}
+\end{definition}
+\subsubsection{Quantili}
+\begin{definition}[Funzione di ripartizione empirica]
+	\begin{equation}
+		F_e(t)=\frac{\# \{i \vert x_i \leq t\}}{n}
+	\end{equation}
+\end{definition}
+\begin{definition}[$\beta$-quantile]
+	Il dato $x_i$ tale che:
+	\begin{itemize}
+		\item almeno $\beta n$ dati siano $\leq x_i$
+		\item almeno $(1-\beta)n$ dati siano $\geq x_i$
+	\end{itemize}
+\end{definition}
+\subsubsection{Dati multivariati}
+\begin{definition}[Covarianza campionaria]
+	\begin{equation}
+		cov(x,y)=\sum_{i=1}^{n}\frac{(x_i - \bar{x})(y_i-\bar{y})}{n-1}
+	\end{equation}
+\end{definition}
+\begin{definition}[Coefficiente di correlazione]
+	\begin{equation}
+		r(x,y)=\frac{cov(x,y)}{\sigma(x)\sigma(y)} = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2} \sqrt{\sum_{i=1}^{n}(y_i - \bar{y})^2}}
+	\end{equation}
+\end{definition}
+
+\subsection{Probabilità e indipendenza}
+\subsubsection{Spazi di probabilità}
+\begin{definition}[$\sigma$-additività]
+	$\mathbb{P}\bigg(\bigcup_{n=1}^{+\infty}A_n\bigg) = \sum_{n=1}^{+\infty} \mathbb{P}(A_n)$
+\end{definition}
+\begin{proposition}
+	Operazioni su spazi di probabilità:
+	\begin{itemize}
+		\item $\mathbb{P}(A^c) = 1-\mathbb{P}(A)$
+		\item $\mathbb{P}(\emptyset) = 0$
+		\item $\mathbb{P}(A \setminus B) = \mathbb{P}(A)-\mathbb{P}(B)$
+		\item $\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)$
+		\item $\mathbb{P}(A \cup B \cup C) = \mathbb{P}(A) + \mathbb{P}(B) + \mathbb{P}(C) - \mathbb{P}(A \cap B) - \mathbb{P}(A \cap C) - \mathbb{P}(B \cap C) + \mathbb{P}(A \cap B \cap C)$
+	\end{itemize}
+\end{proposition}
+
+\begin{proposition}
+	Vale:
+	\begin{equation}
+		\mathbb{P}(A) = \lim_{n \to \infty} \mathbb{P}(A_n)
+	\end{equation}
+\end{proposition}
+
+\subsubsection{Probabilità discreta}
+\begin{definition}[Probabilità]
+	\begin{equation}
+		\mathbb{P}(A) = \frac{\# A}{\# \Omega}
+	\end{equation}
+\end{definition}
+\begin{proposition}
+	Calcolo combinatorio:
+	\begin{itemize}
+		\item Sequenze ordinate con possibile ripetizione di $k$ numeri da $1$ a $n$: $n^k$
+		\item Numero di modi in cui si può ordinare $\{1, \ldots, n\}$: $n!$
+		\item Numero di sequenze ordinate senza ripetizione di $k$ numeri di $\{1, \ldots, n\}$: $\frac{n!}{(n-k)!}$
+		\item Numero di sottoinsiemi di $\{1, \ldots, n\}$ formati da $k$ elementi: $\binom{n}{k} = \frac{n!}{k!(n-k)!}$
+	\end{itemize}
+\end{proposition}
+
+\begin{definition}[Funzione di massa]
+	Se $\Omega=\{x_1,x_2,\ldots\} \subset \mathbb{R}$ è un sottoinsieme numerabile:
+	\begin{equation}
+		\Omega \ni x_i \mapsto p(x_i) = \mathbb{P}(\{x_i\}) \in [0,1]
+	\end{equation}
+	e valgono:
+	\begin{align}
+		& \mathbb{P}(A) = \sum_{i : x_i \in A} p(x_i) \quad\quad \forall A \subseteq \mathbb{R} \\
+		& p(x_i) \geq 0 \\
+		& \sum_{i=1,2,\ldots} p(x_i) = 1
+	\end{align}
+\end{definition}
+
+\subsubsection{Probabilità condizionata}
+\begin{definition}[Probabilità condizionata]
+	\begin{equation}
+		\mathbb{P}(A \vert B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
+	\end{equation}
+\end{definition}
+
+\begin{proposition}[Condizionamento ripetuto]
+	\begin{equation}
+		\mathbb{P}(A_1 \cap \ldots \cap A_n) = \mathbb{P}(A_1) \cdot \mathbb{P}(A_2 \vert A_1) \cdot \ldots \cdot \mathbb{P}(A_n \vert A_1 \cap \ldots \cap A_{n-1})
+	\end{equation}
+\end{proposition}
+
+\begin{definition}[Formula della probabilità totale o formula di fattorizzazione]
+	\begin{equation}
+		\mathbb{P}(A) = \sum_{i=1}^{n} \mathbb{P}(A \vert B_i)\mathbb{P}(B_i)
+	\end{equation}
+\end{definition}
+\begin{definition}[Formula di Bayes]
+	\begin{equation}
+		\mathbb{P}(B \vert A) = \frac{\mathbb{P}(A \vert B)\mathbb{P}(B)}{\mathbb{P}(A)}
+	\end{equation}
+	Se $B_1, \ldots, B_n$ è un sistema di alternative e $A$ è un evento non trascurabile:
+	\begin{equation}
+		\mathbb{P}(B_i \vert A) = \frac{\mathbb{P}(A \vert B_i)\mathbb{P}(B_i)}{\mathbb{P}(A)} = \frac{\mathbb{P}(A \vert B_i) \mathbb{P}(B_i)}{\sum_{j=1}^{n}\mathbb{P}(A \vert B_j)\mathbb{P}(B_j)}
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Eventi indipendenti]
+	\begin{equation}
+		\mathbb{P}(A_{i_1} \cap \ldots \cap A_{i_k}) = \mathbb{P}(A_{i_1}) \cdot \ldots \cdot \mathbb{P}(A_{i_k})
+	\end{equation}
+\end{definition}
+
+\subsubsection{Entropia di Shannon}
+\begin{definition}[Entropia]
+	\begin{equation}
+		H^{(n)}(p_1, \ldots, p_n) = - \sum_{i=1}^{n} p_i \log(p_i)
+	\end{equation}
+\end{definition}
+\begin{proposition}
+	L'entropia ha queste proprietà:
+	\begin{itemize}
+		\item È una funzione simmetrica
+		\item $H^{(n)}(1, 0, \ldots, 0) = 0$
+		\item È coerente tra n diversi: $H^{(n)}(p_1=0,p_2, \ldots, p_n) = H^{(n-1)}(p_2, \ldots, p_n) $
+		\item $H^{(n)}(p_1, \ldots, p_n) \leq H^{(n)}(\frac{1}{n}, \ldots, \frac{1}{n})$
+		\item Data una probabilità su $n \times m$ oggetti, $\Omega = \{x_{11}, \ldots, x_{ij}, \ldots, x_{nm}\}$, $\mathbb{P}(\{x_{ij}\})=q_{ij}$, considerando gli eventi $A_i = \{x_{i,1}, \ldots, x_{i,m}\}$, $\mathbb{P}(A_i)=p_i$:
+		\begin{equation}
+			H^{(nm)}(q_{11}, \ldots, q_{ij}, \ldots, q_{nm}) = H^{(n)}(p_1, \ldots, p_n) + \sum_{i=1}^{n} p_i H^{(m)}\bigg(\frac{q_{i1}}{p_i}, \ldots, \frac{q_{im}}{p_i}\bigg)
+		\end{equation}
+	\end{itemize}
+\end{proposition}
+
+\begin{theorem}[Teorema di Shannon]
+	Una funzione continua che soddisfa queste proprietà deve avere la forma:
+	\begin{equation}
+		cH^{(n)} \quad\quad c>0
+	\end{equation}
+\end{theorem}
+
+\subsubsection{Densità di probabilità}
+\begin{definition}[Densità di probabilità]
+	Una funzione non negativa $f : \mathbb{R} \to [0, +\infty]$, integrabile e tale che:
+	\begin{equation*}
+		\int_{-\infty}^{+\infty}f(x)dx = 1
+	\end{equation*}
+\end{definition}
+\begin{definition}[Probabilità di una densità di probabilità]
+	\begin{equation}
+		\mathbb{P}(A) = \int_{A} f(x)dx \quad\quad A \subseteq \Omega
+	\end{equation}
+\end{definition}
+
+\begin{proposition}
+	Se $A \cap B = \emptyset$:
+	\begin{equation}
+		\mathbb{P}(A \cup B) = \int_{A \cup B} f(x)dx = \int_{A} f(x)dx + \int_{B} f(x)dx = \mathbb{P}(A) + \mathbb{P}(B)
+	\end{equation}
+\end{proposition}
+
+\begin{proposition}[Probabilità di singoli punti]
+	\begin{equation}
+		\mathbb{P}(\{t\}) = \int_{\{t\}} f(x)dx=0
+	\end{equation}
+\end{proposition}
+
+\begin{definition}[Densità uniforme]
+	\begin{equation}
+		f(x) = \begin{cases}
+			1 & 0 \leq x \leq 1 \\
+			0 & \text{altrove}
+		\end{cases}
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Funzione indicatrice]
+	\begin{equation}
+		\mathcal{X}: \mathbb{R} \to \{0,1\} \quad\quad \mathcal{X}_S(x) = \begin{cases}
+			1 & x \in S \\
+			0 & x \notin S
+		\end{cases}
+	\end{equation}
+\end{definition}
+
+\subsection{Variabili aleatorie}
+\subsubsection{Legge di una variabile aleatoria}
+\begin{definition}[Legge di una variabile aleatoria]
+	Data una variabile aleatoria $X: \Omega \to \mathbb{R}$, la sua legge si indica con la notazione:
+	\begin{equation*}
+		\{X \in A\} = X^{-1}(A) = \{\omega \in \Omega : X(\omega) \in A\} \quad\quad \mathbb{P}_X(A) = \mathbb{P}(X \in A) = \mathbb{P}(X^{-1}(A))
+	\end{equation*}
+\end{definition}
+
+\begin{definition}[Variabile aleatoria discreta]
+	Se ha legge di probabilità discreta:
+	\begin{equation}
+		\mathbb{P}_X(A) = \mathbb{P}(X \in A) = \sum_{x_i \in A}p_X(x_i)
+	\end{equation}
+\end{definition}
+\begin{definition}[Variabile aleatoria continua]
+	Se ha legge di probabilità continua:
+	\begin{equation}
+		\mathbb{P}_X(A) = \mathbb{P}(X \in A) = \int_{A} f(x)dx
+	\end{equation}
+	Se $A = [a,b]$ è un segmento, vale:
+	\begin{equation}
+		\mathbb{P}(X \in A) = \mathbb{P}(a \leq X \leq b) = \int_{a}^{b} f(x)dx
+	\end{equation}
+\end{definition}
+
+\subsubsection{Funzione di ripartizione e quantili}
+\begin{definition}[Cumulative Distribution Function o Funzione di ripartizione]
+	\begin{equation}
+		F_X : \mathbb{R} \to [0,1] \quad\quad F_X(x) = \mathbb{P}\{X \leq x\}
+	\end{equation}
+\end{definition}
+
+\begin{proposition}
+	Proprietà della c.d.f.:
+	\begin{itemize}
+		\item $F$ non è decrescente ($x < y \Rightarrow F(x) \leq F(y)$)
+		\item $\lim_{x \to - \infty} F(x) = 0 \quad\quad \lim_{x \to + \infty}F(x)  = 1$
+		\item $F$ è continua a destra ($\forall x \in \mathbb{R} \quad F(x_n) \to F(x)$ per ogni successione $x_n \to x \quad x_n \geq x$)
+	\end{itemize}
+\end{proposition}
+
+\begin{proposition}
+	\begin{equation}
+		\mathbb{P}\{a < X \leq b\} = F(b) - F(a)
+	\end{equation}
+\end{proposition}
+
+\begin{definition}[c.d.f. discreta]
+	\begin{equation}
+		F_X(t) = \sum_{x_i \leq t} p(x_i)
+	\end{equation}
+\end{definition}
+
+\begin{proposition}
+	\begin{equation}
+		\mathbb{P}\{X=x\} = F(x) - F_{\_}(x)
+	\end{equation}
+\end{proposition}
+
+\begin{definition}[c.d.f. continua]
+	\begin{equation}
+		f(x) = \frac{dF(x)}{dx}
+	\end{equation}
+\end{definition}
+
+\begin{definition}[$\beta$-quantile]
+	\begin{equation}
+		r_\beta = inf\{r \in \mathbb{R} : F(r) \geq \beta\} \quad\quad \beta \in (0,1)
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Inversa generalizzata]
+	\begin{equation}
+		F^{\leftarrow} : (0,1) \to \mathbb{R} \quad\quad F^{\leftarrow}(t)=inf\{r \in \mathbb{R} : F(r) \geq t\}
+	\end{equation}
+	Ha le seguenti proprietà:
+	\begin{itemize}
+		\item Se $F$ è strettamente crescente $F^{\leftarrow}=F^{-1}$
+		\item $F^{\leftarrow}$ è sempre non decrescente
+		\item $F^\leftarrow(F(t)) \leq t \quad \forall t \in \mathbb{R}$
+		\item $F(F^\leftarrow(t)) \geq t \quad \forall t \in \mathbb{R}$
+		\item $F^\leftarrow(t) \leq s \Leftrightarrow F(s) \geq t$
+	\end{itemize}
+\end{definition}
+
+\subsubsection{Variabili aleatorie notevoli discrete}
+\begin{definition}[Variabili binomiali - $B(n,p)$]
+	Date $n$ prove di un esperimento con due esiti, di cui uno ha probabilità $p$. Sia $X$ la variabile che conta il numero di successi, vale:
+	\begin{equation}
+		\mathbb{P}(X=h) = \binom{n}{h}p^h(1-p)^{n-h}
+	\end{equation}
+\end{definition}
+\begin{definition}[Variabili geometriche - $G(p)$]
+	Un esperimento con due esiti di cui uno ha probabilità $p$. Sia $X$ la variabile che indica l'istante del primo successo (il numero $h$). Vale:
+	\begin{equation}
+		\mathbb{P}(X=h) = (1-p)^{h-1}p\quad\quad h \in \mathbb{N}_0
+	\end{equation}
+\end{definition}
+\begin{definition}[Variabili ipergeometriche - $I(n,h,r)$]
+	In un'urna ci sono $n$ biglie di cui $0 \leq h \leq n$ sono bianche e $n-h$ nere. Se ne estraggono $r \leq n$. Sia $X$ la variabile che conta quante di quelle estratte sono bianche. Vale:
+	\begin{equation}
+		\mathbb{P}(X = k) = \frac{\binom{h}{k} \binom{n-h}{r-k}}{\binom{n}{r}} \quad\quad k=0,\ldots, h
+	\end{equation}
+\end{definition}
+\begin{definition}[Identità di Vandermonde]
+	\begin{equation}
+		\sum_{k=0}^{h} \binom{h}{k}\binom{n-h}{r-k} = \binom{n}{r}
+	\end{equation}
+\end{definition}
+\begin{definition}[Variabili di Poisson - $P(\lambda)$]
+	La variabile $X$ indica il numero di successi in $n$ prove ripetute quando $n$ è elevato e $p$ è basso e $np \circeq \lambda$. Vale:
+	\begin{equation}
+		\mathbb{P}(X=h)=e^{-\lambda}\frac{\lambda^h}{h!} \quad\quad h \in \mathbb{N}
+	\end{equation}
+\end{definition}
+\subsubsection{Variabili aleatorie notevoli con densità}
+\begin{definition}[Variabili uniformi su Intervalli]
+	Valore casuale in un intervallo.
+	\begin{equation}
+		f(t)=\begin{cases}
+			\frac{1}{b-a} & a<t<b\\
+			0 & \text{altrove}
+		\end{cases} \quad\quad
+		F(t) = \begin{cases}
+			0 & t \leq a \\
+			\frac{t}{b-a} & 0 < t \leq b \\
+			1 & t >b
+		\end{cases}
+	\end{equation}
+\end{definition}
+\begin{definition}[Variabili esponenziali]
+	Tempo di attesa tra due eventi aleatori.
+	\begin{equation}
+		f(t)=\begin{cases}
+			\lambda e^{-\lambda t} & t>0\\
+			0 & t \leq 0
+		\end{cases} \quad\quad
+		F(t) = \begin{cases}
+			1 - e^{-\lambda t} & t>0\\
+			0 & t\leq 0
+		\end{cases}
+	\end{equation}
+\end{definition}
+\begin{definition}[Variabili di Pareto - Power law]
+	Fenomeni in cui eventi estremi hanno una probabilità cospicua di avvenire.
+	\begin{equation}
+		f(t)=\begin{cases}
+			\alpha x_m^\alpha t^{-1-\alpha} & t>x_m\\
+			0 & t \leq x_m
+		\end{cases} \quad\quad
+		F(t) = \begin{cases}
+			1 & t< x_m \\
+			1 - (\frac{x_m}{t})^\alpha & t\geq x_m
+		\end{cases}
+	\end{equation}
+\end{definition}
+\begin{definition}[Variabili Gaussiane Standard - $N(0,1)$]
+	\begin{equation}
+		\varphi(x) = \frac{1}{\sqrt{2 \pi}} e^{\frac{-x^2}{2}} \quad\quad
+		\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{x}e^{\frac{-t^2}{2}}
+	\end{equation}
+	È pari e valgono:
+	\begin{align}
+		& \mathbb{P}\{-t \leq Z \leq t\} = \Phi(t) - \Phi(-t) = 2\Phi(t)-1 \\
+		& \Phi(0) = \mathbb{P}\{X \geq 0\} = \mathbb{P} \{X \leq 0\} = \frac{1}{2}
+	\end{align}
+\end{definition}
+\begin{definition}[Variabili Gaussiane Non Standard - $N(m, \sigma^2)$]
+	Data $X$ una v.a. $N(0,1)$ e $Y$ una v.a. del tipo $Y = \sigma X + m$.
+	\begin{align}
+		& F_Y(t) = \mathbb{P}\{Y \leq t\} = \mathbb{P}\{\sigma X + m \leq t\} = \mathbb{P}\bigg(X \leq \frac{t-m}{\sigma}\bigg) = \Phi \bigg(\frac{t-m}{\sigma}\bigg) \\
+		& f_Y(t) = \frac{1}{\sigma}f_X\bigg(\frac{t-m}{\sigma}\bigg) = \frac{1}{\sqrt{2 \pi}\sigma} e^{-\frac{(t-m)^2}{2 \sigma^2}}
+	\end{align}
+\end{definition}
+
+\subsubsection{Trasformazioni di variabili con densità}
+\begin{equation}
+	Y:\Omega \to \mathbb{R} \quad \quad Y = h \circ X \quad\quad F_Y(y) = \mathbb{P}\{Y\leq y\} = \mathbb{P}\{h(X) \leq y\}
+\end{equation}
+
+\begin{proposition}[Cambio di variabile]
+	Sia $h: A \to B$ biunivoca, differenziabile e con inversa differenziabile:
+	\begin{equation}
+		f_Y(y) = \begin{cases}
+			f_X(h^{-1}(y)) \cdot \bigg\lvert \frac{dh^{-1}(y)}{dy} \bigg\rvert & y \in B\\
+			0 & y \notin B
+		\end{cases}
+	\end{equation}
+	Se $h$ è crescente:
+	\begin{align}
+		& F_Y(y)=\mathbb{P}(Y\leq y) = \mathbb{P}(h(X) \leq y) = \mathbb{P}(X \leq h^{-1}(y)) = F_X(h^{-1}(y))\\
+		& f_Y(y)=f_X(h^{-1}(y))\cdot \frac{dh^{-1}(y)}{dy}
+	\end{align}
+	Se $h$ è decrescente:
+	\begin{equation}
+		\mathbb{P}(h(X) \leq y) = \mathbb{P}(X \leq h^{-1}(y)) = 1 - F_X(h^{-1}(y))
+	\end{equation}
+\end{proposition}
+
+\subsubsection{Valore atteso, varianza e momenti}
+\begin{definition}[Valore atteso]
+	\begin{equation}
+		\mathbb{E}[X] = \sum_i x_i p_X(x_i) \quad\quad \mathbb{E}[X] = \int_{-\infty}^{+\infty} tf_X(t)dt
+	\end{equation}
+\end{definition}
+
+\begin{proposition}
+	Sia $X$ discreta, la variabile $g(x)$ ammette valore atteso se $\sum_i \lvert g(x_i) \rvert p(x_i) < +\infty$. In quel caso vale:
+	\begin{equation}
+		\mathbb{E}[g(X)] = \sum_i g(x_i)p(x_i)
+	\end{equation}
+	Sia $X$ con densità, la variabile $g(x)$ ammette valore atteso se $\int_{-\infty}*{+\infty} \lvert g(x) \rvert f(x) dx < +\infty$. In quel caso vale:
+	\begin{equation}
+		\mathbb{E}[g(X)] = \int_{-\infty}*{+\infty} g(x)f(x) dx
+	\end{equation}
+\end{proposition}
+\begin{proposition}
+	Se $X$ ha valore atteso, valgono:
+	\begin{itemize}
+		\item $\forall a,b \in \mathbb{R} \quad \mathbb{E}[aX+b] = a\mathbb{E}[X]+b \quad \mathbb{E}[b]=b$
+		\item $\lvert \mathbb{E}[X] \rvert \leq E[\lvert X \rvert]$
+		\item $\mathbb{P}(X \geq 0) = 1 \Longrightarrow \mathbb{E}[X] \geq 0$
+	\end{itemize}
+\end{proposition}
+
+\begin{definition}[Momento di ordine $n$]
+	\begin{equation}
+		\mathbb{E}[X^n] \quad\quad \mathbb{E}[\lvert X \rvert ^n] < +\infty
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Disuguaglianza di Jensen]
+	\begin{equation}
+		\mathbb{E}[\lvert X \rvert ^m] ^{\frac{1}{m}} \leq \mathbb{E}[\lvert X \rvert^n]^{\frac{1}{n}} \quad\quad 1 \leq m \leq n
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Disuguaglianza di Markov]
+	\begin{equation}
+		a\mathbb{P}\{X \geq a\}\leq \mathbb{E}[X] \quad\quad a>0
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Varianza]
+	\begin{equation}
+		Var(X) = \mathbb{E}[(X-\mathbb{E}[X])^2] = \mathbb{E}[X^2] - \mathbb{E}[X]^2
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Scarto quadratico medio]
+	\begin{equation}
+		\sigma(X) = \sqrt{Var(X)}
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Disuguaglianza di Chebyshev]
+	\begin{equation}
+		\mathbb{P}\{\lvert X -\mathbb{E}[X] \rvert > d\} \leq \frac{Var(X)}{d^2} \quad\quad d>0
+	\end{equation}
+\end{definition}
+\subsubsection{Momenti di variabili aleatorie notevoli}
+\begin{proposition}[Variabili di Bernoulli - $B(1,p)$]
+	\begin{equation}
+		\mathbb{E}[X^k] = p \quad\quad Var(X) = p-p^2 = p(1-p) \quad \quad k \geq 1
+	\end{equation}
+\end{proposition}
+\begin{proposition}[Variabili Binomiali]
+	\begin{equation}
+		\mathbb{E}[X] = np \quad\quad Var(X) = np(1-p)
+	\end{equation}
+\end{proposition}
+
+\begin{proposition}[Variabili di Poisson]
+	\begin{align}
+		& \mathbb{E}[X] = \sum_{h=0}^{+\infty}he^{-\lambda} \frac{\lambda^h}{h!}=\lambda\\
+		& \mathbb{E}[X^2] = \lambda + \lambda^2 \\
+		& Var(X) = \lambda
+	\end{align}
+\end{proposition}
+
+\begin{proposition}[Variabili uniformi su intervalli finiti]
+	\begin{equation}
+		\mathbb{E}[X] = \int_{a}^{b} \frac{x}{b-a}dx = \frac{a^2+ab+b^2}{3} \quad\quad Var(X) = \frac{(b-a)^2}{12}
+	\end{equation}
+\end{proposition}
+
+\begin{proposition}[Variabili Esponenziali]
+	\begin{equation}
+		\mathbb{E}[X^n] = \frac{n!}{\lambda^n} \quad\quad Var(X) =\frac{1}{\lambda^2}
+	\end{equation}
+\end{proposition}
+
+\begin{proposition}[Variabili Gaussiane Standard]
+	\begin{align}
+		& \mathbb{E}[X^{2h+1}] = 0 \\
+		& \mathbb{E}[X^{2h+2}] = (2h+1)\mathbb{E}[X^{2h}] \\
+		& Var(X) = 1
+	\end{align}
+\end{proposition}
+\begin{proposition}[Variabili Gaussiane]
+	\begin{equation}
+		\mathbb{E}[Y] = \mathbb{E}[\sigma X + m]\quad\quad Var(Y) = Var(\sigma X + m) = \sigma^2 Var(X)
+	\end{equation}
+\end{proposition}
+
+\subsection{Distribuzioni multivariate}
+\subsubsection{Variabili doppie}
+\begin{equation}
+	\Omega \ni \omega \mapsto (X(\omega), Y(\omega)) \in \mathbb{R}^2 \quad\quad \mathbb{P}_{(X,Y)}(A) = \mathbb{P}((X,Y) \in A) = \mathbb{P}\{\omega \in \Omega : (X(\omega), Y(\Omega)) \in A\}
+\end{equation}
+
+\begin{proposition}[Distribuzione di probabilità di variabile doppia discreta]
+	\begin{equation}
+		p(x_i,y_j) = \mathbb{P}(X=x_i, Y=y_j)
+	\end{equation}
+	\begin{equation}
+		\mathbb{P}_{(X,Y)}(A) = \mathbb{P}\{(X,Y) \in A\} = \sum_{(x_i, y_j) \in A} p(x_i, y_j)
+	\end{equation}
+	\begin{align}
+		& p_X(x_i) = \sum_{j=1}^{\infty}p(x_i, y_j) \\
+		& p_Y(y_j) = \sum_{i=1}^{\infty}p(x_i, y_j)
+	\end{align}
+\end{proposition}
+
+\begin{proposition}[Distribuzione di probabilità di variabile doppia con densità]
+	\begin{equation}
+		\mathbb{P}_{(X,Y)}(A) = \mathbb{P}\{(X,Y) \in A\} = \int\int_A f(x,y)dxdy
+	\end{equation}
+	\begin{align}
+		& f_X(x) = \int_{-\infty}^{+\infty} f(x,y) dy \\
+		& f_Y(y) = \int_{-\infty}^{+\infty} f(x,y) dx 
+	\end{align}
+\end{proposition}
+
+\subsubsection{Indipendenza di variabili aleatorie}
+\begin{definition}[Variabili aleatorie indipendenti]
+	\begin{equation}
+		\mathbb{P}(X_1 \in A_1, \ldots, X_n \in A_n) = \mathbb{P}(X_1 \in A_1) \cdot \ldots \cdot \mathbb{P}(X_n \in A_n)
+	\end{equation}
+	\begin{align}
+		&p(x_i, y_j) = p_X(x_i) \cdot p_Y(y_j) \quad\quad \forall(x_i, y_j) \\
+		& f(x,y) = f_X(x) \cdot f_Y(y) \quad\quad \forall (x,y)
+	\end{align}
+\end{definition}
+\subsubsection{Funzioni di variabili indipendenti}
+\begin{proposition}[Somma di Binomiali]
+	\begin{equation}
+		X \to B(n,p) \quad Y \to B(m,p) \Longrightarrow Z=X+Y \to B(n+m, p)
+	\end{equation}
+\end{proposition}
+
+\begin{proposition}[Funzione di massa di somma di variabili discrete]
+	\begin{equation}
+		Z = X+Y \Longrightarrow p_Z(n) = \sum_{h=0}^{n}p_X(h) \cdot p_Y(n-h)
+	\end{equation}
+\end{proposition}
+
+\begin{proposition}[Funzione di massa di somma di variabili con densità o formula della convoluzione]
+	\begin{equation}
+		Z = X+Y \Longrightarrow p_Z(n) = \int_{-\infty}^{+\infty} f_X(x)f_Y(z-x)dx = \int_{-\infty}^{+\infty} f_Y(y)f_X(z-y)dy
+	\end{equation}
+\end{proposition}
+
+\subsubsection{Covarianza e correlazione}
+\begin{proposition}[Valore atteso di somma di variabili]
+	Dati $X$ e $Y$ con valore atteso:
+	\begin{itemize}
+		\item $\mathbb{E}[X+Y] = \mathbb{E}[X] + \mathbb{E}[Y]$ \\
+		\item $X \geq Y \Longrightarrow \mathbb{E}[X] \geq \mathbb{E}[Y]$
+	\end{itemize}
+	Se sono anche indipendenti:
+	\begin{align}
+		& \mathbb{E}[XY] = \mathbb{E}[X] \cdot \mathbb{E}[Y] \\
+		& \mathbb{E}[h(X)k(Y)] = \mathbb{E}[h(X)] \cdot \mathbb{E}[k(Y)] 
+	\end{align}
+\end{proposition}
+
+\begin{proposition}[Disuguaglianza di Schwartz]
+	\begin{equation}
+		\mathbb{E}[\lvert XY \rvert] \leq \sqrt{\mathbb{E}[X^2]} \cdot \sqrt{\mathbb{E}[Y^2]}
+	\end{equation}
+\end{proposition}
+
+\begin{definition}[Covarianza]
+	\begin{equation}
+		Cov(X,Y) = \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])] = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Coefficiente di correlazione]
+	\begin{equation}
+		\rhd(X,Y) = \frac{Cov(X,Y)}{\sigma(X)\sigma(Y)}
+	\end{equation}
+\end{definition}
+
+\subsection{Variabili indipendenti e teoremi limite}
+\begin{definition}[Convergenza in probabilità]
+	\begin{equation}
+		\forall \epsilon > 0 \quad\quad \lim_{n \to \infty} \mathbb{P}(\lvert X_n - X \rvert > \epsilon) = 0
+	\end{equation}
+\end{definition}
