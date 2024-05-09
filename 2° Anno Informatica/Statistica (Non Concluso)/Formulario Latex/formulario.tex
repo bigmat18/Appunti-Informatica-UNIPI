@@ -1,64 +1,37 @@
 \section{Formulario}
 \subsection{Statistica descrittiva}
 \subsubsection{Indici statistici}
-\begin{definition}[Media campionaria]
-	\begin{equation}
-		\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i
-	\end{equation}
-\end{definition}
-\begin{definition}[Mediana]
-	È il dato $x_i$ tale che metà degli altri valori è minore o uguale a $x_i$ e l'altra metà maggiore o uguale. Se $n$ è pari si prende la media aritmetica dei due valori centrali.
-\end{definition}
-\begin{definition}[Varianza campionaria]
-	\begin{equation}
-		var(x)=\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2
-	\end{equation}
-\end{definition}
-\begin{definition}[Deviazione standard o scarto quadratico medio]
-	\begin{equation}
-		\sigma(x)=\sqrt{var(x)}
-	\end{equation}
-\end{definition}
+\begin{align}
+	&\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i
+	\tag{Media campionaria}\\
+	& var(x)=\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2
+	\tag{Varianza campionaria}\\
+	&\sigma(x)=\sqrt{var(x)}
+	\tag{Deviazione standard} \\
+	& b=\frac{1}{\sigma^3}\cdot \frac{1}{n} \sum_{i=1}^{n}(x_i - \bar{x})^3
+	\tag{Sample skewness}
+\end{align}
 \begin{proposition}
 	\begin{equation}
 		\frac{\# \{x_i : \lvert x_i - \bar{x} \rvert > d\}}{n-1} \leq \frac{var(x)}{d^2}
 	\end{equation}
 \end{proposition}
-\begin{definition}[Sample skewness o misura campionaria di asimmetria]
-	\begin{equation}
-		b=\frac{1}{\sigma^3}\cdot \frac{1}{n} \sum_{i=1}^{n}(x_i - \bar{x})^3
-	\end{equation}
-\end{definition}
+
 \subsubsection{Quantili}
-\begin{definition}[Funzione di ripartizione empirica]
-	\begin{equation}
-		F_e(t)=\frac{\# \{i \vert x_i \leq t\}}{n}
-	\end{equation}
-\end{definition}
-\begin{definition}[$\beta$-quantile]
-	Il dato $x_i$ tale che:
-	\begin{itemize}
-		\item almeno $\beta n$ dati siano $\leq x_i$
-		\item almeno $(1-\beta)n$ dati siano $\geq x_i$
-	\end{itemize}
-\end{definition}
+\begin{align}
+	& F_e(t)=\frac{\# \{i \vert x_i \leq t\}}{n} \tag{Funzione di ripartizione empirica}
+\end{align}
 \subsubsection{Dati multivariati}
-\begin{definition}[Covarianza campionaria]
-	\begin{equation}
-		cov(x,y)=\sum_{i=1}^{n}\frac{(x_i - \bar{x})(y_i-\bar{y})}{n-1}
-	\end{equation}
-\end{definition}
-\begin{definition}[Coefficiente di correlazione]
-	\begin{equation}
-		r(x,y)=\frac{cov(x,y)}{\sigma(x)\sigma(y)} = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2} \sqrt{\sum_{i=1}^{n}(y_i - \bar{y})^2}}
-	\end{equation}
-\end{definition}
+\begin{align}
+	& cov(x,y)=\sum_{i=1}^{n}\frac{(x_i - \bar{x})(y_i-\bar{y})}{n-1} \tag{Covarianza campionaria} \\
+	& r(x,y)=\frac{cov(x,y)}{\sigma(x)\sigma(y)} = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2} \sqrt{\sum_{i=1}^{n}(y_i - \bar{y})^2}} \tag{Coefficiente di correlazione}
+\end{align}
 
 \subsection{Probabilità e indipendenza}
 \subsubsection{Spazi di probabilità}
-\begin{definition}[$\sigma$-additività]
-	$\mathbb{P}\bigg(\bigcup_{n=1}^{+\infty}A_n\bigg) = \sum_{n=1}^{+\infty} \mathbb{P}(A_n)$
-\end{definition}
+\begin{align}
+	& \mathbb{P}\bigg(\bigcup_{n=1}^{+\infty}A_n\bigg) = \sum_{n=1}^{+\infty} \mathbb{P}(A_n) \tag{$\sigma$-addittività}
+\end{align}
 \begin{proposition}
 	Operazioni su spazi di probabilità:
 	\begin{itemize}
@@ -78,11 +51,9 @@
 \end{proposition}
 
 \subsubsection{Probabilità discreta}
-\begin{definition}[Probabilità]
-	\begin{equation}
-		\mathbb{P}(A) = \frac{\# A}{\# \Omega}
-	\end{equation}
-\end{definition}
+\begin{align}
+	& \mathbb{P}(A) = \frac{\# A}{\# \Omega} \tag{Probabilità}
+\end{align}
 \begin{proposition}
 	Calcolo combinatorio:
 	\begin{itemize}
@@ -107,45 +78,20 @@
 \end{definition}
 
 \subsubsection{Probabilità condizionata}
-\begin{definition}[Probabilità condizionata]
-	\begin{equation}
-		\mathbb{P}(A \vert B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
-	\end{equation}
-\end{definition}
+\begin{align}
+	& \mathbb{P}(A \vert B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)} \tag{Probabilità condizionata} \\
+	& \mathbb{P}(A_1 \cap \ldots \cap A_n) = \mathbb{P}(A_1) \cdot \mathbb{P}(A_2 \vert A_1) \cdot \ldots \cdot \mathbb{P}(A_n \vert A_1 \cap \ldots \cap A_{n-1}) \tag{Condizionamento ripetuto} \\
+	& \mathbb{P}(A) = \sum_{i=1}^{n} \mathbb{P}(A \vert B_i)\mathbb{P}(B_i) \tag{Formula di fattorizzazione} \\
+	& \mathbb{P}(B \vert A) = \frac{\mathbb{P}(A \vert B)\mathbb{P}(B)}{\mathbb{P}(A)} \tag{Formula di Bayes} \\
+	& \mathbb{P}(B_i \vert A) = \frac{\mathbb{P}(A \vert B_i)\mathbb{P}(B_i)}{\mathbb{P}(A)} = \frac{\mathbb{P}(A \vert B_i) \mathbb{P}(B_i)}{\sum_{j=1}^{n}\mathbb{P}(A \vert B_j)\mathbb{P}(B_j)} \tag{Formula di Bayes - Sistema di alternative} \\
+	& \mathbb{P}(A_{i_1} \cap \ldots \cap A_{i_k}) = \mathbb{P}(A_{i_1}) \cdot \ldots \cdot \mathbb{P}(A_{i_k}) \tag{Eventi indipendenti}
+\end{align}
 
-\begin{proposition}[Condizionamento ripetuto]
-	\begin{equation}
-		\mathbb{P}(A_1 \cap \ldots \cap A_n) = \mathbb{P}(A_1) \cdot \mathbb{P}(A_2 \vert A_1) \cdot \ldots \cdot \mathbb{P}(A_n \vert A_1 \cap \ldots \cap A_{n-1})
-	\end{equation}
-\end{proposition}
-
-\begin{definition}[Formula della probabilità totale o formula di fattorizzazione]
-	\begin{equation}
-		\mathbb{P}(A) = \sum_{i=1}^{n} \mathbb{P}(A \vert B_i)\mathbb{P}(B_i)
-	\end{equation}
-\end{definition}
-\begin{definition}[Formula di Bayes]
-	\begin{equation}
-		\mathbb{P}(B \vert A) = \frac{\mathbb{P}(A \vert B)\mathbb{P}(B)}{\mathbb{P}(A)}
-	\end{equation}
-	Se $B_1, \ldots, B_n$ è un sistema di alternative e $A$ è un evento non trascurabile:
-	\begin{equation}
-		\mathbb{P}(B_i \vert A) = \frac{\mathbb{P}(A \vert B_i)\mathbb{P}(B_i)}{\mathbb{P}(A)} = \frac{\mathbb{P}(A \vert B_i) \mathbb{P}(B_i)}{\sum_{j=1}^{n}\mathbb{P}(A \vert B_j)\mathbb{P}(B_j)}
-	\end{equation}
-\end{definition}
-
-\begin{definition}[Eventi indipendenti]
-	\begin{equation}
-		\mathbb{P}(A_{i_1} \cap \ldots \cap A_{i_k}) = \mathbb{P}(A_{i_1}) \cdot \ldots \cdot \mathbb{P}(A_{i_k})
-	\end{equation}
-\end{definition}
-
+\newpage
 \subsubsection{Entropia di Shannon}
-\begin{definition}[Entropia]
-	\begin{equation}
-		H^{(n)}(p_1, \ldots, p_n) = - \sum_{i=1}^{n} p_i \log(p_i)
-	\end{equation}
-\end{definition}
+\begin{align}
+	& H^{(n)}(p_1, \ldots, p_n) = - \sum_{i=1}^{n} p_i \log(p_i) \tag{Entropia}
+\end{align}
 \begin{proposition}
 	L'entropia ha queste proprietà:
 	\begin{itemize}
@@ -168,81 +114,37 @@
 \end{theorem}
 
 \subsubsection{Densità di probabilità}
-\begin{definition}[Densità di probabilità]
-	Una funzione non negativa $f : \mathbb{R} \to [0, +\infty]$, integrabile e tale che:
-	\begin{equation*}
-		\int_{-\infty}^{+\infty}f(x)dx = 1
-	\end{equation*}
-\end{definition}
-\begin{definition}[Probabilità di una densità di probabilità]
-	\begin{equation}
-		\mathbb{P}(A) = \int_{A} f(x)dx \quad\quad A \subseteq \Omega
-	\end{equation}
-\end{definition}
-
-\begin{proposition}
-	Se $A \cap B = \emptyset$:
-	\begin{equation}
-		\mathbb{P}(A \cup B) = \int_{A \cup B} f(x)dx = \int_{A} f(x)dx + \int_{B} f(x)dx = \mathbb{P}(A) + \mathbb{P}(B)
-	\end{equation}
-\end{proposition}
-
-\begin{proposition}[Probabilità di singoli punti]
-	\begin{equation}
-		\mathbb{P}(\{t\}) = \int_{\{t\}} f(x)dx=0
-	\end{equation}
-\end{proposition}
-
-\begin{definition}[Densità uniforme]
-	\begin{equation}
-		f(x) = \begin{cases}
-			1 & 0 \leq x \leq 1 \\
-			0 & \text{altrove}
-		\end{cases}
-	\end{equation}
-\end{definition}
-
-\begin{definition}[Funzione indicatrice]
-	\begin{equation}
-		\mathcal{X}: \mathbb{R} \to \{0,1\} \quad\quad \mathcal{X}_S(x) = \begin{cases}
-			1 & x \in S \\
-			0 & x \notin S
-		\end{cases}
-	\end{equation}
-\end{definition}
+\begin{align} 
+	& \mathbb{P}(A) = \int_{A} f(x)dx \quad\quad A \subseteq \Omega \tag{Probabilità di una densità}\\
+	& \mathbb{P}(A \cup B) = \int_{A \cup B} f(x)dx = \int_{A} f(x)dx + \int_{B} f(x)dx = \mathbb{P}(A) + \mathbb{P}(B) \quad\quad A \cap B = \emptyset \tag{Somma di probabilità} \\
+	& \mathbb{P}(\{t\}) = \int_{\{t\}} f(x)dx=0 \tag{Probabilità di un punto} \\
+	& f(x) = \begin{cases}
+		1 & 0 \leq x \leq 1 \\
+		0 & \text{altrove}
+	\end{cases} \tag{Densità uniforme} \\
+	& \mathcal{X}: \mathbb{R} \to \{0,1\} \quad\quad \mathcal{X}_S(x) = \begin{cases}
+		1 & x \in S \\
+		0 & x \notin S
+	\end{cases} \tag{Funzione indicatrice}
+\end{align}
 
 \subsection{Variabili aleatorie}
 \subsubsection{Legge di una variabile aleatoria}
-\begin{definition}[Legge di una variabile aleatoria]
-	Data una variabile aleatoria $X: \Omega \to \mathbb{R}$, la sua legge si indica con la notazione:
-	\begin{equation*}
-		\{X \in A\} = X^{-1}(A) = \{\omega \in \Omega : X(\omega) \in A\} \quad\quad \mathbb{P}_X(A) = \mathbb{P}(X \in A) = \mathbb{P}(X^{-1}(A))
-	\end{equation*}
-\end{definition}
 
-\begin{definition}[Variabile aleatoria discreta]
-	Se ha legge di probabilità discreta:
-	\begin{equation}
-		\mathbb{P}_X(A) = \mathbb{P}(X \in A) = \sum_{x_i \in A}p_X(x_i)
-	\end{equation}
-\end{definition}
-\begin{definition}[Variabile aleatoria continua]
-	Se ha legge di probabilità continua:
-	\begin{equation}
-		\mathbb{P}_X(A) = \mathbb{P}(X \in A) = \int_{A} f(x)dx
-	\end{equation}
-	Se $A = [a,b]$ è un segmento, vale:
-	\begin{equation}
-		\mathbb{P}(X \in A) = \mathbb{P}(a \leq X \leq b) = \int_{a}^{b} f(x)dx
-	\end{equation}
-\end{definition}
+\begin{align}
+	& \mathbb{P}_X(A) = \mathbb{P}(X \in A) = \sum_{x_i \in A}p_X(x_i) \tag{Variabile aleatoria discreta} \\
+	& \mathbb{P}_X(A) = \mathbb{P}(X \in A) = \int_{A} f(x)dx \tag{Variabile aleatoria continua} \\
+	& \mathbb{P}(X \in A) = \mathbb{P}(a \leq X \leq b) = \int_{a}^{b} f(x)dx \tag{Variabile aleatoria continua con segmento}
+\end{align}
 
 \subsubsection{Funzione di ripartizione e quantili}
-\begin{definition}[Cumulative Distribution Function o Funzione di ripartizione]
-	\begin{equation}
-		F_X : \mathbb{R} \to [0,1] \quad\quad F_X(x) = \mathbb{P}\{X \leq x\}
-	\end{equation}
-\end{definition}
+\begin{align}
+	& F_X : \mathbb{R} \to [0,1] \quad\quad F_X(x) = \mathbb{P}\{X \leq x\} \tag{Cumulative Distribution Function} \\
+	& \mathbb{P}\{a < X \leq b\} = F(b) - F(a) \\
+	& F_X(t) = \sum_{x_i \leq t} p(x_i) \tag{c.d.f. discreta} \\
+	& \mathbb{P}\{X=x\} = F(x) - F_{\_}(x) \\
+	& f(x) = \frac{dF(x)}{dx} \tag{c.d.f. continua}
+\end{align}
 
 \begin{proposition}
 	Proprietà della c.d.f.:
@@ -253,41 +155,12 @@
 	\end{itemize}
 \end{proposition}
 
+\begin{align}
+	& r_\beta = inf\{r \in \mathbb{R} : F(r) \geq \beta\} \quad\quad \beta \in (0,1) \tag{$\beta$-quantile} \\
+	& F^{\leftarrow} : (0,1) \to \mathbb{R} \quad\quad F^{\leftarrow}(t)=inf\{r \in \mathbb{R} : F(r) \geq t\} \tag{Inversa generalizzata}
+\end{align}
 \begin{proposition}
-	\begin{equation}
-		\mathbb{P}\{a < X \leq b\} = F(b) - F(a)
-	\end{equation}
-\end{proposition}
-
-\begin{definition}[c.d.f. discreta]
-	\begin{equation}
-		F_X(t) = \sum_{x_i \leq t} p(x_i)
-	\end{equation}
-\end{definition}
-
-\begin{proposition}
-	\begin{equation}
-		\mathbb{P}\{X=x\} = F(x) - F_{\_}(x)
-	\end{equation}
-\end{proposition}
-
-\begin{definition}[c.d.f. continua]
-	\begin{equation}
-		f(x) = \frac{dF(x)}{dx}
-	\end{equation}
-\end{definition}
-
-\begin{definition}[$\beta$-quantile]
-	\begin{equation}
-		r_\beta = inf\{r \in \mathbb{R} : F(r) \geq \beta\} \quad\quad \beta \in (0,1)
-	\end{equation}
-\end{definition}
-
-\begin{definition}[Inversa generalizzata]
-	\begin{equation}
-		F^{\leftarrow} : (0,1) \to \mathbb{R} \quad\quad F^{\leftarrow}(t)=inf\{r \in \mathbb{R} : F(r) \geq t\}
-	\end{equation}
-	Ha le seguenti proprietà:
+	Proprietà dell'inversa generalizzata:
 	\begin{itemize}
 		\item Se $F$ è strettamente crescente $F^{\leftarrow}=F^{-1}$
 		\item $F^{\leftarrow}$ è sempre non decrescente
@@ -295,96 +168,62 @@
 		\item $F(F^\leftarrow(t)) \geq t \quad \forall t \in \mathbb{R}$
 		\item $F^\leftarrow(t) \leq s \Leftrightarrow F(s) \geq t$
 	\end{itemize}
-\end{definition}
+\end{proposition}
 
 \subsubsection{Variabili aleatorie notevoli discrete}
-\begin{definition}[Variabili binomiali - $B(n,p)$]
-	Date $n$ prove di un esperimento con due esiti, di cui uno ha probabilità $p$. Sia $X$ la variabile che conta il numero di successi, vale:
-	\begin{equation}
-		\mathbb{P}(X=h) = \binom{n}{h}p^h(1-p)^{n-h}
-	\end{equation}
-\end{definition}
-\begin{definition}[Variabili geometriche - $G(p)$]
-	Un esperimento con due esiti di cui uno ha probabilità $p$. Sia $X$ la variabile che indica l'istante del primo successo (il numero $h$). Vale:
-	\begin{equation}
-		\mathbb{P}(X=h) = (1-p)^{h-1}p\quad\quad h \in \mathbb{N}_0
-	\end{equation}
-\end{definition}
-\begin{definition}[Variabili ipergeometriche - $I(n,h,r)$]
-	In un'urna ci sono $n$ biglie di cui $0 \leq h \leq n$ sono bianche e $n-h$ nere. Se ne estraggono $r \leq n$. Sia $X$ la variabile che conta quante di quelle estratte sono bianche. Vale:
-	\begin{equation}
-		\mathbb{P}(X = k) = \frac{\binom{h}{k} \binom{n-h}{r-k}}{\binom{n}{r}} \quad\quad k=0,\ldots, h
-	\end{equation}
-\end{definition}
-\begin{definition}[Identità di Vandermonde]
-	\begin{equation}
-		\sum_{k=0}^{h} \binom{h}{k}\binom{n-h}{r-k} = \binom{n}{r}
-	\end{equation}
-\end{definition}
-\begin{definition}[Variabili di Poisson - $P(\lambda)$]
-	La variabile $X$ indica il numero di successi in $n$ prove ripetute quando $n$ è elevato e $p$ è basso e $np \circeq \lambda$. Vale:
-	\begin{equation}
-		\mathbb{P}(X=h)=e^{-\lambda}\frac{\lambda^h}{h!} \quad\quad h \in \mathbb{N}
-	\end{equation}
-\end{definition}
+\begin{align}
+	& \mathbb{P}(X=h) = \binom{n}{h}p^h(1-p)^{n-h} \tag{Binomiale $B(n,p)$} \\
+	& \mathbb{P}(X=h) = (1-p)^{h-1}p\quad\quad h \in \mathbb{N}_0 \tag{Geometriche $G(p)$} \\
+	& \mathbb{P}(X = k) = \frac{\binom{h}{k} \binom{n-h}{r-k}}{\binom{n}{r}} \quad\quad k=0,\ldots, h \tag{Ipergeometriche $I(n,h,r)$} \\
+	& \mathbb{P}(X=h)=e^{-\lambda}\frac{\lambda^h}{h!} \quad\quad h \in \mathbb{N} \tag{Poisson $P(\lambda)$}
+\end{align}
+\begin{equation}
+	\sum_{k=0}^{h} \binom{h}{k}\binom{n-h}{r-k} = \binom{n}{r} \tag{Identità di Vandermonde} 
+\end{equation}
+
 \subsubsection{Variabili aleatorie notevoli con densità}
-\begin{definition}[Variabili uniformi su Intervalli]
-	Valore casuale in un intervallo.
-	\begin{equation}
-		f(t)=\begin{cases}
-			\frac{1}{b-a} & a<t<b\\
-			0 & \text{altrove}
-		\end{cases} \quad\quad
-		F(t) = \begin{cases}
-			0 & t \leq a \\
-			\frac{t}{b-a} & 0 < t \leq b \\
-			1 & t >b
-		\end{cases}
-	\end{equation}
-\end{definition}
-\begin{definition}[Variabili esponenziali]
-	Tempo di attesa tra due eventi aleatori.
-	\begin{equation}
-		f(t)=\begin{cases}
+\begin{align}
+	& f(t)=\begin{cases}
+		\frac{1}{b-a} & a<t<b\\
+		0 & \text{altrove}
+	\end{cases} \quad\quad
+	F(t) = \begin{cases}
+		0 & t \leq a \\
+		\frac{t}{b-a} & 0 < t \leq b \\
+		1 & t >b
+	\end{cases} \tag{Uniformi su intervalli} \\
+	& f(t)=\begin{cases}
 			\lambda e^{-\lambda t} & t>0\\
 			0 & t \leq 0
 		\end{cases} \quad\quad
 		F(t) = \begin{cases}
 			1 - e^{-\lambda t} & t>0\\
 			0 & t\leq 0
-		\end{cases}
-	\end{equation}
-\end{definition}
-\begin{definition}[Variabili di Pareto - Power law]
-	Fenomeni in cui eventi estremi hanno una probabilità cospicua di avvenire.
-	\begin{equation}
-		f(t)=\begin{cases}
+		\end{cases} \tag{Esponenziali} \\
+		& f(t)=\begin{cases}
 			\alpha x_m^\alpha t^{-1-\alpha} & t>x_m\\
 			0 & t \leq x_m
 		\end{cases} \quad\quad
 		F(t) = \begin{cases}
 			1 & t< x_m \\
 			1 - (\frac{x_m}{t})^\alpha & t\geq x_m
-		\end{cases}
-	\end{equation}
-\end{definition}
-\begin{definition}[Variabili Gaussiane Standard - $N(0,1)$]
-	\begin{equation}
-		\varphi(x) = \frac{1}{\sqrt{2 \pi}} e^{\frac{-x^2}{2}} \quad\quad
-		\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{x}e^{\frac{-t^2}{2}}
-	\end{equation}
-	È pari e valgono:
+		\end{cases} \tag{Pareto} \\
+		& \varphi(x) = \frac{1}{\sqrt{2 \pi}} e^{\frac{-x^2}{2}} \quad\quad
+		\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{x}e^{\frac{-t^2}{2}} \tag{Gaussiane standard $N(0,1)$} \\
+		&  f_Y(t) = \frac{1}{\sigma}f_X\bigg(\frac{t-m}{\sigma}\bigg) = \frac{1}{\sqrt{2 \pi}\sigma} e^{-\frac{(t-m)^2}{2 \sigma^2}} \tag{Gaussiane non standard $N(m, \sigma^2)$}\\
+		& F_Y(t) = \mathbb{P}\{Y \leq t\} = \mathbb{P}\{\sigma X + m \leq t\} = \mathbb{P}\bigg(X \leq \frac{t-m}{\sigma}\bigg) = \Phi \bigg(\frac{t-m}{\sigma}\bigg) \tag{Gaussiane non standard 2}
+\end{align}
+
+\begin{proposition}
+	Proprietà delle Gaussiane standard:
 	\begin{align}
 		& \mathbb{P}\{-t \leq Z \leq t\} = \Phi(t) - \Phi(-t) = 2\Phi(t)-1 \\
 		& \Phi(0) = \mathbb{P}\{X \geq 0\} = \mathbb{P} \{X \leq 0\} = \frac{1}{2}
 	\end{align}
-\end{definition}
-\begin{definition}[Variabili Gaussiane Non Standard - $N(m, \sigma^2)$]
+\end{proposition}
+\begin{definition}[Variabili Gaussiane Non Standard - ]
 	Data $X$ una v.a. $N(0,1)$ e $Y$ una v.a. del tipo $Y = \sigma X + m$.
-	\begin{align}
-		& F_Y(t) = \mathbb{P}\{Y \leq t\} = \mathbb{P}\{\sigma X + m \leq t\} = \mathbb{P}\bigg(X \leq \frac{t-m}{\sigma}\bigg) = \Phi \bigg(\frac{t-m}{\sigma}\bigg) \\
-		& f_Y(t) = \frac{1}{\sigma}f_X\bigg(\frac{t-m}{\sigma}\bigg) = \frac{1}{\sqrt{2 \pi}\sigma} e^{-\frac{(t-m)^2}{2 \sigma^2}}
-	\end{align}
+
 \end{definition}
 
 \subsubsection{Trasformazioni di variabili con densità}
@@ -613,3 +452,195 @@
 		\forall \epsilon > 0 \quad\quad \lim_{n \to \infty} \mathbb{P}(\lvert X_n - X \rvert > \epsilon) = 0
 	\end{equation}
 \end{definition}
+\begin{proposition}[Convergenza in probabilità ad una costante]
+	\begin{equation}
+		\lim_{n \to \infty} \mathbb{E}[X_n] = c \in \mathbb{R} \land \lim_{n \to \infty} Var(X_n)=0 \Longrightarrow (X_n)_{n\geq 1} \longrightarrow c
+	\end{equation}
+\end{proposition}
+
+\begin{proposition}
+	\begin{equation}
+		\forall \epsilon > 0 \quad \lim_{n \to \infty} \mathbb{P}(\lvert S_n^2 - \sigma^2 \rvert > \epsilon) = 0
+	\end{equation}
+\end{proposition}
+
+\begin{definition}[Convergenza in distribuzione]
+	\begin{equation}
+		\lim_{n \to \infty} F_n(t)=F(t) \quad \forall t \in \mathbb{R} \Longrightarrow (X_n)_{n \geq 1} \longrightarrow X 
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Teorema centrale del limite]
+	\begin{equation}
+		\lim_{n \to \infty}\mathbb{P}\bigg(a \leq \frac{X_1 + \ldots + X_n - n\mu}{\sigma \sqrt{n}}\bigg) = \frac{1}{\sqrt{2\pi}}\int_{a}^{b}e^{-1\frac{x^2}{2}}dx = \Phi(b)-\phi(a)
+	\end{equation}
+\end{definition}
+\begin{definition}[Approssimazione a variabile Gaussiana]
+	\begin{equation}
+		\frac{X_1 + \ldots + X_n -n\mu}{\sigma \sqrt{n}} = \sqrt{n}\frac{\bar{X}_n-\mu}{\sigma} \quad\quad n\geq 50
+	\end{equation}
+\end{definition}
+
+\subsubsection{Variabili Chi-Quadro e di Student}
+\begin{definition}[Gamma di Eulero]
+	\begin{equation}
+		\Gamma(r)=\int_{0}^{+\infty} x^{r-1}e^{-x}dx = (r-1)\Gamma(r-1) \quad\quad r>0
+	\end{equation}
+\end{definition}
+\begin{definition}[Densità Gamma - $\Gamma(r,\lambda)$]
+	\begin{equation}
+		f(x) = \begin{cases}
+			\frac{1}{\Gamma(r)} \lambda^rx^{r-1}e^{-\lambda x} & x >0\\
+			0& z \leq 0
+		\end{cases}
+	\end{equation}
+	\begin{align}
+		& \mathbb{E}[X^\beta] = \frac{\Gamma(r+\beta)}{\Gamma(r)\lambda^\beta} \\
+		& Var(X)=\frac{r}{\lambda^2}
+	\end{align}
+\end{definition}
+\begin{proposition}[Somma di densità gamma]
+	\begin{equation}
+		X\to \Gamma(r, \lambda) \quad Y \to \Gamma(s, \lambda) \Longrightarrow (X+Y) \to \Gamma(r+s, \lambda)
+	\end{equation}
+\end{proposition}
+
+\begin{definition}[Densità Chi-quadro]
+	\begin{equation}
+		X_1, \ldots, X_n \to N(0,1) \Longrightarrow (X_1^2, \ldots, X_n^") \to \Gamma(\frac{n}{2}, \frac{1}{2}) = \mathcal{X}^2(n)
+	\end{equation}
+	\begin{equation}
+		F_{X^2}(t) = \mathbb{P}(X^2 \leq t) = \begin{cases}
+			0 & t<0 \\
+			\mathbb{P}(-\sqrt{t} \leq X \leq \sqrt{t}) = 2F_X(\sqrt{t})-1 & t \geq 1
+		\end{cases}
+	\end{equation}
+\end{definition}
+
+\begin{proposition}[Approssimazioni Chi-quadro]
+	Data $C_n$ variabile con densità $\mathcal{X}^2(n)$:
+	\begin{itemize}
+		\item  $\lim_{n \to \infty} \frac{C_2}{n} \approx 1$
+		\item $\lim_{n \to \infty} \frac{C_n -n}{\sqrt{2n}} \approx N(0,1)$
+	\end{itemize}
+\end{proposition}
+
+\begin{definition}[Densità Student]
+	\begin{equation}
+		T_n = \sqrt{n} \frac{X}{\sqrt{C_n}} \quad \quad X \to N(0,1) \quad C_n \to \mathcal{X}^2(n)
+	\end{equation}
+	\begin{equation}
+		f_{T_n}(t) = \frac{\Gamma(\frac{n}{2} + \frac{1}{2})}{\sqrt{n\pi} \Gamma(\frac{n}{2})} \bigg(1+\frac{t^2}{n}\bigg)^{-\frac{n}{2}-\frac{1}{2}}
+	\end{equation}
+\end{definition}
+\begin{proposition}
+	\begin{equation}
+		(T_n)_{n\geq 1} \longrightarrow N(0,1)
+	\end{equation}
+\end{proposition}
+\begin{proposition}
+	Date $X_1, \ldots, X_n$ v.a. $N(m, \sigma^2)$:
+	\begin{itemize}
+		\item $\bar{X}_n$ e $S^2_n$ sono indipendenti
+		\item $\bar{X} \to N(m, \frac{\sigma^2}{n})$
+		\item $\frac{n-1}{\sigma^2}S_n^2 \to \mathcal{X}^2(n-1)$
+		\item $T=\sqrt{n}\frac{(\bar{X}_n - m)}{S} \to T(n-1)$
+	\end{itemize}
+\end{proposition}
+
+\subsection{Campioni statistici e stimatori}
+\subsubsection{Stima parametrica}
+\begin{definition}[Stimatore corretto]
+	Dato un parametro $\theta$:
+	\begin{equation}
+		\mathbb{E}_\theta[g(X_1, \ldots, X_n)] = \theta
+	\end{equation}
+\end{definition}
+\begin{proposition}
+	\begin{align}
+		& \mathbb{E}[\bar{X}] = \mathbb{E}[X_i] \\
+		& Var(\bar{X}) = \frac{Var(X_i)}{n} \\
+		& \mathbb{E}[S^2_n] = Var(X_i)
+	\end{align}
+\end{proposition}
+\begin{definition}[Stimatore consistente]
+	\begin{equation}
+		\lim_{n \to \infty} \mathbb{P}_\theta\{\lvert g_n(X-1, \ldots, X_n) - \theta \rvert > \epsilon\} = 0
+	\end{equation}
+\end{definition}
+\begin{definition}[Stimatore efficiente]
+	\begin{equation}
+		Var_\theta(g(X_1, \ldots,X_n)) \leq Var_\theta(h(X_1, \ldots, X_n))
+	\end{equation}
+\end{definition}
+
+\subsubsection{Massima verosimiglianza e metodo dei momenti}
+\begin{definition}[Funzione di verosimiglianza]
+	\begin{align}
+		& L(\theta, x_1, \ldots, x_n) = \prod_{i=1}^{n} p_\theta(x_i) \\
+		& L(\theta, x_1, \ldots, x_n) = \prod_{i=1}^{n} f_\theta(x_i)
+	\end{align}
+\end{definition}
+\begin{definition}[Stima di massima verosimiglianza]
+	\begin{equation}
+		L(\hat{\theta}; x_1, \ldots, x_n) = \max_{\theta \in \Theta} L(\theta; x_1, \ldots, x_n)
+	\end{equation}
+\end{definition}
+\begin{definition}[Metodo dei momenti]
+	\begin{equation}
+		\mathbb{E}_{\bar{\theta}}[X^k] = \frac{1}{n}\sum_{i=1}^{n}x_i^k \quad\quad \forall (x_1, \ldots, x_n)
+	\end{equation}
+\end{definition}
+
+\subsection{Intervalli di fiducia}
+\begin{definition}[Intervallo di fiducia per la media]
+	\begin{align}
+		& \bigg[\bar{X}_n \pm \frac{\sigma}{\sqrt{n}}q_{1-\frac{\alpha}{2}}\bigg]\\
+		& S_n^2 = \frac{1}{n-1}\sum_{i=1}^{n}(X_i - \bar{X})^2 \\
+		& \bigg[\bar{X}_n \pm \frac{S_n}{\sqrt{n}}q_{1-\frac{\alpha}{2}}\bigg]
+	\end{align}
+\end{definition}
+\begin{definition}[Intervallo di fiducia per la media - Bernoulli]
+	\begin{equation}
+		\bigg[\bar{X}_n \pm \sqrt{\frac{\bar{X}_n(1-\bar{X}_n)}{n}} q_{1-\frac{\alpha}{2}}\bigg]
+	\end{equation}
+\end{definition}
+\begin{definition}[Intervallo di fiducia per la varianza - Gaussiani]
+	\begin{equation}
+		\bigg( 0,\frac{(n-1)S^2_n}{\mathcal{X}^2_{\alpha, n-1}} \bigg] \quad\quad \bigg[ \frac{(n-1)S^2_n}{\mathcal{X}^2_{1-\alpha, n-1}}, +\infty \bigg)
+	\end{equation}
+\end{definition}
+
+\subsection{Test statistici}
+\begin{definition}[Regione critica di livello $\alpha$]\newcommand{\eqname}[1]{\tag*{#1}}%
+	\begin{equation}
+		C = \bigg\{\sqrt{n}\frac{\lvert \bar{X} - m_0 \rvert}{\sigma} > q_{1-\frac{\alpha}{2}}\bigg\} = \bigg\{\lvert \bar{X}_n - m_0 \rvert > \frac{\sigma}{\sqrt{n}}q_{1-\frac{\alpha}{2}}\bigg\}
+	\end{equation}
+\end{definition}
+\begin{definition}[p-value]
+	\begin{equation}
+		\bar{\alpha} = \mathbb{P}_{m_0}\bigg( \sqrt{n}\frac{\bar{X}_n - m_0 \rvert}{\sigma} > \frac{\sqrt{n}}{\sigma}\lvert\bar{X}_n - m_0 \rvert\bigg) = 2 \bigg[1- \Phi\bigg(\frac{\sqrt{n}}{\sigma}\lvert\bar{X}_n - m_0 \rvert\bigg)\bigg]
+	\end{equation}
+\end{definition}
+\begin{definition}[Curva operativa]
+	\begin{equation}
+		\beta(m)= \Phi\bigg(\sqrt{n}\frac{\lvert m_0 - m \rvert}{\sigma}+q_{1-\alpha}\bigg)
+	\end{equation}
+\end{definition}
+\subsubsection{Campione di Bernoulli}
+\begin{equation}
+	C = \bigg\{\frac{\sqrt{n}\lvert \bar{X} - m_0 \rvert}{\sqrt{p_0(1-p_0)}} > q_{1-\frac{\alpha}{2}}\bigg\} 
+\end{equation}
+\begin{equation}
+	\bar{\alpha} =  2 \bigg[1- \Phi\bigg(\frac{\sqrt{n} \lvert\bar{X}_n - p_0 \rvert}{\sqrt{p_o(1-p_0)}}\bigg)\bigg]
+\end{equation}
+\subsubsection{Campione Gaussiano}
+\begin{equation}
+	C = \bigg\{\frac{n-1}{\sigma_0^2} S_n^2 > \mathcal{X}^2_{2-\alpha,n-1}\bigg\} 
+\end{equation}
+\begin{equation}
+	\bar{\alpha} =  1-G_{n-1}\bigg(\frac{\sum_{i=1}^{n} (x_i-\bar{x}_n)^2}{\sigma_0^2}\bigg)
+\end{equation}
+\begin{equation}
+	\beta(\sigma)= G_{n-1}\bigg(\frac{\sigma_0^2}{\sigma^2}\mathcal{X}^2_{1-\alpha, n-1}\bigg)
+\end{equation}
