@@ -515,3 +515,12 @@ Problema di \textbf{coerenza} della cache e \textbf{falsa condivisione} (due var
 Supponiamo un'architettura SMP (Symmetric Multiprocessors), ovvero con caching di dati privati e condivisi. I dati core privati vengono memorizzati nella cache in L1, riducendo così l'AMAT e le comunicazioni di memoria off-chip. 
 Quando i dati condivisi vengono memorizzati nella cache, i valori condivisi possono essere replicati in più core cache private, riducendo anche la contesa di memoria. Cosa succede se i dati condivisi vengono scritti? \\
 Viene introdotto un nuovo livello dell'architettura che forza a mantenere la consistenza dei dati per linee diverse di cache. Uno dei protocolli più semplici è il \textbf{write invalidate}, che consiste nell'invalidare tutte le altre linee di cache non aggiornate tramite un bus di tipo \emph{snoopy}. Esistono anche protocolli di aggiornamento ma sono più complicati.
+
+\subsection{Software}
+I \textit{cache misses} dipendono anche dal comportamento dell'algoritmo e dall'ottimizzazione che viene (o meno) fatta dal programmatore. Ad esempio per quanto il \textit{Radix Sort} sia avvantaggiato sul \textit{Quick sort}, fa molti più miss.
+\subsubsection{Ottimizzazione}
+L'obiettivo è di massimizzare il riuso dei dati nella cache sfruttando la località spaziale e temporale. Esistono principalmente due tecniche:
+\begin{itemize}
+	\item \textbf{Loop interchange}: usare esternamente i loop più grandi in modo da ridurre gli accessi. Migliora la località spaziale.
+	\item \textbf{Data blocking}: si concentra sulla località temporale. Ad esempio nella moltiplicazione da matrice si lavora per blocchi invece che per colonne.
+\end{itemize}
