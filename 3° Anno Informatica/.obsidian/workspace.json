@@ -4,16 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "07489a5c5a856e96",
+        "id": "3036d14c0a943043",
         "type": "tabs",
         "children": [
           {
-            "id": "24f7d4ee4b64959a",
+            "id": "72755339423fe282",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Reti e Laboratorio III (Non Concluso)/Reti notes/images/Screenshot 2024-01-28 at 18.51.37.png"
+                "file": "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Ricerca con euristica.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -67,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "75962731b1f455cc",
@@ -83,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Reti e Laboratorio III (Non Concluso)/Reti notes/images/Screenshot 2024-01-28 at 18.51.37.png",
+                "file": "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Ricerca con euristica.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Reti e Laboratorio III (Non Concluso)/Reti notes/images/Screenshot 2024-01-28 at 18.51.37.png",
+                "file": "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Ricerca con euristica.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Reti e Laboratorio III (Non Concluso)/Reti notes/images/Screenshot 2024-01-28 at 18.51.37.png"
+                "file": "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Ricerca con euristica.md"
               }
             }
           }
@@ -144,29 +147,45 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9791306ee13c7746",
+  "active": "72755339423fe282",
   "lastOpenFiles": [
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Introduzione Intelligenza Artificiale.md",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Strategie non informative.md",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Ricerca con euristica.md",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Calcolo proposizionale.md",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/SVM.md",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Validation.md",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/K-nn.md",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Concept learning.md",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Alberi decisionali.md",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Logica di primo ordine (FOL).md",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Ricerca locale.md",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Modelli lineari.md",
+    "Untitled.canvas",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/images/Screenshot 2024-05-22 at 20.50.41.png",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/images/Screenshot 2024-05-22 at 20.01.31.png",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Esercizi/Parte 2/Parte2_Esercitazione2.pdf",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Esercizi/Parte 2/Parte2_Esercitazione1.pdf",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/K-means.md",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Esercizi/Parte 3/Quiz/Senza Risposta/photo_6025971350197351918_y.jpg",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Esercizi/Parte 3/Quiz/Senza Risposta/photo_5983398792545812027_y.jpg",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Esercizi/Parte 3/Quiz/Senza Risposta/photo_5979070470533791879_y.jpg",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Esercizi/Parte 3/Quiz/Senza Risposta/photo_5974176183501308509_y.jpg",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Esercizi/Parte 3/Quiz/Senza Risposta/photo_5967683773497720302_y.jpg",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Esercizi/Parte 3/Quiz/Senza Risposta/photo_5947295490729161801_x.jpg",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Esercizi/Parte 3/Quiz/Senza Risposta/photo_5942961147172992250_x.jpg",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Esercizi/Parte 3/Quiz/Senza Risposta/photo_5942961147172992249_x.jpg",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Esercizi/Parte 3/Quiz/Senza Risposta",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Esercizi/Parte 3/Quiz/Con Risposta",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Esercizi/Parte 3/Quiz/senza_risposta",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Esercizi/Parte 3/Quiz/con_risposta",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Esercizi/Parte 3/Quiz",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Esercizi/Parte 3/untitled folder",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Esercizi/Parte 1/es2_sol-2024.pdf",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Esercizi/Parte 1/es2-testi-2024.pdf",
+    "Basi di Dati (Concluso)/Notes/Modello relazionale.md",
+    "Basi di Dati (Concluso)/Notes/Basi di dati.md",
     "Statistica.md",
-    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/marchio_unipi_pant541.png",
-    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/main.tex",
-    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/main.pdf",
-    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/introduction.tex",
-    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex/frontespizio.tex",
-    "Introduzione all'Intelligenza Artificiale (Non Concluso)/Appunti Latex",
-    "Introduzione all'Intelligenza Artificiale (Non Concluso)",
-    "Ingegneria del Software (Concluso)/Esercitazioni/esercizzi-testing.pdf",
-    "Ingegneria del Software (Concluso)/Esercitazioni/FinoAQuiTuttoBene/Testo.pdf",
-    "Ingegneria del Software (Concluso)/Esercitazioni/FinoAQuiTuttoBene/Domande.pdf",
-    "Ingegneria del Software (Concluso)/Esercitazioni/Testo.pdf",
-    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 16.02.33.png",
-    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 16.01.18.png",
-    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.53.08.png",
-    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.47.44.png",
-    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.44.29.png",
-    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.42.53.png",
-    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.41.49.png",
-    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.41.31.png",
-    "Ingegneria del Software (Concluso)/Notes/images/Screenshot 2024-01-09 at 15.38.33.png",
     "Ingegneria del Software (Concluso)/Notes/Viste/Viste strutturale.md",
     "Ingegneria del Software (Concluso)/Notes/Viste/Vista logistica.md",
     "Ingegneria del Software (Concluso)/Notes/Viste/Vista comportamentale.md",
@@ -175,22 +194,6 @@
     "Ingegneria del Software (Concluso)/Notes/Testing/L'oracolo e individuazione degli output attesi.md",
     "Ingegneria del Software (Concluso)/Notes/Testing/Metodi black box.md",
     "Ingegneria del Software (Concluso)/Notes/Testing/Ispection.md",
-    "Ingegneria del Software (Concluso)/Notes/Testing/Criteri white-box.md",
-    "Ingegneria del Software (Concluso)/Notes/Patterns/Strategy.md",
-    "Ingegneria del Software (Concluso)/Notes/Patterns/State.md",
-    "Ingegneria del Software (Concluso)/Notes/Patterns/Singleton.md",
-    "Ingegneria del Software (Concluso)/Notes/Patterns/Simple factory.md",
-    "Ingegneria del Software (Concluso)/Notes/Patterns/Pure fabrication.md",
-    "Ingegneria del Software (Concluso)/Notes/Patterns/Proxy.md",
-    "Ingegneria del Software (Concluso)/Notes/Patterns/Factory.md",
-    "Ingegneria del Software (Concluso)/Notes/Patterns/Factory method.md",
-    "Ingegneria del Software (Concluso)/Notes/Patterns/Decorator.md",
-    "Ingegneria del Software (Concluso)/Notes/Patterns/Adapter.md",
-    "Ingegneria del Software (Concluso)/Notes/Patterns/Abstract factory.md",
-    "Ingegneria del Software (Concluso)/Notes/UML Diagram/Diagrammi delle classi.md",
-    "Ingegneria del Software (Concluso)/Notes/UML Diagram/Diagrammi casi d'uso.md",
-    "Ingegneria del Software (Concluso)/Notes/UML Diagram/Diagramma sequenziale.md",
-    "Ingegneria del Software (Concluso)/Notes/UML Diagram/Diagramma di macchina a stati.md",
-    "Ingegneria del Software (Concluso)/Notes/UML Diagram/Diagramma delle attività.md"
+    "Ingegneria del Software (Concluso)/Notes/Testing/Criteri white-box.md"
   ]
 }

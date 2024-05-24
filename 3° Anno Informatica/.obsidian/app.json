@@ -3,5 +3,7 @@
   "alwaysUpdateLinks": true,
   "showLineNumber": true,
   "vimMode": true,
-  "tabSize": 4
+  "tabSize": 4,
+  "newFileLocation": "current",
+  "attachmentFolderPath": "./images"
 }
