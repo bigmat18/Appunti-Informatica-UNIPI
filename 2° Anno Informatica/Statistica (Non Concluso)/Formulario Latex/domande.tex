@@ -1,0 +1,158 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Domande di teoria}
+
+\textbf{Considerando il lancio di una moneta equilibrata e la variabile $X$ che prende valore $1$ se esce testa e $0$ se croce, e la variabile $Y$ che invece prende valore $0$ se esce testa e $1$ se croce, le variabili sono di Bernoulli $p = \frac{2}{2}$ e dunque la loro somma $X + Y$ è di tipo binomiale con $n = 2$ e $p = \frac{1}{2}$.}\\
+FALSO: la variabile $X + Y$ prende sempre valore $1$.\\\\
+
+
+\noindent\textbf{Una variabile aleatoria $X$ con varianza $Var(X) = 0$ è tale che esiste un numero $c \in \mathbb{R}$
+tale che $\mathbb{P}(X = c) = 1$.}\\
+VERO: in effetti $c = \mathbb{E}[X]$ che è finito perché $X$ ammette momento secondo essendo la varianza finita (anzi, nulla), e questo perché dalla disuguaglianza di Chebychev
+\begin{equation*}
+	\mathbb{P}(\lvert X - \mathbb{E}[X] > \delta) = \frac{1}{\delta^2}Var(X)=0
+\end{equation*}
+da cui mandando $\theta \to 0$ si ha $\mathbb{P}(X \neq \mathbb{E}[X])=1$.\\\\
+
+\noindent\textbf{Considerando una successione $X_1 = X_2 = X_3 = \ldots$di variabili uguali tra di loro e con momento secondo finito, per la Legge dei Grandi Numeri la quantità $\bar{X}_n = \frac{1}{n}(X_1 + \ldots + X_n)$ converge in probabilità a $\mathbb{E}[X]$.}\\
+FALSO: non è verificata l’ipotesi di indipendenza, e in questo caso $\bar{X}_n = \frac{1}{n}(X_1 + \ldots + X_n) = X_1$.\\\\
+
+\noindent\textbf{Una variabile Gaussiana $N(m, \sigma^2)$ ha tutti i momenti finiti.}\\
+VERO: la condizione di esistenza del momento n-esimo è:
+\begin{equation*}
+	\int_{-\infty}^{\infty} \lvert t \rvert^n \frac{1}{\sqrt{2\pi\sigma^2}}e^{\frac{-(t-m)^2}{2\sigma^2}}dt < \infty
+\end{equation*}
+che è verificata per ogni n poiché l’esponenziale negativo decresce più velocemente di ogni potenza, e nello specifico:
+\begin{equation*}
+	\lvert t \rvert^n e^{\frac{-(t-m)^2}{2\sigma^2}} \leq e^{\frac{-c(t-m)^2}{2\sigma^2}}
+\end{equation*}
+per $c>0$ abbastanza piccola.\\\\
+
+\noindent \textbf{Dato un campione statistico $X_1, \ldots, X_n$ di v.a. indipendenti con momento secondo finito, la funzione $Var(\bar{X}_n)$ è decrescente in $n$.}\\
+VERO: infatti per indipendenza $Var(\bar{X}_n) = \frac{Var(X_1)}{n}$\\\\
+
+\noindent \textbf{Se il p-value di un test di ipotesi è $0.001$, allora l’ipotesi nulla è plausibile per ogni ragionevole livello.}\\
+FALSO: si rifiuta l’ipotesi nulla per ogni livello $\alpha > 0.001$ quindi per ogni ragionevole livello. \\\\
+
+\noindent \textbf{In uno spazio di probabilità, due eventi disgiunti sono indipendenti.} \\
+FALSO: se $A$, $B$ sono disgiunti e indipendenti,
+\begin{equation*}
+	\mathbb{P}(A)\mathbb{P}(B) = \mathbb{P}(A \cap B) = \mathbb{P}(\emptyset)=0
+\end{equation*}
+è soddisfatta se e solo se uno dei due eventi è esso stesso vuoto, per cui l’affermazione
+non è verificata in generale.\\\\
+
+\noindent \textbf{Una variabile aleatoria che assume infiniti valori è una variabile con densità.}\\
+FALSO: ad esempio una variabile di Poisson può assumere qualsiasi valore naturale $(0, 1, 2, \ldots)$ ma non è una variabile con densità.\\\\
+
+\noindent \textbf{I momenti $\mathbb{E}_n$ di una variabile aleatoria $X$ di Bernoulli di parametro $p$ sono tutti uguali.}\\
+VERO: infatti vale sempre $X_n = X$, perché se $X = 0$ allora $X_n = 0^n = 0$, e similmente se $X = 1$ allora $X_n = 1^n = 1$, di conseguenza:
+\begin{equation*}
+	\mathbb{E}[X^n] = 1^n \mathbb{P}(X^n = 1) + 0 ^n \mathbb{P}(X^n=0) = 1 \mathbb{P}(X=1) + 0 \mathbb{P}(X=0) = \mathbb{E}[X]
+\end{equation*}\\
+
+\noindent \textbf{Lo stimatore $\frac{1}{n-1}\sum_{i}/X_i - \bar{X})^2$ ha denominatore $n-1$ per far sì che esso sia consistente.}\\
+FALSO: il denominatore è scelto in modo che lo stimatore sia corretto, e quest'ultimo sarebbe consistente anche con denominatore n per la Legge dei Grandi numeri e il fatto che $\frac{n-1}{n} \to 1$ per $n \to \infty$.\\\\
+
+\noindent \textbf{Due eventi $A$ e $B$ di probabilità positiva sono indipendenti se e solo se $P(A \vert B) = P (B)$.}\\
+FALSO: $A$ e $B$ sono indipendenti se e solo se $P(A \vert B) = P (A)$.\\\\
+
+\noindent \textbf{Per una variabile aleatoria $X$ con funzione di ripartizione $F (x) = P (X \leq x)$, abbiamo $P (a < X \leq b) = \int_{a }^{b}F(x)dx$.}\\
+FALSO: $P(a < X \leq b) = F(b) - F(a)$. \\\\
+
+\noindent \textbf{Un intervallo di fiducia ha come estremi due variabili aleatorie e può non contenere il parametro stimando.}\\
+VERO: un intervallo di fiducia è dato da una coppia di variabili aleatorie $I = [a(\omega), b(\omega)]$ date da opportune funzioni del campione aleatorio, e contiene il parametro $\theta$ con una certa probabilità, determinata dal livello di fiducia.\\\\
+
+\noindent\textbf{Imporre il livello di un test statistico fissa un limite alla probabilità di commettere errori di prima specie, ma non dà vincoli su quelli di seconda.}\\
+VERO: la prima parte dell'enunciato è la definizione di livello, mentre va ricordato che è la potenza del test a quantificare la probabilità di commettere errori di seconda specie.\\\\
+
+\noindent \textbf{Considerando per fissare le idee lo Z-test, all'aumentare della numerosità del campione la regione di accettazione si riduce, ossia è più facile che l’ipotesi nulla sia rifiutata.} \\
+VERO: l’ampiezza della regione di accettazione è $\frac{2\sigma q_{1-\frac{\alpha}{2}}}{n}$ , dunque è decrescente nella numerosità $n$.\\\\
+
+\noindent \textbf{Due variabili aleatorie indipendenti (di varianza finita) sono sempre scorrelate.}\\
+VERO: come visto a lezione l’indipendenza di $X$, $Y$ implica che $\mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y]$, che è il caso con valori attesi nulli, da cui quello generale segue con passaggi elementari. \\\\
+
+\noindent \textbf{In un test statistico, il p-value è la probabilità che l’ipotesi nulla sia vera.}\\
+FALSO: per definizione il p-value è la probabilità di esiti di coda della statistica su cui il test si basa, sotto l’ipotesi nulla. NON si può determinare “la probabilità che l’ipotesi nulla sia vera” nell'approccio frequentista alla statistica.\\\\
+
+\noindent \textbf{Una variabile aleatoria è discreta se e solo se assume una quantità finita di esiti.}\\
+FALSO: è falsa la parte “solo se”, perché esistono variabili discrete con infiniti esiti di probabilità positiva, ad esempio le variabili di Poisson. \\\\
+
+\noindent \textbf{Una variabile aleatoria $X$ con legge Gaussiana $N(0, \sigma^2)$ prende valori nell'intervallo $[-\sigma, \sigma]$ con probabilità di circa il $95\%$.} \\
+FALSO: La probabilità cercata è $\Phi(1) - \Phi(-1) = 2\Phi(1) - 1 = 0.6826$.\\\\
+
+\noindent\textbf{In un test statistico, fissare un livello $\alpha$ è equivalente a decidere se il p-value è abbastanza alto da ritenere accettabile $H_0$).}\\
+VERO: il p-value è per definizione il livello $\alpha$ sotto cui, fissati gli esiti dell'esperimento, si accetta $H_0$).\\\\
+
+\noindent\textbf{Se un campione statistico $X_1, \ldots, X_n$ ha legge con momento primo finito, allora la media campionaria è uno stimatore corretto del valore atteso.}\\
+VERO: infatti per linearità del valore atteso, e usando che le variabili del campione hanno lo stesso valore atteso,
+\begin{equation*}
+	\mathbb{E}[\frac{1}{n}(X_1 + \ldots + X_n)] = \frac{1}{n}(\mathbb{E}[X_1] + \ldots + \mathbb{E}[X_n]) = \mathbb{E}[X_1]
+\end{equation*}\\\\
+
+\noindent \textbf{Dato un campione aleatorio $X_1 ,\ldots, X_n$ , il valore atteso delle $X_i$ coincide con la media campionaria del campione $X_1 ,\ldots, X_n$ .}\\
+FALSO: Ad esempio, per l’esperimento lancio di una moneta equilibrata, e $X = 1$ se esce testa, $X = 0$ se esce croce, il valore atteso di $X$ è $\frac{1}{2}$, ma la media campionaria del campione (testa, testa) è $1$.\\\\
+
+\noindent \textbf{Se due eventi $A$, $B$ sono indipendenti, lo sono anche i loro complementari $A^c$ , $B^c$ .}\\
+VERO: se $A$, $B$ sono eventi indipendenti, dalla legge di De Morgan e la definizione di indipendenza si deduce che
+\begin{align*}
+	&P(A^c \cap B^c) = P((A \cup B)^c) = 1-P(A)-P(B)+P(A \cap B) =\\
+	& = 1 - P(A) - P(B) + P(A)P(B) = (1-P(A))(1-P(B)) = P(A^c)P(B^c)
+\end{align*}\\\\
+
+\noindent\textbf{Dato un campione aleatorio $X_1, \ldots, X_n$ la cui legge dipende da un solo parametro $\theta \in \Theta \subseteq \mathbb{R}$, un intervallo di fiducia per il parametro $\theta$ è dato da una qualsiasi coppia di numeri $a, b \in \mathbb{R}$ in modo che $I = (a, b)$ contenga $\theta$.}\\
+FALSO: un intervallo di fiducia è dato da una coppia di variabili aleatorie, $I = [a(\omega), b(\omega)]$, e contiene il parametro $\theta$ con una certa probabilità, determinata dal livello di fiducia.\\\\
+
+\noindent \textbf{Una variabile aleatoria $X$ ammette funzione di densità $f : \mathbb{R} \to \mathbb{R}$ se la probabilità che $X$ assuma il valore $x \in \mathbb{R}$ è dato da $f (x)$.}\\
+FALSO: se $f (x)$ è una funzione tale che
+\begin{equation*}
+	\mathbb{P}(X=x) = f(x)
+\end{equation*}
+allora la condizione $\mathbb{P}(\Omega) = 1$ impone che $f$ sia non nulla su al più numerabili valori, e $X$ è dunque una variabile discreta.\\\\
+
+\noindent \textbf{Un p-value dell'ordine di $10^{-5}$ è da considerarsi evidenza statistica contro l'ipotesi nulla.}\\
+VERO: se il livello $\alpha > \alpha = 10^{-5}$, l'ipotesi nulla viene rifiutata dal test di regione critica di livello $\alpha$, dunque un p-value così piccolo fa sì che l’ipotesi venga rifiutata per ogni livello $\alpha$ ragionevole.\\\\
+
+\noindent\textbf{Per effettuare il test di Student sulla media di una popolazione è necessario conoscere la deviazione standard della popolazione.}\\
+FALSO: Il test di Student usa la deviazione standard campionaria.\\\\
+
+\noindent\textbf{Se due variabili aleatorie $X$, $Y$ hanno la stessa distribuzione di probabilità, allora non sono indipendenti.}\\
+FALSO: le singole componenti di una scelta uniforme su $\{(0, 0), (0, 1), (1, 0), (1, 1)\}$ sono $Bernoulli\binom{1}{2}$ indipendenti.\\\\
+
+\noindent\textbf{Due variabili aleatorie $X$, $Y$ soddisfano una relazione lineare $Y = aX + b$ se e solo se la loro correlazione vale $\rho(X, Y ) = \pm1$.}\\
+VERO: come visto nel corso vale
+\begin{equation*}
+	min_{a,b}\mathbb{E}[(Y-aX-n)^2] = Var(Y)(1-\rho(X,Y)^2)
+\end{equation*}
+per cui quando il minimo a sinistra è nullo deve valere $\rho(X,Y)=1$.\\\\
+
+\noindent \textbf{Data una generica variabile aleatoria $X$, la sua funzione di ripartizione è data dall'integrale $F_X(t)=\int_{0}^{t}f(x)dx$ di una certa funzione $f$ .}\\
+FALSO: ciò è vero, per definizione, solo per le variabili con densità, e per cui la densità $f$ sia zero per $x < 0$; ad esempio non esiste una funzione $f$ che soddisfa la relazione proposta se $X$ è una variabile di Bernoulli.\\\\
+
+\noindent\textbf{Scambiare l’ipotesi nulla e quella alternativa può cambiare l’esito di un test statistico.}\\
+VERO: le condizioni su livello e potenza non sono simmetriche nelle due ipotesi. Ad esempio se si è misurata l’altezza di $100$ persone ottenendo media campionaria $175.5cm$, supponendo deviazione standard $5cm$, consideriamo due test con ipotesi nulle $H_0 )m \leq 175 e H_0')m > 175$. In entrambi i casi $Z = \sqrt{N} \frac{(\bar{X} - m)}{\sigma} = 1$, e i quantili da confrontare sono $q_{0.95} = 1.64$ e$q{0.05} = -1.64$. In particolare, in entrambi i casi siamo nella regione
+critica, quindi scambiare un ipotesi nulla che sta venendo rigettata con la corrispondente alternativa non conduce ad accettazione.\\\\
+
+\noindent\textbf{In generale, più basso è il livello imposto a un test statistico, inferiore è la potenza.}\\
+VERO: il livello è la probabilità sotto $H_0$ della regione critica, ed imporlo più basso significa ridurre la regione critica; a sua volta la potenza è la probabilità sotto l’ipotesi alternativa della regione critica, ma se quest'ultima si è ridotta la potenza non può aumentare.\\\\
+
+\noindent\textbf{In un test statistico una forte evidenza a favore dell'ipotesi nulla può produrre un p-value superiore a $1$.}\\
+FALSO: il p-value è una probabilità e non può mai assumere valori superiori a $1$.\\\\
+
+\noindent\textbf{Una variabile aleatoria $X : \Omega \to \mathbb{R}$ costante, ovvero $X(\omega) = c$ per ogni $\omega \in \Omega$, è indipendente da qualsiasi altra variabile aleatoria $Y : \Omega \to \mathbb{R}$.}\\
+VERO: l’evento $\{X \in A\}$ è sempre uno tra $\emptyset$ e $\Omega$, ma questi ultimi sono indipendenti da ogni evento $\{Y \in B\}$.\\\\
+
+\noindent\textbf{Il $\beta$-quantile di una variabile aleatoria con densità esponenziale di parametro $\lambda > 0$ è $\frac{- \log(1 - \beta)}{\lambda}$.}\\
+VERO: $F (x) = 1 - e^{-\lambda x} = \beta$ se e solo se $x = \frac{-\log(1 - \beta)}{\lambda}$.\\\\
+
+\noindent\textbf{Due variabili aleatorie scorrelate sono anche indipendenti.}\\
+FALSO: Ad esempio: $X$ uniforme su $[-1, 1]$ e $X^2$ sono scorrelate ma non indipendenti.\\\\
+
+\noindent\textbf{La media campionaria $\bar{X}_n = \frac{1}{n}(X_1 + \ldots + X_n )$ di un campione di variabili aleatorie con momento secondo finito è uno stimatore corretto e consistente del parametro $m = \mathbb{E}[X_i ]$.}\\
+VERO: la correttezza discende dalla linearità del valore atteso, mentre la consistenza dalla Legge Debole dei Grandi Numeri.\\\\
+
+\noindent\textbf{Un intervallo di fiducia ha livello $95\%$ se esso contiene almeno il $95\%$ dei dati del campione.}\\
+FALSO: non ci sono legami tra intervallo di fiducia e numero di dati in esso contenuti.\\\\
+
+\noindent\textbf{Se X è una v.a. discreta con funzione di massa $p_X$, la funzione di ripartizione $F_X$ di $X$	è $F_X (x) =\int_{-\infty}^{x}p_X(y)dy$.}\\
+FALSO: La funzione di ripartizione è $F_X(x)=\sum_{x_i \leq x}p_X(x_i)$.
