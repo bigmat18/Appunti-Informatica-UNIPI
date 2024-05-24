@@ -1,0 +1,148 @@
+% !TeX spellcheck = it_IT
+\section{Statistica descrittiva}
+La statistica si occupa dello studio dei dati, ovvero della sua \textbf{raccolta}, \textbf{analisi} ed \textbf{interpretazione}. Le risposte dipendono dai dati e dalla conoscenza pregressa del problema, quindi da eventuali ipotesi ed assunzioni.\\
+\begin{itemize}
+	\item Statistica \textbf{descrittiva}: quando i dati vengono analizzati senza fare assunzioni esterne per evidenziarne la struttura e rappresentarli in modo efficace
+	\item \textbf{Inferenza statistica}: studia i dati utilizzando un modello probabilistico, ovvero supponendo che i dati siano valori assunti da \textit{variabili aleatorie} con una certa \textit{distribuzione di probabilità} dipendente da parametri non noti che devono essere stimati. Il modello potrà poi fare previsioni.
+\end{itemize}
+
+\subsubsection{Campioni statistici}
+\begin{definition}[Popolazione]
+	Insieme di oggetti o fenomeni che si vuole studiare su ognuno dei quali si può effettuare una stessa misura, ovvero un \textbf{carattere}. Può essere \textbf{ideale} o \textbf{reale}.
+\end{definition}
+\begin{definition}[Campione statistico]
+	Un sottoinsieme della popolazione scelto per rappresentarla.
+\end{definition}
+\begin{definition}[Dati]
+	Misure effettuate sul campione statistico.
+\end{definition}
+\begin{definition}[Frequenza]
+	Può essere:
+	\begin{itemize}
+		\item \textbf{Assoluta}: il numero di volte in cui questo esito compare nei dati
+		\item \textbf{Relativa}: frazione di volte in cui questo esito compare sul totale dei dati
+	\end{itemize}
+	In generale dipendono dai dati e quindi non coincidono su tutta la popolazione.
+\end{definition}
+\begin{note}
+	La scelta del campione in modo che sia rappresentativo è importante ma non verrà trattata.
+\end{note}
+\subsubsection{Istogramma}
+Consiste in una serie di colonne ognuna delle quali ha per base un intervallo numerico e per area la frequenza relativa dei dati contenuti nell'intervallo.
+\begin{observation}
+	La scelta delle ampiezze degli intervalli di base è cruciale. Un buon compromesso deve essere individuato sulla base della numerosità dei dati e sulla loro distribuzione.
+\end{observation}
+Può avere varie forme:
+\begin{itemize}
+	\item \textbf{Normale} se ha la forma di una \textit{campana simmetrica}
+	\item \textbf{Unimodale} se si concentra su una colonna più alta o \textbf{bimodale} se su due. Può essere asimmetrica a \textit{destra} o a \textit{sinistra} in base alla concentrazione dei dati in base al picco
+	\item \textbf{Platicurtica} se i dati sono concentrati in un certo intervallo o \textbf{leptocurtica} se sono composti da un gruppo centrale e da molti \textit{outliers}
+\end{itemize}
+
+\subsubsection{Indici statistici}
+Dato un vettore $x=(x_1, \ldots, x_n) \in \mathbb{R}^n$ di dati numerici gli indici statistici sono quantità che riassumono alcune proprietà significative.
+\begin{definition}[Media campionaria]
+	La media aritmetica dei dati:
+	\begin{equation}
+		\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
+	\end{equation}
+\end{definition}
+\begin{definition}[Mediana]
+	Il dato $x_i$ tale che la metà degli altri valori è minore o uguale ad esso e l'altra metà maggiore o uguale.
+\end{definition}
+\begin{observation}
+	La \textbf{mediana} è utile nel caso di dati molto \textbf{asimmetrici} ed è robusta rispetto alle code delle distribuzione. Al contrario la \textbf{media campionaria} viene facilmente spostata da dati molto piccoli o grandi.
+\end{observation}
+\begin{definition}[Varianza campionaria]
+	Si usa per misurare la dispersione dei dati attorno alla media campionaria.
+	\begin{equation}
+		var(x) = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2
+	\end{equation}
+	È nulla se i dati sono tutti uguali. Possiamo mappare $x$ diversamente:
+	\begin{itemize}
+		\item $x \mapsto x^2$ misura la media dei punti della media campionaria
+		\item $x \mapsto x^3$ misura la \textbf{sample skewness}, ovvero l'asimmetria della distribuzione
+		\begin{equation}
+			b = \frac{1}{\sigma} \cdot \frac{1}{n} \sum_{i=1}^{n}(x_i-\bar{x})^3
+		\end{equation}
+		\item $x \mapsto x^4$ misura la piattezza della distribuzione dei dati, ovvero la \textbf{curtosi}
+	\end{itemize}
+\end{definition}
+\begin{definition}[Scarto quadratico medio o deviazione standard]
+	\begin{equation}
+		\sigma(x)=\sqrt{var(x)}
+	\end{equation}
+\end{definition}
+\begin{proposition}
+	Dato un campione di dati $x$ ed un numero positivo $d$:
+	\begin{equation}
+		\frac{\#\{x_i : \lvert x_i - \bar{x}\rvert > d\}}{n-1} \leq \frac{var(x)}{d^2}
+	\end{equation}
+	Il termine a sinistra è la frazione di dati che differiscono dalla media campionaria più di $d$.
+\end{proposition}
+
+\subsubsection{Quantili}
+\begin{definition}[Funzione di ripartizione empirica]
+	Dato $x = (x_1, \ldots, x_n) \in \mathbb{R}^n$:
+	\begin{equation}
+		F_e(t) = \frac{\#\{i \vert x_i \leq t\}}{n}
+	\end{equation}
+	Per ogni $t \in \mathbb{R}$ restituisce la frequenza relativa dei dati minori o uguali a $t$. È sempre \textbf{non decrescente} e $F_e(-\infty)=0$, $F(+\infty)=1$.
+\end{definition}
+\begin{definition}[$\beta$-quantile]
+	Il dato $x_i$ tale che:
+	\begin{itemize}
+		\item almeno $\beta n$ dati siano $\leq x_i$
+		\item almeno $(1- \beta)n$ dati siano $\geq x_i$
+	\end{itemize}
+	Inoltre:
+	\begin{itemize}
+		\item Se $\beta n$ non è intero vale $x_{(\lceil\beta n \rceil)}$
+		\item Se $\beta n$ è intero è la media aritmetica tra $x_{(\beta n)}$ e $x_{(\beta n +1)}$
+	\end{itemize}
+\end{definition}
+
+\subsubsection{Dati multi-variati}
+Consideriamo coppie di dati \textbf{bivariati} del tipo
+\begin{equation*}
+	(x,y) = ((x_1,y_1), \ldots, (x_n,y_n))
+\end{equation*}
+\begin{definition}[Covarianza campionaria]
+	\begin{equation}
+		cov(x,y) = \sum_{i=1}^{n} \frac{(x_i - \bar{x})(y_i - \bar{y})}{n-1}
+	\end{equation}
+\end{definition}
+\begin{definition}[Coefficiente di correlazione]
+	Dati $\sigma(x) \neq 0$ e $\sigma(y) \neq 0$:
+	\begin{equation}
+		r(x,y) = \frac{cov(x,y)}{\sigma(x)\sigma(y)}  \frac{\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{t})}{\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2}\sqrt{\sum_{i=1}^{n}(y_i - \bar{y})^2}}
+	\end{equation}
+	Misura la presenza di una relazione lineare tra i dati $x$ e $y$ quantificata dalla \textbf{retta di regressione}.
+\end{definition}
+\begin{proposition}[Disuguaglianza di Cauchy-Scwarz]
+	\begin{equation}
+		\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y}) \leq \sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2}\sqrt{\sum_{i=1}^{n}(y_i - \bar{y})^2}
+	\end{equation}
+	e quindi
+	\begin{equation}
+		\lvert r(x,y)\rvert \leq 1
+	\end{equation}
+\end{proposition}
+
+La \textbf{retta di regressione} è un'approssimazione dei dati con $y_i$ con una combinazione lineare affine a $a + bx_i$, ottenuta cercando il minimo della distanza dai dati da questa retta con i quadrati degli scarti. L'obiettivo è quindi di cercare i parametri $a$ e $b$ calcolando
+\begin{equation}
+	\label{eq:regr}
+	\inf_{a,b \in \mathbb{R}} \sum_{i=1}^{n}(y_i-a-bx_i)^2
+\end{equation}
+
+\begin{theorem}[Retta di regressione]
+	Se $\sigma(x) \neq 0$ e $\sigma(y) \neq 0$, esiste un unico minimo al variare di $a,b \in \mathbb{R}$ della quantità \ref{eq:regr}, dato da:
+	\begin{equation}
+		b^\star = \frac{(n-1)cov(x,y)}{n \cdot var(x)} \quad\quad a^\star = -b^\star \bar{x} + \bar{y}
+	\end{equation}
+	e vale
+	\begin{equation}
+		\min_{a,b \in \mathbb{R}} \sum_{i=1}^{n}(y_i-a-bx_i)^2 = (1-r(x,y)^2)\sum_{i=1}^{n}(y_i - \bar{y})^2
+	\end{equation}
+\end{theorem}
+Quanto più $r(x,y)$ è vicino a $1$, tanto più i valori tendono ad allinearsi con la retta. Se vale $1$ vuol dire che i punti sono tutti sulla retta. Il segno di $r(x,y)$ corrisponde al segno del coefficiente angolare. Se è prossimo a zero allora non è una buona approssimazione.
