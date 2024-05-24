@@ -227,44 +227,38 @@
 \end{definition}
 
 \subsubsection{Trasformazioni di variabili con densità}
-\begin{equation}
-	Y:\Omega \to \mathbb{R} \quad \quad Y = h \circ X \quad\quad F_Y(y) = \mathbb{P}\{Y\leq y\} = \mathbb{P}\{h(X) \leq y\}
-\end{equation}
-
-\begin{proposition}[Cambio di variabile]
+\begin{proposition}
 	Sia $h: A \to B$ biunivoca, differenziabile e con inversa differenziabile:
 	\begin{equation}
 		f_Y(y) = \begin{cases}
 			f_X(h^{-1}(y)) \cdot \bigg\lvert \frac{dh^{-1}(y)}{dy} \bigg\rvert & y \in B\\
 			0 & y \notin B
-		\end{cases}
+		\end{cases}\tag{Cambio di variabile}
 	\end{equation}
-	Se $h$ è crescente:
+	$h$ crescente:
 	\begin{align}
 		& F_Y(y)=\mathbb{P}(Y\leq y) = \mathbb{P}(h(X) \leq y) = \mathbb{P}(X \leq h^{-1}(y)) = F_X(h^{-1}(y))\\
 		& f_Y(y)=f_X(h^{-1}(y))\cdot \frac{dh^{-1}(y)}{dy}
 	\end{align}
-	Se $h$ è decrescente:
+	$h$ decrescente:
 	\begin{equation}
 		\mathbb{P}(h(X) \leq y) = \mathbb{P}(X \leq h^{-1}(y)) = 1 - F_X(h^{-1}(y))
 	\end{equation}
 \end{proposition}
 
 \subsubsection{Valore atteso, varianza e momenti}
-\begin{definition}[Valore atteso]
-	\begin{equation}
-		\mathbb{E}[X] = \sum_i x_i p_X(x_i) \quad\quad \mathbb{E}[X] = \int_{-\infty}^{+\infty} tf_X(t)dt
-	\end{equation}
-\end{definition}
+\begin{align}
+	\mathbb{E}[X] = \sum_i x_i p_X(x_i) \quad\quad \mathbb{E}[X] = \int_{-\infty}^{+\infty} tf_X(t)dt \tag{Valore atteso}
+\end{align}
 
 \begin{proposition}
 	Sia $X$ discreta, la variabile $g(x)$ ammette valore atteso se $\sum_i \lvert g(x_i) \rvert p(x_i) < +\infty$. In quel caso vale:
 	\begin{equation}
 		\mathbb{E}[g(X)] = \sum_i g(x_i)p(x_i)
 	\end{equation}
-	Sia $X$ con densità, la variabile $g(x)$ ammette valore atteso se $\int_{-\infty}*{+\infty} \lvert g(x) \rvert f(x) dx < +\infty$. In quel caso vale:
+	Sia $X$ con densità, la variabile $g(x)$ ammette valore atteso se $\int_{-\infty}^{+\infty} \lvert g(x) \rvert f(x) dx < +\infty$. In quel caso vale:
 	\begin{equation}
-		\mathbb{E}[g(X)] = \int_{-\infty}*{+\infty} g(x)f(x) dx
+		\mathbb{E}[g(X)] = \int_{-\infty}^{+\infty} g(x)f(x) dx
 	\end{equation}
 \end{proposition}
 \begin{proposition}
@@ -276,91 +270,31 @@
 	\end{itemize}
 \end{proposition}
 
-\begin{definition}[Momento di ordine $n$]
-	\begin{equation}
-		\mathbb{E}[X^n] \quad\quad \mathbb{E}[\lvert X \rvert ^n] < +\infty
-	\end{equation}
-\end{definition}
+\begin{align}
+	\mathbb{E}[X^n] \quad\quad \mathbb{E}[\lvert X \rvert ^n] < +\infty \tag{Momento}\\
+	\mathbb{E}[\lvert X \rvert ^m] ^{\frac{1}{m}} \leq \mathbb{E}[\lvert X \rvert^n]^{\frac{1}{n}} \quad\quad 1 \leq m \leq n \tag{Disuguaglianza di Jensen}\\
+	a\mathbb{P}\{X \geq a\}\leq \mathbb{E}[X] \quad\quad a>0 \tag{Disuguaglianza di Markov}\\
+	Var(X) = \mathbb{E}[(X-\mathbb{E}[X])^2] = \mathbb{E}[X^2] - \mathbb{E}[X]^2 \tag{Varianza}\\
+	\sigma(X) = \sqrt{Var(X)} \tag{Scarto quadratico medio} \\
+	\mathbb{P}\{\lvert X -\mathbb{E}[X] \rvert > d\} \leq \frac{Var(X)}{d^2} \quad\quad d>0 \tag{Disuguaglianza di Chebyshev}
+\end{align}
 
-\begin{definition}[Disuguaglianza di Jensen]
-	\begin{equation}
-		\mathbb{E}[\lvert X \rvert ^m] ^{\frac{1}{m}} \leq \mathbb{E}[\lvert X \rvert^n]^{\frac{1}{n}} \quad\quad 1 \leq m \leq n
-	\end{equation}
-\end{definition}
-
-\begin{definition}[Disuguaglianza di Markov]
-	\begin{equation}
-		a\mathbb{P}\{X \geq a\}\leq \mathbb{E}[X] \quad\quad a>0
-	\end{equation}
-\end{definition}
-
-\begin{definition}[Varianza]
-	\begin{equation}
-		Var(X) = \mathbb{E}[(X-\mathbb{E}[X])^2] = \mathbb{E}[X^2] - \mathbb{E}[X]^2
-	\end{equation}
-\end{definition}
-
-\begin{definition}[Scarto quadratico medio]
-	\begin{equation}
-		\sigma(X) = \sqrt{Var(X)}
-	\end{equation}
-\end{definition}
-
-\begin{definition}[Disuguaglianza di Chebyshev]
-	\begin{equation}
-		\mathbb{P}\{\lvert X -\mathbb{E}[X] \rvert > d\} \leq \frac{Var(X)}{d^2} \quad\quad d>0
-	\end{equation}
-\end{definition}
 \subsubsection{Momenti di variabili aleatorie notevoli}
-\begin{proposition}[Variabili di Bernoulli - $B(1,p)$]
-	\begin{equation}
-		\mathbb{E}[X^k] = p \quad\quad Var(X) = p-p^2 = p(1-p) \quad \quad k \geq 1
-	\end{equation}
-\end{proposition}
-\begin{proposition}[Variabili Binomiali]
-	\begin{equation}
-		\mathbb{E}[X] = np \quad\quad Var(X) = np(1-p)
-	\end{equation}
-\end{proposition}
-
-\begin{proposition}[Variabili di Poisson]
-	\begin{align}
-		& \mathbb{E}[X] = \sum_{h=0}^{+\infty}he^{-\lambda} \frac{\lambda^h}{h!}=\lambda\\
-		& \mathbb{E}[X^2] = \lambda + \lambda^2 \\
-		& Var(X) = \lambda
-	\end{align}
-\end{proposition}
-
-\begin{proposition}[Variabili uniformi su intervalli finiti]
-	\begin{equation}
-		\mathbb{E}[X] = \int_{a}^{b} \frac{x}{b-a}dx = \frac{a^2+ab+b^2}{3} \quad\quad Var(X) = \frac{(b-a)^2}{12}
-	\end{equation}
-\end{proposition}
-
-\begin{proposition}[Variabili Esponenziali]
-	\begin{equation}
-		\mathbb{E}[X^n] = \frac{n!}{\lambda^n} \quad\quad Var(X) =\frac{1}{\lambda^2}
-	\end{equation}
-\end{proposition}
-
-\begin{proposition}[Variabili Gaussiane Standard]
-	\begin{align}
-		& \mathbb{E}[X^{2h+1}] = 0 \\
-		& \mathbb{E}[X^{2h+2}] = (2h+1)\mathbb{E}[X^{2h}] \\
-		& Var(X) = 1
-	\end{align}
-\end{proposition}
-\begin{proposition}[Variabili Gaussiane]
-	\begin{equation}
-		\mathbb{E}[Y] = \mathbb{E}[\sigma X + m]\quad\quad Var(Y) = Var(\sigma X + m) = \sigma^2 Var(X)
-	\end{equation}
-\end{proposition}
+\begin{align}
+	\mathbb{E}[X^k] = p \quad\quad Var(X) = p-p^2 = p(1-p) \quad \quad k \geq 1 \tag{Bernoulli} \\
+	\mathbb{E}[X] = np \quad\quad Var(X) = np(1-p) \tag{Binomiali} \\
+	\mathbb{E}[X] = \sum_{h=0}^{+\infty}he^{-\lambda} \frac{\lambda^h}{h!}=\lambda \tag{Poisson} \\
+	\mathbb{E}[X^2] = \lambda + \lambda^2\\
+	Var(X) = \lambda\\
+	\mathbb{E}[X] = \int_{a}^{b} \frac{x}{b-a}dx = \frac{a^2+ab+b^2}{3} \quad\quad Var(X) = \frac{(b-a)^2}{12} \tag{Uniformi su intervalli finiti}\\
+	\mathbb{E}[X^n] = \frac{n!}{\lambda^n} \quad\quad Var(X) =\frac{1}{\lambda^2} \tag{Esponenziali} \\
+	\mathbb{E}[X^{2h+1}] = 0 \tag{Gaussiana standard}\\
+	\mathbb{E}[X^{2h+2}] = (2h+1)\mathbb{E}[X^{2h}] \\
+	Var(X) = 1\\
+	\mathbb{E}[Y] = \mathbb{E}[\sigma X + m]\quad\quad Var(Y) = Var(\sigma X + m) = \sigma^2 Var(X) \tag{Gaussiana non standard}
+\end{align}
 
 \subsection{Distribuzioni multivariate}
-\subsubsection{Variabili doppie}
-\begin{equation}
-	\Omega \ni \omega \mapsto (X(\omega), Y(\omega)) \in \mathbb{R}^2 \quad\quad \mathbb{P}_{(X,Y)}(A) = \mathbb{P}((X,Y) \in A) = \mathbb{P}\{\omega \in \Omega : (X(\omega), Y(\Omega)) \in A\}
-\end{equation}
 
 \begin{proposition}[Distribuzione di probabilità di variabile doppia discreta]
 	\begin{equation}
@@ -428,58 +362,22 @@
 	\end{align}
 \end{proposition}
 
-\begin{proposition}[Disuguaglianza di Schwartz]
-	\begin{equation}
-		\mathbb{E}[\lvert XY \rvert] \leq \sqrt{\mathbb{E}[X^2]} \cdot \sqrt{\mathbb{E}[Y^2]}
-	\end{equation}
-\end{proposition}
+\begin{align}
+	\mathbb{E}[\lvert XY \rvert] \leq \sqrt{\mathbb{E}[X^2]} \cdot \sqrt{\mathbb{E}[Y^2]} \tag{Disuguaglianza di Schwartz}\\
+	Cov(X,Y) = \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])] = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y] \tag{Covarianza} \\
+	\rho(X,Y) = \frac{Cov(X,Y)}{\sigma(X)\sigma(Y)} \tag{Coefficiente di correlazione}
+\end{align}
 
-\begin{definition}[Covarianza]
-	\begin{equation}
-		Cov(X,Y) = \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])] = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
-	\end{equation}
-\end{definition}
-
-\begin{definition}[Coefficiente di correlazione]
-	\begin{equation}
-		\rhd(X,Y) = \frac{Cov(X,Y)}{\sigma(X)\sigma(Y)}
-	\end{equation}
-\end{definition}
-
+\newpage
 \subsection{Variabili indipendenti e teoremi limite}
-\begin{definition}[Convergenza in probabilità]
-	\begin{equation}
-		\forall \epsilon > 0 \quad\quad \lim_{n \to \infty} \mathbb{P}(\lvert X_n - X \rvert > \epsilon) = 0
-	\end{equation}
-\end{definition}
-\begin{proposition}[Convergenza in probabilità ad una costante]
-	\begin{equation}
-		\lim_{n \to \infty} \mathbb{E}[X_n] = c \in \mathbb{R} \land \lim_{n \to \infty} Var(X_n)=0 \Longrightarrow (X_n)_{n\geq 1} \longrightarrow c
-	\end{equation}
-\end{proposition}
-
-\begin{proposition}
-	\begin{equation}
-		\forall \epsilon > 0 \quad \lim_{n \to \infty} \mathbb{P}(\lvert S_n^2 - \sigma^2 \rvert > \epsilon) = 0
-	\end{equation}
-\end{proposition}
-
-\begin{definition}[Convergenza in distribuzione]
-	\begin{equation}
-		\lim_{n \to \infty} F_n(t)=F(t) \quad \forall t \in \mathbb{R} \Longrightarrow (X_n)_{n \geq 1} \longrightarrow X 
-	\end{equation}
-\end{definition}
-
-\begin{definition}[Teorema centrale del limite]
-	\begin{equation}
-		\lim_{n \to \infty}\mathbb{P}\bigg(a \leq \frac{X_1 + \ldots + X_n - n\mu}{\sigma \sqrt{n}}\bigg) = \frac{1}{\sqrt{2\pi}}\int_{a}^{b}e^{-1\frac{x^2}{2}}dx = \Phi(b)-\phi(a)
-	\end{equation}
-\end{definition}
-\begin{definition}[Approssimazione a variabile Gaussiana]
-	\begin{equation}
-		\frac{X_1 + \ldots + X_n -n\mu}{\sigma \sqrt{n}} = \sqrt{n}\frac{\bar{X}_n-\mu}{\sigma} \quad\quad n\geq 50
-	\end{equation}
-\end{definition}
+\begin{align}
+	\forall \epsilon > 0 \quad\quad \lim_{n \to \infty} \mathbb{P}(\lvert X_n - X \rvert > \epsilon) = 0 \tag{Convergenza in probabilità}\\
+	\lim_{n \to \infty} \mathbb{E}[X_n] = c \in \mathbb{R} \land \lim_{n \to \infty} Var(X_n)=0 \Longrightarrow (X_n)_{n\geq 1} \longrightarrow c \tag{Convergenza in probabilità ad una costante}\\
+	\forall \epsilon > 0 \quad \lim_{n \to \infty} \mathbb{P}(\lvert S_n^2 - \sigma^2 \rvert > \epsilon) = 0\\
+	\lim_{n \to \infty} F_n(t)=F(t) \quad \forall t \in \mathbb{R} \Longrightarrow (X_n)_{n \geq 1} \longrightarrow X \tag{Convergenza in distribuzione}\\
+	\lim_{n \to \infty}\mathbb{P}\bigg(a \leq \frac{X_1 + \ldots + X_n - n\mu}{\sigma \sqrt{n}}\bigg) = \frac{1}{\sqrt{2\pi}}\int_{a}^{b}e^{-1\frac{x^2}{2}}dx = \Phi(b)-\phi(a) \tag{Teorema centrale del limite}\\
+	\frac{X_1 + \ldots + X_n -n\mu}{\sigma \sqrt{n}} = \sqrt{n}\frac{\bar{X}_n-\mu}{\sigma} \quad\quad n\geq 50\tag{Approssimazione a variabile Gaussiana} \\
+\end{align}
 
 \subsubsection{Variabili Chi-Quadro e di Student}
 \begin{definition}[Gamma di Eulero]
