@@ -1,0 +1,62 @@
+\newpage
+\section{Probabilità e indipendenza}
+La probabilità serve per quantificare l'incertezza misurando la fiducia che un evento possa accadere.
+\begin{definition}[Spazio campionario]
+	Lo spazio di probabilità $\Omega$ è l'insieme di tutti gli esiti possibili (\textbf{eventi elementari}) $\omega$ dell'esperimento. Ogni affermazione sulle misure corrisponde ad un sottoinsieme $A \subset \Omega$ degli esiti che la soddisfa. Ognuna delle affermazioni può essere combinata logicamente con le operazioni insiemistiche.
+\end{definition}
+\begin{definition}[Eventi incompatibili]
+	\begin{equation}
+		A \cap B = \emptyset
+	\end{equation}
+\end{definition}
+\begin{definition}[Esperimento composto]
+	Se un esperimento è composto da una successione ordinata di $n$ sotto-esperimenti, il suo spazio campionario è
+	\begin{equation}
+		\Omega = \{(\omega_1, \omega_2, \ldots, \omega_n) \vert \omega_1 \in \Omega_1, \ldots, \omega_n \in \Omega_n\}
+	\end{equation}
+	dove $\Omega_i$ è l'insieme degli esiti dell'i-esimo sotto-esperimento.
+\end{definition}
+\begin{definition}[$\sigma$-algebre]
+	L'insieme di tutti i sottoinsiemi di $\Omega$ che sia chiuso per le operazioni logiche come \textbf{unione} e \textbf{intersezione}.
+\end{definition}
+\begin{observation}
+	Se due eventi sono incompatibili la probabilità che si realizzi uno qualsiasi dei due è la somma delle probabilità dei singoli eventi.
+\end{observation}
+\begin{definition}[Probabilità]
+	È il grado di fiducia che un evento si realizzi. È compreso tra $0$ e $1$.\\
+	Più precisamente, dato $\Omega$ un insieme e $F$ una $\sigma$-algebra di parti di $\Omega$, è una funzione $\mathbb{P}:F\to [0,1]$ tale che:
+	\begin{itemize}
+		\item l'evento certo ha probabilità $\mathbb{P}(\Omega)=1$
+		\item (\textbf{$\sigma$-addittività}) se $(A_n)_{n=1,2,\ldots}$ è una successione di eventi a due a due \textbf{disgiunti}, vale
+		\begin{equation}
+			\mathbb{P}\bigg(\bigcup_{n=1}^{+\infty}A_n\bigg) = \sum_{n=1}^{+\infty}\mathbb{P}(A_n)
+		\end{equation}
+		e nel caso di finiti sottoinsiemi disgiunti
+		\begin{equation}
+			\mathbb{P}\bigg(\bigcup_{n=1}^{N}A_n\bigg) = \sum_{n=1}^{+N}\mathbb{P}(A_n)
+		\end{equation}
+	\end{itemize}
+\end{definition}
+\begin{note}
+	Si dice \textbf{trascurabile} un evento $A$ tale che $\mathbb{P}(A)=0$ e \textbf{quasi certo} un evento $A$ tale che $\mathbb{P}(A)=1$. 
+\end{note}
+\begin{proposition}
+	Proprietà della probabilità:
+	\begin{itemize}
+		\item $\mathbb{P}(A^c)=1-\mathbb{P}(A)$ e di conseguenza $\mathbb{P}(\emptyset)=0$
+		\item $B \subset A \Longrightarrow \mathbb{P}(A\setminus B)=\mathbb{P}(A) - \mathbb{P}(B)$
+		\item $\mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A \cap B)$
+		\item $\mathbb{P}(A \cup B \cup C) = \mathbb{P}(A) + \mathbb{P}(B) + \mathbb{P}(C) - \mathbb{P}(A \cap B) - \mathbb{P}(A \cap C) - \mathbb{P}(B \cap C) + \mathbb{P}(A \cap B \cap C)$
+	\end{itemize}
+\end{proposition}
+\begin{proposition}[Limite di una successione di eventi]
+	Data una successione di eventi $A_1, \ldots, A_n, \ldots$, questa può essere:
+	\begin{itemize}
+		\item \textbf{Crescente}: $A_n \subseteq A_{n+1}$ e quindi $A = \bigcup_{n=1}^{+\infty}A_n = \lim_{n \to  \infty A_n}$
+		\item \textbf{Decrescente}: $A_n  \supseteq A_{n+1}$ e quindi $A = \bigcap_{n=1}^{+\infty}A_n = \lim_{n \to  \infty A_n}$
+	\end{itemize}
+	In entrambi i casi vale:
+	\begin{equation}
+		\mathbb{P}(A) = \lim_{n \to \infty}\mathbb{P}(A_n)
+	\end{equation}
+\end{proposition}
