@@ -1,6 +1,7 @@
 \newpage
 \section{Probabilità e indipendenza}
 La probabilità serve per quantificare l'incertezza misurando la fiducia che un evento possa accadere.
+\subsection{Spazi di probabilità}
 \begin{definition}[Spazio campionario]
 	Lo spazio di probabilità $\Omega$ è l'insieme di tutti gli esiti possibili (\textbf{eventi elementari}) $\omega$ dell'esperimento. Ogni affermazione sulle misure corrisponde ad un sottoinsieme $A \subset \Omega$ degli esiti che la soddisfa. Ognuna delle affermazioni può essere combinata logicamente con le operazioni insiemistiche.
 \end{definition}
@@ -60,3 +61,201 @@ La probabilità serve per quantificare l'incertezza misurando la fiducia che un 
 		\mathbb{P}(A) = \lim_{n \to \infty}\mathbb{P}(A_n)
 	\end{equation}
 \end{proposition}
+
+\subsection{Probabilità discreta}
+\begin{definition}[Probabilità discreta]
+	Dato $\Omega$ \textbf{numerabile}
+	\begin{equation*}
+		\Omega = (\omega_1, \omega_2, \ldots, \omega_n, \ldots)
+	\end{equation*}
+	per ogni evento $A \subset \Omega$, la misura di probabilità è:
+	\begin{equation}
+		\mathbb{P}(A) = \sum_{\omega_i \in A}p_i = \sum_{\omega_i \in A} \mathbb{P}(\{\omega_i\})
+	\end{equation}
+\end{definition}
+
+\subsubsection{Probabilità uniforme su un insieme finito}
+Un esempio di probabilità discreta è quella uniforme su un insieme finito $\Omega$, ovvero dove
+\begin{equation*}
+	p_1 = p_2 = \ldots = p_N
+\end{equation*}
+In questo caso vale:
+\begin{equation}
+	\mathbb{P}(A) = \frac{\# A}{\# \Omega} = \frac{\text{"casi favorevoli"}}{\text{"casi possibili"}} \quad\quad A \subseteq \Omega
+\end{equation}
+
+\subsubsection{Calcolo combinatorio}
+Alcune formule notevoli:
+\begin{itemize}
+	\item \textbf{Sequenze ordinate con ripetizione} di $k$ numeri da $1$ a $n$: $n^k$
+	\item  \textbf{Ordinamenti possibili} di $\{1, \ldots, n\}$: $n!$
+	\item \textbf{Sequenze ordinate senza ripetizione} di $k$ numeri di $1, \ldots, n$
+	\begin{equation*}
+		\frac{n!}{(n-k)!} \quad\quad 0 \leq k \leq n
+	\end{equation*}
+	\item \textbf{Sottoinsiemi} di $\{1, \ldots, n\}$ formati da $k$ elementi
+	\begin{equation*}
+		\binom{n}{k} = \frac{n!}{k!(n-k)!} \quad\quad 0 \leq k \leq n
+	\end{equation*}
+\end{itemize}
+\subsubsection{Funzione di massa}
+\begin{definition}[Funzione di massa]
+	Dato
+	\begin{equation*}
+		\Omega = \{x_1, x_2, \ldots\} \subset \mathbb{R}
+	\end{equation*}
+	un sottoinsieme numerabile in cui ogni punto $x_i$ può contenere successioni (che possono andare a $\pm \infty$), la funzione di massa è
+	\begin{equation}
+		\Omega \ni x_i \mapsto p(x_u) = \mathbb{P}(\{x_i\}) \in [0,1]
+	\end{equation}
+\end{definition}
+\noindent Se poniamo che la probabilità di ogni altro punto non appartenente al sottoinsieme vale $0$
+\begin{equation*}
+	x \neq x_i \Longrightarrow p(x) = \mathbb{P}(\{x\}) = 0
+\end{equation*}
+allora possiamo estendere la funzione a $\mathbb{R}$ e dire che
+\begin{equation}
+	\mathbb{P}(A) = \sum_{i:x_i \in A} p(x_i) \quad\quad \forall A \subseteq \mathbb{R}
+\end{equation}
+\begin{proposition}
+	Valgono:
+	\begin{align}
+		& p(x_i) \geq 0 \\
+		& \sum_{i=1,2,\ldots}p(x_i) = 1
+	\end{align}
+\end{proposition}
+
+\subsection{Probabilità condizionata}
+Quando si è a conoscenza della realizzazione di un evento, cambia la valutazione di probabilità di ogni altro evento.
+\begin{definition}[Probabilità condizionata]
+	Dati due eventi $A, B$ con $B$ non trascurabile, la probabilità condizionata di $A$ rispetto a $B$ è
+	\begin{equation}
+		\mathbb{P}(A \vert B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
+	\end{equation}
+\end{definition}
+
+\begin{proposition}[Condizionamento ripetuto]
+	Se l'intersezione di eventi $A_1 \cap \ldots \cap A_{n-1}$ non è trascurabile vale
+	\begin{equation}
+		\mathbb{P}(A_1 \cap \ldots \cap A_n) = \mathbb{P} (A_1) \cdot \mathbb{P}(A_2 \vert A_1) \cdot \ldots \cdot \mathbb{P}(A_n \vert A_1 \cap \ldots \cap A_{n-1})
+	\end{equation}
+\end{proposition}
+
+\begin{definition}[Partizione]
+	Una partizione di $\Omega$ è una collezione di $n$ eventi $B_1, \ldots, B_n$ a due a due disgiunti tali che
+	\begin{equation}
+		B_1 \cup \ldots \cup B_n = \Omega
+	\end{equation}
+\end{definition}
+\begin{definition}[Sistema di alternative]
+	È una partizione di $\Omega$ in eventi non trascurabili.
+\end{definition}
+
+\begin{theorem}[Formula della probabilità o della fattorizzazione]
+	Dato $B_1, \ldots, B_n$ un sistema di alternative, per un qualunque evento $A$ vale
+	\begin{equation}
+		\mathbb{P}(A) = \sum_{i=1}^{n} \mathbb{P}(A \vert B_i) \mathbb{P}(B_i)
+	\end{equation}
+\end{theorem}
+
+\begin{definition}[Formula di Bayes]
+	Dati $A$ e $B$ due eventi non trascurabili vale
+	\begin{equation}
+		\mathbb{P}(B \vert A) = \frac{\mathbb{P}(A \vert B)\mathbb{P}(B)}{\mathbb{P}(A)}
+	\end{equation}
+\end{definition}
+\begin{definition}[Formula di Bayes - Alternative]
+	Dati $A$ un evento e $B_1, \ldots, B_n$ un sistema di alternative vale
+	\begin{equation}
+		\mathbb{P}(B_i \vert A) = \frac{\mathbb{P}(A \vert B_i)\mathbb{P}(B_i)}{\sum_{j=1}^{n} \mathbb{P}(A B_j)\mathbb{P}(B_j)}
+	\end{equation}
+\end{definition}
+
+\subsection{Indipendenza}
+L'idea è che la conoscenza che si è realizzato un certo evento non modifica la valutazione di probabilità di un altro evento.
+\begin{definition}
+	Dati $n$ eventi $A_1, \ldots, A_n$, questi sono indipendenti se per ogni $k$ con $2 \leq k \leq n$ e per ogni scelta di interi $1 \leq i_1 < i_2< \ldots < i_k \leq n$ vale
+	\begin{equation}
+		\mathbb{P}(A_{i_1} \cap \ldots \cap A_{i_k}) = \mathbb{P}(A_{i_1}) \cdot  \ldots \cdot \mathbb{P}(A_{i_k})
+	\end{equation}
+\end{definition}
+
+\begin{observation}[Complessità]
+	Il numero di uguaglianze da verificare per $n$ eventi è
+	\begin{equation*}
+		2^n -n -1
+	\end{equation*}
+\end{observation}
+
+\begin{proposition}[Spazi prodotto]
+	Si consideri
+	\begin{equation*}
+		\Omega = \{a=(a_1, \ldots, a_n) \vert a_i = 0,1\} = \{0, 1\}^n
+	\end{equation*}
+	su cui definiamo per ogni $a$ la probabilità
+	\begin{equation*}
+		\mathbb{P}(\{a\}) = p^ {\# \{i:a_i = 1\}} (a-p)^{\# \{i:a_i = 0\}} = p^{\sum_{i=1}^{n}a_i}(a-p)^{n-\sum_{i=1}^{n} a_i}
+	\end{equation*}
+	E gli eventi
+	\begin{equation*}
+		A_i = \{a \in \Omega: a_i = 1\} \quad\quad i = 1, \ldots, n
+	\end{equation*}
+	sono indipendenti tra di loro, così come i complementari $A^c_i$.
+\end{proposition}
+
+\begin{observation}
+	Due eventi possono essere indipendenti anche in presenza di una relazione causale. Viceversa due eventi possono essere dipendenti anche in assenza di una relazione causale.
+\end{observation}
+
+\subsection{Entropia di Shannon}
+Una misura di probabilità può essere uno strumento per quantificare l'informazione.
+\begin{definition}[Entropia]
+	Data una misura di probabilità discreta $\mathbb{P}$ su $\Omega = \{x_1, \ldots, x_n\}$, con $p_i = \mathbb{P}(\{x_i\})$, la sua entropia è data dalla funzione
+	\begin{equation}
+		H^{(n)}(p_1, \ldots, p_n) = - \sum_{i=1}^{n}p_i \log(p_i)
+	\end{equation}
+\end{definition}
+
+\begin{proposition}
+	Valgono:
+	\begin{enumerate}
+		\item La funzione dell'entropia è \textbf{simmetrica}: scambiando $p_i$ e $p_j$ non cambia
+		\item $H^{(n)}(1, 0,\ldots, 0) =0$
+		\item È coerente tra $n$ diversi: $H^{(n)}(p_1=0, p_2, \ldots, p_n) = H^{(n-1)}(p_2, \ldots, p_n)$
+		\item $h^{(n)}(p_1, \ldots, p_n) \leq H^{(n)}\big(\frac{1}{n}, \ldots, \frac{1}{n}\big)$, ovvero la massima entropia è data dalla distribuzione uniforme di probabilità
+		\item Data una probabilità su $n \times m$ oggetti $\Omega = \{x_{11}, \ldots, x_{ij}, \ldots, x{nm}\}$ con $\mathbb{P}({x_ij})=q_{ij}$, considerando gli eventi $A_i = \{x_{i,1}, \ldots, x_{i,m}\}$ con $\mathbb{P}(A_i)=p_1$ vale
+		\begin{equation*}
+			H^{nm}(q_{11}, \ldots, q_{ij}, \ldots, q_{nm}) = H^{(n)}(p_1, \ldots, p_n) + \sum_{i=1}^{n}p_i H^{(m)}\bigg(\frac{q_{i1}}{p_1}, \ldots, \frac{q_{im}}{p_i}\bigg)
+		\end{equation*}
+		ovvero l'entropia è data da quella relative al sistema di alternative $A_i$ più la media pesata delle entropie relative nei blocchi $A_i$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{theorem}[Shannon]
+	Una funzione che soddisfa le 5 proprietà ha la forma
+	\begin{equation}
+		cH^{(n)} \quad\quad c>0
+	\end{equation}
+\end{theorem}
+
+\subsection{Densità di probabilità}
+\begin{definition}[Densità di probabilità]
+	Una funzione non negativa $f: \mathbb{R} \to [0, + \infty]$, integrabile e tale che 
+	\begin{equation*}
+		\int_{-\infty}^{+\infty}f(x)dx = 1
+	\end{equation*}
+	La sua probabilità è 
+	\begin{equation}
+		\mathbb{P}(A) = \int_{A}f(x)dx \quad\quad A \subseteq \Omega
+	\end{equation}
+\end{definition}
+
+\begin{observation}
+	La probabilità di ogni singolo punto è nulla
+	\begin{equation}
+		\mathbb{P}(\{t\})=\int_{\{t\}}f(x)dx=0
+	\end{equation} e in generale
+	\begin{equation}
+		\mathbb{P}(A) = 0 \quad\quad \forall A \subset \mathbb{R}
+	\end{equation}
+\end{observation}
