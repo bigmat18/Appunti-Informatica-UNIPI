@@ -1,0 +1,177 @@
+{
+  "main": {
+    "id": "1c2ba3fe1b97da92",
+    "type": "split",
+    "children": [
+      {
+        "id": "232cf07fd46d3366",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "91f36228c4bc1bb2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Kubernetes.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "18b3e66bfea31267",
+    "type": "split",
+    "children": [
+      {
+        "id": "7ec559e34e486ac7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5e7cf4e48528d3e2",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "50c9631fa976bf46",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "45b02a158ff7d1c5",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "right": {
+    "id": "c6ff7ed77af46d2a",
+    "type": "split",
+    "children": [
+      {
+        "id": "22223f3fe0deba69",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "01b62ab3f8c6023d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Kubernetes.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "d2754ad7280e29c4",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Kubernetes.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "2c699c6b32a34c4a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "2fe3692464fba77c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Kubernetes.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "91f36228c4bc1bb2",
+  "lastOpenFiles": [
+    "Cloud computing.md",
+    "IaaS.md",
+    "Cloud-based Quantum Computing.md",
+    "Cloud Edge Continuum.md",
+    "Datacenters.md",
+    "Kubernetes.md",
+    "Software services.md",
+    "Business model.md",
+    "PaaS.md",
+    "FaaS.md",
+    "CaaS.md",
+    "images/Screenshot 2024-05-28 at 23.04.05.png",
+    "images/Screenshot 2024-05-28 at 23.03.25.png",
+    "images/Screenshot 2024-05-28 at 23.02.10.png",
+    "images/Screenshot 2024-05-28 at 23.01.54.png",
+    "images/Screenshot 2024-05-28 at 23.01.42.png",
+    "images/Screenshot 2024-05-28 at 20.59.05.png",
+    "images/Screenshot 2024-05-28 at 20.46.03.png",
+    "images/Screenshot 2024-05-28 at 20.33.36.png",
+    "images/Screenshot 2024-05-28 at 20.33.04.png",
+    "images/Screenshot 2024-05-28 at 18.56.22.png",
+    "Containers.md",
+    "images",
+    "Welcome.md"
+  ]
+}

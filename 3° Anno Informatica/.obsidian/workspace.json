@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "3036d14c0a943043",
+        "id": "aa44b2d541a83fa9",
         "type": "tabs",
         "children": [
           {
-            "id": "72755339423fe282",
+            "id": "4901332c4b8cfd31",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Ricerca con euristica.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -69,8 +65,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "75962731b1f455cc",
@@ -86,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Ricerca con euristica.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Ricerca con euristica.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Ricerca con euristica.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -147,11 +138,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "72755339423fe282",
+  "active": "4901332c4b8cfd31",
   "lastOpenFiles": [
+    "Untitled.canvas",
+    "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Ricerca con euristica.md",
     "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Introduzione Intelligenza Artificiale.md",
     "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Strategie non informative.md",
-    "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Ricerca con euristica.md",
     "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Calcolo proposizionale.md",
     "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/SVM.md",
     "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Validation.md",
@@ -161,7 +153,6 @@
     "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Logica di primo ordine (FOL).md",
     "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Ricerca locale.md",
     "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/Modelli lineari.md",
-    "Untitled.canvas",
     "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/images/Screenshot 2024-05-22 at 20.50.41.png",
     "Introduzione all'Intelligenza Artificiale (Non Concluso)/notes/images/Screenshot 2024-05-22 at 20.01.31.png",
     "Introduzione all'Intelligenza Artificiale (Non Concluso)/Esercizi/Parte 2/Parte2_Esercitazione2.pdf",

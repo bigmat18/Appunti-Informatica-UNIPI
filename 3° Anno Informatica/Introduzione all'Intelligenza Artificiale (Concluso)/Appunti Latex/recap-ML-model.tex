@@ -1,0 +1,22 @@
+\newpage
+\section{Riassunto modelli}
+Riassunto di tutti i modelli visti durante il la parte di ML.
+\begin{table}[h!]
+    \def\arraystretch{1.5}
+    \begin{tabular}{||c|c|c|c|c|c||}
+        \hline
+        Categoria & Nome & Descrizioni & Iper-parametri & Pro & Contro \\
+        \hline\hline
+        Concept learning & Find-S & Ricerca in spazio di ipotesi partendo dalla più specifica e andando a raffinare & nessuno & Produce l'ipotesi più specifica coerente con gli esempi positivi & L'apprendimento non si capisce se è convervente, non si sa se i dati sono inconsistenti \\\hline
+        Concept learning & List-then-eliminate & Utlizza il concetto di version space rimuovendo per ogni esempio le ipotesi incosisitenti & & & \\\hline
+        Concept learning & Candidate Elimination & utilizza sempre VS ma con confine generale e confine specifico & nessuno & & \\\hline
+        Modelli lineari & LMS + Gradiant descent & Si cerca $w$ che minimizzi la Loss, per farlo di fa una ricerca dei minimi locali in maniera "a scalini" & $\eta$ che regola gli scalini nel gradiant & Approccio semplice e efficace per cercare in spazio ipotesi infinito & \\\hline
+        Modelli lineari & Linear basis expansion & si usa non solo per aumentare il numero di parametri ma introdurre funzioni all'interno & nel caso di polinomilai abbiamo M & Permette apprendimenti più elaborati & Aumetenta complessita nel training e più difficile controllare complessità \\\hline
+        Modelli linieari & LMS + regularization & permette di limiare fenomeni di overfitting andando a penalizzare la complessitò delle funzioni con pesi grandi & si aggiunge il paramento libero $\lambda$ & Ottimo per controllare che il training non faccia overfitting & Se $\lambda$ troppo ali si rischia di appiattire troppo, va valutato \\\hline
+        Alberi decisionali & ID3 & & & & \\\hline
+        Modelli linieari & SVM & & & & \\\hline
+        Non lineare & K-NN & & & & \\\hline 
+        Non supervisionato & K-means & & & & \\\hline
+        \hline
+    \end{tabular}
+\end{table}

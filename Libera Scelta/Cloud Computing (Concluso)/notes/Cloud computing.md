@@ -1,0 +1,11 @@
+## [[IaaS]]
+## [[CaaS]]
+
+## [[FaaS]]
+## [[PaaS]]
+## [[Business model]]
+## [[Software services]]
+## [[Kubernetes]]
+## [[Datacenters]]
+## [[Cloud Edge Continuum]]
+## [[Cloud-based Quantum Computing]]
