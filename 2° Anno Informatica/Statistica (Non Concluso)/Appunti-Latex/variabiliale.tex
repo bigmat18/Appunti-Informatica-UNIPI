@@ -303,3 +303,121 @@ mentre la sua c.d.f. è
 		\mathbb{P}\{a < Y < b\} = \mathbb{P}\bigg\{\frac{a-m}{\sigma} < X < \frac{b-m}{\sigma}\bigg\}
 	\end{equation}
 \end{observation}
+
+\subsection{Trasformazioni di variabili con densità}
+Data la variabile aleatoria $X: \Omega \to \mathbb{R}$ con densità $f$ e una funzione $h: \mathbb{R} \to \mathbb{R}$, vogliamo la densità della variabile aleatoria composta 
+\begin{equation*}
+	Y: \Omega \to \mathbb{R} \quad\quad Y=h \circ X
+\end{equation*}
+Se è possibile calcolare la c.d.f. di $Y$
+\begin{equation*}
+	F_Y(y)=\mathbb{P}\{Y \leq y\} = \mathbb{P}\{h(X) \leq y\}
+\end{equation*}
+ed è \textbf{continua} e differenziabile, allora è sufficiente derivarla per ottenere la densità di $Y$.
+\begin{proposition}[Cambio di variabile]
+	Data $X$ una variabile aleatoria con densità $f_X$, supportata su un intervallo aperto $A$ ($f_X$ nulla su $A^c$). Data una funzione $h: A \to B$, con $B$ un intervallo aperto, \textbf{biunivoca}, \textbf{differenziabile} e con \textbf{inversa differenziabile}. Allora $Y = h \circ X$ ha densità
+	\begin{equation}
+		f_Y(y)=\begin{cases}
+			f_X(h^{-1}(y)) \cdot \bigg\lvert \frac{dh^{-1}(y)}{dy}\bigg\rvert & y \in B\\
+			0 & y \notin B
+		\end{cases}
+	\end{equation}
+\end{proposition}
+
+\subsection{Valore atteso}
+Applichiamo il concetto di \textit{media campionaria} e di \textit{varianza campionaria} anche alle variabili aleatorie.
+\begin{definition}[Valore atteso]
+	Data una variabile discreta $X$ con funzione di massa $p_X$, si dice che questa ha valore atteso se
+	\begin{equation*}
+		\sum_{i}\lvert x_i \rvert p_X(x_i) < +\infty
+	\end{equation*}
+	e vale
+	\begin{equation}
+		\mathbb{E}[X]=\sum_{i}x_ip_X(x_i)
+	\end{equation}
+	Se $X$ è con densità e
+	\begin{equation*}
+		\int_{-\infty}^{+\infty} \lvert x \rvert f_X(x) dx < + \infty
+	\end{equation*}
+	allora il valore atteso è
+	\begin{equation}
+		\mathbb{E}[X]=\int_{-\infty}^{+\infty}t f_X(t)dt
+	\end{equation}
+\end{definition}
+
+\begin{note}
+	Il valore atteso è anche chiamato \textbf{momento primo} o speranza matematica.
+\end{note}
+
+\begin{observation}
+	Dato che il valore atteso dipende solo dalla funzione di massa o dalla densità, ovvero solo dalla legge $\mathbb{P}_X$ di $X$, allora se due variabili sono \textbf{equi distribuite} hanno anche lo stesso valore atteso.
+\end{observation}
+
+\begin{observation}
+	Se $X$ prende solo valori positivi, possiamo ammettere che $E[X]$ possa assumere il valore $+\infty$.\\
+	Nel caso discreto vuol dire che $x_1, x_2, \ldots$ sono sempre positivi e quindi ha senso
+	\begin{equation*}
+		\mathbb{E}[X]=\sum_{i=1}^{+\infty} x_i p(x_i)
+	\end{equation*}
+	Nel caso con densità significa che $f(x)=0 \quad x<o$ e quindi ha senso
+	\begin{equation*}
+		\mathbb{E}[X] = \int_{0}^{+\infty} xf(x)dx \in [0, +\infty]
+	\end{equation*}
+	In generale
+	\begin{equation}
+		\mathbb{E}[\lvert X \rvert] < + \infty
+	\end{equation}
+\end{observation}
+
+\begin{proposition}
+	Valgono:
+	\begin{itemize}
+		\item $\forall a,b \in \mathbb{R}$ valgono $\mathbb{E}[aX+b]=a\mathbb{E}[X] + b$ e $\mathbb{E}[b] = b$
+		\item $\lvert \mathbb{E}[X]\rvert \leq \lvert \mathbb{E}[\lvert X \rvert]$
+		\item $\mathbb{P}(X \geq 0)=1 \Longrightarrow \mathbb{E}[X] \geq 0$
+	\end{itemize}
+\end{proposition}
+
+\subsubsection{Valore atteso di trasformazioni}
+Supponiamo di voler calcolare il valore atteso di trasformazioni di una variabile aleatoria $X$, ovvero $Y=g(x) \quad g:\mathbb{R} \to \mathbb{R}$.
+\begin{proposition}[Valore atteso di trasformazioni discrete]
+	Se $X$ è discreta e
+	\begin{equation*}
+		\sum_{i} \lvert g(x_i) \rvert p(x_i) < +\infty
+	\end{equation*}
+	allora
+	\begin{equation}
+		\mathbb{E}[g(X)] = \sum_{i} g(x_i)p(x_i)
+	\end{equation}
+\end{proposition}
+\begin{proposition}[Valore atteso di trasformazioni con densità]
+	Se $X$ è con densità e
+	\begin{equation*}
+		\int_{-\infty}^{+\infty}\lvert g(x)\rvert f(x)dx < +\infty
+	\end{equation*}
+	allora
+	\begin{equation}
+		\mathbb{E}[g(X)] = \int_{-\infty}^{+\infty} g(x) f(x)dx
+	\end{equation}
+\end{proposition}
+	
+\subsubsection{Momenti}
+\begin{definition}[Momento]
+	La variabile aleatoria $X$ ammette momento di ordine $n=1,2,\ldots$ se
+	\begin{equation*}
+		\mathbb{E} [\lvert X \rvert] < + \infty
+	\end{equation*}
+	e in quel caso si chiama $\mathbb{E}[X^n]$ il momento di ordine $n$.
+\end{definition}
+
+\begin{observation}
+	Se una variabile discreta assume solo valori finiti, tutti i momenti sono finiti. Se una variabile con densità è diversa da $0$ solo su un intervallo limitato, tutti i momenti sono finiti.
+\end{observation}
+
+\begin{proposition}
+	Siano $1 \leq m < n$
+	\begin{equation}
+		\mathbb{E}[\lvert X \rvert ^n] < +\infty \Longrightarrow \mathbb{E}[\lvert X \rvert ^m] < +\infty
+	\end{equation}
+	Ovvero se una variabile aleatoria ammette momenti fino a $n$, ammetterà anche tutti i suoi precedenti.
+\end{proposition}
