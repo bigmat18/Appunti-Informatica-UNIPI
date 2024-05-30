@@ -9,7 +9,7 @@ Le variabili aleatorie sono funzioni dello spazio di probabilità. Permettono di
 	\end{equation}
 	definita su uno spazio di probabilità.
 \end{definition}
-\subsection{Legge du una variabile aleatoria}
+\subsection{Legge di una variabile aleatoria}
 Ad una variabile aleatoria sono associati eventi del tipo "$X$ prende valori in un insieme $A\subseteq \mathbb{R}$:
 \begin{equation*}
 	\{X \in A\} = X^{-1}(A)=\{\omega \in \Omega: X(\omega) \in A\}
@@ -17,3 +17,289 @@ Ad una variabile aleatoria sono associati eventi del tipo "$X$ prende valori in 
 \begin{equation*}
 	\mathbb{P}_X(A)=\mathbb{P}(X \in A)=\mathbb{P}(X^{-1}(A))
 \end{equation*}
+
+\begin{definition}[Legge di probabilità di una v.a.]
+	La funzione $\mathbb{P}_X$ è una probabilità su $\mathbb{R}$ ed è detta \textbf{legge di probabilità} di $X$.
+\end{definition}
+
+\begin{note}
+	Quando due variabili aleatorie hanno la stessa legge di probabilità sono dette \textbf{equi distribuite}.
+\end{note}
+
+\subsection{Tipi di variabili aleatorie}
+\subsubsection{Variabili discrete}
+\begin{definition}[Variabile aleatoria discreta]
+	Una variabile aleatoria è discreta se la sua immagine $X(\Omega) \subset \mathbb{R}$ è un sottoinsieme al più numerabile di $\mathbb{R}$ o se la sua legge di probabilità è discreta.
+	Se $A \subseteq \mathbb{R}$ vale
+	\begin{equation*}
+		p_X(A)=\mathbb{P}(x \in A) = \sum_{x_i \in A}p_X(x_i)
+	\end{equation*}
+\end{definition}
+\subsubsection{Variabili continue}
+\begin{definition}[Variabile aleatoria continua]
+	Una variabile aleatoria è detta con densità o continua se la sua legge di probabilità è definita da una densità $f$, ovvero se esiste una $f$ tale che
+	\begin{equation}
+		\mathbb{P}_X(A) = \mathbb{P}\{X \in A\}=\int_{A}f(x)dx
+	\end{equation}
+	Se $A=[a,b]$ è un segmento, vale
+	\begin{equation}
+		\mathbb{P}\{X \in A\}=\mathbb{P}(a \leq X \leq b) = \int_{a}^{b} f(x) dx
+	\end{equation}
+\end{definition}
+\subsection{Funzione di ripartizione}
+Per studiare una legge di probabilità di una variabile aleatoria è conveniente usare una funzione su $\mathbb{R}$.
+\begin{definition}[Funzione di ripartizione]
+	La funzione di ripartizione (c.d.f.) su $X$ è
+	\begin{equation}
+		F_X:\mathbb{R}\to[0,1] \quad\quad F_X(x) = \mathbb{P}\{X \leq x\}
+	\end{equation}
+\end{definition}
+
+\begin{proposition}
+	Data $F=F_X$ la funzione di ripartizione di una variabile aleatoria $X$, valgono:
+	\begin{itemize}
+		\item $F$ è \textbf{non decrescente}
+		\begin{equation}
+			x < y \Longrightarrow F(X) \leq F(y)
+		\end{equation}
+		\item $\lim_{x \to -\infty}=0$, $\lim_{x \to + \infty}F(x) = 1$
+		\item $F$ è \textbf{continua} a destra
+		\begin{equation}
+			\forall x \in \mathbb{R} \quad F(x_n) \to F(x)
+		\end{equation}
+		per ogni successione $x_n \to x \quad\quad x_n \geq x$
+	\end{itemize}
+\end{proposition}
+
+\begin{proposition}
+	La probabilità che $X$ cada in un dato intervallo $[a,b]$ per $a<b$ è
+	\begin{equation}
+		\mathbb{P}\{a < X \leq b\}=F(b)-F(a)
+	\end{equation}
+\end{proposition}
+
+\subsubsection{Funzioni di variabili discrete}
+Data una variabile aleatoria discreta $X$, la sua c.d.f. che assume valori $x_1, x_2, \ldots$ è
+\begin{equation}
+	F_X(t) = \sum_{x_i \leq t}p(x_i)
+\end{equation}
+Questa è una funzione a \textbf{gradini} che esegue un salto in ogni punto $x$ tale che $\mathbb{P}(X=x)>0$ di ampiezza pari alla probabilità di quel punto. Vale quindi
+\begin{equation}
+	\mathbb{P}\{X=x\} = F(x) - F_\_(x)
+\end{equation}
+\subsubsection{Funzioni di variabili continue}
+Quando la variabile ha densità $f$ la sua funzione di ripartizione (\textbf{continua}) è
+\begin{equation}
+	F(x)=\int_{-\infty}^{x}dt
+\end{equation}
+o nel caso in cui è \textbf{continua a tratti} si ottiene:
+\begin{equation}
+	f(x) = \frac{dF(x)}{dx}
+\end{equation}
+
+\subsection{$\beta$-quantile}
+\begin{definition}[$\beta$-quantile]
+	Data una variabile aleatoria $X$ ed un numero $0 < \beta < 1$ il $\beta$-quantile è:
+	\begin{equation}
+		r_\beta = \inf\{r \in \mathbb{R} : F(r) \geq \beta\} \quad\quad \beta \in (0,1)
+	\end{equation}
+\end{definition}
+\begin{definition}[Inversa generalizzata]
+	L'inversa generalizzata di $F$ è
+	\begin{equation}
+		F^{\leftarrow}:(0,1) \to \mathbb{R} \quad\quad F^{\leftarrow}(t) = \inf\{r \in \mathbb{R} : F(r) \geq t\}
+	\end{equation}
+\end{definition}
+\begin{proposition}
+	Valgono:
+	\begin{itemize}
+		\item Se $F$ è strettamente crescente $F^{\leftarrow} = F^{-1}$
+		\item $F^{\leftarrow}$ è sempre \textbf{non decrescente}
+		\item $F^{\leftarrow}(F(t))\leq t \quad\quad \forall t \in \mathbb{R}$
+		\item $F(F^{\leftarrow}(t)) \geq t \quad\quad \forall t \in \mathbb{R}$
+		\item $F^{\leftarrow}(t) \leq s \Longleftrightarrow F(s) \geq t$
+	\end{itemize}
+\end{proposition}
+
+\subsection{Variabili discrete notevoli}
+\subsubsection{Binomiali}
+\begin{equation}
+	B(n,p)
+\end{equation}
+Date $n$ prove ripetute di un esperimento con \textbf{due esiti}, chiamiamo uno di questi \textit{successo} con probabilità $0 < p < 1$. Sia $X$ la variabile che conta il numero di successi ($0, 1, \ldots,n$). Vale:
+\begin{equation}
+	\mathbb{P}(X=h)=\binom{n}{h}p^h(1-p)^{n-h} \quad\quad 0 \leq h \leq n
+\end{equation}
+Ovvero dati $h$ successi e $n-h$ insuccessi, calcoliamo il numero di modi di disporre i successi.
+
+\begin{observation}
+	Date due successioni $x_1,x_2, \ldots \in \mathbb{R}$ e $p_1, p_2, \ldots \in [0, \infty)$ tale che $\sum_{i=1}^{\infty}p_1 = 1$, possiamo definire una variabile discreta tramite
+	\begin{equation}
+		\Omega = \mathbb{N} \quad\quad \mathbb{P}(\{k\})=p_k \quad\quad X(k) = x_k
+	\end{equation}
+	ovvero dove
+	\begin{equation*}
+		\mathbb{P}_X(k) = \mathbb{P}(X = x_k) = p_k
+	\end{equation*}
+\end{observation}
+
+\subsubsection{Geometriche}
+\begin{equation}
+	G(p)
+\end{equation}
+Consideriamo la stessa situazione delle variabili binomiali ma definiamo $X$ come l'istante del primo successo, ovvero il numero $h$ tale che alla prova $h$-esima si verifichi il primo successo. Vale:
+\begin{equation}
+	P(X=h)=(1-p)^{h-1}p \quad\quad h \in \mathbb{N}_0
+\end{equation}
+Questo corrisponde a dire, dato l'evento $A_i$ successo della prova $i$-esima,
+\begin{equation*}
+	\mathbb{P}(X=h) = \mathbb{P}(A^c_1 \cap A^c_2 \cap \ldots \cap A^c_{h-1} \cap A_h) = \mathbb{P}(A^c_1) \cdot \mathbb{P}(A^c_2) \cdot \ldots \cdot \mathbb{P}(A^c_{h-1}) \cdot \mathbb{P}(A_h) = (1-p)^{h-1}p
+\end{equation*} 
+
+\begin{observation}[Assenza di memoria]
+	Le variabili geometriche hanno assenza di memoria, ovvero
+	\begin{equation}
+		\mathbb{P}\{X=n+h \vert X >n \} = \mathbb{P}\{X=h\}
+	\end{equation}
+\end{observation}
+
+\subsubsection{Ipergeometriche}
+\begin{equation}
+	I(n,h,r)
+\end{equation}
+Prendiamo ad esempio un'urna con $n$ biglie di cui $0 \leq h \leq n$ sono bianche e $n-h$ nere. Estraiamo $r \leq n$ biglie senza reinserirle. La variabile che conta quante biglie estratte $k$ sono bianche ha funzione di massa
+\begin{equation}
+	\mathbb{P}(X=k) = \frac{\binom{h}{k}\binom{n-h}{r-k}}{\binom{n}{r}} \quad\quad k=0,\ldots, h
+\end{equation}
+\begin{proposition}[Identità di Vandermonde]
+	Date $k$ biglie bianche e $r-k$ nere, il numero di scelte possibili è
+	\begin{equation*}
+		\binom{h}{k}\binom{n-h}{r-k}
+	\end{equation*}
+	mentre il numero totale di scelte è 
+	\begin{equation*}
+		\binom{n}{r}
+	\end{equation*}
+	Otteniamo quindi
+	\begin{equation}
+		\sum_{k=0}^{h} \binom{h}{k}\binom{n-h}{r-k} = \binom{n}{r}
+	\end{equation}
+	che mostra anche $\sum_{k=0}^{h}\mathbb{P}(X=k) = 1$
+\end{proposition}
+
+\subsubsection{Poisson}
+\begin{equation}
+	P(\lambda)
+\end{equation}
+Una variabile è di Poisson quando
+\begin{equation}
+	\mathbb{P}(X=h)=e^{-\lambda}\frac{\lambda^h}{h!} \quad\quad h \in \mathbb{N}, \lambda>0
+\end{equation}
+Dato che è una buona approssimazione di una distribuzione binomiale quando $n$ è grande, $p$ è piccolo $np$ è circa $\lambda$, possiamo dire che conta il numero di successi quando il numero di prove è alto e la probabilità è bassa. Viene anche detta degli \textbf{eventi rari} (eruzioni vulcaniche, particelle $\alpha$ emesse da una sorgente radioattiva).
+
+\subsection{Variabili con densità notevoli}
+Consideriamo i casi in cui esiste una funzione di densità non negativa di integrale unitario su tutto $\mathbb{R}$ $f_X$ tale che
+\begin{equation}
+	\mathbb{P}(X \in [a,b]) = \mathbb{P}(X \in (a,b)) = \int_{a}^{b} f_X(t)dt
+\end{equation}
+
+\subsubsection{Uniformi su intervalli}
+Dati due numeri reali $a < b$, la densità uniforme sull'intervallo $[a,b]$ è
+\begin{equation}
+	f(t) = \begin{cases}
+		\frac{1}{b-a} & a < t < b\\
+		0 & \text{altrove}
+	\end{cases}
+\end{equation}
+La c.d.f. è
+\begin{equation}
+	F(t)=\begin{cases}
+		0 & t \leq a \\
+		\frac{t}{b-a} & 0 < t \leq b \\
+		1 & t>b
+	\end{cases}
+\end{equation}
+Ad esempio un numero preso a caso tra $0$ e $1$.
+
+\subsubsection{Esponenziali}
+Dato il parametro $\lambda>0$ la densità è
+\begin{equation}
+	f(x)=\begin{cases}
+		\lambda e^{-\lambda t} & t >0 \\
+		0 & t \leq 0
+	\end{cases}
+\end{equation}
+La c.d.f. è
+\begin{equation}
+	F(t) = \begin{cases}
+		1-e^{-\lambda t} & t>0\\
+		0 & t \leq 0
+	\end{cases}
+\end{equation}
+Descrive ad esempio il tempo di attesa tra due eventi aleatori, come tra le chiamate di un call center.
+\begin{observation}
+	Questa variabile prende solo valori positivi
+	\begin{equation*}
+		\mathbb{P}\{X \leq 0\}= 0
+	\end{equation*}
+\end{observation}
+
+\subsubsection{Pareto}
+Dati $x_m, \alpha > 0$ la densità è
+\begin{equation}
+	f(t) = \begin{cases}
+		\alpha x_m^\alpha t^{-1-\alpha} & t> x_m \\
+		0 & t \leq x_m
+	\end{cases}
+\end{equation}
+La densità è non nulla dopo la soglia $x_m$ e al diminuire di $\alpha$ ha una coda sempre più pesante. La c.d.f. è
+\begin{equation}
+	F(t) = \begin{cases}
+		1 & t < x_m \\
+		1-(\frac{x_m}{t})^\alpha & t \geq x_m
+	\end{cases}
+\end{equation}
+Chiamata anche \textbf{power law}, serve a descrivere fenomeni in cui eventi estremi hanno una buona probabilità di avvenire, come la distribuzione della ricchezza nella società.
+
+\subsubsection{Gaussiane standard}
+Viene indicata con $N(0,1)$ e ha densità
+\begin{equation}
+	\varphi(x) = \frac{1}{\sqrt{2\pi}}e^{\frac{-x^2}{2}}
+\end{equation}
+e c.d.f.
+\begin{equation}
+	\Phi(x)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{x}e^{\frac{-t^2}{2}}dt
+\end{equation}
+
+\begin{observation}
+	Questa densità è una funzione pari ($\varphi(x) = \varphi(-x)$). Di conseguenza, dati $x \in \mathbb{R}$ e $0 < \alpha < 1$, si ha
+	\begin{equation}
+		\Phi(-x) = 1 - \Phi(x) \quad\quad q_{1-\alpha} = -q_\alpha
+	\end{equation}
+	Di conseguenza, se $X$ è una variabile aleatoria $N(0,1)$, valgono
+	\begin{equation}
+		\mathbb{P}\{-t \leq X \leq t\} = \Phi(t) - \Phi(-t) = 1\Phi(t) -1
+	\end{equation}
+	\begin{equation}
+		\Phi(0) = \mathbb{P}\{X \geq 0\} = \mathbb{P}\{X \leq 0\} = \frac{1}{2}
+	\end{equation}
+\end{observation}
+\subsubsection{Gaussiane non standard}
+\begin{equation}
+	N(m, \sigma^2)
+\end{equation}
+Data $X$ una variabile Gaussiana Standard, dati $\sigma >0$ e $m \in \mathbb{R}$, consideriamo la variabile aleatoria $Y = \sigma X +m$. La sua densità è
+\begin{equation}
+	f_Y(t) = \frac{1}{\sigma}f_X\bigg(\frac{t-m}{\sigma}\bigg) = \frac{1}{\sqrt{2 \pi}\sigma}e^{-\frac{(t-m)^2}{2\sigma^2}}
+\end{equation}
+mentre la sua c.d.f. è
+\begin{equation}
+	F_Y(t)= \mathbb{P}\{Y \leq t\} = \mathbb{P}\{\sigma X + m \leq t\} = \mathbb{P}\bigg(X \leq \frac{t-m}{\sigma}\bigg) = \Phi \bigg(\frac{t-m}{\sigma}\bigg)
+\end{equation}
+
+\begin{observation}
+	Vale:
+	\begin{equation}
+		\mathbb{P}\{a < Y < b\} = \mathbb{P}\bigg\{\frac{a-m}{\sigma} < X < \frac{b-m}{\sigma}\bigg\}
+	\end{equation}
+\end{observation}
