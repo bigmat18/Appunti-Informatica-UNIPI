@@ -686,3 +686,16 @@ Funzioni di più variabili indipendenti sono indipendenti se la stessa variabile
 	\end{equation}
 	Quando vale $0$ le variabili sono \textbf{scorrelate}.
 \end{definition}
+
+\subsection{Teoremi limite}
+\begin{definition}
+	Data una famiglia di variabili aleatorie $X_1, \ldots, X_n, \ldots$, sono i.i.d. se sono indipendenti ed equidistribuite.\\
+	Equivalentemente lo sono se hanno tutte la stessa funzione di ripartizione
+	\begin{equation}
+		\mathbb{P}_{X_n}(t) = \mathbb{P}(X_n \leq t) = F(t) \quad\quad t \in \mathbb{R}, n=1,2,\ldots
+	\end{equation}
+	e se vale
+	\begin{equation}
+		\mathbb{P}(X_{k_1} \leq t_1, \ldots, X_{k_n} \leq t_n) = F_{X_1}(t_1) \cdot \ldots \cdot F_{X_n}(t_n) \quad\quad \forall k_1, \ldots, k_n \in \mathbb{N}, t_1, \ldots, t_n \in \mathbb{R}
+	\end{equation}
+\end{definition}
