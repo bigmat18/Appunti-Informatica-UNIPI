@@ -142,6 +142,7 @@ Ovvero dati $h$ successi e $n-h$ insuccessi, calcoliamo il numero di modi di dis
 		\mathbb{P}_X(k) = \mathbb{P}(X = x_k) = p_k
 	\end{equation*}
 \end{observation}
+Un caso particolare delle variabili binomiali è quando $n=1$, ovvero le variabili di \textbf{Bernoulli}.
 
 \subsubsection{Geometriche}
 \begin{equation}
@@ -419,5 +420,269 @@ Supponiamo di voler calcolare il valore atteso di trasformazioni di una variabil
 	\begin{equation}
 		\mathbb{E}[\lvert X \rvert ^n] < +\infty \Longrightarrow \mathbb{E}[\lvert X \rvert ^m] < +\infty
 	\end{equation}
-	Ovvero se una variabile aleatoria ammette momenti fino a $n$, ammetterà anche tutti i suoi precedenti.
+	Ovvero se una variabile aleatoria ammette momenti fino a $n$, ammetterà anche tutti i suoi precedenti. In particolare vale la \textbf{disuguaglianza di Jensen}:
+	\begin{equation}
+		\mathbb{E}[\lvert X \rvert^m]^{\frac{1}{m}} \leq \mathbb{E}[\lvert X \rvert^n]^{\frac{1}{n}}
+	\end{equation}
 \end{proposition}
+
+\begin{proposition}[Disuguaglianza di Markov]
+	Se $X$ è una variabile aleatoria a valori positivi e $a>0$ vale
+	\begin{equation}
+		a\mathbb{P}\{X \geq a\} \leq \mathbb{E}[X]
+	\end{equation}
+\end{proposition}
+
+\subsubsection{Varianza di una variabile aleatoria}
+\begin{definition} [Varianza]
+	Se $X$ ammette momento secondo, la sua varianza è
+	\begin{equation}
+		Var(X) = \mathbb{E}[(X-\mathbb{E}[X])^2] = \mathbb{E}[X^2]-\mathbb{E}[X]^2
+	\end{equation}
+	e lo \textbf{scarto quadratico medio} o \textbf{deviazione standard} è
+	\begin{equation}
+		\sigma(X) = \sqrt{Var(X)}
+	\end{equation}
+\end{definition}
+
+\begin{proposition}[Disuguaglianza di Chebyshev]
+	Data $X$ una variabile aleatoria e $d>0$, vale
+	\begin{equation}
+		\mathbb{P}\{\lvert X - \mathbb{E}\rvert > d\} \leq \frac{Var(X)}{d^2}
+	\end{equation}
+\end{proposition}
+
+\begin{observation}
+	La varianza di una variabile $X$ vale $0$ solo se questa è costante tranne che per un insieme trascurabile
+	\begin{equation*}
+		\mathbb{P}\{\lvert X - \mathbb{E}[X] \rvert \neq 0\} = 0
+	\end{equation*}
+\end{observation}
+
+\subsubsection{Momenti notevoli}
+Vediamo i momenti delle variabili notevoli.
+\paragraph{Variabili binomiali}
+Per una variabile di Bernoulli vale
+\begin{equation}
+	\mathbb{E}[X^k] = p \quad\quad Var(X)=p-p^2=p(1-p) \quad\quad k \geq 1
+\end{equation}
+Dato che una variabile Binomiale può essere vista come somma di variabili di Bernoulli, vale
+\begin{equation}
+	\mathbb{E}[X] = np \quad\quad Var(X) = np(1-p)
+\end{equation}
+
+\paragraph{Variabili di Poisson}
+Dato che assumono solo valori positivi:
+\begin{equation}
+	\mathbb{E}[X] = \sum_{h=0}^{+\infty}he^{-\lambda}\frac{\lambda^h}{h!} = \lambda e^{-\lambda}\sum_{h=1}^{+\infty}\frac{\lambda{h-1}}{(h-1)!} = \lambda e^{-\lambda}\sum_{k=0}^{+\infty}\frac{\lambda^k}{k!}=\lambda
+\end{equation}
+\begin{equation}
+	\mathbb{E}[X^2]=\lambda + \lambda^2 \quad\quad Var(X)=\lambda
+\end{equation}
+
+\paragraph{Variabili uniformi su intervalli finiti}
+Data una variabile $X$ con densità uniforme su $[a,b]$, vale:
+\begin{equation}
+	\mathbb{E}[X] = \int_{a}^{b}\frac{x}{b-a}dx = \frac{x^2}{2(b-a)}\bigg\vert^b_a = \frac{b^2-a^2}{2(b-a)}=\frac{a+b}{2}
+\end{equation}
+\begin{equation}
+	\mathbb{E}[X^2] = \int_{a}^{b}\frac{x^2}{b-a}dx = \frac{x^3}{3(b-a)}\bigg\vert^b_a = \frac{b^3-a^3}{3(b-a)}=\frac{a^2+ab+b^2}{3} \quad\quad Var(X) = \frac{(b-a)^2}{12}
+\end{equation}
+
+\paragraph{Variabili esponenziali}
+Vale:
+\begin{equation}
+	\mathbb{E}[X] = \int_{0}^{+\infty}\land x e^{-\lambda x}dx=\frac{1}{\lambda}
+\end{equation}
+e più in generale
+\begin{equation}
+	\mathbb{E}[X^n]=\frac{n!}{\lambda^n}
+\end{equation}
+Quindi anche
+\begin{equation}
+	Var(X) = \frac{1}{\lambda^2}
+\end{equation}
+
+\paragraph{Variabili Gaussiane standard}
+Se $X$ è Gaussiana Standard, notiamo che possiede tutti i momenti
+\begin{equation}
+	\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}\lvert x\rvert^ne^{-\frac{x^2}{2}} dx < +\infty
+\end{equation}
+I momenti dispari valgono:
+\begin{equation}
+	\mathbb{E}[X^{2h+1}] = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}x^ne^{-\frac{x^2}{2}}dx = \lim_{M \to \infty}\frac{1}{\sqrt{2\pi}}\int_{-M}^{+M}x^ne^{-\frac{x^2}{2}}dx=0
+\end{equation}
+mentre quelli pari, guardando ad esempio il momento secondo
+\begin{equation}
+	\mathbb{E}[X^2]=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}x^2e^{-\frac{x^2}{2}}dx = \frac{-xe^{-\frac{x^2}{2}}}{\sqrt{2\pi}}\bigg\vert^{+\infty}_{-\infty}+\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}e^{-\frac{x^2}{2}}dx = 1 \quad\quad Var(X)=1
+\end{equation}
+e più in generale
+\begin{equation}
+	\mathbb{E}[X^{2h+2}]=(2h+1)\mathbb{E}[X^{2h}]
+\end{equation}
+
+\paragraph{Variabili Gaussiane}
+Data $Y=\sigma X + m$, per linearità del valore atteso
+\begin{equation}
+	\mathbb{E}[Y] = \mathbb{E}[\sigma X + m] = m \quad\quad Var(Y)=Var(\sigma X +m)=\sigma^2Var(X) = \sigma^2
+\end{equation}
+
+\subsection{Variabili doppie}
+Dato $\Omega$ uno spazio di probabilità e $X,Y:\Omega \to \mathbb{R}$, il vettore $(X,Y)$ può essere visto come una funzione
+\begin{equation}
+	\Omega \ni \omega \mapsto (X(\omega),Y(\omega))\in \mathbb{R}^2
+\end{equation}
+La sua legge è una probabilità sui sottoinsiemi $A \subseteq \mathbb{R}^2$
+\begin{equation}
+	\mathbb{P}_{X,Y)}(A) = \mathbb{P}((X,Y) \in A) = \mathbb{P}\{\omega \in \Omega : (X(\omega), Y(\omega)) \in A\}
+\end{equation}
+
+\begin{observation}[Insieme rettangolare]
+	Se $A=A_1 \times A_2$ è un sottoinsieme rettangolare vale
+	\begin{equation}
+		\{(X,Y) \in A\} = \{X \in A_1, Y \in A_2\}
+	\end{equation}
+\end{observation}
+
+\begin{note}
+	Con la virgola indichiamo l'intersezione di due condizioni
+	\begin{equation*}
+		\{X \in A_1, Y \in A_2\} = \{X \in A_1\} \cap \{Y \in A_2\} = X^{-1}(A_1) \cap Y^{-1}(A_2) = (X,Y)^{-1}(A_1 \times A_2)
+	\end{equation*}
+\end{note}
+
+\subsubsection{Distribuzioni marginali}
+Data una variabile doppia $(X,Y)$ possiamo considerare separatamente le leggi delle due componenti $\mathbb{P}_X$ e $\mathbb{P}_Y$. Queste sono dette \textbf{leggi marginali}.\\
+Se $I \subseteq \mathbb{R}$, valgono
+\begin{equation}
+	\mathbb{P}_X(I)=\mathbb{P}_{(X,Y)}(I \times \mathbb{R}) \quad\quad\quad \mathbb{P}_Y(I)=\mathbb{P}_{(X,Y)}(\mathbb{R}\times I)
+\end{equation}
+
+Le distribuzioni marginali non contengono tutta l'informazione della legge $\mathbb{P}_{(X,Y)}$ e di conseguenza non si può ricostruire univocamente dalle prime. L'idea è che la legge totale codifica anche le relazioni tra le due leggi, cosa che le marginali non fanno
+
+\subsubsection{Variabili doppie discrete}
+Una variabile doppia $(X,Y)$ è discreta se la sua immagine è concentrata in un insieme finito o numerabile di punti $(x_i, y_j)$. La sua \textbf{distribuzione di probabilità} è
+\begin{equation}
+	p(x_i,y_j) = \mathbb{P}(X=x_i, Y=y_j)
+\end{equation}
+e se $A\subseteq \mathbb{R}^2$
+\begin{equation}
+	\mathbb{P}_{(X,Y)}(A) = \mathbb{P}\{(X,Y) \in A\} = \sum_{(x_i, y_j) \in A}p(x_i, y_j)
+\end{equation}
+
+\begin{proposition}
+	Se una variabile doppia è discreta con funzione di massa, lo sono anche le sue componenti
+	\begin{equation}
+		p_X(x_i) = \sum_{j=1}^{+\infty} p(x_i,y_j) \quad\quad p_X(y_j) = \sum_{i=1}^{+\infty} p(x_i,y_j)
+	\end{equation}
+\end{proposition}
+\subsubsection{Variabili doppie con densità}
+Una variabile doppia $(X,Y)$ è con densità se esiste una funzione $f : \mathbb{R}^2 \to [0,\infty)$ integrabile e con $\int\int_{\mathbb{R}^2}f(x,y)dxdy=1$ tale che valga
+\begin{equation}
+	\mathbb{P}_{(X,Y)}(A) = \mathbb{P}\{(X,Y) \in A\} = \int\int_A f(x,y) dxdy \quad\quad A \subseteq \mathbb{R}^2
+\end{equation}
+
+\begin{theorem}[Teorema di Fubini-Tonelli]
+	Dato un insieme rettangolare $A = A_1 \times A_2$ vale
+	\begin{equation}
+		\int\int_A f(x,y)dxdy = \int_{A_1} \bigg(\int_{A_2} f(x,y)dy\bigg)dx =  \int_{A_2} \bigg(\int_{A_1} f(x,y)dx\bigg)dy 
+	\end{equation}
+\end{theorem}
+
+\begin{proposition}
+	Se una variabile doppia ha densità, anche le sue componenti la hanno
+	\begin{equation}
+		f_X(x) = \int_{-\infty}^{+\infty}f(x,y)dy \quad\quad f_Y(y) = \int_{-\infty}^{+\infty}f(x,y)dx
+	\end{equation}
+\end{proposition}
+
+\begin{observation}
+	A differenza del caso discreto se $X$ e $Y$ sono con densità non è detto che anche $X,Y)$ la abbia. Ad esempio $(X,X)$.
+\end{observation}
+
+\subsection{Indipendenza di variabili aleatorie}
+\begin{definition}[Variabili aleatorie indipendenti]
+	Le variabili aleatorie $X_1, \ldots, X_n:\Omega \to \mathbb{R}$ si dicono indipendenti se, presi comunque $A_1, \ldots, A_n \subseteq \mathbb{R}$ vale
+	\begin{equation}
+		\mathbb{P}(X_1 \in A_1, \ldots, X_n \in A_n) = \mathbb{P}(X_1 \in A_1) \cdot \ldots \cdot \mathbb{P}(X_n \in A_n)
+	\end{equation} 
+\end{definition}
+
+\subsubsection{Indipendenza di variabili doppie}
+\begin{proposition}[Indipendenza di variabili doppie discrete]
+	Date due variabili discrete $X$ e $Y$ con immagine nei punti $x_i$ e $y_j$, sono indipendenti se e solo se vale
+	\begin{equation}
+		p(x_i, y_j) = p_X(x_i) \cdot p_Y(y_j) \quad\quad \forall(x_i, y_j)
+	\end{equation}
+\end{proposition}
+
+\begin{proposition}[Indipendenza di variabili doppie con densità]
+	Date due variabili $X$ e $Y$ tale che $(X,Y)$ abbia densità, sono indipendenti se e solo se vale
+	\begin{equation}
+		f(x,y) = f_X(x) \cdot f_Y(y) \quad\quad \forall(x,y)
+	\end{equation}
+\end{proposition}
+
+\begin{observation}
+	Due variabili aleatorie doppie possono avere le stesse distribuzioni marginali ma essere diverse, ad esempio perché in un caso le componenti sono indipendenti e nell'altro no.
+\end{observation}
+
+\subsubsection{Indipendenza di funzioni di variabili indipendenti}
+Funzioni di più variabili indipendenti sono indipendenti se la stessa variabile non compare in due funzioni diverse.
+
+\begin{proposition}
+	Se $X,Y:\Omega \to \mathbb{N}$ sono variabili discrete a valori naturali e indipendenti e sia $Z=X+Y$ si ha
+	\begin{equation}
+		p_Z(n) = \sum_{h=0}^{n}p_X(h) \cdot p_Y(n-h)
+	\end{equation}
+	In particolare se $X$ e $Y$ sono binomiali $B(n,p)$ e $B(m,p)$, allora $Z=X+Y$ è binomiale $B(n+m,p)$.
+\end{proposition}
+\begin{proposition}
+	Se $X$ e $Y$ sono variabili con densità e indipendenti e sia $Z=X+Y$ si ha
+	\begin{equation}
+		f_Z(z)=\int_{-\infty}^{+\infty}f_X(x)f_Y(z-x)dx = \int_{-\infty}^{+\infty}f_Y(y)f_X(z-y)dy
+	\end{equation}
+	In particolare se $X$ e $Y$ sono Gaussiane $N(m_1,\sigma_1^2)$ e $N(m_2,\sigma_2^2)$, allora $Z=X+Y$ è Gaussiana $N(m_1+m_2, \sigma_1^2+\sigma_2^2)$.
+\end{proposition}
+
+\begin{proposition}
+	Se $X$ e $Y$ sono variabili aleatorie indipendenti, allora per tutte le funzioni $h,k: \mathbb{R} \to \mathbb{R}$, anche $h(X)$ e $k(Y)$ lo sono.
+\end{proposition}
+
+\subsection{Correlazione}
+\begin{proposition}
+	Date due variabili aleatorie $X$ e $Y$ con valore atteso, allora $X+Y$ ha valore atteso e valgono:
+	\begin{itemize}
+		\item $\mathbb{E}[X+Y] = \mathbb{E}[X] + \mathbb{E}[Y]$
+		\item $X \geq Y \Longrightarrow \mathbb{E}[X] \geq \mathbb{E}[Y]$
+	\end{itemize}
+\end{proposition}
+\begin{proposition}
+	Date due variabili aleatorie $X$ e $Y$ con valore atteso e \textbf{indipendenti}, allora $XY$ ha valore atteso e vale:
+	\begin{equation}
+		\mathbb{E}[XY] = \mathbb{E}[X] \cdot \mathbb{E}[Y]
+	\end{equation}
+\end{proposition}
+
+\begin{proposition}
+	Se $X$ e $Y$ sono variabili aleatorie con valore atteso e \textbf{indipendenti}, allora per tutte le funzioni $h,k: \mathbb{R} \to \mathbb{R}$, vale
+	\begin{equation}
+		\mathbb{E}[h(X)k(Y)]=\mathbb{E}[h(X)]\cdot\mathbb{E}[k(Y)]
+	\end{equation}
+\end{proposition}
+
+\begin{proposition}[Disuguaglianza di Schwartz]
+	Se $X$ e $Y$ hanno valore atteso, non è detto che il loro prodotto $XY$ lo abbia ma se hanno momento secondo allora il loro prodotto ha valore atteso. Questo deriva da
+	\begin{equation}
+		\mathbb{E}[\lvert XY \rvert] \leq \sqrt{\mathbb{E}[X^2]} \cdot \sqrt{\mathbb{E}[Y^2]}
+	\end{equation}
+\end{proposition}
+
+\subsection{Covarianza}
+\begin{definition}[Covarianza]
+	La covarianza tra due variabili aleatorie $X$ e $Y$ con momento secondo finito è una misura della presenza di una relazione lineare tra le due e vale
+	\begin{equation}
+		Cov(X,Y) = \mathbb{E}[(X - \mathbb{E}[X])(Y-\mathbb{E}[Y])] = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
+	\end{equation}
+	Quando vale $0$ le variabili sono \textbf{scorrelate}.
+\end{definition}
