@@ -1,0 +1,116 @@
+\newpage
+\section{Intervalli di fiducia}
+Un intervallo di fiducia è un intervallo i cui estremi sono calcolati a partire dai valori assunti dalle variabili $X_1, \ldots, X_n$ e nel quale ci aspettiamo che il parametro $\theta$ sia contenuto con una certa probabilità (non è detto che ci sia).
+\begin{definition}[Intervallo di fiducia]
+	Dato un campione statistico $X_1, \ldots, X_n$ di legge $\mathbb{P}_\theta$ con $\theta \in \Theta \subseteq \mathbb{R}$ e un numero $\alpha \in (0,1)$, un intervallo \textbf{aleatorio}
+	\begin{equation}
+		I = [\alpha(X_1, \ldots, X_n), b(X_1, \ldots, X_n)]
+	\end{equation}
+	è un intervallo di fiducia per $\theta$ a \textbf{livello} $1-\alpha$ se vale
+	\begin{equation}
+		1-\alpha \leq \mathbb{P}_\theta(\theta \in I) = \mathbb{P}_\theta(a(X_1, \ldots, X_n) \leq \theta \leq b(X_1, \ldots, X_n)) \quad\quad \forall \theta \in \Theta
+	\end{equation}
+\end{definition}
+
+\begin{note}
+	Di solito $\alpha$ è un numero piccolo (e.g. $0.05$) in modo che il livello sia vicino a $1$.
+\end{note}
+
+\begin{observation}
+	La scelta di un intervallo è un compromesso tra:
+	\begin{itemize}
+		\item Deve essere il più piccolo possibile per identificare $\theta$ con precisione
+		\item Vogliamo un livello di fiducia alto, ovvero vogliamo che sia molto probabile che $\theta$sia nell'intervallo
+	\end{itemize}
+	Queste due necessità si scontrano in quanto all'aumentare del livello di fiducia, diventa più grande l'intervallo.
+\end{observation}
+\subsection{Campione Gaussiano}
+Dato un campione statistico $X_1, \ldots, X_n$ di legge Gaussiana $N(m, \sigma^2)$, vogliamo trovare un intervallo per il parametro $\theta = m \in \mathbb{R}$. Dato che la media campionaria è uno stimatore corretto e consistente di $m$, vogliamo trovare un intervallo della forma
+\begin{equation}
+	I = [\bar{X}_n -d, \bar{X}_n + d] = [\bar{X}_n \pm d] \quad\quad d>0
+\end{equation}
+in cui $d$ è un numero da determinare per avere un buon compromesso.
+
+\begin{definition}[Precisione della stima]
+	Il valore $d$ è detta precisione della stima e $\frac{d}{\bar{X}_n}$ è la precisione \textbf{relativa}.
+\end{definition}
+
+\subsubsection{Bilateri}
+\paragraph{Varianza nota}
+\begin{definition}
+	Dato $\alpha \in (0,1)$ e $\sigma >0$ noto, l'intervallo
+	\begin{equation}
+		\bigg[\bar{X}_n \pm \frac{\sigma}{\sqrt{n}}q_{1-\frac{\alpha}{2}}\bigg]
+	\end{equation}
+	è un intervallo di fiducia per $m$ con livello $1-\alpha$.
+\end{definition}
+
+\begin{observation}
+	La precisione della stima:
+	\begin{itemize}
+		\item Cresce con il livello
+		\item Cresce con $\sigma^2$
+		\item Decresce con $n$
+	\end{itemize}
+\end{observation}
+
+\paragraph{Varianza non nota}
+Quando non è nota la varianza, possiamo utilizzare il suo stimatore, la \hyperref[eq:varcamp]{varianza campionaria}.
+
+\begin{definition}
+	Dato $\alpha \in (0,1)$, l'intervallo
+	\begin{equation}
+		\bigg[\bar{X}_n \pm \frac{S_n}{\sqrt{n}}\tau_{1-\frac{\alpha}{2},n-1}\bigg]
+	\end{equation}
+	è un intervallo di fiducia per $m$ con livello $1-\alpha$.
+\end{definition}
+
+\begin{note}
+	Quando $n \geq 60$ si può usare il quantile Gaussiano $q$ invece di quello di Student $\tau$.
+\end{note}
+
+\subsubsection{Unilateri}
+A differenza di quelli bilateri, che hanno per entrambi gli estremi variabili aleatorie, quelli unilateri no. Questo è utile ad esempio per capire se la media è troppo alta o bassa.
+\paragraph{Varianza nota}
+\begin{definition}
+	Dato $\alpha \in (0,1)$, gli intervalli
+	\begin{equation}
+		\bigg(-\infty, \bar{X}_n + \frac{\sigma}{\sqrt{n}} q_{1-\alpha}\bigg] \quad\quad \bigg[\bar{X}_n\-\frac{\sigma}{\sqrt{n}}q_{1-\alpha}, +\infty \bigg)
+	\end{equation}
+	sono intervalli di fiducia per $m$ con livello $1-\alpha$.
+\end{definition}
+\paragraph{Varianza non nota}
+\begin{definition}
+	Dato $\alpha \in (0,1)$, gli intervalli
+	\begin{equation}
+		\bigg(-\infty, \bar{X}_n + \frac{S_n}{\sqrt{n}} \tau_{1-\frac{\alpha}{2},n-1}\bigg] \quad\quad \bigg[\bar{X}_n\-\frac{S_n}{\sqrt{n}}\tau_{1-\frac{\alpha}{2},n-1}, +\infty \bigg)
+	\end{equation}
+	sono intervalli di fiducia per $m$ con livello $1-\alpha$.
+\end{definition}
+
+\subsubsection{Intervalli per la varianza}
+Se vogliamo trovare un intervallo per la varianza di un campione Gaussiano, non ci interessa che $m$ sia noto o meno.
+\begin{definition}[Intervalli unilateri per la varianza]
+	Dato $\alpha \in (0,1)$, gli intervalli
+	\begin{equation}
+		\bigg(0, \frac{(n-1)S^2_n}{\mathcal{X}^2_{\alpha, n-1}}\bigg] \quad\quad \bigg[\frac{(n-1)S_n^2}{\mathcal{X}^2_{1-\alpha, n-1}}, +\infty\bigg)
+	\end{equation}
+	sono intervalli di fiducia per $\sigma^2$ di livello $1-\alpha$.
+\end{definition}
+
+\subsection{Campione di Bernoulli}
+Considerando un campione $X_1, \ldots, X_n$ di Bernoulli di parametro $p \in (0,1)$ vogliamo un intervallo della forma $[\bar{X}_n \pm d]$. Quando $n$ è grande, per il Teorema Centrale del Limite, sappiamo che l'equazione \ref{eq:tcl} è approssimativamente Gaussiana Standard. Inoltre, dato che la varianza $\sigma^2 = p(1-p)$ è in funzione del parametro incognito, possiamo approssimarla come $\bar{X}_n(1-\bar{X}_n)$.
+\begin{definition}
+	Dato $\alpha \in (0,1)$, l'intervallo
+	\begin{equation}
+		\bigg[\bar{X}_n \pm \sqrt{\frac{\bar{X}_n(1-\bar{X}_n)}{n}} q_{1-\frac{\alpha}{2}}\bigg]
+	\end{equation}
+	è un intervallo di fiducia per $p$ con livello \textbf{approssimativamente} $1-\alpha$. Precisamente:
+	\begin{equation}
+		\lim_{n \to \infty} \mathbb{P} \bigg(p \in \bigg[\bar{X}_n \pm \sqrt{\frac{\bar{X}_n(1-\bar{X}_n)}{n}} q_{1-\frac{\alpha}{2}}\bigg]\bigg) = 1-\alpha
+	\end{equation}
+\end{definition}
+
+\begin{note}
+	Di conseguenza anche la precisione della stima $d$ è approssimata.
+\end{note}

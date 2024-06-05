@@ -1,0 +1,72 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Test statistici}
+Un test statistico è una procedura per verificare ipotesi su uno o più parametri incogniti della distribuzione di probabilità con cui vogliamo descrivere un esperimento ripetuto di cui conosciamo gli esiti.
+
+\subsection{Formulazione}
+\subsubsection{Ipotesi}
+\begin{definition}[Ipotesi statistica]
+	Un'affermazione sul parametro $\theta \in \Theta \subseteq \mathbb{R}$ che governa la legge di un campione statistico $X_1, \ldots, X_n$. Data una partizione $\Theta = \Theta_0 \cup \Theta_1$  in due sottoinsiemi disgiunti, l'ipotesi \textbf{nulla} $H_0$ è l'affermazione logica $\theta \in \Theta_0$, mentre quella \textbf{alternativa} è l'affermazione logica $\theta \in \Theta_1$. I due insiemi sono rispettivamente dei parametri dell'ipotesi nulla e alternativa.
+\end{definition}
+
+\begin{definition}[Test statistico]
+	È una procedura per decidere se accettare o rifiutare l'ipotesi nulla $H_0$ a partire dai valori assunti dal campione:
+	\begin{itemize}
+		\item Si \textbf{accetta} se i valori assunti sono con essa compatibili (esito \textbf{negativo})
+		\item Si \textbf{rifiuta}, in favore di $H_1$, se con un alto grado di fiducia, i valori non sono compatibili (esito \textbf{positivo})
+	\end{itemize}
+\end{definition}
+\subsubsection{Regione critica}
+Fissata l'ipotesi è necessario determinare un insieme di risultati che portano a rifiutare l'ipotesi nulla.
+\begin{definition}[Regione critica]
+	La regione critica per l'ipotesi nulla $H_0$ è un evento $C \subset \Omega$. Il suo complementare $A = \Omega \setminus C$ è quella di accettazione.\\
+	Data una realizzazione $(x_1, \ldots, x_n)$ del campione $(X_1, \ldots, X_n)$, l'ipotesi nulla viene:
+	\begin{itemize}
+		\item \textbf{Respinta} se si verifica l'evento $C$, ovvero se $X_1(\omega), \ldots, X_n(\omega)$ assume valore $(x_1, \ldots, x_n)$ per un qualche $\omega \in C$
+		\item \textbf{Accettata} se non si verifica l'evento $C$, ovvero se all'interno della regione critica $\omega \in C$, $X_1(\omega), \ldots, X_n(\omega)$ non coincide mai con $(x_1, \ldots, x_n)$
+	\end{itemize}
+\end{definition}
+
+\subsubsection{Valutazione del test}
+Il risultato del test è soggetto a due tipi di errore:
+\begin{itemize}
+	\item \textbf{Prima specie}: consiste nel rifiutare l'ipotesi nulla quando questa è soddisfatta (falso positivo). Se $\theta \in \Theta_0$ la probabilità di commettere questo tipo di errore è $\mathbb{P}_\theta(C)$
+	\item \textbf{Seconda specie}: consiste nell'accettare l'ipotesi nulla quando questa non è soddisfatta (falso negativo). Se $\theta \in \Theta_1$ la probabilità di commettere questo tipo di errore è $\mathbb{P}_\theta(A)$
+\end{itemize}
+
+\begin{definition}[Livello del test]
+	Dato $0 < \alpha < 1$ si dice che il test è a livello se
+	\begin{equation}
+		\mathbb{P}_\theta(X) \leq \alpha \quad\quad \forall \theta \in \Theta_0
+	\end{equation}
+	Fissare un livello significa fissare un limite superiore per la probabilità dell'errore di prima specie, scegliendo opportunamente la regione critica.
+\end{definition}
+
+\begin{definition}[Potenza del test]
+	Si chiama potenza del test la funzione
+	\begin{equation}
+		\Theta_1 \ni \theta \mapsto \mathbb{P}_\theta(C) \in [0,1]
+	\end{equation}
+	Rappresenta la probabilità di rifiutare correttamente l'ipotesi nulla, quindi di accorgersi che non è soddisfatta.
+\end{definition}
+
+\begin{observation}
+	Il test ideale ha livello basso (bassa probabilità dell'errore di prima specie) e potenza alta (bassa probabilità dell'errore di seconda specie). I due fattori sono però in contrapposizione.
+\end{observation}
+
+Per ovviare alla dipendenza del risultato del test dal livello, si usa spesso il p-value, che dipende dalla realizzazione $(x_1, \ldots, x_n)$ del campione $(X_1, \ldots, X_n)$. È la probabilità di ottenere dati più estremi rispetto all'ipotesi nulla di quelli già osservati.
+
+\begin{definition}[p-value]
+	Data una famiglia di regioni critiche $\{C(\alpha)\}_{\alpha \in (0,1)}$ tali che il test con regione critica $C(\alpha)$ abbia livello $\alpha$. Data una realizzazione $(x_1, \ldots, x_n)$ del campione $(X_1, \ldots, X_n)$, il p-value è il numero $\bar{\alpha}=\bar{\alpha}(x_1, \ldots, x_n)$ tale che:
+	\begin{itemize}
+		\item se $\alpha < \bar{\alpha}$ l'ipotesi viene accettata dal test 
+		\item se $\alpha > \bar{\alpha}$ l'ipotesi viene rifiutata dal test
+	\end{itemize}
+\end{definition}
+
+\subsection{Tipologie di test}
+\subsubsection{Z-Test}
+È il test sulla \textbf{media} di un campione \textbf{Gaussiano} con varianza nota.
+
+\paragraph{Ipotesi}
+Dato un campione $X_1, \ldots, X_n$ di legge $N(m, \sigma^2)$ con $\sigma > 0$ nota, vogliamo effettuare un test per decidere se la media $m$ coincide o meno con un valore $m_0$. Scegliamo quindi $m = \theta \in \Theta = \mathbb{R}$ e $\Theta_0 = \{m_0\}$ $\Theta_1 = \mathbb{R} \setminus \{m_0\}$
