@@ -1,0 +1,406 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Teoremi}
+\subsection{Maggiorazione dell'errore di macchina}
+\begin{theorem}
+	Sia
+	\begin{equation*}
+		x \in \mathbb{R}
+	\end{equation*}
+	con
+	\begin{equation*}
+		\omega \leq \lvert x \rvert \leq \Omega
+	\end{equation*}
+	vale
+	\begin{equation}
+		\lvert \epsilon_x \rvert = \bigg\lvert \frac{\text{trn}(x) - x}{x} \bigg\rvert \leq u = B^{1-t}
+	\end{equation}
+\end{theorem}
+
+\subsubsection{Dimostrazione}
+Definiamo $x$ come
+\begin{equation*}
+	x = (-1)^s B^p \alpha
+\end{equation*}
+L'errore assoluto $\lvert \text{trn}(x) - x \rvert$ è maggiorato dalla distanza tra due numeri di macchina consecutivi e quindi:
+\begin{equation*}
+	\lvert \text{trn}(x) - x \rvert \leq B^{p-t}
+\end{equation*}
+Inoltre vale
+\begin{equation*}
+	\lvert x \rvert \geq B^{p-1}
+\end{equation*}
+Quindi:
+\begin{equation*}
+		\lvert \epsilon_x \rvert = \bigg\lvert \frac{\text{trn}(x) - x}{x} \bigg\rvert \leq \frac{B^{p-t}}{B^{p-1}} = B^{1-t} = u
+\end{equation*}
+
+\subsection{Errore analitico e totale}
+\begin{definition}[Errore analitico]
+	Nel calcolo di $h(x) \neq 0$ tramite la sua approssimazione $f(x)$, l'errore analitico è
+	\begin{equation}
+		\epsilon_{an} = \frac{f(x)-h(x)}{h(x)}
+	\end{equation}
+\end{definition}
+\begin{definition}[Errore totale]
+	Combinando l'errore analitico con quello \textbf{algoritmo} e \textbf{inerente} otteniamo:
+	\begin{equation}
+		\epsilon_{tot} = \frac{g(\tilde{x}) - h(x)}{h(x)} \doteq \epsilon_{an}  + (\epsilon_{in} + \epsilon_{alg})
+	\end{equation}
+\end{definition}
+
+\newpage
+\subsection{Localizzazione degli autovalori}
+\begin{definition}[Cerchi di Gershgorin]
+	Sia
+	\begin{equation*}
+		A = (a_{i,j}) \in \mathbb{C}^{n \times n}
+	\end{equation*}
+	Definiamo i cerchi di Gershgorin $K_i$ con $1 \leq i \leq n$ come
+	\begin{equation}
+		K_i = \{z \in \mathbb{C} : \lvert z - a_{i,i} \rvert \leq \sum_{j=i, j \neq i}^{n}\lvert a_{i,j} \rvert\}
+	\end{equation}
+\end{definition}
+
+\begin{theorem}
+	Vale
+	\begin{equation}
+		\lambda \text{ autovalore di } A \Longrightarrow \lambda \in \bigcup_{i=1}^n K_i
+	\end{equation}
+\end{theorem}
+
+\subsubsection{Dimostrazione}
+Sia $\lambda$ \textbf{autovalore} di $A$ con corrispondente \textbf{autovettore destro} $\mathbf{x}$.\\
+La relazione $A\mathbf{x} = \lambda \mathbf{x}$ implica che
+\begin{equation*}
+	\sum_{j=1}^{n}a_{i,j}x_j = \lambda x_i \quad\quad 1 \leq i \leq n
+\end{equation*}
+da cui
+\begin{equation}
+	(\lambda - a_{i,i})x_i = \sum_{j=1,j \neq i}^{n}a_{i,j}x_j \quad\quad 1 \leq i \leq n
+\end{equation}
+Sia $p$ l'indice di una componente di modulo massimo di $\mathbf{x}$, ad esempio $\lvert x_p \rvert = \lvert\lvert \mathbf{x} \rvert\rvert _\infty$. Dato che $\mathbf{x} \neq 0$, allora $\lvert x \rvert >0$.\\
+Poniamo $i=p$ nell'equazione precedente e otteniamo
+\begin{equation*}
+	(\lambda - a_{p,p})x_p = \sum_{j=1,j \neq p}^{n}a_{p,j}x_j
+\end{equation*}
+che, con i valori assoluti, diventa
+\begin{equation*}
+	\lvert(\lambda - a_{p,p})x_p\rvert = \lvert \lambda - a_{p,p} \rvert \lvert x_{p} \rvert= \bigg\lvert\sum_{j=1,j \neq p}^{n}a_{p,j}x_j \bigg\rvert \leq \sum_{j=1,j \neq p}^{n}\lvert a_{p,j}\rvert \lvert x_j\rvert
+\end{equation*}
+Se dividiamo entrambi i membri per $\lvert x_p \rvert$ otteniamo
+\begin{equation*}
+	\lvert \lambda - a_{p,p} \rvert \leq \sum_{j=1,j \neq p}^{n}\lvert a_{p,j}\rvert \frac{\lvert x_j\rvert}{\lvert x_p \rvert} \leq \sum_{j=1,j \neq p}^{n}\lvert a_{p,j}\rvert
+\end{equation*}
+E questo implica che $\lambda \in K_p$.
+
+\newpage
+\subsection{Esistenza della fattorizzazione LU}
+\begin{theorem}
+	Sia
+	\begin{equation*}
+		A \in \mathbb{R}^{n \times n}
+	\end{equation*}
+	Se $A(1:k,1:k)$ è \textbf{invertibile} per $k=1,2,\ldots, n-1$, allora esiste unica la fattorizzazione LU di $A$.
+\end{theorem}
+\subsubsection{Dimostrazione}
+Per \textbf{induzione} sulla dimensione $n$.
+\begin{itemize}
+	\item \textbf{Caso base}: per $n=1$ vale che $A=[a] = [1][a]$ che è l'unica fattorizzazione LU
+	\item \textbf{Ipotesi induttiva}: supponiamo che il teorema sia vero per matrici di ordine $m \leq n-1$
+	\item \textbf{Passo induttivo}: la fattorizzazione può essere scritta come
+	\begin{equation*}
+		\begin{bmatrix}
+			A(1:n-1, 1:n-1) & \mathbf{z} \\
+			\mathbf{v}^T & \alpha
+		\end{bmatrix} = \begin{bmatrix}
+		L(1:n-1, 1:n-1) & 0 \\
+		\mathbf{\omega}^T & 1
+		\end{bmatrix} \cdot \begin{bmatrix}
+		U(1:n-1, 1:n-1) & \mathbf{y} \\
+		0^T & \beta
+		\end{bmatrix}
+	\end{equation*}
+	Questo è equivalente al sistema
+	\begin{equation*}
+		\begin{cases}
+			A(1:n-1,1:n-1) = L(1:n-1,1:n-1) \cdot U(1:n-1, 1:n-1) \\
+			\mathbf{z} = L(1:n-1, 1:n-1)\mathbf{y} \\
+			\mathbf{v}^T=\omega^T \cdot U(1:n-1, 1:n-1) \\
+			\alpha = \mathbf{\omega}^T \mathbf{y} + \beta
+		\end{cases}
+	\end{equation*}
+	\begin{enumerate}
+		\item Per ipotesi induttiva $A(1:n-1, 1:n-1)$ è invertibile e di conseguenza $L(1:n-1,1:n-1)$ e $U(1:n-1, 1:n-1)$ sono i suoi fattori triangolari 
+		\item  Per ipotesi induttiva $A(1:n-1, 1:n-1)$ è invertibile, quindi lo è anche $U(1:n-1, 1:n-1)$ lo è, di conseguenza le equazioni 2 e 3 ammettono soluzione unica
+		\item Dati $\mathbf{\omega}$ e $\mathbf{y}$ l'equazione 4 permette di identificare univocamente $\alpha$ e $\beta$
+	\end{enumerate}
+\end{itemize}
+
+\subsection{Convergenza con norma}
+\begin{theorem}
+	Un metodo iterativo è \textbf{convergente} se esiste una norma matriciale indotta da una norma vettoriale $\lvert\lvert \cdot\rvert\rvert$ su $\mathbb{R}^n$ tale per cui
+	\begin{equation*}
+		\lvert\lvert P \rvert\rvert < 1
+	\end{equation*}
+\end{theorem}
+
+\subsubsection{Dimostrazione}
+Dalle relazioni
+\begin{equation*}
+	\mathbf{x}^{(k+1)} = P\mathbf{x}^{(k)}+\mathbf{q} \quad\quad\quad \mathbf{x}=P\mathbf{x}+q
+\end{equation*}
+segue
+\begin{equation*}
+	\mathbf{e}^{(k+1)} = \mathbf{x}^{(k+1)} - \mathbf{x} = P(\mathbf{x}^{(k)}-x)=P\mathbf{e}^{(k)} \quad\quad k \geq 0
+\end{equation*}
+e quindi
+\begin{equation*}
+	\mathbf{e}^{(k+1)} = P^{k+1}e^{(0)} \quad\quad k\geq 0
+\end{equation*}
+Passando alla norma vettoriale
+\begin{equation*}
+	\lvert \lvert \mathbf{e}^{(k+1)} \rvert\rvert= \lvert\lvert P^{k+1}e^{(0)}\rvert\rvert  \leq  \lvert\lvert P^{k+1}\rvert\rvert\: \lvert\lvert e^{(0)}\rvert\rvert  
+\end{equation*}
+da cui
+\begin{equation*}
+	0 \leq \lvert \lvert \mathbf{e}^{(k+1)} \rvert\rvert \leq \lvert\lvert P\rvert\rvert^{k+1}\lvert\lvert e^{(0)}\rvert\rvert  
+\end{equation*}
+da cui per il \textbf{teorema del confronto}
+\begin{equation*}
+	\lim_{k \to +\infty} \lvert\lvert \mathbf{e}^{(k+1)} \rvert\rvert = \lim_{k \to +\infty} \lvert\lvert \mathbf{x}^{(k+1)}-\mathbf{x} \rvert\rvert = 0 \quad\quad \forall\mathbf{e}^{(0)},\mathbf{x}^{(0)}
+\end{equation*}
+
+\subsection{Convergenza con raggio spettrale}
+\begin{theorem}
+	Se il metodo iterativo è convergente allora $\rho(P)<1$.
+\end{theorem}
+\subsubsection{Dimostrazione}
+Sia $\lambda$ tale che $\lvert \lambda \rvert = \rho(P)$ e $\mathbf{v}$ il corrispondente \textbf{autovettore}.\\
+Sia $\mathbf{x}^{(0)} = \mathbf{x} + \mathbf{v}$ con $\mathbf{x} = A^{-1} \mathbf{b}$ soluzione del sistema $A\mathbf{x} = \mathbf{b}$.\\
+La successione con punto iniziale $\mathbf{x}^{(0)}$ converge a $\mathbf{x}$.\\
+Si ha
+\begin{equation*}
+	\mathbf{e}^{(k+1)} = P^{k+1}\mathbf{e}^{(0)} = P^{k+1}\mathbf{v} = \lambda^{k+1}\mathbf{v}
+\end{equation*}
+da cui
+\begin{equation*}
+	\lvert\lvert \mathbf{e}^{(k+1)} \rvert\rvert = \lvert\lvert \lambda^{k+1}\mathbf{v} \rvert\rvert = \lvert \lambda\rvert^{k+1} \lvert\lvert \mathbf{v} \rvert\rvert
+\end{equation*}
+e quindi
+\begin{equation*}
+	\lim_{k \to +\infty} \lvert \lambda \rvert ^k = 0
+\end{equation*}
+che implica
+\begin{equation*}
+	\lvert \lambda \rvert < 1
+\end{equation*}
+
+\subsection{Predominanza diagonale}
+\begin{theorem}
+	Se $A = (a_{i,j}) \in \mathbb{R}^{n \times n}$ è \textbf{predominante diagonale} allora valgono:
+	\begin{enumerate}
+		\item $A$ è \textbf{invertibile}
+		\item I metodi di Jacobi e Gauss-Seidel sono applicabili
+		\item I metodi di Jacobi e Gauss-Seidel sono convergenti
+	\end{enumerate}
+\end{theorem}
+
+\subsubsection{Dimostrazione}
+\begin{enumerate}
+	\item Dal teorema di Gerschgorin vale
+	\begin{equation*}
+		\lvert 0 - a_{i,i} \rvert = \lvert a_{i,i} \rvert > \sum_{j=1, j\neq i}^{n} \lvert a_{i,j} \rvert \quad\quad 1 \leq i \leq n
+	\end{equation*}
+	e dunque
+	\begin{equation*}
+		0 \notin \bigcup_{i=1}^n K_i
+	\end{equation*}
+	\item \begin{equation*}
+		\lvert a_{i,i} \rvert > \sum_{j=1, j\neq i}^n \lvert a_{i,j} \rvert \geq 0 \Longrightarrow \lvert a_{i,i} \rvert \neq 0 \quad\quad 1 \leq i \leq n
+	\end{equation*}
+	\item  Dalla relazione
+	\begin{equation*}
+		det(P-\lambda I_n) = det(M^{-1}N-\lambda I_n) = det(N - \lambda M) = (-1)^n det(\lambda M - N)
+	\end{equation*}
+	Quindi $\lambda$ è autovalore di $P$ se e solo se $det(\lambda M - N) = 0$.\\\\
+	Assumiamo che $\lvert \lambda \rvert \geq 1$. Vediamo che la matrice $\lambda M - N$ è predominante diagonale:
+	\begin{equation*}
+		\lvert a_{i,i} \rvert > \sum_{j=1, j\neq i}^n \lvert a_{i,j} \rvert = \sum_{j=1}^{i-1} \lvert a_{i,j} \rvert + \sum_{j=i+1}^{n} \lvert a_{i,j} \rvert \quad\quad 1 \leq i \leq n
+	\end{equation*}
+	\begin{equation*}
+		\lvert \lambda \rvert \lvert a_{i,i} \rvert >\lvert \lambda \rvert  \sum_{j=1}^{i-1} \lvert a_{i,j} \rvert + \lvert \lambda \rvert \sum_{j=i+1}^{n} \lvert a_{i,j} \rvert \geq \lvert \lambda \rvert  \sum_{j=1}^{i-1} \lvert a_{i,j} \rvert + \sum_{j=i+1}^{n} \lvert a_{i,j} \rvert 
+	\end{equation*}
+	e quindi vale la predominanza diagonale
+	\begin{equation*}
+		\lvert \lambda a_{i,i} \rvert >\sum_{j=1}^{i-1} \lvert \lambda a_{i,j} \rvert + \sum_{j=i+1}^{n} \lvert a_{i,j} \rvert 
+	\end{equation*}
+	\begin{equation*}
+		\lvert \lambda a_{i,i} \rvert >\sum_{j=1}^{i-1} \lvert a_{i,j} \rvert + \sum_{j=i+1}^{n} \lvert a_{i,j} \rvert 
+	\end{equation*}
+	Per il punto 1 sappiamo che allora la matrice è anche invertibile:
+	\begin{equation*}
+		\forall \lambda \in \mathbb{C}, \lvert \lambda \rvert \geq 1 \Longrightarrow det(\lambda M - N) \neq 0
+	\end{equation*}
+	Quindi per gli autovalori delle matrici di iterazione deve valere 
+	\begin{equation*}
+		\lvert \lambda \rvert < 1
+	\end{equation*}
+	e dunque
+	\begin{equation*}
+		\rho(P) < 1
+	\end{equation*}
+\end{enumerate}
+
+\subsection{Convergenza del metodo di bisezione}
+\begin{theorem}
+	Sia $f:[a,b] \to \mathbb{R}$ con:
+	\begin{itemize}
+		\item $f \in C^0([a,b])$
+		\item $f(a)f(b) <0$
+	\end{itemize}
+	allora si ha, con $f(\epsilon)=0$,
+	\begin{equation}
+		\lim_{k \to +\infty}a_k = \lim_{k \to +\infty} b_k = \lim_{k \to +\infty} c_k = \epsilon \in [a,b]
+	\end{equation}
+\end{theorem}
+\subsubsection{Dimostrazione}
+Per costruzione valgono:
+\begin{itemize}
+	\item $a_{k+1} \geq a_k$
+	\item $b_{k+1} \leq b_k$
+	\item $c_k \in [a_k,b_k] \subset [a,b]$
+	\item $0 \leq b_k - a_k \leq \frac{b-a}{2^{k-1}}$
+	\item $f(a_k)f(b_k) \leq 0$
+	\item $k \geq 1$
+\end{itemize}
+Quindi esistono $\epsilon, \eta \in [a,b]$ tali che
+\begin{equation*}
+	\lim_{k \to +\infty} a_k = \epsilon \quad\quad\quad \lim_{k \to +\infty}b_k = \eta
+\end{equation*}
+Per il \textbf{teorema del confronto} segue che
+\begin{equation*}
+	\epsilon = \lim_{k \to +\infty}a_k = \lim_{k \to +\infty} b_k = \eta = \lim_{k \to +\infty} c_k
+\end{equation*}
+Per la continuità di $f$ si ha
+\begin{equation*}
+	\lim_{k \to +\infty} f(a_k)f(b_k) = f(\epsilon)^2 \leq 0
+\end{equation*}
+che implica
+\begin{equation*}
+	f(\epsilon)=0
+\end{equation*}
+\subsection{Limite metodo funzionale}
+\begin{theorem}
+	Sia $g:[a,b]\to \mathbb{R}$ con:
+	\begin{itemize}
+		\item $g \in C^1([a,b])$
+		\item $g(\epsilon) = \epsilon$
+		\item $\epsilon \in (a,b)$
+	\end{itemize}
+	Se esiste $\rho > 0$ tale che:
+	\begin{equation*}
+		\lvert g'(x) \rvert < 1 \quad \forall x \in [\epsilon - \rho, \epsilon + \rho] = I_{\epsilon} \subset [a,b]
+	\end{equation*}
+	allora per ogni $x_o \in I_\epsilon$ la successione generata soddisfa
+	\begin{enumerate}
+		\item $x_k \in I_\epsilon \quad\quad \forall k \geq 0$
+		\item $\lim_{k \to +\infty} x_k = \epsilon$
+	\end{enumerate}
+\end{theorem}
+\subsubsection{Dimostrazione}
+Dal \textbf{teorema di Weirstrass}, dato che $g'$ è continua e $I_\epsilon$ chiuso e limitato, vale
+\begin{equation*}
+	\lambda = \max_{x \in I_\epsilon}\lvert g'(x) \rvert < 1
+\end{equation*}
+Si dimostra che la successione generata soddisfa:
+\begin{equation*}
+	\lvert x_k - \epsilon \rvert \leq \lambda^k \rho \quad\quad k \geq 0
+\end{equation*}
+da cui seguono i due punti:
+\begin{enumerate}
+	\item $\lvert x_k - \epsilon \rvert \leq \lambda^k \rho \leq \rho \Longrightarrow x_k \in I_\epsilon$
+	\item per il \textbf{teorema del confronto} $0 \leq \lvert x_k -\epsilon \rvert \leq \lambda^k \rho \Longrightarrow \lim_{k \to +\infty} \lvert x_k - \epsilon \rvert = 0$
+\end{enumerate}
+Procediamo per \textbf{induzione} su $k$:
+\begin{itemize}
+	\item \textbf{Passo base}: per $k=0$ si ha $\lvert x_0 - \epsilon \rvert \leq \lambda^0 \rho = \rho$
+	\item \textbf{Ipotesi induttiva}: assumiamo che valga la disequazione precedente fino a $k$
+	\item \textbf{Passo induttivo}: per il \textbf{teorema di Lagrange} vale
+	\begin{equation*}
+		\lvert x_{k+1} - \epsilon \rvert = \lvert g(x_k) - g(\epsilon) \rvert = \lvert g'(\eta_k)(x_k - \epsilon) \rvert = \lvert g'(\eta_k)\rvert \lvert (x_k - \epsilon) \rvert \quad\quad \lvert \eta_k - \epsilon \rvert \leq \lvert x_k - \epsilon \rvert
+	\end{equation*} 
+	Per ipotesi induttiva segue che $\eta_k \in I_\epsilon$ e quindi
+	\begin{equation*}
+		\lvert x_{k+1} - \epsilon \rvert = \lvert g(\eta_k)\rvert\lvert(x_k - \epsilon) \rvert \leq \lambda \lambda^k \rho = \lambda^{k+1}\rho
+	\end{equation*}
+\end{itemize}
+\subsection{Convergenza locale metodo funzionale}
+\begin{theorem}
+	Sia $g:[a,b]\to \mathbb{R}$ con:
+	\begin{itemize}
+		\item $g \in C^1([a,b])$
+		\item $g(\epsilon) = \epsilon$
+		\item $\epsilon \in (a,b)$
+	\end{itemize}
+	Se esiste $\lvert g'(\epsilon) \rvert  < 1 \rvert$ allora il metodo è localmente convergente in $\epsilon$.
+\end{theorem}
+\subsubsection{Dimostrazione}
+Sia $h: [a,b] \to \mathbb{R}$ tale che $h(x) = \lvert g'(x) \rvert -1$. Si ha che $h(x) \in C^0([a,b])$ e $h(\epsilon) < 0$.\\
+Dal \textbf{teorema della permanenza del segno} abbiamo che esiste
+\begin{equation*}
+	I_\epsilon = [\epsilon-\rho, \epsilon+\rho] \subset [a,b]
+\end{equation*}
+tale che
+\begin{equation*}
+	h(x) = \lvert g'(x) \rvert -1 < 0 \quad\quad \forall x \in I_\epsilon
+\end{equation*}
+La tesi segue dal teorema precedente.
+\subsection{Convergenza locale metodo delle tangenti}
+\begin{theorem}
+	Sia $f:[a,b]\to \mathbb{R}$ con:
+	\begin{itemize}
+		\item $f \in C^2([a,b])$
+		\item $f(\epsilon) = \epsilon$
+		\item $\epsilon \in (a,b)$
+		\item $f'(\epsilon) \neq 0$
+	\end{itemize}
+	allora il metodo è localmente convergente, ovvero \\
+	se esiste $\rho > 0$ tale che per ogni $x_0 \in [\epsilon - \rho, \epsilon + \rho] = I_\epsilon \subset [a,b]$ la successione soddisfa:
+	\begin{enumerate}
+		\item $x_k \in I_\epsilon \quad\quad \forall k\geq 0$
+		\item $\lim_{k \to +\infty} x_k = \epsilon$
+	\end{enumerate}
+	Se la successione soddisfa $x_k \neq \epsilon \quad k \geq 0$ allora la convergenza è almeno \textbf{quadratica}.
+\end{theorem}
+\subsubsection{Dimostrazione}
+Da $f'(\epsilon) \neq 0$ per il \textbf{teorema della permanenza del segno} segue che esiste
+\begin{equation*}
+	I'_\epsilon = [\epsilon - \rho', \epsilon + \rho'] \subset [a,b]
+\end{equation*}
+tale che
+\begin{equation*}
+	f'(x) \neq 0 \quad\quad \forall x \in I'_\epsilon
+\end{equation*}
+Si verifica che la funzione di iterazione $g: I'\epsilon \to \mathbb{R}$ definita come
+\begin{equation*}
+	g(x) = x - \frac{f(x)}{f'(x)}
+\end{equation*}
+soddisfa
+\begin{enumerate}
+	\item $g \in C^1(I'_\epsilon)$
+	\item $g'(\epsilon) = \frac{f(\epsilon)f''(\epsilon)}{(f'(\epsilon))^2}=0$
+\end{enumerate}
+e quindi la tesi segue dal teorema precedente.\\
+Per la stima della velocità di convergenza, dallo \textbf{sviluppo di Taylor} al secondo ordine otteniamo
+\begin{equation*}
+	0 = f(\epsilon) = f(x_k) + f'(x_k)(\epsilon - x_k) + \frac{f''(\eta_k)(\epsilon - x_k)^2}{2} \quad\quad \lvert \eta_k - \epsilon \rvert \leq \lvert x_k - \epsilon \rvert
+\end{equation*}
+da cui
+\begin{equation*}
+	x_{k+1} - \epsilon = \frac{f''(\eta_k)(\epsilon - x_k)^2}{2 f'(x_k)}
+\end{equation*}
+e per continuità delle due derivate si ottiene
+\begin{equation*}
+	\lim_{k \to +\infty} \frac{\lvert x_{k+1} - \epsilon \rvert}{\lvert x_k - \epsilon \rvert^2} = \bigg\lvert \frac{f''(\epsilon)}{2f'(\epsilon)} \bigg\rvert
+\end{equation*}
