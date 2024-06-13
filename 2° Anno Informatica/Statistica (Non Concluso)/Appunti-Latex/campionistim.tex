@@ -1,0 +1,118 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Stima parametrica}
+La statistica inferenziale assume che si possa descrivere un carattere da indagare tramite variabili aleatorie di cui vogliamo determinare la legge. Sono quindi fondamentali le seguenti assunzioni (variabili i.i.d.):
+\begin{itemize}
+	\item \textbf{Indipendenza}: ogni nuova estrazione non deve essere condizionata dalla precedente
+	\item \textbf{Equidistribuzione}: l'estrazione di ogni nuovo individuo per il campione deve essere effettuata analogamente alle precedenti
+\end{itemize}
+
+\subsection{Campioni}
+\begin{definition}[Campione statistico]
+	Dato uno spazio di probabilità $(\Omega, \mathcal{F}, \mathbb{P})$, una c.d.f. $F=F_X$ di una variabile aleatoria $X$. Una famiglia finita $X_1, \ldots, X_n$ di variabili aleatorie i.i.d.. di legge $F$ si dice campione statistico o aleatorio delle variabili $X$ di numerosità $n$. 
+\end{definition}
+\begin{observation}
+	Assumiamo che la distribuzione di probabilità $\mathbb{P}_X$ sia parzialmente specificata, ovvero sia identificabile in una famiglia di probabilità di parametro $\theta \in \Theta \subseteq \mathbb{R}$ (o più parametri).
+\end{observation}
+
+\subsection{Stimatori}
+\begin{definition}[Statistica campionaria]
+	Una funzione $g(X_1, \ldots, X_n)$ di un campione statistico è chiamata statistica. Ad esempio
+	\begin{equation}
+		\bar{X}_n = \frac{X_1 + \ldots + X_n}{n} \tag{Media campionaria}
+	\end{equation}
+	\begin{equation}
+		\label{eq:varcamp}
+		S^2_n = \frac{\sum_{i=1}^{n}(X_i-\bar{X})^2}{n-1} \tag{Varianza campionaria}
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Stimatore]
+	Uno stimatore di parametro $\theta$ della distribuzione è una statistica che approssima il suo valore. Dato che è in funzione del campione è esso stesso una variabile aleatoria. 
+\end{definition}
+
+\begin{definition}[Stimatore corretto]
+	Uno stimatore si dice \textbf{corretto} se ammette momento primo e
+	\begin{equation}
+		\mathbb{E}_\theta[g(X_1, \ldots, X_n)] = \theta
+	\end{equation}
+	cioè se la media dello stimatore è il parametro $\theta$.
+\end{definition}
+
+\begin{observation}
+	Quando il parametro coincide con il valore atteso (e.g. Bernoulli), si usa la media campionaria come stimatore. La varianza campionaria si usa invece quando i parametri coincidono con la varianza del campione (e.g. Gaussiana).
+\end{observation}
+
+\begin{proposition}
+	Dato un campione statistico $X_1, \ldots, X_n$ con momento secondo. Siano $\mu = \mathbb{E}[X_i]$ e $\sigma^2 = Var(X_i)$. Valgono:
+	\begin{equation}
+		\mathbb{E}[\bar{X} = \mu] \quad\quad Var(\bar{X})=\frac{\sigma^2}{n} \quad\quad \mathbb{E}[S^2_n]=\sigma^2
+	\end{equation}
+\end{proposition}
+
+\begin{observation}[Correzione di Bessel]
+	Si noti che $\frac{1}{n} \sum_{i=1}^{n}(X_i - \bar{X})^2$ non è uno stimatore corretto della varianza. È infatti necessario usare $n-1$ come denominatore.
+\end{observation}
+
+\begin{definition}[Stimatore consistente]
+	Uno stimatore si dice \textbf{consistente} se
+	\begin{equation}
+		\lim_{n \to \infty} \mathbb{P}_\theta \{\lvert g_n(X_1, \ldots, X_n) - \theta \rvert > \epsilon\} = 0 \quad\quad \forall \epsilon > 0
+	\end{equation}
+	cioè se, all'aumentare della taglia del campione, lo stimatore si avvicina con alta probabilità a $\theta$.
+\end{definition}
+
+\begin{observation}
+	Media e varianza campionaria sono stimatori consistenti per la legge dei Grandi Numeri.
+\end{observation}
+
+\begin{definition}[Stimatore efficiente]
+	Dato un campione e due stimatori corretti $g(X_1, \ldots, X_n)$ e $h(X_1, \ldots, X_m)$ che ammettono momento secondo, diciamo che il primo è più efficiente del secondo se
+	\begin{equation}
+		Var_\theta(g(X_1, \ldots, X_n)) \leq Var_\theta(h(X_1, \ldots, X_m))
+	\end{equation}
+	Ovvero la dispersione del primo stimatore attorno al valore medio $\theta$ è minore o uguale alla quella del secondo.
+\end{definition}
+
+\begin{observation}
+	La media campionaria è sempre più efficiente al crescere di $n$ dato che $Var(\bar{X}_n)=\frac{Var(X_1)}{n}$ è decrescente per $n$. Lo stesso vale per la varianza campionaria.
+\end{observation}
+
+\subsubsection{Scelta di uno stimatore}
+\paragraph{Metodo di verosimiglianza}
+Il primo metodo è tramite la verosimiglianza, ovvero cercare il parametro che meglio approssima al caso effettivamente ottenuto.
+\begin{definition}[Funzione di verosimiglianza]
+	Si chiama funzione di verosimiglianza la funzione $L:\Theta \times \mathbb{R}^n \to [0,1]$ definita nel caso discreto da
+	\begin{equation}
+		L(\theta;x_1, \ldots, x_n) = \prod_{i=1}^{n}p_\theta(x_i)
+	\end{equation}
+	e nel caso con densità da
+	\begin{equation}
+		L(\theta; x_1, \ldots, x_n) = \prod_{i=1}^{n} f_\theta(x_i)
+	\end{equation}
+	Ovvero la funzione di massa o la densità congiunta delle variabili aleatorie in questione.
+\end{definition}
+
+\begin{definition}[Stima di massima verosimiglianza]
+	Si chiama stima di massima verosimiglianza un statistica campionaria $\hat{\theta}=\hat{\theta}(x_1, \ldots, x_n)$ tale che
+	\begin{equation}
+		L(\hat{\theta}; x_1, \ldots, x_n) = \max_{\theta \in \Theta}L(\theta; x_1, \ldots, x_n) \quad\quad \forall x_1, \ldots, x_n
+	\end{equation}
+	In pratica si fa la scelta del parametro che massimizzi la probabilità dell'esito effettivamente ottenuto.
+\end{definition}
+
+\paragraph{Metodo dei momenti}
+Un altro metodo per la scelta di uno stimatore è tramite il confronto dei momenti \textbf{teorici} con quelli \textbf{empirici}. 
+\begin{equation*}
+	m_k(\theta) = \mathbb{E}_\theta[X^k] \tag{Momenti teorici}
+\end{equation*}
+\begin{equation}
+	\sum_{i=1}^{n} \frac{x_i^k}{n} \tag{Momenti empirici}
+\end{equation}
+
+\begin{definition}[Stima con il metodo dei momenti]
+	Si chiama stima con il metodo dei momenti una statistica campionaria $\hat{\theta}=\hat{\theta}(x_1, \ldots, x_n)$ che permette di eguagliare alcuni $k$ momenti teorici con quelli empirici
+	\begin{equation}
+		\mathbb{E}_{\tilde{\theta}}[X^k] = \frac{1}{n}\sum_{i=1}^{n}x^k_i \quad\quad\quad \forall x_1, \ldots, x_n
+	\end{equation}
+\end{definition}

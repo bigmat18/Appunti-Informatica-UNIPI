@@ -245,6 +245,56 @@ Descrive ad esempio il tempo di attesa tra due eventi aleatori, come tra le chia
 	\end{equation*}
 \end{observation}
 
+\subsubsection{Gamma}
+\begin{equation}
+	\Gamma(r, \lambda)
+\end{equation}
+\begin{definition}[Gamma di Eulero]
+	Rappresenta l'estensione del fattoriale ai numeri non interi.
+	\begin{equation}
+		\Gamma(r) = \int_{0}^{+\infty} x^{r-1}e^{-x}dx \quad\quad r>0
+	\end{equation}
+	Valgono
+	\begin{equation*}
+		\Gamma(1) = 1 \quad\quad \Gamma(r) = (r-1)\Gamma(r-1)
+	\end{equation*}
+\end{definition}
+
+\begin{definition}
+	La densità Gamma di parametri $r, \lambda > 0$ è
+	\begin{equation}
+		f(x) = \begin{cases}
+			\frac{1}{\Gamma(r)}\lambda^r x^{r-1}e^{-\lambda x} & x >0\\
+			0 & x \leq 0
+		\end{cases}
+	\end{equation}
+\end{definition}
+
+\begin{proposition}
+	Date due variabili \textbf{indipendenti} $X$ e $Y$ con densità $\Gamma(r, \lambda)$ e $\Gamma(s, \lambda)$ allora $X+Y$ ha densità $\Gamma(r+s, \lambda)$.
+\end{proposition}
+
+\begin{observation}[Parametri]
+	Il parametro $r$ rappresenta la forma e $\lambda$ il tasso di decadimento. In alcuni casi invece di $\lambda$ viene usato $s=\frac{1}{\lambda}$, ovvero il fattore di scala. In quel caso la densità diventa
+	\begin{equation*}
+		f(x) = \begin{cases}
+			\frac{1}{\Gamma(r)} \frac{1}{s} \bigg(\frac{x}{s}\bigg)^{r-1} e^{-\frac{x}{s}} & x >0\\
+			0 & x \leq 0
+		\end{cases}
+	\end{equation*}
+\end{observation}
+
+\begin{observation}
+	La densità \textbf{esponenziale} di parametro $\lambda$ corrisponde a $\Gamma(1, \lambda)$.
+\end{observation}
+
+\begin{proposition}
+	Una variabile $X$ con densità Gamma ha tutti i momenti e vale
+	\begin{equation}
+		\mathbb{E}[X^\beta]=\frac{\Gamma(r + \beta)}{\Gamma(r)\lambda^\beta} \quad\quad \forall \beta > 0
+	\end{equation}
+\end{proposition}
+
 \subsubsection{Pareto}
 Dati $x_m, \alpha > 0$ la densità è
 \begin{equation}
@@ -285,6 +335,42 @@ e c.d.f.
 		\Phi(0) = \mathbb{P}\{X \geq 0\} = \mathbb{P}\{X \leq 0\} = \frac{1}{2}
 	\end{equation}
 \end{observation}
+
+\subsubsection{Chi-Quadro}
+\begin{definition}[Densità Chi-Quadro]
+	Se $X_1, \ldots, X_n$ sono variabili Gaussiane Standard indipendenti, la variabile $(X_1^2 + \ldots + X_n^2)$ ha densità $\Gamma(\frac{n}{2}, \frac{1}{2})$, ovvero Chi-Quadro $\mathcal{X}^2(n)$ con $n$ gradi di libertà.
+\end{definition}
+
+\begin{proposition}[Approssimazioni]
+	Definiamo una variabile $C_n = X_1^2 + \ldots + X_n^2$ con $X_i$ Gaussiane standard indipendenti. Per $n\to \infty$ (in generale $n \geq 80$) valgono:
+	\begin{itemize}
+		\item Per la LGN $C_n \to 1$, quindi $\frac{C_n}{n} \approx 1$
+		\item Per il TCL $\frac{C_n -n}{\sqrt{2n}}$ converge alla variabile Gaussiana Standard
+	\end{itemize}
+\end{proposition}
+\subsubsection{Student}
+\begin{definition}
+	Date due variabili $X$ e $C_n$ con densità $N(0,1)$ e $\mathcal{X}^2(n)$, definiamo la densità di Student come
+	\begin{equation}
+		T_n = \frac{X}{\sqrt{\frac{C_n}{n}}} = \sqrt{n} \frac{X}{\sqrt{C_n}}
+	\end{equation}
+	con densità
+	\begin{equation}
+		f_{T_n}(t) = \frac{\Gamma(\frac{n}{2}+\frac{1}{2})}{\sqrt{n\pi}\Gamma(\frac{n}{2})}\bigg(1+\frac{t^2}{n}\bigg)^{-\frac{n}{2}-\frac{1}{2}}
+	\end{equation}
+\end{definition}
+
+\begin{proposition}
+	La densità di Student è una funzione pari, di conseguenza valgono
+	\begin{equation}
+		F_n(-x)=1-F_n(x) \quad\quad\quad \tau_{(\alpha, n)} = -\tau_{(1-\alpha, n)}
+	\end{equation}
+\end{proposition}
+
+\begin{theorem}
+	Consideriamo la successione $(T_n)_{n\geq 1}$ di variabili di Student. Questa converge in distribuzione alla variabile $N(0,1)$. Può quindi essere usata per sostituire una Gaussiana, prestando attenzione al fatto che però tende a $0$ più lentamente per $\lvert x \rvert \to \infty$ (\textbf{code pesanti}).
+\end{theorem}
+
 \subsubsection{Gaussiane non standard}
 \begin{equation}
 	N(m, \sigma^2)
@@ -298,12 +384,15 @@ mentre la sua c.d.f. è
 	F_Y(t)= \mathbb{P}\{Y \leq t\} = \mathbb{P}\{\sigma X + m \leq t\} = \mathbb{P}\bigg(X \leq \frac{t-m}{\sigma}\bigg) = \Phi \bigg(\frac{t-m}{\sigma}\bigg)
 \end{equation}
 
-\begin{observation}
-	Vale:
-	\begin{equation}
-		\mathbb{P}\{a < Y < b\} = \mathbb{P}\bigg\{\frac{a-m}{\sigma} < X < \frac{b-m}{\sigma}\bigg\}
-	\end{equation}
-\end{observation}
+\begin{theorem}[Teorema di Cochran]
+	Siano $X_1, \ldots, X_n$ variabili Gaussiane i.i.d. $N(m, \sigma^2)$. Valgono:
+	\begin{itemize}
+		\item $\bar{X}_n$ e $S_n^2$ sono \textbf{indipendenti}
+		\item $\bar{X}$ ha densità $N(m, \frac{\sigma^2}{n})$
+		\item $\frac{n-1}{\sigma^2}S_n^2$ ha densità $\mathcal{X}^2(n-1)$
+		\item $T=\sqrt{n}\frac{(\bar{X}_n - m)}{S}$ ha densità $T(n-1)$
+	\end{itemize}
+\end{theorem}
 
 \subsection{Trasformazioni di variabili con densità}
 Data la variabile aleatoria $X: \Omega \to \mathbb{R}$ con densità $f$ e una funzione $h: \mathbb{R} \to \mathbb{R}$, vogliamo la densità della variabile aleatoria composta 
@@ -503,6 +592,16 @@ Quindi anche
 	Var(X) = \frac{1}{\lambda^2}
 \end{equation}
 
+\paragraph{Densità Gamma}
+Vale:
+\begin{equation}
+	\mathbb{P}\{a < Y < b\} = \mathbb{P}\bigg\{\frac{a-m}{\sigma} < X < \frac{b-m}{\sigma}\bigg\}
+\end{equation}
+E in particolare:
+\begin{equation}
+	\mathbb{E}[X] = \frac{r}{\lambda} \quad\quad \mathbb{E}[X^2] = \frac{(r+1)r}{\lambda^2} \quad\quad Var(X)=\frac{r}{\lambda^2}
+\end{equation}
+
 \paragraph{Variabili Gaussiane standard}
 Se $X$ è Gaussiana Standard, notiamo che possiede tutti i momenti
 \begin{equation}
@@ -520,6 +619,9 @@ e più in generale
 \begin{equation}
 	\mathbb{E}[X^{2h+2}]=(2h+1)\mathbb{E}[X^{2h}]
 \end{equation}
+
+\paragraph{Variabili di Student}
+Una variabile di Student ha momenti finiti fino all'ordine $(n-1)$ e quelli di ordine dispari quando esistono sono nulli.
 
 \paragraph{Variabili Gaussiane}
 Data $Y=\sigma X + m$, per linearità del valore atteso
@@ -697,5 +799,85 @@ Funzioni di più variabili indipendenti sono indipendenti se la stessa variabile
 	e se vale
 	\begin{equation}
 		\mathbb{P}(X_{k_1} \leq t_1, \ldots, X_{k_n} \leq t_n) = F_{X_1}(t_1) \cdot \ldots \cdot F_{X_n}(t_n) \quad\quad \forall k_1, \ldots, k_n \in \mathbb{N}, t_1, \ldots, t_n \in \mathbb{R}
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Media di variabili aleatorie]
+	La media aritmetica di $n$ variabili aleatorie è
+	\begin{equation}
+		\bar{X}_n = \frac{X_1 + \ldots + X_n}{n}
+	\end{equation}
+	ed è essa stessa una variabile aleatoria.
+\end{definition}
+
+\subsubsection{Legge debole dei grandi numeri}
+\begin{definition}[Convergenza in probabilità]
+	Date variabili aleatorie $X$ e $X_1, X_2, \ldots$ definite sullo stesso spazio di probabilità, $X_n$ converge in probabilità a $X$ se
+	\begin{equation}
+		\lim_{n \to \infty}\mathbb{P}(\lvert X_n - X \rvert > \epsilon ) = 0 \quad\quad \forall\epsilon > 0
+	\end{equation}
+	In pratica la successione tende in probabilità ad $X$ se per $n$ grande $X_n$ è vicina a $X$ con un'alta probabilità.
+\end{definition}
+
+\begin{proposition}[Convergenza ad una costante]
+	Se valgono
+	\begin{equation}
+		\lim_{n \to \infty} \mathbb{E}[X_n] = c \in \mathbb{R} \quad\quad \lim_{n \to \infty} Var(X_n) = 0
+	\end{equation}
+	allora la successione $(X_n)_{n \geq 1}$ converge a $c$.
+\end{proposition}
+
+\begin{theorem}[Legge debole dei Grandi Numeri]
+	Sia $X_1, X_2, \ldots$ una successione di variabili aleatorie \textbf{i.i.d.} dotate di momento secondo finito e sia $\mu = \mathbb{E}[X_i]$ il loro valore atteso. Allora $\bar{X}_n$ converge in probabilità a $\mu$ per $n \to \infty$
+	\begin{equation}
+		\lim_{n \to \infty}\mathbb{P}\bigg(\bigg\lvert\frac{X_1 + \ldots + X_n}{n}-\mu\bigg\rvert>\epsilon\bigg) = 0 \quad\quad \forall \epsilon > 0
+	\end{equation}
+\end{theorem}
+
+\begin{proposition}
+	Data una successione di variabili i.i.d. $X_1, X_2, \ldots$ dotate di momento quarto e sia $\sigma^2 = Var(X_i)$ la loro varianza,
+	\begin{equation}
+		\lim_{n \to \infty} \mathbb{P}(\lvert S^2_n - \sigma^2\rvert > \epsilon)=0
+	\end{equation}
+\end{proposition}
+
+\subsubsection{Teorema centrale del limite}
+\begin{proposition}
+	Siano $(X_n)_{n \geq 1}$ una successione di variabili aleatorie e $X$ una variabile aleatoria. Date le loro funzioni di ripartizione $F_n$ e $F$ con quest'ultima continua. La successione converge ad $X$ se vale
+	\begin{equation}
+		\lim_{n \to \infty} F_n(t)=F(t) \quad\quad \forall t \in \mathbb{R}
+	\end{equation}
+\end{proposition}
+
+\begin{theorem}[Teorema Centrale del Limite]
+	Sia $X_1, X_2, \ldots$ una successione di variabili \textbf{i.i.d.} con momento secondo finito e con valore atteso $\mathbb{E}[X_i] = \mu$ e varianza $\sigma^2(X_i)=\sigma^2 > 0$. Vale
+	\begin{equation}
+		\lim_{n \to \infty} \mathbb{P} \bigg(a \leq \frac{X_1 + \ldots + X_n - n\mu}{\sigma \sqrt{n}} \leq b\bigg) = \frac{1}{\sqrt{2 \pi}} \int_{a}^{b}e^{-\frac{x^2}{2}}dx = \Phi(b) - \Phi(a) \quad\quad -\infty \leq a < b \leq + \infty
+	\end{equation}
+	In pratica vuol dire che per $n$ grande ($n \geq 50$), la variabile
+	\begin{equation}
+		\label{eq:tcl}
+		\sqrt{n}\frac{\bar{X}_n - \mu}{\sigma}
+	\end{equation}
+	è approssimativamente una Gaussiana standard.
+\end{theorem}
+
+\begin{observation}
+	Se la successione è composta da variabili Binomiali, possiamo riscriverla come somma di variabili di Bernoulli. Applicando poi il precedente teorema vediamo che è sufficiente che $np(1-p) \geq 15$ per ottenere la convergenza.
+\end{observation}
+
+\begin{proposition}
+	Data una successione $X_1, X_2, \ldots$ di variabili i.i.d. con valore atteso $\mathbb{E}[X_i] = \mu$ e varianza $Var(X_i)=\sigma^2 > 0$
+	\begin{equation}
+		\lim_{n \to \infty}\mathbb{P} \bigg(a \leq \sqrt{n}\frac{\bar{X}_n - \mu}{S_n} \leq b\bigg) = \frac{1}{\sqrt{2 \pi}} \int_{a}^{b}e^{-\frac{x^2}{2}}dx = \Phi(b) - \Phi(a) \quad\quad -\infty \leq a < b \leq + \infty
+	\end{equation}
+	Quindi possiamo usare la varianza campionaria $S^2_n$ invece di quella teorica $\sigma^2$.
+\end{proposition}
+
+\paragraph{Approssimazione binomiale}
+\begin{definition}
+	Data una variabile aleatoria $X$ vale
+	\begin{equation}
+		\mathbb{P}(X \leq t)=\mathbb{P}\bigg(\frac{X - np}{\sqrt{np(1-p)}} \leq \frac{t-np}{\sqrt{np(1-p)}}\bigg) \cong \Phi\bigg(\frac{t-np}{\sqrt{np(1-p)}}\bigg)
 	\end{equation}
 \end{definition}
