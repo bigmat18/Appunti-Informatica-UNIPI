@@ -7,38 +7,46 @@ Per gli appunti di ogni materia è presente sia il codice sorgete in Latex, sia 
 
 **Nota**: Gli appunti presenti nel terzo anno sono scritti in markdown usando il software [Obsidian](https://obsidian.md/download) se volete leggerli in modo comprensibile (sopratutto per le immagini) vi consiglio di scaricarlo.
 
-## Syllabus
+## Indicazioni
+
+La dicitura (Non concluso) / (Concluso) accanto al nome di un esame indica che le lezioni per quell'esame non sono state concluse dal proprietario degli appunti, quindi potrà ancora essere aggiunto materiale.
+Per maggior leggibilità:
+
+- 🟢: indica che gli appunti sono completi e che sono presenti esercizi e materiale aggiuntivo
+- 🟡: indica che gli appunti sono incompleti, ma sono presenti esercizi e materiale aggiuntivo
+- 🔴: indica che non sono presenti appunti, ma solo dispense e materiale aggiuntivo
+
+## Indice
 
 ### 1° anno
 
-- **Fondamenti di informatica**: gli appunti scritti non sono completi di tutto il corso, ma sono comunque stati usati per l'esame visto che contengono alcuni spiegazioni. C'è inoltre il pdf del libro e materiale per esercitarsi.
-- **Analisi matematica**: appunti completi ed esercizi esami passati, consiglio anche qui per esercitasi la piattaforma [SAI Evo](https://evo.di.unipi.it).
-- **Programazione ed algoritmi**: appunti incompleti ma comunque buoni per le parti che ricoprono. Ci sono anche le slide sulla parte di programazione dinamica molto esaustive, in più c'è il collegamento ad una subrepo con al suo interno tutti gli algoritmi del corso spiegati.
-- **Laboratorio I**: Nessun appunto, solo il libro (personalmente non usato), per esercitarsi consiglio la piattaforma [SAI Evo](https://evo.di.unipi.it).
-- **Algebra lineare**: Appunti incompleti, sono poi presenti esercizi molto utili, ed il libro (molto comodo per alcune parti).
+- **Fondamenti di informatica** 🟢: gli [appunti](<1° Anno Informatica/Fondamenti di informatica (Concluso)/Appunti-Latex/main.pdf>) non sono completi ma sono comunque stati usati per l'esame. C'è inoltre la [dispensa](<1° Anno Informatica/Fondamenti di informatica (Concluso)/Fondamenti di informatica.pdf>), un [formulario](<1° Anno Informatica/Fondamenti di informatica (Concluso)/Insiemi Relazioni e Logica - Formulario.pdf>) e del [materiale per esercitarsi](<1° Anno Informatica/Fondamenti di informatica (Concluso)/Esercizi>).
+- **Analisi matematica** 🟢: [appunti](<1° Anno Informatica/Analisi Matematica (Concluso)/Appunti-Latex/main.pdf>) completi ed [esami passati](<1° Anno Informatica/Analisi Matematica (Concluso)/Esercizi>), consiglio per esercitasi la piattaforma [SAI Evo](https://evo.di.unipi.it).
+- **Programazione ed algoritmi** 🟢: [appunti](<1° Anno Informatica/Programmazione ed Algoritmica (Concluso)/Appunti-Latex/main.pdf>) completi e slide sulla parte di programazione dinamica.
+- **Laboratorio I** 🔴: nessun appunto, solo il libro. Per esercitarsi consiglio la piattaforma [SAI Evo](https://evo.di.unipi.it).
+- **Algebra lineare** 🟡: [appunti](<1° Anno Informatica/Algebra lineare (Conclusa)/Appunti-latex/main.pdf>) incompleti, sono poi presenti esercizi molto utili, ed il libro.
 
 ### 2° anno
 
-- **Paradigmi di programmazione**: Presenti tutte le dispese con il quale preparare l'esame, in più testi di esami passati con soluzioni. Presenti anche appunti incompleti che riassumono in maniera esaustiva le slide.
-- **Ricerca operativa**: Presete libro (estremamente utile).
-- **Laboratorio II**: Ci sono appunti su tutto il codice scritto durante le lezioni, compreso alcuni eserici fatti e compitini. È inoltre presente una subrepo con il progetto dell'anno 22/23.
-- **Architettura e sistemi operativi**: Presente libro di architettura e quello di sistemi operativi (entrambi estremamenti completi). Sono poi presenti esercizi per tutte le parti del corso.
-- **Statistica**: _(non concluso)_
-- **Calcolo numerico**: _(non concluso)_
+- **Paradigmi di programmazione** 🟢: appunti completi tranne per la parte di lambda calcolo, per la quale ci sono le dispese molto chiare. In più testi di esami passati con soluzioni.
+- **Ricerca operativa** (non concluso) 🔴: presenti le dispense.
+- **Laboratorio II** 🟡: presenti appunti incompleti, alcuni esercizi fatti e i parziali. È inoltre presente una subrepo con il progetto dell'anno 22/23.
+- **Architettura e sistemi operativi** (non concluso) 🟡: appunti incompleti. Presente libro di architettura e quello di sistemi operativi. Sono poi inclusi esercizi per tutte le parti del corso.
+- **Statistica** 🔴: presenti le dispense. Inoltre ci sono alcuni appunti scritti durante le lezioni.
+- **Calcolo numerico** (non concluso) 🟡: appunti quasi completi. Inoltre ci sono le dispense e alcuni esercizi.
 
 ### 3° anno
 
-_[ Quando e se lo finisco aggiorno :/ ]_
+- **Basi di dati** 🟢: Appunti presenti scritti in markdown formattato per Obsidian.
+- **Reti e laboratorio III** 🟡: Per reti sono ci sono gli appunti presenti scritti in markdown formattato per Obsidian, mentre per la parte di laboratorio soltato le slides.
+- **Ingegneria del software** 🟢: Appunti presenti scritti in markdown formattato per Obsidian, in aggiunta anche delle vecchie esercitazioni.
+- **Introduzione all'intelligenza artificiale** (non concluso) 🟡: Sono presenti degli appunti incompleti del corso scritti in latex (manca la seconda parte di tre) e delle notes scritte in markdown formatato per obsidian. Sono anche presenti esercizi svolti durante il corso.
 
 ### Libera scelta
 
-- **Computer grafica**: sono pressenti tutte le slide usate durante il corso sotto forma di unica dispensa, inoltre è presente il libro consigliato direttamente dal professo, oltre che ad esercizi. Consiglio per la preparazione di questo esame il sito [LearnOpenGL](https://learnopengl.com). È inoltre presente una subrepo con il mio progetto pesonale di fine corso e degli appunti in latex (al momento incompleti).
-- **Crittografia**: _(non concluso)_
-- **Cloud Computing**: appunti in latex (_(non concluso)_)
-
-## Indicazioni
-
-La dicitura (Non concluso) / (Concluso) accanto al nome di un esame sta ad indicare che le lezioni per quell'esame non sono state concluso dal proprietario della repository, quindi potrà ancora essere aggiunto materiale, oppure gli appunti non sono completi.
+- **Computer grafica**: 🔴 sono pressenti tutte le slide usate durante il corso sotto forma di unica dispensa, inoltre è presente il libro consigliato direttamente dal professo, oltre che ad esercizi. Consiglio per la preparazione di questo esame il sito [LearnOpenGL](https://learnopengl.com). È inoltre presente una subrepo con il mio progetto pesonale di fine corso e degli appunti in latex (al momento incompleti).
+- **Crittografia**: 🔴 È presente una lista di tutti i possibili esercizi che possono essere svolti durante le prove scritte, con correzzione. Consiglio per la preparazione a questo esame di affidarsi se possibile al libro scritto dalla proffessoressa.
+- **Cloud Computing**: 🟢 Presenti notes scritte in Markdown per obisidian complete, inoltre sono presenti i pdf sia delle lezioni teoriche che di laboratorio.
 
 ## Contribuzione
 
