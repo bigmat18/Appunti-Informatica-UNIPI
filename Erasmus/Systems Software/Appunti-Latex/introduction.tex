@@ -1,0 +1,43 @@
+\section{Introduction}
+\begin{definition}[Operating system]
+	The programs of a digital computing system which lay, together with the basic properties of the computing system, the foundation for the possible modes of operation and especially control and monitor the execution of programs.
+\end{definition}
+
+\noindent The main tasks of an OS are:
+\begin{itemize}
+	\item Provision of virtual machine as an abstraction of the computer system
+	\item Resource management
+	\item Adaptation of machine structure to user requirements
+	\item Foundations for a controlled concurrency activities
+	\item Management of data and programs
+	\item Efficient usage of resources
+	\item Support in case of faults and failure
+\end{itemize}
+All of these tasks must be taken care of by the OS architect while new hardware and new applications come out in a complex market.\\
+Every complex system in every area (e.g. buildings) is composed of single components of different types. Successful design of a complex system requires the knowledge of different variants of the components and their interplay. 
+\subsection{History}
+\subsubsection{1950}
+In the fifties only one program was executed by one processor. The OS functionality is limited to support for input/output and transformation of number and character representation.
+\subsubsection{1960}
+The CPU and I/O speed become \textbf{faster}. Now the OS supports multiple applications running at the same time with real \textbf{parallelism}. The notion of process as a virtual processor is born and the memory is now virtualized. Interactive operation by more than one user (\textbf{timesharing}).
+\subsubsection{1970}
+Software crisis: OS become large, complex and error prone. Now design, maintainability and security are important (software engineering). High level programming languages are now used to program OS.
+The need for modular programming, abstract data types and object orientation come up.
+\subsubsection{1980}
+Personal computers are born. The systems can now be \textbf{connected}, for example via Ethernet. Processes are now fundamental and complex: since a context switch is very CPU intensive, address space and processes are now separated to allow sharing of the address space (\textbf{threads}).\\
+Parallelism becomes a part of programming languages. There is a need to create standards and protocols.
+\subsubsection{1990}
+Due to the popularity, microprocessors become \textbf{cheap}. Now multiple chips can work together. GUIs are born and with them \textbf{audio and video data}. Birth of the \textbf{Web}.
+\subsubsection{2000}
+Now everything is a computer: it's ubiquitous and pervasive. The cloud computing is born. Today the main topics are:
+\begin{itemize}
+	\item Safety and security
+	\item Robustness and dependability
+	\item Virtualization
+	\item Optimization for multi core processors (scheduling, locking)
+	\item Energy consumption
+	\item User interface
+	\item Database support for file systems
+	\item Cluster-Computing, Grid-Computing and Cloud-Computing
+	\item Small OS for small devices
+\end{itemize}

@@ -1,0 +1,74 @@
+\section{Data science}
+\begin{definition}[Study of data]
+	Data science is a study of data. It includes:
+	\begin{itemize}
+		\item \textit{Processing} data
+		\item \textit{Representation} of data (compressed, understandable)
+		\item \textit{Value extraction} from data
+		\item \textit{Knowledge extraction} from data
+	\end{itemize}
+\end{definition}
+\begin{definition}[Data-Driven science]
+	Data science as a tool scientific discovery, complement to \textit{hypothesis-drive} science.
+\end{definition}
+\subsection{Comparison}
+\subsubsection{Hypothesis-Driven}
+In the \textbf{hypothesis-driven} experimentation, we first form an \textit{hypothesis}, then we perform an \textit{experiment} and in the end we \textit{check} the results.
+\subsubsection{Data Science}
+\textbf{Data-Driven} science instead starts with taking \textit{existing data}, performing an \textit{analysis} on them and \textit{observe} the result.
+\subsection{History}
+In the past, experimentation and data collection existed with separate purposes. When the \textbf{cost} of collection and accessing the data dropped dramatically (thanks to the internet and all the sensors), they started being implemented in science, since on the other hand the cost of an experiment was the same. Furthermore, computers are now able to process large amount of data.
+
+\begin{observation}
+	The first and most important thing in data science is collecting the data and only later working on it.
+\end{observation}
+
+The first example of data science can be found in a map made by John Snow in 1854 showing the clusters of cholera cases in London. With the map he noticed that there was a center place with a fountain/well and understood that the disease was transmitted via water and not air.
+
+\subsection{Sources of data}
+There are multiple sources of data:
+\begin{itemize}
+	\item Physics equations: data generated artificially via simulation running multiple times with different parameters
+	\item User content
+	\item User activity: for example public GPS traces of OpenStreetMap, that enables to gain insights on mobility patters (e.g. relation between location, mode of transportation, date and user).
+	\item Historical books or artifacts: for example \textit{De Sphaera Corpus}, the corpus of multiple editions of the cited textbook made available in digital form. It enables similar dataset-wide analysis, relating content, year and city of publications.
+	\item Earth data
+	\item Biomedical data: for example the National Cancer Institute in the USA and the UK Biobank data
+\end{itemize}
+\begin{note}
+	Data is often not intended for scientific use. It is often a by-product of an activity with a different purpose (e.g. clinical practice, accounting).
+\end{note}
+
+\subsection{Usages}
+The outcome of a data science analysis can:
+\begin{itemize}
+	\item be \textbf{insightful} and of interest by itself (and be published)
+	\item inform on further experiments or investigations to be conducted in order to \textbf{verify a hypothesis}
+	\item inform on whether it is \textbf{feasible} to build a system that accurately predicts the data
+\end{itemize}
+
+\subsection{Examples}
+\subsubsection{T-SNE analysis of TCGA high-dimensional omics data}
+We start by defining:
+\begin{itemize}
+	\item $x_i$ is the representation of $i$ in the original measurement space (e.g. $x_i \in \mathbf{R}^{1000}$)
+	\item $d_{ij}$ is the distance between instance $i$ and $j$ in measurement space
+	\begin{equation*}
+		d_{ij} = \lvert\lvert x_i - x_j \rvert\rvert
+	\end{equation*}
+	\item $y_i$ is the representation of instance $i$ in low-dimensional space, usually $\mathbf{R}^2$
+	\item 
+\end{itemize}
+
+\subsubsection{Planetary science}
+Can internal properties of a planet be predicted from a few observables? Yes, starting from predetermined parameters we then run tons of simulations via convection models and check the observables. In the end we try to build a model that can predicts them.
+
+ \subsubsection{Digital humanities}
+ The idea was to extract correlations between visual patterns and categorization of images.
+ 
+ \subsection{Comparisons}
+ \subsubsection{Statistics}
+ \textbf{Statistics} makes particular assumptions about the nature of the data whereas \textbf{data science} addresses the data as it occurs in real-world applications. Data science also addresses the technical challenge of processing the data.
+ \subsubsection{Decision making}
+ \textbf{Data science} focuses on extracting insightful structures and relations from the data and presenting them in an interpretable manner, while \textbf{Decision Making} focuses on learning good autonomous decisions so that repetitive tasks can be performed without human intervention.
+ 

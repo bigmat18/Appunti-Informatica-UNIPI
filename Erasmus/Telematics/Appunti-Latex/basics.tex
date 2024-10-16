@@ -1,0 +1,93 @@
+\section{Basics}
+\subsection{Network composition}
+A network consists of three elements:
+\begin{itemize}
+	\item \textbf{End systems}: can vary in size and usage
+	\item \textbf{Intermediate systems}: these (e.g. routers) are the components that allow the network to work.
+	\item \textbf{Links}: they connect the end systems and can be \textit{optical}, \textit{copper} or \textit{wireless}. Even if wireless is becoming more and more important, cables are still fundamental (undersea cables, underground cables).
+\end{itemize}
+
+\begin{question}[Why fiber optic?]
+	Because this medium has not reached it's maximum and still has a huge potential of \textbf{bandwidth}. Also, while copper cable start acting as an \textbf{antenna} (and a receiver), disturbing near copper cable, fiber optic doesn't have this problem. Furthermore, copper cables need amplifiers which increase \textbf{latency}.
+\end{question}
+
+\begin{question}[Why copper?]
+	It's \textbf{cheaper} and \textbf{easier} to handle.
+\end{question}
+
+\begin{question}[Why cables over wireless?]
+	Because of \textbf{stability} and \textbf{latency}. Usually the problem is tampered by buffers but obviously it doesn't work with interactive applications.
+\end{question}
+
+\begin{question}[What are threats to cable?]
+	
+\end{question}
+
+\subsection{Communication principles}
+There are two basics principles:
+\begin{itemize}
+	\item \textbf{Synchronous}: joint action of sender and receiver. Requires \textbf{waiting} until all parties are ready (e.g. phone calls)
+	\item \textbf{Asynchronous}: sender and receiver operate decoupled (e.g. SMS, email). Requires \textbf{buffering}.
+\end{itemize}
+
+\begin{note}
+	There is also \textbf{isochronous}, which means the messages are sent every predetermined amount of time.
+\end{note}
+
+\subsubsection{Direction}
+Communication channels may allow traffic flow in different directions:
+\begin{itemize}
+	\item \textbf{Simple duplex}: one direction
+	\item \textbf{Half-duplex}: both directions in different moments
+	\item \textbf{Full-duplex}: both directions at the same time
+\end{itemize}
+\subsubsection{Distribution}
+The communication distribution can happen in different ways:
+\begin{itemize}
+	\item \textbf{Unicast}: one to one
+	\item \textbf{Broadcast}: one to all
+	\item \textbf{Multicast}: one to a subset
+	\item \textbf{Anycast}: one to the nearest, e.g. when requesting to a redundant database you don't care which one responds
+	\item \textbf{Concast}: many to one, e.g. we collect sensor data and send it to one
+	\item \textbf{Geocast}: one to a certain region
+\end{itemize}
+\begin{note}
+	Even if multicast would be easier and cheaper, companies usually go for unicast because they want to know who the clients are.
+\end{note}
+
+\begin{note}
+	Broadcast guarantees anonymity while multicast does not.
+\end{note}
+
+\subsubsection{Topologies}
+The main topologies are:
+\begin{itemize}
+	\item \textbf{Full mesh}: too expensive
+	\item \textbf{Chain}: in cars and trains
+	\item \textbf{Star}: ideal for switches
+	\item \textbf{Partial mesh}: the best compromise
+	\item \textbf{Tree}: not ideal for big networks since if you cut a side, you lose contact
+\end{itemize}
+
+\subsection{Sharing}
+\subsubsection{Cons}
+Sharing may create a lot of problems, like \textbf{bottlenecks}: links and intermediate nodes are shared between end systems. One solution may be to \textit{reroute} or to start \textit{dropping packets} (e.g. when streaming the resolution lowers down).
+\subsubsection{Pros}
+At the same time, sharing means more efficient (less expensive) mechanism to \textbf{exchange data} between different components of distributed systems and \textbf{minimize blocking} due to multiplexing.
+
+\subsubsection{How?}
+There are two possible ways of sharing:
+\begin{itemize}
+	\item \textbf{Reservation}: you reserve in advance the resource so that it is guaranteed, e.g. remote surgery. When the peak demand and the flow duration varies, there are two options:
+	\begin{enumerate}
+		\item \textit{First Come First Served}
+		\item Everyone gets $10Mbps$
+	\end{enumerate}
+	It is implemented with \textbf{circuit-switching}: establishes dynamically a dedicated communication channel. It has predictable performance and a simple and fast switching but it's inefficient for bursty traffic, complex to setup and not easily adaptive to failures.
+	
+	\item \textbf{On-demand}: when there is a resource available you take it (variable \textit{delay}, \textbf{jitter}), e.g. email. It is implemented with \textbf{packet-switching}: splitting the resource in packets and multiplex them. Much more flexible but requires buffers, packets overhead and has unpredictable performances.
+\end{itemize}
+
+\begin{observation}
+	It all depends on the application. Each flow has a \textbf{peak rate} and an \textbf{average rate}.To decide if \textit{reservation} works well for a specific case, we must look at the ratio $\frac{P}{A}$. If it's small then it works well, otherwise it's wasting resources.
+\end{observation}
