@@ -3,3 +3,16 @@
 \section{Progetto di reti logiche sequenziali}
 Le reti logiche sequenziali, avendo una memoria, riassume gli ingressi precedenti in \textbf{stati} del sistema. Questi sono composti da un insieme di bit detto \textbf{variabili di stato}.
 \subsection{Latch e Flip-Flop}
+
+\subsection{Macchine a stati finiti}
+Le reti sequenziali \textbf{sincrone} possono essere rappresentate tramite \textbf{Finite State Machine}. Una FSM ha $M$ ingressi, $N$ uscite e $k$ bit di stato con $2^k$ possibili stati diversi. Riceve un segnale di \textit{clock} e a volte di \textit{reset}. Si compone di:
+\begin{itemize}
+	\item Logica di \textbf{stato prossimo}
+	\item Logica di \textbf{uscita}
+	\item \textbf{Registro di stato}
+\end{itemize}
+Le suddividiamo in due tipi:
+\begin{itemize}
+	\item Macchine di \textbf{Moore}: le uscite dipendono esclusivamente dallo stato attuale della macchina
+	\item Macchine di \textbf{Mealy}: le uscite dipendono sia dallo stato che dagli ingressi attuali
+\end{itemize}
