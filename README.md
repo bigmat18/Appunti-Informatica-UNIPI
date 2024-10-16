@@ -30,14 +30,14 @@ Per maggior leggibilità:
 - **Ricerca operativa** (non concluso) 🔴: presenti le dispense.
 - **Laboratorio II** 🟡: presenti appunti incompleti, alcuni esercizi fatti e i parziali. È inoltre presente una subrepo con il progetto dell'anno 22/23.
 - **Architettura e sistemi operativi** (non concluso) 🟡: appunti incompleti. Presente libro di architettura e quello di sistemi operativi. Sono poi inclusi esercizi per tutte le parti del corso.
-- **Statistica** 🔴: presenti le dispense. Inoltre ci sono alcuni appunti scritti durante le lezioni.
+- **Statistica** 🟡: presenti le dispense. Presenti alcuni appunti scritti a mano durante le lezioni e altri scritti in Latex successivamente.
 - **Calcolo numerico** (non concluso) 🟡: appunti quasi completi. Inoltre ci sono le dispense e alcuni esercizi.
 
 ### 3° anno
 
 - **Basi di dati** 🔴: non inziato.
 - **Reti e laboratorio III** 🔴: non iniziato.
-- **Ingegneria del software** 🔴: non iniziato.
+- **Ingegneria del software** 🟡: presenti [appunti](<3° Anno Informatica/Ingegneria del Software (Concluso)/Appunti latex/main.pdf>).
 - **Introduzione all'intelligenza artificiale** (non concluso) 🟡: appunti incompleti.
 
 ### Libera scelta
@@ -46,6 +46,14 @@ Per maggior leggibilità:
 - **Cloud Computing** 🟢: [appunti](<Libera Scelta/Cloud Computing (Concluso)/Appunti Latex/main.pdf>) completi
 - **Green Computing** 🟢: [appunti](<Libera Scelta/Green Computing (Concluso)/Appunti Latex/main.pdf>) completi
 - **Career Labs** 🟢: alcuni [appunti](<Libera Scelta/Career Labs>) di qualche career lab
+
+### Erasmus
+
+Appunti di esami fatti durante il periodo di Erasmus al corso Bachelor in Computer Science alla [Freie Universität Berlin](https://www.fu-berlin.de/en/index.html). Di seguito i corsi seguiti e la corrispondenza con quelli dell'Università di Pisa:
+
+- **Telematics** 🟡: corrisponde all'esame di Reti SENZA la parte di Laboratorio III. Presenti [appunti](Erasmus/Telematics/Appunti-Latex/main.pdf).
+- **Machine Learning for Data Science** 🟡: corrisponde all'esame di Introduzione all'intelligenza artificiale Presenti [appunti](Erasmus/Machine Learning for Data Science/Appunti-Latex/main.pdf>).
+- **Systems Software** 🟡: corrisponde a una parte dell'esame di Architettura e sistemi operativi (la parte di sistemi operativi). Presenti [appunti](<Erasmus/Systems Software/Appunti-Latex/main.pdf>).
 
 ## Contribuzione
 
