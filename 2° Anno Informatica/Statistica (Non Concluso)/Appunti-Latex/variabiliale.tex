@@ -551,10 +551,11 @@ Supponiamo di voler calcolare il valore atteso di trasformazioni di una variabil
 \subsubsection{Momenti notevoli}
 Vediamo i momenti delle variabili notevoli.
 \paragraph{Variabili binomiali}
-Per una variabile di Bernoulli vale
-\begin{equation}
-	\mathbb{E}[X^k] = p \quad\quad Var(X)=p-p^2=p(1-p) \quad\quad k \geq 1
-\end{equation}
+Per una variabile di Bernoulli, che può valere $0$ o $1$, vale
+\begin{align}
+	& \mathbb{E}[X^k] = 0 \cdot \mathbb{P}(X=0)+1\cdot \mathbb{P}(X=1) = 0 \cdot (1-p) + 1 \cdot p = p \\
+	&\quad\quad Var(X)=p-p^2=p(1-p) \quad\quad k \geq 1
+\end{align}
 Dato che una variabile Binomiale può essere vista come somma di variabili di Bernoulli, vale
 \begin{equation}
 	\mathbb{E}[X] = np \quad\quad Var(X) = np(1-p)

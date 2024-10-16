@@ -69,4 +69,44 @@ Per ovviare alla dipendenza del risultato del test dal livello, si usa spesso il
 È il test sulla \textbf{media} di un campione \textbf{Gaussiano} con varianza nota.
 
 \paragraph{Ipotesi}
-Dato un campione $X_1, \ldots, X_n$ di legge $N(m, \sigma^2)$ con $\sigma > 0$ nota, vogliamo effettuare un test per decidere se la media $m$ coincide o meno con un valore $m_0$. Scegliamo quindi $m = \theta \in \Theta = \mathbb{R}$ e $\Theta_0 = \{m_0\}$ $\Theta_1 = \mathbb{R} \setminus \{m_0\}$
+Dato un campione $X_1, \ldots, X_n$ di legge $N(m, \sigma^2)$ con $\sigma > 0$ nota, vogliamo effettuare un test per decidere se la media $m$ coincide o meno con un valore $m_0$. Scegliamo quindi $m = \theta \in \Theta = \mathbb{R}$ e $\Theta_0 = \{m_0\}$ $\Theta_1 = \mathbb{R} \setminus \{m_0\}$. Le ipotesi sono:
+\begin{itemize}
+	\item  \textbf{$H_0$}) $m=m_0$
+	\item \textbf{$H_1$}) $m \neq m_0$
+\end{itemize}
+\paragraph{Regione critica}
+Dato che il campione è Gaussiano con varianza nota, possiamo sfruttare la variabile $Z$ definita come
+\begin{equation*}
+	Z = \sqrt{n}\frac{\bar{X}_n - m}{\sigma}
+\end{equation*}
+Dato che la media campionaria $\bar{X}_n$ è uno \textbf{stimatore corretto e consistente} della media $m$, rifiutiamo l'ipotesi se la media campionaria si allontana troppo, ovvero una regione critica del tipo
+\begin{equation*}
+	C = \{\lvert \bar{X}_n - m_0 \rvert > d\}
+\end{equation*}
+Il valore $d$ deve essere determinato in funzione del livello $\alpha$
+\begin{equation*}
+	\mathbb{P}_{m_0}\{\lvert \bar{X}_n - m_0 \rvert > d\} \leq \alpha
+\end{equation*}
+Per massimizzare la regione critica imponiamo quindi
+\begin{equation*}
+	\alpha = \mathbb{P}_{m_0}\{\lvert \bar{X}_n - m_0 \rvert > d\} = \mathbb{P}_{m_0}\{\frac{\sqrt{n}}{\sigma}\lvert \bar{X}_n - m_0 \rvert > d\frac{\sqrt{n}}{\sigma}\} = \mathbb{P}_{m_0}\{\lvert Z \rvert > \frac{d \sqrt{n}}{\sigma}\}
+\end{equation*}
+e definiamo quindi la regione critica di livello $\alpha$ scegliendo $\frac{d \sqrt{n}}{\sigma} = q_{1-\frac{\alpha}{2}}$
+\begin{equation}
+	C = \bigg\{\sqrt{n} \frac{\lvert \bar{X}_n - m_0 \rvert}{\sigma} > q_{1-\frac{\alpha}{2}}\bigg\} = \bigg\{ \lvert \bar{X}_n - m_0 \rvert > \frac{\sigma}{\sqrt{n}} q_{1-\frac{\alpha}{2}}\bigg\} 
+\end{equation}
+
+\begin{observation}
+	L'ipotesi $H_0$ è accettata a livello $\alpha$ se e solo se $m_0$ appartiene all'intervallo di fiducia $1-\alpha$.
+\end{observation}
+
+\paragraph{p-value}
+Dato il significato di p-value, consideriamo i dati più estremi quelli $(y_1, \ldots, y_n)$ che verificano
+\begin{equation*}
+	\lvert \bar{y}_n - m_0 \rvert > \lvert \bar{x}_n - m_0 \rvert
+\end{equation*}
+Quindi il p-value sarà
+\begin{equation}
+	\bar{\alpha} = \bar{\alpha}(x_1, \ldots, x_n) = \mathbb{P}_{m_0}\bigg(\sqrt{n}\frac{\lvert \bar{X}_n - m_0 \rvert}{\sigma} > \frac{\sqrt{n}}{\sigma} \lvert \bar{X}_n - m_0 \rvert\bigg) = 2 \bigg[1-\phi\bigg(\frac{\sqrt{n}}{\sigma} \lvert \bar{X}_n - m_0 \rvert\bigg)\bigg]
+\end{equation}
+in cui l'ultimo passaggio segue perché $Z$ è Gaussiana standard.
