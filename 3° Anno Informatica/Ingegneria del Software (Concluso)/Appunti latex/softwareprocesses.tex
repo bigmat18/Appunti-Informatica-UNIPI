@@ -1,0 +1,218 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Processo software}
+\begin{definition}[Processo software]
+	Sequenza di attività necessarie a sviluppare un sistema software.
+\end{definition}
+\noindent Ogni modello di processo software include:
+\begin{itemize}
+	\item \textbf{Specifica}: definizione di cosa deve essere fatto
+	\item \textbf{Progettazione} e \textbf{implementazione}
+	\item \textbf{Validazione}: verifica che il sistema rispetti le specifiche
+	\item \textbf{Evoluzione}: modifica o aggiornamento del sistema
+\end{itemize}
+
+\subsection{Fasi di sviluppo}
+\subsubsection{Specifica}
+Questa fase stabilisce quali \textbf{servizi} sono richiesti e quali \textbf{vincoli} ci sono. È quindi un processo di \textit{ingegneria dei requisiti}:
+\begin{itemize}
+	\item \textbf{Estrazione} e \textbf{analisi} dei requisiti: cosa richiedono o si aspettano gli stakeholder
+	\item \textbf{Specifica} dei requisiti: definirli in dettaglio
+	\item \textbf{Convalida} dei requisiti: verificare che siano validi
+\end{itemize}
+\begin{center}
+	\includegraphics[scale=0.4]{specifica.png}
+\end{center}
+
+\subsubsection{Progettazione}
+In questa fase si definisce una struttura software che realizzi la specifica, analizzando quattro aspetti:
+\begin{itemize}
+	\item \textbf{Architectural design}: identificazione della struttura in termini di componenti e di come si relazionano tra di loro
+	\item \textbf{Database design}: definizione delle strutture dati necessarie e della loro rappresentazione in database
+	\item \textbf{Interface design}: definizione delle interfacce tra le diverse componenti del sistema
+	\item \textbf{Component design}: definizione in dettaglio delle varie componenti, identificando quelle realizzabili con elementi già esistenti
+\end{itemize}
+\begin{center}
+	\includegraphics[scale=0.4]{prog.png}
+\end{center}
+
+\subsubsection{Sviluppo}
+La struttura progettata nella fase precedente viene ora realizzata tramite uno o più applicativi da implementare o da configurare. Include:
+\begin{itemize}
+	\item \textbf{Programmazione} attività senza un processo standard
+	\item \textbf{Debugging}: attività per identificare e correggere errori o bug
+\end{itemize}
+Spesso la progettazione e lo sviluppo sono svolte in \textbf{interleaving}.
+
+\subsubsection{Validazione}
+\textbf{Verifica} e \textbf{validazione} hanno lo scopo di dimostrare che un sistema è conforme alle specifiche e soddisfa i requisiti del cliente. Viene spesso fatta tramite \textbf{testing} con casi derivati dalla specifica dei dati che poi dovranno essere realmente utilizzati. Si suddivide in:
+\begin{itemize}
+	\item \textbf{Component} testing: i componenti sviluppati sono testati indipendentemente
+	\item \textbf{System} testing: il sistema è testato interamente prestando particolare attenzione alle \textit{emergent properties}
+	\item \textbf{Customer} testing: il sistema è testato con i dati del cliente
+\end{itemize}
+\begin{center}
+	\includegraphics[scale=0.4]{valida.png}
+\end{center}
+
+\subsubsection{Evoluzione}
+I cambiamenti sono inevitabili in quanto le richieste del cliente possono cambiare nel tempo o possono uscire nuove tecnologie più aggiornate. Questi portano a dei \textbf{rework} costosi che richiedono la ripetizione parziale delle fasi precedentemente descritte.\\
+Per ridurre i costi è importante anticipare i cambiamenti e garantire quindi \textbf{change tolerance}. Questo è più facile con i modelli incrementali.
+
+\subsection{Modelli}
+\begin{definition}[Modello]
+	Il modello di un processo software fornisce una rappresentazione astratta del processo stesso:
+	\begin{itemize}
+		\item \textbf{Suddivisione} del processo in attività: cosa fare, quando farlo, come e cosa si ottiene
+		\item \textbf{Organizzazione} delle attività: ordinamento, criteri di terminazione
+	\end{itemize}
+	E.g. ISO 12207
+\end{definition}
+
+\subsubsection{Sequenziale}
+\paragraph{Build and fix}
+Questo modello non prevede alcuna specifica o progettazione: lo sviluppatore scrive un programma e lo modifica ripetutamente finché non soddisfa il cliente. Adeguato solo per progetti molto piccoli.
+\begin{center}
+	\includegraphics[scale=0.15]{buildfix.png}
+\end{center}
+
+\paragraph{Modello a cascata}
+Modello ideato da Royce nel 1970, fu il primo a distinguere e definire le fasi di un processo software, dando finalmente importanza all'analisi e alla progettazione prima della codifica.\\
+Ogni fase prima di procedere deve produrre un documento che deve essere approvato da chi di dovere.\\
+I \textbf{contro} principali sono l'enorme quantità di \textit{documenti} prodotti e l'estrema \textit{rigidità}: il cliente vede solo il prodotto finale che spesso non va bene e si deve rincominciare da capo.
+
+\begin{center}
+	\includegraphics[scale=0.15]{royce.png}
+\end{center}
+
+\begin{note}
+	Royce stesso riconosce i problemi del suo modello e propone un alternativa con un \textbf{feedback loop} da una fase alla precedente.
+\end{note}
+
+\paragraph{Modello a V}
+In questo modello le attività di \textbf{sinistra} sono di analisi che scompongono i requisiti degli utenti in sezioni piccole; quelle di \textbf{destra} aggregano e testano il prodotto delle precedenti per verificare che le esigenze siano effettivamente rispettate.\\
+Al centro troviamo la progettazione dei \textbf{test} da eseguire prima della codifica.
+\begin{center}
+	\includegraphics[scale=0.3]{Vmodel.png}
+\end{center}
+
+\begin{note}
+	Questo modello è uno standard SQA (qualità del software).
+\end{note}
+
+\subsubsection{Iterativo}
+\paragraph{Rapid prototyping o evolutivo}
+Consiste nel costruire velocemente un prototipo per permettere al committente di sperimentarlo. In questo modo il cliente può descrivere meglio i requisiti, sopratutto quando anche a lui non sono chiari.
+\begin{center}
+	\includegraphics[scale=0.3]{rapidproto.png}
+\end{center}
+
+\paragraph{Modello incrementale}
+In questo modello il sistema è costruito \textbf{iterativamente} aggiungendo nuove funzionalità a partire da requisiti definiti inizialmente.\\
+Questo permette di \textbf{ritardare} fasi che per motivi esterni non possono proseguire e fa uscire versioni iniziali ed utilizzabili molto rapidamente, in modo da ricevere anche \textbf{feedback} che aiutino a correggere il prodotto a basso costo.\\
+I contro principali sono che il processo di sviluppo non è molto visibile e c'è il rischio che diventi un \textit{build and fix}: la struttura del sistema tende a degradarsi e diventa più costoso fare il refactoring.
+
+\begin{center}
+	\includegraphics[scale=0.3]{incrementale.png}
+\end{center}
+
+\paragraph{Modello a spirale}
+Ideato da Bohem nel 1998, ispirato dal \textit{plan-do-check-ackt} di Deming, divide ogni \textbf{iterazione} in quattro fasi:
+\begin{enumerate}
+	\item Definizione degli obiettivi
+	\item Analisi dei rischi
+	\item Sviluppo e validazione
+	\item Pianificazione del nuovo ciclo
+\end{enumerate}
+È un modello astratto da istanziare decidendo cosa fare in ogni iterazione e in ogni fase, applicandolo volendo ai cicli tradizionali. Si concentra molto sugli aspetti gestionali: pianificazione delle fasi, \textbf{risk-driven} (guidato dall'analisi dei rischi) e comunicazione con il cliente.
+
+\begin{center}
+	\includegraphics[scale=0.4]{spirale.png}
+\end{center}
+
+\paragraph{Unified process}
+Ideato da Booch Et Al nel 1999, è guidato da \textbf{casi d'uso} e \textbf{analisi dei rischi} già a partire dalla raccolta e analisi dei requisiti. È un modello iterativo \textbf{incrementale} incentrato sull'\textbf{architettura}: nelle prime fasi c'è una definizione generale e i dettagli vengono lasciati alle fasi successive. Questo permette di avere subito una visione generale del sistema che diventa poi facilmente adattabile.
+\begin{center}
+	\includegraphics[scale=0.5]{unifproc.png}
+\end{center}
+
+\subsubsection{Agile}
+Oggi è sempre più importante la \textbf{rapidità} nello sviluppo e nel rilascio del software in quanto i requisiti delle aziende cambiano molto velocemente e con essi diventa impossibile avere un sistema stabile di requisiti.\\
+Il modello agile viene introdotto negli anni '90 proprio per ridurre i tempi sopra descritti:
+\begin{itemize}
+	\item Le fasi di specifica, progettazione e sviluppo sono eseguite in \textbf{interleaving}
+	\item Il sistema è sviluppato con versioni incrementali valutate assieme agli stakeholder
+	\item Rilascio frequente
+	\item Supporti allo sviluppo, e.g. automated testing
+\end{itemize}
+\begin{center}
+	\includegraphics[scale=0.3]{agile.png}
+\end{center}
+
+Il modello agile segue i seguenti principi:
+\paragraph{Customer involvement} I clienti devono essere coinvolti durante il processo di sviluppo per fornire, prioritizzare e valutare le iterazioni del sistema.
+\paragraph{People not process} Le abilità del team devono essere riconosciute e gli sviluppatori devono essere liberi di sviluppare a modo loro, purché venga mantenuta comunicazione.
+\paragraph{Mantain semplicity} Cercare di ridurre sempre al minimo la complessità nello sviluppo e nel sistema. Bisogna mantenere il codice semplice ma avanzato tecnicamente a discapito di una documentazione mantenuta al minimo.
+\paragraph{Incremental delivery} Il sistema software è sviluppato in versioni incrementali, con il cliente che specifica i requisiti da soddisfare in ciascuna versione.
+\paragraph{Embrace change} Accettare che i requisiti cambieranno nel tempo e rendere facile la loro implementazione.\\\\
+
+Il modello agile è \textbf{conveniente} per lo sviluppo di prodotti di piccola o media dimensione (fino a $50$ sviluppatori) oppure in contesti di sviluppo di sistemi custom (meno regolamenti e restrizioni).\\
+Nella pratica comunque viene usato nella maggior parte dei team.\\\\
+
+\noindent Il modello agile ha portato alla nascita di:
+\begin{itemize}
+	\item \textbf{Continuous Integration}: integrazione continua di tutte le modifiche o aggiunte all'interno di un \textit{main branch}, validata tramite automatic build e testing
+	\item \textbf{Continuous deployment}: dispiegamento continuo e \textit{automatico} delle nuove versioni ottenute tramite CI
+\end{itemize}
+
+\subsubsection{Extreme Programming}
+L'extreme programming è un approccio estremo all'approccio iterativo e agile. Prevede che nuove versioni minori siano rilasciate più volte in un giorno, versioni incrementali rilasciate al cliente ogni due settimane e tutti i test sono eseguiti per ogni build.
+\begin{center}
+	\includegraphics[scale=0.35]{xp.png}
+\end{center}
+
+\noindent Alcune pratiche comuni nell'XP:
+\paragraph{Planning incrementale} I requisiti sono raccolti sotto forma di user stories divise in \textbf{task}. Quelle da includere nella release sono determinate in base al tempo disponibile e alla loro priorità.
+\paragraph{Release piccole} Si parte con una piccola release iniziale che garantisca le funzionalità di base si procede con piccole e frequenti release che aggiungono funzionalità.
+\paragraph{Design semplice} La progettazione si concentra solo sui requisiti correnti e deve essere comprensibile a tutti.
+\paragraph{Test-first developement} Si sviluppano prima i test del codice stesso (a volte generati automaticamente).
+\paragraph{Refactoring} Il refactoring deve essere eseguito continuamente appena ci si rende conto del miglioramento necessario, mantenendo sempre il codice semplice, facilmente manutenibile e auto esplicativo.
+\paragraph{Pair programming} Gli sviluppatori lavorano in coppia in modo che ci sia sviluppo e supporto reciproco.
+\paragraph{Collective ownership} Le coppie lavorano su tutte le aree del sistema e la responsabilità è quindi condivisa.
+\paragraph{Sustainable pace} Ridurre al minimo il lavoro straordinario in quanto abbassa qualità e produttività.
+\paragraph{On-site customer} Un rappresentante del cliente deve essere disponibile al team per fornire o prioritizzare i requisiti.\\\\
+
+Il modello di Extreme Programming si concentra principalmente su aspetti tecnici e per questo non è facilmente integrabile nelle organizzazioni. Di conseguenza il metodo non è molto diffuso ma alcuni degli aspetti che tratta sono stati trasportati in altri approcci.
+
+\subsubsection{Scrum}
+Scrum è un metodo agile per lo sviluppo iterativo e incrementale di un sistema software. L'idea è di ottenere un processo in cui un insieme di persone si muovono all'unisono per raggiungere un obiettivo che soddisfi la squadra.
+\begin{definition}[Product backlog]
+	Documento che contiene tutti i requisiti attualmente conosciuti.
+\end{definition}
+Ci sono tre figure coinvolte:
+\begin{itemize}
+	\item \textbf{Product owner}: chi identifica le caratteristiche del prodotto, decide le priorità e revisiona il \textbf{product backlog} per assicurarsi che vengano rispettati i requisiti
+	\item \textbf{Scrum master}: figura responsabile di assicurare che il processo avvenga efficacemente, garantendo le condizioni ambientali e motivazionali al meglio assicurandosi che non ci siano interferenze esterne (senza però avere autorità sul team)
+	\item \textbf{Developement team}: gruppo autogestito di sviluppatori non più grande di 7 persone che si occupa dello sviluppo e della documentazione
+\end{itemize}
+Le fasi del metodo scrum sono:
+\begin{enumerate}
+	\item \textbf{Pre-game phase}, ovvero la pianificazione, che a sua volta si compone di:
+	\begin{itemize}
+		\item \textbf{Planning sub-phase}: definizione del sistema che deve essere sviluppato in termini di product backlog
+		\item \textbf{Architecture sub-phase}: design di alto livello del sistema, inclusa l'architettura, in base agli elementi del backlog
+	\end{itemize}
+	\item \textbf{Game phase}, ovvero lo sviluppo. Il sistema viene sviluppato attraverso una serie di \textbf{sprint}, ovvero un ciclo iterativo nel quale vengono sviluppate o migliorate delle funzionalità. Ogni sprint dura da una settimana ad un mese e include le classiche fasi di sviluppo. Si divide nelle seguenti fasi:
+	\begin{enumerate}
+		\item Si parte dal product backlog che contiene la lista dei \textbf{requisiti} da fare (TBD). Da questi vengono selezionati dal team e dal cliente quelli da sviluppare.
+		\item Si procede con la pianificazione, gestita dal product owner, e con la creazione dello \textbf{sprint backlog}
+		\item Inizia lo sviluppo da parte dei diversi team che rimangono isolati e protetti dallo scrum master; si occupa anche di organizzare brevi meeting giornalieri di aggiornamento.
+		\item Al termine dello sprint il prodotto viene revisionato in un incontro tra team, clienti ed eventuali utenti
+		\item Tra uno sprint ed il successivo viene organizzato un evento di \textbf{retrospettiva} dove il team riflette, impara e si adatta con l'obiettivo di migliorare
+	\end{enumerate}
+	\item \textbf{Post-game phase}: conclude il processo di sviluppo e il prodotto viene preparato per il rilascio (test, integrazione, documentazione, formazione e marketing)
+\end{enumerate}
+I vantaggi di questo approccio sono che il prodotto e \textbf{partizionato} in sotto problemi più facili da gestire, i requisiti non ancora pronti non ostacolano lo sviluppo, c'è molta comunicazione, i clienti ottengono increment periodici e si stabilisce un rapporto di fiducia.
+
+\subsection{Kanban}
+Il Kanban è un approccio all'organizzazione di un progetto che consiste nel dividere le attività tra \textbf{To Do}, \textbf{Work In Progress} e \textbf{Done}. Questi vengono poi visualizzati tramite una tabella. Viene inoltre imposto un limite alla categoria WIP che riduce il \textbf{task switching} e rende più facile trovare i colli di bottiglia. Ottimizza in generale l'\textbf{efficienza}.

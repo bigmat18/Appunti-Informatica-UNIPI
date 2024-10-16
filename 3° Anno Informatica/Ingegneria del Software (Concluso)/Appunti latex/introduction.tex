@@ -1,0 +1,85 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Introduzione}
+L'ingegneria del software è modo in cui produciamo il software, dall'esplorazione del problema al ritiro del prodotto dal mercato. Riguarda tutti gli \textbf{strumenti}, le \textbf{tecniche} e i \textbf{professionisti} coinvolti nelle seguenti fasi:
+\begin{enumerate}
+	\item Analisi dei requisiti
+	\item Specifica
+	\item Progettazione
+	\item Implementazione
+	\item Integrazione
+	\item Mantenimento
+	\item Ritiro
+\end{enumerate}
+\begin{definition}[Processo software]
+	È un approccio sistematico per \textbf{sviluppo}, \textbf{operatività}, \textbf{manutenzione} e \textbf{ritiro} del software.
+\end{definition}
+\subsubsection{Scopo}
+Lo scopo è quello di produrre software che sia:
+\begin{itemize}
+	\item Fault free
+	\item Consegnato in tempo
+	\item Rispetti il budget
+	\item Soddisfi le necessità
+	\item Sia facile da modificare
+\end{itemize}
+
+\subsection{Casi di studio}
+Richiamiamo alcune definizioni in ambito software:
+\begin{definition}[Robustezza]
+	Capacità di un software di mantenere il suo corretto funzionamento anche quando sottoposto a condizioni anomale (errori, eccezioni o input non validi). Contribuisce a garantire che il sistema sia affidabile e che possa continuare ad operare anche in situazioni critiche non previste.
+\end{definition}
+\begin{definition}[Fault tolerance]
+	Capacità di un software di rilevare, gestire e riprendersi da errori o guasti senza causare interruzioni significative nei servizi o la perdita di dati.
+\end{definition}
+\subsubsection{Gemini V}
+Missione nello spazio con equipaggio. Al suo rientro la navicella atterrò ad $80km$ dal punto previsto a causa di un \textbf{errore nel modello} (uno sviluppatore inserì la rotazione terrestre sbagliata).
+\subsubsection{Denver Airport}
+Il progetto prevedeva lo smistamento automatico dei bagagli con un sistema troppo complesso: i tempi di costruzione furono notevolmente allungati, i costi furono più del previsto e non c'era \textbf{fault tolerance} (il guasto di un singolo PC bloccava l'intero sistema). Alla fine venne abbandonato.
+\subsubsection{THERAC-25}
+Una macchina da radioterapia con un software progettato male e poco robusto: in caso di errore le emissioni di raggi non venivano sempre terminate ed era possibile da parte dell'operatore ignorarlo. Causò $3$ decessi su $6$ pazienti.
+\subsubsection{Sistema anti-missile Patriot}
+Un sistema poco robusto che non riuscì ad evitare un attacco in Arabia Saudita con conseguenti 28 morti. La causa fu l'uso oltre il tempo di progettazione: $100$ ore contro le $14$ previste.
+\subsubsection{London ambulance service}
+Un sistema per l'ottimizzazione delle ambulanze a Londra, migliorando i percorsi e istruendo vocalmente gli autisti. In questo caso era l'analisi del problema ad essere errata. Inoltre la UI era inadeguata, gli utenti poco addestrati e non era previsto un backup.
+\subsubsection{Ariane V}
+Un lanciatore per razzi che si è autodistrutto dopo $40$ secondi a causa di un errore di sviluppo e test inefficienti: veniva usato una variabile a $16bit$ per un valore a $64bit$, causando un overflow.
+\subsubsection{Toyota}
+Il software per le macchine Toyota tra il 2000 e il 2013 fu mal progettato e causava acceleramenti involontari del veicolo.
+\subsubsection{METEOR}
+Prima metro al mondo ad essere automatizzata, locata a Parigi. Fu un successo grazie alla sua ottima progettazione.
+
+Questo ci porta a concludere che data la forte presenza del software nel mondo di oggi è importante utilizzare tecniche di ingegneria del software per renderlo affidabile, rapido da produrre e sostenibile.
+
+\subsection{Storia}
+Tra il 1963 e il 1964, durante lo sviluppo dei sistemi di guida e navigazione per la missione Apollo, viene coniato il termine software engineering da Margaret Hamilton. \\
+Nel 1968 la NATO organizza una conferenza al riguardo in quanto la qualità del software era bassa ed era necessario decidere tecniche e paradigmi per la produzione di software.\\
+Nel 1994 viene fatta un'analisi media del software prodotto che fa vedere come:
+\begin{itemize}
+	\item Il $16.2\%$ del software sia stato prodotto in tempo
+	\item Il $52.7\%$ sia stato in ritardo, a causa di difficoltà iniziali, cambiamento della piattaforma e difetti finali
+	\item Il $31.1\%$ non sia stato completato per obsolescenza prematura, incapacità e mancanza di fondi
+\end{itemize}
+In particolare le cause di abbandono evidenziate furono relativi a tre aspetti:
+\begin{itemize}
+	\item Aspettative incomplete, che cambiano nel tempo o che non sono chiare
+	\item Mancanza di risorse e aspettative su funzionalità e tempi irrealistiche 
+\end{itemize}
+
+\subsection{Aspetti importanti}
+Vediamo alcuni aspetti importanti dello sviluppo del software.
+\subsubsection{Specificità}
+Per natura, un software è diverso da altri prodotti ingegnerizzabili in quanto non è necessariamente vincolato da materiali e leggi fisiche. Inoltre non si consuma e non ha costi aggiuntivi per ogni unità prodotta.\\
+Ad esempio la \textbf{fault tolerance} è una specificità, in quanto quando un software crasha lo si fa ripartire cercando di minimizzare gli effetti del problema.
+\subsubsection{Economia}
+L'ingegneria del software si occupa anche di cercare soluzioni vantaggiose dal punto di vista economico. In particolare è importante notare come il costo maggiore derivi sempre dalla \textbf{manutenzione} successiva alla produzione del software. Questa può essere di due tipi:
+\begin{itemize}
+	\item \textit{Correttiva}: rimuove gli errori lasciando invariata la specifica
+	\item \textit{Migliorativa}: cambia le specifiche
+	\begin{itemize}
+		\item \textit{Perfettiva}: migliora la qualità del software, fornisce nuove funzionalità o ne migliora di esistenti
+		\item \textit{Adattativa}: modifiche a seguito del cambiamento del contesto
+	\end{itemize}
+\end{itemize}
+\subsubsection{Teamwork}
+La maggior parte del software è prodotto in team. Questo porta a diversi problemi, come l'interfaccia tra le varie componenti del codice e la comunicazione tra i membri del team. L'ingegneria del software deve quindi gestire anche i rapporti umani e l'organizzazione di un team.
