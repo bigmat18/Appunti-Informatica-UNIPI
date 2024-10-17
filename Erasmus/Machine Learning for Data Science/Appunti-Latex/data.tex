@@ -1,0 +1,58 @@
+\newpage
+\section{Data}
+\subsection{Structures}
+\subsubsection{Classic}
+A classical dataset consists of a collection of $N$ \textbf{instances} (data points, examples) where each instance can be represented as a vector of $d$ \textbf{features} (attributes, measurements).\\
+They can be stored in a two-dimensional array structure of $N \times d$ and they usually come with \textbf{metadata} that explains the data. 
+\subsubsection{Images, text, sound}
+Sometimes the data is \textbf{not tabular} but, for example, is an image, text or a sound. In these cases the most common approach is to provide the dataset as a folder that contains the file. Sub folders may be used to organize the data according to metadata. 
+\subsubsection{Network}
+In this case the data consists of a network of $N$ instances with connections (directed or not, weighed or not) between pairs of related instances. It can be represented as an \textbf{adjacency matrix} of size $N \times N$. Since it is typically sparse (one node connected to few), it may be better to use a \textbf{sparse representation} such as a table of size $\#edges \times 2$ storing the links.
+\subsubsection{Relational databases}
+It's a collection of tables of two different types:
+\begin{itemize}
+	\item The first one has a row for each entity and a column for each attribute
+	\item The second one stores relations between instances of two different tables
+\end{itemize}
+The analysis may proceed either by:
+\begin{itemize}
+	\item Focusing on data from a single table
+	\item Joining tables
+	\item Operating on the relational structure using advanced techniques 
+\end{itemize}
+
+\subsubsection{Fusion of datasets}
+\textbf{Aggregation} of multiple small datasets can enable the learning of more general and accurate models.\\
+For them to be valuable, data coming from the multiple sources needs to be \textbf{homogenized}. Furthermore, \textbf{implicit information} in the original datasets needs to be included in the aggregated one, ideally as additional features or metadata.
+
+\subsubsection{Unstructured data}
+Data may have a level of heterogeneity such that there is no obvious data model that can be used. In that case, the data model must be rebuilt from scratch using expert knowledge from the field.
+
+\subsubsection{Large datasets}
+Datasets whose size is too large to be processed with classical techniques (e.g. high throughput devices like FMRI or complex simulations). In this situation advanced approaches are needed like data parallelism and model synchronization between multiple machines.
+
+\subsubsection{Streaming data}
+In this case data arrives continuously at a high rate. Insights need to be delivered in a timely fashion since there is no time to collect a full batch before the analysis.
+
+\subsubsection{Data subject to regulations}
+User data or medical data is subject to regulations fro privacy reasons that determine who can access the data. There could be the need for a two-level data analysis: the first one may be performed only on non sensitive data.
+
+\subsection{Preprocessing}
+Tabular data can be converted into an array via 
+\begin{lstlisting}[language=Python]
+	numpy.getfromtxt
+\end{lstlisting}
+while non numerical may be discarded or converted to a numerical value.\\
+\textbf{Images} can be loaded in python via \textbf{PIL} or \textbf{cv2}. Otherwise, one can use raw pixel values to compute low level features or feed the image to a pretrained neural network feature extractor.\\
+\textbf{Sound} data are usually converted in spectrograms showing the frequency information at coarser time steps.\\
+\textbf{Text} data can be converted to numbers with encodings. You can also remove non important words such as "the" or "and".
+\subsubsection{Missing values}
+When there are missing values (e.g. faulty sensor) we can:
+\begin{itemize}
+	\item Replace missing values with standard ones
+	\item Replace with the most likely given the others
+	\item Encode each value as a two-dimensional vector, e.g.
+	\begin{equation*}
+		x \mapsto (x, I\{\text{missing}\}) \quad\quad x \mapsto (x, 1 - x) \cdot (1- I\{\text{missing}\})
+	\end{equation*}
+\end{itemize}
