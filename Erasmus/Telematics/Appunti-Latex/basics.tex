@@ -91,3 +91,89 @@ There are two possible ways of sharing:
 \begin{observation}
 	It all depends on the application. Each flow has a \textbf{peak rate} and an \textbf{average rate}.To decide if \textit{reservation} works well for a specific case, we must look at the ratio $\frac{P}{A}$. If it's small then it works well, otherwise it's wasting resources.
 \end{observation}
+
+\subsection{Internet}
+Internet is a network of networks. It enables processes on different hosts to exchange data: it's a bit delivery system.\\
+ISPs enable you to access and use Internet services: well defined and commonly required functions. There are two roles: \textbf{client} and \textbf{server} that can be on different machine (or not, like with P2P).
+
+\begin{definition}[Internet]
+	The set of all reachable parties (IP addresses).
+\end{definition}
+
+\subsection{Protocols, layer and standards}
+\begin{definition}[Digital Data Communication]
+	\textit{Processing} and \textit{transport} of digital data between interconnected computers.
+\end{definition}
+
+\begin{definition}[Data]
+	\textbf{Representation} of facts, concepts and statement in a formal way which is suitable for communication, interpretation and processing by human beings or technical means.
+\end{definition}
+
+\begin{note}
+	\textbf{Information} is different from the data.
+\end{note}
+
+\begin{definition}[Signal]
+	A signal is the physical representation of data by spatial or timely variation of physical characteristics.
+\end{definition}
+
+In this context we need rules of communication for the different devices to communicate: we have heterogeneous computer architectures, network infrastructure  and distributed application. A \textbf{protocol} is a conversational convention, consisting of syntax and semantic.
+
+\begin{definition}[Protocol]
+	Protocols define format, order of messages sent and received among network entities, and actions taken on message transmission and receipt.\\
+	A protocol is a set of \textbf{unambiguous} specifications defining how processes communicate with one another through a connection (wire, radio etc.).
+\end{definition}
+
+\noindent To provide structure to the design of networks protocols, network designers organize protocols in \textbf{layers}. We use two models, either the ISO/OSI or the TCP/IP.
+\begin{center}
+	\includegraphics[scale=0.3]{isoosi.png}
+	\includegraphics[scale=0.4]{hourglass.png}
+\end{center}
+
+\noindent All the different layers need additional information, which is added via \textbf{headers} to the data payload via \textbf{encapsulation}. This could cause a lot of \textbf{overhead}.\\
+All the protocols rely on the Internet Protocol. This maximizes \textbf{interoperability} and does not ensure anything, therefore no one has expectations.
+
+\subsection{Quality of service}
+To define the quality of communication we check:
+\begin{itemize}
+	\item \textbf{Technical performance}: delay, jitter, throughput, data rate, etc.
+	\item \textbf{Costs}
+	\item \textbf{Reliability}: fault tolerance, system stability, immunity, availability
+	\item \textbf{Security and Protection}: eavesdropping, authentication, denial of service, etc.
+\end{itemize}
+
+\subsubsection{Latency}
+The main parameters we check are:
+\begin{itemize}
+	\item \textbf{One-way delay}: measured in seconds
+	\begin{equation}
+		d_1 = t'_1-t_1
+	\end{equation}
+	\item \textbf{Round-trip-time}: measured in seconds
+	\begin{equation}
+		r_1 = t_2 - t_1
+	\end{equation}
+	It should also integrate the processing time of the other device.
+\end{itemize}
+
+\subsubsection{Stability}
+The main parameter that measures stability is the \textbf{Jitter}. It's measured in seconds and calculated using the delay:
+\begin{equation}
+	d_i = t'_i - t_i \quad\quad j_i = d_{i+1} - d_i
+\end{equation}
+
+\subsubsection{Capacity}
+From a capacity perspective, we measure the \textbf{throughput} in $\frac{bit}{s}$ as follows:
+\begin{equation}
+	T=\frac{\sum \text{data}_i}{\Delta t}
+\end{equation}
+The \textbf{goodput} instead, is the amount of \textbf{useful} throughput from a user perspective.
+
+\begin{note}
+	\textbf{Bandwidth} is used for the description of the channel characteristics.
+\end{note}
+
+There is also the \textbf{Delay-Throughput-Produc} which measures how much data can be on the medium itself while traveling. E.g. with a connection of $1Mbps$ that has $200 ms$ of delay we have 
+\begin{equation*}
+	1 Mbps \times 0.2s = 200kbit
+\end{equation*}
