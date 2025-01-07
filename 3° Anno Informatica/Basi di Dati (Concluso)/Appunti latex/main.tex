@@ -29,6 +29,22 @@
 	urlcolor=black
 }
 
+\makeatletter
+\newcounter{subsubparagraph}[subparagraph]
+\renewcommand\thesubsubparagraph{%
+	\thesubparagraph.\@arabic\c@subsubparagraph}
+\newcommand\subsubparagraph{%
+	\@startsection{subsubparagraph}    % counter
+	{6}                              % level
+	{\parindent}                     % indent
+	{3.25ex \@plus 1ex \@minus .2ex} % beforeskip
+	{-1em}                           % afterskip
+	{\normalfont\normalsize\bfseries}}
+\newcommand\l@subsubparagraph{\@dottedtocline{6}{10em}{5em}}
+\newcommand{\subsubparagraphmark}[1]{}
+\makeatother
+
+
 % ---- Set page size and margins replace ------
 \usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 % ---- Set page size and margins replace ------
@@ -77,8 +93,8 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{A.A 2023-2024}
-\fancyhead[RE,LO]{Green Computing}
+\fancyhead[LE,RO]{A.A 2024-2025}
+\fancyhead[RE,LO]{Basi di Dati}
 \fancyfoot[RE,LO]{\rightmark}
 \fancyfoot[LE,RO]{\thepage}
 
@@ -146,8 +162,10 @@
 	captionpos=b
 }
 
-\setcounter{tocdepth}{4}
-\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{6}
+\setcounter{secnumdepth}{7}
+
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 
 \title{\textbf{Basi di dati}}
 \author{Realizzato da: Ghirardini Filippo}
@@ -171,4 +189,5 @@
 	\input{algebrarel}
 	\input{ddl}
 	\input{normalizzazione}
+	\input{dbms}
 \end{document}

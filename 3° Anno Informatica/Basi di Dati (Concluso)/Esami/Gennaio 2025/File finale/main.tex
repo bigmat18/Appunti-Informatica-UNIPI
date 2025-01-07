@@ -1,0 +1,161 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+
+% ----  Useful packages % ---- 
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{makecell}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{float}
+\usetikzlibrary{arrows.meta}
+
+% ----  Useful packages % ---- 
+
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+% ---- Set page size and margins replace ------
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+% ---- Set page size and margins replace ------
+
+% ------- NOTA ------
+\theoremstyle{remark}
+\newtheorem{note}{Note}[subsection]
+% ------- NOTA ------
+
+% ------- OSSERVAZIONE ------
+\theoremstyle{definition}
+\newtheorem{observation}{Osservazione}[subsection]
+% ------- OSSERVAZIONE ------
+
+% ------- DEFINIZIONE ------
+\theoremstyle{plain}
+\newtheorem{definition}{Definizione}[subsection]
+% ------- DEFINIZIONE ------
+
+% ------- ESEMPIO ------
+\theoremstyle{definition}
+\newtheorem{example}{Esempio}[subsection]
+% ------- ESEMPIO ------
+
+% ------- DIMOSTRAZIONE ------
+\theoremstyle{definition}
+\newtheorem{demostration}{Dimotrazione}[subsection]
+% ------- DIMOSTRAZIONE ------
+
+% ------- TEOREMA ------
+\theoremstyle{definition}
+\newtheorem{theorem}{Teorema}[subsection]
+% ------- TEOREMA ------
+
+% ------- COROLLARIO ------
+\theoremstyle{plain}
+\newtheorem{corollaries}{Corollario}[theorem]
+% ------- COROLLARIO ------
+
+% ------- PROPOSIZIONE ------
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposizione}[subsection]
+% ------- PROPOSIZIONE ------
+
+% ---- Footer and header ---- 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{Gennaio 2025}
+\fancyhead[RE,LO]{Green City}
+\fancyfoot[RE,LO]{\rightmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\footrulewidth}{.5pt}
+% ---- Footer and header ---- 
+
+% ----  Language setting ---- 
+\usepackage[italian, english]{babel}
+% ----  Language setting ---- 
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{darkgreen}{rgb}{0.42, 0.741, 0.408}
+\definecolor{lightblue}{rgb}{0.325, 0.961, 0.961}
+
+\lstset{frame=tb,
+	language=C,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
+
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\lstdefinelanguage{JavaScript}{
+	keywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with},
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]',
+	morestring=[b]",
+	ndkeywords={class, export, boolean, throw, implements, import, this},
+	keywordstyle=\color{blue}\bfseries,
+	ndkeywordstyle=\color{darkgray}\bfseries,
+	identifierstyle=\color{black},
+	commentstyle=\color{purple}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	sensitive=true
+}
+
+\lstset{
+	language=JavaScript,
+	extendedchars=true,
+	basicstyle=\footnotesize\ttfamily,
+	showstringspaces=false,
+	showspaces=false,
+	tabsize=2,
+	breaklines=true,
+	showtabs=false,
+	captionpos=b
+}
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+\title{\textbf{Basi di dati}}
+\author{Realizzato da: Ghirardini Filippo}
+\date{A.A. 2024-2025}
+
+\begin{document}
+	\input{frontespizio}
+	
+	\tableofcontents
+	\input{introduction}
+\end{document}
