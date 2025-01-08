@@ -164,3 +164,45 @@ Esistono vari metodi per gestire i thread in Python:
 	\end{lstlisting}
 	Dove \textit{max\_workers} indica il numero massimo di thread che possono coesistere.
 \end{itemize}
+
+\subsection{Socket}
+I socket sono un mezzo di comunicazione tra processi su una stessa macchina o su macchine diverse attraverso la rete. È una combinazione di \textbf{indirizzo IP} e \textbf{porta}. Possono essere \textbf{TCP} o \textbf{UDP}. In Python si basano sul modulo \textit{socket} che prevede i seguenti comandi:
+\begin{itemize}
+	\item \textbf{Creazione} di un nuovo oggetto socket
+	\begin{lstlisting}[language=Python]
+		socket.socket(family, type)
+	\end{lstlisting}
+	Dove:
+	\begin{itemize}
+		\item \textit{family} indica se utilizzare IPv4 (\textit{socket.AF\_INET}) o IPv6 (\textit{socket.AF\_INET6})
+		\item \textit{type} indica se lavorare con TCP (socket.SOCK\_STREAM) o UDP (socket.SOCK\_DGRAM)
+	\end{itemize}
+	\item \textbf{Associazione} di un socket ad una coppia IP - Porta, nei \textbf{server}
+	\begin{lstlisting}[language=Python]
+		socket.bind((host, port))
+	\end{lstlisting}
+	\item \textbf{Ascolto}: inizia ad ascoltare per le connessioni in entrata nei \textbf{server}
+	\begin{lstlisting}[language=Python]
+		socket.listen(backlog) # backlog indica il numero massimo di connessioni in coda
+	\end{lstlisting}
+	\item \textbf{Accettazione} di una nuova connessione in un \textbf{server}. Restituisce un nuovo socket.
+	\begin{lstlisting}[language=Python]
+		socket.accept()
+	\end{lstlisting}
+	\item \textbf{Connessione} ad un server da parte di un \textbf{client}
+	\begin{lstlisting}[language=Python]
+		socket.connect((host, port))
+	\end{lstlisting}
+	\item \textbf{Invio} di dati in formato byte
+	\begin{lstlisting}[language=Python]
+		socket.send(data)
+	\end{lstlisting}
+	\item \textbf{Ricezione} di dati in formato byte
+	\begin{lstlisting}[language=Python]
+		socket.recv(bufsize) # bufsize indica la dimensione massima del buffer di ricezione
+	\end{lstlisting}
+	\item \textbf{Chiusura} del socket
+	\begin{lstlisting}[language=Python]
+		socket.close()
+	\end{lstlisting}
+\end{itemize}

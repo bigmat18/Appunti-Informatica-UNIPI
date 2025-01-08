@@ -1,0 +1,90 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Bash}
+
+\subsection{kill}
+\textbf{Invio di segnale dalla riga di comando con \textit{kill}.}\\
+\begin{lstlisting}[language=BASH]
+	kill -signal pid
+\end{lstlisting}
+Dove i parametri sono:
+\begin{itemize}
+	\item \textit{signal} nome o numero del segnale da inviare al processo
+	\item \textit{pid} process ID a cui inviare il segnale:
+	\begin{itemize}
+		\item $>0$ processo con PID specifico
+		\item $=0$ tutti processi nel gruppo del chiamante
+		\item $<-1$ tutti i processi nel gruppo con PID$=-$PID
+		\item $=-1$ tutti i processi a cui l'utente può inviare segnali
+	\end{itemize}
+\end{itemize}
+\begin{note}
+	Utilizzare il parametro \textit{-l} per vedere l'elenco dei segnali e i loro numeri.
+\end{note}
+Esiste anche una funzione che può essere chiamata all'interno di un programma e invia il segnale ad un singolo thread all'interno dello stesso processo.
+\begin{lstlisting}[language=C]
+	int pthread_kill(pthread_t thread, int sig);
+\end{lstlisting}
+
+\subsection{MAKEFILE}
+\textbf{Parla del MAKEFILE e della sua compilazione.}\\
+Il MAKEFILE è uno strumento per gestire la compilazione di progetti, specialmente quelli composti da più file sorgente.
+\begin{lstlisting}[language=BASH]
+	target: dipendenze
+	comando
+\end{lstlisting}
+Si compone di:
+\begin{itemize}
+	\item \textit{target}: nome del file da creare
+	\item \textit{dipendenze}: file da cui il target dipende
+	\item \textit{comando}: comando da eseguire
+\end{itemize}
+\begin{example}[MAKEFILE]
+	Dato \textit{main.c} il file sorgente, \textit{funzioni.c} il sorgente con funzioni aggiuntive e \textit{funzioni.h} il suo header.
+	\begin{lstlisting}[language=BASH]
+		# Compilatore
+		CC=gcc
+		# Opzioni di compilazione
+		CFLAGS= -wall -g
+		# Eseguibile
+		TARGET = programma
+		# File sorgenti
+		SRCS = main.c funzioni.c
+		# File oggetto
+		OBJS = main.o funzioni.o
+		# Regola principale
+		all: $(TARGET)
+		# Regola per creare eseguibile
+		$(TARGET): $(OBJS)
+		# $< significa primo file nella lista dipendenze
+		# $@ significa nome del target .o
+		$(CC) $(CFLAGS) -c $< -o $@
+		# Pulizia
+		clean:
+		rm -f $(OBJS) $(TARGET)
+	\end{lstlisting}
+\end{example}
+
+\subsection{Processi in background}
+In Linux è possibile avviare un processo in background aggiungendo il simbolo \textit{\&} alla fine del comando.
+\begin{lstlisting}[language=BASH]
+	./programma &
+\end{lstlisting}
+Il terminale visualizza il PID del processo avviato.
+
+\subsection{Elenco dei file}
+Per elencare i file:
+\begin{lstlisting}[language=BASH]
+	ls -l # Dettagliato
+	ls -a # Mostra anche quelli nascosti
+	ls -R # Elenca ricorsivamente il contenuto delle sottodirectory
+	ls -lh # Specifica anche la dimensione dei file
+\end{lstlisting}
+L'output di \textit{ls -l} ci specifica anche se un determinato oggetto è un file o una directory in quanto l'ultima avrà in aggiunta la lettera \textit{d} mentre il primo avrà \textit{-}.
+
+\subsection{Manuale}
+Tramite il comando
+\begin{lstlisting}[language=BASH]
+	man comando
+\end{lstlisting}
+è possibile leggere la pagina del manuale relativa ad uno specifico comando. Il risultato conterrà anche \textit{comando(n)} dove il numero tra parentesi rappresenterà il numero della pagina del manuale.

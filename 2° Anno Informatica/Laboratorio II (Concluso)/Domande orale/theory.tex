@@ -1,6 +1,6 @@
 % !TeX spellcheck = it_IT
 \newpage
-\section{Teoria}
+\section{Varie}
 \subsection{Aritmetica dei puntatori}
 L'aritmetica dei puntatori ti consente di eseguire operazioni matematiche utilizzando direttamente i puntatori:
 \begin{itemize}
@@ -23,45 +23,6 @@ Quando creiamo un buffer, stiamo associando ad esso un arco di memoria. Se i dat
 \textbf{Qual è l'uso delle variabili statiche?}\\
 Una variabile statica ha una durata di memoria globale, ovvero dura per tutta l'esecuzione del programma. Sono visibili all'interno dello scope della funzione dichiarata. Vengono inizializzate una sola volta e occupano memoria per tutta l'esecuzione, anche se non utilizzate.
 
-\subsection{MAKEFILE}
-\textbf{Parla del MAKEFILE e della sua compilazione.}\\
-Il MAKEFILE è uno strumento per gestire la compilazione di progetti, specialmente quelli composti da più file sorgente.
-\begin{lstlisting}[language=BASH]
-	target: dipendenze
-		comando
-\end{lstlisting}
-Si compone di:
-\begin{itemize}
-	\item \textit{target}: nome del file da creare
-	\item \textit{dipendenze}: file da cui il target dipende
-	\item \textit{comando}: comando da eseguire
-\end{itemize}
-\begin{example}[MAKEFILE]
-	Dato \textit{main.c} il file sorgente, \textit{funzioni.c} il sorgente con funzioni aggiuntive e \textit{funzioni.h} il suo header.
-	\begin{lstlisting}[language=BASH]
-		# Compilatore
-		CC=gcc
-		# Opzioni di compilazione
-		CFLAGS= -wall -g
-		# Eseguibile
-		TARGET = programma
-		# File sorgenti
-		SRCS = main.c funzioni.c
-		# File oggetto
-		OBJS = main.o funzioni.o
-		# Regola principale
-		all: $(TARGET)
-		# Regola per creare eseguibile
-		$(TARGET): $(OBJS)
-			# $< significa primo file nella lista dipendenze
-			# $@ significa nome del target .o
-			$(CC) $(CFLAGS) -c $< -o $@
-		# Pulizia
-		clean:
-			rm -f $(OBJS) $(TARGET)
-	\end{lstlisting}
-\end{example}
-
 \subsection{void*}
 \textbf{Necessità ed utilizzo del tipo \textit{void*}.}\\
 Il puntatore \textit{voidé} è un puntatore generico che  può essere utilizzato per rappresentare un puntatore ad un qualsiasi dato. Un esempio di applicazione sono le funzioni parametrizzate che prendono un input valori diversi a seconda della chiamata.
@@ -79,12 +40,7 @@ Il PID è un identificatore assegnato dal sistema operativo ad ogni processo in 
 	getppid(); // Restituisce il PID del processo genitore
 \end{lstlisting}
 
-\subsection{Processi in background}
-In Linux è possibile avviare un processo in background aggiungendo il simbolo \textit{\&} alla fine del comando.
-\begin{lstlisting}[language=BASH]
-	./programma &
-\end{lstlisting}
-Il terminale visualizza il PID del processo avviato.
+\subsection{System call}
 
 \textbf{Qual è la relazione tra \textit{syscall} e le lybrary functions?}\\
 Le \textit{syscall} sono funzioni fornite dal sistema operativo per interagire direttamente con il kernel.
@@ -135,13 +91,3 @@ Una funzione è MT-Safe se può essere chiamata in modo sicuro da più thread se
 	char* str2 = malloc((len+1)*sizeof(char));
 	strcpy(str2, str);
 \end{lstlisting}
-
-\subsection{Manipolazione dei file}
-Per elencare i file:
-\begin{lstlisting}[language=BASH]
-	ls -l # Dettagliato
-	ls -a # Mostra anche quelli nascosti
-	ls -R # Elenca ricorsivamente il contenuto delle sottodirectory
-	ls -lh # Specifica anche la dimensione dei file
-\end{lstlisting}
-L'output di \textit{ls -l} ci specifica anche se un determinato oggetto è un file o una directory in quanto l'ultima avrà in aggiunta la lettera \textit{d} mentre il primo avrà \textit{-.}

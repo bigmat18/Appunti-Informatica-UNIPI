@@ -238,29 +238,6 @@ Restituisce il carattere dell'opzione trovata, $-1$ quando tutte le opzioni sono
 \subsection{sleep}
 \textbf{Attesa di segnali con \textit{sleep}.}\\
 Una volta configurato il gestore di segnali, il programma può attendere utilizzando la funzione \textit{sleep}. Infatti, non appena il kernel riceve un segnale, interrompe l'attesa e chiama l'handler.
-\subsection{kill}
-\textbf{Invio di segnale dalla riga di comando con \textit{kill}.}\\
-\begin{lstlisting}[language=BASH]
-	kill -signal pid
-\end{lstlisting}
-Dove i parametri sono:
-\begin{itemize}
-	\item \textit{signal} nome o numero del segnale da inviare al processo
-	\item \textit{pid} process ID a cui inviare il segnale:
-	\begin{itemize}
-		\item $>0$ processo con PID specifico
-		\item $=0$ tutti processi nel gruppo del chiamante
-		\item $<-1$ tutti i processi nel gruppo con PID$=-$PID
-		\item $=-1$ tutti i processi a cui l'utente può inviare segnali
-	\end{itemize}
-\end{itemize}
-\begin{note}
-	Utilizzare il parametro \textit{-l} per vedere l'elenco dei segnali e i loro numeri.
-\end{note}
-Esiste anche una funzione che può essere chiamata all'interno di un programma e invia il segnale ad un singolo thread all'interno dello stesso processo.
-\begin{lstlisting}[language=C]
-	int pthread_kill(pthread_t thread, int sig);
-\end{lstlisting}
 
 \subsection{sigwait}
 \textbf{Attesa dei segnali con \textit{sigwait}.}\\
