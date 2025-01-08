@@ -1,3 +1,4 @@
+% !TeX spellcheck = it_IT
 \documentclass[a4paper,10pt]{article}
 \usepackage[utf8]{inputenc}
 
@@ -112,21 +113,346 @@
   tabsize=3
 }
 
-\title{\textbf{Laboratorio II}}
-\author{Realizzato da: Ghirardini Filippo}
-\date{A.A. 2023-2024}
-
 \begin{document}
 \input{frontespizio}
 
 \tableofcontents
-\newpage
-\maketitle
 \begin{center}
     \vspace{-20pt}
     \rule{11cm}{.1pt} 
 \end{center}
 \newpage
-\include{thread}
-\include{socket}
+\section{Funzioni specifiche}
+\subsection{perror}
+\textbf{Come funziona \textit{perror}?}\\
+È una funzione che stampa un messaggio di errore su \textit{stderr} seguito da una descrizione. Si basa sulla variabile globale \textit{errno}.
+\begin{lstlisting}[language=C, mathescape]
+	void perror(const char *msg) $\to$ msg:string
+\end{lstlisting}
+\subsection{stderr e stdout}
+\textbf{Qual è l'utilizzo di \textit{stderr} e \textit{stdout}?}\\
+\textit{stdout} lo usiamo per l'output, di default i dati vengono stampati sul terminare (e.g. \textit{printf}). Per ridirezionarlo usiamo
+\begin{lstlisting}[language=BASH]
+	command > file_output
+\end{lstlisting}
+\textit{stderr} è usato invece per l'output degli errori o messaggi diagnostici (e.g. \textit{perror}). Per ridirezionarlo usiamo
+\begin{lstlisting}[language=BASH]
+	command >&2 file_output
+\end{lstlisting}
+\subsection{fscanf}
+\textbf{Cosa significano i modificatori \textit{\%NS} e \textit{\%ms} in \textit{fscanf}?}\\
+\begin{itemize}
+	\item \textbf{\%Ns} è un modificatore che permette di leggere $d$ massimo $n-1$ caratteri in input, riservando il carattere finale \textit{$\backslash 0$}.
+	\begin{lstlisting}[language=C]
+		fscanf(file, "%Ns", buffer);
+	\end{lstlisting}
+	Con \textit{buffer} già allocato.
+	\item \textbf{\%ms} è un modificatore che permette di allocare dinamicamente la memoria necessaria per memorizzare la stringa.
+	\begin{lstlisting}[language=C]
+		fscanf(file, "%ms", &buffer);
+	\end{lstlisting}
+	Con \textit{buffer} un puntatore a \textit{char*}. La memoria è deallocata automaticamente.
+\end{itemize}
+\subsection{snprintf e asprintf}
+\textbf{Allocazione di stringhe tramite \textit{snprintf} e \textit{asprintf}.}\\
+Con \textit{snprintf} si costruiscono stringhe in modo sicuro scrivendole in un buffer preallocato mentre \textit{asprintf} alloca dinamicamente la memoria.
+\begin{itemize}
+	\item \begin{lstlisting}[language=C]
+		int snprintf(char* str, size_t size, const char* format);
+	\end{lstlisting}
+	Questa funzione restituisce il numero di caratteri scritti e usa i seguenti parametri:
+	\begin{itemize}
+		\item \textit{str}: puntatore al buffer dove verrà scritta la stringa
+		\item \textit{size}: dimensione massima del buffer incluso \textit{$\backslash 0$}
+		\item \textit{format}: stringa di formato
+	\end{itemize}
+	\item \begin{lstlisting}[language=C, mathescape]
+		int asprintf(char ** strp, const char * format, $\ldots$);
+	\end{lstlisting}
+	Restituisce il numero di caratteri scritti senza $\backslash 0$ e prende come parametro \textit{strp} ovvero il puntatore dove verrà allocata la memoria per la stringa.
+\end{itemize}
+\subsection{fscanf}
+\textbf{Quali sono le limitazioni di \textit{fscanf}?}\\
+\begin{itemize}
+	\item È sensibile al formato, quindi se passo \textit{\%d} e poi leggo un intero mi restituisce errore
+	\item Non c'è la gestione delle righe, ignora i caratteri \textit{$\backslash n$}
+	\item Legge fino al prossimo spazio, può causare \textbf{troncamenti}
+	\item Non gestisce facilmente le virgole e non verifica i limiti dei buffer
+\end{itemize}
+\subsection{getline}
+\textbf{Spiega la funzione \textit{getline}.}\\
+È una funzione per leggere intere righe di testo.
+\begin{lstlisting}[language=C]
+	ssize_t	 getline(char ** lineptr, size_t * n, FILE* stream);
+\end{lstlisting}
+Dove i parametri sono:
+\begin{itemize}
+	\item \textit{lineptr}: punta alla memoria dove verrà memorizzata la riga letta. Se è \textit{NULL} la funzione alloca dinamicamente. Se è troppo piccolo il buffer viene riallocato.
+	\item \textit{n}: la dimensione del buffer, viene aggiornato automaticamente se viene ridimensionato
+	\item \textit{stream}: puntatore al file da cui leggere
+\end{itemize}
+\subsection{fscanf vs getline}
+\textbf{Qual è la differenza sostanziale tra \textit{fscanf} e \textit{getline}?}\\
+\textit{fscanf} è ottima per leggere dati formattati direttamente ma richiede attenzione ai rischi di buffer overflow. \textit{getline} è più flessibile e sicuro per leggere righe intere ma necessita di ulteriori elaborazioni per estrarre i dati interni.
+\subsection{strtok}
+\textbf{Parsing di stringhe con \textit{strtok}.}\\
+La funzione \textit{strtok} è usata per dividere una stringa in token separati da una o più caratteri (delimitatori).
+\begin{lstlisting}[language=C]
+	char* strtok(char* str, const char* delim);
+\end{lstlisting}
+Dove i parametri sono:
+\begin{itemize}
+	\item \textit{str} è la stringa da dividere
+	\item \textit{delim} è la stringa di delimitatori, ogni carattere è un separatore tra i token
+\end{itemize}
+La funzione restituisce un puntatore al prossimo token o \textit{NULL} quando non ci sono più token. Inserisce $\backslash 0$ dopo ogni token nella stringa originale che quindi non è più utilizzabile.
+\newpage
+\noindent La versione thread-safe è \textbf{\textit{strtok\_r}}:
+\begin{lstlisting}[language=C]
+	strtok\_r(char* str, const char * delim, char ** saveptr);
+\end{lstlisting}
+Dove i parametri sono:
+\begin{itemize}
+	\item \textit{str} stringa da analizzare
+	\item \textit{delim} stringa di delimitatori
+	\item \textit{saveptr} puntatore che memorizza lo stato tra le chiamate
+\end{itemize}
+\subsection{calloc}
+\textbf{Spiega la funzione \textit{calloc}.}\\
+La funzione \textit{calloc} è utilizzata per allocare memoria dinamicamente. È simile a \textit{malloc} ma con inizializza la memoria allocata a $0$.
+\begin{lstlisting}[language=C]
+		void* calloc(size_t nitems, size_t size);
+\end{lstlisting}
+\begin{itemize}
+	\item \textit{nitems} numero di elementi da allocare
+	\item \textit{size} dimensione di ciascun elemento
+\end{itemize}
+Restituisce un puntatore alla memoria allocata.
+\subsection{qsort}
+\textbf{Come funziona \textit{qsort}? Quali sono le sue problematiche?}\\
+\textit{qsort} è una funzione di libreria per ordinare un array di elementi.
+\begin{lstlisting}[language=C]
+	void qsort(void* base, size_t num, size_t size, int (*compar)(const void*, const void*));
+\end{lstlisting}
+Dove i parametri sono:
+\begin{itemize}
+	\item \textit{base} puntatore dell'array da ordinare
+	\item \textit{num} numero di elementi nell'array
+	\item \textit{size} dimensione di ciascun elemento nell'array
+	\item \textit{compar} funzione di confronto personalizzata
+\end{itemize}
+La funzione utilizza \textit{void *}. Se il tipo non viene gestito correttamente possono verificarsi comportamenti imprevedibili. Se l'array contiene strutture la funzione \textit{compar} deve saperli gestire correttamente.
+\subsection{fread e fwrite}
+\textbf{Lettura e scrittura dei file binari con \textit{fread} e \textit{fwrite}.}\\
+\begin{lstlisting}[language=C]
+	size_t fread(void* ptr, size_t size, size_t count, FILE* stream);
+	size_t fwrite(const void* ptr, size_t size, size_t count, FILE* stream);
+\end{lstlisting}
+Dove i parametri sono:
+\begin{itemize}
+	\item \textit{ptr} puntatore al buffer dove leggere o scrivere
+	\item \textit{size} dimensione di ciascun elemento
+	\item \textit{count} numero di elementi
+	\item \textit{stream} puntatore al file aperto
+\end{itemize}
+Le funzioni restituiscono il numero di elementi letti o scritti. Se è inferiore a \textit{count} potrebbe significare la presenza di errori.
+\subsection{fork}
+\textbf{Creazione di processi con \textit{fork}.}\\
+La chiamata alla funzione \textit{fork} genera un nuovo processo figlio duplicando il processo padre. Il padre deve sempre aspettare il figlio invocando \textit{wait}, altrimenti esso diventerà un processo zombie (non terminabile correttamente dal SO).
+\begin{lstlisting}[language=C]
+	pit_t fork(void);
+\end{lstlisting}
+\subsection{exit e wait}
+\textbf{Terminazione di un processo figlio con \textit{exit} e \textit{wait}.}\\
+\begin{itemize}
+	\item \textit{exit}: la funzione termina l'esecuzione del processo chiamante, chiude tutti i file aperti, esegue la pulizia e restituisce un codice di uscita al SO
+	\begin{lstlisting}[language=C]
+		void exit(int status);
+	\end{lstlisting}
+	\item \textit{wait}: il processo genitore può utilizzare questa funzione (o in alternativa \textit{waitpid}) per attendere che uno o più processi figli terminino. Questo gli permette di recuperare il codice di uscita ed evitare che nascano processi zombie.
+	\begin{lstlisting}[language=C]
+		pid_t wait(int *status);
+		pid_t wait_pid(pid_t pid, int* status, int options);
+	\end{lstlisting}
+	Dove i parametri sono:
+	\begin{itemize}
+		\item \textit{pid} PID del processo figlio da attendere
+		\begin{itemize}
+			\item $>0$ il PID specifico
+			\item $-1$ qualsiasi figlio
+			\item $0$ qualsiasi figlio nello stesso gruppo di processi
+		\end{itemize}
+		\item \textit{status} puntatore dove viene memorizzato il codice di uscita
+		\item \textit{options} opzioni aggiuntive
+	\end{itemize}
+\end{itemize}
+\subsection{execl}
+\textbf{Spiega l'istruzione \textit{execl}.}\\
+Serve ad eseguire un determinato file.
+\begin{lstlisting}[language=C, mathescape]
+	int execl(const char* path, const char* arg, $\ldots$, NULL);
+\end{lstlisting}
+Dove i parametri sono:
+\begin{itemize}
+	\item \textit{path} percorso del programma da eseguire
+	\item \textit{arg} lista di argomenti passati al programma dove il primo è convenzionalmente il nome del programma
+	\item \textit{NULL} la lista di argomenti deve terminare con NULL per segnalare la fine
+\end{itemize}
+\newpage
+\subsection{shm\_open, ftruncate e mmap}
+\textbf{Uso e significato di \textit{shm\_open}, \textit{ftruncate} e \textit{mmap}.}\\
+\begin{itemize}
+	\item \textit{shm\_open} serve a creare o aprire un oggetto di memoria condivisa
+	\begin{lstlisting}[language=C]
+		int shm_open(const char* nome, int oflag, mode_t mode);
+	\end{lstlisting}
+	Dove i parametri sono:
+	\begin{itemize}
+		\item \textit{nome} nome dell'oggetto nella memoria condivisa
+		\item \textit{oflag} flag che indica se creare, leggere o scrivere (\textit{O\_CREAT}, \textit{O\_RDONLY} o \textit{O\_RDWR})
+		\item \textit{mode} permessi di accesso
+	\end{itemize}
+	Ritorna un file descriptor associato all'oggetto di memoria condivisa.
+	\item \textit{ftruncate} è usato per impostare la dimensione di un file o di un oggetto di memoria condivisa.
+	\begin{lstlisting}[language=C]
+		int ftruncate(int fd, off_t length);
+	\end{lstlisting}
+	Dove i parametri sono:
+	\begin{itemize}
+		\item \textit{fd} file descriptor ottenuto con \textit{shm\_open}
+		\item \textit{length} nuova dimensione del file
+	\end{itemize}
+	Restituisce $0$ in caso di successo, $-1$ altrimenti.
+	\item \textit{mmap} serve a mappare un file o una regione di memoria (e.g. oggetto creato da \textit{shm\_open}) nello spazio di indirizzamento del processo
+	\begin{lstlisting}[language=C]
+		void* nmap(void* addr, size_t length, int prot, int flags, int fd, off_t offset);
+	\end{lstlisting}
+	Dove i parametri sono:
+	\begin{itemize}
+		\item \textit{addr} indirizzo suggerito per il mapping, solitamente NULL
+		\item \textit{length} dimensione della regione da mappare
+		\item \textit{prot} permessi di accesso
+		\item \textit{flags} specifica opzioni
+		\item \textit{fd} file descriptor
+		\item \textit{offset} offset inizio del file
+	\end{itemize}
+	Restituisce la memoria mappata o \textit{MAP\_FAILED} in caso di errore.
+	\subsection{atexit}
+	\textbf{Descrivi la funzione \textit{atexit}.}\\
+	È utilizzata per registrare funzioni da eseguire automaticamente quando il programma termina (e.g. pulizia come chiusura di un file). 
+	\begin{lstlisting}[language=C]
+		int atexit(void(*func)(void));
+	\end{lstlisting}
+	\newpage
+	\subsection{getopt}
+	\textbf{Come funziona \textit{getopt}?}\\
+	È una funzione per analizzare le opzioni e gli argomenti passati dalla riga di comando.
+	\begin{lstlisting}[language=C]
+		int getopt(int argc, const char* argv[], const char* opstring);
+	\end{lstlisting}
+	Dove i parametri sono:
+	\begin{itemize}
+		\item \textit{argc} numero di argomenti passati da riga di comando
+		\item \textit{argv} array di stringhe contenenti i parametri passati
+		\item \textit{opstring} una stringa che definisce le opzioni accettate. Ogni carattere rappresenta un'opzione, se è seguito da : vuol dire che richiede un argomento
+	\end{itemize}
+	Restituisce il carattere dell'opzione trovata, $-1$ quando tutte le opzioni sono state elaborate e $?$ se trova un'opzione non valida.
+\end{itemize}
+\subsection{pthread\_create e pthread\_join}
+\textbf{Descrivi i prototipi di \textit{pthread\_create} e \textit{pthread\_join}.}\\
+\begin{itemize}
+	\item Creazione di thread
+	\begin{lstlisting}[language=C]
+		int pthread_create(pthread_t * thread, const pthread_attr_t* attr, void * (*start_routine)(void), void* arg);
+	\end{lstlisting}
+	Dove i parametri sono:
+	\begin{itemize}
+		\item \textit{thread} puntatore alla variabile che conterrà il thread creato
+		\item \textit{attr} specifica gli attributi del thread (NULL di solito)
+		\item \textit{(*start\_routine)(void)} funzione che rappresenta il punto di inizio del thread. Deve accettare void* come parametro e restituire void*
+		\item \textit{arg} puntatore dell'argomento da passare alla funzione di inizio
+	\end{itemize}
+	Restituisce $0$ se il thread è stato creato con successo.
+	\item Attesa thread
+	\begin{lstlisting}[language=C]
+		int pthread_join(pthread_t thread, void** retval);
+	\end{lstlisting}
+	Dove i parametri sono:
+	\begin{itemize}
+		\item \textit{thread} identificatore del thread
+		\item \textit{retval} puntatore al valore restituito dalla funzione eseguita dal thread
+	\end{itemize}
+	Restituisce $0$ se il thread ha terminato con successo.
+\end{itemize}
+\subsection{signal}
+\begin{itemize}
+	\item \textit{signal} è utilizzato per la gestione di segnali
+	\begin{lstlisting}[language=C]
+		void* signal(int signum, void* handler(int));
+	\end{lstlisting}
+	Dove i parametri sono:
+	\begin{itemize}
+		\item \textit{signum} il codice del segnale da gestire
+		\item \textit{handler} la funzione che gestisce il segnale. Deve prendere in input un intero che corrisponde al valore del segnale.
+	\end{itemize}
+\end{itemize}
+\subsection{sleep}
+\textbf{Attesa di segnali con \textit{sleep}.}\\
+Una volta configurato il gestore di segnali, il programma può attendere utilizzando la funzione \textit{sleep}. Infatti, non appena il kernel riceve un segnale, interrompe l'attesa e chiama l'handler.
+\subsection{kill}
+\textbf{Invio di segnale dalla riga di comando con \textit{kill}.}\\
+\begin{lstlisting}[language=BASH]
+	kill -signal pid
+\end{lstlisting}
+Dove i parametri sono:
+\begin{itemize}
+	\item \textit{signal} nome o numero del segnale da inviare al processo
+	\item \textit{pid} process ID a cui inviare il segnale
+\end{itemize}
+
+\begin{note}
+	Utilizzare il parametro \textit{-l} per vedere l'elenco dei segnali e i loro numeri.
+\end{note}
+
+\subsection{sigwait}
+\textbf{Attesa dei segnali con \textit{sigwait}.}\\
+\textit{sigwait} è una funzione che sospende il thread chiamante fino a quando uno dei segnali specificati non viene ricevuto. Il segnale viene poi rimosso dalla coda dei segnali pendenti del processo e il controllo ritorna al thread chiamante, consentendo di gestire il segnale in modo sincrono.
+\begin{lstlisting}[language=C]
+	int sigwait(const sigset_t * set, int* sig);
+\end{lstlisting}
+Dove i parametri sono:
+\begin{itemize}
+	\item \textit{set} puntatore ad un insieme di segnali che il thread è disposto ad attendere
+	\item \textit{sig} puntatore dove verrà memorizzato il segnale ricevuto
+\end{itemize}
+Restituisce $0$ se è corretto.
+\subsection{sigqueue e sigwaitinfo}
+\textbf{Invio di segnali con \textit{sigqueue} e \textit{sigwaitinfo}.}\\
+\begin{itemize}
+	\item \textit{sigqueue} consente di inviare segnali real time ad un thread specifico con dati personalizzati
+	\begin{lstlisting}[language=C]
+		int sigqueue(pthread_t thread, int sig, const union signal value);
+	\end{lstlisting}
+	Dove i parametri sono:
+	\begin{itemize}
+		\item \textit{thread} identificazione del thread destinatario
+		\item \textit{sig} codice del segnale
+		\item \textit{value} dato associato al segnale
+	\end{itemize}
+	\newpage
+	\item \textit{sigwaitinfo} permette di attendere un segnale e ricevere le informazioni aggiuntive
+	\begin{lstlisting}[language=C]
+		int sigwaitinfo(const sigset_t * set, siginfo_t * info);
+	\end{lstlisting}
+	Dove i parametri sono:
+	\begin{itemize}
+		\item \textit{set} insieme di segnali da attendere
+		\item \textit{info} struttura che riceve le informazioni del segnale. È  di tipo \textit{siginfo\_t} che contiene:
+		\begin{itemize}
+			\item \textit{si\_signo} numero del segnale
+			\item \textit{si\_code} codice del segnale
+			\item \textit{si\_value} dato personalizzato associato al segnale
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
 \end{document}
