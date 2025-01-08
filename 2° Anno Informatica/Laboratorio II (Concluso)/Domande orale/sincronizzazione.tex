@@ -1,0 +1,120 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Metodi di sincronizzazione}
+\subsection{Race condition}
+Una race condition è un comportamento che si verifica quando due o più thread accedono ad una risorsa contemporaneamente senza un'adeguata sincronizzazione. Il risultato del programma può variare a seconda dell'ordine in cui i thread accedono alle risorse.
+\subsection{Semafori POSIX}
+I semafori sono strumenti di sincronizzazione utilizzati per condividere l'accesso concorrente a risorse condivise tra processi. Si dividono in:
+\begin{itemize}
+	\item \textbf{Named}: hanno un nome associato nel file system. Si aprono con:
+	\begin{lstlisting}[language=C]
+		sem_t* sem_open(const char* name, int oflag, mode_t mode, unsigned int value);
+	\end{lstlisting}
+	Dove i parametri sono:
+	\begin{itemize}
+		\item \textit{name} nome del semaforo
+		\item \textit{oflag} flag per specificare la modalità
+		\begin{itemize}
+			\item \textit{O\_CREAT} se il semaforo non esiste viene creato
+			\item \textit{O\_EXECL} se il semaforo esiste fallisce e restituisce un errore
+		\end{itemize}
+		\item \textit{mode} permessi di accesso
+		\item \textit{value} valore iniziale del semaforo
+	\end{itemize}
+	Per chiuderlo e poi rimuoverlo:
+	\begin{lstlisting}[language=C]
+		int sem_close(sem_t* sem);
+		int sem_unlink(sem_t* sem);
+	\end{lstlisting}
+	\item \textbf{Unnamed}: non hanno un nome associato nel file system e sono usati genericamente per la sincronizzazione di thread in uno stesso processo o tra processi con memoria condivisa. Si inizializza con:
+	\begin{lstlisting}[language=C]
+		int sem_init(sem_t* sem, int pshared, unsigned int value);
+	\end{lstlisting}
+	Dove i parametri sono:
+	\begin{itemize}
+		\item \textit{sem} è il puntatore alla variabile \textit{sem\_t} che rappresenta il semaforo
+		\item \textit{pshared}
+		\begin{itemize}
+			\item $0$ il semaforo è usato da thread di uno stesso processo
+			\item $1$ il semaforo sarà condiviso tra processi diversi e vive quindi in una regione di memoria condivisa
+		\end{itemize}
+		\item \textit{value} è il valore iniziale del semaforo
+	\end{itemize}
+	Ritorna $0$ in caso di successo, $-1$ altrimenti settando \textit{errno}.\\
+	Per distruggerlo:
+	\begin{lstlisting}[language=C]
+		int sem_destroy(sem_t* sem);
+	\end{lstlisting}
+\end{itemize}
+
+\newpage
+Entrambi i tipi di semafori prevedono due operazioni:
+\begin{itemize}
+	\item \textbf{Wait}: decrementa il valore del semaforo. Se il valore è $0$ il processo è bloccato fino ad un nuovo incremento.
+	\begin{lstlisting}[language=C]
+		int sem_wait(sem_t* sem);
+	\end{lstlisting}
+	\item \textbf{Post}: incrementa il valore del semaforo e sblocca eventuali processi in attesa
+	\begin{lstlisting}[language=C]
+		int sem_post(sem_t* sem);
+	\end{lstlisting}
+\end{itemize}
+
+\subsection{Mutex}
+Il mutex è un meccanismo di sincronizzazione utilizzato per garantire che un solo thread alla volta possa accedere ad una risorsa condivisa. Garantisce la mutua esclusione. Di seguito le funzioni rilevanti:
+\begin{itemize}
+	\item \textbf{Inizializzazione} può essere fatta in due modi
+	\begin{lstlisting}[language=C]
+		//DINAMICA, attr opzionale
+		int pthread_mutex_init(pthread_mutex_t* mutex, const pthread_mutex_attr_t* attr);
+		
+		// STATICA
+		pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+	\end{lstlisting}
+	\item \textbf{Lock}: blocca il mutex. Se è già bloccato il thread rimane in attesa fino allo sblocco.
+	\begin{lstlisting}[language=C]
+		int pthread_mutex_lock(pthread_mutex_t mutex);
+	\end{lstlisting}
+	\item \textbf{Unlock}: rilascia il mutex eventualmente sbloccando thread in attesa
+	\begin{lstlisting}[language=C]
+	int pthread_mutex_unlock(pthread_mutex_t mutex);
+	\end{lstlisting}
+	\item \textbf{Distruzione}
+	\begin{lstlisting}[language=C]
+		int pthread_mutex_destroy(pthread_mutex_t mutex);
+	\end{lstlisting}
+\end{itemize}
+
+\subsection{Produttore consumatore}
+Il problema del produttore-consumatore è un esempio della sincronizzazione tra processi o thread. Un produttore genera dei dati e li mette in un buffer condiviso mentre il consumatore li preleva per elaborarli. Il problema principale è garantire che il produttore non inserisca dati quando il buffer è pieno e che il consumatore non li prelevi quando è vuoto. Per risolvere questo problema usiamo dei \textbf{semafori} che regolano l'accesso al buffer e gestiscono le condizioni di attesa e i \textbf{mutex} garantiscono l'accesso esclusivo al buffer durante le operazioni di inserimento e prelievo.
+
+\subsection{Condition variables}
+Le condition variables sono strumenti di sincronizzazione tra thread. Gli permettono di attendere determinati eventi e di essere notificati quando questi accadono. Si utilizzano in combinazione con i mutex. Le operazioni eseguibili sono:
+\begin{itemize}
+	\item \textbf{Creazione}
+	\begin{lstlisting}[language=C]
+		// STATICA
+		pthread_cond_t condvar = PTHREAD_COND_INITIALIZER;
+		
+		// DINAMICA, attr opzionale
+		int pthread_cond_init(&condvar, pthread_condattr_t* attr);
+	\end{lstlisting}
+	\item \textbf{Attesa}
+	\begin{lstlisting}[language=C]
+		int pthread_cond_wait(pthread_cond_t* condvar, pthread_mutex_t* mutex);
+	\end{lstlisting}
+	\item \textbf{Segnalazione}
+	\begin{itemize}
+		\item Thread singolo
+		\begin{lstlisting}[language=C]
+			int pthread_cond_signal(pthread_cond_t* condvar);
+		\end{lstlisting}
+		\item Tutti i thread
+		\begin{lstlisting}[language=C]
+			int pthread_cond_broadcast(pthread_cond_t* condvar);
+		\end{lstlisting}
+	\end{itemize}
+	\begin{note}
+		La differenza di utilizzo tra \textit{signal} e \textit{broadcast} la abbiamo quando alcuni dei thread potrebbero non essere ancora pronti. In questo caso la broadcast li risveglia tutti e quelli che possono procedere lo faranno mentre la signal ne sveglia solo uno (si rischia che non sia quello corretto).
+	\end{note}
+\end{itemize}

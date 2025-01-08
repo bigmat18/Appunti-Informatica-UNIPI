@@ -1,0 +1,192 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Strutture dati}
+\subsection{Array statici e dinamici}
+\textbf{Quando bisogna evitare gli array statici}?\\
+Nei seguenti casi:
+\begin{itemize}
+	\item Quando la dimensione dell'array dipende dall'\textbf{utente}
+	\item Quando l'array deve essere \textbf{ridimensionato}
+	\item Quando è molto \textbf{grande}
+	\item Quando lavoriamo in \textbf{parallelo}
+\end{itemize}
+\textbf{Differenza tra matrici statiche e dinamiche.}\\
+Una matrice statica è dichiarata con una dimensione fissa e acceduta con indici:
+\begin{lstlisting}[language=C]
+	int matrice[3][4];
+	matrice[1][2] = 45;
+\end{lstlisting}
+Una matrice dinamica è allocata ad un certo punto dell'esecuzione del programma permettendo di usare dimensioni variabili. Esistono due tipi di implementazione:
+\begin{itemize}
+	\item Doppio puntatore
+	\begin{lstlisting}[language=C]
+		int righe=3, colonne=3;
+		int** matrice=malloc(righe*sizeof(int*));
+		for(int i=0; i<righe; i++)
+		matrice[i] = malloc(colonne*sizeof(int));
+	\end{lstlisting}
+	\item Array lineare, è migliore
+	\begin{lstlisting}[language=C]
+		int righe=3, colonne=4;
+		int* matrice = malloc(righe*colonne*sizeof(int));
+	\end{lstlisting}
+\end{itemize}
+\subsection{Caratteri vs stringhe}
+\textbf{Qual è la differenza tra caratteri e stringhe?}\\
+Un carattere è un elemento che occupa $1$ byte di memoria.
+\begin{lstlisting}[language=C]
+	char C = 'A';
+\end{lstlisting}
+Può rappresentare un simbolo o un valore del codice ASCII.
+La stringa è una \textbf{sequenza} di caratteri, rappresentato come array con un carattere aggiuntivo di terminazione $\backslash 0$.
+\begin{lstlisting}[language=C]
+	char* str = "hello";
+\end{lstlisting}
+\subsection{struct e typedef}
+\textbf{Spiega la struct e il typedef.}\\
+Le struct sono strutture utili per raggruppare più variabili di natura diversa sotto un unico nome. Per semplificarne la definizione utilizziamo \textit{typedef}:
+\begin{lstlisting}[language=C]
+	typedef struct {
+		char nome[50];
+		int eta;
+	} Persona;
+	
+	Persona p = {"Pippo", 20};
+	p.nome;
+	p.eta;
+	
+	Persona p2 = malloc(sizeof(Persona));
+	p2->nome = "Pluto";
+\end{lstlisting}
+\begin{note}
+	Se la struct contiene array dinamici interni, questi vanno allocati e deallocati di conseguenza.
+\end{note}
+
+\subsection{Array di struct}
+\textbf{Come funzionano gli array di struct?}\\
+Avendo rinominato la struttura con \textit{typedef}, per creare un array di struct:
+\begin{lstlisting}[language=C]
+	Persona * array = malloc(num_struct * sizeof(Persona));
+\end{lstlisting}
+e posso accedervi nel seguente modo:
+\begin{lstlisting}[language=C]
+	array[0].nome;
+\end{lstlisting}
+\subsection{Liste}
+\textbf{Parla delle liste.}\\
+La struttura di una lista è composta da nodi. Ogni nodo contiene un campo \textbf{data} che memorizza l'informazione e un campo \textbf{next} che memorizza il puntatore al nodo successivo.
+\begin{lstlisting}[language=C]
+	typedef struct Nodo {
+		int data;
+		struct Nodo* next;
+	} Nodo;
+\end{lstlisting}
+Vediamo le operazioni che possono essere eseguite:
+\begin{itemize}
+	\item \textbf{Creazione} di lista \textbf{vuota}
+	\begin{lstlisting}[language=C]
+		Nodo * crea_lista(){
+			return NULL;
+		}
+	\end{lstlisting}
+	\item \textbf{Distruzione} della lista
+	\begin{lstlisting}[language=C]
+		void distruggi_lista(Nodo* testa) {
+			Nodo * corrente = testa;
+			while (corrente != NULL) {
+				Nodo * temp = corrente;
+				corrente = corrente->next;
+				free(temp);
+			}
+		}
+	\end{lstlisting}
+	\item \textbf{Stampa}
+	\begin{lstlisting}[language=C]
+		void stampa_lista(Nodo* testa) {
+			Nodo * corrente = testa;
+			while (corrente != NULL) {
+				printf("%d ->", corrente->data);
+				corrente=corrente->next;
+			}
+		}
+	\end{lstlisting}
+	\item \textbf{Inserimento} in \textbf{testa}
+	\begin{itemize}
+		\item \textit{Iterativo}
+		\begin{lstlisting}[language=C]
+			Nodo* inserisci_testa(Nodo* testa, int valore) {
+				Nodo * nuovo_nodo = malloc(sizeof(Nodo));
+				nuovo_nodo->data = valore;
+				nuovo_nodo->next = testa;
+				return nuovo_nodo;
+			}
+		\end{lstlisting}
+		\item \textit{Ricorsivo}
+		\begin{lstlisting}[language=C]
+			Nodo* inserisci_testa_ricorsivo(Nodo* testa, int valore) {
+				if(testa == NULL) {
+					Nodo* nuovo = malloc(sizeof(Nodo));
+					nodo->data = valore;
+					nodo->next = NULL;
+					return nuovo;
+				}
+				Nodo* nuovo = malloc(sizeof(Nodo));
+				nuovo->data = valore;
+				nuovo->next = testa;
+				return nuovo;
+			}
+		\end{lstlisting}
+	\end{itemize}
+	\item \textbf{Cancellazione di un elemento}
+	\begin{itemize}
+		\item \textit{Iterativo}
+		\begin{lstlisting}[language=C]
+			Nodo* cancella_elem(Nodo* testa, int valore){
+				if(testa==NULL) return NULL;
+				if(testa->data == valore) {
+					Nodo* tmp = testa;
+					testa = testa->next;
+					free(tmp);
+					return testa;
+				}
+				Nodo* corrente = testa;
+				while (corrente->next != NULL && corrente->next->data != valore)
+				corrente = corrente->next;
+				if(corrente->next == NULL){
+					Nodo* temp = corrente->next;
+					corrente->next = temp->next;
+					free(temp);
+				}
+				return testa;
+			}
+		\end{lstlisting}
+		\item \textit{Ricorsivo}
+		\begin{lstlisting}[language=C]
+			Nodo* cancella_ric(Nodo* testa, int valore){
+				if(testa==NULL) return NULL;
+				if(testa->data==valore){
+					Nodo* tmp = testa;
+					testa = testa->next;
+					free(tmp);
+					return testa;
+				}
+				testa->next = cancella_ric(testa->next, valore);
+				return testa;
+			}
+		\end{lstlisting}
+	\end{itemize}
+\end{itemize}
+\subsection{Union}
+\textbf{Descrivi union.}\\
+Union è un tipo di dato che consente di memorizzare variabili di diversi tipi nello stesso spazio di memoria. A differenza delle struct, in cui ogni membro ha il proprio spazio, in una union tutti i membro condividono la stessa area di memoria e di conseguenza \underline{solo un membro alla volta può contenere un valore}. La dimensione di union è uguale alla dimensione del suo membro più grande.
+\begin{lstlisting}[language=C]
+	union Data{
+		int i;
+		float f;
+		char str[20];
+	};
+	
+	union Data data;        
+	data.i = 10;
+	data.f = 220.5;
+\end{lstlisting}

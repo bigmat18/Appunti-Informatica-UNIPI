@@ -1,0 +1,126 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Inter Process Communication}
+
+\subsection{Memoria condivisa}
+\textbf{Definizione ed esempi di memoria condivisa.}\\
+La memoria condivisa è un'area di memoria accessibile da più processi in un sistema operativo. È un meccanismo per consentire a più processi di comunicare e condividere dati direttamente, evitando di passare messaggi o usare file. Riserva un pezzo di RAM ai processi.\\
+L'idea è che abbiamo a disposizione un file condiviso con due problemi:
+\begin{itemize}
+	\item I file sono lenti specialmente con grandi dimensioni
+	\item Le operazioni sui file sono ad accesso sequenziale tranne la \textit{seek} che però è scomoda
+\end{itemize}
+Per risolvere il problema usiamo \textit{shm\_open} che apre un oggetto di memoria condivisa e restituisce un file descriptor e \textit{truncate} che ne imposta la dimensione. L'oggetto in questione viene poi mappato con \textit{mmap}. Al termine useremo \textit{unmap} per annullare la mappatura nella memoria condivisa, \textit{close} per chiudere il file descriptor e \textit{shm\_unlink} per rimuovere l'oggetto dalla memoria condivisa.
+\begin{lstlisting}[language=C]
+	int shm_size = sizeof(int) + sizeof(long);
+	inf fd = shm_open(sommamem, O_RDWR | O _CREAT, 0660, NULL);
+	xftruncate(fd, shm_size, HERE);
+	char* tmp = mmap(shm_size, fd, NULL);
+	xshm_unlink(sommamem, NULL);
+	close(fd);
+	munmap(tmp, shm_size);
+\end{lstlisting}
+
+\subsection{shm\_open, ftruncate e mmap}
+\textbf{Uso e significato di \textit{shm\_open}, \textit{ftruncate} e \textit{mmap}.}\\
+\begin{itemize}
+	\item \textit{shm\_open} serve a creare o aprire un oggetto di memoria condivisa
+	\begin{lstlisting}[language=C]
+		int shm_open(const char* nome, int oflag, mode_t mode);
+	\end{lstlisting}
+	Dove i parametri sono:
+	\begin{itemize}
+		\item \textit{nome} nome dell'oggetto nella memoria condivisa
+		\item \textit{oflag} flag che indica se creare, leggere o scrivere (\textit{O\_CREAT}, \textit{O\_RDONLY} o \textit{O\_RDWR})
+		\item \textit{mode} permessi di accesso
+	\end{itemize}
+	Ritorna un file descriptor associato all'oggetto di memoria condivisa.
+	\item \textit{ftruncate} è usato per impostare la dimensione di un file o di un oggetto di memoria condivisa.
+	\begin{lstlisting}[language=C]
+		int ftruncate(int fd, off_t length);
+	\end{lstlisting}
+	Dove i parametri sono:
+	\begin{itemize}
+		\item \textit{fd} file descriptor ottenuto con \textit{shm\_open}
+		\item \textit{length} nuova dimensione del file
+	\end{itemize}
+	Restituisce $0$ in caso di successo, $-1$ altrimenti.
+	\item \textit{mmap} serve a mappare un file o una regione di memoria (e.g. oggetto creato da \textit{shm\_open}) nello spazio di indirizzamento del processo
+	\begin{lstlisting}[language=C]
+		void* nmap(void* addr, size_t length, int prot, int flags, int fd, off_t offset);
+	\end{lstlisting}
+	Dove i parametri sono:
+	\begin{itemize}
+		\item \textit{addr} indirizzo suggerito per il mapping, solitamente NULL
+		\item \textit{length} dimensione della regione da mappare
+		\item \textit{prot} permessi di accesso
+		\item \textit{flags} specifica opzioni
+		\item \textit{fd} file descriptor
+		\item \textit{offset} offset inizio del file
+	\end{itemize}
+	Restituisce la memoria mappata o \textit{MAP\_FAILED} in caso di errore.q
+\end{itemize}
+
+\subsection{Async-signal-safe}
+Una funzione si definisce async signal safe se può essere chiamata in modo sicuro all'interno del signal handler. Questo significa che non fa affidamento su risorse che potrebbero essere lasciate in uno stato incoerente a causa dell'interruzione provocata dal segnale:
+\begin{itemize}
+	\item Non usare mutex o risorse che potrebbero essere bloccate all'arrivo del segnale
+	\item Non modificare dati globali o statici in modo atomico
+\end{itemize}
+Alcuni esempi sono: \textit{write}, \textit{read}, \textit{close}, \textit{signal}, \textit{exit}, \textit{kill}.
+
+\subsection{Maschera dei segnali bloccati}
+La maschera dei segnali bloccati viene gestita utilizzando le funzioni della libreria POSIX. Per i thread in ambienti MT si utilizza:
+\begin{lstlisting}[language=C]
+	int pthread_sigmask(int how, const sigset_t* set, sigset_t* oldset);
+\end{lstlisting}
+Dove i parametri sono:
+\begin{itemize}
+	\item \textit{how} indica l'operazione da eseguire tra
+	\begin{itemize}
+		\item \textit{SIG\_BLOCK} : aggiunge i segnali di un set alla maschera
+		\item \textit{SIG\_UNBLOCK}: rimuove i segnali di un set dalla maschera
+		\item \textit{SIG\_SETMASK}: imposta la maschera da un set
+	\end{itemize}
+	\item \textit{set}: insieme di segnali da aggiungere, rimuovere o impostare
+	\item \textit{oldset}: se non NULL viene riempito con la vecchia maschera
+\end{itemize}
+
+\subsection{Segnali real time}
+I segnali si suddividono in:
+\begin{itemize}
+	\item \textbf{Standard signal}: quando vengono inviati più segnali dello stesso tipo ad un processo o thread il sistema li accorpa in un unico segnale. Se il segnale non è ancora gestito ulteriori invii dello stesso segnale non verranno accodati e andranno persi.
+	\item \textbf{Real time}: sono quelli con il codice che va da $32$ a $64$. Alcuni di essi sono utilizzabili solo dal SO. Quelli per l'utente vanno da \textit{SIGRTMIN} e \textit{SIGRTMAX}. Le istanze di segnali vengono accodate. Ogni invio viene mantenuto in una coda separata con la possibilità di includere dati aggiuntivi tramite una \textit{union}.
+\end{itemize}
+
+\subsection{Pipe}
+\textbf{Spiega le pipe.}\\
+Le pipe sono un meccanismo di comunicazione tra processi che consente il trasferimento di dati tra due processi attraverso un buffer gestito dal sistema operativo.
+Ne esistono di due tipi:
+\begin{itemize}
+	\item \textbf{Named}: una pipe con nome (chiamata anche FIFO) permette la comunicazione tra processi non correlati. Si crea con la funzione
+	\begin{lstlisting}[language=C]
+		int mkfifo(const char* pathname, mode_t mode);
+	\end{lstlisting}
+	Dove i parametri sono:
+	\begin{itemize}
+		\item \textit{pathname} dove la pipe verrà create
+		\item \textit{mode} specifica i permessi di accesso al file
+	\end{itemize}
+	Se ha successo restituisce $0$, altrimenti $-1$ e imposta \textit{errno}. Al termine dell'utilizzo si deve fare
+	\begin{lstlisting}[language=C]
+		int unlink(const char* pathname);
+	\end{lstlisting}
+	che rimuove il link al file. Quando tutti i link sono stati rimossi, il file viene eliminato.
+	\item \textbf{Unnamed}: utilizzato per la comunicazione tra processi correlati. Utilizza:
+	\begin{lstlisting}[language=C]
+		int pipe(int pipefd[2]);
+	\end{lstlisting}
+	Dove \textit{pipefd} è un array di due elementi:
+	\begin{itemize}
+		\item \textit{pipefd[0]} è l'estremità di lettura della pipe
+		\item \textit{pipefd[1]} è l'estremità di scrittura della pipe
+	\end{itemize}
+	In caso di successo la funzione restituisce $0$, altrimenti $-1$ e imposta \textit{errno}. Se il lettore tenta di leggere i dati prima che siano stati inviati, rimane in attesa.
+\end{itemize}
+In entrambi i casi al termine dell'utilizzo bisogna utilizzare \textit{close}.

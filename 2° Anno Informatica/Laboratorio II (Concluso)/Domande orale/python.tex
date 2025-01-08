@@ -1,0 +1,166 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Python}
+\subsection{Python vs C}
+\textbf{Quali sono le differenze principali tra Python e C?}\\
+\begin{itemize}
+	\item Python gestisce gli \textbf{interi} con una precisione arbitraria, ovvero il limite è la quantità di memoria disponibile, mentre C li ha di dimensione limitata.
+	\item Le \textbf{liste} in Python sono oggetti complessi che supportano operazioni avanzate mentre gli \textbf{array} in C sono limitati e meno flessibili.
+	\item Python semplifica molto la gestione dei \textbf{file}
+	\item Python è preferibile per script, prototipi e applicazioni rapide mentre C per applicazioni embedded, applicazioni ad alte prestazioni e sistemi operativi
+\end{itemize}
+
+\subsection{Navigazione file system}
+Grazie al package \textit{os}.
+\subsubsection{Elenco file}
+Per elencare i file in una directory:
+\begin{lstlisting}[language=Python]
+	path = "."
+	for entry in os.listdir(path):
+		print(entry)
+\end{lstlisting}
+\subsubsection{Directory}
+Per verificare se un file è una directory:
+\begin{lstlisting}[language=Python]
+	for entry in os.listdir(path):
+		full_path = os.path.join(path, entry)
+		if os.path.isdir(full_path):
+			print("Its a directory")
+\end{lstlisting}
+\subsubsection{Attraversare FS}
+Per attraversare ricorsivamente il file system:
+\begin{lstlisting}[language=Python]
+	for root, dirs, files in os.walk(path)
+\end{lstlisting}
+\subsubsection{Manipolazione}
+Per manipolare le directory uso i seguenti comandi:
+\begin{lstlisting}[language=Python]
+	os.mkdir(path, mode=0o666) # Creo
+	os.rename(source, destination) # Rinomino
+	os.chdir(path) # Cambio directory corrente
+	os.rmdir(path) # Elimino
+\end{lstlisting}
+
+\subsection{Subprocess}
+Per invocare comandi della shell da Python si utilizza dal pacchetto \textit{subprocess}:
+\begin{lstlisting}[language=Python]
+	result = subprocess.run(["ls", "-l"], capture_output=True, text=True)
+	print(result.stdout)
+\end{lstlisting}
+Dove i parametri sono:
+\begin{itemize}
+	\item Lista che specifica il comando da eseguire e i suoi argomenti
+	\item \textit{capture\_output} specifica se catturare \textit{stderr} e \textit{stdout}
+	\item \textit{text} specifica se convertire l'output in stringhe testuali
+\end{itemize}
+
+\subsection{Classi}
+Le classi in Python possono avere metodi speciali:
+\begin{itemize}
+	\item \textit{\_\_init\_\_} viene chiamato automaticamente alla creazione di una nuova istanza della classe
+	\item \textit{\_\_eq\_\_} definisce il comportamento di $==$
+	\item \textit{\_\_str\_\_} fornisce una rappresentazione dell'oggetto in stringa
+	\item \textit{\_\_repr\_\_} fornisce una rappresentazione stampabile dell'oggetto, utile per il debug
+	\item \textit{\_\_lt\_\_} definisce il comportamento di $<$
+	\item \textit{\_\_hash\_\_} consente di usare l'oggetto come chiave in un dizionario e di inserirlo in un set. In questo caso è importante anche definire \textit{\_\_eq\_\_}
+\end{itemize}
+
+\subsection{Metodo hash}
+Il metodo hash in Python viene usato per calcolare l'hash di un oggetto ed è un elemento chiave nella gestione di oggetti immutabili e strutture dati come dizionari e set. Di default ogni classe eredita da \textit{Object} l'implementazione hash:
+\begin{lstlisting}[language=Python]
+	class MyClass:
+		pass
+	obj1 =  MyClass()
+	obj2 = MyClass()
+	
+	# Sono diversi
+	assert obj1 != obj2
+\end{lstlisting}
+Ma se viene ridefinita dall'utente:
+\begin{lstlisting}[language=Python]
+	class Persona:
+		def __init__(self, nome, eta):
+			self.nome = nome
+			self.eta = eta
+		def __eq__(self, other):
+			return self.nome == other.nome and self.eta == other.eta
+		def __hash__(self):
+			return hash((self.nome, self.eta))
+	
+	p1 = Persona("Mario", 30)
+	p2 = Persona("Mario", 30)
+	
+	# Sono uguali
+	assert p1 == p2
+\end{lstlisting}
+
+\subsection{Multithreading}
+In Python non esiste un vero multithreading per via dell'esistenza del \textbf{Global Interpreter Lock}. Infatti quest'ultimo limita l'utilizzo dell'interprete Python ad un solo thread per processo e quindi alla fine è un falso multithreading. L'unico modo per aggirare questa problematica è creare più processi tramite il modulo \textit{multiprocessing}.\\
+L'unico caso in cui il multithreading in Python è utile è in presenza di operazioni di I/O, dove quindi i thread rimangono comunque in attesa.\\
+Esistono vari metodi per gestire i thread in Python:
+\begin{itemize}
+	\item \textit{threading.Thread}
+	\begin{lstlisting}[language=Python]		
+		def funzione_thread(nome, ritardo):
+			print(f"Thread {nome}: Inizio")
+			time.sleep(ritardo) # Simula un'operazione che richiede tempo
+			print(f"Thread {nome}: Fine")
+		thread1 = threading.Thread(target=funzione_thread, args=("Uno", 2))
+		thread2 = threading.Thread(target=funzione_thread, args=("Due", 1))
+		
+		thread1.start()
+		thread2.start()
+		
+		thread1.join() # Attende la terminazione di thread1
+		thread2.join() # Attende la terminazione di thread2
+	\end{lstlisting}
+	Dove i parametri sono:
+	\begin{itemize}
+		\item \textit{target} è la funzione che deve essere eseguita dal thread
+		\item \textit{args} è una tupla contenente gli argomenti da passare alla funzione che deve essere eseguita
+	\end{itemize}
+	\item Sottoclasse di \textit{threading.Thread}
+	\begin{lstlisting}[language=Python]		
+		class MioThread(threading.Thread):
+			def __init__(self, nome, ritardo):
+				super().__init__()
+				self.nome = nome
+				self.ritardo = ritardo
+		
+		def run(self):
+			print(f"Thread {self.nome}: Inizio")
+			time.sleep(self.ritardo)
+			print(f"Thread {self.nome}: Fine")
+		
+		thread1 = MioThread("Uno", 2)
+		thread2 = MioThread("Due", 1)
+		
+		thread1.start()
+		thread2.start()
+		
+		thread1.join()
+		thread2.join()
+	\end{lstlisting}
+	\item \textit{concurrent.futures.threadPoolExecutor} permette di gestire un pool di thread e facilita la creazione, la partenza e la terminazione
+	\begin{lstlisting}[language=Python]	
+		def funzione_thread(numero):
+			print(f"Thread che elabora il numero: {numero}")
+			time.sleep(1) # Simula un'operazione
+			return numero * 2
+			
+		numeri = [1, 2, 3, 4, 5]
+		
+		with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+			risultati = list(executor.map(funzione_thread, numeri))
+		
+		print(f"Risultati: {risultati}")
+		
+		# In alternativa
+		with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+			futures = [executor.submit(funzione_thread, n) for n in numeri]
+		
+		for future in concurrent.futures.as_completed(futures):
+			print(f"Risultato di un future: {future.result()}")
+	\end{lstlisting}
+	Dove \textit{max\_workers} indica il numero massimo di thread che possono coesistere.
+\end{itemize}

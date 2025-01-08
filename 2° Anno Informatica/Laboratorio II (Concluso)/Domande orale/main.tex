@@ -1,3 +1,4 @@
+% !TeX spellcheck = it_IT
 \documentclass[a4paper,10pt]{article}
 \usepackage[utf8]{inputenc}
 
@@ -18,11 +19,11 @@
 \usepackage{subcaption}
 \usepackage{hyperref}
 \hypersetup{
-    colorlinks,
-    citecolor=black,
-    filecolor=black,
-    linkcolor=black,
-    urlcolor=black
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
 }
 
 \graphicspath{ {./images/} }
@@ -96,37 +97,36 @@
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 
 \lstset{frame=tb,
-  language=C,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\small\ttfamily},
-  numbers=none,
-  numberstyle=\tiny\color{gray},
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
-  stringstyle=\color{mauve},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3
+	language=C,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
 }
 
-\title{\textbf{Laboratorio II}}
-\author{Realizzato da: Ghirardini Filippo}
-\date{A.A. 2023-2024}
-
 \begin{document}
-\input{frontespizio}
-
-\tableofcontents
-\newpage
-\maketitle
-\begin{center}
-    \vspace{-20pt}
-    \rule{11cm}{.1pt} 
-\end{center}
-\newpage
-\include{thread}
-\include{socket}
+	\input{frontespizio}
+	
+	\tableofcontents
+	\vfill
+	\begin{center}
+		\vspace{-20pt}
+		\rule{11cm}{.1pt} 
+	\end{center}
+	\newpage
+	\input{functions}
+	\input{structures_data}
+	\input{theory}
+	\input{ipc}
+	\input{sincronizzazione}
+	\input{python}
 \end{document}

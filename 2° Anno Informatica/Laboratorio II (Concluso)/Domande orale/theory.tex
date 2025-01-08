@@ -1,0 +1,147 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Teoria}
+\subsection{Aritmetica dei puntatori}
+L'aritmetica dei puntatori ti consente di eseguire operazioni matematiche utilizzando direttamente i puntatori:
+\begin{itemize}
+	\item Incremento con offset: incrementando un puntatore esso punterà all'elemento successivo
+	\item Decremento con offset: decremento all'elemento precedente
+\end{itemize}
+\begin{lstlisting}[language=C]
+	int* p = array;
+	p++;
+	p--;
+\end{lstlisting}
+\begin{note}
+	Quando si eseguono queste operazioni è importante prestare attenzione ai limiti dell'array.
+\end{note}
+\subsection{Buffer overflow}
+\textbf{Problematica del buffer overflow.}\\
+Quando creiamo un buffer, stiamo associando ad esso un arco di memoria. Se i dati scritti in questo buffer superano la capacità i dati eccedenti sovrascrivono la memoria adiacente. Per evitarlo possiamo usare funzioni come \textit{fgets} e \textit{snprintf} o usare allocazione dinamica.
+
+\subsection{Variabili statiche}
+\textbf{Qual è l'uso delle variabili statiche?}\\
+Una variabile statica ha una durata di memoria globale, ovvero dura per tutta l'esecuzione del programma. Sono visibili all'interno dello scope della funzione dichiarata. Vengono inizializzate una sola volta e occupano memoria per tutta l'esecuzione, anche se non utilizzate.
+
+\subsection{MAKEFILE}
+\textbf{Parla del MAKEFILE e della sua compilazione.}\\
+Il MAKEFILE è uno strumento per gestire la compilazione di progetti, specialmente quelli composti da più file sorgente.
+\begin{lstlisting}[language=BASH]
+	target: dipendenze
+		comando
+\end{lstlisting}
+Si compone di:
+\begin{itemize}
+	\item \textit{target}: nome del file da creare
+	\item \textit{dipendenze}: file da cui il target dipende
+	\item \textit{comando}: comando da eseguire
+\end{itemize}
+\begin{example}[MAKEFILE]
+	Dato \textit{main.c} il file sorgente, \textit{funzioni.c} il sorgente con funzioni aggiuntive e \textit{funzioni.h} il suo header.
+	\begin{lstlisting}[language=BASH]
+		# Compilatore
+		CC=gcc
+		# Opzioni di compilazione
+		CFLAGS= -wall -g
+		# Eseguibile
+		TARGET = programma
+		# File sorgenti
+		SRCS = main.c funzioni.c
+		# File oggetto
+		OBJS = main.o funzioni.o
+		# Regola principale
+		all: $(TARGET)
+		# Regola per creare eseguibile
+		$(TARGET): $(OBJS)
+			# $< significa primo file nella lista dipendenze
+			# $@ significa nome del target .o
+			$(CC) $(CFLAGS) -c $< -o $@
+		# Pulizia
+		clean:
+			rm -f $(OBJS) $(TARGET)
+	\end{lstlisting}
+\end{example}
+
+\subsection{void*}
+\textbf{Necessità ed utilizzo del tipo \textit{void*}.}\\
+Il puntatore \textit{voidé} è un puntatore generico che  può essere utilizzato per rappresentare un puntatore ad un qualsiasi dato. Un esempio di applicazione sono le funzioni parametrizzate che prendono un input valori diversi a seconda della chiamata.
+
+\subsection{Programma vs processo}
+\textbf{Qual è la differenza tra un programma ed un processo?}\\
+Un \textbf{programma} è un insieme di istruzioni scritte in un linguaggio di programmazione che risiede su un dispositivo come file eseguibile o sorgente.\\
+Un \textbf{processo} è un'entità dinamica, rappresenta un'istanza in esecuzione di un programma. È gestito dal sistema operativo che gli assegna risorse per la sua esecuzione.
+
+\subsection{PID}
+\textbf{PID di un processo.}\\
+Il PID è un identificatore assegnato dal sistema operativo ad ogni processo in esecuzione. È utile per la gestione dei processi, il loro controllo e la comunicazione con essi tramite segnali.
+\begin{lstlisting}[language=C]
+	getpid(); // Restituisce il PID del processo chiamante
+	getppid(); // Restituisce il PID del processo genitore
+\end{lstlisting}
+
+\subsection{Processi in background}
+In Linux è possibile avviare un processo in background aggiungendo il simbolo \textit{\&} alla fine del comando.
+\begin{lstlisting}[language=BASH]
+	./programma &
+\end{lstlisting}
+Il terminale visualizza il PID del processo avviato.
+
+\textbf{Qual è la relazione tra \textit{syscall} e le lybrary functions?}\\
+Le \textit{syscall} sono funzioni fornite dal sistema operativo per interagire direttamente con il kernel.
+\begin{lstlisting}[language=C]
+	int open(const char* pathname, int flags, mode_t mode);
+	size_t read(int fd, void* buf, size_t count);
+	size_t write(int fd, const void* buf, size_t count);
+\end{lstlisting}
+Queste funzioni operano su un file descriptor senza buffering e con gestione manuale delle risorse.\\
+Le \textit{funzioni di libreria} invece offrono un livello superiore , semplificando le operazioni di lettura e scrittura grazie al \textbf{buffering}.
+\begin{lstlisting}[language=C]
+	FILE* fopen(const char* pathname, const char* mode);
+	size_t fread(void* ptr, size_t size, size_t count, FILE* stream);
+	size_t fwrite(const void* ptr, size_t size, size_t count, FILE* stream);
+\end{lstlisting}
+Queste operano su puntatori al file (struttura che incapsula il file descriptor e il buffer) e offrono un sistema di buffering, riducendo le chiamate al kernel.
+
+\subsection{Variabili statiche}
+\textbf{Qual è l'uso delle variabili statiche?}\\
+Una variabile statica ha una durata di memoria globale, ovvero dura per tutta l'esecuzione del programma. Sono visibili all'interno dello scope della funzione dichiarata. Vengono inizializzate una sola volta e occupano memoria per tutta l'esecuzione, anche se non utilizzate.
+
+\subsection{UMASK}
+\textbf{Significato e uso di UMASK.}\\
+UMASK è un parametro in molti sistemi che definisce i \textbf{permessi} assegnati ai file o alle directory appena creati. Sono usate per migliorare la sicurezza e si lavora in un ambiente e se si lavora in un ambiente con i file condivisi può permettere di scrivere nel file di gruppo.\\
+Ogni cifra rappresenta $3$ bit: lettura, scrittura ed esecuzione. Lo $0$ rappresenta la codifica ottale del numero. Le tre cifre dopo lo $0$ rappresentano rispettivamente i permessi per l'utente, per il gruppo e per tutti.\\
+Ad esempio $0666$ indica che un file è senza restrizioni: in binario abbiamo $0 \quad 110 \quad 110 \quad 110$, dove tutti (utente, gruppo e chiunque) hanno permesso di lettura, scrittura ma non esecuzione.
+
+\subsection{SIGINT, SIGSTOP, SIGQUIT}
+\begin{itemize}
+	\item \textbf{SIGINT(2)} (CTR+C) interrompe il processo in modo controllato dando al programma l'opportunità di gestire l'uscita.
+	\item \textbf{SIGSTOP(19)} (CTRL+Z) sospende il processo e non può essere né intercettato né ignorato dal programma. Per farlo riprendere successivamente si invia il segnale \textbf{SIGCONT}.
+	\item \textbf{SIGQUIT(3)} (CTRL+$\backslash\backslash$) termina il programma e, se abilitato, genera un core dump per diagnosticare eventuali problemi
+\end{itemize}
+
+\subsection{MT-Safe}
+\textbf{Concetto di Multi Thread safe.}\\
+Una funzione è MT-Safe se può essere chiamata in modo sicuro da più thread senza causare comportamenti indesiderati o corruzione dei dati. Deve avere:
+\begin{itemize}
+	\item Accesso protetto ai dati condivisi attraverso meccanismi di protezione
+	\item Non modificare variabili statiche o globali senza protezione
+	\item Evitare race conditions
+\end{itemize}
+
+\subsection{Duplicazione di stringhe}
+\textbf{Come si duplica una stringa?}\\
+\begin{lstlisting}[language=C]
+	size_t len = strlen(str);
+	char* str2 = malloc((len+1)*sizeof(char));
+	strcpy(str2, str);
+\end{lstlisting}
+
+\subsection{Manipolazione dei file}
+Per elencare i file:
+\begin{lstlisting}[language=BASH]
+	ls -l # Dettagliato
+	ls -a # Mostra anche quelli nascosti
+	ls -R # Elenca ricorsivamente il contenuto delle sottodirectory
+	ls -lh # Specifica anche la dimensione dei file
+\end{lstlisting}
+L'output di \textit{ls -l} ci specifica anche se un determinato oggetto è un file o una directory in quanto l'ultima avrà in aggiunta la lettera \textit{d} mentre il primo avrà \textit{-.}
