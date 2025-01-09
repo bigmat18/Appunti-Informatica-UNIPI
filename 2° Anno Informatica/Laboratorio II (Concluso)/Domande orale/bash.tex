@@ -1,6 +1,16 @@
 % !TeX spellcheck = it_IT
 \newpage
 \section{Bash}
+\subsection{stderr e stdout}
+\textbf{Qual è l'utilizzo di \textit{stderr} e \textit{stdout}?}\\
+\textit{stdout} lo usiamo per l'output, di default i dati vengono stampati sul terminare (e.g. \textit{printf}). Per ridirezionarlo usiamo
+\begin{lstlisting}[language=BASH]
+	command > file_output
+\end{lstlisting}
+\textit{stderr} è usato invece per l'output degli errori o messaggi diagnostici (e.g. \textit{perror}). Per ridirezionarlo usiamo
+\begin{lstlisting}[language=BASH]
+	command >&2 file_output
+\end{lstlisting}
 
 \subsection{kill}
 \textbf{Invio di segnale dalla riga di comando con \textit{kill}.}\\
@@ -25,6 +35,9 @@ Esiste anche una funzione che può essere chiamata all'interno di un programma e
 \begin{lstlisting}[language=C]
 	int pthread_kill(pthread_t thread, int sig);
 \end{lstlisting}
+
+\subsection{pkill}
+\textit{pkill} si comporta come \textit{kill} ma invece del PID utilizza un pattern che deve corrispondere al nome del processo che deve essere terminato.
 
 \subsection{MAKEFILE}
 \textbf{Parla del MAKEFILE e della sua compilazione.}\\
@@ -56,12 +69,12 @@ Si compone di:
 		all: $(TARGET)
 		# Regola per creare eseguibile
 		$(TARGET): $(OBJS)
-		# $< significa primo file nella lista dipendenze
-		# $@ significa nome del target .o
-		$(CC) $(CFLAGS) -c $< -o $@
+			# $< significa primo file nella lista dipendenze
+			# $@ significa nome del target .o
+			$(CC) $(CFLAGS) -c $< -o $@
 		# Pulizia
 		clean:
-		rm -f $(OBJS) $(TARGET)
+			rm -f $(OBJS) $(TARGET)
 	\end{lstlisting}
 \end{example}
 

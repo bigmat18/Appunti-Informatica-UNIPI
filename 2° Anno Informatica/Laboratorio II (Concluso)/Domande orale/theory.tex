@@ -65,13 +65,13 @@ Una variabile statica ha una durata di memoria globale, ovvero dura per tutta l'
 \subsection{UMASK}
 \textbf{Significato e uso di UMASK.}\\
 UMASK è un parametro in molti sistemi che definisce i \textbf{permessi} assegnati ai file o alle directory appena creati. Sono usate per migliorare la sicurezza e si lavora in un ambiente e se si lavora in un ambiente con i file condivisi può permettere di scrivere nel file di gruppo.\\
-Ogni cifra rappresenta $3$ bit: lettura, scrittura ed esecuzione. Lo $0$ rappresenta la codifica ottale del numero. Le tre cifre dopo lo $0$ rappresentano rispettivamente i permessi per l'utente, per il gruppo e per tutti.\\
+La prima cifra è in codifica ottale e rappresenta quali permessi possono essere impostati. Ogni cifra successiva rappresenta $3$ bit: lettura, scrittura ed esecuzione e sono rispettivamente i permessi per l'utente, per il gruppo e per tutti.\\
 Ad esempio $0666$ indica che un file è senza restrizioni: in binario abbiamo $0 \quad 110 \quad 110 \quad 110$, dove tutti (utente, gruppo e chiunque) hanno permesso di lettura, scrittura ma non esecuzione.
 
 \subsection{SIGINT, SIGSTOP, SIGQUIT}
 \begin{itemize}
 	\item \textbf{SIGINT(2)} (CTR+C) interrompe il processo in modo controllato dando al programma l'opportunità di gestire l'uscita.
-	\item \textbf{SIGSTOP(19)} (CTRL+Z) sospende il processo e non può essere né intercettato né ignorato dal programma. Per farlo riprendere successivamente si invia il segnale \textbf{SIGCONT}.
+	\item \textbf{SIGSTOP(19)} (CTRL+Z) sospende il processo e non può essere né intercettato né ignorato dal programma. Per farlo riprendere successivamente si invia il segnale \textbf{SIGCONT(18)}.
 	\item \textbf{SIGQUIT(3)} (CTRL+$\backslash\backslash$) termina il programma e, se abilitato, genera un core dump per diagnosticare eventuali problemi
 \end{itemize}
 

@@ -7,16 +7,7 @@
 \begin{lstlisting}[language=C, mathescape]
 	void perror(const char *msg) $\to$ msg:string
 \end{lstlisting}
-\subsection{stderr e stdout}
-\textbf{Qual è l'utilizzo di \textit{stderr} e \textit{stdout}?}\\
-\textit{stdout} lo usiamo per l'output, di default i dati vengono stampati sul terminare (e.g. \textit{printf}). Per ridirezionarlo usiamo
-\begin{lstlisting}[language=BASH]
-	command > file_output
-\end{lstlisting}
-\textit{stderr} è usato invece per l'output degli errori o messaggi diagnostici (e.g. \textit{perror}). Per ridirezionarlo usiamo
-\begin{lstlisting}[language=BASH]
-	command >&2 file_output
-\end{lstlisting}
+
 \subsection{fscanf}
 \textbf{Cosa significano i modificatori \textit{\%NS} e \textit{\%ms} in \textit{fscanf}?}\\
 \begin{itemize}
@@ -31,20 +22,23 @@
 	\end{lstlisting}
 	Con \textit{buffer} un puntatore a \textit{char*}. La memoria è deallocata automaticamente.
 \end{itemize}
+
 \subsection{snprintf e asprintf}
 \textbf{Allocazione di stringhe tramite \textit{snprintf} e \textit{asprintf}.}\\
-Con \textit{snprintf} si costruiscono stringhe in modo sicuro scrivendole in un buffer preallocato mentre \textit{asprintf} alloca dinamicamente la memoria.
 \begin{itemize}
-	\item \begin{lstlisting}[language=C]
-		int snprintf(char* str, size_t size, const char* format);
+	\item \textit{snprintf} costruise stringhe in un buffer \textbf{preallocato}
+	\begin{lstlisting}[language=C]
+		int snprintf(char* str, size_t size, const char* format, arg1, arg2, ...);
 	\end{lstlisting}
 	Questa funzione restituisce il numero di caratteri scritti e usa i seguenti parametri:
 	\begin{itemize}
 		\item \textit{str}: puntatore al buffer dove verrà scritta la stringa
 		\item \textit{size}: dimensione massima del buffer incluso \textit{$\backslash 0$}
-		\item \textit{format}: stringa di formato
+		\item \textit{format}: stringa di formato che verrà messa nel buffer
+		\item \textit{args}: argomenti da formattare nella stringa di formato
 	\end{itemize}
-	\item \begin{lstlisting}[language=C, mathescape]
+	\item  \textit{asprintf} alloca \textbf{dinamicamente} la memoria della dimensione necessaria.
+	\begin{lstlisting}[language=C, mathescape]
 		int asprintf(char ** strp, const char * format, $\ldots$);
 	\end{lstlisting}
 	Restituisce il numero di caratteri scritti senza $\backslash 0$ e prende come parametro \textit{strp} ovvero il puntatore dove verrà allocata la memoria per la stringa.
@@ -183,7 +177,7 @@ Dove i parametri sono:
 \begin{lstlisting}[language=C]
 	int atexit(void(*func)(void));
 \end{lstlisting}
-\newpage
+
 \subsection{getopt}
 \textbf{Come funziona \textit{getopt}?}\\
 È una funzione per analizzare le opzioni e gli argomenti passati dalla riga di comando.
@@ -251,6 +245,10 @@ Dove i parametri sono:
 	\item \textit{sig} puntatore dove verrà memorizzato il segnale ricevuto
 \end{itemize}
 Restituisce $0$ se è corretto.
+
+\subsection{pause}
+A differenza di \textit{sigwait}, questa funzione sospende l'esecuzione fino a che un qualunque segnale non arriva e poi lo passa al gestore. Al temine dell'esecuzione del gestore restituisce $0$ o $-1$ in caso di errore, impostando \textit{errno} a \textit{EINTR}. Opera a livello di processo e non è adatta al multi threading.
+
 \subsection{sigqueue e sigwaitinfo}
 \textbf{Invio di segnali con \textit{sigqueue} e \textit{sigwaitinfo}.}\\
 \begin{itemize}
@@ -264,7 +262,7 @@ Restituisce $0$ se è corretto.
 		\item \textit{sig} codice del segnale
 		\item \textit{value} dato associato al segnale
 	\end{itemize}
-	\newpage
+	
 	\item \textit{sigwaitinfo} permette di attendere un segnale e ricevere le informazioni aggiuntive
 	\begin{lstlisting}[language=C]
 		int sigwaitinfo(const sigset_t * set, siginfo_t * info);
@@ -280,19 +278,3 @@ Restituisce $0$ se è corretto.
 		\end{itemize}
 	\end{itemize}
 \end{itemize}
-\subsection{syscall e library function}
-\textbf{Qual è la relazione tra \textit{syscall} e le lybrary functions?}\\
-Le \textit{syscall} sono funzioni fornite dal sistema operativo per interagire direttamente con il kernel.
-\begin{lstlisting}[language=C]
-	int open(const char* pathname, int flags, mode_t mode);
-	size_t read(int fd, void* buf, size_t count);
-	size_t write(int fd, const void* buf, size_t count);
-\end{lstlisting}
-Queste funzioni operano su un file descriptor senza buffering e con gestione manuale delle risorse.\\
-Le \textit{funzioni di libreria} invece offrono un livello superiore , semplificando le operazioni di lettura e scrittura grazie al \textbf{buffering}.
-\begin{lstlisting}[language=C]
-	FILE* fopen(const char* pathname, const char* mode);
-	size_t fread(void* ptr, size_t size, size_t count, FILE* stream);
-	size_t fwrite(const void* ptr, size_t size, size_t count, FILE* stream);
-\end{lstlisting}
-Queste operano su puntatori al file (struttura che incapsula il file descriptor e il buffer) e offrono un sistema di buffering, riducendo le chiamate al kernel.

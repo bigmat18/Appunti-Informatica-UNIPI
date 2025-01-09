@@ -14,7 +14,7 @@ Per risolvere il problema usiamo \textit{shm\_open} che apre un oggetto di memor
 \begin{lstlisting}[language=C]
 	int shm_size = sizeof(int) + sizeof(long);
 	inf fd = shm_open(sommamem, O_RDWR | O _CREAT, 0660, NULL);
-	xftruncate(fd, shm_size, HERE);
+	ftruncate(fd, shm_size);
 	char* tmp = mmap(shm_size, fd, NULL);
 	xshm_unlink(sommamem, NULL);
 	close(fd);
@@ -47,7 +47,7 @@ Per risolvere il problema usiamo \textit{shm\_open} che apre un oggetto di memor
 	Restituisce $0$ in caso di successo, $-1$ altrimenti.
 	\item \textit{mmap} serve a mappare un file o una regione di memoria (e.g. oggetto creato da \textit{shm\_open}) nello spazio di indirizzamento del processo
 	\begin{lstlisting}[language=C]
-		void* nmap(void* addr, size_t length, int prot, int flags, int fd, off_t offset);
+		void* mmap(void* addr, size_t length, int prot, int flags, int fd, off_t offset);
 	\end{lstlisting}
 	Dove i parametri sono:
 	\begin{itemize}
@@ -58,7 +58,7 @@ Per risolvere il problema usiamo \textit{shm\_open} che apre un oggetto di memor
 		\item \textit{fd} file descriptor
 		\item \textit{offset} offset inizio del file
 	\end{itemize}
-	Restituisce la memoria mappata o \textit{MAP\_FAILED} in caso di errore.q
+	Restituisce la memoria mappata o \textit{MAP\_FAILED} in caso di errore.
 \end{itemize}
 
 \subsection{Async-signal-safe}
@@ -107,7 +107,7 @@ Ne esistono di due tipi:
 		\item \textit{pathname} dove la pipe verrà create
 		\item \textit{mode} specifica i permessi di accesso al file
 	\end{itemize}
-	Se ha successo restituisce $0$, altrimenti $-1$ e imposta \textit{errno}. Al termine dell'utilizzo si deve fare
+	Se ha successo restituisce $0$, altrimenti $-1$ e imposta \textit{errno}. La FIFO va poi aperta tramite \textbf{open}. Al termine dell'utilizzo si deve fare
 	\begin{lstlisting}[language=C]
 		int unlink(const char* pathname);
 	\end{lstlisting}

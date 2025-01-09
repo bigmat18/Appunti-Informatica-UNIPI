@@ -88,6 +88,7 @@ Il mutex è un meccanismo di sincronizzazione utilizzato per garantire che un so
 \subsection{Produttore consumatore}
 Il problema del produttore-consumatore è un esempio della sincronizzazione tra processi o thread. Un produttore genera dei dati e li mette in un buffer condiviso mentre il consumatore li preleva per elaborarli. Il problema principale è garantire che il produttore non inserisca dati quando il buffer è pieno e che il consumatore non li prelevi quando è vuoto. Per risolvere questo problema usiamo dei \textbf{semafori} che regolano l'accesso al buffer e gestiscono le condizioni di attesa e i \textbf{mutex} garantiscono l'accesso esclusivo al buffer durante le operazioni di inserimento e prelievo.
 
+\newpage
 \subsection{Condition variables}
 Le condition variables sono strumenti di sincronizzazione tra thread. Gli permettono di attendere determinati eventi e di essere notificati quando questi accadono. Si utilizzano in combinazione con i mutex. Le operazioni eseguibili sono:
 \begin{itemize}
