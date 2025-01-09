@@ -12,6 +12,14 @@ L'aritmetica dei puntatori ti consente di eseguire operazioni matematiche utiliz
 	p++;
 	p--;
 \end{lstlisting}
+\begin{example}
+	Nel seguente caso:
+	\begin{lstlisting}[language=C]
+		int a = 1000;
+		int b = (long) (&a+5);
+	\end{lstlisting}
+	L'operazione corrisponde ad incrementare l'indirizzo di $a$ di $5$ posizioni di intero, quindi $20$ bytes.
+\end{example}
 \begin{note}
 	Quando si eseguono queste operazioni è importante prestare attenzione ai limiti dell'array.
 \end{note}

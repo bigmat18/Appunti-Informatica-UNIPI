@@ -89,7 +89,11 @@ Dove i parametri sono:
 \subsection{Segnali real time}
 I segnali si suddividono in:
 \begin{itemize}
-	\item \textbf{Standard signal}: quando vengono inviati più segnali dello stesso tipo ad un processo o thread il sistema li accorpa in un unico segnale. Se il segnale non è ancora gestito ulteriori invii dello stesso segnale non verranno accodati e andranno persi.
+	\item \textbf{Standard signal}: quando vengono inviati più segnali dello stesso tipo ad un processo o thread il sistema li accorpa in un unico segnale. Se il segnale non è ancora gestito ulteriori invii dello stesso segnale non verranno accodati e andranno persi. Si possono implementare in due modi:
+	\begin{itemize}
+		\item \textbf{Handler}: tramite il signal handler specifichiamo che funzione gestisce un segnale specifico. Il programmatore specifica come comportarsi quando si ricevono più segnali diversi: scartarli, ignorarli o metterli in coda.
+		\item \textbf{Thread}: diciamo a tutti i thread tranne il gestore di ignorare il segnale (incluso il main thread). Il gestore usa \textit{sigwait} e si mette in attesa di un segnale. Se ne arrivano di più, vengono messi in coda e alla prossima chiamata di \textit{sigwait} vengono gestiti.
+	\end{itemize}
 	\item \textbf{Real time}: sono quelli con il codice che va da $32$ a $64$. Alcuni di essi sono utilizzabili solo dal SO. Quelli per l'utente vanno da \textit{SIGRTMIN} e \textit{SIGRTMAX}. Le istanze di segnali vengono accodate. Ogni invio viene mantenuto in una coda separata con la possibilità di includere dati aggiuntivi tramite una \textit{union}.
 \end{itemize}
 
