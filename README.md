@@ -28,21 +28,21 @@ Per maggior leggibilità:
 
 - **Paradigmi di programmazione** 🟢: appunti completi tranne per la parte di lambda calcolo, per la quale ci sono le dispese molto chiare. In più testi di esami passati con soluzioni.
 - **Ricerca operativa** (non concluso) 🔴: presenti le dispense.
-- **Laboratorio II** 🟡: presenti appunti incompleti, alcuni esercizi fatti e i parziali. È inoltre presente una subrepo con il progetto dell'anno 22/23.
+- **Laboratorio II** 🟡 (concluso): presenti appunti incompleti, alcuni esercizi fatti e i parziali. Presente l'elenco delle domande (quasi tutte quelle estraibili) dell'esame orale con il prof. Manzini aggiornato all'appello di Gennaio 2025. Inoltre il [link](https://github.com/filoghira/labIIproject) al progetto per l'anno accademico 2024/2025.
 - **Architettura e sistemi operativi** (non concluso) 🟡: appunti incompleti. Presente libro di architettura e quello di sistemi operativi. Sono poi inclusi esercizi per tutte le parti del corso.
-- **Statistica** 🟡: presenti le dispense. Presenti alcuni appunti scritti a mano durante le lezioni e altri scritti in Latex successivamente.
+- **Statistica** 🟡 (non concluso): presenti le dispense. Presenti alcuni appunti scritti a mano durante le lezioni e altri scritti in Latex successivamente.
 - **Calcolo numerico** (non concluso) 🟡: appunti quasi completi. Inoltre ci sono le dispense e alcuni esercizi.
 
 ### 3° anno
 
-- **Basi di dati** 🔴: non inziato.
+- **Basi di dati** 🟢 (concluso): appunti completi. Presente un elenco di domande per l'esame orale. Presente il progetto per l'appello di Gennaio 2025.
 - **Reti e laboratorio III** 🔴: non iniziato.
 - **Ingegneria del software** 🟡: presenti [appunti](<3° Anno Informatica/Ingegneria del Software (Concluso)/Appunti latex/main.pdf>).
 - **Introduzione all'intelligenza artificiale** (non concluso) 🟡: appunti incompleti.
 
 ### Libera scelta
 
-- **Computer grafica** (Non concluso) 🟡: sono presenti tutte le [slide](<Libera Scelta/Computer Grafica (Non concluso)/Slide.pdf>) usate durante il corso sotto forma di unica dispensa, inoltre è presente il [libro](<Libera Scelta/Computer Grafica (Non concluso)/dispense_2023.pdf>) consigliato direttamente dal professore, oltre che ad [esercizi](<Libera Scelta/Computer Grafica (Non concluso)/Esercizi>). Consiglio per la preparazione di questo esame il sito [LearnOpenGL](https://learnopengl.com). Sono presenti degli [appunti](<Libera Scelta/Computer Grafica (Non concluso)/Appunti latex/main.pdf>) in latex incompleti.
+- **Computer grafica** (non concluso) 🟡: sono presenti tutte le [slide](<Libera Scelta/Computer Grafica (Non concluso)/Slide.pdf>) usate durante il corso sotto forma di unica dispensa, inoltre è presente il [libro](<Libera Scelta/Computer Grafica (Non concluso)/dispense_2023.pdf>) consigliato direttamente dal professore, oltre che ad [esercizi](<Libera Scelta/Computer Grafica (Non concluso)/Esercizi>). Consiglio per la preparazione di questo esame il sito [LearnOpenGL](https://learnopengl.com). Sono presenti degli [appunti](<Libera Scelta/Computer Grafica (Non concluso)/Appunti latex/main.pdf>) in latex incompleti.
 - **Cloud Computing** 🟢: [appunti](<Libera Scelta/Cloud Computing (Concluso)/Appunti Latex/main.pdf>) completi
 - **Green Computing** 🟢: [appunti](<Libera Scelta/Green Computing (Concluso)/Appunti Latex/main.pdf>) completi
 - **Career Labs** 🟢: alcuni [appunti](<Libera Scelta/Career Labs>) di qualche career lab
@@ -57,4 +57,4 @@ Appunti di esami fatti durante il periodo di Erasmus al corso Bachelor in Comput
 
 ## Contribuzione
 
-In caso si voglia contribuire con del proprio materiale a questa repository è possibile contattare il creatore su Telegram al nome Matteo Giuntoni o mandando una mail a mat.giu2002@gmail.com. Sia in caso di risposta o meno sono comunque ben accette push request col materiale aggiuntivo.
+In caso si voglia contribuire con del proprio materiale a questa repository è possibile contattare il creatore su Telegram al nome Matteo Giuntoni o mandando una mail a mat.giu2002@gmail.com oppure Filippo Ghirardini a filippo.ghirardini.ra@gmail.com. Sia in caso di risposta o meno sono comunque ben accette push request col materiale aggiuntivo.
