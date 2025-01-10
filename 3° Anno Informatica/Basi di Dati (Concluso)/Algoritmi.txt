@@ -1,0 +1,57 @@
+Algoritmi
+
+Trovare la chiusura:
+- Parto con X_chius = X (lato sx di DF)
+- Finché X_chius cambia, scorro tutte le altre dipendenze
+	- Se il lato sx di una dipendenza compare in X+ e degli attributi
+	  del lato dx non ci sono ancora, unisco il lato dx a X+
+	  
+Trovare le chiavi CANDIDATE:
+- NoDes = tutti gli attributi che non sono mai a dx di una DF
+- SinDes = attributi sia a sx che dx di almeno una DF
+- Candidati = lista con la prima coppia dove il 1 elem è NoDes e il secondo SinDes
+- Finché ci sono candidati da esaminare
+	- Prendo il primo candidato X:Y
+	- Se non c'è già una chiave che è più piccola di X
+		- se la chiusura di X è uguale all'insieme delle DF
+			- X è superchiave e lo aggiungo alle chiavi
+			- altrimenti
+				- trovo gli attributi in Y che non sono in X
+				- per ognuno lo unisco a X e diventa un candidato
+		
+Trovare copertura canonica:
+- Ridurre le dipendenze in forma atomica (una per ogni DF a dx)
+- Togliere attributi estranei
+- Togliere DF ridondanti
+
+Calcolo della proiezione di DF:
+- Per ogni attributo nel sottoinsieme della proiezione
+	- calcolo la chiusura dell'attributo
+	- tengo nella parte dx della DF gli attributi che sono nel sottoinsieme
+	
+Algoritmo di analisi
+- Inizializzo p=R(T_i,F_i)
+- Finché c'è almeno una relazione in p che non è in BCNF (controllo se esiste X->A tale che X non è superchiave, quindi calcolo la chiusura di X e controllo se è uguale a T_i)
+	- Aumento il numero di relazioni n++
+	- T_a = chiusura di X rispetto a F_i
+	- F_a = proiezione di F_i su T_a
+	- T_b = T_i - (X+) + X calcolo i nuovi attributi
+	- F_b = proiezione di F_i su T_b
+	- Rimuovo R_i e aggiungo R_a e R_b
+	
+Algoritmo di sintesi
+- Copertura canonica G di F 
+- p = {}
+- Unisci in G ogni DF con la stessa parte sx in una unica 
+- Per ogni DF in G
+	- crea una relazione per ogni DF composta da parte sx+dx
+- Elimina ogni relazione di p contenuto in un altro schema di p
+- Se la decomposizione non schemi i cui attributi costituiscano una superchiave, aggiungi lo schema con attributi W, con W una chiave di R
+
+Disfare-rifare
+- Inizializzo l'insieme UNDO con le transazioni in corso all'ultimo ckp
+- Dal checkpoint vado avanti temporalmente e
+	- Per i COMMIT aggiungo a REDO la transazione (eventualmente spostando da UNDO)
+	- Per i BEGIN aggiungo ad UNDO
+- Parto dalla fine del log e se trovo una transazione tra quelle in UNDO, la disfaccio
+- Parto dall'inizio del log e se trovo una transazione tra quelle in REDO, la rifaccio
