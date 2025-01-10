@@ -677,8 +677,7 @@ Ci sono quattro livelli di isolamento che assicurano cose diverse:
 	\begin{itemize}
 		\item la transazione $T$ legge solo cambiamenti fatti da transazioni concluse
 		\item nessun valore letto o scritto da $T$ verrà cambiato da altre transazione finché $T$ non è conclusa
-		\item se $T$ legge un insieme di valori acceduti secondo qualche condizione di ricerca, l'insieme non viene
-		modificato da altre transazione finché $T$non è conclusa
+		\item se $T$ legge un insieme di valori acceduti secondo qualche condizione di ricerca, l'insieme non viene modificato da altre transazione finché $T$non è conclusa
 	\end{itemize}
 	\item \textbf{Repeatable Read}:
 	\begin{itemize}
