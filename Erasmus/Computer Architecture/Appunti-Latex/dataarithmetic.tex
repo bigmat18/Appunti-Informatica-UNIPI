@@ -1,0 +1,72 @@
+% !TeX spellcheck = en_US
+\newpage
+\section{Data arithmetic}
+\subsection{Number systems}
+\begin{definition}[Positional]
+	Representation of numbers as a sequence of digits $z_i$, with the radix point between $z_0$ and $z_{-1}$:
+	\begin{equation}
+		-z_n z_{n-1} \ldots z_1 z_0 . z_{-1} z_{-2} \ldots z_{-m}
+	\end{equation}
+	Each position $i$ of the sequence of digits is assigned a value, which is a power $b_i$ of the base $b$ of the numbering system:
+	\begin{equation}
+		X_b = z_n\cdot b ^n + z_{n-1} \cdot b^{n-1} + \ldots + z_1 \cdot b^1 + z_0 \cdot b^0 + z_{-1} \cdot b^{-1} + \ldots + z_{-m} \cdot b^{-m} = \sum_{i=-m}^{n} z_i \cdot b^i\label{eq:1}
+	\end{equation}
+\end{definition}
+
+Common bases of numbering systems used in computer science are:
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		 \textbf{Base (b)} & \textbf{Number system} & \textbf{Alphabet} \\
+		 \hline
+		 $2$ & Binary & $0, 1$ \\
+		\hline
+		$8$ & Octal & $0,1,2,3,4,5,6,7$ \\
+		\hline
+		$10$ & Decimal & $0,1,2,3,4,5,6,7,8,9$ \\
+		\hline
+		$16$ & Hexadecimal & $0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F$ \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsection{Conversion FROM decimal}
+\subsubsection{Euclid}
+Considering the following representation of a number that we want to convert in a base $b$:
+\begin{align*}
+	& Z = z_n\cdot 10^n + z_{n-1} \cdot 10^{n-1} + \ldots + z_1 \cdot 10 + z_0 + z_{-1} \cdot 10^{-1} + \ldots + z_{-m} \cdot 10^{-m} = \\
+	& = y_p\cdot b ^p + y_{p-1} \cdot b^{p-1} + \ldots + y_1 \cdot b+ z_0 + y_{-1} \cdot b^{-1} + \ldots + y_{-q} \cdot b^{-q}
+\end{align*}
+we generate the digits step by step starting with the most significant (leftmost):
+\begin{enumerate}
+	\item Search $p$ according to the inequation
+	\begin{equation*}
+		b^p \leq Z < b^{p+1}
+	\end{equation*}
+	and assign $i=p$ and $Z_i = Z$
+	\item Derive $y_i$ and the reminder $R_i$ by division of $z_i$ by $b^i$
+	\item Repeat step 2 for $i=p-1, \ldots$ and replace each step $Z_i$ with $R_i$ until $R_i = 0$ or $b^i$ is small enough that the precision is enough
+\end{enumerate}
+\subsubsection{Horner}
+This method is structured in two phases:
+\begin{enumerate}
+	\item \textbf{Integer} part: factoring out the integer we get
+	\begin{equation*}
+		X_b = \sum_{i=0}^{n} z_i \cdot b^i = ((\ldots (((z_n \cdot b + z_{n-1}) \cdot b + z_{n-2}) \cdot b + z_{n-3}) \cdot b \ldots) \cdot b + z_1) \cdot b + z_0
+	\end{equation*}
+	\item \textbf{Decimal} part: we multiply the decimals of the number by base b to get the fractional digits $y_{-i}$ from the most to the least significant position
+	\begin{equation*}
+		Y_b = \sum_{i=-m}^{-1} y_i \cdot b^i = ((\ldots (((y_{-m} \cdot b^{-1} + y_{-m+1}) \cdot b^{-1} + y_{-m+2}) \cdot b^{-1} + y_{-m+3}) \cdot b^{-1} \ldots) \cdot b^{-1} + y_{-1}) \cdot b^{-1}
+	\end{equation*}
+\end{enumerate}
+\subsection{Conversion TO decimal}
+We represent the values of the single positions of the number we want to convert in our common decimal system and sum all values.\\
+The value $X_b$ of the number is the sum of all single values of all positions $z_i\cdot b^i$, like in equation \eqref{eq:1}.
+
+\subsection{General conversion}
+If we want to convert from an arbitrary system to another, we first convert to decimal and then we use one of the other two methods.
+
+\begin{observation}
+	If the base of one system is a power of the base of another system the conversion is done by Replacing a sequence of digits by a single digit or replace a digit by $a$ sequence of digits, respectively.
+\end{observation}
