@@ -22,21 +22,39 @@ Trovare le chiavi CANDIDATE:
 Trovare copertura canonica:
 - Ridurre le dipendenze in forma atomica (una per ogni DF a dx)
 - Togliere attributi estranei
+	- Per ogni DF
+		- Per ogni attributo a sx
+			- Calcolo chiusura rispetto a F
+				- Se il lato dx compare nella chiusura -> Attributo selezionato a sx è ESTRANEO
+				- Altrimenti no
 - Togliere DF ridondanti
 
 Calcolo della proiezione di DF:
-- Per ogni attributo nel sottoinsieme della proiezione
-	- calcolo la chiusura dell'attributo
-	- tengo nella parte dx della DF gli attributi che sono nel sottoinsieme
+- Per ogni attributo A nel sottoinsieme della proiezione
+	- calcolo la chiusura dell'attributo A
+	- Per ogni attributo B nella chiusura creo una relazione A->B
+	
+Determinazione di superchiave X per R(T,F)
+- calcolo la chiusura di X
+- Verifico se è uguale a T
+
+Controllare se in BCNF
+- Per ogni DF X-A
+	- Verficifo se X è superchiave
+		- NO -> non BCNF
+		- SI -> vado avanti
 	
 Algoritmo di analisi
 - Inizializzo p=R(T_i,F_i)
-- Finché c'è almeno una relazione in p che non è in BCNF (controllo se esiste X->A tale che X non è superchiave, quindi calcolo la chiusura di X e controllo se è uguale a T_i)
+- Finché c'è almeno una relazione in p che non è in BCNF per la DF X->A
 	- Aumento il numero di relazioni n++
+	
 	- T_a = chiusura di X rispetto a F_i
 	- F_a = proiezione di F_i su T_a
+	
 	- T_b = T_i - (X+) + X calcolo i nuovi attributi
 	- F_b = proiezione di F_i su T_b
+	
 	- Rimuovo R_i e aggiungo R_a e R_b
 	
 Algoritmo di sintesi
@@ -44,9 +62,9 @@ Algoritmo di sintesi
 - p = {}
 - Unisci in G ogni DF con la stessa parte sx in una unica 
 - Per ogni DF in G
-	- crea una relazione per ogni DF composta da parte sx+dx
+	- crea una relazione composta da parte sx+dx
 - Elimina ogni relazione di p contenuto in un altro schema di p
-- Se la decomposizione non schemi i cui attributi costituiscano una superchiave, aggiungi lo schema con attributi W, con W una chiave di R
+- Se la decomposizione non ha DF i cui attributi costituiscano una superchiave, aggiungi allo schema una DF con attributi W, con W una chiave di R
 
 Disfare-rifare
 - Inizializzo l'insieme UNDO con le transazioni in corso all'ultimo ckp
