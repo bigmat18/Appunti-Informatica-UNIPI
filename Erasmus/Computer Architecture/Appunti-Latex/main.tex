@@ -11,6 +11,9 @@
 \usepackage{array}
 \usepackage{booktabs}
 \usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{subfigure}
+\usepackage{enumitem}
 % ----  Useful packages % ---- 
 
 \usepackage{wrapfig}
@@ -27,6 +30,8 @@
 \usepackage{wrapfig}
 
 \graphicspath{ {./images/} }
+
+\setcounter{tocdepth}{6}
 
 % ---- Set page size and margins replace ------
 \usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
@@ -49,7 +54,7 @@
 
 % ------- ESEMPIO ------
 \theoremstyle{definition}
-\newtheorem{example}{Esempio}[subsection]
+\newtheorem{example}{Example}[subsection]
 % ------- ESEMPIO ------
 
 % ------- DIMOSTRAZIONE ------
@@ -59,7 +64,7 @@
 
 % ------- TEOREMA ------
 \theoremstyle{definition}
-\newtheorem{theorem}{Teorema}[subsection]
+\newtheorem{theorem}{Theorem}[subsection]
 % ------- TEOREMA ------
 
 % ------- COROLLARIO ------
@@ -130,4 +135,5 @@
 \newpage
 \input{introduction}
 \input{dataarithmetic}
+\input{microarchitecture}
 \end{document}
