@@ -358,6 +358,10 @@ Il contenuto dell'attività è un \textbf{grafo diretto}, dove i \textbf{nodi} r
 \paragraph{Azioni} Le azioni sono rettangoli con gli angoli smussati che contengono il nome che è sempre un \textbf{verbo}. Sono \textbf{atomiche} e non interrompibili.\\
 Ogni azione ha solo un arco entrante ed uno uscente e quest'ultimo viene attraversato ad azione terminata, simulando il passaggio di un \textbf{token} che permette l'esecuzione.
 
+\begin{note}
+	I nomi delle azioni devono indicarne l'esecuzione e quindi dovrebbero essere verbi all'indicativo, imperativo o infinito oppure sostantivi che indichino un'azione.
+\end{note}
+
 \paragraph{Nodi di controllo} Sono nodi che alterano il control flow. Possono essere:
 \begin{itemize}
 	\item \textbf{Decisione} e \textbf{fusione}: sono rappresentati da rombi, nel primo caso con condizioni che devono coprire tutti i possibili casi ($X \lor Y \lor \ldots \lor Z = \text{true}$) e che portano a rami differenti. È possibile utilizzare la clausola \textit{$[\text{else}]$}. Non è obbligatorio che ci sia un nodo di fusione corrispondente.
@@ -410,5 +414,134 @@ Un diagramma può contenere un riferimento ad un'attività secondaria e viene in
 	\includegraphics[scale=0.3]{partition.png}
 \end{center}
 
-\subsubsection{Comportamenti}
-Il comportamento di una classe viene descritto da un \textbf{grafo stati-transizioni}. Questo contiene gli \textbf{stati} significativi di un oggetto durante la sua vita e come questo può \textbf{transire} (in seguito ad eventi) tra di essi.
+\subsubsection{Diagramma degli stati}
+Il comportamento di una classe viene descritto da un \textbf{grafo stati-transizioni}. Questo contiene gli \textbf{stati} significativi di un oggetto durante la sua vita e come questo può \textbf{transire} (in seguito ad eventi come messaggi) tra di essi.\\
+Gli elementi principali sono lo stato \textbf{iniziale}, quello \textbf{finale}, gli stati \textbf{intermedi} e le \textbf{transizioni}. Queste ultime definiscono la risposta di un oggetto all'occorrenza di un evento e possono essere prese solo quando si verifica l'evento e l'eventuale \textbf{condizione} è vera. Comportano inoltre l'esecuzione di eventuali \textbf{azioni}.
+\begin{center}
+	\includegraphics[scale=0.3]{transitions.png}
+\end{center}
+
+\begin{example}
+	Un esempio di diagramma a stati con una classe \textit{Telefono} e un'operazione \textit{dial digit(n)}
+	\begin{center}
+		\includegraphics[scale=0.3]{state_machine.png}
+	\end{center}
+\end{example}
+
+\paragraph{Eventi}
+Un evento occorre \textbf{istantaneamente} e va introdotto solo se ha degli effetti. Se lo stato \textbf{non ha transizioni} per quell'evento, allora lo si ignora, altrimenti se ne ha \textbf{più di una}, si fa una scelta non-deterministica. Un evento può essere:
+\begin{itemize}
+	\item Un'\textbf{operazione} o un \textbf{segnale}: ricezione do una chiamata di metodo o un segnale con parametri e tipi compatibili
+	\begin{equation*}
+		op(a:T)
+	\end{equation*}
+	\item \textbf{Variazione}, quando \textit{exp} si verifica. Non avviene istantaneamente ma lo diventa appena si verifica l'espressione.
+	\begin{equation*}
+		when(exp)
+	\end{equation*}
+	\item \textbf{Temporale}, dopo che l'oggetto è stato fermo per un certo periodo di tempo
+	\begin{equation*}
+		after(t)
+	\end{equation*}
+\end{itemize}
+
+\begin{example}
+	Continuiamo l'esempio di prima aggiungendo due eventi di \textit{variazione}.
+	\begin{center}
+		\includegraphics[scale=0.3]{variation.png}
+	\end{center}
+\end{example}
+
+\paragraph{Stato}
+Di seguito i comportamenti di un oggetto in determinate situazioni mentre esso si trova in un certo stato:
+\begin{itemize}
+	\item \textbf{entry}: azione di entrata eseguita all'ingresso in uno stato
+	\item \textbf{do}: azione interna eseguita in modo continuativo mentre l'oggetto è in quello stato. Non necessita di eventi scatenanti, consuma tempo e può essere interrotta
+	\item \textbf{exit}: azione di uscita eseguita all'ingresso in uno stato
+	\item Eventuali \textbf{transizioni interne} che vengono eseguite in risposta ad un evento
+\end{itemize}
+\newpage
+\begin{example}
+	Prendiamo ad esempio lo stato di lettura di una password:
+	\begin{center}
+		\includegraphics[scale=0.25]{reading_pw.png}
+	\end{center}
+\end{example}
+
+\begin{note}
+	I nomi degli stati devono indicarne la \textit{permanenza} e quindi dovrebbero essere aggettivi, participi passati o gerundi.
+\end{note}
+
+\paragraph{Stato composito}
+In questo caso lo stato include un'ulteriore macchina a stati.\\
+Il punto d'\textbf{ingresso} è determinato dalla freccia:
+\begin{itemize}
+	\item se arriva al bordo si inizia dallo stato iniziale della macchina interna
+	\item altrimenti dallo stato indicato dalla freccia
+\end{itemize}
+ All'\textbf{uscita} ci possono essere tre casi:
+ \begin{itemize}
+ 	\item Transizioni etichettate che partono dal bordo e possono essere attivate da qualsiasi stato interno
+ 	\item Dallo stato finale si procede alla \textbf{transizione di completamento}
+ 	\item Transizioni da stati interni che attraversano il bordo
+ \end{itemize}
+ 
+ \begin{center}
+ 	\includegraphics[scale=0.3]{stato_composito.png}
+ \end{center}
+ \newpage
+ \paragraph{Stati compositi paralleli}
+ È possibile avere stati compositi \textbf{paralleli}: possono esserci più sottostati attivi contemporaneamente, uno per regione. L'ingresso (\textbf{default entry}) arriva sul bordo e prosegue a tutti i sottostati iniziali. La transizione di uscita si può presentare in tre casi:
+ \begin{itemize}
+ 	\item Transizione di completamento attivata al raggiungimento di tutti i sottostati finali
+ 	\item Transizione che esce da un solo sottostato e li termina tutti
+ 	\item Trasmissione che parte dal bordo, sempre attivabile e termina tutti i sottostati
+ \end{itemize}
+ 
+ \begin{center}
+ 	\includegraphics[scale=0.3]{stato_composito_parallelo.png}
+ \end{center}
+ 
+ \paragraph{Pseudo-stati}
+ Esistono tre tipi di pseudo-stati:
+ \begin{itemize}
+ 	\item \textbf{Scelta}: scelta basata su condizioni determinate \textbf{dinamicamente}. La disgiunzione (OR) di tutte le guardie deve essere sempre vera ed è ammesso il non-determinismo
+ 	\begin{center}
+ 		\includegraphics[scale=0.2]{choice.png}
+ 	\end{center}
+ 	\item \textbf{Giunzione}: pseudo-stato da cui escono e/o entrano due o più transizioni. Le condizioni sono valutate \textbf{staticamente} e \textbf{prima degli eventi} che attivano le transizioni in ingresso
+ 	\begin{center}
+ 		\includegraphics[scale=0.2]{giunzione.png}
+ 	\end{center}
+ 	\item \textbf{History}: permette di ripristinare lo stato della precedente attivazione dello stato composito
+ 	\begin{center}
+ 		\includegraphics[scale=0.2]{history.png}
+ 	\end{center}
+ \end{itemize}
+ 
+ \paragraph{Sottomacchina}
+ Una sottomacchina permette di descrivere uno stato composito in una macchina a parte. Ha un \textbf{nome} o \textbf{tipo} e le sue istanze sono nella forma
+ \begin{equation*}
+ 	\text{nomeIstanza}:\text{Tipo}
+ \end{equation*}
+ Bisogna definire \textbf{entry} ed \textbf{exit} point per collegare la sottomacchina alle transizioni di quella principale. Le \textbf{transizioni di completamento} scattano quando:
+ \begin{itemize}
+ 	\item Si raggiunge la \textbf{terminazione}:
+ 	\begin{itemize}
+ 		\item Stato finale per lo \textit{stato composito sequenziale}
+ 		\item Stati finali di tutte le regioni ortogonali per lo \textit{stato composito parallelo}
+ 		\item Exit point
+ 	\end{itemize}
+ 	\item Alla terminazione di \textbf{entry} e/o \textbf{do}
+ 	\item Al raggiungimento di uno pseudo-stato \textbf{giunzione}
+ \end{itemize}
+ \begin{center}
+ 	\includegraphics[scale=0.3]{sottomacchina.png}
+ \end{center}
+ \begin{note}
+ 	L'attività \textbf{exit} viene eseguita quando scatta la transizione di completamento.
+ \end{note}
+ 
+ \begin{observation}[Attività vs stati]
+ 	Il diagramma degli stati serve a mostrare l'evoluzione di un oggetto in risposta a degli eventi e descrive quindi l'evoluzione delle istanze. Quello delle attività, invece, permette di mettere in ordine le attività da fare descrivendo il flusso delle azioni da svolgere.
+ \end{observation}
