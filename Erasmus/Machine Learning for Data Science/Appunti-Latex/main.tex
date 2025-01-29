@@ -11,6 +11,7 @@
 \usepackage{array}
 \usepackage{booktabs}
 \usepackage{multirow}
+\usepackage{subfigure}
 % ----  Useful packages % ---- 
 
 \usepackage{wrapfig}
@@ -48,7 +49,7 @@
 
 % ------- ESEMPIO ------
 \theoremstyle{definition}
-\newtheorem{example}{Esempio}[subsection]
+\newtheorem{example}{Example}[subsection]
 % ------- ESEMPIO ------
 
 % ------- DIMOSTRAZIONE ------
@@ -127,6 +128,8 @@
     \rule{11cm}{.1pt} 
 \end{center}
 \newpage
-\include{introduction}
-\include{data}
+\input{introduction}
+\input{data}
+\input{visualization}
+\input{pca}
 \end{document}
