@@ -48,7 +48,7 @@
 
 % ------- ESEMPIO ------
 \theoremstyle{definition}
-\newtheorem{example}{Esempio}[subsection]
+\newtheorem{example}{Example}[subsection]
 % ------- ESEMPIO ------
 
 % ------- DIMOSTRAZIONE ------
@@ -75,8 +75,8 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{A.A 2022-2023}
-\fancyhead[RE,LO]{Systems Software}
+\fancyhead[LE,RO]{A.A 2024-2025}
+\fancyhead[RE,LO]{Telematics}
 \fancyfoot[RE,LO]{\rightmark}
 \fancyfoot[LE,RO]{\thepage}
 
@@ -127,8 +127,9 @@
     \rule{11cm}{.1pt} 
 \end{center}
 \newpage
-\include{basics}
-\include{dns}
-\include{mail}
-\include{http}
+\input{basics}
+\input{dns}
+\input{mail}
+\input{http}
+\input{snmp}
 \end{document}
