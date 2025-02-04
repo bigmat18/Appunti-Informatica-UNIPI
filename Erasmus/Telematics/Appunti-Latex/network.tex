@@ -409,3 +409,561 @@ The possible operations are, compared to IPv4:
 		\item \textbf{Other Stateful Configuration}: if $0$, stop, otherwise use stateful configuration for other information such as name server
 	\end{itemize}
 \end{enumerate}
+
+\subsection{Diagnostic}
+\subsubsection{ICMP}
+Internet Control Message Protocol is a \textbf{control} protocol of layer 3. It has two use cases:
+\begin{itemize}
+	\item If a router cannot forward a packet, the source can be informed about it via an ICMP message
+	\item \textbf{Ping} uses ICMP request and reply to check if host is online
+\end{itemize}
+The packet format is the following:
+\begin{center}
+	\includegraphics[scale=.3]{icmp}
+\end{center}
+\begin{itemize}
+	\item \textbf{Type}: purpose of the message, 40+ types are defined and 41-255 are reserved for future use. The most important are:
+	\begin{itemize}
+		\item $0$: \textit{destination unreachable}
+		\item $3$: \textit{echo} request and reply
+		\item $4$: \textit{Source Quench} (choke packet)
+		\item $11$: TTL reached 0, packet discarded
+		\item $12$: parameter problem on datagram
+		\item $15/16$: information request and reply
+		\item $30$: \textit{traceroute}
+	\end{itemize}
+	\item \textbf{Code}: additional information about the condition
+	\item \textbf{Checksum}
+	\item \textbf{Data}: there are mainly two message categories
+	\begin{itemize}
+		\item \textbf{Error}: to report an event. These messages don't have a response and include the IP header that generated the error
+		\item \textbf{Queries}: to get some information from a node, they have a matching response
+	\end{itemize}
+\end{itemize}
+
+\paragraph{IPv6} The packet format is the same for IPv6 but it's used for way more purposes, such as:
+\begin{itemize}
+	\item Automatic address configuration (NDP/SLAAC)
+	\item Automatic MTU Path discovery
+	\item PacketTooBig is sent to source (IPv6 has no fragmentation)
+	\item IGMP
+	\item Detect malfunctioning router and inactive hosts
+	\item Routing (RPL)
+\end{itemize}
+
+\subsection{Network Address Translation}
+\begin{wrapfigure}[5]{r}{5cm}
+	\vspace{-0.5cm}
+	\begin{center}
+		\includegraphics[width=5cm]{nat}
+	\end{center}
+\end{wrapfigure}
+Each device needs an IP address, but they are scarce. Hence a well-known block of IP addresses were reserved for site-local use:
+\begin{itemize}
+	\item Class A: $10.0.0.0$ to $10.255.255.255$
+	\item Class B: $172.16.0.0$ to $172.16.255.255$
+	\item Class B: $192.168.0.0$ to $192.168.255.255$
+\end{itemize}
+This allows for the reuse of the same private address within a different site \textbf{scalability} but introduces the need of sharing a public IP address through NAT.
+
+\begin{observation}[Security]
+	While some may argue that NAT hides the internal structure of a network and avoids exposing hosts, it doesn't actually improves security (e.g. doesn't prevent DDOS), it's only an excuse to prevent deployment of clean networks.
+\end{observation}
+
+\subsubsection{Static}
+Static NAT hides the structure of the network using one public IP address per private IP address, mapping them permanently. This means that we need as many public addresses as the private ones.\\
+\textbf{Temporary mapping} can be done, managing a pool of public addresses and assigning them dynamically when a request is sent out, but during peak traffic the number of public IPs used is almost the same as the private ones.
+\begin{center}
+	\includegraphics[scale=.3]{snat}
+\end{center}
+
+\subsubsection{One-to-Many}
+Also known as \textbf{masquerading}, translates several local addresses into the same public address. Demultiplexing is now necessary and it's done through \textbf{Network Address Port Translation}: when a packet is sent out, the NAT box saves the local IP and port and maps them to a global port and IP, together with the destination IP and port. When the message comes back, it's remapped to the original address.
+\begin{center}
+	\includegraphics[scale=.3]{napt}
+\end{center}
+The main \textbf{problems} with this NAT technique arise when the message arrives from the outside. Some static information need to be stored, such as "forward each request with port 80 to host x". Still, problems remains (e.g. instant messaging).
+
+\subsubsection{Carrier Grade}
+Also known as \textbf{Large Scale} NAT, it uses a NAT box for a large number of customers (e.g. a street) to further mitigate address exhaustion. It breaks end-to-hand principle and it's difficult to use well-known ports.
+
+\subsubsection{NAT64}
+It's a mechanism to connect IPv6 hosts to IPv4 servers: the client embeds an IPv4 address and then the NAT changes the IP headers, mapping IPv6 to IPv4.
+
+\subsubsection{Issues}
+The main issues with NAT are:
+\begin{itemize}
+	\item \textbf{Header checksum}: changing IP addresses or port numbers on the fly requires also the recalculation of the checksum
+	\item \textbf{Fragmentation}: since transport ports are part of the first fragment and packets may be delivered out of order, you need per fragment states in the NAT box
+	\item \textbf{Encryption}: you cannot change fields values that are encrypted
+	\item \textbf{Protocol-specific} issues above network layer, e.g. with DNS you will need static NAT mappings to match DNS entries
+\end{itemize}
+Overall, while NAT saved the internet, it killed the principle of \textbf{end-to-end} communication being initiated by one side.
+
+\newpage
+\subsection{Routing}
+A \textbf{router} (any host can be) accepts packets from third parties and forwards them. Router behavior coordinates within the network.\\
+Inside a router there are:
+\begin{itemize}
+	\item \textbf{Routing table}: contains the paths selected by the router for the forwarding table
+	\begin{itemize}
+		\item \textit{Destination network}
+		\item \textit{Network mask}
+		\item \textit{Meta information}, e.g. path length
+		\item \textit{Next hop}
+	\end{itemize}
+	\item \textbf{Forwarding table}: contains the destination network to which the router sends the packet
+\end{itemize}
+To find the entry that overlaps most with a destination IP address, \textbf{Longest Common Prefix Match} is used: the bit of the destination address are compared to the network mask of each entry and the one with the longest match is chosen. If no entry fits, the \textbf{default route} is chosen.\\\\
+Path selection also depends on the \textbf{application scenario}:
+\begin{itemize}
+	\item \textbf{Intra}-domain: when routers belong to the same administrative domain they  all have the same understanding what a best path is
+	\item \textbf{Inter}-domain: when routers belong to different domains, path selection with individual policies is needed
+\end{itemize}
+
+\begin{note}
+	Let's keep in mind two \textbf{prerequisites}:
+	\begin{itemize}
+		\item Each node must have at least one \textbf{unique} IP address (may have multiple)
+		\item The \textbf{scope of validity} of the IP address should be appropriate (not link-local or private in case of global communication)
+	\end{itemize}
+\end{note}
+
+\subsubsection{Router vs Forwarding}
+\begin{definition}[Forwarding]
+	A \textbf{local} process, which runs on a single machine, and moves incoming packets from input interface to appropriate output interface, towards their destination.
+\end{definition}
+
+\begin{definition}[Routing]
+	A \textbf{distributed} process, which requires the cooperation of several devices (routers) in the network. Monitoring and exchanging enough network topology information between them to allow correct \textit{forwarding} decisions on each one.
+\end{definition}
+
+\begin{definition}[Routing table]
+	The \textbf{raw topology} information acquired by routing. It's shape and format depends on the used technique, sometimes it may not even exist.
+\end{definition}
+
+\begin{definition}[Forwarding table]
+	The \textbf{final product} of the routing process: it's derived from the raw topology information acquired by the routing scheme.
+\end{definition}
+
+\paragraph{Forwarding scheme} Moves packets from one input interface to appropriate output interface, according to what is currently in the forwarding table. The requirements are:
+\begin{itemize}
+	\item \textbf{Scalability} in therms of \textbf{IO transfer speed}
+	\item \textbf{Fast table lookup}:
+	\begin{itemize}
+		\item \textbf{One-dimensional}, depends only on the destination, paths from different sources coincide when they overlap
+		\item \textbf{Two-dimensional}, depends on the source and the destination, the paths may differ
+	\end{itemize}
+	Furthermore, the match can be done:
+	\begin{itemize}
+		\item \textbf{Longest Prefix Match}
+		\item \textbf{Exact Label Match}
+	\end{itemize}
+	\item \textbf{Efficient} and sophisticated \textbf{data structures}
+\end{itemize}
+\newpage
+\noindent Forwarding schemes can be:
+\begin{itemize}
+	\item \textbf{Deterministic}: decision based only on key lookup
+	\item \textbf{Probabilistic}: decision based on key lookup and/or \textbf{random}
+\end{itemize}
+So, in the end, routing is the \textbf{control-plane} that computes, populates and maintains the forwarding table, while forwarding describes how the data flows, the \textbf{data-plane}.
+
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{c|c|c}
+		& \textbf{forwarding} & \textbf{routing} \\
+		\hline 
+		\textbf{goal} & direct packet to outgoing link & computes paths packet will follow \\
+		\textbf{scope} & local & network-wide \\
+		\textbf{timescale}  & nanoseconds & milliseconds
+	\end{tabular}
+\end{table}
+
+\subsubsection{Routing schemes}
+A routing scheme \textbf{monitors} and \textbf{exchanges} \textbf{network topology information} between routers to allow correct forwarding decisions on each one of them. The requirements are:
+\begin{itemize}
+	\item \textbf{Scalability} in terms of \textbf{network-wide convergence speed}
+	\item \textbf{Small control overhead} in terms of memory, throughput and CPU
+	\item \textbf{Fault tolerance} to guarantee maximum availability
+	\item \textbf{Loop-freedom}
+	\item \textbf{Flexibility} to accommodate different path requirements for different applications
+\end{itemize}
+\paragraph{Static vs Dynamic}
+\begin{itemize}
+	\item \textbf{Static}: static forwarding tables are used, hence no reaction to changes in the network. It's \textbf{simple} and \textbf{stable} but in case of link or router breakdown, catastrophic
+	\item \textbf{Dynamic}: routing tracks the network continuously and the forwarding tables are updated upon topology changes. It's \textbf{fault-tolerant} and more \textbf{reliable} but more \textbf{complex} and with more \textbf{overhead}
+\end{itemize}
+
+\paragraph{Source vs Hop-by-Hop}
+\begin{itemize}
+	\item \textbf{Source}: the path is determined by the source node and the whole path is included in the packet. In this scheme the routers do not need state but there is no fault tolerance if a downstream router or a link breaks
+	\begin{center}
+		\includegraphics[scale=.4]{source}
+	\end{center}
+	\item \textbf{Hop-by-Hop}: the path is determined by each intermediate router, allowing for fault-tolerance but introducing state
+\end{itemize}
+
+\newpage
+\paragraph{Packet vs Virtual Circuits}
+\begin{center}
+	\includegraphics[scale=.35]{pvc}
+\end{center}
+\begin{itemize}
+	\item \textbf{Packet}: \textbf{connectionless}, forwarding with the longest \textit{prefix match} at each hop
+	\begin{center}
+		\includegraphics[scale=.4]{packetrouting}
+	\end{center}
+	\item \textbf{Circuit switching}: \textbf{connection-oriented}, forwarding with exact match at each hop
+	\begin{center}
+		\includegraphics[scale=.4]{vc}
+	\end{center}
+\end{itemize}
+
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{c|p{4cm}|p{4cm}}
+		& \textbf{Packet} & \textbf{Circuit Switching} \\
+		\hline
+		\textit{Circuit setup} & Not needed & Required \\
+		\hline
+		\textit{Addressing} & Each packet contains the full source and destination address & Each packet contains a short VC label \\
+		\hline
+		\textit{Forwarding} & Longest prefix match & Exact label match \\
+		\hline
+		\textit{Routing} & Dynamic routing & Static routing \\
+		\hline
+		\textit{Router failure impact} & None, except for packet loss during the crash & All VCs that passed through the failed router are terminated \\
+		\hline
+		\textit{QoS} & Difficult & Easy if enough resources can be allocated in advance \\
+		\hline
+		\textit{Congestion control} & Difficult & Easy if enough resources can be allocated in advance 
+	\end{tabular}
+\end{table}
+
+\paragraph{Reactive vs  Proactive}
+\begin{itemize}
+	\item \textbf{Reactive}: a path is discovered and maintained only when applications ask for it, less control overhead but path exploration delays, hence needs user data buffering
+	\item \textbf{Proactive}: al possible path are discovered and maintained a priori, avoiding delays and buffering but introducing control overhead
+\end{itemize}
+
+\paragraph{Hierarchical vs Flat}
+\begin{itemize}
+	\item \textbf{Hierarchical}: definition of separate virtual regions in the network, hierarchically organized in a simil tree structure, with a central region as root. Less state required, as routers only need to know about their region, but may lead to worse paths since there is partial topology knowledge.
+	\item \textbf{Flat}: all routers are part of the same region, having more state and overhead but being able to reach the best paths due to full topology knowledge
+\end{itemize}
+
+\subsubsection{Basic concepts}
+\paragraph{Flooding}
+\begin{wrapfigure}[7]{r}{5cm}
+	\vspace{-2cm}
+	\begin{center}
+		\includegraphics[width=5cm]{flooding}
+	\end{center}
+\end{wrapfigure}
+Flooding means that each router \textbf{repeats} a received packet over all its interfaces, except for the source one. Each packet will reach all routers, meaning very \textbf{robust} in case of failure. At the same time there are several problems: \textbf{privacy}, \textbf{goodput decrease} and there must be a \textbf{loop detection}.
+
+\begin{note}
+	In a \textbf{wireless} context, flooding means repeating packets on the interface they were received from.
+\end{note}
+
+In conclusion, flooding does not scale well but it's used by some routing algorithms (OSPF) and can be used as a benchmark.
+
+\paragraph{Metrics} Metrics compares the available paths discovered by routing to find the most favorable one. This depends on different criteria:
+\begin{itemize}
+	\item \textbf{Response time}
+	\item \textbf{Throughput capacity}
+	\item Least number of \textbf{intermediate devices}
+	\item \textbf{Avoidance} of local \textbf{overload}
+	\item \textbf{Security} requirements
+\end{itemize}
+Routing algorithms generally take as input a \textbf{cost} per \textit{link}. Unless specified otherwise, all links have the same cost and it may be updated by external mechanisms. The algorithms then find the available paths with the smallest \textbf{end-to-end cost}, which depends on three main metrics:
+\begin{itemize}
+	\item \textbf{Additive}: add cost of each link on the path, e.g. delay
+	\item \textbf{Multiplicative}: multiply cost of each link on the path, e.g. packet delivery ratio
+	\item \textbf{Concave}: minimum cost of all links on the path, e.g. throughput
+\end{itemize}
+\begin{note}
+	The default metric, in case of equal cost, is the \textbf{hop-count}.
+\end{note}
+
+Determining the optimal path may be difficult because topology and information are never instantly available. Moreover, some metrics leads to \textbf{NP-complete} computations and \textbf{conflicts} between fairness and optimum can arise.
+
+\newpage
+\paragraph{Graphs} A computer network can be abstracted as a weighted graph where:
+\begin{itemize}
+	\item \textbf{Vertex} is a router
+	\item \textbf{Edge} is a link
+	\item \textbf{Weight} is the cost of the link
+\end{itemize}
+Routing algorithms must discover and maintain a \textbf{partial}, but \textbf{sufficient} view of the topology to make paths available, from anywhere to everywhere.
+\begin{figure}[!h]
+	\hfil
+	\subfigure[Full topology]{\includegraphics[scale=0.4]{fulltop}}
+	\hfil
+	\subfigure[Partial topology]{\includegraphics[scale=0.4]{parttop}}
+\end{figure}
+
+\subsubsection{Algorithms}
+Routing algorithms are divided as follows:
+\begin{center}
+	\includegraphics[scale=.4]{taxonomy}
+\end{center}
+
+\paragraph{Distance Vector Routing} E.g. \textbf{RIP}. The main principle is that \textbf{global information} is exchanged \textbf{locally}:
+\begin{enumerate}
+	\item Each router periodically sends out a list of destinations it can reach including the costs to each one
+	\item If a router received that list and updates its own forwarding table with new paths or better ones
+	\item The algorithm converges towards a state where the forwarding table of each router indicates the least cost path to each possible destination
+\end{enumerate}
+\newpage
+\noindent This corresponds to the \textbf{Bellman-Ford} algorithm:
+\begin{lstlisting}[mathescape=true]
+	Initialization:
+		for all destinations $y$ in $N$:
+			$D_x(y) = c(x,y)$ // If $y$ not a neighbor then $c(x,y) = \infty$
+			for each neighbor w
+				$D_w(y) = \infty$ for all destinations $y$ in $N$
+			for each neighbor $w$
+				send distance vector $DV_ x = [D_x(y): y\text{ in }N]$ to $w$
+				
+	Loop:
+		wait (until I see a link cost change to some neighbor $w$ or 
+						until I receive a distance vector from some neighbor $w$)
+
+		for each $y$ in $N$:
+			$D_x(y) = \min_v\{c(x,v)+D_v(y)\}$
+			
+		if $D_x(y)$ changed for any destination $y$
+			send distance vector $DV_x = [D_x(y): y\text{ in }N]$ to all neighbors
+\end{lstlisting}
+
+If $N$ is the maximum length of a path, maximum $N$ steps of the algorithm are required for the "\textbf{good news}" (a better path) to travel. On the other hand, if a router is \textbf{down}, there may be \textbf{loops} due to the link weight becoming infinite. \\\\
+To avoid them we apply the \textbf{split horizon}: a router does not propagate information about a rout back over the same interface from which the route was received. Furthermore, we can use \textbf{Poisoned Reverse}: actively advertise routes as unreachable over the interface over which they were learned.\\\\
+Another problem may arise if someone announces \textbf{wrong information}, such as a forwarding table with cost $0$ to all destinations. In that case, nearly all traffic would be directed to that router, causing the collapse of the network.
+
+\paragraph{Link State Routing} E.g. \textbf{OSPF}. The main principle is that \textbf{local information} is exchanged \textbf{globally}:
+\begin{enumerate}
+	\item Each router periodically determines its neighbors via \textbf{HELLO} packets
+	\item They \textbf{flood} this information via \textbf{Link State Advertisement}, which contains
+	\begin{itemize}
+		\item Identification of the sender
+		\item List of neighbors with associated link costs
+		\item Sequence number
+		\item Age
+	\end{itemize}
+	\item Each router receives LSAs and maintains its own \textbf{Link State DataBase} aggregating all received data
+	\item Each router can derive its \textbf{forwarding table} from its database. If it gets updated, the router recomputes the forwarding table. The algorithm used is \textbf{Dijkstra}:
+	\begin{enumerate}
+		\item Mark the source node as \textbf{permanent} (distance and line don't change), determining the \textbf{work node}
+		\item Consider \textbf{neighbors} and compute the distance based on current knowledge
+		\item Choose the node with the smallest distance to the source, mark it as permanent and set it as work node
+		\item If there are still non permanent nodes, go back to step (b)
+	\end{enumerate}
+\end{enumerate}
+
+\begin{lstlisting}[language=C]
+	#define MAX_NODES 1024 /* maximum number of nodes */
+	#define INFINITY 1000000000 /* a number larger than every maximum path */
+	
+	int n;
+	int dist[MAX_NODES][MAX_NODES]; /* dist[i][j] is the distance from i to j */
+	
+	void shortest_path(int s, int t, int path[])
+	{ 
+		// s = source node, t = terminal node 
+		struct state { /* the path being worked on */
+			int predecessor; /* previous node */
+			int length; /* length from source to this node */
+			enum {permanent, tentative} label; /* label state */
+		} state[MAX_NODES];
+		
+		int i, k, min;
+		struct state *p;
+		
+		for (p = &state[0]; p < &state[n]; p++) { /* initialize state */
+			p->predecessor = -1;
+			p->length = INFINITY;
+			p->label = tentative;
+		}
+		
+		state[t].length = 0;
+		state[t].label = permanent;
+		k = t; /* k is the initial working node */
+		
+		/* The algorithm starts with the terminal node */
+		do { /* Is there a better path from k? */
+			for (i = 0; i < n; i++) /* this graph has n nodes */
+			if (dist[k][i] != 0 && state[i].label == tentative) {
+				if (state[k].length + dist[k][i] < state[i].length) {
+					state[i].predecessor = k;
+					state[i].length = state[k].length + dist[k][i];
+				}
+			}
+			
+			/* Find the tentatively labeled node with the smallest label. */
+			k = 0;
+			min = INFINITY;
+			
+			for (i = 0; i < n; i++)
+			if (state[i].label == tentative && state[i].length < min) {
+				min = state[i].length;
+				k = i;
+			}
+			state[k].label = permanent;
+		} while (k != s);
+		
+		/* Copy the path into the output array. */
+		i = 0;
+		k = s;
+		do {
+			path[i++] = k;
+			k = state[k].predecessor;
+		} while (k >= 0);
+	}
+\end{lstlisting}
+
+The main advantages of Link State Routing is that it avoids the \textbf{count-to-infinity} problems and in general wrong information from a single router do not crash the network.
+
+\subsubsection{Protocols}
+The Internet consists of a large number of \textbf{Autonomous Systems}, each one operated independently using an \textbf{Interior Gateway Protocol}. All gateways use the same \textbf{Exterior Gateway Protocol}.
+\begin{center}
+	\includegraphics[scale=.3]{internet}
+\end{center}
+
+\paragraph{RIP} The \textbf{Routing Information Protocol} was the first IGP used. It's based on \textbf{distance vector} and it's \textbf{packet}, \textbf{flat} and \textbf{proactive}.\\
+RIP messages are sent every $30$ seconds as UDP datagrams and they contain up to $25$ entries of the routing table. The metric used for evaluation is the \textbf{hop-number}, with a maximum of $15$ ($16 = \infty$).\\\\
+\textbf{RIPv2} introduced the support for \textbf{subnets}, \textbf{CIDR}, \textbf{authentication}, \textbf{multicast} and more, but still limiting the max number of hops to $15$.\\\\
+\textbf{RIPng} is an extension of RIPv2 to support IPv6.
+
+\paragraph{OSPF} \textbf{Open Shortest Path First} is an IGP based on \textbf{link-state} and it's \textbf{hierarchical}, \textbf{packet} and \textbf{proactive}. It supports many different metrics, load balancing, hierarchical systems and security mechanisms to protect routers from wrong information.\\
+It has modular support for three categories of link layers:
+\begin{itemize}
+	\item \textbf{Point-to-point} links between routers
+	\item \textbf{Broadcast networks}, mostly LANs
+	\item \textbf{Multi-access networks} without broadcasting, e.g. packet switching WANs
+\end{itemize}
+Since it's hierarchical, there are four types of routers:
+\begin{itemize}
+	\item \textbf{Internal}: belong only to one area
+	\item \textbf{Area-border}: connect two or more areas, thus part of the backbone
+	\item \textbf{Backbone}
+	\item \textbf{AS border}: connect to other autonomous systems
+\end{itemize}
+\begin{center}
+	\includegraphics[scale=.3]{ospf}
+\end{center}
+Within an area every router has the same LSDB, while an \textit{area-border} one has LSDBs from each area it is connected to.
+
+\paragraph{IS-IS} \textbf{Intermediate System to Intermediate System} it's a very similar IGP to OSPF, with the difference of being \textbf{neutral to layer 3 protocol} and thus getting faster support for IPv6. In this protocol, routers also build a \textbf{map of the network} to calculate the shortest path.\\
+Has a lower overhead compared to OSPF and thus it's used in networks with a large number of routers.
+
+\paragraph{BGP} In order to have an EGP, we need:
+\begin{itemize}
+	\item \textbf{Scalability}
+	\item \textbf{Privacy}: networks want to hide their internal topologies
+	\item \textbf{Policy enforcement}: networks need to control independently where to send and receive traffic
+\end{itemize}
+Thus, Distance Vector and Link State routing do not work, mainly because they agree on a common distance while Internet routing is much more diverse.\\\\
+\textbf{Border Gateway Protocol} is a \textbf{path vector} protocol. BGP routers exchange \textbf{path vectors} with neighbors (\textbf{peers}), which then either accept or discard based on \textbf{policies}. Neighbors are typically connected directly or via switch but they can also be not topologically adjacent (\textbf{Multihop Peering}).
+
+\begin{enumerate}
+	\item BGP peers establish a TCP connection (\textbf{OPEN}, port 179) to exchange (\textbf{UPDATE}):
+	\begin{itemize}
+		\item \textbf{Network Layer Information}: prefixes
+		\item \textbf{Paths}: list of AS numbers to reach a prefix
+	\end{itemize}
+	or to withdraw them. Two more messages exist: \textbf{KEEPALIVE} to check if adjacent peers are still available and \textbf{NOTIFICATION} to handle errors.
+	\item BGP router collects all paths and stores them in the \textbf{Routing Information Base}
+	\item Based on local policies and attributes a \textbf{preference} is assigned to all RIB entries
+	\item For each IP prefix select one best route, choosing \textit{preference} over \textit{shortest path}
+	\item Before announcing entries to the neighbors, filter based on \textbf{local policies}, which can be
+	\begin{itemize}
+		\item \textbf{Selection}: controls outbound traffic, specifying which path to use (e.g. customers over peers)
+		\item \textbf{Export}: controls inbound traffic, specifying which path to advertise
+	\end{itemize}
+\end{enumerate}
+
+\begin{note}
+	Each AS appends itself when propagating announcement.
+\end{note}
+
+\begin{note}
+	To debug BGP, \textbf{Looking Glasses} and \textbf{Routing Information Services} are used, giving you access to routing tables of BGP routers.
+\end{note}
+
+\begin{note}
+	The duty of AS operators is to ensure \textbf{reachability} of their IP addresses or the IP addresses of their customers. There are two types of relations:
+	\begin{itemize}
+		\item \textbf{Customer-Provider}: the customer pays provider to get Internet connectivity. Usually records every 5 minutes the number of bytes sent and at the end of the month they bill in respect to the 95th percentile of the records
+		\item \textbf{P2P Peering}: peers don't pay each other
+	\end{itemize}
+\end{note}
+
+BGP has a lot of \textbf{problems}: \textbf{stability}, \textbf{routing table growth}, \textbf{load-balancing}, \textbf{hijacking}, but most of all \textbf{security}. While BGP peering sessions can be encrypted, they cannot be verified since the protocol is based on mutual trust.
+\newpage
+\subsection{Multicast}
+\begin{wrapfigure}[12]{r}{3.5cm}
+	\vspace{-1cm}
+	\begin{center}
+		\includegraphics[width=3.5cm]{multicast2}
+	\end{center}
+\end{wrapfigure}
+Group communication is used in multiple contexts, such as voice and video conferencing, content broadcasting (IPTV), games, etc..\\\\
+Among the different types of communication, \textbf{multicast} is the most efficient to transmit to $n>1$ stations while sending the data only once. Multicast addresses a group of hosts based on a \textbf{single group address}, enabling the sender to deliver the data without knowing the receiving hosts.\\\\
+The main idea is to use a \textbf{publish/surprise} paradigm, where the sender publishes independently of the receivers, which subscribes to the data independently of the first. The major protocols are \textbf{Internet Group Management Protocol} for IPv4 and \textbf{Multicast Listener Discovery} for IPv6.\\\\
+There are two types of multicast:
+\begin{itemize}
+	\item \textbf{Any Source Multicast}: receive what anybody sends to the group without knowing the sources
+	\item \textbf{Source Specific Multicast}: receive only what a specified source sends, explicitly selecting it and filtering
+\end{itemize}
+
+\subsubsection{Subscription}
+We need a group subscription mechanism to reduce broadcasts, meaning that we want \textbf{switches} that know which ports belong to a certain group and \textbf{routers} that know about receivers to establish dynamic routing states.\\\\
+MLD and IGMP messages are encapsulated into IP packets and are used between receivers and routers. When a receiver subscribes to a group, it informs the router about the interest. Then, periodically, the routers ask which groups are still present. If at all, they switch to only listen IGMP and MLD messages.
+
+\subsubsection{IGMP}
+IGMP is a protocol for delivery of multicast messages to all group members that are located in different physical networks. For this, routers need information about \textbf{group associations}.\\
+If groups are only \textbf{temporary}, routers have to acquire information about associated hosts by themselves. With  IGMP messages, a multicast receiver subscribes to a group and thus informs routers about group interest, which periodically asks (\textbf{polling}), which groups of multicast are still present.\\
+Routers exchange information to build \textbf{multicast routing trees} (routing protocol).\\\\
+The creation of a \textbf{distribution tree} can be done in different ways:
+\begin{itemize}
+	\item \textbf{Flooding and Pruning} (Distance Vector Multicast Routing Protocol): it first floods multicast packets to all neighbors and the uses \textbf{Reverse Path Forwarding} to prevent loops
+	\item \textbf{Protocol Independent Multicast}: it does not require a specific unicast protocol and can work in two modes
+	\begin{itemize}
+		\item \textbf{Dense}: like DVMRP
+		\item \textbf{Sparse}: can support Internet-wide groups and explicitly constructs a tree using \textbf{rendezvous points}
+	\end{itemize}
+\end{itemize}
+
+\newpage
+\paragraph{PIM} Assuming that a low percentage of nodes will subscribe to a multicast group, we have:
+\begin{itemize}
+	\item \textbf{Receiver} will join a group through an IGMP Join in the local subnet and then PIM Join to a rendezvous point
+	\item \textbf{Sender} does a PIM Join with the rendezvous point and sends them a register message. Then it distributes data along the multicast tree
+\end{itemize}
+\begin{center}
+	\includegraphics[scale=.4]{pimreg}
+\end{center}
+
+\subsubsection{API}
+The multicast API uses Berkley sockets and has:
+\begin{itemize}
+	\item \textbf{IP\_ADD\_MEMBERSHIP} to join a group on a specific interface
+	\item \textbf{IP\_DROP\_MEMBERSHIP} to leave a group (IGMPv2)
+	\item \textbf{IP\_MULTICAST\_IF} to set or get default interfaces for use with multicast sends
+	\item \textbf{IP\_MULTICAST\_LOOP} to disable loopback of outgoing multicast diagrams
+	\item \textbf{IP\_MULTICAST\_TTL} to set the IP TTL of outgoing multicast datagrams
+\end{itemize}
+
+\subsubsection{Real applications}
+Multicast is mainly used in \textbf{intra-domain} contexts (e.g. ISPs) due to IPTV, gaming, etc...\\
+There is very limited development in the \textbf{inter-domain} context due to:
+\begin{itemize}
+	\item Difficult to achieve globally scalable routing
+	\item No economic incentives for ISPs
+\end{itemize}
+
+\begin{note}
+	In the \textbf{mobile} context, routing gets more complex due to the publish/subscribe approach of multicast.
+\end{note}
