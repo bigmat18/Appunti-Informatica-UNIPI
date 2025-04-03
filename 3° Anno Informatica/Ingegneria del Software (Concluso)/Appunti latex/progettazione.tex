@@ -18,6 +18,10 @@ Possono esserci due livelli di astrazione:
 
 Un'architettura si sviluppa in diverse \textbf{viste} e \textbf{stili}.
 
+\begin{center}
+	\includegraphics[scale=0.3]{progettazione}
+\end{center}
+
 \subsection{Vista comportamentale}
 Anche detta \textbf{component-and-connector}, descrive un sistema software come \textbf{composizione di componenti}, compreso di:
 \begin{itemize}
@@ -114,7 +118,6 @@ Questo stile può funzionare in due modi:
 \paragraph{Process coordinator}
 Un componente funge da \textbf{process coordinator} mentre gli altri sono passivi e non conoscono il loro ruolo nel processo ma si limitano a contribuire. Il \textit{coordinator} conosce la sequenza di passi necessaria, invoca le funzionalità richieste e fornisce una risposta.
 
-\newpage
 \paragraph{Model-View-Controller/Publisher}
 Questo stile si basa su tre elementi:
 \begin{itemize}
@@ -136,7 +139,86 @@ Questo stile si basa su tre elementi:
 \end{figure}
 
 \subsection{Vista strutturale}
-Descrive la struttura di un sistema software come insieme di \textbf{unità di realizzazione}, ovvero di codice (e.g. classi e package). Permette di analizzare le \textbf{dipendenze}, progettare i \textbf{test} e valutare la \textbf{portabilità}.
+Descrive la struttura di un sistema software come insieme di \textbf{unità di realizzazione}, ovvero di codice. Permette di analizzare le \textbf{dipendenze}, progettare i \textbf{test} e valutare la \textbf{portabilità}.\\
+La vista strutturale in UML include:
+\begin{itemize}
+	\item \textbf{Classi} con specifica delle \textit{operazioni} più dettagliata rispetto alla descrizione del dominio
+	\item \textbf{Package}
+\end{itemize}
+
+\subsubsection{Decomposizione}
+\begin{wrapfigure}[7]{r}{5cm}
+	\vspace{-1.2cm}
+	\includegraphics[width=5cm]{decomposizione}
+\end{wrapfigure}
+Una classe può far parte (essere contenuta in) un package, che a sua volta può far parte di uno più grande. La decomposizione può essere fatta per \textbf{apprendimento} del sistema o per l'\textbf{allocazione del lavoro} e può seguire tre criteri:
+\begin{itemize}
+	\item Incapsulamento per \textbf{modificabilità}
+	\item Supporto alle scelte \textbf{costruisci}/\textbf{compra}
+	\item Moduli comuni in \textbf{linee di prodotto}
+\end{itemize}
+
+\begin{note}
+	La relazione "parte di" si può rappresentare anche con l'inclusione grafica in un package.
+\end{note}
+
+\newpage
+
+\subsubsection{Uso}
+Un modulo A può usarne un altro B per soddisfare i suoi requisiti. Questo permette di pianificare uno sviluppo incrementale e creare test di unità ed integrazione. Sono permessi i cicli anche se pericolosi.
+
+\begin{center}
+	\includegraphics[scale=0.4]{uso}
+\end{center}
+
+\subsubsection{Strati}
+\begin{wrapfigure}[10]{r}{3cm}
+	\vspace{-1cm}
+	\includegraphics[width=3cm]{strati}
+\end{wrapfigure}
+Nella vista strutturale a strati ogni elemento (\textbf{strato}) è un insieme coeso di moduli a volte raggruppati in segmenti, il quale offre un'interfaccia pubblica per i suoi servizi. La relazione \textit{allowedToUse} è un caso particolare di quella di uso ed è \textbf{antisimmetrica} e \textbf{non implicitamente transitiva}.\\
+Questa vista favorisce modificabilità, portabilità e controllo della complessità.
+
+\subsubsection{Generalizzazione}
+In questa vista gli elementi sono i \textbf{moduli} (classi o packages) che hanno una relazione di generalizzazione tra di loro. Permette di rappresentare relazioni di sotto tipo tra classi e la relazione tra un framework\footnote{Collezione di classi, anche astratte, con relazioni d'uso tra loro.} e una sua specializzazione nel caso dei package.
 
 \subsection{Vista di deployment}
-Descrive l'allocazione del software su ambienti di esecuzione e permette di valutarne \textbf{prestazioni} e \textbf{affidabilità}.
+Descrive l'allocazione del software su ambienti di esecuzione e permette di valutarne \textbf{prestazioni} e \textbf{affidabilità}. Contiene:
+\begin{itemize}
+	\item \textbf{Artefatti} prodotti da un processo di sviluppo software o dal funzionamento di un sistema, rappresentati dallo stereotipo \textit{$<<$artifact$>>$}
+	\item \textbf{Ambienti di esecuzione} o nodi hardware, rappresentati come \textit{parallelepipedi}
+\end{itemize}
+Questi elementi possono avere due tipi di relazioni:
+\begin{itemize}
+	\item \textbf{Dislocazione} di artefatti negli ambienti, rappresentata con il \textit{contenimento}
+	\item \textbf{Interconnessione} tra gli ambienti di esecuzione, rappresentate con relazioni stereotipate
+\end{itemize}
+\begin{center}
+	\includegraphics[scale=.4]{deployment}
+\end{center}
+
+\subsection{Vista ibrida}
+La vista ibrida si compone di quella comportamentale e di quella di deployment su di un'applicazione 3-tier.
+\begin{center}
+	\includegraphics[scale=.4]{ibride}
+\end{center}
+
+\subsection{Altri esempi}
+\subsubsection{Architettura a livelli}
+\begin{wrapfigure}[9]{r}{6cm}
+	\vspace{-1cm}
+	\includegraphics[width=6cm]{livelli}
+\end{wrapfigure}
+I componenti sono organizzati in livelli (layer) dove uno a livello $i$ può invocarne uno del livello sottostante $i-1$. Le richieste scendono lungo la gerarchia mentre le risposte salgono.
+
+\subsubsection{Architettura multi-livello}
+In questa architettura avviene un mapping tra livelli logici (layer) e fisici (tier). Può avere da $1$ ad $N$ livelli, dove all'aumentare di questi si guadagna in \textbf{flessibilità}, \textbf{funzionalità} e possibilità di \textbf{distribuzione} ma si introducono problemi di \textbf{prestazione}. \\
+Dal punto di vista fisico, l'architettura può essere:
+\begin{itemize}
+	\item \textbf{1-tier}: mainframe e terminale
+	\item \textbf{2-tier}: macchina client e singolo server
+	\item \textbf{3-tier}: ciascun livello su una macchina separate
+\end{itemize}
+\begin{center}
+	\includegraphics[scale=.4]{multiliv}
+\end{center}
