@@ -85,5 +85,85 @@ GoF utilizza come notazione la \textbf{Object Modeling Technique}.
 	\includegraphics[scale=.5]{gof}
 \end{center}
 
+\newpage
 \subsection{Strategy}
+Lo strategy design pattern prevede di definire una famiglia di algoritmi, incapsularli separatamente e renderli intercambiabili. Questo permette ad essi di cambiare indipendentemente dai clienti che li usano.\\
+Un programma potrebbe dover fornire più \textbf{varianti} di un algoritmo: le variazioni vengono incapsulate in classi separate mentre il metodo per l'accesso ad esse rimane uniforme.\\
+Lo strategy design pattern si compone di tre partecipanti:
+\begin{itemize}
+	\item \textbf{Strategy}: definisce un'interfaccia comune per gli algoritmi
+	\item \textbf{ConcreteStrategy}: ogni strategia concreta implementa un algoritmo
+	\item \textbf{Context}: contiene un riferimento ad un oggetto \textit{strategy} e può definire un'interfaccia che le consente di accedere ai dati di interesse invece di doverli passare come argomenti
+\end{itemize}
+
+\begin{example}[MyArray]
+	La classe \textit{MyArray} rappresenta un vettore di numeri. Uno dei suoi metodi lo stampa in due possibili formati che potrebbero però cambiare in futuro:
+	\begin{itemize}
+		\item \textit{MathFormat}, e.g. $\{12,-7,3,\ldots\}$
+		\item \textit{StandardFormat}, e.g. ar[0]=12, ar[1]=-7, ar[2]=3,...
+	\end{itemize}
+	Usiamo lo strategy design pattern per isolare l'algoritmo di formattazione in modo che possa variare indipendentemente dal resto della classe.
+	\begin{center}
+		\includegraphics[scale=.3]{myarray}
+	\end{center}
+	La \textit{strategy} è \textit{ArrayDisplayFormat}, le \textit{ConcreteStrategy} sono \textit{StandardFormat} e \textit{MathFormat} e il \textit{Context} è \textit{MyArray}.
+\end{example}
+
+\subsubsection{Conclusioni}
+Lo strategy pattern è utile nei seguenti casi:
+\begin{itemize}
+	\item Più classi correlate differiscono solo nel \textbf{comportamento}
+	\item Servono più \textbf{varianti} diverse di un algoritmo
+	\item Un algoritmo usa dei dati che i clienti non conoscono
+	\item Evitare di esporre strutture dati complesse e algorithm-specific
+\end{itemize}
+
+\begin{note}
+	Quando una classe definisce molti comportamenti che appaiono come alternative in costrutti condizionali, può essere utile trasformare i branch in classi ottenute con lo strategy pattern.
+\end{note}
+
+Il \textbf{costo} dello strategy pattern è di incrementare il numero di oggetti presenti in un'implementazione e la necessità di garantire che le implementazioni diverse rispettino la stessa interfaccia.
+
+\begin{observation}[Dati diversi]
+	Può capitare che strategie diverse usino dati diversi e che quindi in certe \textit{ConcreteStrategy} non tutti i dati vengano utilizzati. Per evitare l'inizializzazione di questi ultimi, si deve fare un \textbf{coupling} maggiore tra \textit{ConcreteStrategy} e \textit{Context}, dove le prime devono chiedere al secondo solo i dati necessari.
+\end{observation}
 \subsection{State}
+Lo state design pattern è un \textbf{behavioural pattern}, ovvero che consente ad un oggetto di alterare il suo comportamento quando cambia lo stato interno. Si compone di tre partecipanti:
+\begin{itemize}
+	\item \textbf{Context}: definisce l'interfaccia di interesse per i client e mantiene un'istanza di \textit{ConcreteState} che definisce lo stato corrente
+	\item \textbf{State}: incapsula il comportamento associato ad un particolare stato del \textit{Context}. Può anche essere una classe concreta con un'implementazione predefinita.
+	\item \textbf{Concrete state}: sono sottoclassi dello stato che implementano il comportamento associato allo \textit{State} che rappresentano.
+\end{itemize}
+Vediamo i passaggi per implementare lo state pattern:
+\begin{enumerate}
+	\item Identificare o creare una classe (\textbf{Context}) che funga da macchina a stati dal punto di vista del cliente
+	\item Creare una classe \textbf{State} che replichi i metodi dell'interfaccia della macchina a stati: ogni metodo richiederà un parametro aggiuntivo (un'istanza della classe di \textit{Context})
+	\item Creare una \textbf{sottoclasse} di \textit{State} per ogni stato del dominio, ognuna delle quali sovrascrive solo i metodi che cambiano
+	\item La classe di \textit{Context} mantiene lo \textbf{stato corrente}, che è un oggetto della classe di \textit{State}
+	\item Le richieste dei client sono delegate dalla classe di \textit{Context} allo stato corrente, passando ad esse anche l'oggetto di \textit{Context}
+	\item I metodi della classe \textit{State} modificano lo stato corrente
+\end{enumerate}
+
+\begin{example}[TCP]
+	Un esempio è l'implementazione del protocollo TCP, che invia risposte diverse a seconda dello stato della connessione.
+	\begin{center}
+		\includegraphics[scale=.4]{tcp}
+	\end{center}
+\end{example}
+
+\subsubsection{Conclusioni}
+Lo state pattern è utile nei seguenti casi:
+\begin{itemize}
+	\item Il \textbf{comportamento} di un oggetto dipende dal suo stato
+	\item Le operazioni hanno \textbf{dichiarazioni condizionali complesse}, dove la scelta dipende dallo stato
+\end{itemize}
+
+\begin{observation}
+	Il comportamento è suddiviso tra i possibili stati e ognuno è memorizzato in una classe.
+\end{observation}
+\begin{observation}
+	Lo stato corrente è memorizzato in un'unica posizione e le transizioni di stato sono esplicite.
+\end{observation}
+\begin{observation}
+	La classe \textit{State} può implementare parte del comportamento se è in comune o di default. Inoltre i suoi oggetti possono essere condivisi quando non hanno variabili di istanza.
+\end{observation}
