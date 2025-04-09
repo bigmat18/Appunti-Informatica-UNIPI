@@ -167,3 +167,71 @@ Lo state pattern è utile nei seguenti casi:
 \begin{observation}
 	La classe \textit{State} può implementare parte del comportamento se è in comune o di default. Inoltre i suoi oggetti possono essere condivisi quando non hanno variabili di istanza.
 \end{observation}
+
+\subsection{Factory}
+Le factory sono dei pattern di tipo \textbf{creazionale}: astraggono il processo di instanziazione degli oggetti nascondendo l'effettiva creazione e rendendo il sistema indipendente da ciò.\\
+Una classe \textit{factory} ha il solo compito di creare e restituire istanze di altre classi.
+
+\begin{observation}[New]
+	Il comando \textit{new} viola il principio \textit{code to an interface} in quanto assegniamo ad una variabile un oggetto ottenuto da una classe concreta. Questa dipende da ogni classe riferita al suo interno e deve essere aggiornata e ricompilata se cambiano le classi riferite, violando i principi \textit{open-closed} e \textit{information hiding}.
+\end{observation}
+
+\subsubsection{Simple factory}
+Detto anche ConcreteFactory, non appartiene alla Gang of Four ed è una semplificazione molto diffusa di \textit{Abstract Factory}. Consiste nel delegare ad un oggetto \textbf{factory} la creazione separandola dalle altre funzionalità.
+\begin{center}
+	\includegraphics[scale=.5]{simplefactory}
+\end{center}
+
+\subsubsection{Factory method}
+Il factory method delega alle sottoclassi la decisione di quali classi istanziare. Si compone di quattro partecipanti:
+\begin{itemize}
+	\item \textbf{Creator} (astratto o concreto): dichiara il \textbf{factory method} che viene usato da altri metodi. Questo, se crea tipi diversi di prodotti, deve avere un parametro.
+	\item \textbf{ConcreteCreator}: sovrascrive il \textit{factory method} per restituire un istanza del \textit{ConcreteProduct}
+	\item \textbf{ConcreteProduct}: implementa l'interfaccia di \textit{Product}
+	\item \textbf{Product}: definisce l'interfaccia per il tipo di oggetti che sono creati dal \textit{factory method}
+\end{itemize}
+\begin{center}
+	\includegraphics[scale=.6]{factorymethod}
+\end{center}
+
+Il factory method pattern permette di disaccoppiare una classe dalle classi degli oggetti che crea e utilizza e delega alle sottoclassi la specifica degli oggetti da creare. Rende il codice più \textbf{flessibile} e \textbf{riusabile} e implementa il principio di \textit{code to an interface} (la classe si basa sull'interfaccia di \textit{Product} e può funzionare con qualunque \textit{ConcreteProduct} che la supporti).\\
+
+Lo \textbf{svantaggio} principale è la necessità di estendere la classe \textit{Creator} solo per istanziare un particolare \textit{ConcreteProduct}.
+
+\subsubsection{Abstract factory}
+L'abstract factory delega ad altre classi la decisione di quali classi istanziare. Definisce un'interfaccia per creare famiglie di oggetti correlati e dipendenti fra loro senza specificare le classi concrete.\\
+A differenza del \textit{factory method}, l'abstract delega ad altri oggetti l'istanziazione tramite la \textbf{composizione}. Questi altri oggetti spesso usano il \textit{factory method}.
+\begin{center}
+	\includegraphics[scale=.3]{abstractfactory}
+\end{center}
+
+\subsubsection{Pure fabrication}
+Si tratta di un pattern \textbf{GRASP} che assegna responsabilità fortemente correlate ad una \textbf{classe artificiale} che non rappresenta niente nel dominio del problema (è introdotta solo per convenienza). Implementa il \textbf{behavioural decomposition} con l'obiettivo di supportare \textit{high coesion}, \textit{low coupling} e \textit{riuso}.
+
+\subsection{Singleton}
+Il singleton pattern garantisce che una classe abbia \textbf{una sola istanza} fornendo un punto di accesso globale ad essa. 
+\begin{note}
+	Nonostante la necessità di avere oggetti unici sia abbastanza comune, in quanto spesso gran parte degli oggetti in un'applicazione hanno un'unica responsabilità assegnata, le classi singleton sono rare.
+\end{note}
+\noindent Per costruirlo:
+\begin{enumerate}
+	\item Si rende privato il costruttore della classe
+	\item Si aggiunge un oggetto statico privato che conterrà l'unica istanza disponibile
+	\item Si rende l'unica istanza disponibile accessibile solo tramite un metodo statico
+\end{enumerate}
+
+\begin{wrapfigure}[5]{r}{4cm}
+	\vspace{-.5cm}
+	\includegraphics[width=4cm]{singleton}
+\end{wrapfigure}
+\subsubsection{Inizializzazione lazy} A volte non si potrebbero avere \textbf{sufficienti informazioni} per l'istanziazione del singleton statico oppure potrebbe essere molto \textbf{resource intensive}. In questo caso è meglio aspettare per eseguire l'inizializzazione.
+
+\subsubsection{Multithread} Thread diversi potrebbero inizializzare più istanze del singleton quasi simultaneamente. Ci sono tre possibili soluzioni:
+\begin{itemize}
+	\item \textbf{Inizializzazione eager} invece di quella \textit{lazy}, spreca risorse
+	\item \textbf{Sincronizzazione} del metodo \textit{getInstance}, dichiarandolo come \textit{synchronized}, riduce le performance
+	\item \textbf{Double-checked locking}: una variabile volatile garantisce che ogni thread acceda all'ultimo valore assegnatole e solo un thread alla volta può eseguire un blocco di codice synchronized.
+\end{itemize}
+
+\subsubsection{Sottoclassi}
+Nel caso in cui una classe singleton venga estesa, per garantire che l'unica istanza sia istanza di una sottoclasse, facciamo in modo che ognuna di esse fornisca un metodo statico \textit{getIstance}. In questo modo i costruttori delle sottoclassi possono essere privati e quello del singleton sarà \textbf{protected}.
