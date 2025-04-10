@@ -235,3 +235,60 @@ Il singleton pattern garantisce che una classe abbia \textbf{una sola istanza} f
 
 \subsubsection{Sottoclassi}
 Nel caso in cui una classe singleton venga estesa, per garantire che l'unica istanza sia istanza di una sottoclasse, facciamo in modo che ognuna di esse fornisca un metodo statico \textit{getIstance}. In questo modo i costruttori delle sottoclassi possono essere privati e quello del singleton sarà \textbf{protected}.
+
+\subsection{Decorator}
+Il pattern decorator aggiunge dinamicamente \textbf{responsabilità} ad un oggetto ed è un'alternativa flessibile all'ereditarietà per l'aggiunta di funzionalità a \textbf{runtime}. Il pattern si compone di:
+\begin{itemize}
+	\item \textbf{Component}: interfaccia degli oggetti decorati
+	\item \textbf{ConcreteComponent}: oggetti decorabili con nuove responsabilità
+	\item \textbf{Decorator}: interfaccia conforme a quella comune che mantiene un riferimento ad un oggetto di tipo \textit{Component} (che può essere o meno già decorato)
+	\item \textbf{ConcreteDecorator}: aggiunge nuove responsabilità
+\end{itemize}
+\begin{center}
+	\includegraphics[scale=.5]{decorator}
+\end{center}
+È più \textbf{semplice} rispetto all'ereditarietà multipla e garantisce più \textbf{flessibilità} di quella statica. Favorisce inoltre l'aggiunta incrementale di feature.\\
+I contro principali è che se troppo complessi i decorator diventano \textbf{costosi} e quando ce ne sono tanti piccoli i sistemi diventano \textbf{complessi} da gestire. Inoltre è importante notare che \textit{Decorator} e \textit{Component} non sono identici e quindi quando usiamo questo pattern è meglio non affidarsi all'identità degli oggetti.
+
+\subsection{Adapter}
+Nell'ambito della programmazione l'adapter permette a due codici con interfacce diverse di essere collegati. Questo pattern quindi \textbf{converte} l'interfaccia di una classe in quella attesa dal cliente. Si compone di:
+\begin{itemize}
+	\item \textbf{Target}: definisce l'interfaccia application-specific usata da \textit{Client}
+	\item \textbf{Client}: interagisce con oggetti conformi a \textit{Target}
+	\item \textbf{Adaptee}: definisce un'interfaccia esistente da adattare
+	\item \textbf{Adapter}: adatta l'interfaccia di \textit{Adaptee} per renderla conforme a quella \textit{Target}. Questo binding è realizzato con il meccanismo di \textbf{delega}.
+\end{itemize}
+\begin{center}
+	\includegraphics[scale=.6]{adapter}
+\end{center}
+Gli adapter possono essere realizzati come \textbf{strategie}: se abbiamo diversi moduli che implementano la stessa funzionalità e abbiamo scritto degli adattatori per loro, abbiamo un insieme di adattatori che implementano la stessa interfaccia e quindi possiamo sostituire gli oggetti adattatori in fase di esecuzione.
+
+\subsubsection{Façade}
+Il pattern façade è della Gang of Four e realizza un adattatore che inoltra le richieste a più \textit{adaptee} simultaneamente.
+
+\subsection{Proxy}
+Il proxy fornisce un surrogato per un altro oggetto per controllarne l'accesso. A differenza dell'adapter, il proxy e l'oggetto originale hanno la stessa interfaccia e può eseguire pre e post processing.\\
+\begin{figure}[!h]
+	\hfill
+	\subfigure[Proxy pattern]{\includegraphics[width=7cm]{proxy}}
+	\hfill
+	\subfigure[Dynamic model]{\includegraphics[width=7cm]{proxydyn}}
+	
+\end{figure}
+
+\noindent Ne esistono diversi tipi:
+\begin{itemize}
+	\item \textbf{Remote}: permette l'acceso ad un oggetto remoto
+	\item \textbf{Protection}: implementa un controllo sugli accessi
+	\item \textbf{Cache}: mantiene coppie di tipo richiesta-risposta per alleggerire il carico sul server
+	\item \textbf{Synchronization}: gestisce gli accessi concorrenti ad un servizio
+	\item \textbf{Virtual}: si comporta come l'originale mentre questi viene costruito e poi passa le richieste a quest'ultimo. È utile per ritardare la creazione di un oggetto costoso, che viene quindi creato solo al momento necessario mentre il proxy fa da surrogato.
+\end{itemize}
+
+\subsubsection{Java RMI}
+Il proxy è molto simile a Java RMI che si compone del \textbf{client helper} che fa da \textbf{stub} e dal \textbf{service helper} che fa da \textbf{skeleton}:
+\begin{enumerate}
+	\item Il client fa una ricerca nel registro RMI
+	\item Il registro restituisce un oggetto \textit{stub}, ovvero il remote proxy del servizio
+	\item Il client invoca lo \textit{stub} come se fosse il servizio
+\end{enumerate}
