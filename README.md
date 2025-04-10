@@ -5,6 +5,15 @@
 Questa repository contiene appunti scritti durante i corsi della laurea triennale di informatica presso l'università di Pisa (LM-31). Inoltre è presente per ogni corso un insieme di materiale, esercizi e dispense forniti duranti le lezioni, utili per preparare i vari esami.
 Per gli appunti di ogni materia è presente sia il codice sorgete in Latex, sia il pdf che può essere scaricato e consultato per corsi futuri.
 
+### NOTA BENE
+
+Gli appunti sono stati scritti dai due proprietari (vedi in fondo per i crediti). Questo significa che esistono **due versioni (!)** della repository.
+
+Per vedere i due appunti diversi è possibile cambiare il _branch_ della repository. Per farlo è sufficiente cliccare sul nome del branch in alto a sinistra e selezionare il branch desiderato. Di seguito i due link che comunque rimandano ai due branch:
+
+- [Filippo](https://github.com/bigmat18/Appunti-Informatica-UNIPI/tree/filippo)
+- [Matteo](https://github.com/bigmat18/Appunti-Informatica-UNIPI/tree/master)
+
 **Nota**: Gli appunti presenti nel terzo anno sono scritti in markdown usando il software [Obsidian](https://obsidian.md/download) se volete leggerli in modo comprensibile (sopratutto per le immagini) vi consiglio di scaricarlo.
 
 ## Indicazioni
