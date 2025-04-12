@@ -147,3 +147,99 @@ Esempi di metodi formali sono le \textbf{triple di Hoare}, il \textbf{B method} 
 	\hfill
 	\subfigure[Model checking]{\includegraphics[width=7cm]{modelcheck}}
 \end{figure}
+
+\subsection{Verifica dinamica}
+La verifica dinamica, o \textbf{testing}, si compone di quattro fasi:
+\begin{enumerate}
+	\item \textbf{Progettazione}: input, output atteso e ambiente di esecuzione del test
+	\item \textbf{Esecuzione} del codice
+	\item \textbf{Analisi} dei risultati, ovvero il confronto tra l'output ottenuto e quello atteso
+	\item \textbf{Debugging}
+\end{enumerate}
+Livelli diversi della fase di progettazione richiedono testing diversi.
+\begin{center}
+	\includegraphics[scale=.5]{testlvl}
+\end{center}
+
+\subsubsection{Progettazione}
+È fondamentale poter ripetere una sessione di test in condizioni immutate, ovvero:
+\begin{itemize}
+	\item In un \textbf{ambiente definito}, sia per l'HW che per le condizioni
+	\item Con \textbf{casi di prova} definiti, ovvero con input predefiniti e comportamenti (o output) attesi
+	\item Con \textbf{procedure definite}
+\end{itemize}
+
+\begin{definition}[Caso di prova]
+	Un caso di prova è una tripla
+	\begin{equation*}
+		\langle \text{input}, \text{output\_atteso}, \text{ambiente}\rangle
+	\end{equation*}
+\end{definition}
+\noindent Per la progettazione servono:
+\begin{itemize}
+	\item \textbf{Test obbligation}: specifica di casi di test utili a verificare proprietà ritenute importanti. Si possono definire in diversi modi:
+	\begin{itemize}
+		\item \textbf{Black box}: a partire dalle \textit{funzionalità} indicate nella specifica del software, per evidenziarne malfunzionamenti.
+		\item \textbf{White box}: a partire dalla struttura, guardando il codice, per esercitarlo indipendentemente dalle funzionalità
+		\item A partire dal \textit{modello} del programma utilizzato nella specifica o progettazione oppure derivato dal codice
+		\item A partire da \textit{fault ipotetici}, cercando difetti ipotizzati o bug comuni
+	\end{itemize}
+	\item \textbf{Criteri} per definire l'\textbf{adeguatezza} di un insieme di casi di test. Sostanzialmente è un insieme di \textit{test obbligation}. Si considera \textbf{soddisfatto} se tutti i test hanno successo e se ogni test obbligation è soddisfatta da almeno un caso di test nell'insieme scelto.
+\end{itemize}
+
+\begin{definition}[Batterie di prove]
+	Una batteria di prova, o test suite, è un insieme o sequenza di casi di prova.
+\end{definition}
+\begin{definition}[Procedura di prova]
+	Procedure automatiche e non per eseguire, registrare, analizzare e valutare i risultati di una batterie di prove. Si articola in più fasi:
+	\begin{enumerate}
+		\item Definizione dell'obiettivo della prova
+		\item Progettazione della prova: scelta e definizione dei casi
+		\item Realizzazione dell'ambiente di prova: driver e stub da realizzare, ambienti da controllare, strumenti per la registrazione dei dati da analizzare
+		\item Esecuzione della prova
+		\item Analisi dei risultati alla ricerca di evidenza di malfunzionamenti
+		\item Valutazione della prova
+	\end{enumerate}
+\end{definition}
+\noindent Inoltre, per eseguire un test, è necessario del codice aggiuntivo chiamato \textbf{scaffolding}, che può includere:
+\begin{itemize}
+	\item \textbf{Driver} di test che sostituiscono il chiamante
+	\item \textbf{Stub} o \textbf{mock} che sostituiscono a funzionalità del chiamante
+	\item \textbf{Test harness}, che sostituiscono parti dell'ambiente di distribuzione
+	\item \textbf{Tool} per gestire l'esecuzione e la registrazione di risultati
+\end{itemize}
+\begin{example}
+	Se il metodo $A$ usa $B$ che usa $C$ e voglio testare $B$, devo costruire del codice che simula $A$ (driver) e che simula $C$ (stub).
+\end{example}
+
+\subsubsection{Black box}
+La strategia per la generazione dei casi con metodi black box consiste in:
+\begin{enumerate}
+	\item Separare le funzionalità da testare, e.g. basandosi sui casi d'uso
+	\item Derivare un insieme di casi di test per ogni funzionalità:
+	\begin{itemize}
+		\item Per ogni tipo di parametro di input si individuano dei valori da testare sfruttando varie tecniche
+		\begin{itemize}
+			\item \textbf{Metodo statistico}: i casi di test vengono selezionati in base alla distribuzione di probabilità degli input del programma (il test viene fatto sugli input più probabili). È automatizzabile ma è difficile e costoso calcolare il risultato atteso (\textbf{problema dell'oracolo})
+			\item \textbf{Partizione in categorie}: il dominio degli input è ripartito in categorie o classi di equivalenza. Due input appartengono alla stessa se, in base ai requisiti, dovrebbero produrre lo stesso comportamento del programma. È conveniente solo se il numero dei possibili comportamenti è molto inferiore alle possibili configurazioni in ingresso. Si basa su un'affermazione generalmente plausibile ma non vera in assoluto.
+			\item \textbf{Frontiera}: si individuano i valori limite rispetto alle classi di equivalenza e rispetto al tipo degli input. Spesso è proprio intorno a questi valori che si nascondono difetti del codice. Molto efficace quando la frontiera è un punto di discontinuità.
+			\item \textbf{Casi non validi}: per ogni input si definiscono i casi che devono generare un errore
+			\item \textbf{Random}: si genera un insieme grande a piacere di valori in modo automatico e casuale. È a costo zero man on sempre è ripetibile. È applicabile se l'esecuzione costa poco.
+			\item \textbf{Catalogo}: l'esperienza acquisita nel definire i casi di test può essere collezionata in un catalogo per rendere più veloce il processo e ridurre l'errore umano. Si elencano tutti i casi che devono essere considerati per ciascun tipo di variabile.
+		\end{itemize}
+		\item Per l'insieme di parametri si usano tecniche di \textbf{test combinatorio}. Dato che al crescere del numero degli input il prodotto cartesiano dei casi di test individuati può diventare ingestibile a causa dell'esplosione combinatoria, vediamo alcune tecniche per gestire la generazione dei casi di test:
+		\begin{itemize}
+			\item \textbf{Vincoli}: si introducono per limitare il numero di test ottenuti. Possono essere:
+			\begin{itemize}
+				\item Di \textit{errore}: un solo caso di errore (input non valido) per ogni posizione
+				\item Di \textit{proprietà}: si definiscono proprietà comuni per classi di equivalenza diverse che poi vengono usate per guidare la combinazione dei test
+				\item \textit{Singoletti}: si testa un solo valore per uno o più parametri
+			\end{itemize}
+			\item \textbf{Pairwise testing}: si basa su coppie di variabili generando tutte le combinazioni solo per i sottoinsiemi di due, e in generale per $k$ variabili con $k<n$
+			
+			\begin{note}
+				La generazione efficiente di combinazioni che coprano tutte le coppie è impossibile da fare a mano per molti parametri con molti valori ma può essere fatta con euristiche.
+			\end{note}
+		\end{itemize}
+	\end{itemize}
+\end{enumerate}
