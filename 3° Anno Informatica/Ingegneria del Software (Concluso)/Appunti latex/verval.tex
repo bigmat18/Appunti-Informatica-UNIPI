@@ -243,3 +243,96 @@ La strategia per la generazione dei casi con metodi black box consiste in:
 		\end{itemize}
 	\end{itemize}
 \end{enumerate}
+
+\subsubsection{White box}
+I criteri white-box, anche detti \textbf{strutturali}, si basano sulla struttura del codice ed aiutano ad aggiungere altri test oltre a quelli generati con criteri \textit{funzionali}.\\
+Questi criteri sono definiti per classi particolari di elementi, quali \textit{comandi}, \textit{branch} e \textit{condizioni}, e richiedono che i test esercitino \textbf{tutti} quegli elementi del programma.
+
+\begin{definition}[Grafo di flusso]
+	Il grafo di flusso (flow-chart) definisce a partire dal codice la struttura dello stesso. Identifica le sue parti e come sono collegate tra loro.
+\end{definition}
+
+\paragraph{Criteri di copertura} Nel contesto dei grafi di flusso abbiamo alcuni tipi di coperture che dobbiamo rispettare:
+\begin{itemize}
+	\item \textbf{Comandi}: si identificano valori di input che esercitino tutti i comandi, cercando di minimizzare il numero di test a parità di copertura. L'adeguatezza della copertura si misura con:
+	\begin{equation*}
+		\frac{\text{numero di comandi esercitati}}{\text{numero totale di comandi}}
+	\end{equation*}
+	\begin{note}
+		La coverage non è monotona rispetto alla dimensione dell'insieme di test.
+	\end{note}
+	\item \textbf{Decisioni}: si identificano valori di input che esercitino tutti i rami di ogni condizione. L'adeguatezza si misura con:
+	\begin{equation*}
+		\frac{\text{numero di rami esercitati}}{\text{numero totale di rami}}
+	\end{equation*}
+	In particolare è utile garantire la copertura delle \textbf{condizioni semplici}: per ogni condizione semplice $CS$ in un programma $P$ un insieme di test $T$ contiene contiene un test per cui $CS$ vale \textit{true} e uno per cui vale \textit{false}. Si misura in:
+	\begin{equation*}
+		\frac{\text{numero di valori assunti dalle condizioni semplici}}{2 \cdot\text{numero di condizioni semplici}}
+	\end{equation*}
+	Date $n$ condizioni semplici ci sono $2^n$ condizioni possibili da testare.
+	\item \textbf{Cammini}: si identificano tutti i valori di input per esercitare tutti i cammini possibili. In presenza di cicli il numero è potenzialmente infinito e quindi si implementano casi di test che esercitino il ciclo:
+	\begin{itemize}
+		\item Zero volte
+		\item Esattamente una volta
+		\item Più di una volta
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Fault-based}
+Il fault-based testing si basa sull'ipotizzare dei difetti potenziali nel codice in questione e nella creazione/valutazione di una test-suite che li rilevi.\\
+
+La tecnica più nota è quella \textbf{mutazionale}: dato un programma $P$ esercitato su una batteria di test $T$ e corretto rispetto ad essa, introduciamo dei difetti (\textbf{mutazioni}) in $P$ ottenendo $P'$. Si ripetono poi i test sul nuovo programma e si verifica:
+\begin{itemize}
+	\item se i difetti introdotti non sono rilevati (\textbf{sopravvivono}), $T$ non era sufficientemente buona oppure era equivalente al programma originale
+	\item se sono rilevati (vengono \textbf{uccisi}), abbiamo maggior fiducia in $T$
+\end{itemize}
+Alcuni esempi di mutazioni:
+\begin{itemize}
+	\item \textit{crp}: sostituzione di costante per un'altra
+	\item \textit{ror}: sostituzione dell'operatore relazionale
+	\item \textit{vie}: eliminazione dell'inizializzazione di una variabile
+	\item \textit{lrc}: sostituzione di un operatore logico
+	\item \textit{abs}: inserimento di un valore assoluto
+\end{itemize}
+\begin{note}
+	Una mutazione è \textbf{valida} se sintatticamente corretta e \textbf{utile} se è valida e non facilmente distinguibile dal programma originale.
+\end{note}
+L'efficacia di un test mutazionale si misura con:
+\begin{equation*}
+	\frac{\text{numero di mutanti uccisi}}{\text{numero totale di mutanti}}
+\end{equation*}
+
+\begin{observation}
+	I test mutazionali si applicano in congiunzione con altri criteri di test già realizzati e possono essere completamente automatizzati.
+\end{observation}
+
+\subsubsection{Oracolo}
+Un oracolo è uno strumento o metodologia in grado di generare i risultati attesi di un test case. Fornisce un punto di riferimento per valutare la \textbf{correttezza del sistema} durante il testing ed è cruciale per garantire la \textbf{qualità del software} e la \textbf{corretta individuazione} di eventuali difetti.\\
+Per trovare i risultati attesi ci sono diverse tecniche:
+\begin{itemize}
+	\item Ricavarli dalle \textbf{specifiche} formali ed eseguibili
+	\item \textbf{Inversione} delle funzioni, in particolare quando:
+	\begin{itemize}
+		\item la funzione inversa è più facile o disponibile
+		\item possiamo partire dall'output e trovare l'input
+		\item limitazione per difetti di approssimazione
+	\end{itemize}
+	\item \textbf{Versioni precedenti} dello stesso codice
+	\item \textbf{Versioni multiple} indipendenti sviluppate ad hoc o preesistenti back-to-back
+	\item \textbf{Semplificazione} dei dati in \textbf{input}, ad esempio ipotizzando un comportamento costante o usando risultati noti o calcolabili con altri mezzi
+	\item \textbf{Semplificazione} dei \textbf{risultati} tramite vincoli tra input e output e invarianti sulle uscite
+\end{itemize}
+
+\subsection{Test di sistema}
+Vediamo le varie tipologie di test di sistema:
+\begin{itemize}
+	\item \textbf{Facility}: test delle funzionalità per verificare che quelle stabilite nei requisiti siano state realizzate correttamente
+	\item \textbf{Security}: controlla l'efficacia dei meccanismi di sicurezza
+	\item \textbf{Usability}: controlla la facilità d'uso del prodotto da parte dell'utente finale e si compone di \textit{prodotto}, \textit{documentazione}, \textit{livello di competenza} dell'utente e \textit{caratteristiche operative dell'ambiente d'uso}
+	\item \textbf{Performance}: controlla l'efficienza di un sistema rispetto ai tempi di elaborazione e di risposta
+	\item \textbf{Load}: controlla l'efficienza di un sistema con il carico di lavoro massimo previsto dai requisiti e consente di individuare malfunzionamenti che non si presentano in condizioni normali
+	\item \textbf{Stress}: controlla la capacità di recovery del sistema dopo un fallimento causato dall'esplicito superamento dei limiti operativi previsti dai requisiti
+	\item \textbf{Storage use}: test di utilizzo della memoria persistente, controlla la sua efficienza di utilizzo
+	\item \textbf{Configuration}: controlla che il sistema funzioni nelle configurazioni previste
+	\item \textbf{Compatibility}: controlla la compatibilità del sistema con altri software
+\end{itemize}
