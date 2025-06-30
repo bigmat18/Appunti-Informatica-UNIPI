@@ -10,6 +10,7 @@
 \usepackage{makecell}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepackage{pgf-pie}  
 \usepackage{titlesec}
 % ----  Useful packages % ---- 
 
@@ -26,6 +27,7 @@
 }
 
 \setcounter{secnumdepth}{4}
+\pgfplotsset{width=7cm,compat=1.9}
 
 \titleformat{\paragraph}
 {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
@@ -61,7 +63,7 @@
 
 % ------- DIMOSTRAZIONE ------
 \theoremstyle{definition}
-\newtheorem{demostration}{Dimotrazione}[subsection]
+\newtheorem{demostration}{Dimostrazione}[subsection]
 % ------- DIMOSTRAZIONE ------
 
 % ------- TEOREMA ------
