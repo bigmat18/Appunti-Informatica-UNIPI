@@ -32,14 +32,14 @@ Trovare copertura canonica:
 Calcolo della proiezione di DF:
 - Per ogni attributo A nel sottoinsieme della proiezione
 	- calcolo la chiusura dell'attributo A
-	- Per ogni attributo B nella chiusura creo una relazione A->B
+	- Per ogni attributo B nella chiusura intersecata con il sottoinsieme della proiezione creo una relazione A->B
 	
 Determinazione di superchiave X per R(T,F)
 - calcolo la chiusura di X
 - Verifico se è uguale a T
 
 Controllare se in BCNF
-- Per ogni DF X-A
+- Per ogni DF X->A
 	- Verficifo se X è superchiave
 		- NO -> non BCNF
 		- SI -> vado avanti
