@@ -1,55 +1,104 @@
+% !TeX spellcheck = it_IT
 \newpage
 \section{Probabilità e indipendenza}
-La probabilità serve per quantificare l'incertezza misurando la fiducia che un evento possa accadere.
+Molte decisioni sono prese in condizioni di incertezza. Questo perché non è possibile conoscere con certezza il futuro in quanto qualsiasi affermazione possiamo fare potrebbe avverarsi come no. La teoria della probabilità nasce per quantificare questa incertezza, misurando la fiducia che un evento possa accadere.
 \subsection{Spazi di probabilità}
+
+\begin{definition}[Esperimento aleatorio]
+	Un esperimento di cui non si conosce con certezza il risultato.
+\end{definition}
+
+\begin{definition}[Esito]
+	Un ipotetico risultato di un esperimento aleatorio.
+\end{definition}
+
 \begin{definition}[Spazio campionario]
-	Lo spazio di probabilità $\Omega$ è l'insieme di tutti gli esiti possibili (\textbf{eventi elementari}) $\omega$ dell'esperimento. Ogni affermazione sulle misure corrisponde ad un sottoinsieme $A \subset \Omega$ degli esiti che la soddisfa. Ognuna delle affermazioni può essere combinata logicamente con le operazioni insiemistiche.
+	Lo spazio di probabilità $\Omega$ è l'insieme di tutti gli esiti possibili $\omega$ dell'esperimento. 
 \end{definition}
-\begin{definition}[Eventi incompatibili]
-	\begin{equation}
-		A \cap B = \emptyset
-	\end{equation}
+
+\begin{definition}[Evento]
+	Un sottoinsieme dello spazio campionario che rappresenta un'affermazione che possiamo fare sull'esito dell'esperimento. Quando ha un solo elemento si dice \textbf{elementare}. $\Omega$ è un \textbf{evento certo} in quanto sottoinsieme improprio dello spazio campionario mentre $\emptyset$ è un \textbf{evento impossibile}.
 \end{definition}
-\begin{definition}[Esperimento composto]
-	Se un esperimento è composto da una successione ordinata di $n$ sotto-esperimenti, il suo spazio campionario è
-	\begin{equation}
-		\Omega = \{(\omega_1, \omega_2, \ldots, \omega_n) \vert \omega_1 \in \Omega_1, \ldots, \omega_n \in \Omega_n\}
-	\end{equation}
-	dove $\Omega_i$ è l'insieme degli esiti dell'i-esimo sotto-esperimento.
-\end{definition}
-\begin{definition}[$\sigma$-algebre]
-	L'insieme di tutti i sottoinsiemi di $\Omega$ che sia chiuso per le operazioni logiche come \textbf{unione} e \textbf{intersezione}.
-\end{definition}
+
+\noindent Consideriamo come esperimento il lancio di un dado:
+\begin{equation*}
+	A = \{\omega_2,\omega_4,\omega_6\} \qquad B=\{\omega_4,\omega_5,\omega_6\}
+\end{equation*}
+vediamo la corrispondenza tra le operazioni insiemistiche e logiche:
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Operazione insiemistica} & \textbf{Operazione logica} & \textbf{Esempio} \\
+		\hline
+		$A \cup B$ & Accade $A$ oppure $B$ & $A \cup B = \{\omega_2, \omega_4, \omega_5,\omega_6\}$ \\
+		$A \cap B$ & Accadono $A$ e $B$ & $A \cap B = \{\omega_2, \omega_6\}$\\
+		$A^c$ & Non accade $A$ & $A^c = \{\omega_1, \omega_3, \omega_5\}$\\
+		$A \setminus B$ & Accade $A$ ma non $B$ & $A \setminus B = A \cap B^c = \{\omega_2\}$\\
+		\hline
+		\textbf{Relazione insiemistica} & \textbf{Relazione logica} & \textbf{Esempio}\\
+		\hline
+		$A \subseteq B$ & Se accade $A$ allora accade $B$ & $\{\omega_5\} \subset \{\omega_5, \omega_6\}$\\
+		$A \cap B = \emptyset$ & Eventi \textbf{incompatibili} & $C$ esce un numero $<2$ e $B$\\
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsection{Probabilità}
 \begin{observation}
 	Se due eventi sono incompatibili la probabilità che si realizzi uno qualsiasi dei due è la somma delle probabilità dei singoli eventi.
 \end{observation}
-\begin{definition}[Probabilità]
-	È il grado di fiducia che un evento si realizzi. È compreso tra $0$ e $1$.\\
-	Più precisamente, dato $\Omega$ un insieme e $F$ una $\sigma$-algebra di parti di $\Omega$, è una funzione $\mathbb{P}:F\to [0,1]$ tale che:
+
+\begin{definition}[Probabilità classica]
+	Consideriamo uno spazio campionario $\Omega$ relativo ad un esperimento e $A\subseteq\Sigma$ un evento. La probabilità di $A$ è un valore $P(A) \in [0,1]$ che misura il grado di fiducia nell'evento.
+	\begin{equation}
+		P(A)=\frac{\#\text{casi favorevoli ad }A}{\#\text{casi possibili}} = \frac{\#A}{\#\Omega}
+	\end{equation}
+	Questa definizione è adatta solo se assumiamo che gli eventi elementari sono ugualmente probabili quindi solo per esperimenti su popolazione reale.
+\end{definition}
+
+\begin{definition}[Probabilità frequentista]
+	Consideriamo un evento articolato in $n$ prove, nel corso del quale si verificano $k$ eventi elementari $\omega_1, \ldots, \omega_k$ incompatibili ma non equiprobabili.\\
+	Supponiamo che $\omega_i$ si sia manifestato $n_i$ volte (frequenza assoluta), allora:
+	\begin{equation}
+		P(\omega_i) = \lim_{n \to \infty}\frac{n_i}{n}
+	\end{equation}
+	Questa definizione è adatta ai fenomeni fisici e biologici ma non sempre è possibile effettuare davvero tante prove (anche se oggi si simula). Inoltre non è detto che esista sempre il limite.
+\end{definition}
+
+\begin{definition}[Probabilità associativa]
+	Dato uno spazio campionario $\Omega$ la probabilità è una funzione $P:\mathbb{P}\to \mathbb{R}$ tale che:
 	\begin{itemize}
-		\item l'evento certo ha probabilità $\mathbb{P}(\Omega)=1$
-		\item (\textbf{$\sigma$-addittività}) se $(A_n)_{n=1,2,\ldots}$ è una successione di eventi a due a due \textbf{disgiunti}, vale
+		\item $0 \leq P(A) \leq 1 \qquad \forall A \subseteq \Omega$
+		\item $\mathbb{P}(\Omega)=1$
+		\item se $(A_n)_{n=1,2,\ldots}$ è una successione di eventi incompatibili vale l'\textbf{addittività}
 		\begin{equation}
-			\mathbb{P}\bigg(\bigcup_{n=1}^{+\infty}A_n\bigg) = \sum_{n=1}^{+\infty}\mathbb{P}(A_n)
+			P\bigg(\bigcup_{n=1}^{+\infty}A_n\bigg) = \sum_{n=1}^{+\infty}P(A_n)
 		\end{equation}
-		e nel caso di finiti sottoinsiemi disgiunti
+		e se la successione è infinita
 		\begin{equation}
-			\mathbb{P}\bigg(\bigcup_{n=1}^{N}A_n\bigg) = \sum_{n=1}^{+N}\mathbb{P}(A_n)
+			P\bigg(\bigcup_{n=1}^{N}A_n\bigg) = \sum_{n=1}^{+N}P(A_n)
 		\end{equation}
 	\end{itemize}
 \end{definition}
+
 \begin{note}
 	Si dice \textbf{trascurabile} un evento $A$ tale che $\mathbb{P}(A)=0$ e \textbf{quasi certo} un evento $A$ tale che $\mathbb{P}(A)=1$. 
 \end{note}
+
+\begin{definition}[Spazio di probabilità]
+	La coppia $\Omega, P$ si dice spazio di probabilità.
+\end{definition}
+
 \begin{proposition}
 	Proprietà della probabilità:
 	\begin{itemize}
 		\item $\mathbb{P}(A^c)=1-\mathbb{P}(A)$ e di conseguenza $\mathbb{P}(\emptyset)=0$
-		\item $B \subset A \Longrightarrow \mathbb{P}(A\setminus B)=\mathbb{P}(A) - \mathbb{P}(B)$
+		\item $B \subseteq A \Longrightarrow \mathbb{P}(A\setminus B)=\mathbb{P}(A) - \mathbb{P}(B)$
 		\item $\mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A \cap B)$
-		\item $\mathbb{P}(A \cup B \cup C) = \mathbb{P}(A) + \mathbb{P}(B) + \mathbb{P}(C) - \mathbb{P}(A \cap B) - \mathbb{P}(A \cap C) - \mathbb{P}(B \cap C) + \mathbb{P}(A \cap B \cap C)$
 	\end{itemize}
 \end{proposition}
+
 \begin{proposition}[Limite di una successione di eventi]
 	Data una successione di eventi $A_1, \ldots, A_n, \ldots$, questa può essere:
 	\begin{itemize}
@@ -62,27 +111,10 @@ La probabilità serve per quantificare l'incertezza misurando la fiducia che un 
 	\end{equation}
 \end{proposition}
 
-\subsection{Probabilità discreta}
-\begin{definition}[Probabilità discreta]
-	Dato $\Omega$ \textbf{numerabile}
-	\begin{equation*}
-		\Omega = (\omega_1, \omega_2, \ldots, \omega_n, \ldots)
-	\end{equation*}
-	per ogni evento $A \subset \Omega$, la misura di probabilità è:
-	\begin{equation}
-		\mathbb{P}(A) = \sum_{\omega_i \in A}p_i = \sum_{\omega_i \in A} \mathbb{P}(\{\omega_i\})
-	\end{equation}
+\subsection{Modello uniforme}
+\begin{definition}[Modello uniforme]
+	Definiamo il modello uniforme come lo spazio di probabilità$ (\Omega,P)$ tale che $\Omega$ è finito e ogni esito $\omega\in\Omega$ è equiprobabile, ovvero $P(\{\omega\})$ è la stessa $\forall \omega \in \Omega$.
 \end{definition}
-
-\subsubsection{Probabilità uniforme su un insieme finito}
-Un esempio di probabilità discreta è quella uniforme su un insieme finito $\Omega$, ovvero dove
-\begin{equation*}
-	p_1 = p_2 = \ldots = p_N
-\end{equation*}
-In questo caso vale:
-\begin{equation}
-	\mathbb{P}(A) = \frac{\# A}{\# \Omega} = \frac{\text{"casi favorevoli"}}{\text{"casi possibili"}} \quad\quad A \subseteq \Omega
-\end{equation}
 
 \subsubsection{Calcolo combinatorio}
 Alcune formule notevoli:
@@ -98,48 +130,37 @@ Alcune formule notevoli:
 		\binom{n}{k} = \frac{n!}{k!(n-k)!} \quad\quad 0 \leq k \leq n
 	\end{equation*}
 \end{itemize}
-\subsubsection{Funzione di massa}
-\begin{definition}[Funzione di massa]
-	Dato
-	\begin{equation*}
-		\Omega = \{x_1, x_2, \ldots\} \subset \mathbb{R}
-	\end{equation*}
-	un sottoinsieme numerabile in cui ogni punto $x_i$ può contenere successioni (che possono andare a $\pm \infty$), la funzione di massa è
-	\begin{equation}
-		\Omega \ni x_i \mapsto p(x_u) = \mathbb{P}(\{x_i\}) \in [0,1]
-	\end{equation}
-\end{definition}
-\noindent Se poniamo che la probabilità di ogni altro punto non appartenente al sottoinsieme vale $0$
-\begin{equation*}
-	x \neq x_i \Longrightarrow p(x) = \mathbb{P}(\{x\}) = 0
-\end{equation*}
-allora possiamo estendere la funzione a $\mathbb{R}$ e dire che
-\begin{equation}
-	\mathbb{P}(A) = \sum_{i:x_i \in A} p(x_i) \quad\quad \forall A \subseteq \mathbb{R}
-\end{equation}
-\begin{proposition}
-	Valgono:
-	\begin{align}
-		& p(x_i) \geq 0 \\
-		& \sum_{i=1,2,\ldots}p(x_i) = 1
-	\end{align}
-\end{proposition}
 
 \subsection{Probabilità condizionata}
 Quando si è a conoscenza della realizzazione di un evento, cambia la valutazione di probabilità di ogni altro evento.
 \begin{definition}[Probabilità condizionata]
-	Dati due eventi $A, B$ con $B$ non trascurabile, la probabilità condizionata di $A$ rispetto a $B$ è
+	Dati due eventi $A, B$ con $B$ non trascurabile ($P(B) \neq 0$), la probabilità condizionata di $A$ rispetto a $B$ è
 	\begin{equation}
 		\mathbb{P}(A \vert B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
 	\end{equation}
 \end{definition}
 
-\begin{proposition}[Condizionamento ripetuto]
+\begin{observation}
+	Fissato $B$ non trascurabile la funzione $A \mapsto P(A\vert B)$ è una probabilità. Non vale il contrario.
+\end{observation}
+
+\begin{proposition}[Regola dei prodotti]
 	Se l'intersezione di eventi $A_1 \cap \ldots \cap A_{n-1}$ non è trascurabile vale
 	\begin{equation}
 		\mathbb{P}(A_1 \cap \ldots \cap A_n) = \mathbb{P} (A_1) \cdot \mathbb{P}(A_2 \vert A_1) \cdot \ldots \cdot \mathbb{P}(A_n \vert A_1 \cap \ldots \cap A_{n-1})
 	\end{equation}
 \end{proposition}
+
+\begin{demostration}
+	Vediamo la dimostrazione della regola dei prodotti nel caso con $A$ e $B$. Abbiamo:
+	\begin{equation*}
+		P(A\vert B)=\frac{P(A \cap B)}{P(B)} \qquad \qquad P(B\vert A)=\frac{P(B\cap A)}{P(A)}
+	\end{equation*}
+	Però, sapendo che $P(A\cap B) = P(B \cap A) $ possiamo dire che
+	\begin{equation*}
+		P(A \vert B) \cdot P(B) = P(A\cap B) = P(B\cap A) = P(B \vert A) \cdot P(A)
+	\end{equation*}
+\end{demostration}
 
 \begin{definition}[Partizione]
 	Una partizione di $\Omega$ è una collezione di $n$ eventi $B_1, \ldots, B_n$ a due a due disgiunti tali che

@@ -248,66 +248,156 @@ Questo tipo di indici misura la dispersione dei dati attorno a valori tipici ind
 
 \subsubsection{Quantili}
 \begin{definition}[Funzione di ripartizione empirica]
-	Dato $x = (x_1, \ldots, x_n) \in \mathbb{R}^n$:
+	Dato $x = (x_1, \ldots, x_n) \in \mathbb{R}^n$ un vettore di dati quantitativi, la funzione empirica è la funzione $F_e:\mathbb{R} \to \mathbb{R}$ definita come:
 	\begin{equation}
 		F_e(t) = \frac{\#\{i \vert x_i \leq t\}}{n}
 	\end{equation}
 	Per ogni $t \in \mathbb{R}$ restituisce la frequenza relativa dei dati minori o uguali a $t$. È sempre \textbf{non decrescente} e $F_e(-\infty)=0$, $F(+\infty)=1$.
 \end{definition}
+
+\newpage
 \begin{definition}[$\beta$-quantile]
-	Il dato $x_i$ tale che:
+	Il dato $x=(x_1, \ldots, x_n) \in \mathbb{R}^n$ vettore di dati quantitativi e sia $k$ un numero naturale con $0 < k < 100$ e $\beta = \frac{k}{100}$. Definiamo il \textbf{k-esimo percentile} o \textbf{$\beta$-quantile} il dato $x_i$ tale che:
 	\begin{itemize}
-		\item almeno $\beta n$ dati siano $\leq x_i$
-		\item almeno $(1- \beta)n$ dati siano $\geq x_i$
+		\item almeno il $k\%$ dei dati siano $\leq x_i$
+		\item almeno $(1- k)\%$ dei dati siano $\geq x_i$
 	\end{itemize}
-	Inoltre:
-	\begin{itemize}
-		\item Se $\beta n$ non è intero vale $x_{(\lceil\beta n \rceil)}$
-		\item Se $\beta n$ è intero è la media aritmetica tra $x_{(\beta n)}$ e $x_{(\beta n +1)}$
-	\end{itemize}
+	Se due dati soddisfano le condizioni si prende la media aritmetica.\\
 \end{definition}
 
-\subsubsection{Dati multi-variati}
-Consideriamo coppie di dati \textbf{bivariati} del tipo
+\noindent Operativamente parlando, dato il vettore $x$ e $\beta=\frac{k}{100}$ eseguiamo:
+\begin{enumerate}
+	\item Ordiniamo i dati in senso crescente
+	\item Dato $\beta$, $\beta \cdot n$ può essere:
+	\begin{itemize}
+		\item Non intero vale $x_{(\lceil\beta n \rceil)}$
+		\item Intero è la media aritmetica tra $x_{(\beta n)}$ e $x_{(\beta n +1)}$
+	\end{itemize}
+\end{enumerate}
+
+\begin{observation}
+	La mediana rappresenta il $50$\textbf{-mo percentile} o $\frac{1}{2}$-quantile o II-quartile. Con $k=25$ abbiamo il $25$-mo percentile o I-quartile e con $k=75$ abbiamo il $75$-mo percentile o III-quartile.
+\end{observation}
+
+\paragraph{Boxplot} Il boxplot dei dati è un grafico che fornisce simultaneamente informazioni sulla posizione, sulla variabilità e sulla forma di una distribuzione di dati. È costituito da tre elementi:
+\begin{itemize}
+	\item Una \textbf{linea} in corrispondenza della mediana, per rappresentare il centro della distribuzione
+	\item Un \textbf{rettangolo} (box) che va dal I° al III° quartile, la cui altezza indica qual è la variabilità della metà centrale dei dati (\textbf{scarto interquartile})
+	\item Due \textbf{segmenti} (baffi) disegnati a partire dal rettangolo le cui lunghezze sono determinate dagli estremi dei dati $x_i$ e $x_n$
+\end{itemize}
+
+\begin{center}
+	\begin{tikzpicture}
+		\begin{axis}[
+			y=1.5cm,
+			]
+			\addplot+ [
+			boxplot prepared={
+				lower whisker=2,
+				lower quartile=5,
+				median=7,
+				upper quartile=9,
+				upper whisker=10,
+			},
+			]
+			table [row sep=\\,y index=0] {
+				data\\ 
+			};
+		\end{axis}
+	\end{tikzpicture} 
+\end{center}
+
+\begin{definition}[Outlier]
+	Un outlier è un valore che differisce in modo significativo dalla grande maggioranza dei dati. Possono essere derivati da:
+	\begin{itemize}
+		\item Errori di misurazione
+		\item Individui molto rari
+	\end{itemize}
+	Una possibile regola per identificarli (non certa) è verificare se ci sono dati al di fuori del seguente intervallo:
+	\begin{equation*}
+		[Q_1-1.5 \cdot L, Q_3+1.5 \cdot L] \qquad\qquad L=Q_3-Q_1
+	\end{equation*}
+\end{definition}
+
+\subsection{Dati multi-variati}
+A volte può capitare di avere più dati misurati su uno stesso campione, che diventano quindi $k$-uple di vettori del tipo $(x,y,z,\ldots) \in \mathbb{R}^{k \times N}$. Nello specifico, con $k=2$ avremo dati \textbf{bivariati} della forma:
 \begin{equation*}
-	(x,y) = ((x_1,y_1), \ldots, (x_n,y_n))
+	(x,y) \in \mathbb{R}^{2 \cdot n}
 \end{equation*}
-\begin{definition}[Covarianza campionaria]
+
+\begin{definition}[Covarianza campionaria ed empirica]
+	Misura di quanto gli $x_i$ e gli $y_i$ si discostano dalle rispettive medie e se le fluttuazioni sono concordi ($cov>0$) o discordi ($cov<0$).
 	\begin{equation}
-		cov(x,y) = \sum_{i=1}^{n} \frac{(x_i - \bar{x})(y_i - \bar{y})}{n-1}
+		cov(x,y) = \sum_{i=1}^{n} \frac{(x_i - \bar{x})(y_i - \bar{y})}{n-1} \qquad\qquad \underset{e}{cov(x,y)} = \sum_{i=1}^{n} \frac{(x_i - \bar{x})(y_i - \bar{y})}{n}
 	\end{equation}
 \end{definition}
+
+\begin{observation}
+	Notiamo due uguaglianze:
+	\begin{equation}
+		cov(x,y) = cov(y,x)
+	\end{equation}
+	\begin{equation}
+		cov(x,y) \cdot (n-1) = \sum_{i=1}^{n}(x_i - \bar{x})(y_i-\bar{y}) = n \cdot \underset{e}{cov(x,y)} \Longrightarrow cov(x,y) = \frac{n}{n-1}\cdot \underset{e}{cov(x,y)}
+	\end{equation}
+\end{observation}
+
+\begin{observation}
+	Per eseguire i calcoli è comodo esprimere la covarianza come:
+	\begin{equation}
+		\underset{e}{cov(x,y)} = \frac{1}{n}\sum_{i=1}^{n}x_iy_i - \bar{x}\bar{y}
+	\end{equation}
+	
+	\begin{demostration}
+		\begin{align*}
+			\underset{e}{cov(x,y)} & = \frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})(y_i - \bar{y}) \\
+			& = \frac{1}{n} \sum_{i=1}^{n} [x_iy_i-x_i\bar{y}-\bar{x}y_i+\bar{x}\bar{y}] \\
+			& = \frac{1}{n} \sum_{i=1}^{n}x_iy_i - \bar{y}\sum_{i=1}^{n}\frac{x_i}{n}-\bar{x}\sum_{i=1}^{n}\frac{y_i}{n}+\frac{i}{n}\cdot n\bar{x}\bar{y} \\
+			& = \frac{1}{n}\cdot \sum_{i=1}^{n}x_iy_i-\bar{y}\bar{x}-\bar{x}\bar{y}+\bar{x}\bar{y} \\
+			& = \frac{1}{n}\cdot \sum_{i=1}^{n}x_iy_i-\bar{y}\bar{x}
+		\end{align*}
+	\end{demostration}
+\end{observation}
+
 \begin{definition}[Coefficiente di correlazione]
-	Dati $\sigma(x) \neq 0$ e $\sigma(y) \neq 0$:
+	Serve per determinare la forza e la direzione di una \textbf{relazione lineare} tra due variabili. Dati $\sigma(x) \neq 0$ e $\sigma(y) \neq 0$:
 	\begin{equation}
 		r(x,y) = \frac{cov(x,y)}{\sigma(x)\sigma(y)}  \frac{\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{t})}{\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2}\sqrt{\sum_{i=1}^{n}(y_i - \bar{y})^2}}
 	\end{equation}
-	Misura la presenza di una relazione lineare tra i dati $x$ e $y$ quantificata dalla \textbf{retta di regressione}.
 \end{definition}
+
+\begin{observation}
+	Il coefficiente di correlazione non varia se sostituiamo alla covarianza e deviazione standard con quelle \textbf{empiriche}.
+	\begin{equation*}
+		\frac{cov}{\sigma \cdot\sigma} = \frac{\frac{n}{n-1}\cdot cov_e}{\sigma_e \cdot \sigma_e \cdot \sqrt{\frac{n}{n-1}}\cdot \sqrt{\frac{n}{n-1}}} = \frac{cov_e}{\sigma_e \sigma_e}
+	\end{equation*}
+\end{observation}
+
 \begin{proposition}[Disuguaglianza di Cauchy-Scwarz]
 	\begin{equation}
 		\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y}) \leq \sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2}\sqrt{\sum_{i=1}^{n}(y_i - \bar{y})^2}
 	\end{equation}
-	e quindi
+	e quindi $r(x,y) \in [-1,1]$, ovvero:
 	\begin{equation}
 		\lvert r(x,y)\rvert \leq 1
 	\end{equation}
+	Più $r$ è vicino a $0$ e più è debole la relazione, mentre più e vicino a $1$ e più è forte in senso positivo (e in negativo per $-1$).
 \end{proposition}
 
-La \textbf{retta di regressione} è un'approssimazione dei dati con $y_i$ con una combinazione lineare affine a $a + bx_i$, ottenuta cercando il minimo della distanza dai dati da questa retta con i quadrati degli scarti. L'obiettivo è quindi di cercare i parametri $a$ e $b$ calcolando
+La \textbf{retta di regressione} è un'approssimazione dei dati con $y_i$ con una combinazione lineare affine a $q + mx_i$, ottenuta cercando il minimo della distanza dai dati da questa retta con i quadrati degli scarti. L'obiettivo è quindi di cercare i parametri $q$ e $m$ calcolando
 \begin{equation}
 	\label{eq:regr}
-	\inf_{a,b \in \mathbb{R}} \sum_{i=1}^{n}(y_i-a-bx_i)^2
+	\min_{q,m \in \mathbb{R}} \sum_{i=1}^{n}(y_i-q-mx_i)^2
 \end{equation}
 
 \begin{theorem}[Retta di regressione]
-	Se $\sigma(x) \neq 0$ e $\sigma(y) \neq 0$, esiste un unico minimo al variare di $a,b \in \mathbb{R}$ della quantità \ref{eq:regr}, dato da:
+	Se $\sigma(x) \neq 0$ e $\sigma(y) \neq 0$, esiste un unico minimo al variare di $q,m \in \mathbb{R}$ della quantità \ref{eq:regr}, dato da:
 	\begin{equation}
-		b^\star = \frac{(n-1)cov(x,y)}{n \cdot var(x)} \quad\quad a^\star = -b^\star \bar{x} + \bar{y}
+		m^\star = \frac{cov(x,y)}{var(x)} \quad\quad q^\star = \bar{y} - m^\star \bar{x}
 	\end{equation}
-	e vale
+	Inoltre vale:
 	\begin{equation}
-		\min_{a,b \in \mathbb{R}} \sum_{i=1}^{n}(y_i-a-bx_i)^2 = (1-r(x,y)^2)\sum_{i=1}^{n}(y_i - \bar{y})^2
+		\min_{q,m \in \mathbb{R}} \sum_{i=1}^{n}(y_i-q-mx_i)^2 = (1-r(x,y)^2)\sum_{i=1}^{n}(y_i - \bar{y})^2
 	\end{equation}
 \end{theorem}
-Quanto più $r(x,y)$ è vicino a $1$, tanto più i valori tendono ad allinearsi con la retta. Se vale $1$ vuol dire che i punti sono tutti sulla retta. Il segno di $r(x,y)$ corrisponde al segno del coefficiente angolare. Se è prossimo a zero allora non è una buona approssimazione.
+Quanto più $r(x,y)$ è vicino a $\pm1$, tanto più i valori tendono ad allinearsi con la retta. Se vale $\pm1$ vuol dire che i punti sono tutti sulla retta. Il segno di $r(x,y)$ corrisponde al segno del coefficiente angolare. Se è prossimo a $0$ allora non è una buona approssimazione, ma non esclude che non ci sia un altro tipo di relazione.
