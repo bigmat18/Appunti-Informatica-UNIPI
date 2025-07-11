@@ -3,56 +3,142 @@
 \section{Variabili aleatorie}
 Le variabili aleatorie sono funzioni dello spazio di probabilità. Permettono di scrivere osservazioni diverse fatte su uno stesso spazio $\Omega$.
 \begin{definition}[Variabile aleatoria]
-	È una funzione
+	Dato un esperimento aleatorio, una variabile aleatoria è una funzione $X$ che associa ad ogni possibile risultato dell'esperimento un numero reale.
 	\begin{equation}
 		X : \Omega \to \mathbb{R}
 	\end{equation}
 	definita su uno spazio di probabilità.
 \end{definition}
-\subsection{Legge di una variabile aleatoria}
-Ad una variabile aleatoria sono associati eventi del tipo "$X$ prende valori in un insieme $A\subseteq \mathbb{R}$:
-\begin{equation*}
-	\{X \in A\} = X^{-1}(A)=\{\omega \in \Omega: X(\omega) \in A\}
-\end{equation*}
-\begin{equation*}
-	\mathbb{P}_X(A)=\mathbb{P}(X \in A)=\mathbb{P}(X^{-1}(A))
-\end{equation*}
 
-\begin{definition}[Legge di probabilità di una v.a.]
-	La funzione $\mathbb{P}_X$ è una probabilità su $\mathbb{R}$ ed è detta \textbf{legge di probabilità} di $X$.
+\begin{definition}[Legge di una variabile aleatoria]
+	Sia $X: \Omega \to \mathbb{R}$ una variabile aleatoria, definiamo la sua legge o distribuzione di probabilità la funzione $P_X : \mathcal{P}(\mathbb{R}) \to \mathbb{R}$ data da:
+	\begin{equation*}
+		P_X(A) = P(X \in A) \qquad \forall A \subseteq \mathbb{R}
+	\end{equation*}
+	dove
+	\begin{equation*}
+		\{X\in A\} = X^{-1}(A) = \{\omega \in \Omega \vert X(\omega) \in A\}
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+	$X^{-1}$ commuta con le operazioni insiemistiche e $P_X$ è una probabilità su $\mathbb{R}$.
+\end{proposition}
+
+\begin{definition}[Equidistribuzione]
+	Due variabili aleatorie $X$ e $Y$ si dicono equidistribuite se hanno la stessa legge di probabilità.
+	\begin{equation}
+		P_X = P_Y
+	\end{equation}
+\end{definition}
+
+\subsection{Discrete}
+\begin{definition}[Variabile aleatoria discreta]
+	Una variabile aleatoria $X$ si dice discreta se assume un numero finito o numerabile di valori (modalità) $a_1, \ldots, a_n, \ldots$.
+\end{definition}
+
+\begin{definition}[Funzione di massa]
+	Data una v.a. discreta $X: \Omega \mapsto \{a_1, \ldots, a_n, \ldots\} \in \mathbb{R}$ definiamo la funzione di massa o densità discreta di $X$ la funzione
+	\begin{equation*}
+		P_X: \{a_1, \ldots, a_n, \ldots\} \mapsto \mathbb{R}
+	\end{equation*}
+	definita come
+	\begin{equation}
+		P_X(a_i) = P(X=a_i) = P_X\{a_i\}=P(X^{-1}(a_i))
+	\end{equation}
+	Ovvero associo ad ogni valore la probabilità della controimmagine di quel valore.\\\\
+	Possiamo poi estendere $P_X$, per il XXXX definita solo nell'insieme discreto dei valori di $X$ (ovvero l'immagine di $\mathbb{R}$) e tutto $\mathbb{R}$ (ottenendo $p_X: \mathbb{R} \to \mathbb{R}$, ponendo:
+	\begin{equation}
+		p_X(a)=0 \qquad \forall a \notin \{a_1, \ldots\}
+	\end{equation}
 \end{definition}
 
 \begin{note}
-	Quando due variabili aleatorie hanno la stessa legge di probabilità sono dette \textbf{equi distribuite}.
+	La distribuzione di una v.a. discreta si rappresenta bene tramite un diagramma a barre.
 \end{note}
 
-\subsection{Tipi di variabili aleatorie}
-\subsubsection{Variabili discrete}
-\begin{definition}[Variabile aleatoria discreta]
-	Una variabile aleatoria è discreta se la sua immagine $X(\Omega) \subset \mathbb{R}$ è un sottoinsieme al più numerabile di $\mathbb{R}$ o se la sua legge di probabilità è discreta.
-	Se $A \subseteq \mathbb{R}$ vale
+Per eseguire il calcolo della probabilità relativa ad $X_i$ usando $P_X$:
+\begin{align*}
+	P(X=A) & = P(X^{-1}(A)) \\
+	& = P(x=a_1 \cup x=a_2 \cup \ldots \cup x=a_i) \\
+	& = \sum_{q_i \in A}P(X=a_i) \\
+	& = \sum_{q_in \in A} p_X(a_i)
+\end{align*}
+
+\begin{example}
+	Qual è la probabilità di avere almeno una testa in due lanci di dadi?
 	\begin{equation*}
-		p_X(A)=\mathbb{P}(x \in A) = \sum_{x_i \in A}p_X(x_i)
+		A=\{1,2\} \Longrightarrow P(X\in\{1,2\}) = P(X=1) \cup P(X=2) = \frac{1}{4} + \frac{1}{2} = \frac{3}{4}
 	\end{equation*}
-\end{definition}
-\subsubsection{Variabili continue}
-\begin{definition}[Variabile aleatoria continua]
-	Una variabile aleatoria è detta con densità o continua se la sua legge di probabilità è definita da una densità $f$, ovvero se esiste una $f$ tale che
+\end{example}
+
+\begin{example}
+	Qual è la probabilità di avere almeno due teste in quattro lanci di dadi?\\
+	Consideriamo lo spazio campionario $\Omega = \{0,1\}^4$ ($0$ croce e $1$ testa) e la variabile aleatoria $X$ che rappresenta il numero di teste.
+	\begin{equation*}
+		\Omega = \{(\omega_1, \omega_2, \omega_3, \omega_4) \vert w_j \in \{0,1\}\}
+	\end{equation*}
+	Abbiamo quindi:
+	\begin{align*}
+		P_X(0) & =\frac{1}{2} \cdot \frac{1}{2} \cdot \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{16} \\
+		P_X(1) & = \frac{1}{16} + \frac{1}{16} + \frac{1}{16} + \frac{1}{16} = \frac{4}{16} = \frac{1}{4} \\
+		P_X(2) & = \frac{6}{16} = \frac{3}{8} \\
+		P_X(3) & = \frac{1}{4} \\
+		P_X(4) & = \frac{1}{16}
+	\end{align*}
+	La soluzione è:
+	\begin{equation*}
+		P(\geq 2 \text{ teste in 4 lanci }) = P_X(2) + P_X(3) + P_X(4) = \frac{3}{8} + \frac{1}{4} + \frac{1}{16} = 1 - \bigg(\frac{1}{16} + \frac{1}{4}\bigg)
+	\end{equation*}
+\end{example}
+
+\begin{observation}
+	La v.a. discreta $X$ può avere un insieme di valori finito o infinito. Nel primo caso allora $p(X\in A)$ è una somma finita $\forall A$. Altrimenti, se è numerabile, dobbiamo fare una serie:
 	\begin{equation}
-		\mathbb{P}_X(A) = \mathbb{P}\{X \in A\}=\int_{A}f(x)dx
+		\sum_{i=1}^{\infty} p(a_i) = \lim_{N \to \infty} \sum_{i=1}^{N}p(a_i)
 	\end{equation}
-	Se $A=[a,b]$ è un segmento, vale
+\end{observation}
+
+\begin{proposition}[Proprietà]
+	Sia $X$ una v.a. discreta con funzione di massa $p_x$, allora valgono:
+	\begin{itemize}
+		\item $p_x(a_i) \geq 0 \qquad \forall i$
+		\item $\sum_{i}p_x(a_i) = 1$
+	\end{itemize}
+	Se $q: \{a_1, a_2, \ldots\} \to \mathbb{R}$ è una funzione che soddisfa le proprietà allora esiste una variabile aleatoria $X$ di cui $q$ è la funzione di massa, ovvero $q=p_X$ per qualche $X$ v.a. discreta.
+\end{proposition}
+\begin{demostration}
+	Vediamo le dimostrazioni delle due proprietà:
+	\begin{itemize}
+		\item $p_X(a_i) = P(X=a_i) = P(X^{-1}(a_i)) \geq 0$
+		\item $\sum_{i}p_X(a_i) = \sum_i P(X=a_i) = P(\bigcup X^{-1}(a_i)) = P(\Omega) = 1$
+	\end{itemize}
+\end{demostration}
+
+\subsection{Continue}
+\begin{definition}[Variabile aleatoria continua]
+	Sia $X$ una variabile casuale che assume tutti i valori di un intervallo (limitato o illimitato). Diciamo che essa è assolutamente continua con \textbf{densità} se$f$ se ad $X$ è associata una funzione $f:\mathbb{R} \mapsto \mathbb{R}$ tale che
 	\begin{equation}
 		\mathbb{P}\{X \in A\}=\mathbb{P}(a \leq X \leq b) = \int_{a}^{b} f(x) dx
 	\end{equation}
 \end{definition}
+
+\begin{proposition}[Proprietà]
+	Sia $X$ una v.a. continua con funzione di densità $f$ allora valgono:
+	\begin{itemize}
+		\item $f(x)\geq 0 \qquad \forall x$
+		\item La misura dell'area sotto a grafico di tutta $f$ è $1$
+	\end{itemize}
+\end{proposition}
+
 \subsection{Funzione di ripartizione}
 Per studiare una legge di probabilità di una variabile aleatoria è conveniente usare una funzione su $\mathbb{R}$.
 \begin{definition}[Funzione di ripartizione]
-	La funzione di ripartizione (c.d.f.) su $X$ è
+	La funzione di ripartizione su $X$ è
 	\begin{equation}
-		F_X:\mathbb{R}\to[0,1] \quad\quad F_X(x) = \mathbb{P}\{X \leq x\}
+		F_X:\mathbb{R}\to[0,1] \quad\quad F_X(x) = \mathbb{P}\{X \leq x\} = P_X((-\infty,x]) \qquad \forall x \in \mathbb{R}
 	\end{equation}
+	In pratica associa ad ogni $x \in \mathbb{R}$ la probabilità che $X$ assuma un valore al massimo pari ad $x$.
 \end{definition}
 
 \begin{proposition}
@@ -97,29 +183,17 @@ o nel caso in cui è \textbf{continua a tratti} si ottiene:
 	f(x) = \frac{dF(x)}{dx}
 \end{equation}
 
-\subsection{$\beta$-quantile}
+\subsubsection{$\beta$-quantile}
 \begin{definition}[$\beta$-quantile]
-	Data una variabile aleatoria $X$ ed un numero $0 < \beta < 1$ il $\beta$-quantile è:
+	Data una variabile aleatoria $X$ ed un numero $0 < \beta < 1$ il $\beta$-quantile è un numero $r_\beta$ tale che:
 	\begin{equation}
-		r_\beta = \inf\{r \in \mathbb{R} : F(r) \geq \beta\} \quad\quad \beta \in (0,1)
+		P\{X \leq r_\beta\} \geq \beta \qquad\qquad P\{X \geq r_\beta\} \geq 1-\beta
 	\end{equation}
 \end{definition}
-\begin{definition}[Inversa generalizzata]
-	L'inversa generalizzata di $F$ è
-	\begin{equation}
-		F^{\leftarrow}:(0,1) \to \mathbb{R} \quad\quad F^{\leftarrow}(t) = \inf\{r \in \mathbb{R} : F(r) \geq t\}
-	\end{equation}
-\end{definition}
-\begin{proposition}
-	Valgono:
-	\begin{itemize}
-		\item Se $F$ è strettamente crescente $F^{\leftarrow} = F^{-1}$
-		\item $F^{\leftarrow}$ è sempre \textbf{non decrescente}
-		\item $F^{\leftarrow}(F(t))\leq t \quad\quad \forall t \in \mathbb{R}$
-		\item $F(F^{\leftarrow}(t)) \geq t \quad\quad \forall t \in \mathbb{R}$
-		\item $F^{\leftarrow}(t) \leq s \Longleftrightarrow F(s) \geq t$
-	\end{itemize}
-\end{proposition}
+
+\begin{observation}
+	Se $F_X$ è invertibile, allora $\forall \beta \in (0,1)$ esiste unico il beta quantile e $r_\beta = F_X^{-1}(\beta)$.
+\end{observation}
 
 \subsection{Variabili discrete notevoli}
 \subsubsection{Binomiali}
@@ -394,7 +468,7 @@ mentre la sua c.d.f. è
 	\end{itemize}
 \end{theorem}
 
-\subsection{Trasformazioni di variabili con densità}
+\subsubsection{Cambio di variabile}
 Data la variabile aleatoria $X: \Omega \to \mathbb{R}$ con densità $f$ e una funzione $h: \mathbb{R} \to \mathbb{R}$, vogliamo la densità della variabile aleatoria composta 
 \begin{equation*}
 	Y: \Omega \to \mathbb{R} \quad\quad Y=h \circ X
@@ -460,11 +534,14 @@ Applichiamo il concetto di \textit{media campionaria} e di \textit{varianza camp
 \end{observation}
 
 \begin{proposition}
-	Valgono:
+	Valgono le seguenti proprietà:
 	\begin{itemize}
-		\item $\forall a,b \in \mathbb{R}$ valgono $\mathbb{E}[aX+b]=a\mathbb{E}[X] + b$ e $\mathbb{E}[b] = b$
-		\item $\lvert \mathbb{E}[X]\rvert \leq \lvert \mathbb{E}[\lvert X \rvert]$
-		\item $\mathbb{P}(X \geq 0)=1 \Longrightarrow \mathbb{E}[X] \geq 0$
+		\item \textbf{Linearità}:
+		\begin{itemize}
+			\item $\mathbb{E}[X+Y]=\mathbb{E}[X]+\mathbb{E}[Y]$
+			\item $\mathbb{E}[aX+b]=a\mathbb{E}[X] + b$, in particolare $\mathbb{E}[b] = b$
+		\end{itemize}
+		\item \textbf{Monotonia}: se $X \geq 0$ allora $\mathbb{E}[X] \geq 0$ e se $X \geq Y$ allora $\mathbb{E}[X] \geq \mathbb{E}[Y]$. In particolare $\lvert \mathbb{E}[X]\rvert \leq \lvert \mathbb{E}[\lvert X \rvert]$
 	\end{itemize}
 \end{proposition}
 
@@ -493,32 +570,20 @@ Supponiamo di voler calcolare il valore atteso di trasformazioni di una variabil
 	
 \subsubsection{Momenti}
 \begin{definition}[Momento]
-	La variabile aleatoria $X$ ammette momento di ordine $n=1,2,\ldots$ se
-	\begin{equation*}
-		\mathbb{E} [\lvert X \rvert] < + \infty
-	\end{equation*}
-	e in quel caso si chiama $\mathbb{E}[X^n]$ il momento di ordine $n$.
+	Data $X$ una variabile aleatoria, chiamiamo momento di ordine $n$ di $X$ il valore atteso di $X^n$
+	\begin{equation}
+		\mathbb{E}[X^n]
+	\end{equation}
 \end{definition}
 
 \begin{observation}
 	Se una variabile discreta assume solo valori finiti, tutti i momenti sono finiti. Se una variabile con densità è diversa da $0$ solo su un intervallo limitato, tutti i momenti sono finiti.
 \end{observation}
 
-\begin{proposition}
-	Siano $1 \leq m < n$
-	\begin{equation}
-		\mathbb{E}[\lvert X \rvert ^n] < +\infty \Longrightarrow \mathbb{E}[\lvert X \rvert ^m] < +\infty
-	\end{equation}
-	Ovvero se una variabile aleatoria ammette momenti fino a $n$, ammetterà anche tutti i suoi precedenti. In particolare vale la \textbf{disuguaglianza di Jensen}:
-	\begin{equation}
-		\mathbb{E}[\lvert X \rvert^m]^{\frac{1}{m}} \leq \mathbb{E}[\lvert X \rvert^n]^{\frac{1}{n}}
-	\end{equation}
-\end{proposition}
-
 \begin{proposition}[Disuguaglianza di Markov]
 	Se $X$ è una variabile aleatoria a valori positivi e $a>0$ vale
 	\begin{equation}
-		a\mathbb{P}\{X \geq a\} \leq \mathbb{E}[X]
+		\mathbb{P}\{X \geq a\} \leq \frac{1}{a}\mathbb{E}[X]
 	\end{equation}
 \end{proposition}
 
@@ -539,6 +604,7 @@ Supponiamo di voler calcolare il valore atteso di trasformazioni di una variabil
 	\begin{equation}
 		\mathbb{P}\{\lvert X - \mathbb{E}\rvert > d\} \leq \frac{Var(X)}{d^2}
 	\end{equation}
+	Ovvero la probabilità che $X$ si allontani dal suo valore atteso più di $d$ è minore o uguale di $\frac{Var(X)}{d^2}$.
 \end{proposition}
 
 \begin{observation}
@@ -547,6 +613,14 @@ Supponiamo di voler calcolare il valore atteso di trasformazioni di una variabil
 		\mathbb{P}\{\lvert X - \mathbb{E}[X] \rvert \neq 0\} = 0
 	\end{equation*}
 \end{observation}
+
+\begin{proposition}[Scaling]
+	La proprietà di scaling implica che vale:
+	\begin{equation}
+		Var(a X+b) = a^2 Var(X)
+	\end{equation}
+	e in particolare $Var(b)=0$.
+\end{proposition}
 
 \subsubsection{Momenti notevoli}
 Vediamo i momenti delle variabili notevoli.
@@ -631,37 +705,32 @@ Data $Y=\sigma X + m$, per linearità del valore atteso
 \end{equation}
 
 \subsection{Variabili doppie}
-Dato $\Omega$ uno spazio di probabilità e $X,Y:\Omega \to \mathbb{R}$, il vettore $(X,Y)$ può essere visto come una funzione
+Dato un esperimento casuale con spazio di probabilità $(\Omega, p)$, una variabile casuale doppia è il dato di una coppia $(X,Y)$ di variabili casuali che ad ogni $\omega \in \Omega$ associa una coppia $(x,y) \in \mathbb{R}^2$.
 \begin{equation}
-	\Omega \ni \omega \mapsto (X(\omega),Y(\omega))\in \mathbb{R}^2
-\end{equation}
-La sua legge è una probabilità sui sottoinsiemi $A \subseteq \mathbb{R}^2$
-\begin{equation}
-	\mathbb{P}_{X,Y)}(A) = \mathbb{P}((X,Y) \in A) = \mathbb{P}\{\omega \in \Omega : (X(\omega), Y(\omega)) \in A\}
+	(X,Y): \Omega \mapsto \mathbb{R}^2 \qquad \qquad \omega \mapsto(X(\omega),Y(\omega))
 \end{equation}
 
-\begin{observation}[Insieme rettangolare]
-	Se $A=A_1 \times A_2$ è un sottoinsieme rettangolare vale
+\subsubsection{Distribuzione congiunta}
+\begin{definition}[Distribuzione congiunta]
+	Data una variabile doppia $(X,Y): \Omega \mapsto\mathbb{R}^2$ definiamo la sua legge congiunta come la funzione $P_{\{X,Y\}}: \mathbb{P}(\mathbb{R}^2)\mapsto\mathbb{R}$ data da:
+	\begin{align*}
+		P_{\{X,Y\}}(A)&  = P\{(X,Y) \in A\} \\
+		&= P((X,Y)^{-1}(A)) \\
+		& = P\{\omega \in \Omega \vert (X,Y)(\omega)\in A\}
+	\end{align*} 
+\end{definition}
+
+\begin{definition}[Distribuzioni marginali]
+	Data una variabile doppia $(X,Y)$ possiamo considerare separatamente le leggi delle due componenti $\mathbb{P}_X$ e $\mathbb{P}_Y$. Queste sono dette \textbf{leggi marginali}.\\
+	Se $I \subseteq \mathbb{R}$, valgono
 	\begin{equation}
-		\{(X,Y) \in A\} = \{X \in A_1, Y \in A_2\}
-	\end{equation}
-\end{observation}
+		\mathbb{P}_X(I)=\mathbb{P}_{(X,Y)}(I \times \mathbb{R}) \quad\quad\quad \mathbb{P}_Y(I)=\mathbb{P}_{(X,Y)}(\mathbb{R}\times I)
+	\end{equation}	
+\end{definition}
 
 \begin{note}
-	Con la virgola indichiamo l'intersezione di due condizioni
-	\begin{equation*}
-		\{X \in A_1, Y \in A_2\} = \{X \in A_1\} \cap \{Y \in A_2\} = X^{-1}(A_1) \cap Y^{-1}(A_2) = (X,Y)^{-1}(A_1 \times A_2)
-	\end{equation*}
+	La distribuzione \textbf{congiunta} porta informazioni non solo sulle leggi marginali ma anche sulla relazione tra $X$ e $Y$.
 \end{note}
-
-\subsubsection{Distribuzioni marginali}
-Data una variabile doppia $(X,Y)$ possiamo considerare separatamente le leggi delle due componenti $\mathbb{P}_X$ e $\mathbb{P}_Y$. Queste sono dette \textbf{leggi marginali}.\\
-Se $I \subseteq \mathbb{R}$, valgono
-\begin{equation}
-	\mathbb{P}_X(I)=\mathbb{P}_{(X,Y)}(I \times \mathbb{R}) \quad\quad\quad \mathbb{P}_Y(I)=\mathbb{P}_{(X,Y)}(\mathbb{R}\times I)
-\end{equation}
-
-Le distribuzioni marginali non contengono tutta l'informazione della legge $\mathbb{P}_{(X,Y)}$ e di conseguenza non si può ricostruire univocamente dalle prime. L'idea è che la legge totale codifica anche le relazioni tra le due leggi, cosa che le marginali non fanno
 
 \subsubsection{Variabili doppie discrete}
 Una variabile doppia $(X,Y)$ è discreta se la sua immagine è concentrata in un insieme finito o numerabile di punti $(x_i, y_j)$. La sua \textbf{distribuzione di probabilità} è
@@ -669,9 +738,19 @@ Una variabile doppia $(X,Y)$ è discreta se la sua immagine è concentrata in un
 	p(x_i,y_j) = \mathbb{P}(X=x_i, Y=y_j)
 \end{equation}
 e se $A\subseteq \mathbb{R}^2$
-\begin{equation}
-	\mathbb{P}_{(X,Y)}(A) = \mathbb{P}\{(X,Y) \in A\} = \sum_{(x_i, y_j) \in A}p(x_i, y_j)
-\end{equation}
+\begin{align*}
+	\mathbb{P}_{(X,Y)}(A) & = \mathbb{P}\{(X,Y) \in A\} \\
+	& = \sum_{(x_i, y_j) \in A}p(x_i, y_j)
+\end{align*}
+
+\begin{observation}
+	Osserviamo che:
+	\begin{itemize}
+		\item $p(x_i,y_j) \geq 0 \qquad \forall i,j$ e $\sum_{i}\sum_jp(x_i,y_j)=1$
+		\item La funzione di massa congiunta determina le funzioni di massa marginali
+		\item Le funzioni di massa marginali non determinano quella congiunta
+	\end{itemize}
+\end{observation}
 
 \begin{proposition}
 	Se una variabile doppia è discreta con funzione di massa, lo sono anche le sue componenti
@@ -752,6 +831,15 @@ Funzioni di più variabili indipendenti sono indipendenti se la stessa variabile
 	Se $X$ e $Y$ sono variabili aleatorie indipendenti, allora per tutte le funzioni $h,k: \mathbb{R} \to \mathbb{R}$, anche $h(X)$ e $k(Y)$ lo sono.
 \end{proposition}
 
+\begin{proposition}
+	Vediamo le proprietà di \textbf{riproducibilità}:
+	\begin{itemize}
+		\item Siano $X \sim B(m,p)$ e $Y \sim B(h,p)$ \underline{indipendenti}, allora $X+Y \sim B(m+h,p)$
+		\item Siano $X \sim P(\lambda)$ e $Y \sim P(\mu)$ \underline{indipendenti}, allora $X+Y \sim P(\lambda+\mu)$
+		\item Siano $X \sim N(m_1, \sigma_1^2)$ e $Y \sim N(m_2, \sigma_2^2)$ \underline{indipendenti}, allora $X+Y \sim N(m_1+m_2, \sigma_1^2+\sigma_2^2)$
+	\end{itemize}
+\end{proposition}
+
 \subsection{Correlazione}
 \begin{proposition}
 	Date due variabili aleatorie $X$ e $Y$ con valore atteso, allora $X+Y$ ha valore atteso e valgono:
@@ -760,12 +848,12 @@ Funzioni di più variabili indipendenti sono indipendenti se la stessa variabile
 		\item $X \geq Y \Longrightarrow \mathbb{E}[X] \geq \mathbb{E}[Y]$
 	\end{itemize}
 \end{proposition}
-\begin{proposition}
+\begin{definition}[Valore atteso]
 	Date due variabili aleatorie $X$ e $Y$ con valore atteso e \textbf{indipendenti}, allora $XY$ ha valore atteso e vale:
 	\begin{equation}
 		\mathbb{E}[XY] = \mathbb{E}[X] \cdot \mathbb{E}[Y]
 	\end{equation}
-\end{proposition}
+\end{definition}
 
 \begin{proposition}
 	Se $X$ e $Y$ sono variabili aleatorie con valore atteso e \textbf{indipendenti}, allora per tutte le funzioni $h,k: \mathbb{R} \to \mathbb{R}$, vale
@@ -781,26 +869,47 @@ Funzioni di più variabili indipendenti sono indipendenti se la stessa variabile
 	\end{equation}
 \end{proposition}
 
-\subsection{Covarianza}
 \begin{definition}[Covarianza]
 	La covarianza tra due variabili aleatorie $X$ e $Y$ con momento secondo finito è una misura della presenza di una relazione lineare tra le due e vale
 	\begin{equation}
 		Cov(X,Y) = \mathbb{E}[(X - \mathbb{E}[X])(Y-\mathbb{E}[Y])] = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
 	\end{equation}
-	Quando vale $0$ le variabili sono \textbf{scorrelate}.
 \end{definition}
+
+\begin{proposition}
+	Proprietà della covarianza:
+	\begin{itemize}
+		\item \textbf{Bilinearità}: $Cov(aX+bY+c,Z) = a \cdot Cov(X,Z) + b \cdot Cov(Y,Z)$
+		\item \textbf{Simmetria}: $Cov(X,Y) = Cov(Y,X)$ e $Cov(X,X) = Var(X)$
+	\end{itemize}
+\end{proposition}
+
+\begin{proposition}[Varianza della somma]
+	Date $X,Y$ due v.a. allora definiamo la varianza della somma come:
+	\begin{equation}
+		Var(X+Y) = Var(X)+Var(Y)+2Cov(X,Y)
+	\end{equation}
+	e in particolare, se sono scorrelate:
+	\begin{equation}
+		Var(X+Y) = Var(X)+Var(Y)
+	\end{equation}
+\end{proposition}
+
+\begin{definition}[Coefficiente di correlazione]
+	Date $X$ e $Y$ v.a. con momento secondo e con $Var(X) \neq 0$ e $Var(Y) \neq 0$, definiamo il coefficiente di correlazione lineare il numero
+	\begin{equation}
+		\rho(X,Y) = \frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}}
+	\end{equation}
+	Se vale $0$ (o equivalentemente è $0$ la covarianza) le variabili si dicono \textbf{scorrelate}.
+\end{definition}
+
+\begin{proposition}
+	Se $X,Y$ sono due v.a. con momento secondo e indipendenti allora sono anche scorrelate. \underline{Non vale il contrario}.
+\end{proposition}
 
 \subsection{Teoremi limite}
 \begin{definition}
-	Data una famiglia di variabili aleatorie $X_1, \ldots, X_n, \ldots$, sono i.i.d. se sono indipendenti ed equidistribuite.\\
-	Equivalentemente lo sono se hanno tutte la stessa funzione di ripartizione
-	\begin{equation}
-		\mathbb{P}_{X_n}(t) = \mathbb{P}(X_n \leq t) = F(t) \quad\quad t \in \mathbb{R}, n=1,2,\ldots
-	\end{equation}
-	e se vale
-	\begin{equation}
-		\mathbb{P}(X_{k_1} \leq t_1, \ldots, X_{k_n} \leq t_n) = F_{X_1}(t_1) \cdot \ldots \cdot F_{X_n}(t_n) \quad\quad \forall k_1, \ldots, k_n \in \mathbb{N}, t_1, \ldots, t_n \in \mathbb{R}
-	\end{equation}
+	Data una famiglia di variabili aleatorie $X_1, \ldots, X_n, \ldots$, sono i.i.d. se sono indipendenti ed hanno la stessa distribuzione $p_i \qquad \forall i$.
 \end{definition}
 
 \begin{definition}[Media di variabili aleatorie]
@@ -812,13 +921,13 @@ Funzioni di più variabili indipendenti sono indipendenti se la stessa variabile
 \end{definition}
 
 \subsubsection{Legge debole dei grandi numeri}
-\begin{definition}[Convergenza in probabilità]
+\begin{proposition}[Convergenza in probabilità]
 	Date variabili aleatorie $X$ e $X_1, X_2, \ldots$ definite sullo stesso spazio di probabilità, $X_n$ converge in probabilità a $X$ se
 	\begin{equation}
 		\lim_{n \to \infty}\mathbb{P}(\lvert X_n - X \rvert > \epsilon ) = 0 \quad\quad \forall\epsilon > 0
 	\end{equation}
 	In pratica la successione tende in probabilità ad $X$ se per $n$ grande $X_n$ è vicina a $X$ con un'alta probabilità.
-\end{definition}
+\end{proposition}
 
 \begin{proposition}[Convergenza ad una costante]
 	Se valgono
@@ -843,7 +952,7 @@ Funzioni di più variabili indipendenti sono indipendenti se la stessa variabile
 \end{proposition}
 
 \subsubsection{Teorema centrale del limite}
-\begin{proposition}
+\begin{proposition}[Convergenza in legge]
 	Siano $(X_n)_{n \geq 1}$ una successione di variabili aleatorie e $X$ una variabile aleatoria. Date le loro funzioni di ripartizione $F_n$ e $F$ con quest'ultima continua. La successione converge ad $X$ se vale
 	\begin{equation}
 		\lim_{n \to \infty} F_n(t)=F(t) \quad\quad \forall t \in \mathbb{R}
@@ -868,7 +977,7 @@ Funzioni di più variabili indipendenti sono indipendenti se la stessa variabile
 \end{observation}
 
 \begin{proposition}
-	Data una successione $X_1, X_2, \ldots$ di variabili i.i.d. con valore atteso $\mathbb{E}[X_i] = \mu$ e varianza $Var(X_i)=\sigma^2 > 0$
+	Data una successione $X_1, X_2, \ldots$ di variabili i.i.d. con valore atteso $\mathbb{E}[X_i] = \mu$, varianza $Var(X_i)=\sigma^2 > 0$, media $\bar{x}_n = \frac{1}{n}\sum_{i=1}^{n}x_i$ e $S^2_n=\frac{1}{n-1}\sum_{i=1}^{n}(x_i-\bar{x}_n)^2$ allora
 	\begin{equation}
 		\lim_{n \to \infty}\mathbb{P} \bigg(a \leq \sqrt{n}\frac{\bar{X}_n - \mu}{S_n} \leq b\bigg) = \frac{1}{\sqrt{2 \pi}} \int_{a}^{b}e^{-\frac{x^2}{2}}dx = \Phi(b) - \Phi(a) \quad\quad -\infty \leq a < b \leq + \infty
 	\end{equation}
@@ -877,7 +986,7 @@ Funzioni di più variabili indipendenti sono indipendenti se la stessa variabile
 
 \paragraph{Approssimazione binomiale}
 \begin{definition}
-	Data una variabile aleatoria $X$ vale
+	Data una variabile aleatoria $X$, con $n$ abbastanza grande ($np(1-p)\geq10$) vale
 	\begin{equation}
 		\mathbb{P}(X \leq t)=\mathbb{P}\bigg(\frac{X - np}{\sqrt{np(1-p)}} \leq \frac{t-np}{\sqrt{np(1-p)}}\bigg) \cong \Phi\bigg(\frac{t-np}{\sqrt{np(1-p)}}\bigg)
 	\end{equation}

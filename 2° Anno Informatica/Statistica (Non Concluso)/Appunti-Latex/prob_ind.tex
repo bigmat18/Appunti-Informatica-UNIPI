@@ -162,38 +162,67 @@ Quando si è a conoscenza della realizzazione di un evento, cambia la valutazion
 	\end{equation*}
 \end{demostration}
 
-\begin{definition}[Partizione]
-	Una partizione di $\Omega$ è una collezione di $n$ eventi $B_1, \ldots, B_n$ a due a due disgiunti tali che
+\begin{definition}[Condizionamento ripetuto]
+	Se $A_1, \ldots, A_n$ sono $n$ eventi con $A_1 \cap \ldots \cap A_n$ non trascurabili, allora:
 	\begin{equation}
-		B_1 \cup \ldots \cup B_n = \Omega
+		P(A_1 \cap \ldots \cap A_n)=P(A_1) \cdot P(A_2 \vert A_1) \cdot P(A_3 \vert A_1 \cap A_2) \cdot \ldots \cdot P(A_n \vert A_1 \cap \ldots \cap A_{n-1})
 	\end{equation}
 \end{definition}
+
 \begin{definition}[Sistema di alternative]
-	È una partizione di $\Omega$ in eventi non trascurabili.
+	Dato un esperimento con spazio campionario $\Omega$, definiamo il sistema di alternative per quell'esperimento il dato di $B_1, \ldots, B_n$ eventi tali che:
+	\begin{itemize}
+		\item $B_i \cap B_j = \emptyset \qquad \forall i \neq j$
+		\item $\bigcup_{i=1}^n B_i = \Omega$
+		\item Ciascun $B_i$ è non trascurabile, ovvero $P(B_i)> 0$
+	\end{itemize}
 \end{definition}
 
 \begin{theorem}[Formula della probabilità o della fattorizzazione]
 	Dato $B_1, \ldots, B_n$ un sistema di alternative, per un qualunque evento $A$ vale
 	\begin{equation}
-		\mathbb{P}(A) = \sum_{i=1}^{n} \mathbb{P}(A \vert B_i) \mathbb{P}(B_i)
+		\mathbb{P}(A) = \sum_{i=1}^{n} P(A \cap B_i)= \sum_{i=1}^{n} \mathbb{P}(A \vert B_i) \mathbb{P}(B_i)
 	\end{equation}
 \end{theorem}
 
-\begin{definition}[Formula di Bayes]
+\begin{theorem}[Formula di Bayes]
 	Dati $A$ e $B$ due eventi non trascurabili vale
 	\begin{equation}
 		\mathbb{P}(B \vert A) = \frac{\mathbb{P}(A \vert B)\mathbb{P}(B)}{\mathbb{P}(A)}
 	\end{equation}
-\end{definition}
-\begin{definition}[Formula di Bayes - Alternative]
-	Dati $A$ un evento e $B_1, \ldots, B_n$ un sistema di alternative vale
+	In particolare, se $B_i, \ldots, B_n$ è un sistema di alternative vale
 	\begin{equation}
 		\mathbb{P}(B_i \vert A) = \frac{\mathbb{P}(A \vert B_i)\mathbb{P}(B_i)}{\sum_{j=1}^{n} \mathbb{P}(A B_j)\mathbb{P}(B_j)}
 	\end{equation}
-\end{definition}
+\end{theorem}
+
+\begin{note}
+	In pratica il teorema di Bayes server per "invertire" il condizionamento. Tipicamente quando l'evento $A$ è un "osservabile" (e.g. esito test diagnostico) e vogliamo dedurre la probabilità di una possibile "causa" (e.g. paziente sano o malato).
+\end{note}
+
+\subsubsection{Rappresentazione ad albero}
+In certi casi può essere comoda una rappresentazione ad albero (\textbf{chance tree}), ovvero un diagramma che si può fare dall'alto verso il basso o da sinistra verso destra e che si costruisce come segue:
+\begin{enumerate}
+	\item Per ogni stadio (nodo) ci sono tanti rami quanti i possibili esiti elementari
+	\item Il numero totale di percorsi equivale al numero totale degli esiti possibili
+	\item Ad ogni ramo è associata la probabilità corrispondente
+\end{enumerate}
+\begin{center}
+	\includegraphics[scale=.06]{chance_tree}
+\end{center}
+
+\paragraph{Regola della catena} Per calcolare la probabilità di una qualsiasi foglia, che considero come una sequenza di esiti, bisogna individuare qual è il percorso che porta ad essa.
+\begin{equation}
+	P(\text{ramo}) = \text{prodotto delle probabilità dei sotto rami}
+\end{equation}
+
+\paragraph{Regola di fattorizzazione}
+\begin{equation}
+	P(\text{unione dei rami}) = \text{somma delle probabilità dei rami}
+\end{equation}
 
 \subsection{Indipendenza}
-L'idea è che la conoscenza che si è realizzato un certo evento non modifica la valutazione di probabilità di un altro evento.
+Vogliamo tradurre in linguaggio matematico il fatto che la probabilità di $B$ non cambia sapendo che accada $A$ e viceversa.
 \begin{definition}
 	Dati $n$ eventi $A_1, \ldots, A_n$, questi sono indipendenti se per ogni $k$ con $2 \leq k \leq n$ e per ogni scelta di interi $1 \leq i_1 < i_2< \ldots < i_k \leq n$ vale
 	\begin{equation}
@@ -201,82 +230,30 @@ L'idea è che la conoscenza che si è realizzato un certo evento non modifica la
 	\end{equation}
 \end{definition}
 
-\begin{observation}[Complessità]
-	Il numero di uguaglianze da verificare per $n$ eventi è
-	\begin{equation*}
-		2^n -n -1
-	\end{equation*}
+\begin{observation}
+	Questa definizione equivale a dire che $P(A\vert B) = P(A)$ e $P(B \vert A) = P(B)$.
 \end{observation}
 
-\begin{proposition}[Spazi prodotto]
-	Si consideri
-	\begin{equation*}
-		\Omega = \{a=(a_1, \ldots, a_n) \vert a_i = 0,1\} = \{0, 1\}^n
-	\end{equation*}
-	su cui definiamo per ogni $a$ la probabilità
-	\begin{equation*}
-		\mathbb{P}(\{a\}) = p^ {\# \{i:a_i = 1\}} (a-p)^{\# \{i:a_i = 0\}} = p^{\sum_{i=1}^{n}a_i}(a-p)^{n-\sum_{i=1}^{n} a_i}
-	\end{equation*}
-	E gli eventi
-	\begin{equation*}
-		A_i = \{a \in \Omega: a_i = 1\} \quad\quad i = 1, \ldots, n
-	\end{equation*}
-	sono indipendenti tra di loro, così come i complementari $A^c_i$.
-\end{proposition}
+\begin{observation}
+	Se $P(A)=0$  oppure $P(A)=1$ allora $A$ è indipendente da qualsiasi altro evento.
+\end{observation}
+
+\begin{observation}
+	Due eventi disgiunti non possono essere indipendenti a meno che uno dei due non sia trascurabile.
+\end{observation}
 
 \begin{observation}
 	Due eventi possono essere indipendenti anche in presenza di una relazione causale. Viceversa due eventi possono essere dipendenti anche in assenza di una relazione causale.
 \end{observation}
 
-\subsection{Entropia di Shannon}
-Una misura di probabilità può essere uno strumento per quantificare l'informazione.
-\begin{definition}[Entropia]
-	Data una misura di probabilità discreta $\mathbb{P}$ su $\Omega = \{x_1, \ldots, x_n\}$, con $p_i = \mathbb{P}(\{x_i\})$, la sua entropia è data dalla funzione
-	\begin{equation}
-		H^{(n)}(p_1, \ldots, p_n) = - \sum_{i=1}^{n}p_i \log(p_i)
-	\end{equation}
-\end{definition}
-
-\begin{proposition}
-	Valgono:
-	\begin{enumerate}
-		\item La funzione dell'entropia è \textbf{simmetrica}: scambiando $p_i$ e $p_j$ non cambia
-		\item $H^{(n)}(1, 0,\ldots, 0) =0$
-		\item È coerente tra $n$ diversi: $H^{(n)}(p_1=0, p_2, \ldots, p_n) = H^{(n-1)}(p_2, \ldots, p_n)$
-		\item $h^{(n)}(p_1, \ldots, p_n) \leq H^{(n)}\big(\frac{1}{n}, \ldots, \frac{1}{n}\big)$, ovvero la massima entropia è data dalla distribuzione uniforme di probabilità
-		\item Data una probabilità su $n \times m$ oggetti $\Omega = \{x_{11}, \ldots, x_{ij}, \ldots, x{nm}\}$ con $\mathbb{P}({x_ij})=q_{ij}$, considerando gli eventi $A_i = \{x_{i,1}, \ldots, x_{i,m}\}$ con $\mathbb{P}(A_i)=p_1$ vale
-		\begin{equation*}
-			H^{nm}(q_{11}, \ldots, q_{ij}, \ldots, q_{nm}) = H^{(n)}(p_1, \ldots, p_n) + \sum_{i=1}^{n}p_i H^{(m)}\bigg(\frac{q_{i1}}{p_1}, \ldots, \frac{q_{im}}{p_i}\bigg)
-		\end{equation*}
-		ovvero l'entropia è data da quella relative al sistema di alternative $A_i$ più la media pesata delle entropie relative nei blocchi $A_i$.
-	\end{enumerate}
-\end{proposition}
-
-\begin{theorem}[Shannon]
-	Una funzione che soddisfa le 5 proprietà ha la forma
-	\begin{equation}
-		cH^{(n)} \quad\quad c>0
-	\end{equation}
-\end{theorem}
-
-\subsection{Densità di probabilità}
-\begin{definition}[Densità di probabilità]
-	Una funzione non negativa $f: \mathbb{R} \to [0, + \infty]$, integrabile e tale che 
-	\begin{equation*}
-		\int_{-\infty}^{+\infty}f(x)dx = 1
-	\end{equation*}
-	La sua probabilità è 
-	\begin{equation}
-		\mathbb{P}(A) = \int_{A}f(x)dx \quad\quad A \subseteq \Omega
-	\end{equation}
-\end{definition}
-
-\begin{observation}
-	La probabilità di ogni singolo punto è nulla
-	\begin{equation}
-		\mathbb{P}(\{t\})=\int_{\{t\}}f(x)dx=0
-	\end{equation} e in generale
-	\begin{equation}
-		\mathbb{P}(A) = 0 \quad\quad \forall A \subset \mathbb{R}
-	\end{equation}
-\end{observation}
+\subsubsection{Schema di Bernoulli}
+Consideriamo $n$ prove ripetute di un esperimento in cui gli esiti sono successo, denominato come $1$ o insuccesso come $0$. Sia $p$ la probabilità di successo nella singola prova.
+\begin{equation*}
+	\Omega = \{(a_1, \ldots, a_n) \vert a_i \in \{0,1\}\} = \{0,1\}^n
+\end{equation*}
+Allora, visto che gli eventi sono indipendenti, la probabilità di una certa "stringa" (e.g. $(0,1,0)$) è:
+\begin{align*}
+	P(a_1, \ldots, a_n) & = P(a_1\text{ al 1° posto }) \cdot P(a_2\text{ al 2° posto }) \cdot \ldots \cdot P(a_n\text{ al n° posto }) \\
+	& = p^{\#\text{ successi }} \cdot (1-p) ^ {\#\text{ insuccessi }} \\
+	& = p^{\sum_{i=1}^{n}a_i} \cdot (1-p)^{n - \sum_{i=1}^{n}a_i} 
+\end{align*}
