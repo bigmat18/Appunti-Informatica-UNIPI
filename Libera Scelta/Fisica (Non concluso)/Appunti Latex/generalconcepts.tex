@@ -1,0 +1,145 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Concetti generali}
+\subsection{Quantità non scalari}
+Quantità definite da più numeri che cambiano secondo una trasformazione lineare definita quando un'\textbf{operazione di simmetria} è applicata al sistema.
+
+\begin{example}[Velocità]
+	La velocità di un punto su un piano è definita da due numeri $v_x$ e $v_y$. Se ruoto il sistema di un angolo $\theta$ i due nuovi numeri diventano:
+	\begin{align*}
+		& v_x' = \cos\theta \cdot v_x - \sin\theta \cdot v_y\\
+		& v_y' = \sin\theta \cdot v_x + \cos\theta \cdot v_y
+	\end{align*}
+	Dove i coseni ed i seni rappresentano la trasformazione lineare che corrisponde alla rotazione.
+\end{example}
+
+\begin{observation}
+	Non tutti i vettori riga e colonna sono vettori fisici. Ad esempio quello costruito con data e temperatura che infatti non ha proprietà di simmetria.
+\end{observation}
+
+\subsection{Vettori}
+Un vettore $\overrightarrow{a} = (a_x, a_y)$ si rappresenta graficamente come:
+\begin{center}
+	\includegraphics[scale=.5]{vectors}
+\end{center}
+Dove abbiamo l'origine $O$, gli assi cartesiani $x,y$, le componenti $a_x,a_y$ e
+\begin{align*}
+	& \widehat{X} = (1,0,0) \\
+	& \widehat{Y} = (0,1,0) \\
+	& \widehat{Z} = (0,0,1)
+\end{align*}
+
+\begin{observation}
+	Nella rappresentazione grafica i vettori non cambiano se vengono traslati.
+	\renewcommand{\labelenumi}{\alph{enumi})}
+	\begin{enumerate}
+		\item \textbf{Prodotto}: $\lambda \cdot \overrightarrow{a} = (\lambda a_x, \lambda a_y)$
+		\item \textbf{Somma}: $\overrightarrow{a} + \overrightarrow{b} = (a_x + b_x, a_y + b_y)$
+		\item \textbf{Differenza}: $\overrightarrow{a} - \overrightarrow{b} = \overrightarrow{a} + (-\overrightarrow{b}) = (a_x-b_x, a_y-b_y)$
+	\end{enumerate}
+	\begin{figure}[!h]
+		\centering
+		\begin{subfigure}{.25\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{prodscal}
+			\caption{Prodotto scalare}
+		\end{subfigure}%
+		\begin{subfigure}{.25\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{somma}
+			\caption{Somma}
+		\end{subfigure}
+		\begin{subfigure}{.25\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{diff}
+		\caption{Differenza}
+		\end{subfigure}
+	\end{figure}
+\end{observation}
+
+\begin{definition}[Modulo di vettore]
+	Il modulo di un vettore $\overrightarrow{a} = (a_x,a_y,a_z)$ è
+	\begin{equation}
+		\lvert\lvert \overrightarrow{a} \rvert\rvert = \sqrt{a_x^2 + a_y^2+a_z^2} \geq 0
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Distanza tra vettori]
+	Definita come:
+	\begin{equation}
+		\overline{AB} = \lvert\lvert \overrightarrow{b} - \overrightarrow{a} \rvert\rvert
+	\end{equation}
+\end{definition}
+\begin{definition}[Versore]
+	Definito come:
+	\begin{equation}
+		\widehat{a} = \frac{\overrightarrow{a}}{\lvert\lvert \overrightarrow{a} \rvert\rvert}
+	\end{equation}
+\end{definition}
+
+\subsubsection{Prodotto scalare}
+Il prodotto scalare è una costruzione molto generale degli spazi vettoriali e ha come risultato uno scalare.
+\begin{equation}
+	\overrightarrow{a} \cdot \overrightarrow{b} = a_x b_x + a_y b_y +  a_z b_z
+\end{equation}
+È \textbf{commutativo} e \textbf{distributivo} per la somma. Nella rappresentazione grafica corrisponde al prodotto dei moduli per il coseno dell'angolo compreso.
+
+\begin{definition}
+	Consideriamo:
+	\begin{equation*}
+		\widehat{x} \cdot \widehat{x} = \widehat{y} \cdot \widehat{y} = \widehat{z} \cdot \widehat{z} = 1 \qquad\qquad \widehat{x} \cdot \widehat{y} = \widehat{x} \cdot \widehat{z} = \widehat{y} \cdot \widehat{z} = 0
+	\end{equation*}
+	Allora per la proprietà distributiva e commutativa:
+	\begin{align*}
+		\overrightarrow{a} \cdot \overrightarrow{b} & = (a_x \widehat{x}+ a_y \widehat{y}+ a_z\widehat{z}) \cdot ( b_x \widehat{x} + b_y \widehat{y}+b_z \widehat{z})=\\
+		& = a_xb_x\underbrace{\widehat{x} \cdot \widehat{x}}_1 + a_xb_y \underbrace{\widehat{x} \cdot \widehat{y}}_0 + \ldots
+	\end{align*}
+\end{definition}
+
+\begin{observation}
+	Dato il vettore $\overrightarrow{a} = a_x \widehat{x} + a_y \widehat{y} + a_z \widehat{z}$ la proiezione di $\overrightarrow{a}$ lungo $\widehat{x}$ è
+	\begin{equation}
+		\widehat{x} \cdot \overrightarrow{a} = a_x
+	\end{equation}
+\end{observation}
+
+\begin{observation}
+	Proiettiamo un'equazione vettoriale in tre equazioni scalari.
+	\begin{equation}
+		\overrightarrow{a} = \overrightarrow{b} \Rightarrow \widehat{a} \cdot \overrightarrow{a} = \widehat{x} \cdot \overrightarrow{b} \Rightarrow a_x = b_x
+	\end{equation}
+\end{observation}
+
+\subsubsection{Prodotto vettoriale}
+In questo caso il risultato è un vettore.
+\begin{align*}
+	\overrightarrow{a} \times \overrightarrow{b} = \det \begin{Bmatrix}
+		\widehat{x} & \widehat{y} & \widehat{z} \\
+		a_x & a_y & a_z \\
+		b_x & b_y & b_z \\
+	\end{Bmatrix} &=
+	\widehat{x} (a_yb_z - a_zb_y) \\
+	& + \widehat{y} (a_z b_x - a_xb_z) \\
+	& + \widehat{z} (a_xb_y - a_y b_x)
+\end{align*}
+Il prodotto vettoriale è \textbf{anticommutativo}, ovvero $\overrightarrow{a} \times \overrightarrow{b} = -\overrightarrow{b} \times \overrightarrow{a}$ e \textbf{distributivo} per la somma.
+
+\begin{note}
+	Ha a che fare con il gruppo delle rotazioni.
+\end{note}
+
+\begin{definition}
+	Consideriamo:
+	\begin{equation*}
+		\widehat{x} \times \widehat{y} = \widehat{z} \qquad\qquad \widehat{y} \times \widehat{z} = \widehat{x} \qquad\qquad \widehat{z} \times \widehat{x} = \widehat{y}
+	\end{equation*}
+	Per la proprietà anticommutativa abbiamo:
+	\begin{equation*}
+		\widehat{y} \times \widehat{x} = -\widehat{z} \qquad \widehat{z} \times \widehat{y} = -\widehat{x} \qquad \widehat{x} \times \widehat{z} = -\widehat{y} \qquad \widehat{x} \times \widehat{x} = \widehat{y} \times \widehat{y} = \widehat{z} \times \widehat{z} = 0
+	\end{equation*}
+	Ed infine per la proprietà distributiva
+	\begin{align*}
+		\overrightarrow{a} \times \overrightarrow{b} & = (a_x \widehat{x}+ a_y \widehat{y}+ a_z\widehat{z}) \cdot ( b_x \widehat{x} + b_y \widehat{y}+b_z \widehat{z})=\\
+		& = a_xb_x\underbrace{\widehat{x} \times \widehat{x}}_0 + a_xb_y \underbrace{\widehat{x} \times \widehat{y}}_{\widehat{z}} + \ldots
+	\end{align*}
+\end{definition}
