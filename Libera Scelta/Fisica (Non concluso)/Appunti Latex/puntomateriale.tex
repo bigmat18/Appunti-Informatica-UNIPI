@@ -1,0 +1,223 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Punto materiale}
+\begin{definition}[Punto materiale]
+	Un oggetto caratterizzato da una \textbf{massa} $[kg]$ e da un \textbf{vettore posizione} $[m]$ nello spazio tridimensionale.\\ Ha dimensioni trascurabili e forma irrilevante \underline{rispetto ai fenomeni di interesse}.
+\end{definition}
+
+\begin{example}
+	Una molecola di ossigeno è irrilevante se sono interessato all'aerodinamica di una vettura.
+\end{example}
+
+\subsection{Vettori}
+\subsubsection{Posizione}
+Rappresentiamo il vettore posizione come funzione del tempo $t[s]$:
+\begin{equation}
+	\overrightarrow{r}(t) = (x(t), y(t), z(t)) = x(t)\widehat{x} + y(t)\widehat{y}+z(t)\widehat{z}
+\end{equation}
+\begin{observation}
+	I versori cartesiani sono costanti.
+\end{observation}
+
+\begin{definition}[Legge oraria]
+	La funzione
+	\begin{equation}
+		t \mapsto \overrightarrow{r}(t)
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Traiettoria]
+	Il luogo geometrico dei punti visitati dal punto materiale.
+	\begin{equation}
+		\{\overrightarrow{r}(t) \vert t\in \mathbb{R}\}
+	\end{equation}
+\end{definition}
+
+\begin{example}
+	Dato un punto materiale caratterizzato dal seguente vettore posizione
+	\begin{equation*}
+		\overrightarrow{r}(t) = (v_0t,y_0,0) \qquad\qquad v_0 = 3 m/s \qquad\qquad y_0 = 5m
+	\end{equation*}
+	abbiamo:
+	\begin{figure}[!h]
+		\centering
+		\begin{subfigure}{.7\textwidth}
+			\centering
+			\includegraphics[height=1.5cm]{leggeoraria}
+			\caption{Legge oraria}
+		\end{subfigure}
+		\begin{subfigure}{.2\textwidth}
+			\centering
+			\includegraphics[height=1.5cm]{traiettoria}
+			\caption{Traiettoria}
+		\end{subfigure}
+	\end{figure}
+\end{example}
+
+\subsubsection{Velocità}
+È la \textbf{derivata} rispetto al tempo del vettore posizione e si indica con $\frac{d \overrightarrow{r}(t)}{dt}$ oppure $\dot{\overrightarrow{r}}(t)[m/s]$. Usando le proprietà delle derivate quali \textit{linearità} e \textit{Leibniz}, otteniamo:
+\begin{equation}
+	\begin{split}
+		\dot{\overrightarrow{r}}(t) & = (\dot{x}(t), \dot{y}(t), \dot{z}(t)) \\
+		& = \frac{d}{dt}[x(t)\widehat{x} + y(t)\widehat{y}+z(t)\widehat{z}] \\
+		& = \dot{x} (t) \widehat{x} + \dot{y}(t) \widehat{y} + \dot{z}(t) \widehat{z}
+	\end{split}
+\end{equation}
+
+\paragraph{Spazio percorso} Per ottenere lo spazio percorso $L$ dal punto materiale in un determinato lasso di tempo dobbiamo sommare la distanza del vettore posizione ad ogni istante dall'istante precedente:
+\begin{equation}
+	\begin{split}
+		L & = \lvert\lvert \overrightarrow{r}(t_{1})-\overrightarrow{r}(t_0) \rvert\rvert \\
+		& + \lvert\lvert \overrightarrow{r}(t_{2})-\overrightarrow{r}(t_1) \rvert\rvert \\
+		& + \ldots \\
+		& = \sum_i \lvert\lvert \overrightarrow{r}(t_{i+1})-\overrightarrow{r}(t_i) \rvert\rvert \\
+		& = \sum_i \bigg\lvert\bigg\lvert  \frac{\overrightarrow{r}(t_{i+1})-\overrightarrow{r}(t_i)}{t_{i+1}-t_i}\bigg\rvert\bigg\rvert \cdot (t_{i+1}-t_i) \\
+		& = \int_{t_\text{in}}^{t_\text{fin}} dt \lvert\lvert \dot{\overrightarrow{r}} (t) \rvert\rvert
+	\end{split}
+\end{equation}
+Assumendo di avere $\lvert t_{i+1}-t_i\rvert$ piccolo.
+
+\begin{example}
+	Dato un punto materiale caratterizzato dal vettore posizione $\overrightarrow{r}(t) = (v_0t,y_0)$, calcoliamo il vettore velocità ed il suo modulo:
+	\begin{equation*}
+		\dot{\overrightarrow{r}}(t) = (v_0,0) \qquad\qquad\qquad \lvert\lvert \dot{\overrightarrow{r}}(t)\rvert\rvert = \sqrt{v_0^2 + 0^2} = \lvert v_0\rvert
+	\end{equation*}
+	Per calcolare lo spazio percorso, applichiamo la formula vista in precedenza:
+	\begin{equation*}
+		L = \int_{t_\text{in}}^{t_\text{fin}} dt \lvert\lvert \dot{\overrightarrow{r}} (t) \rvert\rvert = \int_{t_\text{in}}^{t_\text{fin}} dt \lvert v_0 \rvert = \lvert v_0 \rvert \cdot \int_{t_\text{in}}^{t_\text{fin}} dt1 = \lvert v_0 \rvert \cdot (t_\text{fin} - t_\text{in})
+	\end{equation*}
+\end{example}
+
+\subsubsection{Accelerazione}
+È la \textbf{derivata} rispetto al tempo del vettore velocità e si indica con $\frac{d \overrightarrow{r}^2(t)}{dt^2}$ oppure $\ddot{\overrightarrow{r}}(t)[m/s^2]$. Usando le proprietà delle derivate quali \textit{linearità} e \textit{Leibniz}, otteniamo:
+\begin{equation}
+	\begin{split}
+		\ddot{\overrightarrow{r}}(t) & = (\ddot{x}(t), \ddot{y}(t), \ddot{z}(t)) \\
+		& = \ddot{x} (t) \widehat{x} + \ddot{y}(t) \widehat{y} + \ddot{z}(t) \widehat{z}
+	\end{split}
+\end{equation}
+
+\subsubsection{Quantità di moto}
+È il prodotto tra la \textbf{massa} $[kg]$ e la \textbf{velocità} $[m/s]$. Permette di generalizzare l'equazione di Newton e per trattare sistemi di più punti materiali.
+\begin{equation}
+	\begin{split}
+		\overrightarrow{p}(t) & = m \cdot \dot{\overrightarrow{r}}(t) \\
+		& = (m \dot{x}(t), m \dot{y}t, m\dot{z}(t)) \\
+		& = m\dot{x}(t)\widehat{x} + m\dot{y}(t)\widehat{y} + m\dot{z}(t)\widehat{z}
+	\end{split}
+\end{equation}
+\begin{example}
+	Dato un punto di massa $2kg$ e velocità $3m/s$ lungo $\widehat{x}$, le quantità di moto sugli assi sono:
+	\begin{equation*}
+		\begin{split}
+			& p_x(t) = 2 kg \cdot 3 m/s = 6 kg \cdot m/s \\
+			& p_y(t) = p_z(t) = 0
+		\end{split}
+	\end{equation*}
+\end{example}
+
+\subsubsection{Momento angolare}
+Il vettore momento angolare rispetto ad un \textbf{polo} P è calcolato come segue:
+\begin{equation}
+	\overrightarrow{L}_P(t) = m(\overrightarrow{r}(t) - \overrightarrow{r}_P) \times \dot{\overrightarrow{r}}(t)
+\end{equation}
+dove $\overrightarrow{r}_P$ è il vettore posizione del polo $P$.
+\begin{note}
+	Si noti che è un \textbf{prodotto vettoriale}.
+\end{note}
+
+\begin{example}
+	Assumiamo di avere un punto materiale con vettore posizione $\overrightarrow{r}(t)=(v_0t,y_0,0)$ e un polo $P$ con vettore posizione $\overrightarrow{r_P}=(l_0,0,0)$. Il vettore momento angolare sarà:
+	\begin{equation*}
+		\begin{split}
+			\overrightarrow{L_P} & = m [(y_0t-l_0)\widehat{x} + y_0 \widehat{y}] \times (v_0 \widehat{x})\\
+			& = m (v_0 t-l_0)v_0 \widehat{x} \times \widehat{x} + m y_0 v_0 \widehat{y} \times \widehat{x} \\
+			& = 0 + m y_0 v_0 (-\widehat{z}) \\
+			&= (0,0,-my_0v_0)
+		\end{split}
+	\end{equation*}
+	Si noti che abbiamo usato la proprietà \textbf{distributiva} per il prodotto scalare.
+\end{example}
+
+\newpage
+\subsection{Coordinate polari}
+\begin{wrapfigure}[7]{r}{5cm}
+	\includegraphics[width=5cm]{polari}
+\end{wrapfigure}
+Definiamo le coordinate polari per un vettore $r(t)$ come:
+\begin{align}
+	x(t) = r(t) \cdot \cos(\theta(t)) \\
+	y(t) = r(t) \cdot \sin(\theta(t))
+\end{align}
+Inoltre:
+\begin{align}
+	r(t) = \sqrt{x(t)^2 + y(t)^2} \geq 0 \label{eq:polar3}\\
+	\tan(\theta(t)) = \frac{y(t)}{x(t)}
+\end{align}
+\begin{example}
+	Dato $x=l_0$ e $y=l_0>0$ calcoliamo:
+	\begin{equation*}
+		r=\sqrt{l_0^2 + l_0^2} = \sqrt{2}l_0 \qquad\qquad \theta=\arctan\frac{l_0}{l_0} = \arctan1 = \frac{\pi}{4}
+	\end{equation*}
+\end{example}
+
+\begin{note}
+	Si presti attenzione quando $\theta$ è $\pm \frac{\pi}{2}$ in quanto la tangente per quegli angoli non esiste.
+\end{note}
+
+\subsubsection{Versori polari}
+Definiscono un versore $\widehat{r}(t)$ che punta verso il punto materiale e un versore $\widehat{\theta}(t)$ ortogonale. Per esprimere il primo convertiamo innanzitutto il vettore $\overrightarrow{r}(t)$ in coordinate polari:
+\begin{equation*}
+	\label{eq:r}
+	\begin{split}
+		\overrightarrow{r}(t) & = (x(t), y(t)) = (r(t)  \cos\theta(t), r(t)\sin\theta(t))\\
+		& = r(t) (\cos\theta(t)\widehat{x} + \sin\theta(t)\widehat{y}) 
+	\end{split}
+\end{equation*}
+Sappiamo dall'equazione \ref{eq:modulo} (adattata al caso bidimensionale) e dall'equazione \ref{eq:polar3} che vale:
+\begin{equation*}
+	\lvert\lvert \overrightarrow{r}(t) \rvert\rvert = \lvert r(t) \rvert = r(t)
+\end{equation*}
+E quindi otteniamo:
+\begin{equation}
+	\label{eq:theta}
+	\begin{split}
+		\widehat{r}(t) &= \frac{\overrightarrow{r}(t)}{\lvert\lvert \overrightarrow{r}(t) \rvert\rvert} \\
+		& = \frac{r(t) (\cos\theta(t)\widehat{x} + \sin\theta(t)\widehat{y})}{r(t)} \\
+		& = \cos\theta(t)\widehat{x} + \sin\theta(t)\widehat{y}		
+	\end{split}
+\end{equation}
+Il versore \textbf{ortogonale} sarà invece:
+\begin{equation}
+	\widehat{\theta}(t) = -\sin\theta(t)\widehat{x} + \cos\theta(t)\widehat{y}
+\end{equation}
+ed è verificabile in quanto vale $\widehat{r} \cdot \widehat{\theta} = \cos\theta(t) \cdot (- \sin\theta(t)) + \sin\theta(t) \cdot \cos\theta(t) = 0$
+
+\begin{wrapfigure}[7]{r}{5cm}
+	\includegraphics[width=5cm]{verspol}
+\end{wrapfigure}
+\paragraph{Versori cartesiani da polari} Per ottenere la trasformazione inversa, quindi i versori cartesiani a partire da quelli polari, è sufficiente mettere a sistema le equazioni \ref{eq:r} e \ref{eq:theta} e si ottengono:
+\begin{align}
+	\widehat{x} = \cos\theta(t)\widehat{r} - \sin\theta(t)\widehat{\theta}\\
+	\widehat{y} = \sin\theta(t)\widehat{r} + \cos\theta(t)\widehat{\theta}
+\end{align}
+In questo modo è possibile scrivere \textbf{ogni} vettore nella forma
+\begin{equation}
+	\overrightarrow{a} = a_r \widehat{r} + a_\theta \widehat{\theta}
+\end{equation}
+che noi però \underline{non useremo per evitare ambiguità}.
+
+\begin{observation}
+	A differenza dei versori cartesiani, quelli polari dipendono dal \textbf{tempo} per costruzione. Infatti:
+	\begin{equation}
+		\begin{split}
+			\dot{\overrightarrow{r}}(t) & = \frac{d}{dt}[\cos\theta(t)\widehat{x}+\sin\theta(t)\widehat{y}] \\
+			& = - \sin\theta(t)\cdot\dot{\theta}(t)\widehat{x}+\cos\theta(t)\cdot\dot{\theta}(t)\widehat{y} \\
+			& = \dot{\theta}(t)\cdot\widehat{\theta}(t)
+		\end{split}
+	\end{equation}
+	E analogamente:
+	\begin{equation}
+		\dot{\overrightarrow{\theta}}(t) = -\dot{\theta}(t)\widehat{r}(t)
+	\end{equation}
+\end{observation}

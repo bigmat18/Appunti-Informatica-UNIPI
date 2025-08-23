@@ -60,7 +60,7 @@ Dove abbiamo l'origine $O$, gli assi cartesiani $x,y$, le componenti $a_x,a_y$ e
 \begin{definition}[Modulo di vettore]
 	Il modulo di un vettore $\overrightarrow{a} = (a_x,a_y,a_z)$ è
 	\begin{equation}
-		\lvert\lvert \overrightarrow{a} \rvert\rvert = \sqrt{a_x^2 + a_y^2+a_z^2} \geq 0
+		\lvert\lvert \overrightarrow{a} \rvert\rvert = \sqrt{a_x^2 + a_y^2+a_z^2} \geq 0 \label{eq:modulo}
 	\end{equation}
 \end{definition}
 
@@ -75,6 +75,7 @@ Dove abbiamo l'origine $O$, gli assi cartesiani $x,y$, le componenti $a_x,a_y$ e
 	\begin{equation}
 		\widehat{a} = \frac{\overrightarrow{a}}{\lvert\lvert \overrightarrow{a} \rvert\rvert}
 	\end{equation}
+	Dove dividiamo ogni componente del vettore $\overrightarrow{a}$ per il suo modulo.
 \end{definition}
 
 \subsubsection{Prodotto scalare}
@@ -96,11 +97,11 @@ Il prodotto scalare è una costruzione molto generale degli spazi vettoriali e h
 	\end{align*}
 \end{definition}
 
-\begin{observation}
-	Dato il vettore $\overrightarrow{a} = a_x \widehat{x} + a_y \widehat{y} + a_z \widehat{z}$ la proiezione di $\overrightarrow{a}$ lungo $\widehat{x}$ è
-	\begin{equation}
+\begin{observation}[Proiezione]
+	Notiamo che, dato un vettore $\overrightarrow{a}=a_x \widehat{x} + a_y \widehat{y} + a_z \widehat{z}$, possiamo ottenere la sua proiezione lungo un asse moltiplicando il vettore per il versore corrispondente. Ad esempio per l'asse $x$:
+	\begin{equation*}
 		\widehat{x} \cdot \overrightarrow{a} = a_x
-	\end{equation}
+	\end{equation*}
 \end{observation}
 
 \begin{observation}
@@ -143,3 +144,40 @@ Il prodotto vettoriale è \textbf{anticommutativo}, ovvero $\overrightarrow{a} \
 		& = a_xb_x\underbrace{\widehat{x} \times \widehat{x}}_0 + a_xb_y \underbrace{\widehat{x} \times \widehat{y}}_{\widehat{z}} + \ldots
 	\end{align*}
 \end{definition}
+
+\subsection{Equazioni differenziali}
+Nei processi fisici è spesso determinato il tasso di variazione, \textit{rate}, di una quantità rispetto alle altre.
+\begin{example}
+	Un secchio forato perde $1g$ di acqua al secondo.
+\end{example}
+Data una funzione $x \mapsto f(x)$, $f$ varia di $\Delta f$ quando $x$ varia di $\Delta x$, con $\Delta x = x_1 - x_0$ e $\Delta f = f(x_1) - f(x_0)$, abbiamo che la derivata vale
+\begin{equation*}
+	f'(x_0)=\frac{\Delta f}{\Delta x} 
+\end{equation*}
+Considerando un $\Delta x$ sufficientemente \textbf{piccolo}, che nel contesto della fisica è dipende dal range di validità della teoria.
+\begin{example}
+	Se misuro la variazione nella posizione di un'automobile nel tempo $t$ con $\Delta t <1s$ allora $1ms$ è sufficientemente piccolo.
+\end{example}
+
+\subsubsection{Teorema di Fubini}
+La somma di Riemann si estende facilmente a superfici o volumi tramite il Teorema di Fubini, che ci permette di ottenere per le \textbf{superfici}:
+\begin{equation}
+	\int_S d^2 \overrightarrow{r} f(\overrightarrow{r}) = \int dx \int dy f(x,y) \qquad\qquad\qquad \overrightarrow{r} = (x,y)
+\end{equation}
+e per i \textbf{volumi}:
+\begin{equation}
+	\int_V d^3 \overrightarrow{r} f(\overrightarrow{r}) = \int dx \int dy \int dz f(x,y,z) \qquad\qquad\qquad \overrightarrow{r} = (x,y,z)
+\end{equation}
+\begin{wrapfigure}[7]{r}{4cm}
+	\includegraphics[width=4cm]{fubini}
+\end{wrapfigure}
+\begin{example}
+	Data la figura possiamo calcolare la superficie $S$ come:
+	\begin{equation*}
+		\int_S d^2 \overrightarrow{r}f(\overrightarrow{r}) = \int_a^b dx \int_{Y_i(x)}^{Y_S(x)} dyf(x,y)
+	\end{equation*}
+\end{example}
+
+\begin{note}
+	Per la spiegazione generale degli integrali e delle relative regole si fa riferimento agli appunti del corso di analisi.
+\end{note}
