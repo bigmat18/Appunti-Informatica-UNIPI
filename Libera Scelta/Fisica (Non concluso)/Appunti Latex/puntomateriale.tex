@@ -211,7 +211,7 @@ che noi però \underline{non useremo per evitare ambiguità}.
 	A differenza dei versori cartesiani, quelli polari dipendono dal \textbf{tempo} per costruzione. Infatti:
 	\begin{equation}
 		\begin{split}
-			\dot{\overrightarrow{r}}(t) & = \frac{d}{dt}[\cos\theta(t)\widehat{x}+\sin\theta(t)\widehat{y}] \\
+			\dot{\widehat{r}}(t) & = \frac{d}{dt}[\cos\theta(t)\widehat{x}+\sin\theta(t)\widehat{y}] \\
 			& = - \sin\theta(t)\cdot\dot{\theta}(t)\widehat{x}+\cos\theta(t)\cdot\dot{\theta}(t)\widehat{y} \\
 			& = \dot{\theta}(t)\cdot\widehat{\theta}(t)
 		\end{split}
@@ -221,3 +221,379 @@ che noi però \underline{non useremo per evitare ambiguità}.
 		\dot{\overrightarrow{\theta}}(t) = -\dot{\theta}(t)\widehat{r}(t)
 	\end{equation}
 \end{observation}
+
+\subsubsection{Vettori polari}
+\begin{equation}
+	\overrightarrow{r}(t) = \underbrace{r(t)}_{\substack{\text{Coordinata}\\\text{polare}}}\cdot \underbrace{\widehat{r}(t)}_{\substack{\text{Versore}\\\text{polare}}}
+\end{equation}
+
+\begin{equation}
+	\dot{\overrightarrow{r}}(t) = \underbrace{\dot{r}(t)}_{\substack{\text{Velocità}\\\text{radiale}}} \cdot \widehat{r}(t)+r(t)\dot{\theta}(t)\widehat{\theta}(t)
+\end{equation}
+\begin{equation}
+	\label{eq:polaracc}
+	\ddot{\overrightarrow{r}}(t) = [\ddot{r}(t) - \underbrace{r(t)\dot{\theta}(t)^2}_{\substack{\text{Accelerazione}\\\text{centripeta}}}]\widehat{r} + [r(t) \ddot{\theta}(t)+\underbrace{2\dot{r}(t)\dot{\theta}(t)}_{\substack{\text{Accelerazione}\\\text{di Coriolis}}}]\widehat{\theta}
+\end{equation}
+
+\subsection{Forze}
+\paragraph{Seconda legge di Newton}
+La legge oraria $\overrightarrow{r}(t)$ di un punto materiale di massa $m$ è determinata dalla soluzione di un'equazione del moto, la \textbf{seconda legge di Newton}:
+\begin{equation}
+	m \ddot{\overrightarrow{r}}(t) = \overrightarrow{F_1} + \overrightarrow{F_2} + \ldots
+\end{equation}
+dove $\overrightarrow{F}_i$ sono le \textbf{forze} $[N \equiv kg \cdot m/s^2]$ agenti sul punto materiale e sono determinate empiricamente.\\
+
+Dato che l'equazione differenziale è del secondo ordine, sono necessarie due \textbf{condizioni} al bordo, e.g. $\overrightarrow{r}(t_0) = \overrightarrow{r_0}$ e $\dot{\overrightarrow{r}}(t_0) = \overrightarrow{v_0}$
+\paragraph{Prima legge di Newton}
+Se la \textbf{risultante} delle forze (la loro somma) è $\overrightarrow{F_1} + \overrightarrow{F_2}+\ldots = 0$ allora vale
+\begin{equation}
+	m\ddot{\overrightarrow{r}}(t) = 0 \Longrightarrow \dot{\overrightarrow{r}}(t)=\overrightarrow{v_0}
+\end{equation}
+cioè il moto ha velocità costante, ovvero \textbf{rettilineo uniforme}. Questo è in particolare vero se tutte $\overrightarrow{F_i}=0$.
+
+\subsubsection{Forza costante}
+Assumiamo di avere una forza costante $\overrightarrow{F}=F_0\widehat{x}$ sull'asse orizzontale. Partiamo dal vettore posizione 
+\begin{equation*}
+	\overrightarrow{r}(t) = x(t)\widehat{x}+y(t)\widehat{y}+z(t)\widehat{z}
+\end{equation*}
+e dal vettore accelerazione
+\begin{equation*}
+	\ddot{\overrightarrow{r}}(t)=\ddot{x}(t)\widehat{x}+\ddot{y}(t)\widehat{y}+\ddot{z}(t)\widehat{z}
+\end{equation*}
+Applicando la seconda legge di Newton otteniamo il seguente sistema di equazioni:
+\begin{equation}
+	m\ddot{\overrightarrow{r}}(t) = F_0 \widehat{x} \Longrightarrow \begin{cases}
+		m\ddot{x}(t) = F_0 \\
+		m\ddot{y} = 0\\
+		m\ddot{z} = 0
+	\end{cases}
+\end{equation}
+La risoluzione del sistema viene fatta a partire da un set di $2 \cdot 3 = 6$ condizioni iniziali e tramite l'integrazione delle diverse equazioni.
+
+\begin{example}
+	\label{eg:mua}
+	Assumiamo le seguenti condizioni iniziali:
+	\begin{equation*}
+		\overrightarrow{r}(0) = \overrightarrow{r_0}=(x_0,y_0,z_0) \qquad\qquad \dot{\overrightarrow{r}}(0) = \overrightarrow{v_0} = (v_{0,x}, v_{0,y}, v_{0,z})
+	\end{equation*}
+	Vediamo il caso per la prima equazione:
+	\begin{enumerate}
+		\item $\ddot{x}(t) = \frac{F_0}{m}$
+		\item Calcoliamo la velocità: $\dot{x}(t) = \int \frac{F_0}{m}dt = \frac{F_0}{m}t+c_1$
+		\item Noi sappiamo dalle condizioni iniziali che la velocità all'istante $0$ è $\dot{x}(0) = v_{0,x}$ e di conseguenza possiamo calcolare $\dot{x}(0) = \frac{F_0}{m}\cdot 0 + c_1 = c_1 = v_{0,x}$
+		\item Integriamo di nuovo: $x(t) = \int \dot{x}(t) dt = \int \frac{F_0}{m}t + v_{0,x}dt = \frac{1}{2}\frac{F_0}{m}t^2+v_{0,x}t + c_2$
+		\item Sempre dalle condizioni iniziali sappiamo che la posizione all'istante $0$ sull'asse $x$ è $x(0) = x_0$ e di conseguenza, come al caso 3, otteniamo $c_2 = x_0$
+	\end{enumerate}
+	Procedendo in maniera analoga anche per le altre due equazioni del sistema arriviamo a quello che è il \textbf{moto uniformemente accelerato}:
+	\begin{equation}
+		\begin{cases}
+			x(t) = x_0 + v_{0,x} t + \frac{1}{2} \frac{F_0}{m}t^2 \\
+			y(t) = y_0 + v_{0,y}\\
+			z(t) = z_0 + v_{0,z}
+		\end{cases}
+	\end{equation}
+\end{example}
+
+\subsubsection{Forza peso}
+La forza peso $\overrightarrow{F}=-mg\widehat{z}$ viene esercitata in prossimità della superficie terrestre. $\widehat{z}$ è ortogonale alla superficie e $g \simeq 9.8 m/s^2$.
+\begin{wrapfigure}[0]{r}{5cm}
+	\vspace{9cm}
+	\includegraphics[width=5cm]{proiettile}
+\end{wrapfigure}
+\begin{example}[Oggetto in caduta]
+	Assumiamo di avere un grave che cade da un'altezza $h$. Vogliamo calcolare la posizione sull'asse verticale in un determinato istante di tempo $z(t)$. Per la seconda legge di Newton abbiamo
+	\begin{equation*}
+		m \ddot{\overrightarrow{r}}(t) = -mg\widehat{z}
+	\end{equation*}
+	con due condizioni iniziali
+	\begin{equation*}
+		\overrightarrow{r}(t_0) = h \cdot \widehat{z} \qquad\qquad \dot{\overrightarrow{r}}(t_0) = 0
+	\end{equation*}
+	A questo punto, proiettando\footnote{Si intende integrare come nell'esempio \ref{eg:mua}}, ottengo
+	\begin{align*}
+		m \ddot{z}(t) & = -mg \\
+		\dot{z}(t) & = -g(t-t_0) \\
+		z(t) & = h - \frac{1}{2} g (t- t_0)^2
+	\end{align*}
+\end{example}
+\begin{example}[Proiettile]
+	Vediamo il caso dell'effetto della forza peso su un proiettile che viaggia a velocità costante sia sull'asse orizzontale che su quello verticale. Le condizioni iniziali sono:
+	\begin{equation*}
+		\overrightarrow{r}(t_0) = 0 \qquad\qquad \dot{\overrightarrow{r}}(t_0) = v_0 \cdot \cos\theta\widehat{x} + v_0 \cdot \sin\theta\widehat{z}
+	\end{equation*}
+	Notiamo che quindi vale:
+	\begin{equation*}
+		\overrightarrow{v_0}=v_0(\cos\theta, \sin\theta) \Longrightarrow \lvert\lvert \overrightarrow{v_0} \rvert\rvert = v_0
+	\end{equation*}
+	Per quanto riguarda la proiezione lungo $\widehat{x}$ abbiamo
+	\begin{align*}
+		\ddot{x}(t) & = 0 \\
+		\dot{x}(t) & = v_0\cos\theta \\
+		x(t) & = v_0\cos\theta \cdot (t-t_0)
+	\end{align*}
+	Mentre per la proiezione su $\widehat{z}$:
+	\begin{align*}
+		\ddot{z}(t) & = -g \\
+		\dot{z}(t) & = v_0\sin\theta - g(t-t_0)\\
+		z(t) & = v_0\sin\theta (t-t_0) - \frac{1}{2}g(t-t_0) ^2
+	\end{align*}
+	Per trovare la \textbf{traiettoria} a partire dalla legge oraria, mi devo ricavare:
+	\begin{align*}
+		t-t_0 & = \frac{x(t)}{v_0\cos\theta} \\
+		z & = \frac{v_0 \sin\theta x}{v_0 \cos\theta} - \frac{1}{2}g \frac{x^2}{(v_0\cos\theta)^2} \\
+		z & = x \tan\theta - x^2 \frac{g}{2v_0^2}(1+\tan^2\theta)
+	\end{align*}
+	Ovvero una parabola. Per trovare il punto di atterraggio è poi sufficiente mettere l'equazione appena trovata a sistema con $z=0$, ottenendo così il punto di partenza $x=0$ e il punto di arrivo
+	\begin{equation*}
+		x = \frac{2 v_0^2}{g}\frac{\tan\theta}{1+\tan^2\theta}
+	\end{equation*}
+\end{example}
+
+\begin{example}[Forza da legge oraria]
+	Assumiamo di avere un \textbf{moto circolare uniforme}, ovvero $r(t) = R$ e $\theta(t) = \Omega t$. La legge oraria in questione ci dice che valgono le seguenti:
+	\begin{equation*}
+		\dot{r}(t) = 0 \qquad \ddot{r}(t) = 0 \qquad \dot{\theta}(t) = \Omega \qquad \ddot{\theta}(t) = 0
+	\end{equation*}
+	Dall'equazione \ref{eq:polaracc} per sostituzione otteniamo che, in questo caso, il vettore accelerazione vale:
+	\begin{equation*}
+		\ddot{\overrightarrow{r}}(t) = -R\Omega^2\widehat{r}
+	\end{equation*}
+	Poi, per la seconda legge di Newton, otteniamo:
+	\begin{align*}
+		m\ddot{\overrightarrow{r}}(t) & = \overrightarrow{F} \\
+		-mR\Omega^2 \widehat{r} & = \overrightarrow{F} \\
+		\overrightarrow{F} & = -mR\Omega^2\widehat{r}
+	\end{align*}
+	In questo caso, dato che il versore $\widehat{r}$ punta radialmente verso l'esterno ed il segno della forza è negativo, vuol dire che essa è costante e sempre diretta verso il centro, ovvero la \textbf{forza centrale}.
+\end{example}
+
+\subsubsection{Forza elastica}
+\begin{wrapfigure}[3]{r}{4cm}
+	\includegraphics[width=4cm]{felastica}
+\end{wrapfigure}
+La forza elastica, o legge di Hooke, è definita come
+\begin{equation}
+	\overrightarrow{F} = -k(\lvert\lvert \overrightarrow{r} - \overrightarrow{r_v} \rvert\rvert - l_0) \underbrace{\frac{\overrightarrow{r}-\overrightarrow{r_v}}{\lvert\lvert \overrightarrow{r} - \overrightarrow{r_v}\rvert\rvert}}_{\substack{\text{Versore parallelo} \\ \text{alla molla}}}
+\end{equation}
+dove $k [N/m]$ è la \textbf{costante elastica} del materiale, $l_0 [m]$ è la lunghezza a \textit{riposo} della molla. Questa forza è \textbf{posizionale}, ovvero dipende dal vettore posizione $\overrightarrow{r}$ e $\overrightarrow{r_v}$ è l'altro estremo.
+
+
+\begin{example}[Oscillatore unidimensionale]
+	L'oscillatore unidimensionale prevede che $\overrightarrow{r_v}=0$. Il vettore posizione è il seguente:
+	\begin{equation*}
+		\overrightarrow{r}(t) = x(t) \widehat{x} \qquad\qquad\qquad x(t) \geq 0
+	\end{equation*}
+	Calcoliamo la forza sull'asse orizzontale tramite la legge di Hooke
+	\begin{align*}
+		\overrightarrow{F} & = -k (\lvert x-0\rvert - l_0) \frac{x-0}{\lvert x - 0 \rvert}\widehat{x} \\
+		& = -k  (\lvert x \rvert - l_0) \frac{x}{\lvert x \rvert}\widehat{x} \\
+		& \Rightarrow F_x = -k (x-l_0)
+	\end{align*}
+	Per la seconda legge di Newton abbiamo
+	\begin{equation*}
+		m \ddot{x}(t) = -k[x(t)-l_0]
+	\end{equation*}
+	Sostituendo con $\Omega \equiv \sqrt{\frac{k}{m}}$ ottengo un'equazione differenziale lineare del secondo ordine, la cui soluzione generale è
+	\begin{equation*}
+		x(t) = l_0 + A \cdot \cos(\Omega t) + B \cdot \sin(\Omega t)
+	\end{equation*}
+	
+	\begin{note}
+		Alcuni valori notevoli:
+		\begin{itemize}
+			\item \textbf{Frequenza angolare} $\Omega [rad/s]$
+			\item \textbf{Frequenza} $\frac{\Omega}{2\pi}[\frac{1}{s} = Hz]$
+			\item \textbf{Periodo} $T = \frac{2\pi}{\Omega}[s]$
+		\end{itemize}
+	\end{note}
+	
+	Per trovare $A$ e $B$ parto da delle condizioni al bordo, in questo caso
+	\begin{equation*}
+		\underbrace{x(0) = x_0}_{\text{a.}} \qquad\qquad \underbrace{\dot{x}(0) = 0}_{\text{b.}}
+	\end{equation*}
+	Dalla soluzione generale ottengo:
+	\begin{align*}
+		\dot{x}(t) &= -\Omega A\sin(\Omega t) + B\Omega \cos(\Omega t) \\
+		\dot{x}(0) & = 0 = -\Omega A \sin(\Omega \cdot 0) + B \Omega \cos (\Omega \cdot 0) \\
+		0 & = 0 + B \Omega \\
+		B & = 0
+	\end{align*}
+	e poi per sostituzione
+	\begin{align*}
+		x(t) & = l_0 + A \cdot \cos(\Omega t) \\
+		x(0) & = x_0 = l_0 + A \cdot \cos(\Omega \cdot 0) \\
+		x_0 & = l_0 + A
+	\end{align*}
+	Il che ci porta alla soluzione finale:
+	\begin{equation*}
+		x(t) = l_0 + (x_0-l_0)\cos(\Omega t)
+	\end{equation*}
+\end{example}
+
+\subsubsection{Forza di attrito viscoso}
+La forza di attrito viscoso si oppone linearmente alla velocità ed è un modello approssimato che funziona a basse velocità.
+\begin{equation}
+	\overrightarrow{F}=-\mu\dot{\overrightarrow{r}}(t)
+\end{equation}
+con $\mu [N/(m/s)]$ una costante.
+
+\begin{example}[Proiettile in gel balistico]
+	Sappiamo che $\dot{x}(0) = v_0$. Per la seconda legge di Newton abbiamo
+	\begin{equation*}
+		m\ddot{x}(t) = -\mu \dot{x}(t)
+	\end{equation*}
+	Eseguo la sostituzione con $u(t) = \dot{x}(t)$ e ottengo
+	\begin{equation*}
+		\dot{u}(t) = -\frac{1}{r} u(t) \qquad\qquad u(0)=v_0 \qquad \frac{1}{r}=\frac{\mu}{m}[\frac{1}{s}]
+	\end{equation*}
+	La soluzione generale per l'equazione differenziale è
+	\begin{equation*}
+		u(t) = A \cdot e^{-\frac{t}{r}}
+	\end{equation*}
+	Data  la condizione iniziale possiamo dedurre che
+	\begin{equation*}
+		\dot{x}(0) = v_0 = A \cdot e^0 \Longrightarrow v_0 = A
+	\end{equation*}
+	e la soluzione finale è quindi
+	\begin{equation}
+		\dot{x}(t) = u(t) = v_0 \cdot e^{-\frac{t}{r}}
+	\end{equation}
+\end{example}
+
+\subsubsection{Metodo di Eulero}
+Per discretizzare il moto di un oggetto nel tempo esistono vari metodi e la scelta di quale usare dipende dal problema. Quello di Eulero, anche detto calcolo al prim'ordine, prevede l'approssimazione della posizione e della velocità tramite differenze finite.
+Assumiamo di avere
+\begin{equation*}
+	t \longrightarrow t_0, t_1, \ldots, t_N \qquad\qquad t_{i+1} - t_i = \Delta t \qquad\qquad \overrightarrow{r}(t_i) = \overrightarrow{r_i}
+\end{equation*}
+La \textbf{velocità} diventa:
+\begin{equation}
+	\frac{d\overrightarrow{r}(t)}{dt}\bigg\rvert_{t=t_i}\simeq \frac{\overrightarrow{r}_{i+1}-\overrightarrow{r_i}}{\Delta t}
+\end{equation}
+e l'\textbf{accelerazione}
+\begin{equation}
+	\frac{d^2\overrightarrow{r}(t)}{dt^2}\bigg\rvert_{t=t_i}\simeq \frac{\frac{\overrightarrow{r}_{i+1}-\overrightarrow{r_i}}{\Delta t} - \overbrace{\frac{\overrightarrow{r_{i}}-\overrightarrow{r}_{i-1}}{\Delta t}}^{\overrightarrow{v_i}} }{\Delta t} = \frac{\overrightarrow{r}_{i+1} -2\overrightarrow{r_i} + \overrightarrow{r}_{i-1}}{\Delta t^2}
+\end{equation}
+Di conseguenza l'equazione di Newton diventa:
+\begin{align}
+	\overrightarrow{v_i} & = \overrightarrow{v}_{i-1}+\Delta t \frac{\overrightarrow{F}_{i-1}}{m} \\
+	\overrightarrow{r_i} & = \overrightarrow{r}_{i-1} + \Delta t \overrightarrow{v_i}
+\end{align}
+Ora serviranno quindi 2 condizioni di bordo. La forza $\overrightarrow{F_i}$ può dipendere da $t_i$, $\overrightarrow{r_i}$ o $\overrightarrow{v_i}$.
+
+\subsubsection{Forze di contatto}
+Le forze di contatto, anche dette \textbf{reazioni vincolari}, non sempre hanno un'espressione implicita e vengono quindi determinate imponendo dei \textbf{vincoli} alle equazioni del moto.\\
+Un esempio classico di vincolo è che un punto materiale debba seguire per forza una data traiettoria, $z(t) \equiv z_0$
+\begin{center}
+	\includegraphics[scale=.7]{vincolo}
+\end{center}
+
+\begin{theorem}[Terza legge di Newton]
+	La terza legge di Newton, comunemente "azione e reazione", stabilisce che
+	\begin{equation}
+		\overrightarrow{F}_{B \to A} = -\overrightarrow{F}_{A \to B}
+	\end{equation}
+\end{theorem}
+
+\begin{example}
+	Abbiamo una massa su una bilancia in presenza della forza peso.
+	\begin{center}
+		\includegraphics[scale=.4]{bilancia}
+	\end{center}
+	Per la seconda legge di Newton vale
+	\begin{equation*}
+		m\ddot{\overrightarrow{r}}(t) = -mg\widehat{z}+\overrightarrow{F}
+	\end{equation*}
+	Imponiamo il vincolo che la massa non debba muoversi, ovvero $\dot{\overrightarrow{r}}(t) = 0$ e otteniamo per sostituzione
+	\begin{equation*}
+		\overrightarrow{F}=+mg\widehat{z}
+	\end{equation*}
+	Di conseguenza la bilancia misurerà $\lvert\lvert -\overrightarrow{F}\rvert\rvert = mg$.
+\end{example}
+
+\begin{example}
+	Abbiamo una massa su una bilancia posizionata in un ascensore accelerato. Come prima vale $m\ddot{\overrightarrow{r}}(t) = -mg\widehat{z}+\overrightarrow{F}$.
+	\begin{center}
+		\includegraphics[scale=.4]{ascensore}
+	\end{center}
+	In questo caso il vincolo che imponiamo è che la massa possa muoversi solo verticalmente, ovvero che l'accelerazione sull'asse verticale corrisponda a quella dell'ascensore $a$.
+	\begin{equation*}
+		\ddot{\overrightarrow{r}}(t) = a \cdot \widehat{z} \Longrightarrow \overrightarrow{F}=m(a+g)\widehat{z}
+	\end{equation*}
+	Di conseguenza la bilancia misurerà $\lvert\lvert -\overrightarrow{F}\rvert\rvert = m(a+g)$.
+\end{example}
+
+\begin{note}
+	Un punto materiale si \textbf{solleva} o \textbf{distacca} da una superficie quando la reazione vincolare va a zero.
+\end{note}
+
+\begin{wrapfigure}[4]{r}{2cm}
+	\includegraphics[width=2cm]{scomp}
+\end{wrapfigure}
+Scomponendo la reazione vincolare nella direzione ortogonale e in quella parallela otteniamo rispettivamente la \textbf{reazione normale} $\overrightarrow{N}$ e la \textbf{forza di attrito} $\overrightarrow{F_a}$. In particolare la forza d'attrito si divide in tre casi:
+\begin{itemize}
+	\item Superficie \textbf{liscia}: $\overrightarrow{F_a}=0$
+	\item Superficie \textbf{scabra senza movimento} relativo al punto di contatto. \textbf{Attrito statico} in cui la corrispondente forza è da determinare con dei vincoli. La condizione è:
+	\begin{equation}
+		\lvert\lvert \overrightarrow{F_a} \rvert\rvert \leq \mu_s \lvert\lvert \overrightarrow{N} \rvert\rvert
+	\end{equation}
+	\item Superficie \textbf{scabra} con \textbf{differenza di velocità} al punto di contatto. \textbf{Attrito dinamico} dove la forza vale
+	\begin{equation}
+		\overrightarrow{F_a} = -\mu_d \lvert\lvert \overrightarrow{N} \rvert\rvert \frac{\overrightarrow{v}}{\lvert\lvert \overrightarrow{v} \rvert\rvert}
+	\end{equation} 
+\end{itemize}
+
+\begin{note}
+	$\mu_s$ e $\mu_d$ sono i \textbf{coefficienti di attrito} e sono numeri puri.
+\end{note}
+
+\begin{example}
+	Abbiamo una massa su un piano inclinato \textit{liscio} fisso. Scomponiamo le forze lungo gli assi $\widehat{x}'$ e $\widehat{z}'$.
+	\begin{align*}
+		\widehat{x}' & = \cos\alpha \cdot \widehat{x} - \sin\alpha \cdot \widehat{z} \\
+		\widehat{z}' & = \sin\alpha \cdot \widehat{x} + \cos\alpha \cdot \widehat{z}
+	\end{align*}
+	\begin{center}
+		\includegraphics[scale=.5]{pianinclliscio.png}
+	\end{center}
+	Per la seconda legge di Newton abbiamo che $m\ddot{\overrightarrow{r}}(t) = -mg\widehat{z}+\overrightarrow{N}$. Le proiettiamo lungo i due assi della scomposizione
+	\begin{align*}
+		m\ddot{z}'(t) & = -mg\cos\alpha + N \\
+		m\ddot{x}'(t)& =+mg\sin\alpha
+	\end{align*}
+	Poniamo come vincolo che la posizione lungo l'asse $z'$ rimanga costante, ovvero l'accelerazione l'ungo quell'asse pari a zero $\ddot{z}'(t) = 0$ e otteniamo quindi
+	\begin{equation*}
+		N = mg\cos\alpha \qquad\qquad\qquad \ddot{x}'(t) = g \cdot \sin\alpha
+	\end{equation*}
+	che ci dice che l'accelerazione lungo il piano sarà minore di $g$.
+\end{example}
+
+\begin{example}
+	Abbiamo una massa \textit{ferma} su un piano inclinato \textit{scabro}. Analogamente all'esempio precedente, scomponiamo la forza e otteniamo
+	\begin{align*}
+		m\ddot{z}'(t) & = -mg\cos\alpha + N \\
+		m\ddot{x}'(t)& =+mg\sin\alpha - F_a
+	\end{align*}
+	\begin{center}
+		\includegraphics[scale=.5]{fermascabro}
+	\end{center}
+	Come vincoli imponiamo lo stesso dell'esempio precedente e in aggiunta vogliamo anche che la posizione lungo l'asse $x'$ rimanga costante, ovvero che l'accelerazione sia zero $\ddot{x}'(t) = 0$. Questo ci porta ad avere
+	\begin{equation*}
+		N=mg\cos\alpha \qquad\qquad\qquad F_a = mg\sin\alpha
+	\end{equation*}
+	Per calcolare l'inclinazione massima $\alpha$ del piano che possiamo avere per mantenere verificati i vincoli facciamo come segue
+	\begin{align*}
+		\lvert\lvert \overrightarrow{F_a}\rvert\rvert & \leq \mu_s \lvert\lvert \overrightarrow{N} \rvert\rvert \\
+		mg\sin\alpha & \leq \mu_s \cdot mg\cos\alpha \\
+		\tan\alpha & \leq \mu_s \\
+		\alpha & \leq \arctan(\mu_s)
+	\end{align*}
+\end{example}
+
+\begin{example}
+	Abbiamo una massa \textit{scivola} su un piano inclinato \textit{scabro}. Come nell'esempio precedente ma abbiamo il solo vincolo sull'asse $z'$. Dalla formula dell'attrito dinamico e dal vincolo ricaviamo quindi
+	\begin{align*}
+		m\ddot{x}'(t) & = mg\sin\alpha - \mu_d \cdot mg\cos\alpha \\
+		\ddot{x}'(t) & = g(\sin\alpha - \mu_d \cdot \cos\alpha)
+	\end{align*}
+\end{example}
