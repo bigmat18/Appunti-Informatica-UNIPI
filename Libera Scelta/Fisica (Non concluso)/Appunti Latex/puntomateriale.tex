@@ -13,7 +13,7 @@
 \subsubsection{Posizione}
 Rappresentiamo il vettore posizione come funzione del tempo $t[s]$:
 \begin{equation}
-	\overrightarrow{r}(t) = (x(t), y(t), z(t)) = x(t)\widehat{x} + y(t)\widehat{y}+z(t)\widehat{z}
+	\vec{r}(t) = (x(t), y(t), z(t)) = x(t)\widehat{x} + y(t)\widehat{y}+z(t)\widehat{z}
 \end{equation}
 \begin{observation}
 	I versori cartesiani sono costanti.
@@ -22,21 +22,21 @@ Rappresentiamo il vettore posizione come funzione del tempo $t[s]$:
 \begin{definition}[Legge oraria]
 	La funzione
 	\begin{equation}
-		t \mapsto \overrightarrow{r}(t)
+		t \mapsto \vec{r}(t)
 	\end{equation}
 \end{definition}
 
 \begin{definition}[Traiettoria]
 	Il luogo geometrico dei punti visitati dal punto materiale.
 	\begin{equation}
-		\{\overrightarrow{r}(t) \vert t\in \mathbb{R}\}
+		\{\vec{r}(t) \vert t\in \mathbb{R}\}
 	\end{equation}
 \end{definition}
 
 \begin{example}
 	Dato un punto materiale caratterizzato dal seguente vettore posizione
 	\begin{equation*}
-		\overrightarrow{r}(t) = (v_0t,y_0,0) \qquad\qquad v_0 = 3 m/s \qquad\qquad y_0 = 5m
+		\vec{r}(t) = (v_0t,y_0,0) \qquad\qquad v_0 = 3 m/s \qquad\qquad y_0 = 5m
 	\end{equation*}
 	abbiamo:
 	\begin{figure}[!h]
@@ -55,10 +55,10 @@ Rappresentiamo il vettore posizione come funzione del tempo $t[s]$:
 \end{example}
 
 \subsubsection{Velocità}
-È la \textbf{derivata} rispetto al tempo del vettore posizione e si indica con $\frac{d \overrightarrow{r}(t)}{dt}$ oppure $\dot{\overrightarrow{r}}(t)[m/s]$. Usando le proprietà delle derivate quali \textit{linearità} e \textit{Leibniz}, otteniamo:
+È la \textbf{derivata} rispetto al tempo del vettore posizione e si indica con $\frac{d \vec{r}(t)}{dt}$ oppure $\dot{\vec{r}}(t)[m/s]$. Usando le proprietà delle derivate quali \textit{linearità} e \textit{Leibniz}, otteniamo:
 \begin{equation}
 	\begin{split}
-		\dot{\overrightarrow{r}}(t) & = (\dot{x}(t), \dot{y}(t), \dot{z}(t)) \\
+		\dot{\vec{r}}(t) & = (\dot{x}(t), \dot{y}(t), \dot{z}(t)) \\
 		& = \frac{d}{dt}[x(t)\widehat{x} + y(t)\widehat{y}+z(t)\widehat{z}] \\
 		& = \dot{x} (t) \widehat{x} + \dot{y}(t) \widehat{y} + \dot{z}(t) \widehat{z}
 	\end{split}
@@ -67,32 +67,32 @@ Rappresentiamo il vettore posizione come funzione del tempo $t[s]$:
 \paragraph{Spazio percorso} Per ottenere lo spazio percorso $L$ dal punto materiale in un determinato lasso di tempo dobbiamo sommare la distanza del vettore posizione ad ogni istante dall'istante precedente:
 \begin{equation}
 	\begin{split}
-		L & = \lvert\lvert \overrightarrow{r}(t_{1})-\overrightarrow{r}(t_0) \rvert\rvert \\
-		& + \lvert\lvert \overrightarrow{r}(t_{2})-\overrightarrow{r}(t_1) \rvert\rvert \\
+		L & = \lvert\lvert \vec{r}(t_{1})-\vec{r}(t_0) \rvert\rvert \\
+		& + \lvert\lvert \vec{r}(t_{2})-\vec{r}(t_1) \rvert\rvert \\
 		& + \ldots \\
-		& = \sum_i \lvert\lvert \overrightarrow{r}(t_{i+1})-\overrightarrow{r}(t_i) \rvert\rvert \\
-		& = \sum_i \bigg\lvert\bigg\lvert  \frac{\overrightarrow{r}(t_{i+1})-\overrightarrow{r}(t_i)}{t_{i+1}-t_i}\bigg\rvert\bigg\rvert \cdot (t_{i+1}-t_i) \\
-		& = \int_{t_\text{in}}^{t_\text{fin}} dt \lvert\lvert \dot{\overrightarrow{r}} (t) \rvert\rvert
+		& = \sum_i \lvert\lvert \vec{r}(t_{i+1})-\vec{r}(t_i) \rvert\rvert \\
+		& = \sum_i \bigg\lvert\bigg\lvert  \frac{\vec{r}(t_{i+1})-\vec{r}(t_i)}{t_{i+1}-t_i}\bigg\rvert\bigg\rvert \cdot (t_{i+1}-t_i) \\
+		& = \int_{t_\text{in}}^{t_\text{fin}} dt \lvert\lvert \dot{\vec{r}} (t) \rvert\rvert
 	\end{split}
 \end{equation}
 Assumendo di avere $\lvert t_{i+1}-t_i\rvert$ piccolo.
 
 \begin{example}
-	Dato un punto materiale caratterizzato dal vettore posizione $\overrightarrow{r}(t) = (v_0t,y_0)$, calcoliamo il vettore velocità ed il suo modulo:
+	Dato un punto materiale caratterizzato dal vettore posizione $\vec{r}(t) = (v_0t,y_0)$, calcoliamo il vettore velocità ed il suo modulo:
 	\begin{equation*}
-		\dot{\overrightarrow{r}}(t) = (v_0,0) \qquad\qquad\qquad \lvert\lvert \dot{\overrightarrow{r}}(t)\rvert\rvert = \sqrt{v_0^2 + 0^2} = \lvert v_0\rvert
+		\dot{\vec{r}}(t) = (v_0,0) \qquad\qquad\qquad \lvert\lvert \dot{\vec{r}}(t)\rvert\rvert = \sqrt{v_0^2 + 0^2} = \lvert v_0\rvert
 	\end{equation*}
 	Per calcolare lo spazio percorso, applichiamo la formula vista in precedenza:
 	\begin{equation*}
-		L = \int_{t_\text{in}}^{t_\text{fin}} dt \lvert\lvert \dot{\overrightarrow{r}} (t) \rvert\rvert = \int_{t_\text{in}}^{t_\text{fin}} dt \lvert v_0 \rvert = \lvert v_0 \rvert \cdot \int_{t_\text{in}}^{t_\text{fin}} dt1 = \lvert v_0 \rvert \cdot (t_\text{fin} - t_\text{in})
+		L = \int_{t_\text{in}}^{t_\text{fin}} dt \lvert\lvert \dot{\vec{r}} (t) \rvert\rvert = \int_{t_\text{in}}^{t_\text{fin}} dt \lvert v_0 \rvert = \lvert v_0 \rvert \cdot \int_{t_\text{in}}^{t_\text{fin}} dt1 = \lvert v_0 \rvert \cdot (t_\text{fin} - t_\text{in})
 	\end{equation*}
 \end{example}
 
 \subsubsection{Accelerazione}
-È la \textbf{derivata} rispetto al tempo del vettore velocità e si indica con $\frac{d \overrightarrow{r}^2(t)}{dt^2}$ oppure $\ddot{\overrightarrow{r}}(t)[m/s^2]$. Usando le proprietà delle derivate quali \textit{linearità} e \textit{Leibniz}, otteniamo:
+È la \textbf{derivata} rispetto al tempo del vettore velocità e si indica con $\frac{d \vec{r}^2(t)}{dt^2}$ oppure $\ddot{\vec{r}}(t)[m/s^2]$. Usando le proprietà delle derivate quali \textit{linearità} e \textit{Leibniz}, otteniamo:
 \begin{equation}
 	\begin{split}
-		\ddot{\overrightarrow{r}}(t) & = (\ddot{x}(t), \ddot{y}(t), \ddot{z}(t)) \\
+		\ddot{\vec{r}}(t) & = (\ddot{x}(t), \ddot{y}(t), \ddot{z}(t)) \\
 		& = \ddot{x} (t) \widehat{x} + \ddot{y}(t) \widehat{y} + \ddot{z}(t) \widehat{z}
 	\end{split}
 \end{equation}
@@ -101,7 +101,7 @@ Assumendo di avere $\lvert t_{i+1}-t_i\rvert$ piccolo.
 È il prodotto tra la \textbf{massa} $[kg]$ e la \textbf{velocità} $[m/s]$. Permette di generalizzare l'equazione di Newton e per trattare sistemi di più punti materiali.
 \begin{equation}
 	\begin{split}
-		\overrightarrow{p}(t) & = m \cdot \dot{\overrightarrow{r}}(t) \\
+		\vec{p}(t) & = m \cdot \dot{\vec{r}}(t) \\
 		& = (m \dot{x}(t), m \dot{y}t, m\dot{z}(t)) \\
 		& = m\dot{x}(t)\widehat{x} + m\dot{y}(t)\widehat{y} + m\dot{z}(t)\widehat{z}
 	\end{split}
@@ -119,18 +119,18 @@ Assumendo di avere $\lvert t_{i+1}-t_i\rvert$ piccolo.
 \subsubsection{Momento angolare}
 Il vettore momento angolare rispetto ad un \textbf{polo} P è calcolato come segue:
 \begin{equation}
-	\overrightarrow{L}_P(t) = m(\overrightarrow{r}(t) - \overrightarrow{r}_P) \times \dot{\overrightarrow{r}}(t)
+	\vec{L}_P(t) = m(\vec{r}(t) - \vec{r}_P) \times \dot{\vec{r}}(t)
 \end{equation}
-dove $\overrightarrow{r}_P$ è il vettore posizione del polo $P$.
+dove $\vec{r}_P$ è il vettore posizione del polo $P$.
 \begin{note}
 	Si noti che è un \textbf{prodotto vettoriale}.
 \end{note}
 
 \begin{example}
-	Assumiamo di avere un punto materiale con vettore posizione $\overrightarrow{r}(t)=(v_0t,y_0,0)$ e un polo $P$ con vettore posizione $\overrightarrow{r_P}=(l_0,0,0)$. Il vettore momento angolare sarà:
+	Assumiamo di avere un punto materiale con vettore posizione $\vec{r}(t)=(v_0t,y_0,0)$ e un polo $P$ con vettore posizione $\vec{r_P}=(l_0,0,0)$. Il vettore momento angolare sarà:
 	\begin{equation*}
 		\begin{split}
-			\overrightarrow{L_P} & = m [(y_0t-l_0)\widehat{x} + y_0 \widehat{y}] \times (v_0 \widehat{x})\\
+			\vec{L_P} & = m [(y_0t-l_0)\widehat{x} + y_0 \widehat{y}] \times (v_0 \widehat{x})\\
 			& = m (v_0 t-l_0)v_0 \widehat{x} \times \widehat{x} + m y_0 v_0 \widehat{y} \times \widehat{x} \\
 			& = 0 + m y_0 v_0 (-\widehat{z}) \\
 			&= (0,0,-my_0v_0)
@@ -166,23 +166,23 @@ Inoltre:
 \end{note}
 
 \subsubsection{Versori polari}
-Definiscono un versore $\widehat{r}(t)$ che punta verso il punto materiale e un versore $\widehat{\theta}(t)$ ortogonale. Per esprimere il primo convertiamo innanzitutto il vettore $\overrightarrow{r}(t)$ in coordinate polari:
+Definiscono un versore $\widehat{r}(t)$ che punta verso il punto materiale e un versore $\widehat{\theta}(t)$ ortogonale. Per esprimere il primo convertiamo innanzitutto il vettore $\vec{r}(t)$ in coordinate polari:
 \begin{equation*}
 	\label{eq:r}
 	\begin{split}
-		\overrightarrow{r}(t) & = (x(t), y(t)) = (r(t)  \cos\theta(t), r(t)\sin\theta(t))\\
+		\vec{r}(t) & = (x(t), y(t)) = (r(t)  \cos\theta(t), r(t)\sin\theta(t))\\
 		& = r(t) (\cos\theta(t)\widehat{x} + \sin\theta(t)\widehat{y}) 
 	\end{split}
 \end{equation*}
 Sappiamo dall'equazione \ref{eq:modulo} (adattata al caso bidimensionale) e dall'equazione \ref{eq:polar3} che vale:
 \begin{equation*}
-	\lvert\lvert \overrightarrow{r}(t) \rvert\rvert = \lvert r(t) \rvert = r(t)
+	\lvert\lvert \vec{r}(t) \rvert\rvert = \lvert r(t) \rvert = r(t)
 \end{equation*}
 E quindi otteniamo:
 \begin{equation}
 	\label{eq:theta}
 	\begin{split}
-		\widehat{r}(t) &= \frac{\overrightarrow{r}(t)}{\lvert\lvert \overrightarrow{r}(t) \rvert\rvert} \\
+		\widehat{r}(t) &= \frac{\vec{r}(t)}{\lvert\lvert \vec{r}(t) \rvert\rvert} \\
 		& = \frac{r(t) (\cos\theta(t)\widehat{x} + \sin\theta(t)\widehat{y})}{r(t)} \\
 		& = \cos\theta(t)\widehat{x} + \sin\theta(t)\widehat{y}		
 	\end{split}
@@ -191,8 +191,8 @@ Il versore \textbf{ortogonale} sarà invece:
 \begin{equation}
 	\widehat{\theta}(t) = -\sin\theta(t)\widehat{x} + \cos\theta(t)\widehat{y}
 \end{equation}
-ed è verificabile in quanto vale $\widehat{r} \cdot \widehat{\theta} = \cos\theta(t) \cdot (- \sin\theta(t)) + \sin\theta(t) \cdot \cos\theta(t) = 0$
-
+ed è verificabile in quanto vale $\widehat{r} \cdot \widehat{\theta} = \cos\theta(t) \cdot (- \sin\theta(t)) + \sin\theta(t) \cdot \cos\theta(t) = 0$\\
+\noindent\rule[0.5ex]{\linewidth}{.5pt}
 \begin{wrapfigure}[7]{r}{5cm}
 	\includegraphics[width=5cm]{verspol}
 \end{wrapfigure}
@@ -203,7 +203,7 @@ ed è verificabile in quanto vale $\widehat{r} \cdot \widehat{\theta} = \cos\the
 \end{align}
 In questo modo è possibile scrivere \textbf{ogni} vettore nella forma
 \begin{equation}
-	\overrightarrow{a} = a_r \widehat{r} + a_\theta \widehat{\theta}
+	\vec{a} = a_r \widehat{r} + a_\theta \widehat{\theta}
 \end{equation}
 che noi però \underline{non useremo per evitare ambiguità}.
 
@@ -218,51 +218,52 @@ che noi però \underline{non useremo per evitare ambiguità}.
 	\end{equation}
 	E analogamente:
 	\begin{equation}
-		\dot{\overrightarrow{\theta}}(t) = -\dot{\theta}(t)\widehat{r}(t)
+		\dot{\vec{\theta}}(t) = -\dot{\theta}(t)\widehat{r}(t)
 	\end{equation}
 \end{observation}
 
 \subsubsection{Vettori polari}
+\label{sec:vettoripol}
 \begin{equation}
-	\overrightarrow{r}(t) = \underbrace{r(t)}_{\substack{\text{Coordinata}\\\text{polare}}}\cdot \underbrace{\widehat{r}(t)}_{\substack{\text{Versore}\\\text{polare}}}
+	\vec{r}(t) = \underbrace{r(t)}_{\substack{\text{Coordinata}\\\text{polare}}}\cdot \underbrace{\widehat{r}(t)}_{\substack{\text{Versore}\\\text{polare}}}
 \end{equation}
 
 \begin{equation}
-	\dot{\overrightarrow{r}}(t) = \underbrace{\dot{r}(t)}_{\substack{\text{Velocità}\\\text{radiale}}} \cdot \widehat{r}(t)+r(t)\dot{\theta}(t)\widehat{\theta}(t)
+	\dot{\vec{r}}(t) = \underbrace{\dot{r}(t)}_{\substack{\text{Velocità}\\\text{radiale}}} \cdot \widehat{r}(t)+r(t)\dot{\theta}(t)\widehat{\theta}(t)
 \end{equation}
 \begin{equation}
 	\label{eq:polaracc}
-	\ddot{\overrightarrow{r}}(t) = [\ddot{r}(t) - \underbrace{r(t)\dot{\theta}(t)^2}_{\substack{\text{Accelerazione}\\\text{centripeta}}}]\widehat{r} + [r(t) \ddot{\theta}(t)+\underbrace{2\dot{r}(t)\dot{\theta}(t)}_{\substack{\text{Accelerazione}\\\text{di Coriolis}}}]\widehat{\theta}
+	\ddot{\vec{r}}(t) = [\ddot{r}(t) - \underbrace{r(t)\dot{\theta}(t)^2}_{\substack{\text{Accelerazione}\\\text{centripeta}}}]\widehat{r} + [r(t) \ddot{\theta}(t)+\underbrace{2\dot{r}(t)\dot{\theta}(t)}_{\substack{\text{Accelerazione}\\\text{di Coriolis}}}]\widehat{\theta}
 \end{equation}
 
 \subsection{Forze}
 \paragraph{Seconda legge di Newton}
-La legge oraria $\overrightarrow{r}(t)$ di un punto materiale di massa $m$ è determinata dalla soluzione di un'equazione del moto, la \textbf{seconda legge di Newton}:
+La legge oraria $\vec{r}(t)$ di un punto materiale di massa $m$ è determinata dalla soluzione di un'equazione del moto, la \textbf{seconda legge di Newton}:
 \begin{equation}
-	m \ddot{\overrightarrow{r}}(t) = \overrightarrow{F_1} + \overrightarrow{F_2} + \ldots
+	m \ddot{\vec{r}}(t) = \vec{F_1} + \vec{F_2} + \ldots
 \end{equation}
-dove $\overrightarrow{F}_i$ sono le \textbf{forze} $[N \equiv kg \cdot m/s^2]$ agenti sul punto materiale e sono determinate empiricamente.\\
+dove $\vec{F}_i$ sono le \textbf{forze} $[N \equiv kg \cdot m/s^2]$ agenti sul punto materiale e sono determinate empiricamente.\\
 
-Dato che l'equazione differenziale è del secondo ordine, sono necessarie due \textbf{condizioni} al bordo, e.g. $\overrightarrow{r}(t_0) = \overrightarrow{r_0}$ e $\dot{\overrightarrow{r}}(t_0) = \overrightarrow{v_0}$
+Dato che l'equazione differenziale è del secondo ordine, sono necessarie due \textbf{condizioni} al bordo, e.g. $\vec{r}(t_0) = \vec{r_0}$ e $\dot{\vec{r}}(t_0) = \vec{v_0}$
 \paragraph{Prima legge di Newton}
-Se la \textbf{risultante} delle forze (la loro somma) è $\overrightarrow{F_1} + \overrightarrow{F_2}+\ldots = 0$ allora vale
+Se la \textbf{risultante} delle forze (la loro somma) è $\vec{F_1} + \vec{F_2}+\ldots = 0$ allora vale
 \begin{equation}
-	m\ddot{\overrightarrow{r}}(t) = 0 \Longrightarrow \dot{\overrightarrow{r}}(t)=\overrightarrow{v_0}
+	m\ddot{\vec{r}}(t) = 0 \Longrightarrow \dot{\vec{r}}(t)=\vec{v_0}
 \end{equation}
-cioè il moto ha velocità costante, ovvero \textbf{rettilineo uniforme}. Questo è in particolare vero se tutte $\overrightarrow{F_i}=0$.
+cioè il moto ha velocità costante, ovvero \textbf{rettilineo uniforme}. Questo è in particolare vero se tutte $\vec{F_i}=0$.
 
 \subsubsection{Forza costante}
-Assumiamo di avere una forza costante $\overrightarrow{F}=F_0\widehat{x}$ sull'asse orizzontale. Partiamo dal vettore posizione 
+Assumiamo di avere una forza costante $\vec{F}=F_0\widehat{x}$ sull'asse orizzontale. Partiamo dal vettore posizione 
 \begin{equation*}
-	\overrightarrow{r}(t) = x(t)\widehat{x}+y(t)\widehat{y}+z(t)\widehat{z}
+	\vec{r}(t) = x(t)\widehat{x}+y(t)\widehat{y}+z(t)\widehat{z}
 \end{equation*}
 e dal vettore accelerazione
 \begin{equation*}
-	\ddot{\overrightarrow{r}}(t)=\ddot{x}(t)\widehat{x}+\ddot{y}(t)\widehat{y}+\ddot{z}(t)\widehat{z}
+	\ddot{\vec{r}}(t)=\ddot{x}(t)\widehat{x}+\ddot{y}(t)\widehat{y}+\ddot{z}(t)\widehat{z}
 \end{equation*}
 Applicando la seconda legge di Newton otteniamo il seguente sistema di equazioni:
 \begin{equation}
-	m\ddot{\overrightarrow{r}}(t) = F_0 \widehat{x} \Longrightarrow \begin{cases}
+	m\ddot{\vec{r}}(t) = F_0 \widehat{x} \Longrightarrow \begin{cases}
 		m\ddot{x}(t) = F_0 \\
 		m\ddot{y} = 0\\
 		m\ddot{z} = 0
@@ -274,7 +275,7 @@ La risoluzione del sistema viene fatta a partire da un set di $2 \cdot 3 = 6$ co
 	\label{eg:mua}
 	Assumiamo le seguenti condizioni iniziali:
 	\begin{equation*}
-		\overrightarrow{r}(0) = \overrightarrow{r_0}=(x_0,y_0,z_0) \qquad\qquad \dot{\overrightarrow{r}}(0) = \overrightarrow{v_0} = (v_{0,x}, v_{0,y}, v_{0,z})
+		\vec{r}(0) = \vec{r_0}=(x_0,y_0,z_0) \qquad\qquad \dot{\vec{r}}(0) = \vec{v_0} = (v_{0,x}, v_{0,y}, v_{0,z})
 	\end{equation*}
 	Vediamo il caso per la prima equazione:
 	\begin{enumerate}
@@ -293,21 +294,20 @@ La risoluzione del sistema viene fatta a partire da un set di $2 \cdot 3 = 6$ co
 		\end{cases}
 	\end{equation}
 \end{example}
-
-\subsubsection{Forza peso}
-La forza peso $\overrightarrow{F}=-mg\widehat{z}$ viene esercitata in prossimità della superficie terrestre. $\widehat{z}$ è ortogonale alla superficie e $g \simeq 9.8 m/s^2$.
 \begin{wrapfigure}[0]{r}{5cm}
-	\vspace{9cm}
+	\vspace{8cm}
 	\includegraphics[width=5cm]{proiettile}
 \end{wrapfigure}
+\subsubsection{Forza peso}
+La forza peso $\vec{F}=-mg\widehat{z}$ viene esercitata in prossimità della superficie terrestre. $\widehat{z}$ è ortogonale alla superficie e $g \simeq 9.8 m/s^2$.
 \begin{example}[Oggetto in caduta]
 	Assumiamo di avere un grave che cade da un'altezza $h$. Vogliamo calcolare la posizione sull'asse verticale in un determinato istante di tempo $z(t)$. Per la seconda legge di Newton abbiamo
 	\begin{equation*}
-		m \ddot{\overrightarrow{r}}(t) = -mg\widehat{z}
+		m \ddot{\vec{r}}(t) = -mg\widehat{z}
 	\end{equation*}
 	con due condizioni iniziali
 	\begin{equation*}
-		\overrightarrow{r}(t_0) = h \cdot \widehat{z} \qquad\qquad \dot{\overrightarrow{r}}(t_0) = 0
+		\vec{r}(t_0) = h \cdot \widehat{z} \qquad\qquad \dot{\vec{r}}(t_0) = 0
 	\end{equation*}
 	A questo punto, proiettando\footnote{Si intende integrare come nell'esempio \ref{eg:mua}}, ottengo
 	\begin{align*}
@@ -316,14 +316,16 @@ La forza peso $\overrightarrow{F}=-mg\widehat{z}$ viene esercitata in prossimit�
 		z(t) & = h - \frac{1}{2} g (t- t_0)^2
 	\end{align*}
 \end{example}
+
+
 \begin{example}[Proiettile]
 	Vediamo il caso dell'effetto della forza peso su un proiettile che viaggia a velocità costante sia sull'asse orizzontale che su quello verticale. Le condizioni iniziali sono:
 	\begin{equation*}
-		\overrightarrow{r}(t_0) = 0 \qquad\qquad \dot{\overrightarrow{r}}(t_0) = v_0 \cdot \cos\theta\widehat{x} + v_0 \cdot \sin\theta\widehat{z}
+		\vec{r}(t_0) = 0 \qquad\qquad \dot{\vec{r}}(t_0) = v_0 \cdot \cos\theta\widehat{x} + v_0 \cdot \sin\theta\widehat{z}
 	\end{equation*}
 	Notiamo che quindi vale:
 	\begin{equation*}
-		\overrightarrow{v_0}=v_0(\cos\theta, \sin\theta) \Longrightarrow \lvert\lvert \overrightarrow{v_0} \rvert\rvert = v_0
+		\vec{v_0}=v_0(\cos\theta, \sin\theta) \Longrightarrow \lvert\lvert \vec{v_0} \rvert\rvert = v_0
 	\end{equation*}
 	Per quanto riguarda la proiezione lungo $\widehat{x}$ abbiamo
 	\begin{align*}
@@ -356,13 +358,13 @@ La forza peso $\overrightarrow{F}=-mg\widehat{z}$ viene esercitata in prossimit�
 	\end{equation*}
 	Dall'equazione \ref{eq:polaracc} per sostituzione otteniamo che, in questo caso, il vettore accelerazione vale:
 	\begin{equation*}
-		\ddot{\overrightarrow{r}}(t) = -R\Omega^2\widehat{r}
+		\ddot{\vec{r}}(t) = -R\Omega^2\widehat{r}
 	\end{equation*}
 	Poi, per la seconda legge di Newton, otteniamo:
 	\begin{align*}
-		m\ddot{\overrightarrow{r}}(t) & = \overrightarrow{F} \\
-		-mR\Omega^2 \widehat{r} & = \overrightarrow{F} \\
-		\overrightarrow{F} & = -mR\Omega^2\widehat{r}
+		m\ddot{\vec{r}}(t) & = \vec{F} \\
+		-mR\Omega^2 \widehat{r} & = \vec{F} \\
+		\vec{F} & = -mR\Omega^2\widehat{r}
 	\end{align*}
 	In questo caso, dato che il versore $\widehat{r}$ punta radialmente verso l'esterno ed il segno della forza è negativo, vuol dire che essa è costante e sempre diretta verso il centro, ovvero la \textbf{forza centrale}.
 \end{example}
@@ -373,19 +375,19 @@ La forza peso $\overrightarrow{F}=-mg\widehat{z}$ viene esercitata in prossimit�
 \end{wrapfigure}
 La forza elastica, o legge di Hooke, è definita come
 \begin{equation}
-	\overrightarrow{F} = -k(\lvert\lvert \overrightarrow{r} - \overrightarrow{r_v} \rvert\rvert - l_0) \underbrace{\frac{\overrightarrow{r}-\overrightarrow{r_v}}{\lvert\lvert \overrightarrow{r} - \overrightarrow{r_v}\rvert\rvert}}_{\substack{\text{Versore parallelo} \\ \text{alla molla}}}
+	\vec{F} = -k(\lvert\lvert \vec{r} - \vec{r_v} \rvert\rvert - l_0) \underbrace{\frac{\vec{r}-\vec{r_v}}{\lvert\lvert \vec{r} - \vec{r_v}\rvert\rvert}}_{\substack{\text{Versore parallelo} \\ \text{alla molla}}}
 \end{equation}
-dove $k [N/m]$ è la \textbf{costante elastica} del materiale, $l_0 [m]$ è la lunghezza a \textit{riposo} della molla. Questa forza è \textbf{posizionale}, ovvero dipende dal vettore posizione $\overrightarrow{r}$ e $\overrightarrow{r_v}$ è l'altro estremo.
+dove $k [N/m]$ è la \textbf{costante elastica} del materiale, $l_0 [m]$ è la lunghezza a \textit{riposo} della molla. Questa forza è \textbf{posizionale}, ovvero dipende dal vettore posizione $\vec{r}$ e $\vec{r_v}$ è l'altro estremo.
 
 
 \begin{example}[Oscillatore unidimensionale]
-	L'oscillatore unidimensionale prevede che $\overrightarrow{r_v}=0$. Il vettore posizione è il seguente:
+	L'oscillatore unidimensionale prevede che $\vec{r_v}=0$. Il vettore posizione è il seguente:
 	\begin{equation*}
-		\overrightarrow{r}(t) = x(t) \widehat{x} \qquad\qquad\qquad x(t) \geq 0
+		\vec{r}(t) = x(t) \widehat{x} \qquad\qquad\qquad x(t) \geq 0
 	\end{equation*}
 	Calcoliamo la forza sull'asse orizzontale tramite la legge di Hooke
 	\begin{align*}
-		\overrightarrow{F} & = -k (\lvert x-0\rvert - l_0) \frac{x-0}{\lvert x - 0 \rvert}\widehat{x} \\
+		\vec{F} & = -k (\lvert x-0\rvert - l_0) \frac{x-0}{\lvert x - 0 \rvert}\widehat{x} \\
 		& = -k  (\lvert x \rvert - l_0) \frac{x}{\lvert x \rvert}\widehat{x} \\
 		& \Rightarrow F_x = -k (x-l_0)
 	\end{align*}
@@ -433,7 +435,7 @@ dove $k [N/m]$ è la \textbf{costante elastica} del materiale, $l_0 [m]$ è la l
 \subsubsection{Forza di attrito viscoso}
 La forza di attrito viscoso si oppone linearmente alla velocità ed è un modello approssimato che funziona a basse velocità.
 \begin{equation}
-	\overrightarrow{F}=-\mu\dot{\overrightarrow{r}}(t)
+	\vec{F}=-\mu\dot{\vec{r}}(t)
 \end{equation}
 con $\mu [N/(m/s)]$ una costante.
 
@@ -464,22 +466,22 @@ con $\mu [N/(m/s)]$ una costante.
 Per discretizzare il moto di un oggetto nel tempo esistono vari metodi e la scelta di quale usare dipende dal problema. Quello di Eulero, anche detto calcolo al prim'ordine, prevede l'approssimazione della posizione e della velocità tramite differenze finite.
 Assumiamo di avere
 \begin{equation*}
-	t \longrightarrow t_0, t_1, \ldots, t_N \qquad\qquad t_{i+1} - t_i = \Delta t \qquad\qquad \overrightarrow{r}(t_i) = \overrightarrow{r_i}
+	t \longrightarrow t_0, t_1, \ldots, t_N \qquad\qquad t_{i+1} - t_i = \Delta t \qquad\qquad \vec{r}(t_i) = \vec{r_i}
 \end{equation*}
 La \textbf{velocità} diventa:
 \begin{equation}
-	\frac{d\overrightarrow{r}(t)}{dt}\bigg\rvert_{t=t_i}\simeq \frac{\overrightarrow{r}_{i+1}-\overrightarrow{r_i}}{\Delta t}
+	\frac{d\vec{r}(t)}{dt}\bigg\rvert_{t=t_i}\simeq \frac{\vec{r}_{i+1}-\vec{r_i}}{\Delta t}
 \end{equation}
 e l'\textbf{accelerazione}
 \begin{equation}
-	\frac{d^2\overrightarrow{r}(t)}{dt^2}\bigg\rvert_{t=t_i}\simeq \frac{\frac{\overrightarrow{r}_{i+1}-\overrightarrow{r_i}}{\Delta t} - \overbrace{\frac{\overrightarrow{r_{i}}-\overrightarrow{r}_{i-1}}{\Delta t}}^{\overrightarrow{v_i}} }{\Delta t} = \frac{\overrightarrow{r}_{i+1} -2\overrightarrow{r_i} + \overrightarrow{r}_{i-1}}{\Delta t^2}
+	\frac{d^2\vec{r}(t)}{dt^2}\bigg\rvert_{t=t_i}\simeq \frac{\frac{\vec{r}_{i+1}-\vec{r_i}}{\Delta t} - \overbrace{\frac{\vec{r_{i}}-\vec{r}_{i-1}}{\Delta t}}^{\vec{v_i}} }{\Delta t} = \frac{\vec{r}_{i+1} -2\vec{r_i} + \vec{r}_{i-1}}{\Delta t^2}
 \end{equation}
 Di conseguenza l'equazione di Newton diventa:
 \begin{align}
-	\overrightarrow{v_i} & = \overrightarrow{v}_{i-1}+\Delta t \frac{\overrightarrow{F}_{i-1}}{m} \\
-	\overrightarrow{r_i} & = \overrightarrow{r}_{i-1} + \Delta t \overrightarrow{v_i}
+	\vec{v_i} & = \vec{v}_{i-1}+\Delta t \frac{\vec{F}_{i-1}}{m} \\
+	\vec{r_i} & = \vec{r}_{i-1} + \Delta t \vec{v_i}
 \end{align}
-Ora serviranno quindi 2 condizioni di bordo. La forza $\overrightarrow{F_i}$ può dipendere da $t_i$, $\overrightarrow{r_i}$ o $\overrightarrow{v_i}$.
+Ora serviranno quindi 2 condizioni di bordo. La forza $\vec{F_i}$ può dipendere da $t_i$, $\vec{r_i}$ o $\vec{v_i}$.
 
 \subsubsection{Forze di contatto}
 Le forze di contatto, anche dette \textbf{reazioni vincolari}, non sempre hanno un'espressione implicita e vengono quindi determinate imponendo dei \textbf{vincoli} alle equazioni del moto.\\
@@ -491,7 +493,7 @@ Un esempio classico di vincolo è che un punto materiale debba seguire per forza
 \begin{theorem}[Terza legge di Newton]
 	La terza legge di Newton, comunemente "azione e reazione", stabilisce che
 	\begin{equation}
-		\overrightarrow{F}_{B \to A} = -\overrightarrow{F}_{A \to B}
+		\vec{F}_{B \to A} = -\vec{F}_{A \to B}
 	\end{equation}
 \end{theorem}
 
@@ -502,44 +504,45 @@ Un esempio classico di vincolo è che un punto materiale debba seguire per forza
 	\end{center}
 	Per la seconda legge di Newton vale
 	\begin{equation*}
-		m\ddot{\overrightarrow{r}}(t) = -mg\widehat{z}+\overrightarrow{F}
+		m\ddot{\vec{r}}(t) = -mg\widehat{z}+\vec{F}
 	\end{equation*}
-	Imponiamo il vincolo che la massa non debba muoversi, ovvero $\dot{\overrightarrow{r}}(t) = 0$ e otteniamo per sostituzione
+	Imponiamo il vincolo che la massa non debba muoversi, ovvero $\dot{\vec{r}}(t) = 0$ e otteniamo per sostituzione
 	\begin{equation*}
-		\overrightarrow{F}=+mg\widehat{z}
+		\vec{F}=+mg\widehat{z}
 	\end{equation*}
-	Di conseguenza la bilancia misurerà $\lvert\lvert -\overrightarrow{F}\rvert\rvert = mg$.
+	Di conseguenza la bilancia misurerà $\lvert\lvert -\vec{F}\rvert\rvert = mg$.
 \end{example}
 
+\newpage
 \begin{example}
-	Abbiamo una massa su una bilancia posizionata in un ascensore accelerato. Come prima vale $m\ddot{\overrightarrow{r}}(t) = -mg\widehat{z}+\overrightarrow{F}$.
+	Abbiamo una massa su una bilancia posizionata in un ascensore accelerato. Come prima vale $m\ddot{\vec{r}}(t) = -mg\widehat{z}+\vec{F}$.
 	\begin{center}
 		\includegraphics[scale=.4]{ascensore}
 	\end{center}
 	In questo caso il vincolo che imponiamo è che la massa possa muoversi solo verticalmente, ovvero che l'accelerazione sull'asse verticale corrisponda a quella dell'ascensore $a$.
 	\begin{equation*}
-		\ddot{\overrightarrow{r}}(t) = a \cdot \widehat{z} \Longrightarrow \overrightarrow{F}=m(a+g)\widehat{z}
+		\ddot{\vec{r}}(t) = a \cdot \widehat{z} \Longrightarrow \vec{F}=m(a+g)\widehat{z}
 	\end{equation*}
-	Di conseguenza la bilancia misurerà $\lvert\lvert -\overrightarrow{F}\rvert\rvert = m(a+g)$.
+	Di conseguenza la bilancia misurerà $\lvert\lvert -\vec{F}\rvert\rvert = m(a+g)$.
 \end{example}
 
 \begin{note}
 	Un punto materiale si \textbf{solleva} o \textbf{distacca} da una superficie quando la reazione vincolare va a zero.
 \end{note}
-
+\noindent\rule[0.5ex]{\linewidth}{.5pt}
 \begin{wrapfigure}[4]{r}{2cm}
 	\includegraphics[width=2cm]{scomp}
 \end{wrapfigure}
-Scomponendo la reazione vincolare nella direzione ortogonale e in quella parallela otteniamo rispettivamente la \textbf{reazione normale} $\overrightarrow{N}$ e la \textbf{forza di attrito} $\overrightarrow{F_a}$. In particolare la forza d'attrito si divide in tre casi:
+Scomponendo la reazione vincolare nella direzione ortogonale e in quella parallela otteniamo rispettivamente la \textbf{reazione normale} $\vec{N}$ e la \textbf{forza di attrito} $\vec{F_a}$. In particolare la forza d'attrito si divide in tre casi:
 \begin{itemize}
-	\item Superficie \textbf{liscia}: $\overrightarrow{F_a}=0$
+	\item Superficie \textbf{liscia}: $\vec{F_a}=0$
 	\item Superficie \textbf{scabra senza movimento} relativo al punto di contatto. \textbf{Attrito statico} in cui la corrispondente forza è da determinare con dei vincoli. La condizione è:
 	\begin{equation}
-		\lvert\lvert \overrightarrow{F_a} \rvert\rvert \leq \mu_s \lvert\lvert \overrightarrow{N} \rvert\rvert
+		\lvert\lvert \vec{F_a} \rvert\rvert \leq \mu_s \lvert\lvert \vec{N} \rvert\rvert
 	\end{equation}
 	\item Superficie \textbf{scabra} con \textbf{differenza di velocità} al punto di contatto. \textbf{Attrito dinamico} dove la forza vale
 	\begin{equation}
-		\overrightarrow{F_a} = -\mu_d \lvert\lvert \overrightarrow{N} \rvert\rvert \frac{\overrightarrow{v}}{\lvert\lvert \overrightarrow{v} \rvert\rvert}
+		\vec{F_a} = -\mu_d \lvert\lvert \vec{N} \rvert\rvert \frac{\vec{v}}{\lvert\lvert \vec{v} \rvert\rvert}
 	\end{equation} 
 \end{itemize}
 
@@ -556,7 +559,7 @@ Scomponendo la reazione vincolare nella direzione ortogonale e in quella paralle
 	\begin{center}
 		\includegraphics[scale=.5]{pianinclliscio.png}
 	\end{center}
-	Per la seconda legge di Newton abbiamo che $m\ddot{\overrightarrow{r}}(t) = -mg\widehat{z}+\overrightarrow{N}$. Le proiettiamo lungo i due assi della scomposizione
+	Per la seconda legge di Newton abbiamo che $m\ddot{\vec{r}}(t) = -mg\widehat{z}+\vec{N}$. Le proiettiamo lungo i due assi della scomposizione
 	\begin{align*}
 		m\ddot{z}'(t) & = -mg\cos\alpha + N \\
 		m\ddot{x}'(t)& =+mg\sin\alpha
@@ -583,7 +586,7 @@ Scomponendo la reazione vincolare nella direzione ortogonale e in quella paralle
 	\end{equation*}
 	Per calcolare l'inclinazione massima $\alpha$ del piano che possiamo avere per mantenere verificati i vincoli facciamo come segue
 	\begin{align*}
-		\lvert\lvert \overrightarrow{F_a}\rvert\rvert & \leq \mu_s \lvert\lvert \overrightarrow{N} \rvert\rvert \\
+		\lvert\lvert \vec{F_a}\rvert\rvert & \leq \mu_s \lvert\lvert \vec{N} \rvert\rvert \\
 		mg\sin\alpha & \leq \mu_s \cdot mg\cos\alpha \\
 		\tan\alpha & \leq \mu_s \\
 		\alpha & \leq \arctan(\mu_s)
@@ -597,3 +600,208 @@ Scomponendo la reazione vincolare nella direzione ortogonale e in quella paralle
 		\ddot{x}'(t) & = g(\sin\alpha - \mu_d \cdot \cos\alpha)
 	\end{align*}
 \end{example}
+
+\subsection{Energia}
+\begin{definition}[Energia cinetica]
+	Definiamo l'energia cinetica di un punto materiale come
+	\begin{equation}
+		K(t) = \frac{1}{2}m\lvert\lvert\dot{\vec{r}}(t)\rvert\rvert^2 \qquad\qquad [K]=kg\cdot m^2/s^2 \equiv J
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Lavoro]
+	Il lavoro di una forza $\vec{F}(t)$ applicata nella posizione $\vec{r}(t)$ per $t_0 \leq  t \leq t_1$ è definito come
+	\begin{equation}
+		\label{eq:lavoro}
+		\mathcal{L}(t_0,t_1) = \int_{t_0}^{t_1}\vec{F}(t) \cdot \dot{\vec{r}}(t) dt \qquad\qquad [\mathcal{L}] = S \cdot N \cdot \frac{m}{s} = J
+	\end{equation}
+\end{definition}
+
+\begin{example}
+	Dato $\vec{r}(t) = v_0 t \widehat{x}$ e $\vec{F}(t) = \alpha t \widehat{x}+\beta \widehat{y}$, l'energia cinetica vale
+	\begin{equation*}
+		K = \frac{1}{2}mv_0^2
+	\end{equation*}
+	e il lavoro
+	\begin{equation*}
+		\mathcal{L}(t_0,t_1) = \int_{t_0}^{t_1}(\alpha t \widehat{x}+\beta \widehat{y}) \cdot v_0 \widehat{x} dt = \alpha v_0 \frac{t_1^2-t_0^2}{2}
+	\end{equation*}
+\end{example}
+
+\begin{theorem}[Teorema delle forze vive]
+	Per un punto materiale la variazione di energia cinetica è pari al lavoro delle forze.
+	\begin{equation}
+		K(t_1) - K(t_0) = \mathcal{L}_1(t_0,t_1) + \mathcal{L}_2(t_0, t_1)+\ldots
+	\end{equation}
+\end{theorem}
+
+\begin{demonstration}
+	A partire dalla seconda legge di Newton
+	\begin{align*}
+		\sum_i d\mathcal{L}_i(t) & = \sum_i dt \cdot \vec{F}_i(t) \cdot \dot{\vec{r}}(t) \\
+		& = dt (\sum_i \vec{F}_i(t)) \cdot \dot{\vec{r}}(t) \\
+		& = dt \cdot m \ddot{\vec{r}}(t) \cdot \dot{\vec{r}}(t) \\
+		& = dt \cdot m \cdot \frac{1}{2} \frac{d}{dt} \lvert\lvert \dot{\vec{r}}(t) \rvert\rvert^2 \\
+		& = \frac{1}{2} m d \lvert\lvert \dot{\vec{r}}(t) \rvert\rvert ^2
+	\end{align*}
+	che integrato membro a membro riconduce esattamente alla differenza di energia cinetica.
+\end{demonstration}
+
+\subsubsection{Forza posizionale}
+\begin{wrapfigure}{r}{3cm}
+	\vspace{-1cm}
+	\includegraphics[width=3cm]{posizionale}
+\end{wrapfigure}
+Se la forza dipende solo dalla posizione di applicazione $\vec{r}(t)$ ma non \textbf{esplicitamente} dal tempo $t$ allora si dice \textbf{posizionale}. La dipendenza dal tempo è determinata dall'\underline{eventuale} movimento della posizione di applicazione ed è ben definita
+\begin{equation*}
+	\vec{F}(\vec{r}) \qquad\qquad \forall t
+\end{equation*}
+
+\begin{example}
+	\begin{equation*}
+		\vec{F}(\vec{r}(t)) = \vec{F}(x(t), y(t)) = \alpha x(t) \widehat{x} + \beta y(t) \widehat{y}
+	\end{equation*}
+\end{example}
+Per una forza posizionale il lavoro dipenderà dalla \textbf{traiettoria} invece che dalla legge oraria e sarà quindi definito come
+
+\begin{wrapfigure}[0]{r}{5cm}
+	\includegraphics[width=5cm]{lavoropos}
+\end{wrapfigure}
+\begin{equation}
+	\begin{split}
+		\mathcal{L}(t_0, t_1) &= \int_{t_0}^{t_1} \vec{F}(t) \cdot \dot{\vec{r}}(t) dt\\
+		& = \int_{t_0}^{t_1}\vec{F}(\vec{r}(t)) \cdot \dot{\vec{r}}(t) dt \\
+		& = \sum_i \Delta t_i \vec{F}(\vec{r_i}) \cdot \frac{\vec{r}_{i+1} - \vec{r_i}}{\Delta t_i}\\
+		& = \sum_i \vec{F}(\vec{r_i}) \cdot \Delta \vec{r_i} \\
+		& = \int_{\vec{r}(t_0)}^{\vec{r}(t_1)} d\vec{r} \cdot \vec{F}(\vec{r}) = \mathcal{L}_e
+	\end{split}
+\end{equation}
+
+\begin{example}
+	Assumiamo di avere
+	\begin{equation*}
+		\begin{split}
+			& \vec{F}(x) = -kx\widehat{x} \qquad\qquad \vec{r}(t)=(x_0-v_0t)\widehat{x} \\
+			& t_0 = 0 \qquad \vec{r}(t_0) = x_0 \widehat{x} \qquad\qquad\qquad t_1 = \frac{x_0}{v_0} \qquad \vec{r}(t_1) = (x_0 - v_0 \frac{x_0}{v_0})\widehat{x} = 0
+		\end{split}
+	\end{equation*}
+	Allora il lavoro vale
+	\begin{equation*}
+		\mathcal{L}(t_0, t_1) = \int_{x_0}^{0} dx \widehat{x} \cdot (-kx\widehat{x}) = -k \frac{x^2}{2} \bigg\vert_{x_0}^0 = -\frac{1}{2}kx_0^2
+	\end{equation*}
+	che chiaramente non dipende dalla velocità $v_0$.
+\end{example}
+\begin{observation}
+	Per calcolare l'integrale di linea può comunque convenire usare la formula \ref{eq:lavoro}, eventualmente usando una legge oraria più semplice con la medesima traiettoria.
+\end{observation}
+
+\newpage
+\begin{example}
+	Assumiamo di avere
+	\begin{equation*}
+		\begin{split}
+			& \vec{F}(\vec{r}) = -kx\widehat{x} \qquad\qquad \vec{r}(t) = R\widehat{r} \qquad \theta(t) = \Omega t \qquad\qquad x(t) = R\cos(\Omega t) \\
+			& t_0 = 0 \qquad \theta(t_0) = 0 \qquad\qquad\qquad t_1 = \frac{\pi}{2\Omega} \qquad \theta(t_1) = \frac{\pi}{2}
+		\end{split}
+	\end{equation*}
+	In questo caso non riusciamo a determinare lo spostamento infinitesimo $d\vec{r}$. Ci troviamo quindi il vettore velocità
+	\begin{equation*}
+		\dot{\vec{r}}(t) = R\Omega \widehat{\theta} = -R\Omega \sin(\Omega t) \widehat{x} + R\Omega\cos(\Omega t) \widehat{y}
+	\end{equation*}
+	E di conseguenza possiamo calcolare il lavoro con la formula generale
+	\begin{equation*}
+		\begin{split}
+			\mathcal{L}(t_0, t_1) & = \int_{t_0}^{t_1}dt \vec{F}(\vec{r}(t)) \cdot \dot{\vec{r}}(t) \\
+			& = \int_{0}^{\frac{\pi}{2\Omega}} dt [-kR\cos(\Omega t)\widehat{x}] \cdot [-R\Omega\sin(\Omega t) \widehat{x} + R\Omega \cos(\Omega t) \widehat{y}] \\
+			& = \int_{0}^{\frac{\pi}{2\Omega}}dt kR^2 \Omega \frac{1}{2}\sin(\underbrace{2\Omega t}_\alpha) \\
+			& = kR^2 \Omega \frac{1}{2}\int_{0}^{\pi}\frac{d\alpha}{2\Omega}\sin\alpha \\
+			& = \frac{1}{4}kR^2[-\cos\alpha]^\pi_0 \\
+			& = \frac{1}{2}kR^2
+		\end{split}
+	\end{equation*}
+\end{example}
+
+\subsubsection{Forza uniforme}
+Se la forza è \textbf{uniforme} lungo tutto il percorso allora il lavoro si calcola come segue
+\begin{equation}
+	\mathcal{L}(t_0, t_1) = \vec{F} \cdot \int_{\vec{r}(t_0)}^{\vec{r}(t_1)} d\vec{r}= \vec{F} \cdot \underbrace{[\vec{r}(t_1) - \vec{r}(t_0)]}_{\text{Spostamento}}
+\end{equation}
+
+\begin{example}
+	Assumiamo di avere una forza \textit{posizionale uniforme} $\vec{F}(\vec{r}) = \vec{F}(z) = -mg\widehat{z}$. Il vettore posizione è $\vec{r}(t) = v_0 t \widehat{z}$ e le condizioni iniziali e finali sono
+	\begin{equation*}
+		t_0 = 0 \qquad \vec{r}(t_0) = 0 \qquad\qquad\qquad t_1 = \frac{h}{v_0} \qquad \vec{r}(t_1) = h \widehat{z}
+	\end{equation*}
+	Il lavoro sarà
+	\begin{equation*}
+		\mathcal{L}(t_0, t_1) = \int_{0}^{h} dz\widehat{z}\cdot (-mg\widehat{z}) = -mgh
+	\end{equation*}
+\end{example}
+
+\subsubsection{Forza conservativa}
+Una forza posizionale si dice conservativa se il lavoro non dipende dal percorso ma solo dalle posizioni iniziali e finali. Questo accade se e solo se esiste una funzione $\mathcal{U}(\vec{r})$ detta \textbf{potenziale} tale per cui
+\begin{equation}
+	\vec{F}(\vec{r}) = -\vec{\nabla}\mathcal{U}(\vec{r}) \equiv \bigg(-\frac{d}{dx}\mathcal{U}(\vec{r}), -\frac{d}{dy}\mathcal{U}(\vec{r}), -\frac{d}{dz}\mathcal{U}(\vec{r})\bigg)
+\end{equation}
+In quel caso il lavoro vale
+\begin{equation}
+	\label{eq:fcons}
+	\mathcal{L}(t_0, t_1) = \int_{\vec{r}(t_0)}^{\vec{r}(t_1)}d\vec{r} \cdot \vec{F}(\vec{r}) = \mathcal{U}(\vec{r_0}) - \mathcal{U}(\vec{r_1})
+\end{equation}
+\paragraph{Forza peso} La funzione potenziale vale
+\begin{equation}
+	\mathcal{U}(\vec{r}) = mgz
+\end{equation}
+e le sue derivate lungo gli assi sono
+\begin{equation*}
+	\frac{d}{dx}\mathcal{U}(\vec{r}) =\frac{d}{dy}\mathcal{U}(\vec{r}) = 0 \qquad\qquad \frac{d}{dz}\mathcal{U}(\vec{r}) = mg
+\end{equation*}
+di conseguenza
+\begin{equation*}
+	\vec{F}= -\vec{\nabla}\mathcal{U}(\vec{r}) = -(0,0,mg) = -mg\widehat{z}
+\end{equation*}
+
+\paragraph{Oscillatore unidimensionale} La funzione potenziale vale
+\begin{equation}
+	\mathcal{U}(\vec{r}) = \frac{1}{2}kx^2
+\end{equation}
+e le sue derivate lungo gli assi sono
+\begin{equation*}
+	\frac{d}{dy}\mathcal{U}(\vec{r}) =\frac{d}{dz}\mathcal{U}(\vec{r}) = 0 \qquad\qquad \frac{d}{dx}\mathcal{U}(\vec{r}) = kx
+\end{equation*}
+di conseguenza
+\begin{equation*}
+	\vec{F}= -\vec{\nabla}\mathcal{U}(\vec{r}) = -(kx,0,0) = -kx\widehat{x}
+\end{equation*}
+
+\begin{observation}
+	Una forza non posizionale, ad esempio le reazioni vincolari, non può essere conservativa.
+\end{observation}
+
+\begin{observation}
+	Il potenziale è definito a meno di una costante poiché
+	\begin{equation*}
+		-\vec{\nabla}[\mathcal{U}(\vec{r}) + \mathcal{U}_0] = -\vec{\nabla}\mathcal{U}(\vec{r})
+	\end{equation*}
+	Ad esempio per la forza peso $mg(z-z_0)$.
+\end{observation}
+
+\subsubsection{Energia meccanica}
+Per un punto materiale la somma dell'energia cinetica e dei potenziali delle forze \textit{conservative} alle quali è soggetto (calcolati nella sua posizione) si dice \textbf{energia meccanica}.
+\begin{equation}
+	E(t) = K(t) + \mathcal{U}_1(\vec{r}(t)) + \mathcal{U}_2(\vec{r}(t)) + \ldots
+\end{equation}
+Di conseguenza, dal teorema delle forze vive, segue che la variazione di energia meccanica è pari al lavoro delle forze \textit{non conservative}
+\begin{equation}
+	E(t_1) - E(t_0) = \mathcal{L}_1^{NC}(t_0,t_1) + \mathcal{L}_2^{NC}(t_0, t_1) + \ldots
+\end{equation}
+Se $\mathcal{L}_i^{NC}=0$ allora l'energia meccanica è costante nel tempo, ovvero conservata.
+
+\subsubsection{Profilo potenziale}
+Il profilo di potenziale visualizza le regioni dove il moto è permesso se l'energia è conservata.
+\begin{center}
+	\includegraphics[scale=.4]{profpot}
+\end{center}
+\begin{note}
+	Il \textbf{tunneling} tra regioni permesse disgiunte è possibile per atomi e particelle subatomiche secondo le leggi della meccanica quantistica.
+\end{note}

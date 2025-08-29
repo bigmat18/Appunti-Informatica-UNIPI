@@ -18,7 +18,7 @@ Quantità definite da più numeri che cambiano secondo una trasformazione linear
 \end{observation}
 
 \subsection{Vettori}
-Un vettore $\overrightarrow{a} = (a_x, a_y)$ si rappresenta graficamente come:
+Un vettore $\vec{a} = (a_x, a_y)$ si rappresenta graficamente come:
 \begin{center}
 	\includegraphics[scale=.5]{vectors}
 \end{center}
@@ -33,9 +33,9 @@ Dove abbiamo l'origine $O$, gli assi cartesiani $x,y$, le componenti $a_x,a_y$ e
 	Nella rappresentazione grafica i vettori non cambiano se vengono traslati.
 	\renewcommand{\labelenumi}{\alph{enumi})}
 	\begin{enumerate}
-		\item \textbf{Prodotto}: $\lambda \cdot \overrightarrow{a} = (\lambda a_x, \lambda a_y)$
-		\item \textbf{Somma}: $\overrightarrow{a} + \overrightarrow{b} = (a_x + b_x, a_y + b_y)$
-		\item \textbf{Differenza}: $\overrightarrow{a} - \overrightarrow{b} = \overrightarrow{a} + (-\overrightarrow{b}) = (a_x-b_x, a_y-b_y)$
+		\item \textbf{Prodotto}: $\lambda \cdot \vec{a} = (\lambda a_x, \lambda a_y)$
+		\item \textbf{Somma}: $\vec{a} + \vec{b} = (a_x + b_x, a_y + b_y)$
+		\item \textbf{Differenza}: $\vec{a} - \vec{b} = \vec{a} + (-\vec{b}) = (a_x-b_x, a_y-b_y)$
 	\end{enumerate}
 	\begin{figure}[!h]
 		\centering
@@ -58,30 +58,30 @@ Dove abbiamo l'origine $O$, gli assi cartesiani $x,y$, le componenti $a_x,a_y$ e
 \end{observation}
 
 \begin{definition}[Modulo di vettore]
-	Il modulo di un vettore $\overrightarrow{a} = (a_x,a_y,a_z)$ è
+	Il modulo di un vettore $\vec{a} = (a_x,a_y,a_z)$ è
 	\begin{equation}
-		\lvert\lvert \overrightarrow{a} \rvert\rvert = \sqrt{a_x^2 + a_y^2+a_z^2} \geq 0 \label{eq:modulo}
+		\lvert\lvert \vec{a} \rvert\rvert = \sqrt{a_x^2 + a_y^2+a_z^2} \geq 0 \label{eq:modulo}
 	\end{equation}
 \end{definition}
 
 \begin{definition}[Distanza tra vettori]
 	Definita come:
 	\begin{equation}
-		\overline{AB} = \lvert\lvert \overrightarrow{b} - \overrightarrow{a} \rvert\rvert
+		\overline{AB} = \lvert\lvert \vec{b} - \vec{a} \rvert\rvert
 	\end{equation}
 \end{definition}
 \begin{definition}[Versore]
 	Definito come:
 	\begin{equation}
-		\widehat{a} = \frac{\overrightarrow{a}}{\lvert\lvert \overrightarrow{a} \rvert\rvert}
+		\widehat{a} = \frac{\vec{a}}{\lvert\lvert \vec{a} \rvert\rvert}
 	\end{equation}
-	Dove dividiamo ogni componente del vettore $\overrightarrow{a}$ per il suo modulo.
+	Dove dividiamo ogni componente del vettore $\vec{a}$ per il suo modulo.
 \end{definition}
 
 \subsubsection{Prodotto scalare}
 Il prodotto scalare è una costruzione molto generale degli spazi vettoriali e ha come risultato uno scalare.
 \begin{equation}
-	\overrightarrow{a} \cdot \overrightarrow{b} = a_x b_x + a_y b_y +  a_z b_z
+	\vec{a} \cdot \vec{b} = a_x b_x + a_y b_y +  a_z b_z
 \end{equation}
 È \textbf{commutativo} e \textbf{distributivo} per la somma. Nella rappresentazione grafica corrisponde al prodotto dei moduli per il coseno dell'angolo compreso.
 
@@ -92,29 +92,29 @@ Il prodotto scalare è una costruzione molto generale degli spazi vettoriali e h
 	\end{equation*}
 	Allora per la proprietà distributiva e commutativa:
 	\begin{align*}
-		\overrightarrow{a} \cdot \overrightarrow{b} & = (a_x \widehat{x}+ a_y \widehat{y}+ a_z\widehat{z}) \cdot ( b_x \widehat{x} + b_y \widehat{y}+b_z \widehat{z})=\\
+		\vec{a} \cdot \vec{b} & = (a_x \widehat{x}+ a_y \widehat{y}+ a_z\widehat{z}) \cdot ( b_x \widehat{x} + b_y \widehat{y}+b_z \widehat{z})=\\
 		& = a_xb_x\underbrace{\widehat{x} \cdot \widehat{x}}_1 + a_xb_y \underbrace{\widehat{x} \cdot \widehat{y}}_0 + \ldots
 	\end{align*}
 \end{definition}
 
 \begin{observation}[Proiezione]
-	Notiamo che, dato un vettore $\overrightarrow{a}=a_x \widehat{x} + a_y \widehat{y} + a_z \widehat{z}$, possiamo ottenere la sua proiezione lungo un asse moltiplicando il vettore per il versore corrispondente. Ad esempio per l'asse $x$:
+	Notiamo che, dato un vettore $\vec{a}=a_x \widehat{x} + a_y \widehat{y} + a_z \widehat{z}$, possiamo ottenere la sua proiezione lungo un asse moltiplicando il vettore per il versore corrispondente. Ad esempio per l'asse $x$:
 	\begin{equation*}
-		\widehat{x} \cdot \overrightarrow{a} = a_x
+		\widehat{x} \cdot \vec{a} = a_x
 	\end{equation*}
 \end{observation}
 
 \begin{observation}
 	Proiettiamo un'equazione vettoriale in tre equazioni scalari.
 	\begin{equation}
-		\overrightarrow{a} = \overrightarrow{b} \Rightarrow \widehat{a} \cdot \overrightarrow{a} = \widehat{x} \cdot \overrightarrow{b} \Rightarrow a_x = b_x
+		\vec{a} = \vec{b} \Rightarrow \widehat{a} \cdot \vec{a} = \widehat{x} \cdot \vec{b} \Rightarrow a_x = b_x
 	\end{equation}
 \end{observation}
 
 \subsubsection{Prodotto vettoriale}
 In questo caso il risultato è un vettore.
 \begin{align*}
-	\overrightarrow{a} \times \overrightarrow{b} = \det \begin{Bmatrix}
+	\vec{a} \times \vec{b} = \det \begin{Bmatrix}
 		\widehat{x} & \widehat{y} & \widehat{z} \\
 		a_x & a_y & a_z \\
 		b_x & b_y & b_z \\
@@ -123,7 +123,7 @@ In questo caso il risultato è un vettore.
 	& + \widehat{y} (a_z b_x - a_xb_z) \\
 	& + \widehat{z} (a_xb_y - a_y b_x)
 \end{align*}
-Il prodotto vettoriale è \textbf{anticommutativo}, ovvero $\overrightarrow{a} \times \overrightarrow{b} = -\overrightarrow{b} \times \overrightarrow{a}$ e \textbf{distributivo} per la somma.
+Il prodotto vettoriale è \textbf{anticommutativo}, ovvero $\vec{a} \times \vec{b} = -\vec{b} \times \vec{a}$ e \textbf{distributivo} per la somma.
 
 \begin{note}
 	Ha a che fare con il gruppo delle rotazioni.
@@ -140,7 +140,7 @@ Il prodotto vettoriale è \textbf{anticommutativo}, ovvero $\overrightarrow{a} \
 	\end{equation*}
 	Ed infine per la proprietà distributiva
 	\begin{align*}
-		\overrightarrow{a} \times \overrightarrow{b} & = (a_x \widehat{x}+ a_y \widehat{y}+ a_z\widehat{z}) \cdot ( b_x \widehat{x} + b_y \widehat{y}+b_z \widehat{z})=\\
+		\vec{a} \times \vec{b} & = (a_x \widehat{x}+ a_y \widehat{y}+ a_z\widehat{z}) \cdot ( b_x \widehat{x} + b_y \widehat{y}+b_z \widehat{z})=\\
 		& = a_xb_x\underbrace{\widehat{x} \times \widehat{x}}_0 + a_xb_y \underbrace{\widehat{x} \times \widehat{y}}_{\widehat{z}} + \ldots
 	\end{align*}
 \end{definition}
@@ -162,11 +162,11 @@ Considerando un $\Delta x$ sufficientemente \textbf{piccolo}, che nel contesto d
 \subsubsection{Teorema di Fubini}
 La somma di Riemann si estende facilmente a superfici o volumi tramite il Teorema di Fubini, che ci permette di ottenere per le \textbf{superfici}:
 \begin{equation}
-	\int_S d^2 \overrightarrow{r} f(\overrightarrow{r}) = \int dx \int dy f(x,y) \qquad\qquad\qquad \overrightarrow{r} = (x,y)
+	\int_S d^2 \vec{r} f(\vec{r}) = \int dx \int dy f(x,y) \qquad\qquad\qquad \vec{r} = (x,y)
 \end{equation}
 e per i \textbf{volumi}:
 \begin{equation}
-	\int_V d^3 \overrightarrow{r} f(\overrightarrow{r}) = \int dx \int dy \int dz f(x,y,z) \qquad\qquad\qquad \overrightarrow{r} = (x,y,z)
+	\int_V d^3 \vec{r} f(\vec{r}) = \int dx \int dy \int dz f(x,y,z) \qquad\qquad\qquad \vec{r} = (x,y,z)
 \end{equation}
 \begin{wrapfigure}[7]{r}{4cm}
 	\includegraphics[width=4cm]{fubini}
@@ -174,7 +174,7 @@ e per i \textbf{volumi}:
 \begin{example}
 	Data la figura possiamo calcolare la superficie $S$ come:
 	\begin{equation*}
-		\int_S d^2 \overrightarrow{r}f(\overrightarrow{r}) = \int_a^b dx \int_{Y_i(x)}^{Y_S(x)} dyf(x,y)
+		\int_S d^2 \vec{r}f(\vec{r}) = \int_a^b dx \int_{Y_i(x)}^{Y_S(x)} dyf(x,y)
 	\end{equation*}
 \end{example}
 

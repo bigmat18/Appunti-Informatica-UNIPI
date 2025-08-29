@@ -1,0 +1,941 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Sistema di punti}
+Consideriamo un insieme, ovvero un sistema, di punti materiali $\{\vec{r}_\alpha\}_{\alpha=1}^N$ con masse $\{m_\alpha\}_{\alpha=1}^N$ e risultante delle forze per ogni punto pari a $\{\vec{F}_\alpha\}_{\alpha=1}^N$. Il sistema avrà le seguenti quantità definite:
+\begin{itemize}
+	\item \textbf{Massa}: $M = \sum_{\alpha=1}^{N}m_\alpha$
+	\item Vettore \textbf{quantità di moto}: $\underline{\vec{P}}(t) = \sum_{\alpha=1}^{N}\vec{p_\alpha}(t)$
+	\item Vettore \textbf{momento angolare} rispetto ad un polo $P$: $\vec{L_p}(t) = \sum_{\alpha=1}^N \vec{L}_{p, \alpha}(t)$
+	\item \textbf{Energia cinetica}: $K(t) = \sum_{\alpha=1}^NK_\alpha(t)$
+	\item \textbf{Energia meccanica}: $E(T) = \sum_{\alpha=1}^N E_\alpha(t)$
+\end{itemize}
+\subsubsection{Sistemi continui}
+Nel caso di sistemi estremamente numerosi, e.g. atomi di gas o granelli di sabbia in una duna, può convenire considerare il sistema \textbf{continuo}, che prevede due quantità:
+\begin{itemize}
+	\item \textbf{Numero di punti} in un volumetto $V$ attorno a $\vec{r}$, diviso per $V$: $n(\vec{r}) \quad [m^{-3}]$
+	\item \textbf{Densità}, ovvero massa in un volumetto $V$ attorno a $\vec{r}$, diviso per $V$: $\varrho(\vec{r}) \quad [kg \cdot m^{-3}]$
+\end{itemize}
+Si noti che in questo caso il risultato non deve dipendere dal valore preciso di $V$ ma l'ordine di grandezza dipende dal problema preso in questione.
+
+\subsubsection{Centro di massa}
+Il centro di massa del sistema di punti materiali è il punto \textbf{geometrico}
+\begin{equation}
+	\label{eq:cm}
+	\vec{r}_{CM}(t) = \frac{1}{M}\sum_{\alpha=1}^N m_\alpha\vec{r_\alpha}(t)
+\end{equation}
+\begin{observation}
+	Il centro di massa non è un punto fisico e può quindi trovarsi fuori dalla regione spaziale occupata dal sistema.
+\end{observation}
+
+\begin{example}
+	Consideriamo un sistema composto da due punti materiali:
+	\begin{align*}
+		& \vec{r_1}(t) = v_0 t \widehat{x}+y_0\widehat{y} \qquad\qquad & m_1 = m\\
+		& \vec{r_2}(t) = -2v_0t\widehat{x} + 2y_0\widehat{y} \qquad\qquad & m_2 = 3m
+	\end{align*}
+	Possiamo calcolarne il centro di massa come segue:
+	\begin{equation*}
+		\vec{r}_{CM}(t) = \frac{1}{m+3m}[(mv_0t-6mv_0t)\widehat{x}+(my_0+6my_0)\widehat{y}] = \frac{1}{4m}[-5mv_0t\widehat{x}+7my_0\widehat{y}] = \frac{5}{4}v_0t\widehat{x}+\frac{7}{4}y_o\widehat{y}
+	\end{equation*}
+\end{example}
+
+È possibile indicare ogni punto materiale con la \textbf{posizione relativa} al centro di massa:
+\begin{equation}
+	\label{eq:posrel}
+	\vec{r_\alpha}'(t) = \vec{r_\alpha}(t) -\vec{r}_{CM}(t)
+\end{equation}
+
+\begin{observation}
+	\label{oss:252}
+	Osserviamo che
+	\begin{equation}
+		\begin{split}
+			\sum_{\alpha=1}^Nm_\alpha \vec{r_\alpha}'(t) & = \sum_{\alpha=1}^N[m_\alpha\vec{r_\alpha}(t) - m_\alpha\vec{r}_{CM}(t)]\\
+			& = M\vec{r}_{CM}(t) - \bigg(\sum_{\alpha=1}^N m_\alpha\bigg)\vec{r}_{CM}(t)\\
+			& = 0
+		\end{split}
+	\end{equation}
+\end{observation}
+
+\subsection{Moto}
+Facendo riferimento all'osservazione \ref{oss:252}, posso esprimere il vettore \textbf{quantità di moto} in riferimento al centro di massa:
+\begin{equation}
+	\label{eq:motocm}
+	\begin{split}
+		\underline{\vec{P}}(t) & = \sum_{\alpha=1}^N m_\alpha \dot{\vec{r_\alpha}}(t) \\
+		& = \sum_{\alpha=1}^N m_\alpha [\dot{\vec{r}}_{CM}(t) + \dot{\vec{r}}_\alpha \:'(t)] \\
+		& = \bigg(\sum_{\alpha=1}^N m_\alpha\bigg)\dot{\vec{r}}_{CM}(t) + \frac{d}{dt}\bigg(\sum_{\alpha=1}^N m_\alpha \vec{r_\alpha}'(t)\bigg) \\
+		& = M \dot{\vec{r}}_{CM}(t)
+	\end{split}
+\end{equation}
+
+\subsubsection{Primo teorema di Koenig} Posso esprimere il vettore \textbf{momento angolare} rispetto ad un polo $P$ come segue:
+\begin{equation}
+	\label{eq:koenig1}
+	\begin{split}
+		\vec{L_p}(t) & = \sum_{\alpha=1}^N m_\alpha(\vec{r_\alpha}(t) - \vec{r_p}(t)) \times \dot{\vec{r_\alpha}}(t) \\
+		& = \sum_{\alpha=1}^N m_\alpha (\vec{r}_{CM}(t) + \vec{r_\alpha}'(t) - \vec{r_p}(t)) \times (\dot{\vec{r}}_{CM}(t) + \dot{\vec{r}}_\alpha \:'(t)) \\
+		& = \sum_{\alpha=1}^N m_\alpha \{(\vec{r}_{CM}(t) - \vec{r_p}(t)) \times \dot{\vec{r}}_{CM}(t) + \vec{r_\alpha}' \times \dot{\vec{r}}_\alpha \: '(t) \\
+		& + (\vec{r}_{CM}(t) - \vec{r_p}(t)) \times \dot{\vec{r}}_\alpha\:'(t) + \vec{r_\alpha}'(t) \times \dot{\vec{r}}_{CM}(t)\} \\
+		& = \bigg(\sum_{\alpha=1}^N m_\alpha\bigg) (\vec{r}_{CM}(t)-\vec{r_p}(t)) \times \dot{\vec{r}}_{CM}(t) + \sum_{\alpha=1}^N m_\alpha\vec{r_\alpha}'(t)\times \dot{\vec{r}}_\alpha \:'(t) \\
+		& + (\vec{r}_{CM}(t) - \vec{r_p}(t)) \times \frac{d}{dt}\bigg(\sum_{\alpha=1}^N m_\alpha \vec{r_\alpha}'(t)\bigg) + \bigg(\sum_{\alpha=1}^N m_\alpha \vec{r_\alpha}'(t)\bigg) \times \dot{\vec{r}}_{CM}(t) \\
+		& = \underbrace{M(\vec{r}_{CM}(t) - \vec{r_p}(t)) \times \dot{\vec{r}}_{CM}(t)}_{\text{del CM}} + \underbrace{\sum_{\alpha=1}^N m_\alpha \vec{r_\alpha}'(t) \times \dot{\vec{r}}_\alpha\:'(t)}_{\text{rispetto al CM}}
+	\end{split}
+\end{equation}
+\subsubsection{Secondo teorema di Koenig} Esprimo l'\textbf{energia cinetica} come segue:
+\begin{equation}
+	\label{eq:koenig2}
+	\begin{split}
+		K(t) & = \sum_{\alpha=1}^N \frac{1}{2}m_\alpha \lvert\lvert \dot{\vec{r_\alpha}}(t) \rvert\rvert^2 \\
+		& = \sum_{\alpha=1}^N \frac{1}{2}m_\alpha (\dot{\vec{r}}_{CM}(t) + \dot{\vec{r}}_\alpha\:'(t))\cdot (\dot{\vec{r}}_{CM}(t) + \dot{\vec{r}}_\alpha \: '(t)) \\
+		& = \sum_{\alpha=1}^N \frac{1}{2} m_\alpha [\lvert\lvert \dot{\vec{r}}_{CM}(t) \rvert\rvert ^2 + \lvert\lvert \dot{\vec{r}}_{\alpha}\:'(t)\rvert\rvert^2 + 2 \dot{\vec{r}}_\alpha\:'(t) \cdot \dot{\vec{r}}_{CM}(t)] \\
+		& = \frac{1}{2}\bigg(\sum_{\alpha=1}^N m_\alpha\bigg) \lvert\lvert \dot{\vec{r}}_{CM}(t) \rvert\rvert^2 + \sum_{\alpha=1}^N \frac{1}{2}m_\alpha \lvert\lvert \dot{\vec{r}}_\alpha\:'(t) \rvert\rvert^2 \\
+		& + 2 \bigg(\sum_{\alpha=1}^N m_\alpha \dot{\vec{r}}_\alpha\:'(t)\bigg) \cdot \dot{\vec{r}}_{CM}(t) \\
+		& = \underbrace{\frac{1}{2} M \lvert\lvert \dot{\vec{r}}_{CM}(t)\rvert\rvert^2}_{\text{del CM}} + \underbrace{\sum_{\alpha=1}^N \frac{1}{2}m_\alpha \lvert\lvert \dot{\vec{r}}_\alpha\:'(t) \rvert\rvert ^2}_{\text{rispetto al CM}}
+	\end{split}
+\end{equation}
+
+\subsubsection{Momento}
+\begin{definition}[Forze interne]
+	Le forze \textbf{interne} sono quelle esercitate su un punto materiale dal resto del sistema mentre tutte le altre sono \textbf{esterne}.
+\end{definition}
+Di conseguenza ogni risultante diventa
+\begin{equation}
+	\label{eq:risultante}
+	\vec{F_\alpha}(t) = \sum_{\beta=1}^{N}\vec{F}_{\alpha\beta}(t) + \vec{F}_\alpha^E(t)
+\end{equation}
+
+\begin{observation}
+	\label{oss:253}
+	Per la terza legge di Newton vale
+	\begin{equation}
+		\vec{F}_{\alpha\beta}(t) = -\vec{F}_{\alpha\beta}(t)
+	\end{equation}
+\end{observation}
+
+\begin{definition}[Vettore momento]
+	Definisco vettore momento di una forza applicata in $\vec{r}(t)$ rispetto al polo $\underline{P}$ la quantità
+	\begin{equation}
+		\label{eq:vetmom}
+		\vec{M}_p(t) = (\vec{r}(t) -\vec{r}_p(t)) \times \vec{F}(t) \qquad\qquad [\vec{M}_p] = N \cdot m
+	\end{equation}
+\end{definition}
+
+\begin{observation}
+	Il momento totale delle forze interne è nullo.
+	\begin{align*}
+		& \sum_{\alpha=1}^N ( \vec{r_\alpha}(t) - \vec{r_p}(t)) \times \sum_{\beta=1}^N \vec{F}_{\alpha\beta}(t)\\
+		& = \sum_{\alpha=1}^N \sum_{\beta=1}^N ( \vec{r_\alpha}(t) - \vec{r_p}(t)) \times \vec{F}_{\alpha\beta}(t)\\
+		& = \frac{1}{2} \underbrace{\sum_{\alpha=1}^N \sum_{\beta=1}^N}_\text{dummy indices} [( \vec{r_\alpha}(t) - \vec{r_p}(t)) \times \vec{F}_{\alpha\beta}(t) + ( \vec{r_\beta}(t) - \vec{r_p}(t)) \times \vec{F}_{\beta\alpha}(t)] \\
+		& = \frac{1}{2} \sum_{\alpha=1}^N \sum_{\beta=1}^N [( \vec{r_\alpha}(t) - \vec{r_p}(t)) \times \vec{F}_{\alpha\beta}(t)\underbrace{ - ( \vec{r_\beta}(t) - \vec{r_p}(t)) \times \vec{F}_{\alpha\beta}(t)}_\text{Vedi oss. \ref{oss:253}}] \\
+		& = \frac{1}{2} \sum_{\alpha=1}^N \sum_{\beta=1}^N [( \vec{r_\alpha}(t) - \vec{r_\beta}(t)) \times \vec{F}_{\alpha\beta}(t)] = 0
+	\end{align*}
+	L'ultimo passaggio deriva dal fatto che, per \textbf{simmetria}, $\vec{F}_{\alpha\beta}(t)$ deve essere parallela al vettore che congiunge $\vec{r}_\alpha(t)$ con $\vec{r}_\beta(t)$, e il prodotto vettoriale di due vettori paralleli è nullo.
+\end{observation}
+
+\subsubsection{Prima equazione cardinale}
+A partire dall'equazione per la quantità di moto, dalla seconda legge di Newton e da \ref{eq:risultante} ottengo
+\begin{equation*}
+	\dot{\vec{P}}(t) = \sum_{\alpha=1}^N m_\alpha \ddot{\vec{r_\alpha}}(t) = \sum_{\alpha=1}^N \vec{F_\alpha}(t) =  \sum_{\alpha=1}^N\bigg[\sum_{\beta=1}^N \vec{F}_{\alpha\beta}(t) + \vec{F_\alpha}^E(t)\bigg]
+\end{equation*}
+poi proseguo sfruttando l'equazione \ref{eq:motocm}
+\begin{equation*}
+	M \ddot{\vec{r}}_{CM}(t) = \sum_{\alpha=1}^N\bigg[\sum_{\beta=1}^N \vec{F}_{\alpha\beta}(t) + \vec{F_\alpha}^E(t)\bigg]
+\end{equation*}
+successivamente porto fuori dalla sommatoria le forze esterne e applico la proprietà della sommatoria doppia
+\begin{equation*}
+	M \ddot{\vec{r}}_{CM}(t) = \frac{1}{2}\underbrace{\sum_{\alpha=1}^N \sum_{\beta=1}^N}_\text{dummy indices} \bigg[\vec{F}_{\alpha\beta}(t) + \vec{F}_{\beta\alpha}(t)\bigg] + \sum_{\alpha=1}^N\vec{F_\alpha}^E(t)
+\end{equation*}
+Per la terza legge di Newton $\vec{F}_{\alpha\beta}(t) + \vec{F}_{\beta\alpha}(t)=0$ e otteniamo quindi
+\begin{equation}
+	M \ddot{\vec{r}}_{CM}(t) = \sum_{\alpha=1}^N\vec{F_\alpha}^E(t)
+\end{equation}
+Ovvero la somma delle forze esterne è uguale alla massa del sistema moltiplicata per l'accelerazione del centro di massa.
+
+\begin{example}
+	Assumiamo di avere un sistema con due punti materiali collegati da una molla
+	\begin{center}
+		\includegraphics[scale=.4]{eqcard1}
+	\end{center}
+	Il vettore posizione del centro di massa, data l'equazione \ref{eq:cm}, è il seguente
+	\begin{equation*}
+		x_{CM}(t) = \frac{(m_1x_1(t)+m_2x_2(t))}{m_1+m_2}
+	\end{equation*}
+	Applichiamo la prima equazione cardinale
+	\begin{equation*}
+		(m_1+m_2)\ddot{x}_{CM}(t) = F - F_{a1}-F_{a2}
+	\end{equation*}
+\end{example}
+
+\begin{example}
+	Assumiamo di avere un sistema analogo all'esempio precedente ma questa volta senza forze applicate
+	\begin{center}
+		\includegraphics[scale=.5]{eqcard2}
+	\end{center}
+	Il secondo punto materiale parte ad una velocità costante mentre il primo non ha velocità
+	\begin{equation*}
+		\dot{x_2}(t_0) = v_0 \qquad\qquad\qquad \dot{x_1}(t_0) = 0
+	\end{equation*}
+	di conseguenza la velocità del centro di massa è
+	\begin{equation*}
+		\dot{x}_{CM}(t_0) = \frac{m_2\dot{x_2}(t_0)}{m_1+m_2}
+	\end{equation*}
+	e quindi per la prima equazione cardinale, ricordandoci che non ci sono forze applicate, ottengo
+	\begin{equation*}
+		(m_1+m_2)\ddot{x}_{CM}(t) = 0 \Longrightarrow \dot{x}_{CM}(t) = \dot{x}_{CM}(t_0)
+	\end{equation*}
+	ovvero le due masse oscillano ma il centro di massa compie un moto rettilineo uniforme.
+\end{example}
+
+\subsubsection{Seconda equazione cardinale}
+Partendo dall'equazione del moto per il momento angolare di un sistema di punti, la deriviamo
+\begin{equation*}
+	\dot{\vec{L_p}}(t) = \sum_{\alpha=1}^N \dot{\vec{L}}_{p, \alpha}(t) = \sum_{\alpha=1}^N m_\alpha [(\dot{\vec{r_\alpha}}(t) - \dot{\vec{r_p}}(t)) \times \dot{\vec{r_\alpha}}(t) + (\vec{r_\alpha}(t) - \vec{r_p}(t)) \times \ddot{\vec{r_\alpha}}]
+\end{equation*}
+scompongo la sommatoria in due parti
+\begin{equation*}
+	= \sum_{\alpha=1}^N m_\alpha (\dot{\vec{r_\alpha}}(t) - \dot{\vec{r_p}}(t)) \times \dot{\vec{r_\alpha}}(t) +\sum_{\alpha=1}^N  (\vec{r_\alpha}(t) - \vec{r_p}(t)) \times \ddot{\vec{r_\alpha}}
+\end{equation*}
+calcolo il prodotto vettoriale, applico la bilinearità e porto fuori il termine $\dot{\vec{r_p}}$ dalla sommatoria
+\begin{align*}
+	& = \sum_{\alpha=1}^N m_\alpha (\dot{\vec{r_\alpha}}(t) \times \dot{\vec{r_\alpha}}(t) - \dot{\vec{r_p}}(t) \times \dot{\vec{r_\alpha}}(t))  +\sum_{\alpha=1}^N  (\vec{r_\alpha}(t) - \vec{r_p}(t)) \times \ddot{\vec{r_\alpha}} \\
+	& = \sum_{\alpha=1}^N \dot{\vec{r_p}}(t) \times -m_\alpha\dot{\vec{r_\alpha}}(t)  +\sum_{\alpha=1}^N  (\vec{r_\alpha}(t) - \vec{r_p}(t)) \times \ddot{\vec{r_\alpha}} \\
+	& = -\dot{\vec{r_p}}(t) \times \sum_{\alpha=1}^N m_\alpha\dot{\vec{r_\alpha}}(t)  +\sum_{\alpha=1}^N  (\vec{r_\alpha}(t) - \vec{r_p}(t)) \times \ddot{\vec{r_\alpha}} \\
+\end{align*}
+la prima sommatoria corrisponde alla quantità totale di moto del sistema e il secondo termine della seconda sommatoria alle forze dello stesso
+\begin{equation*}
+	= - \dot{\vec{r_p}}(t) \times \vec{P}(t)  +\sum_{\alpha=1}^N  (\vec{r_\alpha}(t) - \vec{r_p}(t)) \times \vec{F_\alpha}(t)
+\end{equation*}
+dato che il momento totale delle forze \textit{interne} è nullo, posso mantenere nella sommatoria solo quelli delle forze esterne
+\begin{equation*}
+	= \sum_{\alpha=1}^N  (\vec{r_\alpha}(t) - \vec{r_p}(t)) \times \vec{F}_\alpha^E(t) - \dot{\vec{r_p}}(t) \times \vec{P}(t)
+\end{equation*}
+infine, per l'equazione \ref{eq:vetmom}, ottengo che la seconda equazione cardinale è la seguente
+\begin{equation}
+	\dot{\vec{L_p}}(t) = \vec{M}_P^E(t) - \dot{\vec{r_p}}(t) \times \vec{P}(t)
+\end{equation}
+
+\begin{example}[Campo centrale]
+	Assumiamo di avere un punto materiale di massa $m$ che ruota attorno ad un polo piazzato nell'origine $(0, 0, 0)$. La forza applicata è la seguente
+	\begin{equation*}
+		\vec{F}(\vec{r}) = -\frac{k}{\lvert\lvert \vec{r} \rvert\rvert} \cdot \widehat{r}
+	\end{equation*}
+	Calcoliamo innanzitutto il momento angolare sfruttando le formule a \ref{sec:vettoripol}
+	\begin{align*}
+		\vec{L_0}(t) &= m(\underbrace{\vec{r}(t)-\vec{r_0}}_{= \vec{r}(t)}) \times \dot{\vec{r}} (t) \\
+		& = m r(t) \widehat{r} \times (\dot{r}(t) \widehat{r} + r(t)\dot{\theta}(t) \widehat{\theta}) \\
+		& = mr(t)^2\dot{\theta}(t) \widehat{z}
+	\end{align*}
+	Verifichiamo ora la variazione del momento angolare nel tempo, derivandolo
+	\begin{equation*}
+		\dot{\vec{L_0}}(t) = (\vec{r}(t) -  \vec{r_0}) \times \vec{F} = r(t) \widehat{r} \times \bigg(-\frac{k}{\lvert\lvert \vec{r} \rvert\rvert}\widehat{r}\bigg) = 0
+	\end{equation*}
+	Dato che non c'è variazione (la derivata vale zero perché c'è il prodotto $\widehat{r} \times \widehat{r}$), il momento angolare è costante, ovvero \textbf{conservato}. Questo implica:
+	\begin{equation*}
+		L_0(t) = L_0(t_0) \Longrightarrow r(t)^2\dot{\theta}(t) = L_0(t_0) \Longrightarrow \dot{\theta}(t) = \frac{L_0(t_0)}{r(t)^2}
+	\end{equation*}
+	ovvero la velocità angolare aumenta quando $r(t)$ decresce.
+\end{example}
+
+\newpage
+\section{Corpo rigido}
+\subsection{Definizioni}
+\begin{definition}[Corpo rigido]
+	Descriviamo un corpo rigido come un sistema di punti materiali $\{\vec{r_\alpha}\}^N_{\alpha=1}$ con masse $\{m_\alpha\}^N_{\alpha=1}$, le distanze tra i quali sono costanti nel tempo
+	\begin{equation}
+		d_{\alpha\beta} = \lvert\lvert \vec{r_\alpha}(t) - \vec{r_\beta}(t) \rvert\rvert = \text{costante}
+	\end{equation}
+	Le leggi orarie $\vec{r_\alpha}(t)$ dei punti del sistema sono vincolate da questa condizione.
+\end{definition}
+\noindent\rule[0.5ex]{\linewidth}{.5pt}
+Non sono necessarie $3 \cdot N$ \textbf{coordinate} indipendenti ma ne sono sufficienti sei: $\vec{r}_{CM}$ (vettore di tre elementi) e tre angoli. Per il moto planare ne bastano tre in totale: $\vec{r}_{CM}$ (vettore di due elementi) e un angolo.
+
+\noindent\rule[0.5ex]{\linewidth}{.5pt}
+\begin{definition}[Punto solidale]
+	Un punto geometrico determinato dalle posizioni $\vec{r_\alpha}$, come  il \textbf{centro di massa}, ha distanza costante da tutti gli altri $\vec{r_\alpha}$
+	\begin{equation}
+		\lvert\lvert \vec{r}_{CM}(t) - \vec{r_\alpha}(t) \rvert\rvert = \text{costante}
+	\end{equation}
+	e si dice che è solidale per il corpo rigido.
+\end{definition}
+
+\begin{definition}[Vettore solidale]
+	Due punti $\vec{r_1}(t)$ e $\vec{r_2}(t)$ solidali al corpo rigido, definiscono un vettore solidale
+	\begin{equation}
+		\vec{r_2}(t)-\vec{r_1}(t)
+	\end{equation}
+\end{definition}
+\noindent\rule[0.5ex]{\linewidth}{.5pt}
+\begin{wrapfigure}[4]{r}{4cm}
+	\vspace{-0.8cm}
+	\includegraphics[width=4cm]{assisolidali}
+\end{wrapfigure}
+Conviene quindi introdurre un sistema di assi solidali $\widehat{x}', \widehat{y}', \widehat{z}'$ in cui le coordinate dei vettori solidali sono \textbf{costanti}:
+\begin{equation}
+	\underbrace{x_{CM}, Y_{CM}}_\text{traslazione}, \underbrace{\theta}_{\text{rotazione}}
+\end{equation}
+\noindent\rule[0.5ex]{\linewidth}{.5pt}
+
+\begin{theorem}[Teorema fondamentale sul moto]
+	Ad ogni istante di tempo esiste ed è unico il vettore $\vec{\omega}(t)$, detto \textbf{vettore velocità angolare}, tale che, dati due qualunque punti $P_1$ e $P_2$ solidali al corpo rigido vale
+	\begin{equation}
+		\label{eq:teorfond}
+		\dot{\vec{r_2}}(t) = \dot{\vec{r_1}}(t) + \vec{\omega}(t) \times [\vec{r_2}(t) - \vec{r_1}(t)]
+	\end{equation}
+\end{theorem}
+
+\begin{note}
+	La teoria verrà sviluppata in modo generale ma in questo corso incontreremo solo moti planari, dove
+	\begin{equation*}
+		\vec{r_\alpha}(t) = x(t)\widehat{x} + y(t)\widehat{y} + 0 \cdot \widehat{z} \Longrightarrow \vec{\omega}(t) = \omega(t)\widehat{z}
+	\end{equation*}
+\end{note}
+
+\begin{example}
+	Assumiamo di avere un corpo rigido quadrato di lato $L$ e di prendere in considerazione due punti solidali $P_1$ e $P_2$.
+	\begin{center}
+		\includegraphics[scale=.5]{esempiorigido}
+	\end{center}
+	Consideriamo l'istante di tempo $t=t_0$. Sappiamo:
+	\begin{equation*}
+		\vec{\omega}(t_0) = \omega\widehat{z} \qquad\qquad\qquad \dot{\vec{r_1}}(t_0) = v_0 \widehat{x}
+	\end{equation*}
+	Usando il teorema fondamentale possiamo calcolare
+	\begin{equation*}
+		\begin{split}
+			\dot{\vec{r_2}}(t_0) & = v_0 \widehat{x} + \omega\widehat{z} \times [L \widehat{x}+L \widehat{y}] \\
+			& = v_0 \widehat{x} + \omega L \widehat{y} - \omega L \widehat{x} \\
+			& = (v_0 - \omega L) \widehat{x} + \omega L \widehat{y}
+		\end{split}
+	\end{equation*}
+\end{example}
+
+\subsection{Moto}
+\subsubsection{Momento angolare}
+Partendo dal primo teorema di Koenig (vedi \ref{eq:koenig1}), abbiamo
+\begin{align*}
+	\vec{L}_{CM}(t) & = \sum_{\alpha=1}^N m_\alpha \vec{r_\alpha}'(t) \times \dot{\vec{r}}_\alpha\:'(t) \\
+	& = \sum_{\alpha=1}^N m_\alpha [\vec{r_\alpha}(t) - \vec{r}_{CM}(t)] \times [\dot{\vec{r_\alpha}}(t) - \dot{\vec{r}}_{CM}(t)]
+\end{align*}
+applicando il teorema fondamentale otteniamo
+\begin{align*}
+	& = \sum_{\alpha=1}^N m_\alpha [\vec{r_\alpha}(t) - \vec{r}_{CM}(t)] \times [\dot{\vec{r}}_{CM} + \vec{\omega}(t) \times [\vec{r_\alpha}(t) - \vec{r}_{CM}(t)]-\dot{\vec{r}}_{CM}(t)] \\
+	& = \sum_{\alpha=1}^N m_\alpha [\vec{r_\alpha}(t) - \vec{r}_{CM}(t)] \times [\vec{\omega}(t) \times [\vec{r_\alpha}(t) - \vec{r}_{CM}(t)]]
+\end{align*}
+applico l'identità vettoriale del triplo prodotto e semplifico, sapendo che $\vec{r_\alpha}(t) - \vec{r}_{CM}(t) = \vec{r_\alpha}'(t)$
+\begin{align*}
+	& = \sum_{\alpha=1}^N m_\alpha [\vec{\omega}(t) \cdot [[\vec{r_\alpha}(t) - \vec{r}_{CM}(t)] \cdot [\vec{r_\alpha}(t) - \vec{r}_{CM}(t)]] \\
+	& - [\vec{r_\alpha}(t) - \vec{r}_{CM}(t)] \cdot [[\vec{r_\alpha}(t) - \vec{r}_{CM}(t)] \cdot \vec{\omega}(t)]] \\
+	& = \sum_{\alpha=1}^N m_\alpha [\vec{\omega}(t)[\vec{r_\alpha}'(t) \cdot \vec{r_\alpha}'(t)] - \vec{r_\alpha}'(t)[\vec{r_\alpha}'(t) \cdot \vec{\omega}(t)]] \\
+	& =\sum_{\alpha=1}^N m_\alpha \vec{\omega}(t)[\vec{r_\alpha}'(t) \cdot \vec{r_\alpha}'(t)] -  \sum_{\alpha=1}^N m_\alpha \vec{r_\alpha}'(t)[\vec{r_\alpha}'(t) \cdot \vec{\omega}(t)] \\
+	& =  \underbrace{\sum_{\alpha=1}^N m_\alpha \begin{pmatrix}
+		y_\alpha^{\prime2} + z_\alpha^{\prime2} & -x_\alpha'y_\alpha' & -x_\alpha'z_\alpha' \\
+		-y_\alpha'x_\alpha' & x_\alpha'^2+z_\alpha'^2 & -y_\alpha'z_\alpha' \\
+		-z_\alpha'x_\alpha' & -z_\alpha'y_\alpha' & x_\alpha'^2+y_\alpha'^2
+	\end{pmatrix}}_\mathcal{I} \begin{pmatrix}
+	w_{x^\prime}(t) \\ w_{y^\prime}(t) \\ w_{z^\prime}(t)
+	\end{pmatrix}
+\end{align*}
+
+La matrice $[\mathcal{I}] = kg \cdot m^2$ viene chiamata \textbf{tensore di inerzia} ed è una proprietà del corpo rigido, come massa e volume. Per questo corso, ovvero per i moti planari con $\vec{L_p}$, $\vec{L}_{CM}$ e $\vec{\omega}$ paralleli a $\widehat{z}$, il momento angolare vale
+\begin{equation}
+	\vec{L}_{CM}(t) = \underbrace{\sum_{\alpha=1}^N m_\alpha (x_\alpha^{\prime 2}+y_\alpha^{\prime 2})}_{\mathcal{I}_{CM}} \underbrace{\omega(t)}_\text{scalare}\widehat{z}
+\end{equation}
+Dove $\mathcal{I}_{CM}$ è il \textbf{momento di inerzia assiale}. Quindi il primo teorema di Konig completo sarà:
+\begin{equation}
+	\label{eq:koenig1cr}
+	\vec{L_c}(t) = M(\vec{r}_{CM}(t) - \vec{r_p}(t)) \times \dot{\vec{r}}_{CM}(t) + \mathcal{I}_\alpha \omega(t) \widehat{z}
+\end{equation}
+
+\begin{example}
+	Prendiamo in considerazione un manubrio con due masse $m_1$ e $m_2$, rispettivamente distanti dal centro di massa $x_1'$ e $x_2'$.
+	\begin{center}
+		\includegraphics[scale=.4]{inerzia1}
+	\end{center}
+	Il momento di inerzia assiale vale
+	\begin{equation*}
+		\mathcal{I}_{CM} = m_1\lvert x_1'\rvert^2 + m_2 \lvert x_2'\rvert^2
+	\end{equation*}
+\end{example}
+
+\newpage
+\begin{example}
+	\label{example:cilinder}
+	Vogliamo calcolare il momento di inerzia assiale di un cilindro di volume $V = \pi R^2 \cdot h$ e densità $\varrho=\frac{M}{V}$.
+	\begin{align*}
+		\mathcal{I}_Z &= \sum_{\alpha=1}^{N} m_\alpha(x_\alpha^{\prime2} + y_\alpha^{\prime2}) \\
+		& = \int dm (x_\alpha^{\prime2} + y_\alpha^{\prime2})\\
+		& = \int dx'\int dy' \int_0^h dz' \cdot \varrho (x_\alpha^{\prime2} + y_\alpha^{\prime2})
+	\end{align*}
+	a questo punto faccio un cambio di variabili nell'integrale in modo da avere estremi più semplici:
+	\begin{equation*}
+		x'=r \cdot \cos\theta \qquad\qquad y'=r \cdot \sin\theta \qquad\qquad dx' \cdot dy' = dr \cdot d\theta \cdot r
+	\end{equation*}
+	ottenendo quindi
+	\begin{align*}
+		& = \int_0^R dr' \int_0^{2\pi} d\theta' \cdot r' \int_0^h dz' \cdot \varrho \cdot r^{\prime^2} \\
+		& = \varrho \cdot 2\pi \cdot h \cdot \frac{R^4}{4} \\
+		& = M \frac{1}{\pi R^2 h} \cdot 2\pi \cdot h \cdot \frac{R^4}{4} \\
+		& = \frac{1}{2}MR^2
+	\end{align*}
+\end{example}
+
+\subsubsection{Teorema degli assi paralleli}
+Anche chiamato teorema di \textbf{Huygens-Steiner}. Posso calcolare il momento di inerzia assiale usando un punto solidale al corpo rigido diverso dal centro di massa:
+\begin{equation}
+	\label{eq:huygens_steiner}
+	\begin{alignedat}{2}
+		\mathcal{I}_P & = \sum_{\alpha=1}^N m_\alpha \lvert\lvert \vec{r_\alpha}(t) - \vec{r_p}(t) \rvert\rvert^2 \\
+		& = \sum_{\alpha=1}^N m_\alpha \lvert\lvert \vec{r_\alpha}(t) - \vec{r}_{CM}(t) + \vec{r}_{CM}(t) - \vec{r_p}(t) \rvert\rvert^2 \qquad \qquad\qquad && \text{Aggiungo il termine } \vec{r}_{CM}(t)\\
+		& = \sum_{\alpha=1}^N m_\alpha \{\lvert\lvert \vec{r_\alpha}(t) - \vec{r}_{CM}(t)\rvert\rvert^2 + \lvert\lvert \underbrace{\vec{r}_{CM}(t) - \vec{r_p}(t)}_{\vec{r_p}'} \rvert\rvert^2 && \text{Calcolo il quadrato}\\
+		& + 2 [\vec{r_\alpha}(t) - \vec{r}_{CM}(t)] \cdot [\vec{r}_{CM}(t) - \vec{r_p}(t)]\} \\
+		& = \mathcal{I}_{CM} + M \cdot \lvert\lvert \vec{r}_{CM}(t) - \vec{r_p}(t) \rvert\rvert^2 && \text{Per definizione di }\mathcal{I}_{CM} \text{ e di }M\\
+		& + 2 \underbrace{\bigg\{\sum_{\alpha=1}^N m_\alpha [\vec{r_\alpha}(t) - \vec{r}_{CM}(t)]\bigg\}}_0 \cdot [\vec{r}_{CM}(t) - \vec{r_p}(t)] && \text{Vedi osservazione \ref{oss:252}}\\
+		& = \mathcal{I}_{CM} + M \lvert\lvert \vec{r_p}' \rvert\rvert^2
+	\end{alignedat}
+\end{equation}
+
+\newpage
+\begin{example}
+	Assumiamo di avere un cilindro con un foro parallelo all'asse. Considero due cilindri fittizi di densità uguale al primo: il secondo occupa lo spazio del foro mentre il terzo è come il primo ma senza foro.
+	\begin{center}
+		\includegraphics[scale=.4]{excilindro}
+	\end{center}
+	Posso scrivere il momento d'inerzia come differenza tra il cilindro pieno e quello corrispondente al foro, sempre assumendoli rispetto allo stesso asse (\textbf{additività}):
+	\begin{align*}
+		I_1^{(3)} & = I_1^{(1)} + I_1^{(2)} \\
+		I_1^{(1)} & = I_1^{(3)} - I_1^{(2)} 
+	\end{align*}
+	Dato che il cilindro numero due non ha lo stesso asse degli altri, dobbiamo usare il teorema degli assi paralleli per calcolare il suo momento di inerzia assiale
+	\begin{equation*}
+		I_1^{(1)} = I_1^{(3)} - (I_2^{(2)} + M^{(2)} \cdot d^2)
+	\end{equation*}
+	A questo punto uso la formula standard per calcolare il momento d'inerzia di un cilindro pieno, come visto nell'esempio \ref{example:cilinder}, la formula della massa $M = \varrho V$ e la formula del volume $V = \pi h R^2$:
+	\begin{align*}
+		I_1^{(1)} & = \frac{1}{2} (\varrho V^{(3)})R^2-\frac{1}{2}(\varrho V^{(2)})R_2^2 - (\varrho V^{(2)})d^2 \\
+		& = \frac{1}{2} \varrho h \pi (R^4-R_2^4 - 2R_2^2d^2) \qquad\qquad\qquad \varrho = \frac{M}{\pi h (R^2-R_2^{2})}\\
+		& = \frac{1}{2} M \bigg[[R^2-R_2^2] - 2\frac{R_2^2}{R^2-R_2^2}d^2\bigg] < I^{(3)}
+	\end{align*}
+\end{example}
+
+\subsubsection{Equazioni cardinali}
+La \textbf{prima equazione cardinale} per il corpo rigido è
+\begin{equation}
+	M \ddot{\vec{r}}_{CM}(t) = \sum_i \vec{F_i}^{(E)}(t)
+\end{equation}
+Si noti che non ci importa il punto di applicazione delle forze esterne.\\
+
+\noindent La \textbf{seconda equazione cardinale} per il corpo rigido, semplificata solo per il moto nel piano $\widehat{x}, \widehat{y}$, è
+\begin{equation}
+	\frac{d}{dt}[I_Z \omega(t) \widehat{z} + M[\vec{r}_{CM}(t) - \vec{r_p}(t)] \times \dot{\vec{r}}_{CM}] = \dot{\vec{L_p}}(t)  = \sum_i[\vec{r_i}(t)-\vec{r_p}(t)] \times \vec{F_i}^{(E)}(t) - M \dot{\vec{r_p}} \times \dot{\vec{r}}_{CM}
+\end{equation}
+In questo caso è fondamentale il \textbf{punto di applicazione} delle forze. Il polo $\vec{r_p}$ è arbitrario, lo scegliamo in base a quello che semplifica.
+
+\subsubsection{Momento risultante forza peso}
+Il momento risultante della forza peso su un sistema si calcola come segue:
+\begin{equation}
+	\begin{alignedat}{2}
+		\vec{M_0} & = \sum_\alpha[\vec{r_\alpha}-\vec{r_0}] \times \vec{F_\alpha} \qquad\qquad\qquad\qquad\qquad && \text{Parto dall'equazione \ref{eq:vetmom}} \\
+		& = \sum_\alpha[\vec{r_\alpha}-\vec{r_0}] \times (m_\alpha \vec{g}) && \text{Formula della forza peso} \\
+		& = \bigg(\sum_\alpha m_\alpha \vec{r_\alpha}\bigg) \times \vec{g} - \bigg(\sum_\alpha m_\alpha\bigg)\vec{r_0}\times \vec{g} && \text{Scompongo la sommatoria} \\
+		& = M \vec{r}_{CM} \times \vec{g} - M \vec{r_0} \times \vec{g} && \text{Equazione \ref{eq:cm}} \\
+		& = [\vec{r}_{CM}-\vec{r_0}] \times (M\vec{g})
+	\end{alignedat}
+\end{equation}
+Concludiamo quindi che il momento risultante è lo stesso che per un punto materiale di massa $M$ e posizione $\vec{r}_{CM}$.
+
+\begin{example}
+	Assumiamo di avere un cilindro vincolato con forza costante.
+	\begin{center}
+		\includegraphics[scale=.5]{excilindro2}
+	\end{center}
+	\begin{equation*}
+		\vec{F} = -F\widehat{x} \qquad\qquad \vec{N}=N\widehat{x} \qquad\qquad \vec{\omega} = \dot\theta \widehat{z}
+	\end{equation*}
+	Il vincolo è che il cilindro sia fermo ed è espresso come
+	\begin{equation*}
+		\vec{r}_{CM}(t)  \equiv 0 \Longrightarrow \ddot{\vec{r}}_{CM}(t) = 0
+	\end{equation*}
+	Dalla prima equazione cardinale e dal vincolo deduco che le due forze si eguagliano
+	\begin{equation*}
+		M \ddot{\vec{r}}_{CM}(t) = \vec{F} + \vec{N} = (N - F)\widehat{x} \Longrightarrow F = N
+	\end{equation*}
+	Vogliamo calcolare la variazione di momento angolare, ovvero $\dot{\vec{L_p}}(t)$. Per farlo sappiamo che il momento angolare di un corpo rigido è
+	\begin{equation*}
+		\vec{L}_{CM}(t) = \mathcal{I}_z \omega(t) \widehat{z}
+	\end{equation*}
+	che derivato vale
+	\begin{equation*}
+		\dot{\vec{L}}_{CM}(t) = \mathcal{I}_z \dot{\omega}(t) \widehat{z}
+	\end{equation*}
+	Allo stesso tempo dalla seconda equazione cardinale per i corpi rigidi, ricaviamo la seguente equazione
+	\begin{align*}
+		\dot{\vec{L}}_{CM}(t) & = (\vec{r_1}-\vec{r}_{CM}) \times \vec{F} + (\vec{r}_{CM}-\vec{r}_{CM}) \times \vec{N} \\
+		& = R \widehat{y}\times(-F\widehat{x}) + 0 \\
+		& = RF\widehat{z}
+	\end{align*}
+	Sostituendo con la formula trovata a \ref{example:cilinder} ottengo
+	\begin{equation*}
+		\mathcal{I}_z\ddot{\theta}(t) = RF \Longrightarrow \frac{1}{2}MR^2\ddot{\theta}(t) = RF \Longrightarrow \ddot{\theta}= \frac{2F}{MR}
+	\end{equation*}
+	Questo implica che l'accelerazione angolare è costante e quindi il cilindro si muove di moto uniformemente accelerato.
+\end{example}
+
+\subsubsection{Puro rotolamento}
+La condizione di puro rotolamento significa che un corpo rigido rotola su una superficie senza strisciare.\\
+
+Il punto $\vec{r_1}$ del corpo rigido a contatto con la superficie al tempo $t_1$ è fermo. Al tempo $t_2$ un altro punto $\vec{r_2}$ del corpo rigido è a contatto con la superficie. Questo implica che la velocità istantanea nel punto di contatto deve essere nulla.
+
+\begin{center}
+	\includegraphics[scale=.5]{rotolamento}
+\end{center}
+
+Il punto geometrico $\vec{r_c}(t)$, detto di \textbf{contatto}, non è solidale e il suo moto non è determinato dal vettore $\vec{\omega}(t)$.
+
+\begin{example}
+	\label{eg:rotpuro}
+	Assumiamo di avere un cilindro trainato su un piano scabro.
+	\begin{center}
+		\includegraphics [scale=.35]{excilrot}
+	\end{center}
+	Partiamo scrivendo la prima equazione cardinale per entrambi gli assi
+	\begin{align*}
+		&0 = M\ddot{Y}_{CM}(t) = -Mg + N \Longrightarrow N = Mg \\
+		&M\color{red}\ddot{x}_{CM}(t)\color{black} = F-\color{red}F_a\color{black}
+	\end{align*}
+	e poi la seconda equazione cardinale
+	\begin{align*}
+		\mathcal{I}_z\color{red}\dot{\omega}(t)\color{black} \widehat{z} & = (\vec{r}_{CM}-\vec{r}_{CM}) \times \vec{F} + (\vec{r_c}-\vec{r}_{CM}) \times (\vec{F_a} + \vec{N})\\
+		& = 0 + (-R\widehat{y}) \times (-F_a\widehat{x}+N\widehat{y}) \\
+		& = -R\color{red}F_a\color{black}\widehat{z}
+	\end{align*}
+	Notiamo che abbiamo tre incognite evidenziate in rosso. Per trovarle applichiamo il vincolo di puro rotolamento
+	\begin{equation*}
+		0 = \dot{\vec{r_1}}(t) = \dot{\vec{r}}_{CM}(t) + \vec{\omega}\times [\vec{r_1}(t) - \vec{r}_{CM}(t)]
+	\end{equation*}
+	ma noi sappiamo che quando il punto $\vec{r_1}$ è a contatto, $\vec{r_1}(t) = \vec{r_c}(t)$ e quindi
+	\begin{align*}
+		0 & = \dot{\vec{r}}_{CM}(t) + \vec{\omega} \times [\vec{r_c}(t) - \vec{r}_{CM}(t)] \\
+		0 & = \dot{x}_{CM}(t)\widehat{x}+\dot{\theta}(t)\widehat{z} \times (-R\widehat{y}) \\
+		0 & = \dot{x}_{CM}(t)\widehat{x}+R\dot{\theta}(t)\widehat{x} \\
+		\dot{x}_{CM}(t) &= -R\dot{\theta}(t) \\
+		\ddot{x}_{CM}(t) & = -R\ddot{\theta}(t)
+	\end{align*}
+	Possiamo ora sostituire il valore nelle equazioni cardinali messe a sistema
+	\begin{equation*}
+		\begin{cases}
+			-MR\ddot{\theta}=F-F_a\\
+			\frac{1}{2}MR^2\ddot{\theta}=-RF_a
+		\end{cases} = \begin{cases}
+		F_a = -\frac{1}{2}MR\ddot{\theta} \\
+		-MR\ddot{\theta} = F+\frac{1}{2}MR\ddot{\theta}
+		\end{cases} = \begin{cases}
+		\ddot{\theta} = -\frac{2}{3}\frac{F}{MR} \\
+		F_a = \frac{1}{3}F
+		\end{cases}
+	\end{equation*}
+	Se vogliamo che il cilindro continui a rotolare senza strisciare (puro rotolamento) vogliamo trovare il minimo coefficiente d'attrito tale che la forza di traino non superi quella di attrito statico (altrimenti il cilindro scivola).
+	\begin{equation*}
+		\lvert F_a \rvert \leq \mu_S \lvert N \rvert \Longrightarrow \mu_S \geq \frac{\frac{F}{3}}{Mg}
+	\end{equation*}
+\end{example}
+
+\noindent\rule[0.5ex]{\linewidth}{.5pt}
+
+\begin{definition}[Centro istantaneo di rotazione]
+	Un punto geometrico $\vec{r_v}(t)$ si dice centro istantaneo di rotazione per un corpo rigido se, al tempo $t$, vale
+	\begin{equation}
+		\dot{\vec{r_1}}(t) = \vec{\omega}(t) \times [\vec{r_1}(t) - \vec{r_v}(t)]
+	\end{equation}
+	per tutti i punti $\vec{r_1}$ del corpo rigido.
+\end{definition}
+
+\begin{observation}
+	Se $\vec{r_2}$ è solidale al corpo rigido e $\dot{\vec{r_2}}(t) =0$, allora dal teorema fondamentale $\vec{r_2}(t)$ è centro istantaneo di rotazione al tempo $t$. Di conseguenza nel moto di puro rotolamento, il punto di contatto $\vec{r_c}(t)$ è centro istantaneo di rotolamento.
+\end{observation}
+\noindent\rule[0.5ex]{\linewidth}{.5pt}
+\begin{wrapfigure}{r}{4cm}
+	\includegraphics[width=4cm]{velpunti}
+\end{wrapfigure}
+\paragraph{Velocità di vari punti} Vediamo come calcolare la velocità di punti diversi al tempo $t$ in un corpo rigido in moto di puro rotolamento. Per quanto riguarda i punti \textbf{lungo l'asse} del punto di contatto, dipende dall'altezza $h$:
+\begin{equation*}
+	\vec{r_h}(t) = \vec{r_c}(t) + h\widehat{y} \qquad\qquad\qquad \vec{r_c}(t) = \vec{r}_{CM}(t)-R\widehat{y}
+\end{equation*}
+\begin{equation}
+	\dot{\vec{r_h}} = \vec{\omega}(t) \times [\vec{r_h}(t) - \vec{r_c}(t)] = \omega\widehat{z} \times h \widehat{y} = -\omega h \widehat{x}
+\end{equation}
+Nel caso del \textbf{centro di massa} e del \textbf{punto di contatto}:
+\begin{equation}
+	\dot{\vec{r}}_{CM}(t) = \dot{\vec{r_R}}(t) = -\omega R \widehat{x} \qquad\qquad\qquad \dot{\vec{r}}_{2R}(t) = -\omega2R\widehat{x}
+\end{equation}
+Infine per i punti a destra o a sinistra del punto di contatto
+\begin{equation*}
+	\vec{r}_\pm(t) = \vec{r}_{CM}(t) \pm R \widehat{x} = \vec{r_c}(t) + R\widehat{y}\pm R \widehat{x}
+\end{equation*}
+\begin{equation}
+	\begin{split}
+		\dot{\vec{r}}_\pm(t) & = \vec{\omega}(t) \times [\vec{r}_\pm(t) - \vec{r_c}(t)] \\
+		& = \omega \widehat{z} \times [R\widehat{y}\pm R\widehat{x}] \\
+		& = -\omega R \widehat{x} \pm \omega R \widehat{y}
+	\end{split}
+\end{equation}
+
+\noindent\rule[0.5ex]{\linewidth}{.5pt}
+
+\paragraph{Momento angolare} Se il polo è centro istantaneo di rotazione, posso esprimere il \textbf{vettore momento angolare}, in alternativa al primo teorema di Konig, come segue
+\begin{equation}
+	\begin{split}
+		\vec{L_v}(t) & = \sum_{\alpha=1}^N m_\alpha [\vec{r_\alpha}(t) - \vec{r_v}(t)] \times \dot{\vec{r_\alpha}}(t) \\
+		& = \sum_{\alpha=1}^N m_\alpha[\vec{r_\alpha}(t) - \vec{r_v}(t)] \times \vec{\omega}(t) \times [\vec{r_\alpha}(t) - \vec{r_v}(t)]
+	\end{split}
+\end{equation}
+In particolare, per i \textbf{moti planari}, sappiamo che $\vec{\omega}(t) = \omega (t)\widehat{z}$ e $\vec{r_\alpha}(t) - \vec{r_v}(t) = x_\alpha'(t) \widehat{x}+y_\alpha'(t) \widehat{y}$ e di conseguenza
+\begin{equation}
+	\label{eq:motocir}
+	\begin{split}
+		\vec{L_v}(t) & = \sum_{\alpha=1}^N m_\alpha[\vec{r_\alpha}(t) - \vec{r_v}(t)] \times \vec{\omega}(t) \times [\vec{r_\alpha}(t) - \vec{r_v}(t)] \\
+		& = \sum_{\alpha=1}^N m_\alpha (x_\alpha'(t)^2+y_\alpha'(t)^2) \cdot \omega(t) \\
+		& = \mathcal{I}_v(t) \omega(t)
+	\end{split}
+\end{equation}
+
+
+\paragraph{Energia cinetica} Se esiste il centro istantaneo di rotazione, posso esprimere l'\textbf{energia cinetica}, in alternativa al secondo teorema di Konig, come segue
+\begin{equation}
+	\begin{split}
+		K(t) & = \sum_{\alpha=1}^N \frac{1}{2} m_\alpha \lvert\lvert \dot{\vec{r_\alpha}}(t) \rvert\rvert^2 \\
+		& = \sum_{\alpha=1}^N \frac{1}{2} m_\alpha \lvert\lvert \vec{\omega}(t) \times [\vec{r_\alpha}(t) - \vec{r_v}(t)] \rvert\rvert^2
+	\end{split}
+\end{equation}
+In particolare, per i \textbf{moti planari}, sappiamo che $\vec{\omega}(t) = \omega (t)\widehat{z}$ e $\vec{r_\alpha}(t) - \vec{r_v}(t) = x_\alpha'(t) \widehat{x}+y_\alpha'(t) \widehat{y}$ e di conseguenza
+\begin{equation}
+	\label{eq:encir}
+	\begin{split}
+		K(t) & = \sum_{\alpha=1}^N \frac{1}{2} m_\alpha \lvert\lvert \vec{\omega}(t) \times [\vec{r_\alpha}(t) - \vec{r_v}(t)] \rvert\rvert^2 \\
+		& = \sum_{\alpha=1}^N \frac{1}{2} m_\alpha (x_\alpha'(t)^2 + y_\alpha'(t)^2)\omega(t)^2\\
+		& = \frac{1}{2}\mathcal{I}_v(t) \omega(t)^2
+	\end{split}
+\end{equation}
+
+\subsection{Energia}
+Partendo dalla seconda equazione di Koenig (\ref{eq:koenig2}) possiamo derivare, analogamente a come abbiamo fatto per il moto, l'equazione dell'energia di un corpo rigido:
+\begin{equation}
+	\begin{alignedat}{2}
+		K_{CM}(t) & = \sum_{\alpha=1}^N \frac{1}{2}m_\alpha \lvert\lvert \dot{\vec{r_\alpha}}\:'(t)\rvert\rvert^2\\
+		& = \sum_{\alpha=1}^N \frac{1}{2}m_\alpha [\dot{\vec{r_\alpha}}(t)-\dot{\vec{r}}_{CM}(t)] \cdot [\dot{\vec{r_\alpha}}(t)-\dot{\vec{r}}_{CM}(t)] \qquad\qquad\qquad&& \text{Sost. eq. \ref{eq:posrel}} \\
+		& = \sum_{\alpha=1}^N \frac{1}{2}m_\alpha \vec{\omega} \times [\dot{\vec{r_\alpha}}(t)-\dot{\vec{r}}_{CM}(t)] \cdot \vec{\omega} \times [\dot{\vec{r_\alpha}}(t)-\dot{\vec{r}}_{CM}(t)]  && \text{Sost. teorema \ref{eq:teorfond}} \\
+		& = \sum_{\alpha=1}^N \frac{1}{2} m_\alpha \{\lvert\lvert \vec{\omega}(t) \rvert\rvert^2 \cdot \lvert\lvert \vec{r_\alpha}'(t) \rvert\rvert^2 - \lvert\lvert \vec{\omega}(t) \cdot \vec{r_\alpha}'(t)\rvert\rvert^2\} && \text{Identità di Lagrange} \\
+		& = \frac{1}{2} \begin{pmatrix}
+			\omega_{x'}(t) \\ \omega_{y'}(t) \\ \omega_{z'}(t)
+		\end{pmatrix}^T \underbrace{\sum_{\alpha=1}^N m_\alpha \begin{pmatrix}
+			y_\alpha^{\prime2} + z_\alpha^{\prime2} & -x_\alpha'y_\alpha' & -x_\alpha'z_\alpha' \\
+			-y_\alpha'x_\alpha' & x_\alpha'^2+z_\alpha'^2 & -y_\alpha'z_\alpha' \\
+			-z_\alpha'x_\alpha' & -z_\alpha'y_\alpha' & x_\alpha'^2+y_\alpha'^2
+			\end{pmatrix}}_\mathcal{I}  \begin{pmatrix}
+			\omega_{x'}(t) \\ \omega_{y'}(t) \\ \omega_{z'}(t)
+		\end{pmatrix}
+	\end{alignedat}
+\end{equation}
+E nel caso semplificato dei moti planari
+\begin{equation}
+	K_{CM}(t) = \frac{1}{2}\mathcal{I}_z\omega(t)^2
+\end{equation}
+Quindi il secondo teorema di Konig completo sarà:
+\begin{equation}
+	\label{eq:koenig2cr}
+	K(t) = \frac{1}{2} M \lvert\lvert \dot{\vec{r}}_{CM}(t)\rvert\rvert^2 + \frac{1}{2}\mathcal{I}_z\omega(t)^2
+\end{equation}
+
+\subsubsection{Forza peso}
+Consideriamo un piccolo spostamento in un tempo $dt$
+\begin{equation}
+	\begin{alignedat}{2}
+		d\mathcal{L} & = \sum_{\alpha=1}^N \vec{F_\alpha}(t) \cdot d\vec{r_\alpha}(t) \hspace{7cm}&& \text{Def. \ref{eq:fcons}} \\
+		& = \sum_{\alpha=1}^N m_\alpha \vec{g} \cdot [d\vec{r}_{CM}(t) + \vec{\omega}(t) \times [\vec{r_\alpha}(t) - \vec{r}_{CM}(t)] dt] && \text{Sost. teorema \ref{eq:teorfond}} \\
+		& = \sum_{\alpha=1}^N m_\alpha \vec{g} \cdot d\vec{r}_{CM}(t) + \sum_{\alpha=1}^N m_\alpha \vec{g} \cdot \vec{\omega}(t) \times [\vec{r_\alpha}(t) - \vec{r}_{CM}(t)] dt && \text{Scomp. sommatoria} \\
+		& = M\vec{g}\cdot d\vec{r}_{CM}(t) + \vec{\omega}(t) \times \sum_{\alpha=1}^N m_\alpha\vec{g}\cdot[\vec{r_\alpha}(t)-\vec{r}_{CM}(t)]dt && \text{Id. vettoriale} \\
+		& = M\vec{g} \cdot d\vec{r}_{CM}(t) + \vec{\omega}(t) \times \vec{g}\cdot\underbrace{[\sum_{\alpha=1}^N m_\alpha[\vec{r_\alpha}(t)-\vec{r}_{CM}(t)]]}_0dt && \text{Vedi \ref{oss:252}}\\
+		& = M\vec{g} \cdot d\vec{r}_{CM}(t)
+	\end{alignedat}
+\end{equation}
+Il lavoro, e quindi il potenziale, è lo stesso che per un punto materiale di massa $M$ e posizione $\vec{r}_{CM}$.
+
+\begin{example}
+	Velocità acquisita da un cilindro che rotola lungo un piano inclinato scabro.
+	\begin{center}
+		\includegraphics[scale=.4]{eglavorocorpo}
+	\end{center}
+	Calcoliamo l'energia potenziale
+	\begin{equation*}
+		\mathcal{U}(t_1) = Mgh \qquad\qquad\qquad \mathcal{U}(t_2)=0
+	\end{equation*}
+	Come abbiamo visto dall'esempio \ref{eg:rotpuro}, per un cilindri che ha rotolamento puro, vale la relazione $\dot{\theta}^2 = \frac{v_{CM}^2}{R^2}$. Di conseguenza l'energia cinetica totale (la somma dell'energia cinetica \textbf{traslazionale} e \textbf{rotazionale}) è
+	\begin{equation*}
+		K(t_1) = 0 \qquad\qquad\qquad K(t_2) = \frac{1}{2}Mv_{CM}^2 + \frac{1}{2}\frac{1}{2}MR^2\dot{\theta}^2 = \frac{3}{4} Mv_{CM}^2
+	\end{equation*}
+	Per il teorema delle forze vive, la variazione di energia cinetica è pari al lavoro delle forze, quindi
+	\begin{equation*}
+		\frac{3}{4}Mv_{CM}^2 = Mgh \Longrightarrow v_{CM} = \sqrt{\frac{4gh}{3}}
+	\end{equation*}
+	In particolare notiamo che la forza di attrito statico non fa lavoro poiché il punto del corpo al quale si applica è fermo.
+\end{example}
+
+\noindent\rule[0.5ex]{\linewidth}{.5pt}
+
+\begin{example}
+	Assumiamo di avere un cilindro in moto di puro rotolamento. Possiamo eseguire i calcoli per il moto e per l'energia con Koenig:
+	\begin{equation*}
+		\begin{alignedat}{2}
+			\vec{L_c}(t) & = m[\vec{r}_{CM}(t) - \vec{r_c}(t)] \times \dot{\vec{r}}_{CM}(t) + \mathcal{I}_{CM} \dot{\theta}(t) \widehat{z} \qquad\qquad && \text{Koenig I (\ref{eq:koenig1cr})}\\
+			& = mR\widehat{y}\times(-\dot{\theta}(t) R \widehat{x}) + \mathcal{I}_{CM}\dot{\theta}(t) \widehat{z} && \text{Vedi e.g. \ref{eg:rotpuro}}\\
+			& = mR^2\dot{\theta}(t) \widehat{z} + \frac{1}{2}MR^2\dot{\theta}(t)\widehat{z} && \text{Vedi e.g. \ref{example:cilinder}}\\
+			& = \frac{3}{2} m R^2 \dot{\theta}(t) \widehat{z}
+		\end{alignedat}
+	\end{equation*}
+	\begin{equation*}
+		\begin{alignedat}{2}
+			K(t) & = \frac{1}{2}m\dot{x}_{CM}(t)^2 + \frac{1}{2}\mathcal{I}_{CM}\dot{\theta}(t)^2 \qquad\qquad && \text{Koenig II (\ref{eq:koenig2cr})}\\
+			& = \frac{1}{2}m[R\dot{\theta}(t)]^2 + \frac{1}{2}\frac{1}{2}m R^2 \dot{\theta}(t)^2 && \text{Vedi e.g. \ref{eg:rotpuro} e \ref{example:cilinder}}\\
+			& = \frac{3}{4}mR^2\dot{\theta}(t)^2
+		\end{alignedat}
+	\end{equation*}
+	Oppure tramite il centro istantaneo di rotolamento
+	\begin{equation*}
+		\begin{alignedat}{2}
+			\vec{L_c}(t) & = \mathcal{I}_c\dot{\theta}(t) \widehat{z} \qquad\qquad\qquad\qquad\qquad && \text{Centro ist. rot. (\ref{eq:motocir})} \\
+			& = (\mathcal{I}_{CM}+mR^2) \dot{\theta}(t)\widehat{z} && \text{Huygens-Steiner (\ref{eq:huygens_steiner})}\\
+			& = \bigg(\frac{1}{2}mR^2 + mR^2\bigg)\dot{\theta}(t)\widehat{z} && \text{Vedi e.g. \ref{example:cilinder}}\\
+			& = \frac{3}{2}mR^2\dot{\theta}(t) \widehat{z}
+		\end{alignedat}
+	\end{equation*}
+	\begin{equation*}
+		\begin{alignedat}{2}
+			K(t) & = \frac{1}{2} \mathcal{I}_v\dot{\theta}(t)^2 \qquad\qquad\qquad\qquad\qquad && \text{Centro ist. rot. (\ref{eq:encir})}\\
+			& = \frac{1}{2}\bigg(\frac{1}{2}mR^2+mR^2\bigg)\dot{\theta}(t)^2 && \text{Vedi e.g. \ref{example:cilinder}}\\
+			& = \frac{3}{4}mR^2\dot{\theta}(t)^2
+		\end{alignedat}
+	\end{equation*}
+\end{example}
+
+\noindent\rule[0.5ex]{\linewidth}{.5pt}
+\begin{wrapfigure}[9]{r}{3cm}
+	\vspace{-0.2cm}
+	\includegraphics[width=3cm]{sbarretta}
+\end{wrapfigure}
+\begin{example}[Pendolo fisico]
+	Abbiamo una sbarretta omogenea di lunghezza $L$, massa $M$ e di sezione trascurabile. Il centro istantaneo di rotazione è nel vincolo. I versori polari sono:
+	\begin{equation*}
+		\widehat{z} = -\cos\theta\widehat{y}+\sin\theta\widehat{x}
+	\end{equation*}
+	Sapendo che la sbarretta è omogenea, possiamo definire la sua densità per unità di lunghezza come $\lambda \equiv \frac{M}{L}$. Di conseguenza, la massa di una porzione infinitesimamente piccola della sbarretta di lunghezza $dr$ è $dm = \lambda \cdot dr$. Abbiamo quindi che il momento di inerzia assiale vale:
+	\begin{equation*}
+		\mathcal{I}_v = \sum_{\alpha} dm_\alpha \cdot r_\alpha^2 \simeq \int_{0}^{L} dr \cdot \lambda \cdot r^2 = \lambda \frac{L^3}{3} = \frac{1}{3}ML^2
+	\end{equation*}
+	E analogamente il centro di massa vale:
+	\begin{equation*}
+		r_{CM} = \frac{1}{M} \sum_\alpha dm_\alpha \cdot r_\alpha \simeq \frac{1}{M}\int_{0}^L dr \cdot \lambda \cdot r = \frac{1}{M} \lambda \frac{L^2}{2} = \frac{1}{M}M\frac{L}{2} = \frac{L}{2}
+	\end{equation*}
+	Applichiamo ora il teorema fondamentale del moto (\ref{eq:teorfond}) per calcolare la velocità del centro di massa:
+	\begin{equation*}
+		\dot{\vec{r}}_{CM}(t) = \dot{\vec{r_v}}(t) + \vec{\omega}(t) \times [\vec{r}_{CM}(t) - \vec{r_v}(t)] = 0 \cdot \vec{\omega}(t) \times [\vec{r}_{CM}(t) - \vec{r_v}(t)] = \dot{\theta}(t)\widehat{z} \times \frac{L}{2} \widehat{r} = \dot{\theta}(t) \frac{L}{2}\widehat{\theta}
+	\end{equation*}
+	Prima uso il primo teorema di Koenig per calcolare $\dot{\vec{L_v}}$
+	\begin{equation*}
+		\vec{L_v}(t) = \mathcal{I}_v \dot{\theta}(t) \widehat{z} \Longrightarrow \ddot{\vec{L_v}}(t) = \mathcal{I}_v\ddot{\theta}(t) \widehat{z}
+	\end{equation*}
+	Poi calcolo il vettore momento rispetto a $v$
+	\begin{equation*}
+		\begin{split}
+			\vec{M_v}(t) & = \underbrace{(\vec{r_v} - \vec{r_v}) \times \vec{N}}_{\substack{\text{Reazione vincolare}\\ \text{nel polo}}} + \underbrace{(\vec{r}_{CM}(t) - \vec{r_v}) \times (M\vec{g})}_\text{Forza peso nel CM}\\
+			& = \frac{L}{2}\widehat{r}\times (-Mg\widehat{y}) \\
+			& = -\frac{MLg}{2}(-\cos\theta(t)\widehat{y}+\sin\theta(t)\widehat{x}) \times \widehat{y} \\
+			& = -\frac{MLg}{2}\sin\theta(t) \widehat{z}
+		\end{split}
+	\end{equation*}
+	Infine applico la seconda equazione cardinale rispetto al vincolo $v$:
+	\begin{equation*}
+		\begin{split}
+			\dot{\vec{L_v}}(t) &= \vec{M_v}(t) - M\dot{\vec{r_v}}(t) \times \dot{\vec{r}}_{CM}(t) \qquad\qquad\qquad \dot{\vec{r_v}}(t) \equiv 0 \\
+			\frac{1}{3}ML^2 \ddot{\theta}(t) & = -\frac{MLg}{2}\sin\theta(t) \\
+			\ddot{\theta}(t) &= \frac{3}{L}\frac{g}{L}\sin\theta(t)
+		\end{split}
+	\end{equation*}
+	Ora vogliamo calcolare l'angolo massimo che può raggiungere la sbarretta se all'istante di tempo $t_1$ la velocità vale $\dot{\theta}(t_1) = \omega$ per $\theta(t_1) =0$. L'energia meccanica si \textbf{conserva} in quanto le forze che fanno lavoro sono conservative.\\
+	Il lavoro $\mathcal{L}_N=0$ dato che la forza $\vec{N}$ è applicata ad un punto del corpo che è fermo, ovvero $\vec{r_v}$. Quindi
+	\begin{align*}
+		E(t) & = K(t) - \mathcal{L}_g= \frac{1}{2}\mathcal{I}_v\dot{\theta}(t)^2 - Mg\frac{L}{2}\cos\theta(t) \\
+		E(t_1) & = \frac{1}{2}\mathcal{I}_v \omega_1^2 - Mg\frac{L}{2} \\
+		E(t_{\max}) & =\frac{1}{2}\mathcal{I}_v\dot{\theta}(t_{\max})^2 - Mg\frac{L}{2}\cos\theta_{\max} = 0-Mg\frac{L}{2}\cos\theta_{\max}
+	\end{align*}
+	Visto che tutte le forze sono conservative, per il teorema delle forze vive abbiamo
+	\begin{equation*}
+		\Delta E = \mathcal{L}_{NC} \Longrightarrow E(t_{\max}) - E(t_1) = 0 \Longrightarrow E(t_{\max}) = E(t_1)
+	\end{equation*}
+	e quindi
+	\begin{align*}
+		-Mg\frac{L}{2}\cos\theta_{\max} & = \frac{1}{2}\frac{1}{3}ML^2\omega_1^2 - Mg\frac{L}{2} \\
+		\theta_{\max} & = \arccos\bigg[1-\frac{1}{3}\frac{L}{g}\omega_1^2\bigg]
+	\end{align*}
+	Notiamo che se la velocità iniziale $\omega_1 > \sqrt{\frac{3g}{L}}$, la sbarra va oltre l'angolo di $\frac{\pi}{2}$ e rincomincia il giro.
+\end{example}
+
+\subsection{Urti}
+Un urto tra punti materiali o corpi rigidi avviene in un dato intervallo temporale molto breve rispetto alla dinamica del sistema
+\begin{equation}
+	t_0-\epsilon < t < t_0 + \epsilon
+\end{equation}
+Le reazioni vincolari sono difficili da descrivere con precisione. Ci interessa invece lo stato del sistema subito prima, $t_o^- \equiv t_0-\epsilon$ e subito dopo $t_0^+ \equiv t_0+\epsilon$. Durante l'urto le forze che non sono generate dal contatto sono spesso di intensità trascurabile.
+
+\begin{definition}[Vettore impulso]
+	Definisco il vettore impulso di una forza $\vec{F}(t)$ in un intervallo temporale $[t_0-\epsilon < t < t_0 + \epsilon]$ come
+	\begin{equation}
+		\vec{\mathcal{J}_\epsilon} = \int_{t_0-\epsilon}^{t_0+\epsilon}dt \cdot \vec{F}(t) \qquad\qquad \vec{\mathcal{J}} = \lim_{\epsilon \to 0}\vec{\mathcal{J}}_\epsilon
+	\end{equation}
+\end{definition}
+
+\begin{center}
+	\includegraphics[scale=.5]{impulso}
+\end{center}
+
+\begin{definition}[Forza impulsiva]
+	Dico che $\vec{F}(t)$ è una forza impulsiva se $\lvert\lvert \vec{\mathcal{J}} \rvert\rvert \neq 0$, altrimenti è non impulsiva. Se ha intensità limitata non può essere impulsiva.
+\end{definition}
+
+\begin{definition}[Urto elastico]
+	Se l'energia cinetica del sistema non varia tra $t_0-\epsilon$ e $t_0+\epsilon$ allora l'urto si dice \textbf{elastico}, altrimenti \textbf{anaelastico}. Se dopo l'urto si viene a formare un corpo rigido, l'urto è \textbf{completamente anaelastico}.
+\end{definition}
+
+\subsubsection{Equazioni cardinali}
+Per trasformare le equazioni cardinali in forma impulsiva, integro entrambi i membri da $t_0-\epsilon$ a $t_0+\epsilon$.
+\begin{equation}
+	\begin{split}
+		m\ddot{\vec{r}}_{CM}(t) & = \sum_i \vec{F_i}^{(E)}(t) \\
+		m\dot{\vec{r}}_{CM}(t_0^+) - m\dot{\vec{r}}_{CM}(t_0^-) & = \sum_i\color{red}\vec{\mathcal{J}_i}^{(E)}\color{black}
+	\end{split}
+\end{equation}
+\begin{equation}
+	\begin{split}
+		\dot{\vec{L_p}}(t) & = \sum_i (\vec{r_i}(t) - \vec{r_p}(t)) \times \vec{F_i}^{(E)}(t)-\color{blue}\dot{\vec{r_p}}(t) \times M \dot{\vec{r}}_{CM}(t)\color{black} \\
+		\vec{L_p}(t_0^+)-\vec{L_p}(t_0^-) & = \sum_i (\vec{r_i}(t_0)-\vec{r_p}(t_0)) \times \color{red}\vec{\mathcal{J}_i}^{(E)}\color{black}
+	\end{split}
+\end{equation}
+Notiamo che solo le \color{red}forze \color{black} $\vec{F_i}$ impulsive contano e le \color{blue}velocità \color{black} rimangono limitate.
+
+\subsubsection{Teorema  delle forze vive}
+Dato che $\vec{r}(t)$ è continuo, sappiamo che
+\begin{equation*}
+	\mathcal{U}(\vec{r}(t_0^+)) = \mathcal{U}(\vec{r}(t_0^-))
+\end{equation*}
+e quindi
+\begin{equation}
+	K(t_0^+) - K(t_0^-) = \sum_i \mathcal{L}_i^{NC}
+\end{equation}
+In particolare vale zero se l'urto è \textbf{elastico}.
+
+\begin{example}[Urto tra due punti materiali]
+	Assumiamo di avere un urto \textbf{elastico} tra due punti materiali.
+	\begin{center}
+		\includegraphics[scale=.6]{exurtoel}
+	\end{center}
+	Non ci sono forze esterne impulsive, quindi la prima equazione cardinale è
+	\begin{align*}
+		m_1\dot{x_1}(t_0^+)+m_2\dot{x_2}(t_0^+)&-m_1\underbrace{\dot{x_1}(t_0^-)}_{v_1}-m_2\underbrace{\dot{x_2}(t_0^-)}_{v_2} = 0 \\
+		\dot{x_2}(t_0^+) & = v_2 -\frac{m_1}{m_2}[\dot{x_1}(t_0^+)-v_1]
+	\end{align*}
+	Dato che l'urto è elastico, non c'è variazione di energia cinetica nel sistema, quindi
+	\begin{equation*}
+		\frac{1}{2}m_1\dot{x_1}(t_0^+)^2+\frac{1}{2}m_2\dot{x_2}(t_0^+)^2-\frac{1}{2}m_1\underbrace{\dot{x_1}(t_0^-)^2}_{v_1}-\frac{1}{2}m_2\underbrace{\dot{x_2}(t_0^-)^2}_{v_2} = 0
+	\end{equation*}
+	Mettendo le due equazioni a sistema e risolvendo, otteniamo
+	\begin{equation*}
+		\dot{x_1}(t_0^+) = \frac{m_1-m_2}{m1+m_2}v_1+\frac{2m_2}{m_1+m_2}v_2
+	\end{equation*}
+\end{example}
+
+\newpage
+\begin{example}[Urto con piano liscio]
+	Assumiamo di avere un punto materiale che urta in maniera \textbf{elastica} con un piano liscio. Vogliamo calcolare la forza $N$ con cui il punto viene respinto dal piano.
+	\begin{center}
+		\includegraphics[scale=.5]{urtoelliscio}
+	\end{center}
+	Applichiamo la prima equazione cardinale
+	\begin{equation*}
+		\begin{cases}
+			m\dot{x}(t_0^+) - m\dot{x}(t_0^-) = 0 \\
+			m\dot{y}(t_0^+) - m\dot{y}(t_0^-) = N
+		\end{cases} = \begin{cases}
+		\dot{x}(t_0^+) = \dot{x}(t_0^-) \\
+		m\dot{y}(t_0^+) - m\dot{y}(t_0^-) = N
+		\end{cases}
+	\end{equation*}
+	Dato che l'urto è elastico, non c'è variazione di energia cinetica nel sistema
+	\begin{align*}
+		\frac{1}{2}m[\dot{x}(t_0^+)^2 + \dot{y}(t_0^+)^2] & - \frac{1}{2}m[\dot{x}(t_0^-)^2 + \dot{y}(t_0^-)^2] = 0 \\
+		\dot{y}(t_0^+)^2 - \dot{y}(t_0^-)^2 & = 0 \\
+		\dot{y}(t_0^+) &= \sqrt{\dot{y}(t_0^-)^2}
+	\end{align*}
+	Delle due possibili soluzioni scegliamo quella in cui la velocità si inverte ($\dot{y}(t_0^+) = - \dot{y}(t_0^-)$) dato che sappiamo che la massa rimbalza dal piano e quindi non continua nella stessa direzione. Abbiamo quindi
+	\begin{equation*}
+		N = 2m\dot{y}(t_0^-)
+	\end{equation*}
+\end{example}
+
+\begin{example}[Wallrun]
+	Quale deve essere il coefficiente d'attrito statico minimo per eseguire un "wallrun"?
+	\begin{center}
+		\includegraphics[scale=.5]{wallrun}
+	\end{center}
+	Sappiamo che i vettori velocità valgono
+	\begin{equation*}
+		\dot{\vec{r}}(t_0^-) = v_1\widehat{x} \qquad\qquad\qquad \dot{\vec{r}}(t_0^+)=v_2\widehat{y}
+	\end{equation*}
+	Applichiamo la prima equazione cardinale
+	\begin{equation*}
+		\begin{cases}
+			m\underbrace{\dot{x}(t_0^+)}_0 - m\dot{x}(t_0^-) = -N \\
+			m\dot{y}(t_0^+) - m\underbrace{\dot{y}(t_0^-)}_0 = \mathcal{J}_a
+		\end{cases} = \begin{cases}
+			N = mv_1 \\
+			\mathcal{J}_a = mv_2
+		\end{cases}
+	\end{equation*}
+	Dalla formula per la forza d'attrito statico, $\lvert\lvert \vec{F_a}\rvert\rvert \leq \mu_s \lvert\lvert \vec{N}\rvert\rvert$, integrando membro a membro, segue
+	\begin{equation*}
+		\mathcal{J}_a \leq \mu_s N \Longrightarrow \mu_s \geq \frac{mv_2}{mv_1} = \frac{v_2}{v_1} = \mu_{s,\min}
+	\end{equation*}
+\end{example}
+
+\newpage
+\begin{example}[Asta perno anaelastico]
+	Vogliamo calcolare l'angolo massimo di inclinazione di un'asta che colpisce un perno $P$ ad una certa velocità.
+	\begin{center}
+		\includegraphics[scale=.5]{astaperno}
+	\end{center}
+	L'unica forza esterna impulsiva è la reazione vincolare in $P$, che però ha momento nullo rispetto a $P$.
+	\begin{equation*}
+		\vec{L_p}(t_0^+) - \vec{L_p}(t_0^-) = 0
+	\end{equation*}
+	Calcoliamo i singoli momenti
+	\begin{align*}
+		\vec{L_p}(t_0^-) & = (\vec{r}_{CM}(t_0^-)-\vec{r_p}) \times M\dot{\vec{r}}_{CM}(t_0^-) \\
+		& = -\frac{L}{2}\widehat{y}\times Mv_0 \widehat{x} \\
+		& = \frac{1}{2}MLv_0 \widehat{z}
+	\end{align*}
+	\begin{align*}
+		\vec{L_p}(t_0^+) & = \overbrace{\frac{1}{2}ML\frac{L}{2}\dot{\theta}(t_0^+)\widehat{z}}^\text{del CM} + \overbrace{\underbrace{\bigg(\frac{1}{12}ML^2\bigg)}_{\mathcal{I}_z\text{ asta}} \dot{\theta}(t_0^+)\widehat{z}}^\text{rispetto al CM} \\
+		& = \frac{1}{3}ML^2\dot{\theta}(t_0^+)\widehat{z}
+	\end{align*}
+	Quindi
+	\begin{align*}
+		\frac{1}{3}ML^2\dot{\theta}(t_0^+) &- \frac{1}{2}MLv_0 = 0\\
+		\dot{\theta}(t_0^+) & = \frac{3}{2}\frac{v_0}{L}
+	\end{align*}
+	Per $t>t_0$ l'energia si conserva perché le forze che fanno lavoro sono conservative. La reazione in $P$ non è conservativa ma $P$ è fermo e non c'è attrito. Di conseguenza:
+	\begin{align*}
+		\overbrace{\frac{1}{2}M\bigg[\frac{L}{2}\dot{\theta}(t_0^+)\bigg]^2}^\text{del CM} + \overbrace{\bigg(\frac{1}{12}ML^2\bigg) \dot{\theta}(t_0^+)^2\widehat{z}}^\text{rispetto al CM} & - Mg\frac{L}{2} = \overbrace{K(t_{\max})}^{0} - Mg\frac{L}{2}\cos\theta_{\max} \\
+		Mg\frac{L}{2}(1-\cos\theta_{\max}) & = \frac{1}{2}\cdot\frac{1}{3}ML^2\dot{\theta}(t_0^+)^2 \\
+		Mg\frac{L}{2}(1-\cos\theta_{\max}) & = \frac{1}{6}ML^2\frac{9}{4}\frac{v_0^2}{L^2} \\
+		1-\cos\theta_{\max} & = \frac{3}{4}\frac{v_0^2}{gL} \\
+		\theta_{\max} & = \arccos\bigg(1 - \frac{3}{4}\frac{v_0^2}{gL}\bigg)
+	\end{align*}
+\end{example}
