@@ -1,0 +1,103 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Persone}
+\subsection{Human Centered Design}
+I progettisti devono produrre cose che soddisfino i bisogni della gente in termini di funzioni, facilità d'uso e gratificazione emotiva, ovvero come un'\textbf{esperienza totale}.\\
+L'obiettivo è quello di contrastare la sempre maggiore frustrazione dovuta alla complessità degli oggetti quotidiani: se le macchine hanno una modalità di funzionamento \textit{logica}, gli umani sono l'opposto e di conseguenza nell'interazione tra i due si va a creare una relazione fra specie diverse con modalità di pensiero e funzionamento opposte.
+
+\begin{definition}[Human Centered Design]
+	È una \textbf{forma di pensiero} per lo sviluppo dei sistemi interattivi che mira a renderli \textbf{utilizzabili} e \textbf{utili} concentrandosi sugli utenti e i loro bisogni. Questo approccio migliora l'\textbf{efficacia}, l'\textbf{efficienza}, la soddisfazione dell'utente, l'accessibilità ed evitando effetti negativi sulla salute, sicurezza e performance.
+\end{definition}
+
+Nel design \textbf{antropocentrico} si inverte il paradigma di progettazione (\textit{tecno-centrico}) e si mette l'utente e i suoi bisogno al centro del processo, invece delle funzionalità del prodotto. Per farlo è fondamentale \textbf{capire le persone} osservandole, dato che spesso loro stessi non sanno di cosa hanno bisogno.\\
+
+È sopratutto fondamentale la \textbf{comunicazione}, specialmente dalla macchina all'utente e in particolare quando qualcosa va storto in modo che l'utente venga guidato nella risoluzione e gestione dell'errore.\\
+
+L'obiettivo deve essere quello di creare \textbf{empatia} nell'utente. I ricordi hanno la capacità di far provare emozioni più profonde rispetto al presente e un utente che ha memoria di un successo favorito dalla tecnologia svilupperà empatia e bisogno per quel prodotto.
+
+\begin{example}[Bitcoin]
+	La tecnologia \textit{blockchain} è nata in quanto c'era un bisogno per un metodo alternativo di scambiare moneta (cryptomonete). In seguito si è provato ad applicare questa nuova tecnologia ad altri ambiti ma senza successo in quanto non si stava creando una soluzione ad un problema ma si stava cercando un problema per una soluzione.
+\end{example}
+
+\subsubsection{Fasi di un processo}
+Un processo HCD può essere schematizzato come un flusso continuo ed iterativo che attraversa le seguenti fasi:
+\begin{itemize}
+	\item Specificare il \textbf{contesto d'uso}: identificare la user base, per cosa utilizzeranno il prodotto e sotto quali condizioni e vincoli
+	\item Specificare i \textbf{requirements}: identificare i business requirements e gli obiettivi utente che devono essere raggiunti utilizzando il software
+	\item \textbf{Progettare la soluzione}: può essere divisa in più sotto fasi iterative, tipicamente dalle \textit{bozze} ai \textit{prototipi} e alla \textit{soluzione}
+	\item \textbf{Testare} e \textbf{valutare}: fondamentale per iniziare di nuovo il ciclo in base ai risultati e procedere quindi ad un miglioramento incrementale
+\end{itemize}
+
+\begin{note}
+	È fondamentale implementare nel software sistemi di \textbf{tracking} dell'utente finalizzati all produzione di statistiche di utilizzo.
+\end{note}
+
+\subsubsection{Activity Centered Design}
+È un'estensione di HCD e consiste nel mettere enfasi sulle attività che un utente potrebbe fare con una determinata tecnologia.\\
+I \textbf{controlli} Activity Centered (e.g. interruttore per accendere il proiettore) sono eccellenti in teoria ma se realizzati male crea molte difficoltà. Devono quindi essere \textbf{User-Activity-Centered} e non Device-Centered
+
+\subsection{Progettazione dell'interazione}
+Il problema principale è che il \textit{buon} design non è universale in quanto un prodotto non può essere apprezzato da tutti perché l'esperienza è soggettiva e dipende dalla persona.\\
+
+Le macchine sono limitate a seguire \textbf{regole fisse} e \textbf{rigide} e si comportano come programmate anche se l'utente si discosta leggermente da esse, nonostante questo possa significare fare qualcosa di totalmente insensato. Questo perché, a differenza degli umani, non hanno il \textbf{buon senso} e inoltre spesso le regole da esse seguite sono conosciute solo dalla macchina e dai designers.\\
+
+Sviluppatori ed ingegneri tendono a compiere l'errore di pensare che la spiegazione logica sia sufficiente per avere un buon design, mentre ovviamente non è così.
+
+\begin{example}[Three Mile Island accident]
+	L'incidente al reattore nucleare fu causato da un pessimo sviluppo dell'interfaccia di controllo: nonostante una valvola fosse bloccata in posizione aperta, il led che doveva indicare se fosse chiusa era acceso. Gli operatori impiegarono diverse ore prima di scoprire che indicava solo se il solenoide riceveva corrente e non lo stato di chiusura.	
+\end{example}
+
+\subsubsection{Undestanding}
+\begin{definition}[Understanding]
+	È la capacità del prodotto di farsi usare correttamente dall'utente.
+\end{definition}
+In pratica è la proprietà associata a quanto bene un prodotto dice come si usano le sue funzioni disponibili. È necessario che risponda alle seguenti domande:
+\begin{itemize}
+	\item \textbf{Come} si usa il prodotto?
+	\item Che \textbf{funzione} ha ciascun controllo?
+	\item Come si \textbf{combinano} i controlli?
+\end{itemize}
+
+\subsubsection{Discoverability}
+\begin{definition}[Discoverability]
+	È la capacità di un sistema di veicolare e comunicare i propri possibili usi all'utente.
+\end{definition}
+L'idea è quindi di far capire all'utente a cosa serve il prodotto, tipicamente lavorando sulla \textbf{visibilità}. Questo non implica che poi lo si sappia usare.\\
+
+Questa caratteristica si basa su sei principi fondamentali:
+\begin{itemize}
+	\item \textbf{Affordances}: il termine si riferisce alla \textbf{relazione} tra le \textit{proprietà di un oggetto} fisico e le \textit{capacità di un agente} che determina come un oggetto possa essere utilizzato. Il contrario è \textbf{anti-affordance}, ovvero la prevenzione dell'interazione.
+	\begin{example}
+		La maggior parte delle sedie possono essere trasportate da una persona (they \textit{afford} lifting). Se una persona debole non riesce a sollevarla, it \textit{doesn't afford} lifting.
+	\end{example}
+	Perché questo principio sia efficace è necessario che le affordances e le anti-affordances siano \textbf{discoverable} e \textbf{perceivable}. Un esempio negativo è il vetro.
+	
+	\item \textbf{Signifiers}: specifica \textbf{dove} l'azione deve essere eseguita (non quale) e comunicano quindi come usare il design. Possono essere \textbf{deliberati} ed \textbf{intenzionali}, come il segno "spingi" sulla porta, o \textbf{accidentali} e \textbf{non intenzionali}, come un percorso nell'erba causato da tante persone che ci hanno camminato.\\
+	Per passare da un'affordance a un signifier di solito si procede tramite \textbf{convenzioni}, come ad esempio il fatto che una maniglia su una porta indica che devi usarla per aprirla. L'interpretazione di una \textit{perceived affordance} è una \textbf{convenzione culturale}.
+	
+	\item \textbf{Mapping}: indica la \textbf{relazione} tra gli elementi di due insiemi di cose. È importante sopratutto nel design e layout dei controlli e degli schermi in quanto utilizza \textbf{analogie spaziali} tra i controlli e i dispositivi controllati per indicare come utilizzarli (e.g. fornelli). Alcuni mappings sono biologici (muovere la mano in alto e in basso indicano più e meno) mentre altri culturali (indicatore del carburante pieno a destra o sinistra).
+	
+	\item \textbf{Feedback}: la comunicazione del risultato di un'azione. Deve essere \textbf{immediato} ed \textbf{informativo} senza ostruire altro (e.g. troppe notifiche ti portano a disattivarle completamente).
+	
+	\item \textbf{Conceptual model}: una spiegazione, di solito molto semplificata, di come un qualcosa funziona (e.g. cartelle di file sul pc). Non deve essere completa o accurata, basta che sia utile. È fondamentale che l'\textbf{assunzione} su cui si basa la semplificazione rimanga vera (e.g. far vedere i file anche se sono nel cloud, la connessione deve esserci). Sono spesso inferiti dal dispositivo stesso, tramandati da persone, estratti da manuali o costruiti con l'esperienza.\\
+	I \textbf{mental model} sono invece come le persone rappresentano il funzionamento delle cose nella loro mente. È diverso per ognuno e una persona singola può averne anche diversi per lo stesso oggetto, a volte anche in conflitto.\\
+	La combinazione di informazioni necessarie per la creazione di un \textit{conceptual model} di un dispositivo con cui interagiamo è la \textbf{system image}. Ad esempio aspetto fisico, somiglianza con altri dispositivi già usati, pubblicità, articoli di giornale o manuali.\\
+	Quando la system image è incoerente o inappropriata, l'utente ha difficoltà nell'usare il dispositivo. È importante che il designer trasmetta il suo conceptual model correttamente, tramite la system image, al conceptual model dell'utente.
+	
+	\item \textbf{Constraints}: servono a limitare l'insieme delle possibili azioni grazie alla conoscenza del mondo e i modelli concettuali. Possono essere
+	\begin{itemize}
+		\item \textbf{Fisici}, tra cui le \textbf{forcing functions} ovvero casi estremi di costraints che evitano comportamenti inappropriati. Si suddividono in:
+		\begin{itemize}
+			\item \textbf{Interlocks}: impone che una serie di operazioni siano eseguite nel giusto ordine
+			\item \textbf{Lock-ins}: mantiene un'operazione attiva evitando che qualcuno la interrompa prematuramente (e.g. conferma per la chiusura di un programma)
+			\item \textbf{Lockout}: evita che qualcuno acceda ad uno spazio pericoloso o evita che accada un determinato evento (e.g. limite di età)
+		\end{itemize}
+		\item \textbf{Culturali}
+		\item \textbf{Semantici}
+		\item \textbf{Logici}
+	\end{itemize}
+\end{itemize}
+
+\begin{note}[Consistenza]
+	Dato che violare delle convenzioni richiede nuovo apprendimento, mantenere una \textbf{consistenza} nei vari design è una caratteristica importante.
+\end{note}
