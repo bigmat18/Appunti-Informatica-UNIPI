@@ -101,3 +101,484 @@ Questa caratteristica si basa su sei principi fondamentali:
 \begin{note}[Consistenza]
 	Dato che violare delle convenzioni richiede nuovo apprendimento, mantenere una \textbf{consistenza} nei vari design è una caratteristica importante.
 \end{note}
+
+\newpage
+\subsection{Perché delle azioni}
+È importante analizzare come le persone \textbf{scelgono} e \textbf{valutano} le loro azioni per costruire un modello concettuale della psicologia umana. Questo implica capire le \textbf{emozioni}: \textbf{piacere} e \textbf{frustrazione} in base al successo delle azioni.
+
+\subsubsection{Golfi}
+Quando le persone usano qualcosa, affrontano due golfi. È compito del \textit{designer} aiutarle a \underline{connetterli}.
+\begin{itemize}
+	\item \textbf{Esecuzione}: sforzo mentale per tradurre gli obiettivi in azioni fisiche sul sistema. È correlato alla \textit{discoverability} (l'utente capisce cosa è possibile fare?), alle \textit{affordances} (l'utente interpreta cosa un componente permette di fare?) e alla capacità fisica di eseguire l'azione. I principali elementi del design coinvolti nella \underline{connessione} sono:
+	\begin{itemize}
+		\item \textit{Signifiers}
+		\item \textit{Constraints}
+		\item \textit{Mappings}
+		\item \textit{Conceptual model}
+	\end{itemize}
+	\item \textbf{Valutazione}: capire se i cambiamenti percepiti hanno avvicinato il sistema all'obiettivo. Richiede un \textit{feedback} continuo sui risultati e sullo stato corrente: l'utente deve sviluppare un senso di \textit{controllo} e comprensione. È importante la \textbf{percezione} dell'utente sulle informazioni visuali. I principali elementi del design coinvolti nella \underline{connessione} sono:
+	\begin{itemize}
+		\item \textit{Feedback}
+		\item \textit{Conceptual model}
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Stadi delle azioni}
+Un'azione si compone dell'\textbf{esecuzione} e dell'\textbf{interpretazione} dei risultati. Entrambi hanno un effetto sullo stato emotivo dell'utente. Più precisamente dividiamo l'azione in sette stadi:
+\begin{enumerate}
+	\item Creazione dell'\textbf{obiettivo}
+	\item \textbf{Pianificazione} dell'azione
+	\item \textbf{Specificazione} di un'azione
+	\item \textbf{Esecuzione} dell'azione
+	\item \textbf{Percezione} dello stato del sistema
+	\item \textbf{Interpretazione} della percezione
+	\item \textbf{Confronto} del risultato con l'obiettivo
+\end{enumerate}
+Le azioni sono \textbf{non lineari}: non è necessario attraversare tutti gli stadi, spesso servono più azioni per un singolo obiettivo, possono formarsi sotto-obiettivi e sotto-piani oppure determinati obiettivi possono essere dimenticati, scartati o modificati.\\
+
+I sette stadi forniscono una linea guida per lo sviluppo di prodotti o servizi; possono essere visti come sette \textbf{domande} alle quali chiunque crei un prodotto dovrebbe sempre saper rispondere:
+\begin{enumerate}
+	\item Cosa voglio ottenere?
+	\item Quali sono azioni alternative?
+	\item Che azione posso fare ora?
+	\item Come la faccio? Grazie al \textbf{feedforward}, che sfrutta \textit{signifiers}, \textit{constraints} e \textit{mappings}
+	\item Cosa è successo? Grazie al \textbf{feedback}, che utilizza le informazioni esplicite sull'impatto dell'azione
+	\item Cosa significa?
+	\item Ho raggiunto il mio obiettivo?
+\end{enumerate}
+\newpage
+\noindent Grazie ai sette stadi dell'azione possiamo definire il sette \textbf{principi fondamentali del design}:
+\begin{enumerate}
+	\item \textbf{Discoverability}: è possibile determinare quali azioni sono possibili e lo stato attuale del dispositivo
+	\item \textbf{Feedback}: c'è un flusso continuo e completo di informazioni sul risultato delle azioni e sullo stato del prodotto
+	\item \textbf{Conceptual model}: il design mostra tutte le informazioni necessarie per la creazione di un conceptual model del sistema che permetta la \textit{comprensione} e il \textit{senso di controllo}
+	\item \textbf{Affordances}: esistono le affordances appropriate per fare le azioni desiderate
+	\item \textbf{Signifiers}: uso efficace dei signifiers per garantire \textit{discoverability} e un \textit{feedback} funzionale e comprensibile
+	\item \textbf{Mappings}: la relazione tra i controlli e le azioni segue il principio di mapping, migliorato quanto possibile attraverso il \textit{layout spaziale} e la \textit{continuità temporale}
+	\item \textbf{Constraints}: fornire constraints di tutti i tipi guida le azioni e facilita l'interpretazione
+\end{enumerate}
+
+\subsubsection{Fondamenti cognitivi}
+Innanzitutto possiamo dividere le azioni in due tipi:
+\begin{itemize}
+	\item \textbf{Opportunistiche}: meno precise ma richiedono meno sforzo mentale, meno problemi e probabilmente più interesse
+	\item \textbf{Pianificate}
+\end{itemize}
+Inoltre, il pensiero umano si divide ulteriormente in:
+\begin{itemize}
+	\item \textbf{Conscio}: lento ed elaborato, si analizzano le decisioni, si pensa ad alternative e si valutano diverse opzioni con logica e matematica. Utilizzato durante l'apprendimento, in situazioni di pericolo o quando qualcosa va storto
+	\item \textbf{Subconscio}: il cervello confronta la situazione attuale con quelle passate e agisce velocemente e senza sforzo. È ottimo nel riconoscimento di trend e in generale in comportamenti "skilled" 
+\end{itemize}
+Questo ci porta a definire i due tipi di \textbf{memoria}:
+\begin{itemize}
+	\item \textbf{Dichiarativa}, e.g. ricordare la capitale di un dato paese
+	\item \textbf{Procedurale}, e.g. ricordando le attività fatte per arrivare a compiere quell'azione in passato
+\end{itemize}
+La cognizione umana è ovviamente \textbf{limitata}, sia per \textit{attenzione}, sia \textit{memoria} e che per \textit{ragionamento}. Gli utenti sfruttano aiuti esterni come note o indizi nell'interfaccia: questo implica per il design che il sistema deve compensare per queste limitazioni.
+
+\paragraph{Livelli di elaborazione} Un'approssimazione semplicistica di come il cervello elabora le informazioni prevede tre livelli:
+\begin{itemize}
+	\item \textbf{Viscerale}: comprende i meccanismi i protezione che permettono di fare valutazioni veloci ma semplici sull'ambiente, permettendo di rispondere velocemente e in maniera subconscia. Per i designer questo riguarda la \textit{percezione immediata} (e.g. suono piacevole o meno) e nulla c'entra con l'effettivo funzionamento del prodotto.
+	\item \textbf{Comportamentale}: riguarda le abilità apprese che vengono attivate quando si presenta la giusta situazione. Principalmente a livello \textit{subconscio} ma comunque la persona rimane cosciente delle azioni (ma non dei dettagli). Per i designer questo implica che ad ogni azione è associata un'\textbf{aspettativa}, positiva o negativa, che porta a \textit{senso di controllo} o \textit{frustrazione}. È fondamentale il \textit{feedback} per la gestione di questo aspetto.
+	\item \textbf{Riflessivo}: riguarda il pensiero \textit{conscio} ed è un processo lento e profondo che avviene dopo che l'evento è successo e comprende le emozioni più complesse. Per i designer è la parte più importante in quanto è qui che si crea un'opinione del prodotto e una memoria di esso.
+\end{itemize}
+Riassumendo:\\
+\begin{table}[!h]
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|l|l|P{7cm}|}
+		\hline
+		\textbf{Livello Cognitivo} & \textbf{Fasi Principali} & \textbf{Implicazioni di Design} \\ \hline
+		\textbf{Viscerale} & 
+		\begin{tabular}[c]{@{}l@{}}4. Eseguire \\ 5. Percepire\end{tabular} & 
+		\begin{itemize}[nosep, leftmargin=*]
+			\item Le prime impressioni contano
+			\item Attrazione visiva ed estetica
+			\item Feedback sensoriale immediato
+			\item "Sembra/si sente bene?"
+		\end{itemize} \\ \hline
+		\textbf{Comportamentale} & 
+		\begin{tabular}[c]{@{}l@{}}3. Specificare \\ 6. Interpretare\end{tabular} & 
+		\begin{itemize}[nosep, leftmargin=*]
+			\item Interazioni fluide e abituali
+			\item Significanti e mappature chiari
+			\item Pattern coerenti
+			\item "Posso farlo automaticamente?"
+		\end{itemize} \\ \hline
+		\textbf{Riflessivo} & 
+		\begin{tabular}[c]{@{}l@{}}1. Obiettivo \\ 2. Pianificare \\ 7. Confrontare\end{tabular} & 
+		\begin{itemize}[nosep, leftmargin=*]
+			\item Comprensione più profonda
+			\item Modelli concettuali
+			\item Memoria e soddisfazione
+			\item "Perché è successo? Lo consiglierei?"
+		\end{itemize} \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{example}[Cestino]
+	La metafora fisica del cestino reale con quello digitale. Il \textbf{modello mentale} dell'utente è che i file eliminati vanno nel cestino e non sono permanentemente persi finché non si svuota. Funziona perché:
+	\begin{itemize}
+		\item Riduce il \textbf{golfo dell'esecuzione}: gli utenti sanno come eliminare, trascinando i file sul cestino
+		\item Riduce il \textbf{golfo di valutazione}: c'è un feedback visivo, l'icona del cestino si riempie e i file sono visibili al suo interno
+		\item Corrisponde all'esperienza nel mondo reale
+		\item Fornisce sicurezza in quanto azione reversibile
+	\end{itemize}
+\end{example}
+
+\begin{example}[Errori senza contesto]
+	Il classico errore di Windows di una stampa fallita è un pessimo esempio in quanto:
+	\begin{itemize}
+		\item Aumenta il \textbf{golfo dell'esecuzione}: l'utente non sa cosa fare dopo, può solo cliccare "OK" per ignorarlo
+		\item Aumenta il \textbf{golfo di valutazione}: il messaggio di errore è vago e non specifica quale sia il vero problema se non con un codice di errore che per l'utente non ha significato
+		\item "Nascondi dettagli" suggerisce che ci siano più informazioni, ma in realtà è solo nascosto di default
+		\item Non si crea un \textbf{modello concettuale} in quanto l'utente non capisce che cosa sia andato storto
+	\end{itemize}
+\end{example}
+
+\subsection{Personas}
+La \textit{user persona} è il personaggio che rappresenta un potenziale utente del prodotto e servono ad aiutare il team di design nel loro lavoro, analizzando e dividendo gli utenti per i loro \textbf{obiettivi} e le loro \textbf{frustrazioni}. La creazione di una \textit{persona} parte dalle analisi degli utenti tramite tecniche, come:
+\begin{itemize}
+	\item \textbf{Analisi dei task}, e.g. ordinamento di carte
+	\item \textbf{Feedback}, e.g. interviste e focus groups
+	\\item \textbf{Prototyping}, ovvero sperimentare con le idee prima di svilupparle
+\end{itemize}
+Questo porta alla definizione di tre tipi di \textit{personas}:
+\begin{itemize}
+	\item \textbf{Proto}: una versione leggere creata apposta in poco tempo dai designers
+	\item \textbf{Qualitative}: create da ricerche esplorative solide (e.g. interviste) con un campione da cinque a trenta utenti, poi segmentati
+	\item \textbf{Statistical}: raccolta di dati tramite un sondaggio su un grande numero di utenti per poi cercare \textit{cluster} di risposte analoghe. In realtà funzionano in combinazione con la \textit{qualitative research}
+\end{itemize}
+
+\begin{note}[Pareto principle]
+	Quante persone considerare per la ricerca? Per tanti eventi, circa l'$80\%$ degli effetti deriva dal $20\%$ delle cause.
+\end{note}
+
+All'interno di ogni \textit{persona} troviamo diverse informazioni:
+\begin{itemize}
+	\item Informazioni \textbf{demografiche}, e.g. età e salario
+	\item \textbf{Dettagli personali}, e.g. biografia e fotografie
+	\item \textbf{Comportamento} e/o dettagli cognitivi, come il modello mentale e come si sente riguardo alle attività da compiere
+	\item \textbf{Obiettivi} e \textbf{motivazioni} per l'utilizzo del prodotto
+	\item Dettagli \textbf{comportamentali} su come la persona si comporta durante l'utilizzo del prodotto
+\end{itemize}
+
+\begin{note}[Archetype]
+	La \textit{persona} è quella fisica mentre l'astrazione è l'\textbf{archetipo}.
+\end{note}
+
+\subsection{Requisiti}
+\begin{definition}[Requisito]
+	Un requisito è un servizio, funzione o caratteristica di cui un utente ha bisogno.
+\end{definition}
+È importante specificare che i requisiti sono dinamici tanto quanto l'ambiente in cui nascono. Possiamo comunque dividerli in due categorie:
+\begin{itemize}
+	\item \textbf{Funzionali}: esprimono una funzione o caratteristiche e definiscono cosa è necessario, e.g. visitare il sito del cliente. \textbf{Non} includono \textbf{come} implementare fisicamente la soluzione.
+	\item \textbf{Non funzionali}: definiscono quanto bene o a che livello una soluzione si trova, tramite caratteristiche come sicurezza, manutenibilità, disponibilità, etc\dots Possono essere relativi ad un gruppo di \textit{requisiti funzionali} o ad un singolo
+\end{itemize}
+
+\subsection{User stories}
+\begin{definition}[User story]
+	È una breve frase o riassunto che identifica l'utente e il loro obiettivo/necessità dal loro punto di vista.
+\end{definition}
+Le \textit{user stories} aiutano a descrivere le informazioni pratiche sugli utenti, e.g. necessità e motivazioni per un servizio, e aiutano il team di sviluppo a creare una \textit{roadmap}.
+\begin{lstlisting}
+	As a [role], I want [feature] because [reason].
+\end{lstlisting}
+Possono essere scritte da chiunque, ma è necessario precisare che non serve che sia il proprietario del prodotto a farlo. In un progetto con sviluppo agile, ogni componente del gruppo dovrebbe scriverle. In ogni caso è più importante il protagonista della \textit{story} rispetto all'autore. Possono essere scritte in diversi livelli di dettaglio, anche se tendenzialmente quelle più grandi vengono divise in molteplici piccole.
+
+\subsection{Scenari}
+\begin{definition}[Scenario]
+	Uno scenario è una situazione che descrive come gli utenti eseguono azioni sul tuo sito o applicazione.
+\end{definition}
+Gli scenari sono in pratica lo sviluppo della \textbf{user story} aggiungendo l'\textbf{interazione} con il prodotto o il servizio. Possono essere divisi in più casi d'uso.
+\begin{example}
+	Uno scenario in cui John usa un'applicazione per il telefono per comprare un biglietto per un workshop di design mentre va a lavoro.
+\end{example}
+
+Gli scenari aiutano gli stakeholders a visualizzare l'idea del team di design, fornendo un contesto per come dovrebbe essere l'esperienza dell'utente, permettendo la comunicazione tra il pensiero \textit{creativo} e quello di \textit{business}. Aiutano anche il team di design permettendogli di immaginare la soluzione ideale per il problema di un utente e su quali parti della UX concentrarsi.
+
+\subsubsection{Scrittura}
+Un buon scenario deve essere \textbf{conciso} e rispondere alle seguenti domande:
+\begin{itemize}
+	\item \textbf{Chi} è l'utente? Usando le \textit{personas} sviluppate
+	\item \textbf{Perché} l'utente usa il prodotto? Quali sono le sue motivazioni e aspettative?
+	\item Quali \textbf{obiettivi} ha? Tramite l'\textit{analisi dei task} capire come soddisfarli
+	\item \textbf{Come} fa l'utente a raggiungere gli obiettivi? Quali ostacoli e possibilità ci sono? \underline{Non è sempre presente}
+\end{itemize}
+
+La pianificazione parte con il \textbf{mapping}: l'utente principale viene definito tramite sviluppo di \textit{persona} e l'\textbf{attività chiave} è quella che l'utente spera di completare. Il passo successivo è fare un'\textbf{analisi} dello scenario, mettendo gli obiettivi dell'utente nel contesto e vedere quali passi dovrebbe fare.
+
+\begin{note}
+	È fondamentale concentrarsi sugli obiettivi dell'utente: ciò che vogliono ottenere dal servizio, il loro contesto, la loro conoscenza pregressa e il loro background.
+\end{note}
+
+\subsection{Casi d'uso}
+Un caso d'uso è una \textbf{descrizione scritta} di come un utente eseguirà l'azione nell'applicazione e specifica, dal suo punto di vista, il comportamento del sistema. Ogni caso d'uso è rappresentato come una sequenza di passi a partire dall'obiettivo e fino al suo raggiungimento.\\
+
+La differenza principale dallo \textit{scenario} è la \textbf{prospettiva}: il caso d'uso è più granulare e descrive il \textbf{flusso} di uno specifico attore. Il caso d'uso aggiunge valore spiegando \textbf{come} il sistema si dovrebbe comportare e aiutando a capire cosa potrebbe andare storto. Fornisce una lista di obiettivi che può essere utilizzata per stabilire il costo e la complessità del sistema.
+
+\begin{table}[h]
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|P{6.5cm}|P{6.5cm}|}
+		\hline
+		\rowcolor{lightgray}
+		\multicolumn{1}{|c|}{\textbf{Incluso}} & 
+		\multicolumn{1}{c|}{\textbf{NON incluso}} \\ \hline
+		\begin{itemize}[nosep, leftmargin=*]
+			\item Chi sta usando il sito web
+			\item Cosa vuole fare l'utente
+			\item L'obiettivo dell'utente
+			\item I passaggi che l'utente compie per completare un compito specifico
+			\item Come il sito web dovrebbe rispondere a un'azione
+		\end{itemize} & 
+		\begin{itemize}[nosep, leftmargin=*]
+			\item Linguaggio specifico per l'implementazione
+			\item Dettagli sulle interfacce utente o sulle schermate
+		\end{itemize} \\ \hline
+	\end{tabular}
+\end{table}
+\newpage
+\noindent In particolare un caso d'uso si compone dei seguenti \textbf{elementi}:
+\begin{itemize}
+	\item \textbf{Attore}: qualcuno o qualcosa che usa il sistema con un certo comportamento
+	\item \textbf{Stakeholder}: qualcuno o qualcosa che ha interesse nel comportamento del sistema in discussione (SUD)
+	\item \textbf{Attore principlae}: stakeholder che inizia un'interazione con il sistema per raggiungere un obiettivo
+	\item \textbf{Precondizioni}: cosa deve essere vero prima e dopo l'esecuzione del caso d'uso
+	\item \textbf{Triggers}: evento che causa il caso d'uso
+	\item \textbf{Basic flow}: caso d'uso dove va tutto bene
+	\item \textbf{Alternative flow}: percorsi alternativi che accadono quando qualcosa va storto nel sistema
+\end{itemize}
+
+\subsubsection{Scrittura}
+Kenworthy (1997) specifica i seguenti passaggi per scrivere un caso d'uso:
+\begin{enumerate}
+	\item Identificare chi userà il sito web
+	\item Scegliere uno di quegli utenti
+	\item Definire cosa l'utente vuole fare sul sito. Ogni azione fatta diventa un caso d'uso
+	\item Per ogni caso d'uso, decidere cosa dovrebbe normalmente succedere
+	\item Descrivere il corso degli eventi in termini di cosa l'utente fa e come il sistema si comporta nei suoi confronti
+	\item Considerare corsi degli eventi alternativi
+	\item Trovare similarità tra i vari casi d'uso, estrarle e usarle per creare un caso d'uso comune
+	\item Ripetere da 2 a 7 per tutti gli altri utenti
+\end{enumerate}
+
+\subsection{Errore umano}
+La maggior parte degli incidenti industriali sono causati da errori umani (c.a. $75\%-95\%$ ) e la colpa è del design. Questo perché progettiamo macchinari che richiedono \underline{attenzione e allerta costante} per ore o \underline{procedure arcaiche e confusionarie} che vengono usate una volta nella vita. Le persone si ritrovano quindi senza nulla da fare per ore con all'improvviso una situazione in cui bisogna rispondere velocemente e precisamente oppure situazioni in cui sono costantemente \textbf{interrotte} mentre devono compiere più attività contemporaneamente.\\
+
+\begin{wrapfigure}[10]{r}{4.4cm}
+	\vspace{-.5cm}
+	\includegraphics[width=4.4cm]{five_whys}
+\end{wrapfigure}
+In generale l'essere umano non è bravo nella precisione: eccelle in creatività, curiosità ed esplorazione. Tutte cose che vanno contro il funzionamento delle macchine.
+
+\subsubsection{Analisi della causa}
+Quando si presenta un errore è fondamentale capire \textbf{perché} sia successo. Una buona tecnica è quella sviluppata da Sakichi Toyoda, i "Five Whys", ovvero continuare a chiedere per cinque volte perché partendo dal problema iniziale. In pratica non è detto che ne servano o bastino cinque.
+
+\newpage
+\subsubsection{Tipologie}
+\begin{definition}[Errori]
+	L'errore umano è definito come un qualunque discostamento dal comportamento "appropriato" (che spesso è determinato a fatto avvenuto). È il termine generale per tutte le azioni sbagliate.
+\end{definition}
+Esistono due classi principali di errori:
+\begin{itemize}
+	\item \textbf{Slips} o lapsus: avviene quando una persona vorrebbe fare un'azione ma finisce per farne un'altra. Di solito fatti dai \textit{neofiti}. Si divide in:
+	\begin{itemize}
+		\item \textbf{Action-based}: l'azione sbagliata viene eseguita, e.g. verso il latte nel caffè e poi metto l'ultimo in frigo invece del primo
+		\item \textbf{Memory lapses}: la memoria fallisce e l'azione non viene eseguita o risulta non valutata, e.g. dimentico di spegnare il fornello
+	\end{itemize}
+	\item \textbf{Mistakes} o errori cognitivi: avviene quando viene stabilito l'obiettivo sbagliato o viene formato il piano sbagliato. Da quel momento, anche se le azioni sono eseguite correttamente, fanno tutte parte dell'errore. È quindi il \textbf{piano} ad essere sbagliato. Di solito fatti dagli \textit{esperti}. Si divide in:
+	\begin{itemize}
+		\item \textbf{Rule-based}: la persona ha capito la situazione ma poi decise in base ad un corso di eventi errato, viene seguita la regola sbagliata. E.g. un meccanico trova un problema alla batteria ma decide di non rimpiazzarla perché funziona alla metà delle prestazioni
+		\item \textbf{Knowledge-based}: il problema non viene diagnosticato per conoscenza errata o incompleta, e.g. il peso del carburante è stato calcolato in libbre invece che chili
+		\item \textbf{Memory-lapse}: c'è una dimenticanza nelle fasi di definizione degli obiettivi, piani o valutazione. E.g. un meccanico non trova il problema perché dimentica un passaggio durante un controllo
+	\end{itemize}
+\end{itemize}
+
+\paragraph{Interruzioni} Le interruzioni sono una delle cause principali degli errori, specialmente i \textit{memory-lapse}. Quando un'attività è interrotta da un altro evento, non solo c'è il tempo sprecato per risolverne la causa ma c'è anche quello necessario a riprendere l'attività originale.
+
+\paragraph{Feedback errati} Allarmi non necessari o fastidiosi spingono l'utente a disattivarli. Questo poi porta problemi se si vogliono ripristinare (bisogna ricordarsene) o se avviene un incidente mentre sono disattivati. Un altro problema sono i \textit{feedback parlati}: possono essere molto precisi sul messaggio ma allo stesso tempo confusionari se in ambiente rumoroso o se sovrapposti.
+
+\subsubsection{Prevenzione}
+L'ideale è che un singolo errore non dovrebbe poter fare danni estesi. Alcune buone pratiche:
+\begin{itemize}
+	\item \textbf{Capire} le cause dell'errore e progettare di conseguenza
+	\item Fare \textbf{sensibility check}, ovvero controllare se l'azione rispetta il senso comune. E.g. la banca mi chiede se sono sicuro di fare un bonifico grosso
+	\item Rendere le azioni \textbf{reversibili} o rendere difficili le azioni irreversibili
+	\item Rendere gli errori \textbf{facili da trovare} e da correggere
+	\item Non trattare l'azione come un errore, piuttosto aiutare la persona a completarla in maniera appropriata
+	\item Aggiungere \textbf{constraints}, ovvero blocchi specifici per la sezione dell'azione che potrebbe causare errore. Si dividono in:
+	\begin{itemize}
+		\item \textbf{Segregate control}: spargere i controlli che possono essere confusi lontani tra loro
+		\item \textbf{Separate modules}: i controlli non rilevanti per l'operazione corrente non sono visibili
+	\end{itemize}
+\end{itemize}
+Spesso vengono aggiunti messaggi di \textbf{richiesta di conferma} per un'azione. Questi sono però inefficaci in quanto di solito la persona ha già deciso di volerla compiere nel momento in cui preme la prima volta il pulsante. È comunque utile metterli, rendendoli più evidenti (e.g. dimensione e colore).
+\newpage
+\begin{note}[Minimizzazione degli slip]
+	Dato che il comportamento \textit{skilled} è \textbf{subconscio}, per ridurre gli slip non bisogna fare in modo che sia richiesta più attenzione ma piuttosto bisogna assicurarsi che le azioni e i loro controlli siano il più diversi possibili (o fisicamente distanti).
+\end{note}
+\subsubsection{Mitigazione}
+Per mitigare gli errori bisogna aumentare il numero di controlli e ridurre il numero di punti critici in cui un errore può avvenire. I punti principali per il \textit{design} che tiene conto degli errori sono:
+\begin{itemize}
+	\item \textbf{Diffondere la conoscenza} richiesta per usare una determinata tecnologia, facendo in modo che chi la conosce bene possa lavorare efficientemente e chi non la conosce può comunque impararla
+	\item Usare \textbf{constraints} naturali e artificiali
+	\item Connettere correttamente i due \textbf{golfi}
+\end{itemize}
+
+\subsection{User behavior patterns}
+Quando gli utenti interagiscono con le interfacce, il loro comportamento segue dei \textbf{pattern} che possono essere predetti. Capirli ci permette di progettare interfacce che sembrano naturali all'utente, supportando strategie e abitudini comuni e creando interazioni più intuitive.
+\paragraph{Self Exploration} Probabile che impari e si senta bene nel farlo, cliccare finestre pop-up, reinserire dati eliminati per sbaglio o mettere video in pausa. Far si che sia possibile \textbf{esplorare} senza che questo costi per l'utente.
+\paragraph{Instant Gratification} Queste persone vogliono vedere immediatamente i risultati delle loro azioni e si sentono più fiduciosi in sé stessi. Dato che ogni esperienza positiva porta gratificazione, bisognerebbe progettare la UI in modo che la prima azione sia estremamente semplice. Le \textbf{funzionalità introduttive} non dovrebbero essere nascoste.
+\paragraph{Satisficing} Queste persone scelgono la prima cosa anche se potrebbe essere sbagliata e accettano una risposta "\textbf{sufficientemente} buona" invece della migliore se questo fa risparmiare soldi e tempo. Usare etichette brevi, semplici e veloci da leggere in modo che l'utente capisca alla prima lettura. Fornire \textbf{metodi di fuga}. Questo comportamento è spesso trovato in utenti inesperti che si trovano ad usare cose complesse.
+\paragraph{Changes in Midstream} Fornire l'opportunità alle persone di cambiare i propri obiettivi in corso d'opera, a meno che non sia possibile (wizard, hub and spoke, modal panel). Permettere all'utente di iniziare un processo, interromperlo e poi continuarlo successivamente: \textbf{reenterance}.
+\paragraph{Deferred Choices} Utenti che spesso saltano domanda necessarie, rispondendo solo al minimo necessario (per necessità o scelta), per poi tornare più tardi. Mostrare la lista breve e nascondere quella lunga, fornire valori di default e permettere di terminare successivamente.
+\paragraph{Incremental Construction} Le persone di solito non creano tutto in una volta ma partono da piccoli pezzi, ci lavorano, li  testano e vanno avanti. Le interfacce devono essere \textbf{responsive} a modifiche e salvataggi veloci. I \textbf{feedback} devono essere costanti. L'obiettivo è indurre un "flow" nell'utente, in modo che il godersi l'attività sia esso stesso il premio.
+\paragraph{Habituation} L'utente non deve più ragionare per compiere azioni abituali, migliorando l'efficienza. Questo però può portare a trappole per l'utente se una \textit{gesture} non funziona o fa qualcosa di distruttivo.
+\paragraph{Microbreaks} L'utente fa piccole pause tra attività di concentrazione. Queste sono fondamentali per i processi cognitivi e per rilassarsi dallo stress. Le interfacce devono supportare un'interruzione e ripresa delicata e piacevole.
+\paragraph{Spatial Memory} Spesso le persone trovano gli oggetti ricordandosi dove sono e non come sono chiamati. Posizionare i controlli in posti prevedibili, fornire spazi adattabili dall'utente. L'inizio e la fine delle liste e dei menù sono posti speciali da un punto di vista cognitivo.
+\paragraph{Prospective Memory} Dare all'utente strumenti per creare i propri metodi di promemoria (e.g. lasciare le cose davanti alla porta per prenderle il giorno dopo). Lasciare artefatti in giro che permettano di identificare attività incomplete.
+\paragraph{Streamlined Repetition} Gli utenti a volte devono fare la stessa azione ripetutamente: gli va resa facile per evitare di sprecare tempo.
+\paragraph{Keyboard Only} Collegato a \textit{habituation} e \textit{flow}, rende più facili attività ripetitive fornendo comandi da tastiera che sono più veloci del mouse.
+\paragraph{Other People's Advice} Le persone influenzate da consigli ed esperienze di colleghi, che siano questi diretti o indiretti. È importante la presenza di una \textbf{community}.
+
+\subsection{Information architecture}
+\begin{wrapfigure}[10]{r}{4.4cm}
+	\vspace{-.5cm}
+	\includegraphics[width=4.4cm]{ia}
+\end{wrapfigure}
+La IA si concentra sull'\textbf{organizzare}, \textbf{strutturare} ed \textbf{etichettare} il contenuto in maniera efficace e sostenibile per aiutare l'utente a trovare le informazioni e completare le attività. Per creare dei sistemi di informazione è quindi necessario capire la natura di:
+\begin{itemize}
+	\item \textbf{Users}: l'audience, le attività, i bisogni
+	\item \textbf{Constext}: obiettivi di business, investimenti, politica, cultura, tecnologia, risorse, limitazioni
+	\item \textbf{Content}: obiettivi di contenuto, tipi di documenti e dati, volume, strutture preesistenti, comando e proprietà
+\end{itemize}
+
+\noindent I componenti principali della IA sono:
+\begin{itemize}
+	\item \textbf{Organization Schemes and Structures}: come categorizzare e strutturare le informazioni
+	\item \textbf{Labeling Systems}: come rappresentare le informazioni
+	\item \textbf{Navigation Systems}: come gli utenti esplorano o si muovono all'interno delle informazioni
+	\item \textbf{Search Systems}: come gli utenti cercano le informazioni
+\end{itemize}
+
+\subsubsection{Organization Schemes}
+Descrivono come \textbf{categorizzare} il contenuto e i diversi modi in cui creare \textbf{relazioni} tra i vari componenti. Gli schemi si dividono in:
+\begin{itemize}
+	\item \textbf{Exact}: dividono le informazioni oggettivamente in categorie mutualmente esclusive. Sono utili per gli Information Architects ma possono essere difficili per gli utenti. Alcuni esempi sono:
+	\begin{itemize}
+		\item \textbf{Alfabetici}: è importante che le etichette corrispondano a ciò che l'utente cerca
+		\item \textbf{Cronologici}: fondamentale che ci sia un accordo su come datare l'informazione
+		\item \textbf{Geografici}
+	\end{itemize}
+	\item \textbf{Subjective}: categorizzano le informazione in un modo che può essere specificato o definito dall'organizzazione o dal campo. Sono più difficili da progettare ma spesso più utili degli \textit{exact}. Alcuni esempi:
+	\begin{itemize}
+		\item \textbf{Argomento}
+		\item \textbf{Task}: considera le necessità, azioni, domande o processi che l'utente può avere per quel contenuto
+		\item \textbf{Audience}: organizzare i contenuti in base al segmento di utenza. Possono essere \textit{chiusi} o \textit{aperti} se ci si può spostare o meno. E.g. parental control
+		\item \textbf{Metafore}: aiuta gli utenti associando i contenuti a concetti familiari, e.g. icone
+	\end{itemize}
+\end{itemize}
+\begin{note}[Ibridi]
+	È possibile mischiare i diversi tipi di schemi ma è sconsigliato in quanto potrebbe causare confusione agli utenti. Di solito si fa quando il team non riesce a giungere ad un accordo su quale usare.
+\end{note}
+
+\subsubsection{Organizational Structures}
+Descrive come è definita la \textbf{relazione} tra diversi pezzi del contenuto e permette all'utente di predire dove troverà le informazioni. Le quattro principali strutture sono:
+\begin{itemize}
+	\item \textbf{Gerarchico}: spesso chiamata ad albero o hub-and-spoke, utilizza un approccio padre-figlio tra i diversi pezzi di informazione. L'utente parte da categorie generali e scende in quelle sempre più dettagliate
+	\item \textbf{Sequenziali}: richiedono che l'utente proceda passo passo seguendo un percorso specifico attraverso il contenuto, e.g. processo di acquisto online
+	\item \textbf{Matrici}: permettono all'utente di scegliere il loro percorso dato che il contenuto è collegato in molti modi, e.g. la struttura del web
+	\item \textbf{Database}: utilizza un approccio dal basso all'alto dove il contenuto dipende fortemente dai collegamenti tra i suoi metadati. Facilita un'esperienza dinamica e permette filtri avanzati e possibilità di ricerca
+\end{itemize}
+È fondamentale che gli architetti tengano presente che la struttura scelta deve tollerare miglioramenti e futuri aggiornamenti, in particolare:
+\begin{itemize}
+	\item Permettere la \textbf{crescita}: si deve poter aggiungere nuovo contenuto e nuove sezioni
+	\item Evitare strutture troppo o troppo poco \textbf{profonde}: nel primo caso servono menù giganteschi mentre nel secondo l'informazione è sepolta sotto troppi livelli
+\end{itemize}
+
+\subsubsection{Navigation}
+La navigazione riguarda come l'utente si \textbf{orienta} all'interno dell'interfaccia e mira a garantire che l'utente sia capace di trovare l'informazione o la funzionalità che sta cercando. Si basa su due principi fondamentali:
+\begin{itemize}
+	\item \textbf{Findability}: essere capaci di localizzare l'informazione che l'utente considera rilevante (e.g. biblioteca). È importante piazzare gli elementi con consistenza nell'interfaccia
+	\item \textbf{Discoverability}: la possibilità che gli utenti hanno di scoprire nuove informazioni o funzionalità di cui non erano a conoscenza (e.g. libro sconosciuto in biblioteca). Si possono piazzare ad esempio i nuovi contenuti vicino a quelli più popolari. Di solito però l'interfaccia fornisce strumenti che permettono di scoprire nuovi contenuti in maniera indiretta, per poi rendersene conto solo dopo.
+\end{itemize}
+\subsubsection{Componenti}
+Durante la progettazione dell'interfaccia è importante rimanere \textbf{consistenti} e \textbf{prevedibili} per la scelta degli elementi. Anche se gli utenti non lo sanno, hanno sviluppato una familiarità per come gli elementi si comportano e bisogna quindi scegliere di conseguenza, mirando all'efficienza e alla soddisfazione. Alcuni esempi sono:
+\begin{itemize}
+	\item \textbf{Input Controls}: e.g. checkboxes, radio buttons, dropdown lists, list boxes, bottoni, toggles, campi di testo, date field
+	\item \textbf{Navigational Components}: e.g. breadcrumbs, slider, barra di ricerca, paginazione, tags e icone
+	\item \textbf{Informational components}: e.g. tooltips, icone, barre di caricamento, notifiche e messaggi
+	\item \textbf{Containers}: fisarmonica
+\end{itemize}
+
+\subsection{Innovazione}
+L'innovazione è comunemente definita come l'introduzione di nuove combinazioni, come beni, metodi produttivi, nuovi mercati, etc$\ldots$ Per quanto esistano definizioni diverse, in tutte dominano la \textbf{novità}, il \textbf{miglioramento} e la \textbf{diffusione}. Possiamo dire quindi che è un qualcosa di \textbf{originale} e \textbf{più efficace} che irrompe nel mercato o nella società.
+
+\begin{note}[Invenzione]
+	L'innovazione è correlata ma diversa dall'invenzione: la prima è più diretta all'implementazione pratica della seconda per avere un impatto su un mercato  o società. Non tutte le innovazioni hanno bisogno di una nuova invenzione.
+\end{note}
+
+\paragraph{Innovazione sostenuta} La maggior parte dei processi di innovazione si basano su miglioramenti \textbf{incrementali} di prodotti già esistenti. Avvengono un passo alla volta, senza bisogno di cambiamenti nella compagnia, nelle abilità necessarie e rimanendo lenti e a basso rischio, mantenendo il target e il mercato stabile.
+
+\paragraph{Innovazione dirompente} È un'innovazione che crea un nuovo mercato e catena di valore, scuotendo quelli esistenti e spiazzando le compagnie, prodotti e alleanze già esistenti. Ad oggi indica avanzamenti tecnologici e scientifici dirompenti. Non tutte le innovazioni sono dirompenti, anche se rivoluzionarie, e.g. la macchina.\\
+
+È importante anche distinguere il product \textbf{management} dal product \textbf{development}: il primo riguarda il \textbf{cosa} mentre il secondo il \textbf{come}. Il team di sviluppo riceve i requisiti specificati dal manager e li usa per creare un prodotto funzionante che rispecchi gli standard della compagnia. Consiste quindi nel tradurre un concetto in qualcosa di vendibile sul mercato.
+
+\subsubsection{Design Methods}
+\paragraph{Human Centered Design Process} L'azienda \textbf{IDEO} è una delle più innovative del mondo. Il loro punto chiave è l'empatia per l'utente finale. Credono che la chiave per capire cosa gli umani vogliono veramente risieda in:
+\begin{itemize}
+	\item \textbf{Osservarne il comportamento}: provare a capire le persone osservandole
+	\item Mettersi nella \textbf{stessa situazione} dell'utente finale, per capire come gli utenti si sentono
+\end{itemize}
+IDEO definisce HCD Process come un approccio creativo al problem-solving che parte con le persone e finisce con soluzioni fatte apposta per soddisfare le loro necessità.
+\begin{center}
+	\includegraphics[scale=.2]{ideo}
+\end{center}
+Il processo HCD si divide in tre fasi:
+\begin{enumerate}
+	\item \textbf{Inspiration}: capire i bisogni degli utenti e le loro difficoltà, dimenticando i preconcetti che si hanno. Bisogna essere aperti a tutte le possibilità.
+	\item \textbf{Ideation}: dopo aver consolidato le ricerche, bisogna visualizzare e discutere tutte le possibili soluzioni, anche se assurde. È fondamentale ricevere feedback e ripartire partendo da quelli in modo da ottenere idee buone. Non serve creare prototipi ma è sufficiente fare sketch o modellini.
+	\item \textbf{Implementation}: in questa fase si crea un prototipo che possa essere provato dagli utenti e la produzione dell'oggetto stesso. Si inizia anche a creare un modello di business.
+\end{enumerate}
+
+\paragraph{Design Thinking}
+Il Design Thinking è un processo \textbf{iterativo} dove si cerca di capire l'utente, mettere in discussione le assunzioni e ridefinire i problemi nel tentativo di trovare strategie e soluzioni alternative che potrebbero non essere ovvie. Allo stesso tempo fornisce un approccio \textbf{solution-based} per risolvere i problemi.\\
+
+È estremamente utile per quei problemi che sono mal definiti o sconosciuti, permettendo di ridefinirli con un approccio \textbf{antropocentrico} tramite sessioni di \textbf{brainstorming} e approcci \textbf{hands-on} per quanto riguarda prototipi e test. Si divide in cinque fasi:
+\begin{enumerate}
+	\item \textbf{Empatizzare}: studiare i propri utenti
+	\item \textbf{Definire} i bisogni degli utenti, i problemi e le tue intuizioni
+	\item \textbf{Ideare} sfidando le assunzioni e creando idee per soluzioni innovative
+	\item \textbf{Prototipo}
+	\item \textbf{Test}
+\end{enumerate}
+
+\begin{center}
+	\includegraphics[scale=.4]{des_think}
+\end{center}
+
+La combinazione di questi metodi di design porta al \textbf{Social Enterprise Thinking}.
+\begin{center}
+	\includegraphics[scale=.25]{social_think}
+\end{center}
+
+\begin{note}[HCD]
+	Applicare lo Human-Centered Design sopra al Design Thinking permette di costruire una soluzione che sia capace di fare soldi e che allo stesso tempo soddisfi le necessità delle persone che la utilizzano. È importante notare che HCD è un \textbf{mindset} mentre HCD Process e Design Thinking sono \textbf{design methods}.
+	\begin{center}
+		\includegraphics[scale=.25]{hcd_p}
+	\end{center}
+\end{note}
+
+\subsubsection{Development methods}
+\paragraph{Waterfall} È una metodologia di sviluppo lineare, dove i requisiti dei clienti e degli stakeholders sono raccolti all'inizio del progetto e poi viene creato un piano sequenziale per soddisfarli.
+\paragraph{Agile} È un termine ombrello per un insieme di framework e pratiche basate sui valori e principi espressi nel "Manifesto for Agile Software Development". La differenza principale dagli altri approcci è il concentrasi sulle \textbf{persone} che lavorano e su \textbf{come lavorano assieme}. È il metodo migliore per HCD e Design thinking dove iterazioni continue sono fondamentali.
+
+\subparagraph{Scrum}
+È un framework agile progettato per piccoli gruppi che dividono il loro lavoro in obiettivi che possono essere completati in breve tempo (circa due settimane), chiamati \textbf{sprint}. Il team controlla i progressi in riunioni giornaliere di quindici minuti, chiamati \textbf{daily scrums}. Alla fine dello sprint si fa una \textbf{review} per mostrare il lavoro fatto e migliorare per i prossimi. Uno dei principi fondamentali è che i clienti \textbf{cambieranno idea} su ciò che vogliono o di cui hanno bisogno e ci saranno quindi sfide imprevedibili per cui un approccio pianificato non funzionerebbe. Scrum usa quindi un approccio empirico basato su prove, accettando che il problema non può essere compreso e definito completamente subito all'inizio del progetto. Si concentra piuttosto sull'abilità di rispondere velocemente a nuovi requisiti e di adattarsi a nuove tecnologie e cambiamento del mercato. Si compone di tre ruoli:
+\begin{itemize}
+	\item \textbf{Product owner}, rappresenta gli stakeholder e i clienti ed è responsabile per consegnare dei buoni risultati di business. Di solito definisce il prodotto in termini "customer-centric" e li aggiunge al \textbf{product backlog} in ordine di importanza e dipendenze
+	\item \textbf{Development team}
+	\item \textbf{Scrum master}: non il classico capo ma agisce da buffer tra il team e ogni distrazione, facendo in modo che il framework sia seguito
+\end{itemize}

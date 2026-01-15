@@ -10,12 +10,15 @@
 \usepackage{amssymb}
 \usepackage{makecell}
 \usepackage{mathtools}
+\usepackage{array}
+\usepackage{enumitem}
 % ----  Useful packages % ---- 
 
 \usepackage{wrapfig}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{hyperref}
+\usepackage[table]{xcolor}
 \hypersetup{
 	colorlinks,
 	citecolor=black,
@@ -27,6 +30,9 @@
 % ---- Set page size and margins replace ------
 \usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 % ---- Set page size and margins replace ------
+
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\definecolor{lightgray}{gray}{0.92}
 
 % ------- NOTA ------
 \theoremstyle{remark}
