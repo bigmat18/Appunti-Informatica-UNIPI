@@ -1,0 +1,595 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{User Experience}
+\subsection{Wireframing}
+\begin{definition}[Wireframe]
+	I wireframe sono \textbf{blueprint} che migliorano la comunicazione tra designer e programmatori riguardo la struttura del sito web o app che stanno sviluppando.
+\end{definition}
+Servono ad evitare che le varie persone coinvolte nel progetto prendano strade diverse seguendo solo ciò che pensano sia meglio individualmente.\\
+
+L'attività di \textbf{wireframing} è quindi il processo di creazione di sketch basilari dell'interfaccia di un sito o un'applicazione per dimostrare la sua \textbf{struttura} e il suo \textbf{layout}.\\
+
+\noindent Esistono due tipi di wireframe:
+\begin{itemize}
+	\item \textbf{Low-fidelity}: semplici sketch dell'interfaccia che si concentrano su struttura e layout
+	\item \textbf{High-fidelity}: rappresentazione dettagliata dell'interfaccia con topografia di base, icone e dettagli di documentazione
+\end{itemize}
+
+\subsection{Adaptability}
+Il contesto gioca un ruolo fondamentale nel UX Design (e.g. utente semplice da telefono contro esperto da computer) ed è quindi importante fare \textbf{ricerche sugli utenti} e \textbf{testing} in modo da comprendere a fondo i vari modi in cui gli utenti possono interagire.
+
+\begin{definition}[Adaptability]
+	Un termine ombrello nel UX Design che si riferisce alla capacità di un design di adattarsi e rispondere alle diverse necessità, contesti, capacità e preferenze degli utenti.
+\end{definition}
+
+\subsubsection{Dispositivo}
+\paragraph{Responsive Design} Con sempre più dispositivi venduti, ognuno con diversi layout e standard, è fondamentale fare in modo che i siti web siano leggibili ed utilizzabili ovunque. Il responsive design è un metodo di designing e programmazione di pagine web e app per \textbf{adattarle} a \textit{dimensione} e \textit{risoluzione} dei diversi dispositivi.\\
+Il responsive design permette all'utente di avere un'esperienza \textbf{consistente} indipendentemente dal dispositivo e rende più facile \textbf{manutenere} e \textbf{aggiornare} i siti web, dato che va fatto su una sola versione. Esistono alcune tecniche:
+\begin{itemize}
+	\item \textbf{Flexible grid}: la pagina è divisa in colonne di larghezza uguale e ogni elemento può usarne una o più. Si possono impostare dei breakpoint e degli spazi. Si divide in diversi \textit{pattern}:
+	\begin{itemize}
+		\item \textbf{Tiny Tweaks}: il layout rimane pressoché lo stresso su tutti i dispositivi e lavora su una colonna, cambiando solo dimensione del font, spaziature e margini
+		\item \textbf{Column Drop}: si parte dai dispositivi mobili con una singola colonna e se ne aggiungono man mano che lo schermo cresce, mentre scendono sotto alla precedente per quelli piccoli
+		\item \textbf{Mostly Fluid}: la griglia diventa fluida, con i margini che aumentano con il crescere dello schermo e con una larghezza massima per evitare che le righe diventino troppo lunghe
+		\item \textbf{Layout Shifter}: il layout cambia significativamente ai breakpoints
+		\item \textbf{Off Canvas}: la navigazione o il contenuto secondario vengono nascosti di default sui dispositivi mobili e si possono mostrare tramite menu o gesture
+	\end{itemize}
+	\item \textbf{Flexible images}: le immagini scalano e si aggiustano in base alla dimensione dello schermo
+	\item \textbf{Media query} e \textbf{breakpoints}: permettono l'applicazione di stili diversi in base alle caratteristiche del dispositivo
+\end{itemize}
+Alcune buone pratiche sono:
+\begin{itemize}
+	\item \textbf{Keep it simple}: evitare layout complessi e mantenere un design minimale
+	\item Priorizzare il \textbf{contenuto}: deve essere la parte più importante della pagina e facilmente leggibile da tutti i dispositivi
+	\item Design per il \textbf{touch}: assicurarsi che i bottoni siano grandi abbastanza per essere toccati con un dito
+	\item Ottimizzare per il \textbf{tempo di caricamento}, in particolare immagini o altri oggetti pesanti
+	\item \textbf{Test} su tanti tipi di dispositivi per verificare che tutto appaia e funzioni correttamente
+\end{itemize}
+
+\subparagraph{Mobile first} È una filosofia che priorizza i dispositivi mobili rispetto a quelli desktop o comunque con schermi più grandi. Questo implica che i designer si assicurano che il contenuto e le funzionalità più importanti siano facilmente accessibili sui piccoli schermi e che sia facile navigare il sito con controlli di tipo touch. Inoltre questo approccio si assicura che il sito carichi velocemente sui dispositivi con una connessione più lenta.\\
+Si basa su un design di tipo \textbf{progress advancement}, ovvero che parte dalle funzionalità minime e interazioni basilari (per mobile) per poi aggiungerne di più complesse (per desktop). Si oppone alla \textbf{graceful degradation}.
+
+\paragraph{Adaptive Design}
+Il design adattivo consiste nel creare diversi tipi di layout per ogni diverso dispositivo. È più costoso del \textit{responsive design} ma a volte è migliore, e.g. grandi aziende che non vogliono riscrivere il codice già presente per desktop.
+
+\subsubsection{Utente}
+\paragraph{Adaptive UX} Per far si che un sistema si adatti all'utente è importante avere informazioni su di lui, ad esempio:
+\begin{itemize}
+	\item \textbf{Collaborative filtering}, e.g. se ad A piace X e Y e a B piace X allora a B potrebbe piacere Y
+	\item \textbf{Content-based filtering} che si concentra invece su contenuti simili a qualcosa che piace ad un utente
+\end{itemize}
+\begin{center}
+	\includegraphics[scale=.4]{adaptive_ux}
+\end{center}
+
+\paragraph{Accessibilità} È un aspetto fondamentale del UX Design perché assicura che tutti gli utenti possano accedere e interagire con i prodotti digitali indipendentemente dalle loro abilità. Non solo il $15\%$ della popolazione mondiale ha una qualche forma di disabilità, ma bisogna anche tenere in considerazione le compromissioni temporanee (e.g. braccio rotto). In diversi paesi è obbligatorio per legge (e.g. EU).\\
+Lo standard è il \textbf{Web Content Accessibility Guidelines}, ad oggi alla versione 2.2, che si compone di quattro principi (POUR):
+\begin{itemize}
+	\item \textbf{Perceivable}: le informazioni devono essere presentate in modi che l'utente possa percepire
+	\item \textbf{Operable}: i componenti dell'interfaccia devono essere utilizzabili
+	\item \textbf{Understandable}: le informazioni e le operazioni devono essere chiare
+	\item \textbf{Roubst}: il contenuto deve funzionare con tecnologie di supporto
+\end{itemize}
+Ognuno è poi diviso in tredici linee guida, ognuna con i suoi criteri, che portano a tre livelli di conformità:
+\begin{itemize}
+	\item \textbf{A}: livello minimo, se non raggiunto alcuni utenti sono completamente bloccati
+	\item \textbf{AA}: quello raccomandato e spesso obbligatorio per legge
+	\item \textbf{AAA}: il migliore, non sempre raggiungibile a seconda del contenuto
+\end{itemize}
+Le principali linee guida per il livello \textit{AA} sono:
+\begin{itemize}
+	\item \textit{Contrasto} $4.5:1$ per il testo e $3:1$ per i componenti dell'interfaccia
+	\item Accesso tramite \textit{tastiera} per tutte le funzionalità
+	\item \textit{Testo alternativo}, ovvero descrizioni significative per tutte le immagini che non siano decorative
+	\item \textit{Semantica HTML} che usi gli heading appropriati, le label per i form di input e ARIA quando necessario
+	\item \textit{Consistenza}: navigazione nello stesso ordine, funzionalità uguali chiamate in maniera identica
+	\item \textit{Testo ridimensionabile} fino al $200\%$ senza perdere funzionalità
+\end{itemize}
+
+\subsection{Wireflows}
+A differenza dei \textit{wireframe}, che sono statici, gli \textbf{user flow} aiutano a descrivere le possibili \textbf{azioni} che un utente può fare nell'interfaccia. Aiuta a mappare tutti i possibili passaggi e movimenti dell'utente nell'applicazione o sito web.\\
+Partendo dalle \textit{personas}, i \textit{requisiti} e gli \textit{scenari} si pensa a tutti i possibili punti di contatto che l'utente avrà con il sistema per definire così un \textbf{diagramma di flusso}. Questo può essere poi integrato con i \textit{wireframe} per dare vita ai \textbf{wireflows}.
+
+\subsection{Mockups}
+\begin{definition}[Mockup]
+	Un mockup è una rappresentazione ad alta fedeltà del prodotto che include più dettagli visivi e elementi di design di un wireframe, permettedo di testare e rifinire come il prodotto si presenta.
+\end{definition}
+I mockup vengono di solito utilizzati per comunicare i concetti di design e le funzionalità in maniera più efficace. Sono anche utili per alcuni tipi di studi sull'usabilità dove serve il feedback sull'aspetto generale del design.
+
+\begin{note}
+	È fondamentale notare che un mockup NON ha le funzionalità necessarie per fare test significativi od ottenere feedback profondi in quanto non possiede alcun elemento interattivo.
+\end{note}
+
+\subsection{Pretotyping}
+\subsubsection{Mercato}
+Così come in legge un imputato e innocente fino a prova contraria, nel mercato dovremmo assumere che un prodotto sia fallito fino a prova contraria. Questo perché statisticamente solo il $10\%$ dei prodotti ha successo.
+\begin{definition}[Market failure]
+	La maggior parte dei nuovi prodotti fallirà sul mercato, anche se sono eseguiti in maniera competente.
+\end{definition}
+Il pretotyping fornisce strumenti e tecniche necessarie a validare un'idea con poche risorse e in poco tempo prima di investire per lo sviluppo.\\
+
+Per minimizzare il rischio di falsi negativi o positivi sul mercato è necessario partire da "\textbf{thoughtland}" per ottenere opinioni
+\begin{observation}[Translation problem]
+	Un'idea è un'astrazione soggettiva che ci si immagina nella propria testa. Nel momento in cui la si prova a comunicare c'è un problema di "traduzione", sopratutto se è molto innovativa.
+\end{observation}
+\begin{observation}[Prediction problem]
+	Anche se gli interlocutori hanno un'idea astratta della tua idea che è molto simile a come la immagini, gli umani sono pessimi a predire se vogliono veramente qualcosa che non hanno mai sperimentato e come la userebbero.
+\end{observation}
+per poi arrivare ad "\textbf{actionland}" per ottenere dati.
+
+\subsubsection{Pretotype}
+Prima ancora di creare un \textit{prototipo} è importante capire se fallirà o meno sul mercato prima di investire tempo e denaro. Questo si fa con un \textbf{pretotype}. I passaggi per lo sviluppo sono:
+\begin{enumerate}
+	\item Isolare l'\textbf{assunzione chiave} e capire se è vera o falsa
+	\item Scegliere un tipo di \textbf{pretotype} che permetta di isolare l'assunzione
+	\item Fare un'ipotesi di \textbf{interesse di mercato}: quante persone e di che tipo vorrebbero il pretotype
+	\item \textbf{Test} del pretotype mettendolo nel mondo reale e analizzando come le persone ci interagiscono
+	\item \textbf{Imparare} dai risultati del test per \textbf{rifinire} il pretotype. Se l'ipotesi permane, testare in nuove situazioni (\textbf{hypozoom})
+\end{enumerate}
+
+\paragraph{Fake Door} Questo metodo consiste nel pubblicizzare l'idea del prodotto che ancora non esiste fingendo il contrario e vedere quante persone sarebbero interessate. Si può fare tramite pubblicità, siti web, form, email o poster.
+
+\paragraph{Mechanical Turk} Fingere che un algoritmo sia implementato facendo in realtà fare il lavoro ad un umano e vedere se interessa.
+
+\paragraph{Impersonator} Utilizzare un prodotto già esistente con un'interfaccia diversa.
+
+\paragraph{Pinocchio} Creare una finta versione del prodotto che non funziona per verificare ad esempio se è il giusto form factor, ha le giuste funzionalità ed è usabile. E.g. finto telefono di plastica.
+
+\paragraph{One Night Stand} Fare una versione completa dell'esperienza che si vuole creare ma solo per una volta per capire se può funzionare.
+
+\paragraph{Facade} Noleggiare o chiedere in prestito attrezzature, spazi e materiali per simulare un'infrastruttura che in realtà non esiste, evitando così di fare subito un investimento grosso.
+
+\subsection{Prototyping}
+Nel momento in cui si ha imparato tutto il possibile sulla domanda di mercato dai \textit{pretotypes} ed è necessario mettere il vero prodotto nelle mani dei clienti per testarlo e rifinirlo, si crea un \textbf{prototipo}.
+
+\begin{definition}[Prototipo]
+	Un primo esempio sperimentale di un design che permette all'utente di visualizzare e \textbf{interagirci} prima che il prodotto finale sia sviluppato.
+\end{definition}
+
+\begin{definition}[Prototyping]
+	Il processo con il quale i team di design ideano, esperimentano e portano in vita i concetti. È la fase in cui le idee sono implementate in un qualcosa di tangibile.
+\end{definition}
+
+Un prototipo porta quindi a diversi vantaggi:
+\begin{itemize}
+	\item Fornisce delle fondamenta solide per l'ideazione e dà agli stakeholder una chiara immagine dei potenziali benefici, rischi e costi
+	\item I cambiamenti possono essere fatti all'inizio del processo, prima del rilascio, evitando errori costosi e il dover rimanere per forza attaccati ad una versione
+	\item Il feedback dell'utente permette di identificare cosa funziona meglio e se è necessario rifare delle parti
+\end{itemize}
+
+\subsubsection{Fidelity}
+\begin{definition}[Fidelity]
+	Quanto un prototipo assomiglia al prodotto finale in termini di aspetto e funzionalità.
+\end{definition}
+Esistono due livelli di fedeltà di un prototipo:
+\begin{itemize}
+	\item \textbf{Low-fidelity}: di solito molto economici in termini di soldi e tempo, fornisce interazioni molto semplici (se non inesistenti). Facile da modificare. È poco realistico e potrebbe essere troppo basilare perché un utente riesca a dare un feedback, senza contare che li costringe a dover immaginare come sarebbe il prodotto.
+	\item \textbf{High-fidelity}: più costosi e lunghi da creare, sono spesso sviluppati in ambienti specifici (e.g. Figma) e danno una sensazione di prodotto finito, rendendoli attraenti sia per gli utenti che per gli stakeholder. I test forniscono dati più accurati anche se gli utenti potrebbero soffermarsi troppo su dettagli superficiali invece che il contenuto.
+\end{itemize}
+Ed eventualmente tutte le possibilità che ci sono in mezzo (\textbf{mid-fidelity}), ad esempio un wireframe avanzato con solo alcune parti interattive. In generale la fedeltà si basa su sei dimensioni:
+\begin{itemize}
+	\item \textbf{Realismo fisico/visuale}: quanto simile è il prototipo al prodotto finale per quanto riguarda l'estetica e il design visivo
+	\item \textbf{Obiettivo}: l'ampiezza e profondità del design rappresentato nel prototipo
+	\item \textbf{Funzionalità}: cosa funziona effettivamente nel prototipo, e.g. bottoni in una web app
+	\item \textbf{Dati}: se il prototipo funziona con dati reali o finti
+	\item \textbf{Autonomia}: se il prototipo funziona da solo o ha bisogno di input dal designer o dall'utente
+	\item \textbf{Piattaforma}: se il prototipo è un interim o l'implementazione finale
+\end{itemize}
+
+\subsubsection{Scope}
+Lo \textit{scope} descrive quanto l'utente sarà in grado di vedere e testare. Si divide in:
+\begin{itemize}
+	\item \textbf{Orizzontale}: fornisce una visione completa del sistema senza però andare troppo nel dettaglio per ogni funzionalità. È quindi limitato ad un solo layer. È utile agli stadi iniziali del design in quanto permette agli stakeholder di identificare velocemente potenziali problemi.
+	\item \textbf{Verticale}: fornisce una visione dettagliata di una particolare specifica, permettendo di testare se il prodotto è fattibile o se un particolare requisito è soddisfatto
+\end{itemize}
+
+\begin{center}
+	\includegraphics[scale=.25]{scope}
+\end{center}
+
+\subsubsection{Tecniche}
+\paragraph{Carta} Un prototipo di carta è \textit{low-fidelity} e rappresenta il layout e le funzionalità basilari di un prodotto o servizio. È veloce ed economico. Consiste nel disegnare su carta o cartone e poi l'utente può interagirci fisicamente. Può essere usato per testare agli stadi iniziali dove posizionare bottoni e menu per il flusso delle informazioni e le interazioni dell'utente.
+
+\paragraph{Wireframe} È la versione digitale di quello di carta.
+
+\paragraph{Mechanical Turk} Un prototipo che simula il comportamento del prodotto usando in realtà input umani invece della tecnologia. Ad esempio può consistere in audio o video preventivamente registrato, risposte programmate o interazioni live con l'utente.
+
+\paragraph{Funzionali} Prototipo  che include funzionalità funzionanti o parzialmente funzionanti per testare gli aspetti tecnici di un prodotto, come reattività o funzionamento. Utile negli stadi finali del design quando si vogliono perfezionare dettagli tecnici prima di passare allo sviluppo completo.
+
+\paragraph{Non funzionali} Un prototipo che sembra esattamente come il prodotto reale ma non ha nessuna funzionalità. È utilizzato per dimostrare il design fisico e l'interfaccia utente senza dover programmare in maniera dettagliata.
+
+\begin{observation}
+	La differenza tra i prototipi e i \textit{mockup} e \textit{wireframe} è che i primi sono versioni più avanzate creati sulla base degli ultimi che permettono di testare e validare il design prima della fase di sviluppo.
+	\begin{center}
+		\includegraphics[scale=.3]{confronto}
+	\end{center}
+\end{observation}
+
+\subsection{Design systems}
+Con la crescita di un prodotto più designer prendono decisioni diverse e i componenti vengono reimplementati in maniera leggermente differente. Un po' alla volta le \textbf{inconsistenze} si accumulano e la qualità scende.
+
+\begin{definition}[Design System]
+	Un insieme di componenti riutilizzabili, guidati da standard precisi, che possono essere assemblati per costruire applicazioni. Include:
+	\begin{itemize}
+		\item Libreria dei componenti, e.g. bottoni
+		\item Design tokens, e.g. colori e font
+		\item Linee guida per l'utilizzo e documentazione
+		\item Principi di design e pattern
+		\item Implementazioni di codice
+	\end{itemize}
+\end{definition}
+
+\noindent I sistemi di design garantiscono:
+\begin{itemize}
+	\item \textbf{Consistenza}: gli stessi componenti si comportano allo stesso modo ovunque
+	\item \textbf{Efficienza}: crea una volta e riusa molteplici
+	\item \textbf{Qualità}: accessibilità e responsività
+	\item \textbf{Scalabilità}: nuovi membri del team si possono unire più facilmente
+	\item \textbf{Manutenibilità}: risolvere un errore lo fa per tutti
+\end{itemize}
+
+\subsubsection{Atomic Design}
+Questo metodo si compone di blocchi da costruzione uno più grande dell'altro:
+\begin{itemize}
+	\item \textbf{Atomi}: elemento basilare che non può essere diviso ulteriormente, e.g. bottoni
+	\item \textbf{Molecole}: combinazioni di atomi che funzionano assieme, e.g. form di ricerca (bottone, input e label)
+	\item \textbf{Organismo}: componenti complessi dell'interfaccia composti dai precedenti, e.g. header
+	\item \textbf{Template}: layout di pagina che mostrano la struttura del contenuto, e.g. homepage
+	\item \textbf{Pagine}: istanze specifiche di layout con vero contenuto
+\end{itemize}
+
+\subsubsection{Design Tokens}
+\begin{definition}[Design Token]
+	Decisione di design salvata come dato.
+\end{definition}
+Permette di cambiare una volta per tutte le occorrenze e indipendentemente dalla piattaforma. E.g. definire il colore primario.
+
+\subsection{Evaluation}
+Una volta creato un \textit{prototipo} lo si vuole \textbf{testare} con gli utenti. Questo può portare a trovare problemi di \textbf{usabilità}, possibile margine di miglioramento e capire come gli utenti si comportano e cosa preferiscono.
+
+\subsubsection{Definizioni}
+Esistono due definizioni diverse di \textit{usability} che si concentrano su due aspetti leggermente diversi.
+\paragraph{Nielsen}
+\begin{definition}[Usability - Nielsen]
+	L'usabilità è un attributo di qualità che definisce quanto facili le interfacce utente sono da utilizzare. Si compone di:
+	\begin{itemize}
+		\item \textbf{Learnability}: quanto è facile compiere azioni basilari per la prima volta
+		\item \textbf{Efficiency}: una volta imparato il design, quanto veloce si eseguono le azioni
+		\item \textbf{Memorability}: quando gli utenti ritornano sul prodotto dopo tanto tempo, quanto è facile riprenderne l'utilizzo
+		\item \textbf{Errors}: quanti errori compie l'utente, quanto sono gravi e quanto è facile riprendersi da essi
+		\item \textbf{Satisfaction}: quanto è piacevole usare il design
+	\end{itemize}
+\end{definition}
+
+\paragraph{ISO} La definizione ISO si concentra invece sul fatto che l'usabilità sia il risultato dell'interazione con il sistema: i vari attributi possono aiutare ma l'usabilità non è una caratteristica intrinseca del prodotto.
+\begin{definition}[Usability - ISO9241-11]
+	L'usabilità è il grado a cui un sistema, prodotto o servizio permette agli utenti di compiere determinate azioni con \textbf{efficacia}, \textbf{efficienza} e \textbf{soddisfazione} in uno specifico contesto d'uso.
+\end{definition}
+
+\begin{definition}[Efficacia]
+	Accuratezza e completezza con le quali gli utenti raggiungono obiettivi specifici. Si può misurare in:
+	\begin{itemize}
+		\item Percentuale di task completate con successo
+		\item Tasso di errore
+		\item Accuratezza nelle decisioni, e.g. percentuale di selezioni corrette
+		\item Completezza dei risultati
+	\end{itemize}
+\end{definition}
+
+\begin{definition}[Efficienza]
+	Risorse utilizzate in relazione ai risultati ottenuti, e.g. tempo, impegno umano, costi o materiali. Si misura in:
+	\begin{itemize}
+		\item Mediana o percentile del tempo speso per ogni task completata con successo
+		\item Throughput delle task per ora o passi necessari per completarla
+		\item Impegno umano valutato tramite scale di workload, e.g. NASA-TLX, SWAT o MRQ
+		\item Costo per risultato corretto quando rilevante
+	\end{itemize}
+\end{definition}
+
+\begin{definition}[Soddisfazione]
+	Quanto le risposte fisiche, cognitive ed emotive di un utente raggiungono le sue necessità e aspettative. Si misura in:
+	\begin{itemize}
+		\item \textbf{System Usability Scale} per l'usabilità generale percepita
+		\item \textbf{UMUX-Lite} per l'utilità/usabilità percepita quando \textit{SUS} è troppo lungo
+		\item Scale specifiche di usabilità come \textbf{Chatbot Usability Scale}
+	\end{itemize}
+\end{definition}
+
+\begin{note}
+	Conviene separare la \textit{soddisfazione} (soggettiva) dall'\textit{efficacia/usabilità} (oggettiva) ma analizzarle assieme per provare a spiegare le divergenze, e.g. veloce ma frustrante.
+\end{note}
+
+\paragraph{Utile}
+\begin{definition}[Utilità]
+	Quanto un prodotto riesce a fare ciò di cui gli utenti hanno bisogno.
+\end{definition}
+\noindent La combinazione di \textit{utilità} e \textit{usabilità} india che un prodotto è \textbf{utile}.
+
+\subsubsection{Valutazioni euristiche}
+La valutazione euristica è un metodo di valutazione delle interfacce utente basato su principi di usabilità ben definiti (\textit{euristiche}). Di solito comprende un piccolo gruppo di valutatori, circa $3-5$. Anche se questo metodo non fornisce un approccio sistematico alla risoluzione dei problemi di usabilità, può \textbf{guidare} la creazione di design rivisitati basati sui principi violati trovati in maniera economica.
+
+\begin{center}
+	\includegraphics[scale=.3]{euristiche}
+\end{center}
+
+\noindent Nielsen ha identificato dieci euristiche per l'usabilità:
+\begin{enumerate}
+	\item \textbf{Visibilità} dello \textbf{stato del sistema}: i design dovrebbero mantenere l'utente informato riguardo a ciò che sta accadendo tramite feedback appropriati
+	\item \textbf{Mappare} il sistema al \textbf{mondo reale}: il design dovrebbe usare parole, frasi e concetti familiari per l'utente
+	\item \textbf{User control} e \textbf{libertà}: gli utenti necessitano di una "uscita di emergenza" evidente per poter abbandonare l'azione non voluta
+	\item \textbf{Consistenza} e \textbf{standard}: seguire le convenzioni della piattaforma per evitare che l'utente debba provare a indovinare il significato delle cose
+	\item \textbf{Prevenzione degli errori}: prima ancora di avere dei messaggi di errore ben strutturati è importante provare ad evitare che accadano
+	\item \textbf{Recognition} invece di recall: ridurre al minimo il carico sulla memoria degli utenti facendo in modo che gli elementi, le azioni e le opzioni siano visibili
+	\item \textbf{Flessibilità} ed \textbf{efficienza} d'uso: garantire shortcut che un utente esperto può sfruttare
+	\item \textbf{Estetica} e \textbf{design minimal}: evitare informazioni irrilevanti nelle interfacce
+	\item \textbf{Riconoscere}, \textbf{diagnosticare} e \textbf{riprendersi} dagli \textbf{errori}: i messaggi di errore dovrebbero essere frasi che indicano precisamente il problema e suggeriscono una soluzione costruttiva, invece che un codice
+	\item \textbf{Aiuto} e \textbf{documentazione}: per quanto idealmente il design non dovrebbe aver bisogno di ulteriori spiegazioni, potrebbe servire della documentazione da fornire all'utente per completare certi task
+\end{enumerate}
+
+\subsubsection{Cognitive Walkthrough}
+Metodo di valutazione che si base sull'idea che l'utente impari ad usare l'interfaccia tramite l'\textbf{esplorazione}, aiutato dai suoi \textbf{obiettivi} e utilizzando semplice \textbf{ragionamento}.\\
+
+La valutazione viene quindi fatta da un \textbf{esperto} che compie un insieme di task imitando le performance di un utente. Prima che l'esperto possa procedere, deve ricevere dal designer o sviluppatore:
+\begin{itemize}
+	\item \textbf{Descrizione utente}, che include il suo livello di esperienza con i computer e le assunzioni del designer
+	\item \textbf{Descrizione sistema} che include le operazioni e le performance
+	\item \textbf{Descrizione task} che specifica ciò che l'esperto dovrà fare seguendo il punto di vista dell'utente
+	\item \textbf{Sequenza azioni} che descrive ciò che il sistema deve mostrare e le azioni che l'utente deve compiere per completare una task. La combinazione di un system display e un'azione utente compongono uno \textit{step}
+\end{itemize}
+Durante ogni step della \textit{sequenza azioni}, l'esperto deve porre le seguenti domande:
+\begin{itemize}
+	\item A questo stadio, il prossimo obiettivo è chiaro?
+	\item L'azione corretta è ovvia?
+	\item È chiaro che questa azione porta all'obiettivo?
+	\item Quali problemi ci sono nel compiere questa azione?
+\end{itemize}
+
+\newpage
+\subsubsection{Usability testing}
+Processo nel quale un \textit{ricercatore} chiede ad un \textit{partecipante} di compiere delle task, di solito usando una o più interfacce, mentre il suo comportamento viene \textbf{osservato} e ascoltato per eventuali \textbf{feedback}.
+\begin{wrapfigure}[17]{r}{7cm}
+	\vspace{1cm}
+	\includegraphics[width=7cm]{elements_usability}
+\end{wrapfigure}
+Abbiamo quindi tre elementi:
+\begin{itemize}
+	\item \textbf{Facilitator}: il ricercatore che guida il \textit{partecipante} durante il test. Deve dare istruzioni, rispondere alle domande e farne in seguito. Il suo lavoro è assicurare che i risultati siano validi e di alta qualità senza influenzare il comportamento del \textit{partecipante}.
+	\item \textbf{Task}: attività realistiche che il \textit{partecipante} potrebbe dover compiere nella vita reale; possono essere molto specifiche o molto generali in base alle domande del ricercatore e al tipo di test. Possono essere comunicate verbalmente o in forma scritta ma è importante che siano precise al massimo in quanto il minimo errore può influenzare il \textit{partecipante}.
+	\item \textbf{Partecipante}: utente realistico del prodotto o servizio; può essere qualcuno che lo usa già o comunque che ha un simile background o necessità. Idealmente la scelta parte dalle \textit{personas} definite. A volte gli viene chiesto di pensare ad alta voce.
+\end{itemize}
+Esistono due tipi di test: \textbf{quantitativo} e \textbf{qualitativo}.
+
+\begin{table}[h]
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\small
+	\begin{tabular}{|P{3.5cm}|P{5.5cm}|P{5.5cm}|}
+		\hline
+		% Titoli centrati, in grassetto e senza colore di sfondo
+		\multicolumn{1}{|c|}{} & 
+		\multicolumn{1}{c|}{\textbf{Ricerca Qualitativa}} & 
+		\multicolumn{1}{c|}{\textbf{Ricerca Quantitativa}} \\ \hline
+		
+		\textbf{Domande a cui risponde} & Perché? & Quanti e quanto? \\ \hline
+		
+		\textbf{Obiettivi} & 
+		Sia \textit{formativa} che \textit{riepilogativa}:
+		\begin{itemize}[nosep, leftmargin=*]
+			\item informare le decisioni di design
+			\item identificare problemi di usabilità e trovare soluzioni
+		\end{itemize} & 
+		Principalmente \textit{riepilogativa}:
+		\begin{itemize}[nosep, leftmargin=*]
+			\item valutare l'usabilità di un sito esistente
+			\item monitorare l'usabilità nel tempo
+			\item confrontare il sito con i competitor
+			\item calcolare il ROI
+		\end{itemize} \\ \hline
+		
+		\textbf{Quando viene usata} & 
+		In qualsiasi momento: durante il redesign, o quando si ha un prodotto finale funzionante. & 
+		Quando si ha un prodotto funzionante (all'inizio o alla fine di un ciclo di design). \\ \hline
+		
+		\textbf{Risultati} & 
+		Risultati basati sulle impressioni, interpretazioni e conoscenze pregresse del ricercatore. & 
+		Risultati statisticamente significativi che probabilmente saranno replicati in uno studio diverso. \\ \hline
+		
+		\textbf{Metodologia} & 
+		\begin{itemize}[nosep, leftmargin=*]
+			\item Pochi partecipanti
+			\item Condizioni di studio flessibili adattabili alle esigenze del team
+			\item Protocollo "think-aloud"
+		\end{itemize} & 
+		\begin{itemize}[nosep, leftmargin=*]
+			\item Molti partecipanti
+			\item Condizioni di studio ben definite e rigorosamente controllate
+			\item Solitamente senza "think-aloud"
+		\end{itemize} \\ \hline
+	\end{tabular}
+\end{table}
+
+\newpage
+\paragraph{Pianificazione} Prima di tutto bisogna definire l'\textbf{obiettivo} della ricerca, ovvero che cosa vogliamo testare e a che scopo. Successivamente va deciso il formato, che può essere:
+\begin{itemize}
+	\item In \textbf{laboratorio} o \textbf{sul campo}
+	\item \textbf{Moderato} o \textbf{non moderato}: il primo caso fornisce maggiori informazioni e un miglior accesso ai commenti ma costa di più ed è più difficile da organizzare. Il secondo è più economico, veloce e fornisce un miglio accesso a partecipanti difficili da reclutare
+	\item \textbf{Di persona} o da \textbf{remoto}: il primo è il più consigliato quando possibile in quanto fornisce un'interazione più personale che aiuta a capire indizi sottili
+\end{itemize}
+Per quanto riguarda il \textbf{numero di partecipanti}, Nielsen evidenzia che per studi \textit{qualitativi} $5$ persone sono un buon numero. Per quanto riguarda quelli \textit{quantitativi} dovrebbero essere almeno $20$. In entrambi i casi devono essere i partecipanti corretti che rispecchiano la demografia e i comportamenti dei \textit{target user}.
+\begin{note}
+	Evita di chiedere ai partecipanti di fingere o immaginare scenari in quanto potrebbe invalidare i risultati.
+\end{note}
+\noindent Il passo successivo è quello di scrivere le giuste \textbf{task}, che possono essere:
+\begin{itemize}
+	\item \textbf{Esplorative}, utilizzate per imparare come le persone esplorano le informazioni; non adatte alla ricerca \textit{quantitativa}
+	\item \textbf{Specifiche}: sono mirate e hanno una risposta corretta o un punto di arrivo
+\end{itemize}
+Infine si decidono le \textbf{metriche}, se presenti. Nel caso degli studi \textit{qualitativi} si definiscono le domande da fare ai partecipanti. In quelli \textit{quantitativi} sono invece fondamentali, e.g. tempo speso su una task, livelli di soddisfazione, ratio di successo e di errore.
+
+\begin{note}
+	Può essere molto utile fare prima un \textbf{pilot study} per rifinire come sono scritte le task, il loro ordine e quantità e assicurarsi che si stiano reclutando i giusti partecipanti.
+\end{note}
+
+\paragraph{Cosa evitare} Ecco dieci cose da evitare durante il testing:
+\begin{enumerate}
+	\item Dire agli utenti \textbf{dove muoversi} nell'interfaccia
+	\item Dire agli utenti \textbf{cosa fare}
+	\item Creare task con \textbf{date passate}
+	\item Rendere le task \textbf{troppo semplici}
+	\item Usare scenari \textbf{troppo elaborati}
+	\item Scrivere una \textbf{pubblicità} invece di un task
+	\item Rischiare di causare una \textbf{reazione emotiva}
+	\item Essere \textbf{divertenti}
+	\item \textbf{Offendere} i partecipanti
+	\item \textbf{Chiedere come} un partecipante farebbe qualcosa
+\end{enumerate}
+
+\newpage
+\subsection{IOT}
+\begin{definition}[Internet of Things]
+	Un sistema di \textit{computing devices} interconnessi, macchine meccaniche e digitali, oggetti, animali o persone che sono dotati di \textbf{unique identifiers} (UIDs) e l'abilità di trasferire dati attraverso una rete senza la necessità di interazione umana.
+\end{definition}
+\begin{definition}[Industria 4.0]
+	Descrive l'organizzazione del processo di produzione basato sulla comunicazione automatica di tecnologia e dispositivi lungo la catena produttiva.
+\end{definition}
+\begin{center}
+	\includegraphics[scale=.4]{industria4}
+\end{center}
+Nell'industria 4.0 i sistemi monitorano i processi finisci e creano una copia virtuale del mondo fisico per poi prendere decisioni decentralizzate basate su meccanismi di auto organizzazione.
+\begin{definition}[Digital Twin]
+	Una copia digitale di un'entità fisica come processi, persone, luoghi, sistemi e dispositivi.
+\end{definition}
+\subsubsection{Il Ciclo di Vita dell'Esperienza}
+Il modello analizzato suddivide l'interazione con i sistemi IoT in tre fasi temporali, che superano il semplice momento dell'acquisto:
+\begin{itemize}
+	\item \textbf{Before Use (Anticipated use)}: la fase di anticipazione e aspettativa verso le potenzialità del dispositivo.
+	\item \textbf{During Use (Actual use)}: l'interazione tecnica diretta, dove l'IoT deve garantire efficacia e soddisfazione nel completamento dei task.
+	\item \textbf{After Use (Digested use)}: la fase di elaborazione mentale e ritenzione emotiva, cruciale per la fidelizzazione in ecosistemi di servizi ricorsivi.
+\end{itemize}
+
+\subsubsection{Livelli di Design e Integrazione Aziendale}
+La progettazione per l'IoT non si limita all'interfaccia, ma si estende a livelli strategici più profondi:
+\begin{description}
+	\item[Usability]: Focalizzata sull'efficienza del compito durante l'uso effettivo del dispositivo.
+	\item[User Experience (UX)]: La progettazione dell'esperienza globale legata al singolo prodotto connesso, coprendo l'intero arco temporale (prima, durante e dopo).
+	\item[Customer Experience (CX)]: La gestione di tutti i \textit{touchpoint} dell'ecosistema (es. Advertising, Customer Service, Ethics), vedendo il dispositivo IoT come uno dei molti canali di comunicazione azienda-cliente.
+	\item[Service Design]: Il livello più alto di astrazione che coordina la strategia di business, il personale e il design organizzativo per sostenere l'erogazione del servizio nel tempo.
+\end{description}
+
+In sintesi, l'IoT trasforma il prodotto in un'interfaccia di servizio permanente, rendendo il \textit{Service Design} il pilastro fondamentale per la coerenza tra la promessa tecnologica e l'esperienza realmente vissuta dall'utente.
+
+\subsubsection{User Experience}
+Il design per l'IoT è per natura più \textbf{complesso} di quello per i servizi web. Questo a causa del livello attuale della tecnologia, dell'immatura comprensione del valore percepito dagli utenti e dal semplice fatto che ci sono più aspetti da considerare, come:
+\begin{itemize}
+	\item La natura \textbf{specializzata} dei dispositivi IoT: molti hanno bisogno di una forma fisica precisamente progettata e ingegnerizzata e di conseguenza necessitano di più funzionalità di UI
+	\item L'abilità dei dispositivi di connettere il mondo digitale con quello fisico
+	\item Il fatto che molti prodotti sono \textbf{sistemi distribuiti} composti da più dispositivi: bisogna capire come distribuire le funzionalità e progettare UI e interazioni su tutto il sistema come un'unica entità, garantendo \textit{coerenza} (\textbf{interusability})
+	\item Il \textbf{networking}: nei dispositivi IoT non è sempre detto che ci sia connessione, cosa che invece era assunta nei servizi web
+	\item \textbf{Remote configuration}: se prima l'utente aveva una rappresentazione visuale e immediata degli oggetti, con i dispositivi IoT no
+	\item \textbf{Power saving}
+\end{itemize}
+
+\subsection{Artificial Intelligence}
+L'intelligenza artificiale è sempre più diffusa in tutti gli ambiti. Il problema principale è che, che funzioni o meno, gli utenti \underline{non capiscono} come o perché. Richiede quindi degli approcci fondamentalmente diversi di User Experience.
+
+\subsubsection{Differenze}
+A differenza del software tradizionale, la IA è \textbf{probabilistica}, fornisce \textbf{falsi positivi} e \textbf{negativi}, si basa su un principio \textbf{black-box} dove il processo decisionale è nascosto e ha \textbf{comportamenti imprevedibili} che possono essere confusionari, pericolosi o distruttivi.
+
+\begin{definition}[Human-Centered AI]
+	AI  che amplifica, aumenta e migliora le performance umane mantenendo i sistemi affidabili e sicuri.
+\end{definition}
+Questo approccio vuole quindi far \textbf{collaborare} umani e IA in maniera trasparente e con livelli di controllo appropriati. Inoltre è fondamentale lasciare alcune sezioni dell'interfaccia \textit{deterministiche} in modo che, anche quando l'IA non è sicura (che dovrebbe essere il meno possibile), gli utenti possono ricadere su interazioni prevedibili.
+
+\subsubsection{Affidamento}
+Il problema dell'affidamento è che gli utenti potrebbero usare l'IA \textbf{troppo} o \textbf{ignorarla completamente} anche se potrebbe essere utile. È fondamentale trovare la giusta via di mezzo basata anche sul livello di \textit{accuratezza} e sull'importanza delle conseguenze.\\
+
+A differenza della \textbf{fiducia}, che è psicologica  e difficile da misurare, l'\textit{affidamento} è osservabile, quantificabile e può essere calibrato in base alle performance.
+
+Per costruire un affidamento appropriato bisogna fornire questi tre meccanismi:
+\begin{itemize}
+	\item \textbf{Explainability}: aiutare gli utenti a capire il perché mostrando ciò che un sistema può fare e come gli input influenza i risultati, rimanendo specifici sui livelli di performance
+	\item \textbf{Trasparenza}: aiutare gli utenti a capire quando affidarsi, mostrando le performance per categoria, i livelli di confidence delle predizioni e avvisando quando la situazione è diversa dai dati di training
+	\item \textbf{Controllo}: gli utenti devono poter controllare i dati di input, le informazioni personali e i risultati
+\end{itemize}
+È importante capire che \textbf{augmentation} (AI per suggerire alternative ed eseguirle se approvate) e \textbf{automation} (AI prima esegue e poi informa quando vuole) esistono su uno \textbf{spettro}. Bisogna capire a che livello dare controllo agli umani.
+\begin{center}
+	\includegraphics[scale=.3]{automation}
+\end{center}
+
+\subsubsection{Miglioramento}
+L'IA impara ed evolve nel tempo consumando dati e ricevendo \textbf{feedback} sugli output, che possono essere di tre tipi feedback:
+\begin{itemize}
+	\item \textbf{Esplicito}: l'utente lo dice esplicitamente per migliorare il sistema, e.g. like/dislike
+	\item \textbf{Implicito}: dedotto dal comportamento dell'utente e le sue azioni, e.g. skip rate
+	\item \textbf{Duale}: combinazione dei due
+\end{itemize}
+È importante fare la scelta in base al contesto, impegno e qualità del segnale necessari.\\
+
+Nella pratica il feedback deve essere semplice da dare, mostrare subito l'impatto che ha avuto e rispettare il contesto, quindi non essere utilizzato troppo.
+
+\subsubsection{Design}
+Vediamo tre principi fondamentali:
+\begin{itemize}
+	\item \textbf{Aspettative chiare}: mostrare cosa il sistema può e non può fare, con quale accuratezza e limitazioni e come fa ad imparare
+	\begin{note}
+		Sempre meglio dare basse aspettative e poi fare più del previsto, non il contrario.
+	\end{note}
+	\item \textbf{Design per gli errori}: esistono diversi tipi di errore
+	\begin{itemize}
+		\item \textbf{System}: problemi tecnici e crash
+		\item \textbf{Model}: predizioni sbagliate e allucinazioni
+		\item \textbf{Data}: dati di training di bassa qualità o input prevenuti
+		\item \textbf{Relevance}: risultato corretto ma irrilevante
+		\item \textbf{User}: input non chiaro, errore di comprensione
+	\end{itemize}
+	Per gestirli bisogna indicare quando si presentano, spiegare cosa è andato storto e offrire opportunità per correggere. Bisogna sempre permettere di tornare indietro e  dare il controllo all'utente.
+	\item \textbf{Bilanciare complessità} e \textbf{controllo}: mostrare prima le funzionalità base e aggiungere le altre nel tempo, sempre rispettando l'autonomia dell'utente e la possibilità di scartare le decisioni dell'IA
+\end{itemize}
+
+\newpage
+\noindent I requisiti di design cambiano molto anche in base a quanto c'è in gioco:
+\begin{itemize}
+	\item \textbf{High-stakes}: serve massima trasparenza, controllo ed explainability in quanto un errore potrebbe avere conseguenze catastrofiche (e.g. medicina)
+	\item \textbf{Medium-stakes}:  serve una buona trasparenza e moderato controllo, e.g. educazione
+	\item \textbf{Low-stakes}: serve un livello base di trasparenza, e.g. autocompletamento
+\end{itemize}
+
+\paragraph{Precision e Recall}
+\begin{table}[h]
+	\centering
+	\renewcommand{\arraystretch}{2}
+	\begin{tabular}{|l|c|c|}
+		\hline
+		& \textbf{Positivo Predetto} & \textbf{Negativo Predetto} \\ \hline
+		\textbf{Positivo Reale} & 
+		\begin{tabular}[c]{@{}c@{}} \textbf{Vero Positivo (VP)} \\ Predizione corretta \end{tabular} & 
+		\begin{tabular}[c]{@{}c@{}} \textbf{Falso Negativo (FN)} \\ Rilevamento mancato \end{tabular} \\ \hline
+		\textbf{Negativo Reale} & 
+		\begin{tabular}[c]{@{}c@{}} \textbf{Falso Positivo (FP)} \\ Falso allarme \end{tabular} & 
+		\begin{tabular}[c]{@{}c@{}} \textbf{Vero Negativo (VN)} \\ Rifiuto corretto \end{tabular} \\ \hline
+	\end{tabular}
+\end{table}
+\begin{definition}[Precisione]
+	Quando ha trovato qualcosa, quanto spesso è corretto?
+	\begin{equation*}
+		\frac{\text{True Positive}}{\text{True Positive} + \text{False Positive}}
+	\end{equation*}
+\end{definition}
+
+\begin{definition}[Recall]
+	Di tutte le cose che dovrebbe trovare, quante ne ha trovate effettivamente?
+	\begin{equation*}
+		\frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
+	\end{equation*}
+\end{definition}
+
+È importante ottimizzare uno dei due parametri a seconda del \textbf{contesto}: la \textit{precisione} serve quando la cosa peggiore è un falso allarme (e.g. spam detecion) mentre la \textit{recall} quando è un positivo mancante (e.g. analisi mediche).
+
+\paragraph{Processo} Il processo di design per la IA itera su tre cose contemporaneamente: UI, modello di IA e dati. Di seguito i passaggi:
+\begin{enumerate}
+	\item \textbf{Comprendere} le \textbf{necessità} dell'utente, prestando attenzione al \textit{livello di controllo}, quanto c'è in gioco e come l'utente costruirà la fiducia nel tempo
+	\item \textbf{Prototype} anticipato con un test di tipo \textit{Wizard of Oz} per valutare i pattern di interazione
+	\item \textbf{Definire i requisiti} del modello collaborando con data scientists e misurando varie metriche tra cui anche le performance umane e la soddisfazione degli utenti
+	\item \textbf{Test} con dati veri: la qualità dei dati è fondamentale e bisogna trovare strategie per ottenerli
+	\item \textbf{Collaborazione} durante tutto il processo tra gli sviluppatori e i designer
+\end{enumerate}
