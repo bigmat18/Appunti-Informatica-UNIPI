@@ -1,0 +1,154 @@
+% !TeX spellcheck = it_IT
+\newpage
+\section{Human-Computer Interaction}
+\subsection{Interfaccia utente}
+Un'interfaccia è il punto di contatto fra due sistemi che devono comunicare, tipicamente in informatica l'uomo e i sistemi informatici (UI).
+\begin{definition}[User interfaces]
+	Le interfacce utente sono un modo di mappare gli aspetti \textbf{sensoriali}, cognitivi e sociali del mondo umano all'insieme di funzioni fornite da un programma.
+\end{definition}
+L'obiettivo primario dell'interazione è quello di consentire all'utente di controllare e far funzionare la macchina in maniera \textbf{semplice}, \textbf{efficace}, efficiente e divertente in modo da migliorare la UX.\\
+
+Le interfacce utente sono composte da uno o più livelli tra cui una \textbf{Human-Machine Interface}, ovvero interfacce con un input fisico hardware (e.g. mouse) e un output hardware (e.g. monitor). Sono tipicamente organizzate in base ai sensi dell'essere umano e quindi in sei categorie:
+\begin{itemize}
+	\item \textbf{Tactile}
+	\item \textbf{Visual}
+	\item \textbf{Auditory}
+	\item \textbf{Olfactory}
+	\item \textbf{Gustactory}
+	\item \textbf{Equilibrial}: non proprio un senso, indica il senso dell'equilibrio
+\end{itemize}
+Le interfacce che usano più di un senso sono dette \textbf{Composite User Interface}, e.g. \textbf{GUI}. Se a quest'ultima aggiungiamo anche il suono (oltre al \textit{visual} e \textit{tactile}) otteniamo una \textbf{Multimedia User Interface}. Esistono tre categorie generali di CUI:
+\begin{itemize}
+	\item \textbf{Standard}, e.g. quelle che usano mouse, tastiera e monitor
+	\item \textbf{Virtual}: blocca il mondo reale e ne crea uno virtuale
+	\item \textbf{Augmented}: non blocca il mondo reale ma crea una realtà \textit{aumentata}
+\end{itemize}
+Un altro modo di classificare le CUI è tramite il numero di sensi, e.g. 3S o 4S. Quando interagisce con tutti i sensi umani viene chiamata \textbf{Qualia Interface}.
+
+\subsection{Human Interface Devices}
+\begin{definition}[HID]
+	È un tipo di computer device di solito utilizzato dagli umani. Prende in input e restituisce in output agli umani.
+\end{definition}
+Il termine HID indica sia il dispositivo fisico che la specifica \textbf{USB-HID} e fu coniato proprio durante lo sviluppo di quest'ultimo.
+
+\subsubsection{Software Specification}
+Lo standard HID fu implementato principalmente per permette l'innovazione dei dispositivi di input e semplificarne il \textbf{processo di installazione}. A differenza di prima dove ogni dispositivo necessitava di driver specifici, adesso tutti i dispositivi HID possono inviare pacchetti dove descrivono loro stessi tutti i tipi di dato e il loro formato con cui comunicano.\\
+
+\paragraph{Report Protocol} Questo protocollo descrive due entità: l'\textbf{host}, che interagisce con l'umano, e il \textbf{device} che riceve i dati di input in base all'interazione. L'host definisce  i propri pacchetti di dati e presenta un \textbf{HID Descriptor} all'host (contenuto in una ROM), ovvero un array \textit{hard coded} che ne descrive i pacchetti:
+\begin{itemize}
+	\item Quanti pacchetti sono supportati
+	\item Ogni tipo di pacchetto
+	\item Lo scopo di ogni byte e bit del pacchetto
+\end{itemize}
+
+\paragraph{Boot Protocol} Alternativa utilizzata quando l'host non è in grado di elaborare gli HID Descriptor. Vengono quindi utilizzati solo dei formati di pacchetto predefiniti e permette quindi l'utilizzo solo di mouse e tastiera.\\
+
+\begin{note}
+	Ad oggi non solo USB utilizza HID ma anche \textit{Bluetooth}, \textit{Serial}, \textit{ZigBee}, \textit{I2C} e \textit{HOGP}.
+\end{note}
+
+\subsubsection{Dispositivi}
+Le periferiche possono essere divise in dispositivi di \textbf{input} e di \textbf{output}. I primi sono basati su \textbf{sensori} che rilevano eventi o cambiamenti nel mondo reale e li converte in analogico o digitale. I secondi sono basati su \textbf{attuatori} che convertono un segnale analogico o digitale in eventi fisici che cambiano il mondo reale.\\
+
+Tipicamente sono classificati tramite il tipo di input o output usato:
+\begin{itemize}
+	\item Testo e caratteri
+	\item Posizioni
+	\item Suoni
+	\item Immagini
+	\item Parametri ambientali
+	\item Parametri biologici, fisiologici o di salute
+\end{itemize}
+
+\paragraph{Tastiera} Dispositivo più usato per testo e caratteri. Ne esistono di diversi tipi, ognuno con una funzionalità specifica per un determinato bisogno. Ad oggi la maggior parte usano uno dei tre diversi layout meccanici ISO ANSI: tasti che sono centrati a $\frac{3}{4}$ di pollice e hanno un \textit{key travel} di almeno $0.15$ pollici. Le tastiere  moderne contengono un insieme di tasti che dipende dallo standard scelto (e.g. $101$, $104$). 
+Un \textbf{layout} è una disposizione di tasti specifica che può essere:
+\begin{itemize}
+	\item \textbf{Fisica}: posizionamento fisico del tasto
+	\item \textbf{Visuale}: disposizione delle legende che appaiono sui tasti (etichette, segni o rilievi)
+	\item \textbf{Funzionale}: disposizione della mappatura dei tasti determinata dal software, ovvero l'effettiva risposta alla pressione di uno di essi
+\end{itemize}
+Le tastiere moderne sono progettate per comunicare al dispositivo solo il posizionamento del tasto premuto (riga e colonna) in modo che poi l'associazione sia fatta dal software. Il layout più comune è \textbf{QWERTY} per alfabeti latini. Esistono anche tastiere \textbf{multifunzionali}.
+
+\paragraph{Lettore di codici a barre} Scanner ottico che può leggere codici a barre stampati, decodificarne il contenuto e inviarlo ad un computer. Si compone di una fonte di luce, una lente e un sensore che traduce gli impulsi ottici in elettrici. Inoltre, quasi tutti contengono dei circuiti che possono analizzare l'immagine letta e inviarne il contenuto alla porta di uscita.
+\begin{definition}[Codice a barre]
+	Un metodo di rappresentazione dei dati in maniera visuale e leggibile da macchine. La rappresentazione è data dalla variazione delle larghezze e delle spaziature di linee parallele e di solito codifica una stringa. La versione bidimensionale è il codice \textbf{QR}.
+\end{definition}
+
+\paragraph{RFID} Consiste in un piccolo trasponder radio composto da trasmettitore e ricevitore. Viene attivato con un impulso elettromagnetico che attiva l'invio dei dati. Ne esistono due tipi:
+\begin{itemize}
+	\item \textbf{Passivo}: alimentato dall'energia del dispositivo che invia la richiesta dei dati
+	\item \textbf{Attivo}: alimentato da una batteria e quindi con un range maggiore (fino a centinaia di metri)
+\end{itemize}
+
+\paragraph{NFC} Near-Field-Communication è un insieme di \textbf{protocolli} di comunicazione bidirezionale tra due dispositivi elettronici su una di stanza di massimo $4$cm.
+
+\paragraph{Pointing Devices} Un \textit{pointing device} è un dispositivo che permette un utente di dare in ingresso ad un computer dati spaziali. I movimenti del dispositivo sono poi replicati sullo schermo (e.g. spostando un cursore) seguendo la legge di Fitt.
+
+\begin{definition}[Fitts's law]
+	È un modello predittivo del movimento umano e dice che il tempo necessario per arrivare velocemente ad un obiettivo è una funzione del rapporto tra la distanza $D$ e la larghezza dell'obiettivo $W$. Quindi dato $a$ il tempo di partenza e di fermata e $b$ la velocità del dispositivo, il tempo di movimento è:
+	\begin{equation}
+		\text{MT} = a+b\cdot\text{ID}=a+b\cdot\log_2{\frac{2D}{W}}
+	\end{equation}
+\end{definition}
+
+\noindent Esistono diverse classificazioni per i \textit{pointing device}:
+\begin{itemize}
+	\item \textbf{Diretto}, il puntatore sullo schermo è nell'esatta posizione fisica (e.g. touchscreen), o \textbf{indiretto}, dove il movimento viene tradotto (e.g. mouse)
+	\item \textbf{Assoluto}, che fornisce una mappatura consistente tra un punto nello spazio di input e uno nello spazio di output (e.g. touchscreen), o \textbf{relativo}, che mappa lo spostamento nello spazio di input in quello nello spazio di output, controllando quindi la posizione relativa a quella iniziale (e.g. mouse)
+	\item \textbf{Isotonico}, dispositivo che si può muovere e misura il suo spostamento (e.g. mouse), \textbf{isometrico}, dispositivo fisso che misura la forza applicata (e.g. trackpoint), o \textbf{elastico}, che aumenta la forza di resistenza in base allo spostamento (e.g. joystick)
+	\item Controllo \textbf{posizionale}, che cambia direttamente la posizione assoluta o relativa della posizione del cursore sullo schermo (e.g. mouse), o \textbf{rate}, che cambia la velocità e la direzione del movimento del puntatore sullo schermo (e.g. joystick)
+\end{itemize}
+
+\begin{observation}
+	I puntatori \textit{diretti} sono più veloci ma meno accurati. Il bilanciamento migliore è nel mouse. Le persone disabili preferiscono i joystick e le trackball.
+\end{observation}
+
+\subparagraph{Mouse} Un pointing device utilizzabile con la mano che rileva il movimento in due direzioni relativo alla superficie. Di solito viene poi tradotto nel movimento di un puntatore sul display che permette il controllo dell'interfaccia grafica.
+
+\subparagraph{Eye tracking} È il processo di misurazione del punto di osservazione o del movimento di un occhio relativamente alla testa. Vengono utilizzati spesso in ricerca e in medicina per riabilitazione e protesi. Esistono diverse varianti, tra cui quella tramite \textbf{luce}, di solito infrarossa, che viene riflessa sull'occhio e poi rilevata da un sensore che poi analizza la rotazione del bulbo tramite i cambiamenti nei riflessi (corneal reflection). Sono previste due tecniche: \textbf{bright-pupil} (più affidabile ma più complesso) e \textbf{dark-pupil} la cui differenza è nel posizionamento della fonte di luce rispetto all'ottica. Un'altra variante è la \textbf{passive light} che invece usa la luce visibile per illuminare.
+
+\paragraph{Audio} Per la fisiologia umana, il suono è la ricezione di onde sonore e la loro percezione da parte del cervello. Solo quelle che hanno una frequenza tra $20$Hz e $20$kHz possono essere sentite (lunghezza d'onda di $17$m fino a $1.7$cm). Onde al di sotto e al di sopra del range sono \textit{infrasuoni} e \textit{ultrasuoni}. Il suono può essere acquisito tramite un \textbf{microfono}. Un insieme di essi è un \textbf{array} e viene utilizzato per estrarre voci da ambienti rumorosi, tecnologie \textit{surround}, localizzazione di oggetti, registrazioni ad alta fedeltà e molto altro. Generalmente gli array sono fatti di tanti microfoni monodirezionali o misto bidirezionale, tutti collegati ad un computer (Digital Signal Processor) che registra e interpreta i dati, eventualmente creando anche uno o più microfoni virtuali.
+
+\paragraph{Immagini} Un sensore di immagine rileva e misura le informazioni necessarie a creare un'immagine, convertendo il variare dell'attenuazione delle onde luminose (luce o altre radiazioni elettromagnetiche) in segnali, mentre queste passano attraverso o sono riflesse da oggetti. I principali tipi di sensori sono \textbf{Charge-Coupled Device} e l'active-pixel sensor (\textbf{CMOS}). Entrambi si basano su \textit{metal-oxide-semiconductor} (MOS), dove i primi usano condensatori e i secondi amplificatori MOS \textbf{field-effect transistor}.
+
+\subparagraph{3D} La scansione 3D è il processo di analisi di un oggetto o un ambiente nel mondo reale per raccogliere dati sulla sua forma e possibilmente sul suo aspetto. I dati possono poi essere usati per molte applicazioni, e.g. costruzione di un modello 3D, realtà aumentata, cattura del movimento, riconoscimento dei gesti, mappatura robotica, design industriale, etc$\ldots$ Gli scanner si dividono in due tipi:
+\begin{itemize}
+	\item \textbf{Passivo}: non emette nessuna radiazione ma rileva quella emessa dall'ambiente
+	\begin{itemize}
+		\item \textbf{Stereoscopico}: utilizza due videocamere leggermente distanziate che guardano la stessa scena. Analizzando le differenze nelle due immagini è possibile determinare la distanza tra due punti
+		\item \textbf{Fotometrico}: usa una singola fotocamera che cattura più immagini con diverse condizioni di luce, dalle quali si può capire l'orientamento della superficie ad ogni pixel
+		\item \textbf{Silhouette}: utilizza bordi creati da una sequenza di fotografie intorno ad un oggetto tridimensionale con uno sfondo ad alto contrasto. Questi vengono poi estrusi e formano un'approssimazione dell'oggetto
+	\end{itemize}
+	\item \textbf{Attivo}: emettono radiazioni (e.g. raggi x o ultrasuoni) o luce e rileva il loro riflesso o attraversamento attraverso un oggetto
+	\begin{itemize}
+		\item \textbf{Time-of-Flight}: viene sparato un laser contro le superfici, un punto alla volta, e viene calcolato il tempo che ci impiega per tornare al sensore
+		\item \textbf{Triangolazione}: spara un laser sul soggetto e sfrutta una fotocamera per vedere la sua posizione. In base alla distanza dalla superficie, il puntino appare in punti diversi
+		\item \textbf{Structured-light}: proiettano un pattern di luce sul soggetto e tramite una fotocamera analizzano eventuali deformazioni per calcolare la distanza di ogni punto. A differenza dei precedenti metodi, calcolano più punti alla volta
+		\item \textbf{Modulated light}: sparano una luce in continuo cambiamento contro il soggetto, seguendo cicli ad esempio sinusoidali. Una fotocamera rileva poi la quantità di luce riflessa e di quanto il pattern sia cambiato per determinare la distanza che la luce ha dovuto percorrere
+	\end{itemize}
+\end{itemize}
+
+\paragraph{IMU} Un Inertial Measurement Unit è un dispositivo elettronico che misura e riporta le \textbf{forze} di un corpo, la loro\textbf{ velocità angolare} e a volte l'\textbf{orientamento} del corpo usando accelerometri, giroscopi e a volte magnetometri e producendo quindi una misurazione a nove assi.
+
+\paragraph{Wearable} È un computer indossabile sul corpo, generalizzato o specializzato (fit tracker) che incorpora sensori come accelerometri, termometri o misuratori del battito. I problemi principali di questi dispositivi sono la batteria, dissipazione del calore, connessione e gestione dei dati.
+
+\subparagraph{Heart Rate Wearable Monitor} È un dispositivo che permette di misurare e mostrare il battito cardiaco in tempo reale o salvarne lo storico. Possono funzionare in due modi:
+\begin{itemize}
+	\item \textbf{Electrocardiography} (ECG): misura il bio-potenziale generato da segnali elettrici che controllano l'espansione e la contrazione del cuore
+	\item \textbf{Photoplethysmography} (PPG): utilizza una tecnologia basata sulla luce per misurare il volume del sangue pompato dal cuore. Alcuni permettono di misurare anche la saturazione di ossigeno
+\end{itemize}
+
+\subsection{Natural User Interfaces}
+Una NUI è un'interfaccia che è effettivamente \textbf{invisibile} e lo rimane anche mentre l'utente impara ad interagire in modo sempre più complesso. La parola "naturale" si riferisce al fatto che si basa sull'abilità dell'utente di passare da principiante ad esperto velocemente e durante l'interazione stessa. Un esempio classico sono le \textbf{gesture} introdotte dall'iPad: sono abilità che abbiamo imparato durante la vita e ci risultano quindi naturali e \textbf{intuitive}.
+
+\subsubsection{Guidelines}
+Jshua Blake fornisce alcune guideline per il design delle NUI:
+\begin{itemize}
+	\item \textbf{Competenza immediata}
+	\item \textbf{Apprendimento progressivo}
+	\item \textbf{Interazione diretta}
+	\item \textbf{Basso impegno mentale}: devono essere utilizzate principalmente abilità innate e skill basilari
+\end{itemize}
+
+\subsubsection{Reality Based Interfaces}
+È una \textbf{tecnica} per il design di NUI (anche conosciuta come \textit{reality-based interfaces}) che permette all'utente di interagire con l'interfaccia tramite oggetti presenti nella realtà fisica (e.g. toccando un oggetto apre la sua descrizione).
