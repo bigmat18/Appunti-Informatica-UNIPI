@@ -56,6 +56,7 @@ Per maggior leggibilità:
 - **Computer grafica**: 🔴 sono pressenti tutte le slide usate durante il corso sotto forma di unica dispensa, inoltre è presente il libro consigliato direttamente dal professo, oltre che ad esercizi. Consiglio per la preparazione di questo esame il sito [LearnOpenGL](https://learnopengl.com). È inoltre presente una subrepo con il mio progetto pesonale di fine corso e degli appunti in latex (al momento incompleti).
 - **Crittografia**: 🔴 È presente una lista di tutti i possibili esercizi che possono essere svolti durante le prove scritte, con correzzione. Consiglio per la preparazione a questo esame di affidarsi se possibile al libro scritto dalla proffessoressa.
 - **Cloud Computing**: 🟢 Presenti notes scritte in Markdown per obisidian complete, inoltre sono presenti i pdf sia delle lezioni teoriche che di laboratorio.
+- **TypeScript**: [The Concise TypeScript Book](https://gibbok.github.io/typescript-book/it-it/) è una guida gratuita e open source in italiano per imparare TypeScript.
 
 ## Contribuzione
 
